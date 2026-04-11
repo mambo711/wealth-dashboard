@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Dashboard — Alberto Rodriguez</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; color: #f8fafc; text-align: center; }
+  .subtitle { color: #94a3b8; font-size: 14px; text-align: center; margin: 4px 0 20px; }
+
+  /* Top Cards */
+  .top-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .card { background: #1e293b; border-radius: 12px; padding: 16px; text-align: center; }
+  .card-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .card-value { font-size: 28px; font-weight: 700; }
+  .card-value.blue { color: #60a5fa; }
+  .card-value.red { color: #ef4444; }
+  .card-value.green { color: #10b981; }
+
+  /* FI Progress */
+  .fi-bar-container { background: #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+  .fi-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+  .fi-header .label { color: #94a3b8; }
+  .fi-header .value { font-weight: 600; color: #f59e0b; }
+  .fi-track { background: #334155; border-radius: 8px; height: 24px; overflow: hidden; }
+  .fi-fill { background: linear-gradient(90deg, #2563eb, #3b82f6); height: 100%; border-radius: 8px; transition: width 0.8s ease; }
+  .fi-labels { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: #64748b; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; background: #1e293b; color: #94a3b8; transition: all 0.2s; }
+  .tab:hover { background: #334155; }
+  .tab.active { background: #2563eb; color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Panels */
+  .panel { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 16px; color: #f8fafc; margin-bottom: 16px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 6px; color: #94a3b8; font-weight: 600; border-bottom: 2px solid #334155; }
+  th.right { text-align: right; }
+  td { padding: 10px 6px; color: #e2e8f0; border-bottom: 1px solid #1e293b40; }
+  td.right { text-align: right; font-variant-numeric: tabular-nums; }
+  td.bold { font-weight: 600; }
+  td.green { color: #10b981; font-weight: 600; }
+  td.red { color: #ef4444; font-weight: 600; }
+  tfoot td { border-top: 2px solid #334155; font-weight: 700; font-size: 14px; }
+
+  /* Category badge */
+  .badge { background: #334155; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: #94a3b8; }
+
+  /* Dot */
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; flex-shrink: 0; }
+
+  /* Metric rows */
+  .metric-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #334155; font-size: 13px; }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: #94a3b8; }
+  .metric-value { font-weight: 600; }
+
+  /* Alert */
+  .alert { display: flex; gap: 8px; padding: 6px 0; font-size: 13px; color: #cbd5e1; }
+
+  /* Debt card */
+  .debt-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .debt-card { background: #1e293b; border-radius: 12px; padding: 20px; }
+  .debt-card.high { border-left: 4px solid #ef4444; }
+  .debt-card.med { border-left: 4px solid #f59e0b; }
+  .debt-card .debt-name { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+  .debt-card .debt-value { font-size: 28px; font-weight: 700; color: #ef4444; margin: 8px 0; }
+  .debt-detail { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; }
+  .debt-detail .dl { color: #94a3b8; }
+  .debt-detail .dv { color: #f8fafc; font-weight: 600; }
+  .debt-detail .dv.red { color: #ef4444; }
+
+  /* FI path cards */
+  .fi-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .fi-card { background: #0f172a; border-radius: 8px; padding: 12px; text-align: center; }
+  .fi-card .fc-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+  .fi-card .fc-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+  /* Tags */
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .tag { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+  .tag.yellow { background: #f59e0b22; color: #f59e0b; }
+  .tag.red { background: #ef444422; color: #ef4444; }
+
+  /* Chart containers */
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chart-box { background: #1e293b; border-radius: 12px; padding: 20px; }
+  .chart-box canvas { max-height: 260px; }
+
+  /* Supuestos box */
+  .supuestos { margin-top: 16px; padding: 12px; background: #0f172a; border-radius: 8px; font-size: 13px; }
+  .supuestos .stitle { color: #10b981; font-weight: 600; margin-bottom: 6px; }
+  .supuestos .stext { color: #94a3b8; line-height: 1.8; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 24px; padding: 12px; color: #475569; font-size: 11px; }
+
+  /* Legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #94a3b8; }
+
+  /* Health Score */
+  .health-score-container { display: flex; align-items: center; gap: 20px; background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .health-gauge { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+  .health-gauge canvas { width: 120px; height: 120px; }
+  .health-number { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+  .health-number .hn-score { font-size: 36px; font-weight: 800; line-height: 1; }
+  .health-number .hn-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .health-breakdown { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .hb-item { text-align: center; }
+  .hb-item .hb-val { font-size: 16px; font-weight: 700; }
+  .hb-item .hb-lbl { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .hb-item .hb-bar { height: 4px; border-radius: 2px; background: #334155; margin-top: 4px; }
+  .hb-item .hb-fill { height: 100%; border-radius: 2px; }
+
+  /* Roadmap */
+  .roadmap { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .roadmap h3 { font-size: 16px; color: #f8fafc; margin-bottom: 12px; }
+  .roadmap-timeline { position: relative; padding-left: 24px; }
+  .roadmap-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #334155; }
+  .rm-step { position: relative; margin-bottom: 14px; padding-bottom: 2px; }
+  .rm-step::before { content: ''; position: absolute; left: -20px; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid; background: #0f172a; }
+  .rm-step.urgent::before { border-color: #ef4444; }
+  .rm-step.high::before { border-color: #f59e0b; }
+  .rm-step.medium::before { border-color: #3b82f6; }
+  .rm-step.low::before { border-color: #10b981; }
+  .rm-step .rm-title { font-size: 13px; font-weight: 700; color: #f8fafc; }
+  .rm-step .rm-detail { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+  .rm-step .rm-impact { font-size: 11px; font-weight: 600; margin-top: 2px; }
+  .rm-step .rm-timeline { display: inline-block; font-size: 10px; background: #334155; color: #94a3b8; padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+  .weekly-focus { background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%); border: 1px solid #2563eb; border-radius: 12px; padding: 16px 20px; margin-bottom: 14px; }
+  .weekly-focus .wf-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .weekly-focus .wf-badge { background: #2563eb; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .weekly-focus .wf-title { font-size: 15px; font-weight: 700; color: #60a5fa; }
+  .weekly-focus .wf-body { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+  .weekly-focus .wf-why { font-size: 12px; color: #f59e0b; margin-top: 6px; font-weight: 600; }
+
+  /* Income streams */
+  .income-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .income-card { background: #0f172a; border-radius: 8px; padding: 10px; text-align: center; border-top: 3px solid; }
+  .income-card .ic-amount { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .income-card .ic-label { font-size: 10px; color: #64748b; text-transform: uppercase; }
+  .income-card .ic-source { font-size: 11px; color: #94a3b8; }
+
+  /* Sparkline */
+  .sparkline { display: inline-block; vertical-align: middle; }
+
+  /* Waterfall */
+  .waterfall-bar { display: flex; align-items: flex-end; gap: 6px; height: 200px; padding: 0 8px; }
+  .wf-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .wf-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; transition: height 0.5s; }
+  .wf-val { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .wf-lbl { font-size: 9px; color: #64748b; text-align: center; margin-top: 6px; word-wrap: break-word; max-width: 60px; }
+
+  /* Risk meter bar */
+  .risk-bar { height: 6px; border-radius: 3px; background: #334155; position: relative; margin-top: 4px; }
+  .risk-fill { height: 100%; border-radius: 3px; }
+  .risk-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 12px; }
+  .risk-card { background: #0f172a; border-radius: 8px; padding: 12px; text-align: center; }
+  .risk-card .rc-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .risk-card .rc-name { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .risk-card .rc-metric { font-size: 11px; margin: 2px 0; }
+  .risk-card .rc-metric span { font-weight: 600; }
+  .risk-grade { font-size: 20px; font-weight: 800; margin: 4px 0; }
+
+  /* Delta badge */
+  .delta { font-size: 11px; margin-top: 4px; font-weight: 600; }
+  .delta.up { color: #10b981; }
+  .delta.down { color: #ef4444; }
+
+  /* Heatmap grid */
+  .heatmap { display: grid; gap: 3px; font-size: 11px; }
+  .heatmap-cell { border-radius: 4px; padding: 6px 4px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .heatmap-header { color: #64748b; font-weight: 700; font-size: 10px; text-transform: uppercase; }
+
+  /* Print button */
+  .print-btn { position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px #0006; z-index: 999; transition: background 0.2s; }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    .print-btn { display: none !important; }
+    .tabs { display: none !important; }
+    .tab-content { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
+    body { background: #fff; color: #1e293b; padding: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100%; }
+    .card, .panel, .chart-box, .fi-bar-container, .debt-card, .fi-card { background: #f1f5f9; border: 1px solid #e2e8f0; }
+    .card-value.blue, .card-value.green { color: #2563eb; }
+    .card-value.red { color: #dc2626; }
+    h1, .subtitle { color: #1e293b; }
+    .footer { page-break-before: avoid; }
+  }
+
+  @media (max-width: 700px) {
+    .top-cards, .debt-cards, .fi-cards, .chart-row { grid-template-columns: 1fr; }
+    .print-btn { bottom: 10px; right: 10px; padding: 8px 14px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Portfolio Dashboard</h1>
+  <p class="subtitle">Alberto Rodriguez — Actualizado: 10 Abril 2026</p>
+
+  <!-- Print Button -->
+  <button class="print-btn" onclick="window.print()">🖨️ Exportar PDF</button>
+
+  <!-- Top Cards -->
+  <div class="top-cards">
+    <div class="card">
+      <div class="card-label">NW Bruto</div>
+      <div class="card-value blue">$398,543</div>
+      <div class="delta down">▼ $859 vs mes anterior</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Deuda</div>
+      <div class="card-value red">-$57,887</div>
+      <div class="delta down">▲ $2,100 vs mes anterior</div>
+    </div>
+    <div class="card">
+      <div class="card-label">NW Neto</div>
+      <div class="card-value green">$340,656</div>
+      <div class="delta down">▼ $859 vs mes anterior</div>
+    </div>
+  </div>
+
+  <!-- FI Progress Bar -->
+  <div class="fi-bar-container">
+    <div class="fi-header">
+      <span class="label">Progreso FI (meta: $500,000)</span>
+      <span class="value">68% — faltan $159,344</span>
+    </div>
+    <div class="fi-track">
+      <div class="fi-fill" style="width: 68%"></div>
+    </div>
+    <div class="fi-labels">
+      <span>$0</span>
+      <span>FI @ 58 = $500K (blended lifestyle)</span>
+    </div>
+  </div>
+
+  <!-- Wealth Health Score -->
+  <div class="health-score-container">
+    <div class="health-gauge">
+      <canvas id="gaugeCanvas" width="120" height="120"></canvas>
+      <div class="health-number">
+        <div class="hn-score" id="healthScoreNum" style="color:#f59e0b">58</div>
+        <div class="hn-label">Salud</div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="font-size:16px;color:#f8fafc;margin:0">🏥 Wealth Health Score</h3>
+        <span style="font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;background:#f59e0b22;color:#f59e0b">MODERADO</span>
+      </div>
+      <div class="health-breakdown">
+        <div class="hb-item"><div class="hb-val" style="color:#10b981">85</div><div class="hb-lbl">Retiro</div><div class="hb-bar"><div class="hb-fill" style="width:85%;background:#10b981"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#10b981">72</div><div class="hb-lbl">Diversific.</div><div class="hb-bar"><div class="hb-fill" style="width:72%;background:#10b981"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">68</div><div class="hb-lbl">Progreso FI</div><div class="hb-bar"><div class="hb-fill" style="width:68%;background:#f59e0b"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">55</div><div class="hb-lbl">Performance</div><div class="hb-bar"><div class="hb-fill" style="width:55%;background:#f59e0b"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#ef4444">35</div><div class="hb-lbl">Deuda</div><div class="hb-bar"><div class="hb-fill" style="width:35%;background:#ef4444"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#ef4444">20</div><div class="hb-lbl">Surplus</div><div class="hb-bar"><div class="hb-fill" style="width:20%;background:#ef4444"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">60</div><div class="hb-lbl">Liquidez</div><div class="hb-bar"><div class="hb-fill" style="width:60%;background:#f59e0b"></div></div></div>
+        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">55</div><div class="hb-lbl">Riesgo</div><div class="hb-bar"><div class="hb-fill" style="width:55%;background:#f59e0b"></div></div></div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:#94a3b8;line-height:1.5">
+        <strong style="color:#f59e0b">Diagnóstico:</strong> El core de retiro (85/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con $0 de surplus genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus y atacar la LOC.
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Roadmap -->
+  <div class="roadmap">
+    <h3>🗺️ Hoja de Ruta Estratégica — Camino a Score 75+</h3>
+    <div class="weekly-focus">
+      <div class="wf-header">
+        <span class="wf-badge">🎯 Foco Semanal</span>
+        <span style="font-size:11px;color:#64748b;">Semana del 11 Abr</span>
+      </div>
+      <div class="wf-title">Cerrar 1 venta en DEC esta semana</div>
+      <div class="wf-body">DEC lleva $5,655 YTD vs $39,986 en 2025 — 85% menos. Sin ventas no hay surplus, sin surplus no se paga el LOC, y el score se estanca en 58. Esta semana: revisar los leads activos en Cloze, hacer follow-up a cotizaciones pendientes, y lanzar al menos 1 campaña de email en Mailchimp para productos de alta rotación.</div>
+      <div class="wf-why">⚡ Por qué importa: cada $1K de venta genera ~$600 de surplus → paga 1.5 meses de intereses del LOC</div>
+    </div>
+    <div class="roadmap-timeline">
+      <div class="rm-step urgent">
+        <div class="rm-title">1. Generar surplus en DEC → $2K+/mes</div>
+        <div class="rm-detail">Recuperar ventas de DEC con estrategia AI + SEO. Cada $1K de surplus mensual = +6 puntos en el score.</div>
+        <div class="rm-impact" style="color:#ef4444">Impacto: Surplus 20→60, Score 58→68</div>
+        <span class="rm-timeline">Abr — Jun 2026</span>
+      </div>
+      <div class="rm-step urgent">
+        <div class="rm-title">2. Eliminar Wells Fargo LOC ($47,887 @ 8.5%)</div>
+        <div class="rm-detail">Con surplus de $3K/mes: LOC en $0 para Dic 2026. Libera $340/mes en intereses que van directo a inversiones.</div>
+        <div class="rm-impact" style="color:#ef4444">Impacto: Deuda 35→80, Score 68→76</div>
+        <span class="rm-timeline">Jun — Dic 2026</span>
+      </div>
+      <div class="rm-step high">
+        <div class="rm-title">3. Resolver Michalitas (rentable o cerrar)</div>
+        <div class="rm-detail">$1,525/mes de sangría. Si no es break-even para Jul 2026, cerrar y recuperar $1.5K/mes para inversiones.</div>
+        <div class="rm-impact" style="color:#f59e0b">Impacto: Surplus +$1,525/mes, acelera paso #2</div>
+        <span class="rm-timeline">Abr — Jul 2026</span>
+      </div>
+      <div class="rm-step high">
+        <div class="rm-title">4. Rebalancear cuentas de trading</div>
+        <div class="rm-detail">Cerrar Futures ($4.5K), reducir TastyTrade ($8.7K) → mover $13.2K a IBKR y RH que tienen mejor risk-adjusted return.</div>
+        <div class="rm-impact" style="color:#f59e0b">Impacto: Performance 55→70, Riesgo 55→65</div>
+        <span class="rm-timeline">Abr — May 2026</span>
+      </div>
+      <div class="rm-step medium">
+        <div class="rm-title">5. Maximizar SEP IRA en año rentable</div>
+        <div class="rm-detail">Si DEC genera >$50K profit: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.</div>
+        <div class="rm-impact" style="color:#3b82f6">Impacto: Retiro 85→92, FI Progress 68→75</div>
+        <span class="rm-timeline">Dic 2026 (tax planning)</span>
+      </div>
+      <div class="rm-step medium">
+        <div class="rm-title">6. Subir bonos de 6% a 15%</div>
+        <div class="rm-detail">Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.</div>
+        <div class="rm-impact" style="color:#3b82f6">Impacto: Diversific. 72→82, Riesgo 55→70</div>
+        <span class="rm-timeline">Q1 2027</span>
+      </div>
+      <div class="rm-step low">
+        <div class="rm-title">7. Evaluar Roth conversion en año de bajo ingreso</div>
+        <div class="rm-detail">Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.</div>
+        <div class="rm-impact" style="color:#10b981">Impacto: Optimización fiscal de largo plazo</div>
+        <span class="rm-timeline">2027+ (con CPA)</span>
+      </div>
+      <div class="rm-step low">
+        <div class="rm-title">8. Testamento + seguro de discapacidad</div>
+        <div class="rm-detail">Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.</div>
+        <div class="rm-impact" style="color:#10b981">Impacto: Protección patrimonial</div>
+        <span class="rm-timeline">2026 (urgente pero no financiero)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('resumen')">Resumen</button>
+    <button class="tab" onclick="showTab('cuentas')">Cuentas</button>
+    <button class="tab" onclick="showTab('allocation')">Allocation</button>
+    <button class="tab" onclick="showTab('deuda')">Deuda</button>
+    <button class="tab" onclick="showTab('fi')">FI Path</button>
+    <button class="tab" onclick="showTab('posiciones')">Posiciones</button>
+    <button class="tab" onclick="showTab('performance')">Performance</button>
+    <button class="tab" onclick="showTab('flujo')">Flujo de Caja</button>
+  </div>
+
+  <!-- TAB: Resumen -->
+  <div id="tab-resumen" class="tab-content active">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Tu patrimonio neto es $340,656 — al 68% de tu meta FI de $500K. El núcleo de retiro ($220K en Betterment + SEP IRA) representa el 55% del portafolio y está compuesto correctamente. El surplus mensual de $0 y la sangría de Michalitas (-$1,525/mes) son los obstáculos principales para acelerar FI.
+      Los bonos al 6% están bajos para alguien a 5 años de retiro — deberían estar cerca de 15%. El cash al 19% es alto pero se justifica por la deuda activa y la ausencia de surplus.
+      <strong style="color:#f59e0b">Recomendación:</strong> La prioridad #1 es generar surplus cerrando o haciendo rentable Michalitas. Cada $1,500/mes recuperado acorta tu timeline FI en ~1 año.
+    </div>
+    <!-- NW Histórico Chart -->
+    <div class="panel" style="margin-bottom:16px">
+      <h3>📈 Patrimonio Neto — 23 Meses (Jun 2024 → Apr 2026)</h3>
+      <canvas id="chartNWHistorico" style="max-height:280px"></canvas>
+    </div>
+
+    <!-- Income Streams -->
+    <div class="panel" style="margin-bottom:16px">
+      <h3>💰 Fuentes de Ingreso Pasivo — Estimado Mensual</h3>
+      <div class="income-grid">
+        <div class="income-card" style="border-color:#10b981"><div class="ic-label">Pepe Loans</div><div class="ic-amount" style="color:#10b981">$542</div><div class="ic-source">4%/mes × $13,555</div></div>
+        <div class="income-card" style="border-color:#3b82f6"><div class="ic-label">CDs Ecuador</div><div class="ic-amount" style="color:#3b82f6">$190</div><div class="ic-source">6.5%/año × $35,000</div></div>
+        <div class="income-card" style="border-color:#f59e0b"><div class="ic-label">Dividendos</div><div class="ic-amount" style="color:#f59e0b">$115</div><div class="ic-source">SCHD $85 + FDL $30</div></div>
+        <div class="income-card" style="border-color:#8b5cf6"><div class="ic-label">Betterment Int.</div><div class="ic-amount" style="color:#8b5cf6">$105</div><div class="ic-source">~4%/año × $31,151</div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;padding:8px 12px;background:#10b98115;border-radius:8px;font-size:13px">
+        <span style="color:#94a3b8">Total ingreso pasivo mensual:</span>
+        <span style="color:#10b981;font-weight:700">~$952/mes ($11,424/año)</span>
+      </div>
+      <div style="font-size:11px;color:#64748b;margin-top:6px">Esto cubre el 32% de tu meta de $35K/año en lifestyle blended. Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3 style="font-size:16px;color:#f8fafc;margin-bottom:16px">Distribución por Categoría</h3>
+        <canvas id="pieCategory"></canvas>
+        <div class="legend" id="pieLegend"></div>
+      </div>
+      <div class="chart-box">
+        <h3 style="font-size:16px;color:#f8fafc;margin-bottom:12px">Métricas Clave</h3>
+        <div class="metric-row"><span class="metric-label">Retiro (compounding core)</span><span class="metric-value" style="color:#60a5fa">$220,369</span></div>
+        <div class="metric-row"><span class="metric-label">Surplus mensual</span><span class="metric-value" style="color:#ef4444">$0</span></div>
+        <div class="metric-row"><span class="metric-label">Interés LOC / mes</span><span class="metric-value" style="color:#ef4444">-$340</span></div>
+        <div class="metric-row"><span class="metric-label">Michalitas / mes</span><span class="metric-value" style="color:#f59e0b">-$1,525</span></div>
+        <div class="metric-row"><span class="metric-label">SS estimado @ 67</span><span class="metric-value" style="color:#10b981">$2,000/mo</span></div>
+        <div class="metric-row"><span class="metric-label">Gap FI (5 años)</span><span class="metric-value" style="color:#f59e0b">$159,344</span></div>
+        <div class="metric-row"><span class="metric-label">Bonos (% total)</span><span class="metric-value" style="color:#ef4444">6%</span></div>
+        <div class="metric-row"><span class="metric-label">Cash (% total)</span><span class="metric-value" style="color:#10b981">19%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Cuentas -->
+  <div id="tab-cuentas" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Tienes 13 cuentas activas distribuidas entre retiro, trading, cash, préstamos y deuda. La SEP IRA ($130K) es tu cuenta más grande y representa el 33% del portafolio — correctamente posicionada en fondos índice de bajo costo (VOO/SCHD/AVDV).
+      El problema visible es la fragmentación: 5 cuentas de trading con un total de ~$62K repartidos de forma subóptima. Las dos cuentas con mejor rendimiento (IBKR y RH) son las más pequeñas.
+      Los préstamos privados (Miguel Autos $36K + Pepe $13.5K) son el 12.5% del portafolio — ilíquidos y con riesgo de contraparte, aunque Pepe es consistente al 4%/mes.
+      <strong style="color:#f59e0b">Recomendación:</strong> Consolida las cuentas de trading — cierra Futures ($4,500) y redistribuye entre IBKR y TS ETF Tactical que tienen mejor track record.
+    </div>
+    <div class="panel">
+      <h3>Todas las Cuentas</h3>
+      <table>
+        <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th></tr></thead>
+        <tbody id="accountsTable"></tbody>
+        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px">$398,543</td><td class="right" style="color:#94a3b8">100%</td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Allocation -->
+  <div id="tab-allocation" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Tu allocation actual es 62% equity, 19% cash, 14% préstamos privados y solo 6% bonos. Para alguien a 5 años de FI, los bonos deberían ser 15-20% para reducir volatilidad cuando empieces a retirar.
+      La exposición a US Large Cap (VOO+SCHD = 53% del equity) es alta pero razonable para un portafolio growth. Internacional (AVDV) solo es 13% — bajo considerando que planeas retirarte en Ecuador/España.
+      Los préstamos privados al 14% son un riesgo de concentración: si Miguel deja de pagar, pierdes $36K de un golpe. Pepe es más seguro (4%/mes con contrato) pero ilíquido.
+      <strong style="color:#f59e0b">Recomendación:</strong> En el próximo año, sube bonos al 12-15% redirigiendo $20K de cash reserve hacia BND o similar cuando la LOC esté pagada. Aumenta internacional a 18% gradualmente.
+    </div>
+    <div class="panel">
+      <h3>Allocation del Portafolio Completo</h3>
+      <canvas id="barAllocation" style="max-height:340px"></canvas>
+      <div style="margin-top:20px">
+        <h4 style="font-size:14px;color:#f59e0b;margin-bottom:8px">Alertas de Allocation</h4>
+        <div class="alert"><span>🔴</span><span>Bonos a 6% — muy bajo para 5 años de FI. Target: 15%</span></div>
+        <div class="alert"><span>🟡</span><span>US Large Cap + Dividend = 53% — alta exposición al dólar</span></div>
+        <div class="alert"><span>🟡</span><span>Internacional solo 13% — bajo para retiro en Ecuador/España</span></div>
+        <div class="alert"><span>🟡</span><span>Préstamos privados 14% — ilíquido y concentrado</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Deuda -->
+  <div id="tab-deuda" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Tu deuda total es $75,185 — el ancla más pesada de tu portafolio. La LOC de Wells Fargo ($47,887 al 8.5%) te cuesta $339/mes solo en intereses, que es dinero que no se compone a tu favor. Hace un año esta deuda era $0 — creció rápido por Michalitas y gastos operativos.
+      Las tarjetas ($17,298 combinadas) son preocupantes si cargan interés. PP Credit ($7,539) y Chase Ink ($6,698) son las más altas. El car loan ($10K al 6.5%) es manejable en schedule.
+      Cada $10K que pagues de la LOC te ahorra $850/año en intereses — es un retorno garantizado del 8.5% sin riesgo, mejor que cualquier inversión segura.
+      <strong style="color:#f59e0b">Recomendación:</strong> Prioridad absoluta: eliminar la LOC antes de hacer cualquier otra inversión nueva. Con el surplus de DEC por encima de $10K de piso, ataca LOC agresivamente. Meta: $0 en LOC para Dic 2026.
+    </div>
+    <div class="debt-cards">
+      <div class="debt-card high">
+        <div class="debt-name">Wells Fargo LOC</div>
+        <div class="debt-value">$47,887</div>
+        <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">8.5%</span></div>
+        <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$339</span></div>
+        <div class="debt-detail"><span class="dl">Hace 1 año</span><span class="dv">$0</span></div>
+      </div>
+      <div class="debt-card med">
+        <div class="debt-name">Car Loan</div>
+        <div class="debt-value" style="color:#f59e0b">$10,000</div>
+        <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">6.5%</span></div>
+        <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$54</span></div>
+        <div class="debt-detail"><span class="dl">Status</span><span class="dv">En schedule</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Tarjetas de Crédito (Xero)</h3>
+      <table>
+        <thead><tr><th>Tarjeta</th><th class="right">Saldo</th></tr></thead>
+        <tbody>
+          <tr><td>PP Credit</td><td class="right bold">$7,539</td></tr>
+          <tr><td>Chase Ink Business</td><td class="right bold">$6,698</td></tr>
+          <tr><td>Chase Biz Unlimited</td><td class="right bold">$2,700</td></tr>
+          <tr><td>AMEX Gold</td><td class="right bold">$334</td></tr>
+          <tr><td>WF CC / AMEX Blue</td><td class="right bold">$27</td></tr>
+        </tbody>
+        <tfoot><tr><td style="color:#ef4444">DEUDA TOTAL (incl LOC + carro)</td><td class="right" style="color:#ef4444;font-size:16px">$75,185</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: FI Path -->
+  <div id="tab-fi" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Necesitas $159,344 adicionales en 5 años para alcanzar $500K de NW neto — eso es $31,869/año o $2,656/mes de ahorro e inversión neta. Con surplus actual de $0 y la LOC creciendo, este objetivo parece lejano pero es alcanzable si se ejecutan los cambios correctos.
+      La variable más importante es el surplus de DEC: si DEC vuelve a generar $3-4K/mes de excedente (como en 2025), la LOC se paga en 12 meses y el sobrante va directo a inversiones. El TWR de +9.2% del portafolio demuestra que tus inversiones sí crecen — el problema no es rendimiento sino flujo de capital nuevo.
+      Social Security a los 67 ($2,000/mo) reduce tu necesidad de retiro en $275K en perpetuidad — eso significa que tu meta real post-SS es más baja de lo que parece.
+      <strong style="color:#f59e0b">Recomendación:</strong> Enfócate en las 3 palancas: (1) recuperar surplus DEC a $3K+/mes, (2) eliminar LOC ($4K/año en intereses), (3) maximizar SEP IRA en años rentables. Si logras las 3, FI a los 58 es realista.
+    </div>
+    <div class="panel">
+      <h3>Camino a Independencia Financiera</h3>
+      <div class="fi-cards">
+        <div class="fi-card"><div class="fc-label">Meta FI @ 58</div><div class="fc-value" style="color:#60a5fa">$500,000</div></div>
+        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b">$159,344</div></div>
+        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444">$31,869</div></div>
+      </div>
+      <canvas id="lineChart" style="max-height:300px"></canvas>
+      <div class="supuestos">
+        <div class="stitle">Supuestos de los 3 escenarios:</div>
+        <div class="stext">
+          🟢 <strong>Optimista:</strong> DEC genera $4K+/mes surplus, Michalitas cierra, LOC pagada en 12 meses, 8% retorno anual. FI a los 57.<br>
+          🔵 <strong>Base:</strong> DEC recupera $2K/mes gradualmente, 7% retorno, debt paydown moderado. FI a los 58.<br>
+          🔴 <strong>Pesimista:</strong> DEC sigue bajo, surplus $0, solo crece por retorno de inversiones (6%). FI se retrasa a 60+.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Posiciones -->
+  <div id="tab-posiciones" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      La SEP IRA ($130.5K) está bien construida: VOO (59%), SCHD (25%), AVDV (15%) — es un core diversificado de bajo costo. El P&L negativo en VOO y SCHD es temporal (corrección de mercado), AVDV en verde muestra que la diversificación internacional ayudó.
+      El Tactical ETF ($32K) tiene demasiadas posiciones: 10 ETFs con 3 micro-posiciones (TAN/SHLD/XOP). EWZ + ILF se solapan en LatAm. Las posiciones de opciones en Tastytrade son una mezcla de credit spreads a corto plazo y LEAPS — riesgo moderado.
+      El LEAPS en TSM ($340/$350 call, Jan 27) es una apuesta a semiconductores a 9 meses — alto riesgo pero con thesis sólida. El long put de HIMS (Jan 28) es especulativo.
+      <strong style="color:#f59e0b">Recomendación:</strong> En Tactical, consolida las micro-posiciones (<$500) y elimina el solapamiento EWZ/ILF — quédate con EWZ que tiene más liquidez. El SEP IRA no lo toques.
+    </div>
+    <div class="panel">
+      <h3>SEP IRA — $130,524</h3>
+      <table>
+        <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VOO</strong><br><span style="color:#64748b;font-size:11px">Vanguard S&P 500 ETF</span></td><td class="right bold">$78,131</td><td class="right" style="color:#94a3b8">60%</td><td class="right green">-$1,380</td></tr>
+          <tr><td><strong>SCHD</strong><br><span style="color:#64748b;font-size:11px">Schwab US Dividend Equity</span></td><td class="right bold">$32,723</td><td class="right" style="color:#94a3b8">25%</td><td class="right red">-$579</td></tr>
+          <tr><td><strong>AVDV</strong><br><span style="color:#64748b;font-size:11px">Avantis Intl Small Cap Value</span></td><td class="right bold">$19,114</td><td class="right" style="color:#94a3b8">15%</td><td class="right green">+$469</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h3>Tactical ETFs — $24,849 (+$8K cash)</h3>
+      <table>
+        <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
+        <tbody id="tacticalTable"></tbody>
+      </table>
+      <div class="tags">
+        <span class="tag yellow">EWZ + ILF solapamiento</span>
+        <span class="tag yellow">3 ETFs energía fragmentados</span>
+        <span class="tag red">TAN/SHLD/XOP micro-posiciones</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Opciones — Tastytrade (NLV $16,790)</h3>
+      <table>
+        <thead><tr><th>Spread</th><th>Tipo</th><th class="right">DTE</th><th class="right">Exp</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BMY</strong> 60P/55P</td><td><span class="badge">Credit Put</span></td><td class="right">7</td><td class="right" style="color:#f59e0b">Apr 17</td></tr>
+          <tr><td><strong>NFLX</strong> 92C/96C</td><td><span class="badge">Bull Call</span></td><td class="right">7</td><td class="right" style="color:#f59e0b">Apr 17</td></tr>
+          <tr><td><strong>ORCL</strong> 150P/145P</td><td><span class="badge">Credit Put</span></td><td class="right">35</td><td class="right">May 15</td></tr>
+          <tr><td><strong>LULU</strong> 165P/160P</td><td><span class="badge">Credit Put</span></td><td class="right">35</td><td class="right">May 15</td></tr>
+          <tr><td><strong>NVDA</strong> 185P/180P</td><td><span class="badge">Credit Put</span></td><td class="right">42</td><td class="right">May 22</td></tr>
+          <tr><td><strong>TSM</strong> 340C/350C</td><td><span class="badge">LEAPS Call</span></td><td class="right">280</td><td class="right">Jan 27</td></tr>
+          <tr><td><strong>HIMS</strong> 15P</td><td><span class="badge">Long Put LEAPS</span></td><td class="right">651</td><td class="right">Jan 28</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Performance -->
+  <div id="tab-performance" class="tab-content">
+
+    <!-- ═══════════════════ SECTION 1: TOTAL PORTFOLIO (FREEDOM MENSUAL) ═══════════════════ -->
+    <div style="margin-bottom:8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
+      📊 <strong style="color:#f8fafc">PORTAFOLIO TOTAL</strong> — FREEDOM MENSUAL (22 meses)
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+      <div class="card" style="border-top:3px solid #10b981"><div class="card-label">TWR 23 Meses</div><div class="card-value green" style="font-size:24px">+10.4%</div><div style="font-size:11px;color:#64748b">Jun 24 → Apr 26</div></div>
+      <div class="card" style="border-top:3px solid #10b981"><div class="card-label">TWR 12M</div><div class="card-value green" style="font-size:24px">+8.2%</div><div style="font-size:11px;color:#64748b">Apr 25 → Apr 26</div></div>
+      <div class="card" style="border-top:3px solid #ef4444"><div class="card-label">TWR 6M</div><div class="card-value red" style="font-size:24px">-3.4%</div><div style="font-size:11px;color:#64748b">Oct 25 → Apr 26</div></div>
+      <div class="card" style="border-top:3px solid #ef4444"><div class="card-label">TWR 3M</div><div class="card-value green" style="font-size:24px">-1.5%</div><div style="font-size:11px;color:#64748b">Ene 26 → Apr 26</div></div>
+    </div>
+
+    <div style="margin-bottom:16px;padding:10px 14px;background:#10b98115;border:1px solid #10b98140;border-radius:8px;font-size:12px;color:#94a3b8">
+      <strong style="color:#10b981">TWR vs Raw:</strong> Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversión es <strong style="color:#10b981">+10.4%</strong>.
+      La diferencia se debe a 3 flujos externos neutralizados: préstamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26).
+    </div>
+
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      Tu portafolio ha rendido <strong style="color:#10b981">+10.4% real (TWR)</strong> en 23 meses (~5.5% anualizado). El S&P 500 rindió <strong style="color:#f59e0b">+29.2%</strong> en el mismo período — la brecha de 17pp se explica porque tu portafolio tiene 38% en activos no-equity (CDs, cash, préstamos) que no siguen al mercado.
+      El pico TWR fue Oct 2025 (114.25) impulsado por crypto y stocks. Los últimos 6M (-1.5%) reflejan la corrección, no deterioro estructural. La línea gris (-0.6%) incluye $50K en flujos externos.
+      <strong style="color:#f59e0b">Recomendación:</strong> El gap vs S&P es esperado por tu allocation defensiva. Para cerrar la brecha, sube equity de 62% a 70% gradualmente cuando la LOC esté pagada.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>Patrimonio Total — TWR vs Raw (22 Meses)</h3>
+      <canvas id="chartTotalTWR" style="max-height:300px"></canvas>
+    </div>
+
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      13 meses positivos vs 9 negativos. Mejor mes: Nov 2024 (+6.3%, crypto rally). Peor: Ene 2025 (-6.0%, pero era el préstamo a Miguel, no pérdida de mercado).
+      Patrón claro: después de 2-3 meses de caída siempre hay recuperación. Los últimos 3 meses negativos raw incluyen el pago de LOC — en TWR solo 2 fueron realmente negativos.
+      <strong style="color:#f59e0b">Recomendación:</strong> No entres en pánico por rachas rojas de 2-3 meses — tu historial muestra que se recuperan. Mantén la disciplina.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>Rendimiento Mensual (%)</h3>
+      <canvas id="chartMonthlyRate" style="max-height:240px"></canvas>
+    </div>
+
+    <!-- Heatmap de Retornos Mensuales -->
+    <div class="panel" style="margin-top:16px">
+      <h3>🗓️ Heatmap de Retornos Mensuales</h3>
+      <div id="heatmapContainer"></div>
+      <div style="margin-top:8px;display:flex;gap:12px;justify-content:center;font-size:10px;color:#64748b">
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#065f46;vertical-align:middle"></span> &gt;+3%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10b981;vertical-align:middle"></span> +1% a +3%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#6ee7b780;vertical-align:middle"></span> 0% a +1%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#fca5a580;vertical-align:middle"></span> -1% a 0%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ef4444;vertical-align:middle"></span> -3% a -1%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#991b1b;vertical-align:middle"></span> &lt;-3%</span>
+      </div>
+    </div>
+
+    <!-- Rolling Returns Chart -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      Los rolling returns muestran tu rendimiento en ventanas móviles — si las líneas suben, tu momentum está mejorando. Si bajan, estás perdiendo impulso.
+      El rolling 12M es el más importante: muestra tu rendimiento anualizado real en cualquier punto. Si está por debajo de 0%, tu portafolio encogió en los últimos 12 meses.
+      <strong style="color:#f59e0b">Recomendación:</strong> Monitorea el rolling 6M — si cae debajo de -5% por 2+ meses consecutivos, es señal de revisar allocation.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>📉 Rolling Returns — Ventana Móvil (3M / 6M / 12M)</h3>
+      <canvas id="chartRolling" style="max-height:260px"></canvas>
+    </div>
+
+    <!-- Contribution Analysis -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      Esta gráfica separa cuánto creció tu portafolio por rendimiento de inversiones vs cuánto cambió por meter o sacar dinero.
+      Las barras verdes son crecimiento real de inversiones — lo que tu dinero generó trabajando. Las barras naranjas son flujos externos (depósitos/retiros de capital nuevo).
+      <strong style="color:#f59e0b">Recomendación:</strong> Idealmente las barras verdes deben dominar — significa que tu dinero trabaja por ti. Si las naranjas dominan, dependes de capital nuevo.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🔬 Contribution Analysis — Retorno de Inversión vs Flujos de Capital</h3>
+      <canvas id="chartContribution" style="max-height:260px"></canvas>
+    </div>
+
+    <!-- ═══════════════════ SECTION 2: TRADING ACCOUNTS — TWR (sin depósitos/retiros) ═══════════════════ -->
+    <div style="margin:24px 0 8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
+      🏆 <strong style="color:#f8fafc">CUENTAS DE TRADING — RENDIMIENTO REAL (TWR)</strong> — Ago 2025 → Abr 2026 · Excluye depósitos y retiros
+    </div>
+
+    <!-- Trading Performance Summary Cards — TWR -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+      <div class="card" style="border-top:3px solid #10b981">
+        <div class="card-label">🥇 Mejor 6M (TWR)</div>
+        <div class="card-value green" style="font-size:20px">RH Autopilot</div>
+        <div style="font-size:13px;color:#10b981;font-weight:600">+16.5%</div>
+      </div>
+      <div class="card" style="border-top:3px solid #f59e0b">
+        <div class="card-label">🥈 2do 6M (TWR)</div>
+        <div class="card-value" style="font-size:20px;color:#f59e0b">IBKR Bravo</div>
+        <div style="font-size:13px;color:#f59e0b;font-weight:600">+5.5%</div>
+      </div>
+      <div class="card" style="border-top:3px solid #ef4444">
+        <div class="card-label">🔻 Peor 6M (TWR)</div>
+        <div class="card-value red" style="font-size:20px">TS Futures</div>
+        <div style="font-size:13px;color:#ef4444;font-weight:600">-35.4%</div>
+      </div>
+    </div>
+
+    <!-- TWR Performance Table -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      Solo 2 de 5 cuentas superan al S&P 500 en 6M: RH Autopilot (+16.5%) e IBKR Bravo (+5.9%). TS ETF Tactical tiene el mejor TWR total (+19.6%) pero ha caído -4.2% en 6M por la corrección.
+      TastyTrade (opciones: -17.4%) y Futures (-51.2%) están destruyendo valor. Las cuentas simples y pequeñas rinden mejor que las activas y complejas.
+      <strong style="color:#f59e0b">Recomendación:</strong> Redistribuye capital de Futures y TastyTrade hacia IBKR y RH que demuestran mejor edge. Ver tabla de rebalanceo abajo.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>Performance Real por Cuenta — Time-Weighted Return (TWR)</h3>
+      <table>
+        <thead><tr><th>Cuenta</th><th class="right">Valor</th><th class="right">3M TWR</th><th class="right">6M TWR</th><th class="right">Total TWR</th><th class="right">vs S&P 6M</th></tr></thead>
+        <tbody>
+          <tr style="background:#10b98110">
+            <td><span class="dot" style="background:#f59e0b"></span><strong>RH Autopilot</strong> <span class="badge">Robinhood</span></td>
+            <td class="right bold">$1,743</td>
+            <td class="right green">+8.7%</td>
+            <td class="right green">+16.5%</td>
+            <td class="right green">+16.5%</td>
+            <td class="right green">+12.8pp</td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#10b981"></span><strong>IBKR Bravo</strong> <span class="badge">Stocks</span></td>
+            <td class="right bold">$6,174</td>
+            <td class="right red">-4.5%</td>
+            <td class="right green">+5.5%</td>
+            <td class="right green">+13.2%</td>
+            <td class="right green">+1.8pp</td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#3b82f6"></span><strong>TS ETF Tactical</strong> <span class="badge">ETFs Margin</span></td>
+            <td class="right bold">$32,847</td>
+            <td class="right red">-8.9%</td>
+            <td class="right red">-3.4%</td>
+            <td class="right green">+19.9%</td>
+            <td class="right red">-7.1pp</td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#8b5cf6"></span><strong>TastyTrade</strong> <span class="badge">Opciones</span></td>
+            <td class="right bold">$16,790</td>
+            <td class="right green">+7.6%</td>
+            <td class="right red">-16.8%</td>
+            <td class="right red">-16.9%</td>
+            <td class="right red">-20.5pp</td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#ef4444"></span><strong>TS Futures</strong> <span class="badge">Futuros</span></td>
+            <td class="right bold">$4,503</td>
+            <td class="right red">-33.1%</td>
+            <td class="right red">-35.4%</td>
+            <td class="right red">-51.2%</td>
+            <td class="right red">-37.7pp</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="color:#94a3b8"><span class="dot" style="background:#94a3b8"></span><strong>S&P 500</strong> <span class="badge">Benchmark</span></td>
+            <td class="right" style="color:#94a3b8">—</td>
+            <td class="right" style="color:#94a3b8">-1.6%</td>
+            <td class="right" style="color:#94a3b8">+3.7%</td>
+            <td class="right" style="color:#94a3b8">+8.5%</td>
+            <td class="right" style="color:#64748b">—</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div style="margin-top:12px;font-size:11px;color:#64748b">
+        TWR = Time-Weighted Return — elimina el efecto de depósitos y retiros para medir rendimiento puro de inversión.<br>
+        Método: retorno semanal encadenado, semanas con movimientos >15-25% (depósito/retiro detectado) neutralizadas a 0%.<br>
+        3M = desde Ene 10, 2026. 6M = desde Oct 11, 2025. Total = desde Ago 2, 2025 (38 semanas).
+      </div>
+    </div>
+
+    <!-- Risk Metrics Panel -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      El rendimiento sin contexto de riesgo es incompleto. <strong style="color:#60a5fa">Max Drawdown</strong> mide la peor caída desde un pico — cuánto dolor puedes esperar. <strong style="color:#60a5fa">Volatilidad</strong> mide la variación semanal — cuánto se mueve la cuenta.
+      El <strong style="color:#10b981">Ratio Retorno/Riesgo</strong> (TWR ÷ MaxDD) combina ambos: >1.0 = bueno, >1.5 = excelente, <0 = destruyendo valor.
+      RH Autopilot es la más eficiente (A) — alta ganancia, bajo drawdown. Futures es la peor (F) — perdió más de la mitad con drawdown del 51%.
+      <strong style="color:#f59e0b">Recomendación:</strong> Prioriza capital hacia cuentas con grado A-B. Las grado D-F necesitan cambio de estrategia o cierre.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>📊 Risk Metrics — Retorno Ajustado por Riesgo (37 semanas)</h3>
+      <div id="riskMetricsGrid" class="risk-grid"></div>
+      <div style="margin-top:12px;font-size:11px;color:#64748b">
+        Max Drawdown = mayor caída pico→valle en TWR. Volatilidad = desviación estándar de retornos semanales. Grado = A (excelente) → F (destruyendo valor).
+      </div>
+    </div>
+
+    <!-- Individual Trading Account Charts — ORDERED BY TWR (best → worst) -->
+
+    <!-- #1: TS ETF Tactical +19.6% -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <strong style="color:#3b82f6">#1 en TWR total.</strong> Tu cuenta más grande y rentable: +19.6% en 37 semanas (~27% anualizado), superando al S&P por 11pp. El pico fue $52K en Ene 2026 antes de corregir.
+      Los últimos 6M (-4.2%) reflejan la volatilidad por aranceles, no fallo de estrategia. El retiro de $14K en Feb distorsionaba el raw a -31%.
+      <strong style="color:#f59e0b">Rec:</strong> Mantener estrategia momentum/rotación. Implementar stop-losses más estrictos para proteger ganancias en correcciones.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🔵 #1 TS ETF Tactical — Margin ($32,847) · TWR: +19.9%</h3>
+      <canvas id="chartTSETF" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #2: RH Autopilot +16.5% -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <strong style="color:#f59e0b">#2 en TWR total y #1 en 6M.</strong> Solo $1,743 pero +16.5% en 6M — la estrategia funciona. Si tuviera el capital de TS ETF ($32K), habría generado ~$5,400 en ganancias.
+      El problema es que con 0.4% del portafolio, el impacto es casi invisible. Subida consistente desde Ene 2026 sin volatilidad extrema.
+      <strong style="color:#f59e0b">Rec:</strong> Aumentar a $5,000-$8,000 gradualmente para capitalizar la estrategia que claramente tiene edge.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🟡 #2 RH Autopilot ($1,743) · TWR: +16.5%</h3>
+      <canvas id="chartRH" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #3: IBKR Bravo +13.6% -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <strong style="color:#10b981">#3 en TWR total.</strong> +13.6% (~19% anualizado), superando al S&P por 5pp. Es tu cuenta con mejor rendimiento ajustado por riesgo — subida gradual con la menor volatilidad de todas.
+      Incluso en el pullback de Mar 2026, la caída fue moderada. Tu selección de stocks individuales funciona bien aquí.
+      <strong style="color:#f59e0b">Rec:</strong> Esta es tu cuenta más eficiente. Escala de $6K a $10-15K redirigiendo capital de Futures y TastyTrade.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🟢 #3 IBKR Bravo — Stocks ($6,174) · TWR: +13.2%</h3>
+      <canvas id="chartIBKR" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #4: TastyTrade -17.4% -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <strong style="color:#ef4444">#4 — Perdiendo.</strong> -17.4% TWR, 26pp debajo del S&P. Pico en Nov 2025 ($22K) seguido de caída sostenida. El 3M reciente (+5.9%) sugiere leve recuperación, pero el track record general es negativo.
+      Opciones requieren alto acierto en timing y los resultados muestran que la estrategia no tiene edge consistente con este capital.
+      <strong style="color:#f59e0b">Rec:</strong> Si los próximos 3M no mejoran, reducir de $16.7K a $8K y mover $8.7K a IBKR ($4.5K) y RH ($4.2K).
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🟣 #4 TastyTrade — Opciones ($16,790) · TWR: -16.9%</h3>
+      <canvas id="chartTT" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #5: TS Futures -51.2% -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <strong style="color:#ef4444">#5 — La peor cuenta.</strong> -51.2% TWR, más de la mitad del capital destruido. 8 eventos de depósito/retiro detectados — patrón de meter dinero, perder, sacar, repetir.
+      No hay posiciones abiertas. Futuros apalancados sin edge claro = destrucción de capital garantizada a largo plazo.
+      <strong style="color:#f59e0b">Rec:</strong> Cerrar la cuenta. Mover los $4,500 a IBKR ($2,500) y RH ($2,000) hoy.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🔴 #5 TS Futures ($4,503) · TWR: -51.2%</h3>
+      <canvas id="chartFUT" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- TWR Normalized Comparison -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      El gráfico clave: todas las cuentas en base 100 con TWR real. TS ETF (azul) llegó a 136 antes de corregir a 120. IBKR (verde) fue la más estable. TastyTrade (morado) nunca pasó de 110 y cayó a 83. Futures (rojo) se desplomó a 49.
+      Tus stocks y ETFs superan al S&P (gris, 108.5). Opciones y futuros están muy por debajo — la capital allocation es tu mayor palanca de mejora.
+      <strong style="color:#f59e0b">Rec:</strong> Concentra capital en las líneas que están ARRIBA del S&P gris. Todo lo que está debajo necesita justificación o cierre.
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🏆 Comparativo TWR — Rendimiento Real Normalizado (base 100 = Ago 2, 2025)</h3>
+      <canvas id="chartTradingNorm" style="max-height:340px"></canvas>
+    </div>
+
+    <!-- Raw Value Total + Reallocation Suggestion -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      Capital de trading combinado: ~$62K. Pico $90K en Oct 2025, caída incluye retiros ($14K del ETF Tactical en Feb). TS ETF domina con 53% ($32.8K), TastyTrade 27% ($16.7K).
+      <strong style="color:#f59e0b">Plan de rebalanceo sugerido (mover $13,200):</strong>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <table style="margin-bottom:16px">
+        <thead><tr><th>Cuenta</th><th class="right">Actual</th><th class="right">Mover</th><th class="right">Nuevo</th><th class="right">TWR</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:#3b82f6"></span>TS ETF Tactical</td><td class="right">$32,847</td><td class="right" style="color:#94a3b8">—</td><td class="right bold">$32,847</td><td class="right green">+19.9%</td></tr>
+          <tr><td><span class="dot" style="background:#8b5cf6"></span>TastyTrade</td><td class="right">$16,790</td><td class="right red">-$8,700</td><td class="right bold">$8,090</td><td class="right red">-16.9%</td></tr>
+          <tr><td><span class="dot" style="background:#10b981"></span>IBKR Bravo</td><td class="right">$6,174</td><td class="right green">+$7,000</td><td class="right bold">$13,174</td><td class="right green">+13.2%</td></tr>
+          <tr><td><span class="dot" style="background:#f59e0b"></span>RH Autopilot</td><td class="right">$1,743</td><td class="right green">+$6,200</td><td class="right bold">$7,943</td><td class="right green">+16.5%</td></tr>
+          <tr><td><span class="dot" style="background:#ef4444"></span>TS Futures</td><td class="right">$4,503</td><td class="right red">-$4,503</td><td class="right bold">$0</td><td class="right red">-51.2%</td></tr>
+        </tbody>
+        <tfoot><tr><td>TOTAL</td><td class="right">$62,057</td><td class="right" style="color:#94a3b8">$0 neto</td><td class="right" style="color:#60a5fa">$61,903</td><td></td></tr></tfoot>
+      </table>
+      <div style="font-size:12px;color:#94a3b8;line-height:1.6">
+        Impacto proyectado: si el TWR de cada cuenta se mantiene los próximos 6 meses, el nuevo allocation generaría ~$4,800 vs ~$1,200 con el actual — una mejora de $3,600 solo por rebalancear, sin meter dinero nuevo.
+      </div>
+      <h3 style="margin-top:16px">📈 Valor Total — Todas las Cuentas de Trading Combinadas</h3>
+      <canvas id="chartTradingTotal" style="max-height:240px"></canvas>
+    </div>
+
+  </div>
+
+  <!-- TAB: Flujo de Caja -->
+  <div id="tab-flujo" class="tab-content">
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      Este panel muestra cómo fluye tu dinero cada mes. Ingreso de DEC entra, se pagan gastos fijos, Michalitas consume, la LOC cobra intereses, y lo que queda (si queda) es surplus para invertir.
+      Con DEC generando ~$4.7K/mes bruto y gastos de ~$6K (incluyendo Michalitas + LOC interest), el surplus neto es $0 o negativo. Este es el cuello de botella #1 de tu wealth building.
+      <strong style="color:#f59e0b">Recomendación:</strong> Cada dólar que recuperes de Michalitas o ahorres en gastos va directo al surplus. El objetivo mínimo es $2K/mes de surplus para estar on-track con FI.
+    </div>
+    <div class="panel">
+      <h3>💧 Waterfall — Flujo de Caja Mensual Estimado</h3>
+      <div id="waterfallChart"></div>
+      <div style="margin-top:16px">
+        <table>
+          <thead><tr><th>Concepto</th><th class="right">Monto</th><th class="right">Tipo</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#10b981;font-weight:600">Ingreso DEC (W2)</td><td class="right green">+$4,700</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Entrada</span></td><td style="color:#94a3b8;font-size:11px">Variable — promedio 2026 YTD</td></tr>
+            <tr><td style="color:#10b981;font-weight:600">Ingreso pasivo</td><td class="right green">+$952</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Entrada</span></td><td style="color:#94a3b8;font-size:11px">Pepe + CDs + dividendos + Betterment</td></tr>
+            <tr><td>Gastos de vida (US)</td><td class="right red">-$4,167</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Fijo</span></td><td style="color:#94a3b8;font-size:11px">$50K/año baseline</td></tr>
+            <tr><td>Michalitas Xpress</td><td class="right red">-$1,525</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Sangría</span></td><td style="color:#94a3b8;font-size:11px">Net loss mensual — mejorando</td></tr>
+            <tr><td>Intereses LOC</td><td class="right red">-$340</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Deuda</span></td><td style="color:#94a3b8;font-size:11px">8.5% × $47,887 ÷ 12</td></tr>
+            <tr><td>Intereses Car Loan</td><td class="right red">-$54</td><td class="right"><span class="badge" style="background:#f59e0b30;color:#f59e0b">Deuda</span></td><td style="color:#94a3b8;font-size:11px">6.5% × $10K ÷ 12</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td style="color:#f59e0b;font-weight:700">SURPLUS DISPONIBLE</td><td class="right" style="color:#ef4444;font-size:18px;font-weight:700">-$434</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Déficit</span></td><td style="color:#94a3b8;font-size:11px">Cada $ aquí va a inversión o deuda</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="margin-top:16px;padding:12px;background:#0f172a;border-radius:8px">
+        <div style="font-size:12px;font-weight:600;color:#f59e0b;margin-bottom:6px">Escenarios de surplus:</div>
+        <div style="font-size:12px;color:#94a3b8;line-height:1.8">
+          📍 <strong>Actual:</strong> -$434/mes (déficit) — portafolio pierde momentum<br>
+          🟡 <strong>Si Michalitas cierra:</strong> +$1,091/mes → $13K/año para LOC paydown<br>
+          🟢 <strong>Si DEC recupera a $7K/mes:</strong> +$2,891/mes → LOC pagada en 16 meses + inversiones<br>
+          🎯 <strong>Si ambos:</strong> +$4,416/mes → LOC pagada en 11 meses, luego $4.4K/mes a inversiones
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Datos: TradeStation MCP (live) · Betterment (screenshot Apr 9 — stored) · PortfolioPilot · Xero · Tastytrade relay</div>
+</div>
+
+<div id="auth-gate" style="position:fixed;inset:0;background:#0f172a;z-index:9999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#1e293b;padding:40px;border-radius:16px;text-align:center;max-width:360px;width:90%;">
+    <div style="font-size:36px;margin-bottom:12px;">🔒</div>
+    <h2 style="color:#f8fafc;margin-bottom:8px;font-size:20px;">Portfolio Dashboard</h2>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">Ingresa la contraseña para acceder</p>
+    <input id="auth-pw" type="password" placeholder="Contraseña"
+      style="width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e2e8f0;font-size:15px;margin-bottom:12px;outline:none;"
+      onkeydown="if(event.key==='Enter')checkAuth()">
+    <button onclick="checkAuth()"
+      style="width:100%;padding:12px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-size:15px;font-weight:600;cursor:pointer;">Entrar</button>
+    <p id="auth-err" style="color:#ef4444;font-size:13px;margin-top:10px;display:none;">Contraseña incorrecta</p>
+  </div>
+</div>
+<script>
+function checkAuth(){
+  var p=document.getElementById('auth-pw').value;
+  // SHA-256 hash of the password — not the password itself in source
+  crypto.subtle.digest('SHA-256',new TextEncoder().encode(p)).then(function(h){
+    var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    if(hex==='919c5c38b9b0c0f0320e507f41bd9ba9182589998d049eb57cb4ca45894e661b'){
+      document.getElementById('auth-gate').style.display='none';
+    } else {
+      document.getElementById('auth-err').style.display='block';
+      document.getElementById('auth-pw').value='';
+    }
+  });
+}
+</script>
+
+<script>
+// Tab switching
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  // Render charts when tab is shown
+  if (id === 'resumen') { renderPie(); renderNWHistorico(); }
+  if (id === 'allocation') renderBar();
+  if (id === 'fi') renderLine();
+  if (id === 'performance') { renderPerformanceCharts(); renderHeatmap(); }
+  if (id === 'flujo') renderWaterfall();
+}
+
+// Data
+const accounts = [
+  { name: "SEP IRA (TradeStation)", cat: "Retiro", value: 130524, color: "#2563eb" },
+  { name: "Roth IRA (Betterment)", cat: "Retiro", value: 61658, color: "#3b82f6" },
+  { name: "Miguel Autos", cat: "Préstamos", value: 36415, color: "#ec4899" },
+  { name: "CDs Ecuador", cat: "Cash", value: 35000, color: "#fbbf24" },
+  { name: "Tactical ETFs (TradeStation)", cat: "Trading", value: 32847, color: "#10b981" },
+  { name: "Emergency Fund (Betterment)", cat: "Cash", value: 31151, color: "#f59e0b" },
+  { name: "Traditional IRA (Betterment)", cat: "Retiro", value: 28187, color: "#60a5fa" },
+  { name: "Options (Tastytrade)", cat: "Trading", value: 16790, color: "#34d399" },
+  { name: "Pepe Loan 2", cat: "Préstamos", value: 7291, color: "#f9a8d4" },
+  { name: "Pepe Loan 1", cat: "Préstamos", value: 6264, color: "#f472b6" },
+  { name: "IBKR Bravos", cat: "Trading", value: 6174, color: "#6ee7b7" },
+  { name: "Futures Alberto", cat: "Futures", value: 4503, color: "#8b5cf6" },
+  { name: "Robinhood", cat: "Trading", value: 1739, color: "#a7f3d0" },
+];
+
+const tactical = [
+  { sym: "FDL", val: 4683, pct: 19, pl: -76 },
+  { sym: "EWZ", val: 3865, pct: 16, pl: 379 },
+  { sym: "ILF", val: 3702, pct: 15, pl: 200 },
+  { sym: "IYZ", val: 3584, pct: 14, pl: 151 },
+  { sym: "FCG", val: 2188, pct: 9, pl: -105 },
+  { sym: "EWT", val: 1924, pct: 8, pl: 115 },
+  { sym: "OIH", val: 1640, pct: 7, pl: 184 },
+  { sym: "XOP", val: 1347, pct: 5, pl: -156 },
+  { sym: "SHLD", val: 1088, pct: 4, pl: -76 },
+  { sym: "TAN", val: 828, pct: 3, pl: -34 },
+];
+
+const fmt = n => '$' + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits: 0});
+
+// Sparkline data per account (last 6 months trend)
+const sparkData = {
+  "SEP IRA (TradeStation)": [211706,212761,214251,220096,223493,220319],
+  "Roth IRA (Betterment)": [58000,59000,60000,61000,61200,61658],
+  "Miguel Autos": [30000,30000,30000,43000,43000,36415],
+  "CDs Ecuador": [37816,37817,37817,47097,30964,35000],
+  "Tactical ETFs (TradeStation)": [45069,45690,46104,49043,35173,32770],
+  "Emergency Fund (Betterment)": [55321,55466,47097,30964,31000,31151],
+  "Traditional IRA (Betterment)": [26000,26500,27000,27500,28000,28187],
+  "Options (Tastytrade)": [17306,17949,16154,17742,16780,17614],
+  "Pepe Loan 2": [7000,7100,7100,7200,7250,7291],
+  "Pepe Loan 1": [6100,6150,6200,6230,6250,6264],
+  "IBKR Bravos": [6000,6004,6097,6428,6290,6174],
+  "Futures Alberto": [3760,3824,4510,6949,8320,4507],
+  "Robinhood": [1048,1084,1123,1236,1591,1739],
+};
+function drawSparkline(canvas, data, color) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const min = Math.min(...data), max = Math.max(...data);
+  const range = max - min || 1;
+  ctx.clearRect(0,0,w,h);
+  ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+  data.forEach((v, i) => {
+    const x = (i / (data.length - 1)) * w;
+    const y = h - ((v - min) / range) * (h - 4) - 2;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+}
+
+// Populate accounts table
+const totalBruto = 398543;
+const tbody = document.getElementById('accountsTable');
+accounts.forEach((a, idx) => {
+  const pct = ((a.value / totalBruto) * 100).toFixed(1);
+  const cid = 'spark_' + idx;
+  const sd = sparkData[a.name];
+  const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
+  const tc = trend === '▲' ? '#10b981' : '#ef4444';
+  tbody.innerHTML += `<tr>
+    <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
+    <td><span class="badge">${a.cat}</span></td>
+    <td class="right bold">${fmt(a.value)}</td>
+    <td class="right" style="color:#94a3b8">${pct}%</td>
+    <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
+  </tr>`;
+});
+setTimeout(() => {
+  accounts.forEach((a, idx) => {
+    const c = document.getElementById('spark_' + idx);
+    const d = sparkData[a.name];
+    if (c && d) drawSparkline(c, d, a.color);
+  });
+}, 50);
+
+// Populate tactical table
+const ttbody = document.getElementById('tacticalTable');
+tactical.forEach(t => {
+  const plClass = t.pl >= 0 ? 'green' : 'red';
+  const plSign = t.pl >= 0 ? '+' : '-';
+  ttbody.innerHTML += `<tr>
+    <td><strong>${t.sym}</strong></td>
+    <td class="right bold">${fmt(t.val)}</td>
+    <td class="right" style="color:#94a3b8">${t.pct}%</td>
+    <td class="right ${plClass}">${plSign}${fmt(t.pl)}</td>
+  </tr>`;
+});
+
+// Charts
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+
+function renderPie() {
+  const ctx = document.getElementById('pieCategory');
+  if (ctx._chart) ctx._chart.destroy();
+  const data = [
+    { label: 'Retiro 55%', value: 220477, color: '#2563eb' },
+    { label: 'Trading 15%', value: 58297, color: '#10b981' },
+    { label: 'Cash/Fijo 17%', value: 66151, color: '#f59e0b' },
+    { label: 'Futures 1%', value: 4507, color: '#8b5cf6' },
+    { label: 'Préstamos 13%', value: 49970, color: '#ec4899' },
+  ];
+  ctx._chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: data.map(d => d.label),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderWidth: 0 }]
+    },
+    options: {
+      cutout: '55%',
+      plugins: {
+        legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } }
+      }
+    }
+  });
+}
+
+function renderBar() {
+  const ctx = document.getElementById('barAllocation');
+  if (ctx._chart) ctx._chart.destroy();
+  const data = [
+    { name: 'US Large Cap', value: 146500, color: '#2563eb' },
+    { name: 'Cash/Renta Fija', value: 66151, color: '#f59e0b' },
+    { name: 'Préstamos', value: 49970, color: '#ec4899' },
+    { name: 'Internacional', value: 45000, color: '#06b6d4' },
+    { name: 'US Dividend', value: 37668, color: '#3b82f6' },
+    { name: 'Cash Brokerages', value: 26370, color: '#fbbf24' },
+    { name: 'Bonos', value: 20700, color: '#64748b' },
+    { name: 'Opciones', value: 17614, color: '#a855f7' },
+    { name: 'Sectorial', value: 5554, color: '#f97316' },
+    { name: 'Energía', value: 5264, color: '#ef4444' },
+  ];
+  ctx._chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.map(d => d.name),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderRadius: 6 }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed.x) } }
+      },
+      scales: {
+        x: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+function renderLine() {
+  const ctx = document.getElementById('lineChart');
+  if (ctx._chart) ctx._chart.destroy();
+  const labels = ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
+  const base =       [340656, 369000, 399000, 434000, 471000, 511000];
+  const optimistic =  [340656, 389000, 439000, 494000, 544000, 599000];
+  const pessimistic = [340656, 349000, 364000, 381000, 399000, 419000];
+  const target =      [500000, 500000, 500000, 500000, 500000, 500000];
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: '🟢 Optimista (DEC $4K/mes + Michalitas cierra)', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
+        { label: '🔵 Base (surplus gradual, 7% retorno)', data: base, borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
+        { label: '🔴 Pesimista (DEC bajo, sin surplus)', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
+        { label: 'Meta FI $500K', data: target, borderColor: '#f59e0b', borderDash: [8, 4], borderWidth: 2, pointRadius: 0, fill: false }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } }
+      },
+      scales: {
+        y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+// FREEDOM MENSUAL — Alberto's actual data (Jun 24 → Mar 26)
+const fmMonths = ['Jun 24','Jul','Aug','Sep','Oct','Nov','Dec','Jan 25','Feb','Mar','Apr','May','Jun 25','Jul','Aug','Sep','Oct','Nov','Dec','Jan 26','Feb','Mar 26','Apr 26'];
+const fmTotal = [396380,396300,400008,406664,398664,423636,415415,390511,382007,372945,380335,391078,405544,396377,408206,412986,425769,413859,417563,431010,404505,394189,398543];
+const fmRate = [1.1,-0.0,0.9,1.7,-2.0,6.3,-1.9,-6.0,-2.2,-2.4,2.0,2.8,3.7,-2.3,3.0,1.2,3.1,-2.8,0.9,3.2,-6.1,-2.6,1.1];
+const fmRetirement = [148668,150758,153126,158467,155100,160543,156566,159743,159167,154980,180807,187132,197392,195181,203067,205445,211706,212761,214251,220096,223493,220319,220369];
+const fmStocks = [55363,55363,60137,60071,58379,63500,61146,59509,57000,54000,30600,51500,54121,57145,72300,80500,86907,74660,77034,80900,67131,61903,57550];
+const fmCDs = [62070,64265,64600,65098,65541,65951,66523,60214,60836,60956,57860,61796,62379,45487,42535,36841,37816,37817,37817,47097,30964,31150,31151];
+const fmCash = [41878,29017,32315,34015,22280,22280,22436,2436,20496,20496,37860,37860,38143,38247,44247,44500,44500,55321,55466,47097,30964,31150,31151];
+const fmCarros = [30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,43000,43000,43000,49970];
+const fmCrypto = [17040,25153,18414,17470,25795,37323,35488,34821,32283,10600,19692,22790,23509,30317,16057,15700,14840,3100,2995,2100,2100,0,0];
+
+function makeAcctChart(canvasId, label, data, color) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const s = data[0], e = data[data.length-1];
+  const chg = ((e-s)/s*100).toFixed(1);
+  const up = e >= s;
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: fmMonths, datasets: [{
+      label: label + ' (' + (up?'+':'') + chg + '%)',
+      data: data, borderColor: color, backgroundColor: color+'20', fill: true,
+      tension: 0.3, pointRadius: 3, pointBackgroundColor: color, borderWidth: 2.5
+    }]},
+    options: {
+      plugins: {
+        legend: { display:true, position:'top', labels: { font:{size:12,weight:'bold'}, color: up?'#10b981':'#ef4444' }},
+        tooltip: { callbacks: { label: c => '$'+c.parsed.y.toLocaleString() }}
+      },
+      scales: {
+        y: { ticks: { callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+        x: { ticks:{font:{size:9}}, grid:{display:false} }
+      }
+    }
+  });
+}
+
+function renderPerformanceCharts() {
+  // ═══ SECTION 1: Total Portfolio TWR (FREEDOM MENSUAL) ═══
+  const twrPortfolio = [100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,110.39];
+  // S&P 500 monthly index (base 100 = Jun 2024, from multpl.com actual closes)
+  const sp500Monthly = [100.0,102.36,101.61,103.89,106.97,109.51,111.00,110.42,111.51,104.96,99.16,107.31,111.35,116.27,118.35,121.58,124.38,124.48,126.55,127.95,127.30,125.98,129.22];
+  const ctxTotalTWR = document.getElementById('chartTotalTWR');
+  if (ctxTotalTWR) {
+    if (ctxTotalTWR._chart) ctxTotalTWR._chart.destroy();
+    ctxTotalTWR._chart = new Chart(ctxTotalTWR, {
+      type: 'line',
+      data: { labels: fmMonths, datasets: [
+        { label:'TWR Real (+10.4%)', data:twrPortfolio, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+        { label:'S&P 500 (+29.2%)', data:sp500Monthly, borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
+        { label:'Raw (con flujos: -0.6%)', data:fmTotal.map(v=>(v/fmTotal[0]*100).toFixed(1)), borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
+      ]},
+      options: {
+        plugins: {
+          legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11,weight:'bold'},color:'#e2e8f0'}},
+          tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}
+        },
+        scales: {
+          y: { ticks:{ font:{size:11} }, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = Jun 2024',color:'#64748b',font:{size:11}} },
+          x: { ticks:{font:{size:9}}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  // Monthly rate bar chart
+  const ctxRate = document.getElementById('chartMonthlyRate');
+  if (ctxRate) {
+    if (ctxRate._chart) ctxRate._chart.destroy();
+    ctxRate._chart = new Chart(ctxRate, {
+      type: 'bar',
+      data: { labels: fmMonths, datasets: [{
+        data: fmRate,
+        backgroundColor: fmRate.map(r => r >= 0 ? '#10b98180' : '#ef444480'),
+        borderColor: fmRate.map(r => r >= 0 ? '#10b981' : '#ef4444'),
+        borderWidth: 1, borderRadius: 4
+      }]},
+      options: {
+        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> (c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(1)+'%' }}},
+        scales: {
+          y: { ticks:{ callback: v=>v+'%', font:{size:11} }, grid:{color:'#33415540'} },
+          x: { ticks:{font:{size:9}}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  // ═══ SECTION 2: Individual Trading Account Charts ═══
+  // Weekly data from Stock Candidates.numbers (Aug 2025 → Apr 2026)
+  const wkDates = ['Aug 2','Aug 9','Aug 16','Aug 23','Aug 30','Sep 6','Sep 13','Sep 20','Sep 27','Oct 4','Oct 11','Oct 18','Oct 25','Nov 1','Nov 8','Nov 15','Nov 22','Nov 29','Dec 6','Dec 13','Dec 20','Dec 27','Jan 3','Jan 10','Jan 17','Jan 24','Jan 31','Feb 7','Feb 14','Feb 21','Feb 28','Mar 7','Mar 14','Mar 21','Mar 28','Apr 4','Apr 11'];
+
+  const wkTT = [12020,13131,12040,9452,8685,8226,9871,14902,14239,14239,20192,21049,21049,22280,18938,18349,16994,17306,17949,17949,16154,15675,15761,15600,15666,15379,17742,17292,17324,17108,17295,16780,16625,16625,16625,16625,16790];
+  const wkIBKR = [1620,2092,2449,2396,3444,3679,3666,3770,3776,3776,5852,5863,5844,5898,5933,5905,5876,6000,6004,6004,6097,6013,6101,6467,6520,6534,6428,6435,6614,6691,6819,6290,6307,6307,6307,6307,6174];
+  const wkTSETF = [38446,40021,40831,41700,45077,45563,47098,47231,48005,48005,47691,49152,48900,48277,46965,46887,45069,45690,46104,46104,46604,47036,48048,50600,51187,52180,49043,49349,35173,36049,35848,34079,33411,33411,33411,33411,32847];
+  const wkRH = [null,null,null,null,null,null,null,6369,6369,6369,null,null,null,null,null,null,null,null,null,1048,1084,1086,1123,1180,1195,1232,1236,1173,1173,1675,1663,1591,1605,1605,1605,1605,1743];
+  const wkFUT = [4995,6251,5180,4184,4896,4711,4790,3880,4727,4727,7077,10425,8700,7724,5489,3916,3547,3760,3824,3824,4510,4629,4629,5100,5065,5066,6949,6768,6152,5744,5506,8320,7073,7073,7073,7073,4503];
+  const wkSP = [626,626,645,647,646,648,658,666,664,664,655,666,679,684,672,673,660,685,687,687,681,683,683,690,694,689,693,693,684,691,686,686,662,662,662,662,679];
+
+  // Helper: make a trading chart (line with fill)
+  function makeTradingChart(id, data, color, label) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [{
+        label: label || '',
+        data: data,
+        borderColor: color,
+        backgroundColor: color + '20',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 2,
+        borderWidth: 2.5,
+        spanGaps: true
+      }]},
+      options: {
+        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> '$'+c.parsed.y.toLocaleString() }}},
+        scales: {
+          y: { ticks:{ callback: v=>'$'+(v>=1000?(v/1000).toFixed(1)+'K':v), font:{size:11} }, grid:{color:'#33415540'} },
+          x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  makeTradingChart('chartTT', wkTT, '#8b5cf6', 'TastyTrade');
+  makeTradingChart('chartIBKR', wkIBKR, '#10b981', 'IBKR Bravo');
+  makeTradingChart('chartTSETF', wkTSETF, '#3b82f6', 'TS ETF Tactical');
+  makeTradingChart('chartRH', wkRH, '#f59e0b', 'RH Autopilot');
+  makeTradingChart('chartFUT', wkFUT, '#ef4444', 'TS Futures');
+
+  // ═══ TWR Normalized Comparison (base 100 = Aug 2, 2025) ═══
+  // TWR series: cumulative time-weighted returns excluding deposits/withdrawals
+  const twrTT = [100.0,109.24,100.17,100.17,92.04,87.17,104.61,104.61,99.95,99.95,99.95,104.19,104.19,110.29,93.75,90.83,84.12,85.67,88.85,88.85,79.96,77.59,78.02,77.22,77.55,76.13,87.82,85.6,85.76,84.69,85.61,83.06,82.3,82.3,82.3,82.3,83.12];
+  const twrIBKR = [100.0,100.0,100.0,97.84,97.84,104.51,104.14,107.1,107.27,107.27,107.27,107.47,107.12,108.11,108.75,108.24,107.71,109.98,110.05,110.05,111.76,110.22,111.83,118.54,119.51,119.77,117.83,117.95,121.23,122.65,124.99,115.3,115.61,115.61,115.61,115.61,113.17];
+  const twrTSETF = [100.0,104.1,106.2,108.46,117.25,118.51,122.5,122.85,124.86,124.86,124.05,127.85,127.19,125.57,122.16,121.96,117.23,118.84,119.92,119.92,121.22,122.34,124.98,131.61,133.14,135.72,127.56,128.36,128.36,131.56,130.82,124.37,121.93,121.93,121.93,121.93,119.87];
+  const twrRH = [100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,103.44,103.63,107.16,112.6,114.03,117.56,117.94,111.93,111.93,111.93,111.13,106.31,107.25,107.25,107.25,107.25,116.47];
+  const twrFUT = [100.0,100.0,82.87,66.93,78.32,75.36,76.63,62.07,75.62,75.62,75.62,75.62,63.11,56.03,56.03,56.03,50.75,53.8,54.71,54.71,64.53,66.23,66.23,72.97,72.47,72.48,72.48,70.59,64.17,59.91,57.43,57.43,48.82,48.82,48.82,48.82,48.82];
+  const twrSP = [100.0,100.0,103.04,103.35,103.19,103.51,105.11,106.39,106.07,106.07,104.63,106.39,108.47,109.27,107.35,107.51,105.43,109.42,109.74,109.74,108.79,109.11,109.11,110.22,110.86,110.06,110.7,110.7,109.27,110.38,109.58,109.58,105.75,105.75,105.75,105.75,108.47];
+
+  const ctxNorm = document.getElementById('chartTradingNorm');
+  if (ctxNorm) {
+    if (ctxNorm._chart) ctxNorm._chart.destroy();
+    ctxNorm._chart = new Chart(ctxNorm, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [
+        { label:'TS ETF (+19.9%)', data:twrTSETF, borderColor:'#3b82f6', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'RH Autopilot (+16.5%)', data:twrRH, borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'IBKR Bravo (+13.2%)', data:twrIBKR, borderColor:'#10b981', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'S&P 500 (+8.5%)', data:twrSP, borderColor:'#94a3b8', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[6,3], fill:false },
+        { label:'TastyTrade (-16.9%)', data:twrTT, borderColor:'#8b5cf6', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+        { label:'TS Futures (-51.2%)', data:twrFUT, borderColor:'#ef4444', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+      ]},
+      options: {
+        plugins: {
+          legend:{display:true,position:'top',labels:{boxWidth:12,padding:10,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{ callbacks:{ label: c=> c.dataset.label.split('(')[0].trim()+': '+c.parsed.y.toFixed(1) }}
+        },
+        scales: {
+          y: {
+            ticks:{ font:{size:11}, color:'#94a3b8' },
+            grid:{color:'#33415540'},
+            title:{display:true,text:'TWR Base 100 = Ago 2, 2025 (sin depósitos/retiros)',color:'#64748b',font:{size:11}}
+          },
+          x: { ticks:{font:{size:9}, maxRotation:45, color:'#64748b'}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  // ═══ Trading Total Combined ═══
+  const wkTradingTotal = wkDates.map((_, i) => {
+    let sum = 0;
+    [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUT[i]].forEach(v => { if(v) sum += v; });
+    if (wkRH[i]) sum += wkRH[i];
+    return sum;
+  });
+
+  const ctxTTotal = document.getElementById('chartTradingTotal');
+  if (ctxTTotal) {
+    if (ctxTTotal._chart) ctxTTotal._chart.destroy();
+    ctxTTotal._chart = new Chart(ctxTTotal, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [
+        { label:'TastyTrade', data:wkTT, borderColor:'#8b5cf6', backgroundColor:'#8b5cf620', fill:true, tension:0.3, pointRadius:0, borderWidth:0 },
+        { label:'IBKR', data:wkIBKR.map((v,i)=>v!=null?v+wkTT[i]:null), borderColor:'#10b981', backgroundColor:'#10b98120', fill:'-1', tension:0.3, pointRadius:0, borderWidth:0 },
+        { label:'Total', data:wkTradingTotal, borderColor:'#60a5fa', fill:false, tension:0.3, pointRadius:2, borderWidth:2.5 },
+      ]},
+      options: {
+        plugins: {
+          legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{ mode:'index', callbacks:{ label: c=>'$'+c.parsed.y.toLocaleString() }}
+        },
+        scales: {
+          y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+          x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} }
+        }
+      }
+    });
+  }
+
+  // ═══ Risk Metrics Calculation & Render ═══
+  function calcRiskMetrics(twrArr, name, color) {
+    // Max Drawdown
+    let peak = twrArr[0], maxDD = 0;
+    for (let i = 1; i < twrArr.length; i++) {
+      if (twrArr[i] > peak) peak = twrArr[i];
+      const dd = (peak - twrArr[i]) / peak * 100;
+      if (dd > maxDD) maxDD = dd;
+    }
+    // Weekly returns for volatility
+    const returns = [];
+    for (let i = 1; i < twrArr.length; i++) {
+      if (twrArr[i-1] > 0) returns.push((twrArr[i] - twrArr[i-1]) / twrArr[i-1] * 100);
+    }
+    const mean = returns.reduce((a,b) => a+b, 0) / returns.length;
+    const variance = returns.reduce((a,r) => a + (r-mean)**2, 0) / returns.length;
+    const vol = Math.sqrt(variance);
+    // Total return
+    const totalReturn = twrArr[twrArr.length-1] - 100;
+    // Return/Risk ratio
+    const ratio = maxDD > 0 ? totalReturn / maxDD : 0;
+    // Grade
+    let grade, gradeColor;
+    if (ratio >= 1.5) { grade = 'A'; gradeColor = '#10b981'; }
+    else if (ratio >= 1.0) { grade = 'B'; gradeColor = '#6ee7b7'; }
+    else if (ratio >= 0.5) { grade = 'C'; gradeColor = '#f59e0b'; }
+    else if (ratio >= 0) { grade = 'D'; gradeColor = '#f97316'; }
+    else if (ratio >= -1) { grade = 'E'; gradeColor = '#ef4444'; }
+    else { grade = 'F'; gradeColor = '#991b1b'; }
+    return { name, color, totalReturn, maxDD, vol, ratio, grade, gradeColor };
+  }
+
+  const riskData = [
+    calcRiskMetrics(twrRH, 'RH Autopilot', '#f59e0b'),
+    calcRiskMetrics(twrTSETF, 'TS ETF Tactical', '#3b82f6'),
+    calcRiskMetrics(twrIBKR, 'IBKR Bravo', '#10b981'),
+    calcRiskMetrics(twrSP, 'S&P 500', '#94a3b8'),
+    calcRiskMetrics(twrTT, 'TastyTrade', '#8b5cf6'),
+    calcRiskMetrics(twrFUT, 'TS Futures', '#ef4444'),
+  ];
+
+  const riskGrid = document.getElementById('riskMetricsGrid');
+  if (riskGrid) {
+    riskGrid.innerHTML = riskData.map(r => {
+      const retSign = r.totalReturn >= 0 ? '+' : '';
+      const retColor = r.totalReturn >= 0 ? '#10b981' : '#ef4444';
+      const ddWidth = Math.min(r.maxDD, 60) / 60 * 100;
+      const ddColor = r.maxDD < 10 ? '#10b981' : r.maxDD < 20 ? '#f59e0b' : '#ef4444';
+      return `<div class="risk-card" style="border-top:3px solid ${r.color}">
+        <div class="rc-name" style="color:${r.color}">${r.name}</div>
+        <div class="risk-grade" style="color:${r.gradeColor}">${r.grade}</div>
+        <div class="rc-metric">TWR: <span style="color:${retColor}">${retSign}${r.totalReturn.toFixed(1)}%</span></div>
+        <div class="rc-metric">Max DD: <span style="color:${ddColor}">-${r.maxDD.toFixed(1)}%</span></div>
+        <div class="risk-bar"><div class="risk-fill" style="width:${ddWidth}%;background:${ddColor}"></div></div>
+        <div class="rc-metric" style="margin-top:4px">Vol: <span style="color:#60a5fa">${r.vol.toFixed(1)}%</span>/sem</div>
+        <div class="rc-metric">Ratio: <span style="color:${r.gradeColor}">${r.ratio.toFixed(2)}</span></div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// NW Histórico chart (Resumen tab)
+function renderNWHistorico() {
+  const ctx = document.getElementById('chartNWHistorico');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  // Estimate debt per month (simplified: last known = $57,887)
+  const debtEstimate = [45000,44000,43000,42000,41000,40000,39000,38000,37000,36000,35000,40000,42000,44000,46000,48000,50000,52000,54000,56000,57000,57887,57887];
+  const nwNeto = fmTotal.map((v,i) => v - debtEstimate[i]);
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: fmMonths, datasets: [
+      { label:'NW Bruto', data:fmTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label:'NW Neto (est.)', data:nwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+    ]},
+    options: {
+      plugins: {
+        legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+        tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}
+      },
+      scales: {
+        y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+        x: { ticks:{font:{size:9}}, grid:{display:false} }
+      }
+    }
+  });
+}
+
+// Heatmap renderer
+function renderHeatmap() {
+  const container = document.getElementById('heatmapContainer');
+  if (!container) return;
+  // Organize fmRate by year and month
+  const monthNames = ['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'];
+  const years = ['2024','2025','2026'];
+  // Map: fmMonths[0]='Jun 24' → 2024-Jun, etc.
+  const grid = {};
+  const allMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  fmMonths.forEach((m, i) => {
+    let yr, mn;
+    if (m.includes('24')) { yr='2024'; mn=m.replace(' 24',''); }
+    else if (m.includes('25')) { yr='2025'; mn=m.replace(' 25',''); }
+    else if (m.includes('26')) { yr='2026'; mn=m.replace(' 26',''); }
+    else {
+      // Infer year from position
+      if (i <= 6) yr='2024';
+      else if (i <= 18) yr='2025';
+      else yr='2026';
+      mn = m;
+    }
+    if (!grid[yr]) grid[yr] = {};
+    grid[yr][mn] = fmRate[i];
+  });
+
+  function getColor(v) {
+    if (v > 3) return '#065f46';
+    if (v > 1) return '#10b981';
+    if (v > 0) return '#6ee7b780';
+    if (v > -1) return '#fca5a580';
+    if (v > -3) return '#ef4444';
+    return '#991b1b';
+  }
+  function getTextColor(v) {
+    if (v > 3 || v < -3) return '#fff';
+    if (v > 1 || v < -1) return '#fff';
+    return '#e2e8f0';
+  }
+
+  let html = '<div class="heatmap" style="grid-template-columns:60px repeat(12,1fr)">';
+  // Header row
+  html += '<div class="heatmap-header"></div>';
+  allMonths.forEach(m => { html += '<div class="heatmap-header">'+m+'</div>'; });
+  // Data rows
+  years.forEach(yr => {
+    html += '<div style="font-weight:700;color:#f8fafc;padding:6px 4px;font-size:12px">'+yr+'</div>';
+    allMonths.forEach(mn => {
+      const v = grid[yr] && grid[yr][mn];
+      if (v !== undefined && v !== null) {
+        const sign = v >= 0 ? '+' : '';
+        html += '<div class="heatmap-cell" style="background:'+getColor(v)+';color:'+getTextColor(v)+'">'+sign+v.toFixed(1)+'%</div>';
+      } else {
+        html += '<div class="heatmap-cell" style="background:#1e293b;color:#334155">—</div>';
+      }
+    });
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// Health Score Gauge
+function renderGauge() {
+  const canvas = document.getElementById('gaugeCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 60, cy = 65, r = 50;
+  const startAngle = 0.75 * Math.PI, endAngle = 2.25 * Math.PI;
+  const score = 58;
+  const pct = score / 100;
+  ctx.clearRect(0, 0, 120, 120);
+  // Background arc
+  ctx.beginPath(); ctx.arc(cx, cy, r, startAngle, endAngle); ctx.strokeStyle = '#334155'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
+  // Score arc
+  const scoreAngle = startAngle + pct * (endAngle - startAngle);
+  const gradient = ctx.createLinearGradient(0, 0, 120, 0);
+  gradient.addColorStop(0, '#ef4444'); gradient.addColorStop(0.5, '#f59e0b'); gradient.addColorStop(1, '#10b981');
+  ctx.beginPath(); ctx.arc(cx, cy, r, startAngle, scoreAngle); ctx.strokeStyle = gradient; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
+}
+
+// Rolling Returns
+function renderRollingReturns() {
+  const ctx = document.getElementById('chartRolling');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  // Calculate rolling returns from fmRate
+  const roll3 = [], roll6 = [], roll12 = [], rollLabels = [];
+  for (let i = 0; i < fmRate.length; i++) {
+    rollLabels.push(fmMonths[i]);
+    // 3M rolling
+    if (i >= 2) {
+      let cum = 1; for (let j = i-2; j <= i; j++) cum *= (1 + fmRate[j]/100);
+      roll3.push(((cum - 1) * 100).toFixed(1));
+    } else roll3.push(null);
+    // 6M rolling
+    if (i >= 5) {
+      let cum = 1; for (let j = i-5; j <= i; j++) cum *= (1 + fmRate[j]/100);
+      roll6.push(((cum - 1) * 100).toFixed(1));
+    } else roll6.push(null);
+    // 12M rolling
+    if (i >= 11) {
+      let cum = 1; for (let j = i-11; j <= i; j++) cum *= (1 + fmRate[j]/100);
+      roll12.push(((cum - 1) * 100).toFixed(1));
+    } else roll12.push(null);
+  }
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: rollLabels, datasets: [
+      { label: 'Rolling 3M', data: roll3, borderColor: '#f59e0b', tension: 0.3, pointRadius: 2, borderWidth: 2, fill: false },
+      { label: 'Rolling 6M', data: roll6, borderColor: '#3b82f6', tension: 0.3, pointRadius: 2, borderWidth: 2.5, fill: false },
+      { label: 'Rolling 12M', data: roll12, borderColor: '#10b981', tension: 0.3, pointRadius: 3, borderWidth: 3, fill: false },
+      { label: '0%', data: Array(fmRate.length).fill(0), borderColor: '#64748b', borderDash: [4,4], borderWidth: 1, pointRadius: 0, fill: false },
+    ]},
+    options: {
+      plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.parsed.y >= 0 ? '+' : '') + parseFloat(c.parsed.y).toFixed(1) + '%' } }
+      },
+      scales: {
+        y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#33415540' } },
+        x: { ticks: { font: { size: 9 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Contribution Analysis
+function renderContribution() {
+  const ctx = document.getElementById('chartContribution');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  // For each month, separate: investment return vs external flow
+  const invReturn = [], extFlow = [];
+  for (let i = 1; i < fmTotal.length; i++) {
+    const totalChange = fmTotal[i] - fmTotal[i-1];
+    // Use TWR rate as investment return
+    const twrPct = (twrPortfolioGlobal[i] / twrPortfolioGlobal[i-1] - 1);
+    const invRet = fmTotal[i-1] * twrPct;
+    const ext = totalChange - invRet;
+    invReturn.push(Math.round(invRet));
+    extFlow.push(Math.round(ext));
+  }
+  const contribLabels = fmMonths.slice(1);
+  ctx._chart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: contribLabels, datasets: [
+      { label: 'Retorno inversiones', data: invReturn, backgroundColor: invReturn.map(v => v >= 0 ? '#10b98180' : '#ef444480'), borderRadius: 3 },
+      { label: 'Flujos externos', data: extFlow, backgroundColor: extFlow.map(v => v >= 0 ? '#3b82f680' : '#f59e0b80'), borderRadius: 3 },
+    ]},
+    options: {
+      plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString() } }
+      },
+      scales: {
+        x: { stacked: true, ticks: { font: { size: 9 } }, grid: { display: false } },
+        y: { stacked: true, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } }, grid: { color: '#33415540' } }
+      }
+    }
+  });
+}
+
+// Waterfall chart
+function renderWaterfall() {
+  const container = document.getElementById('waterfallChart');
+  if (!container) return;
+  const items = [
+    { label: 'DEC W2', value: 4700, type: 'in' },
+    { label: 'Ingreso Pasivo', value: 952, type: 'in' },
+    { label: 'Gastos Vida', value: -4167, type: 'out' },
+    { label: 'Michalitas', value: -1525, type: 'out' },
+    { label: 'Interés LOC', value: -340, type: 'out' },
+    { label: 'Interés Auto', value: -54, type: 'out' },
+    { label: 'SURPLUS', value: -434, type: 'total' },
+  ];
+  const maxVal = Math.max(...items.map(i => Math.abs(i.value)));
+  let html = '<div class="waterfall-bar">';
+  items.forEach(item => {
+    const h = Math.max((Math.abs(item.value) / maxVal) * 160, 8);
+    let color;
+    if (item.type === 'in') color = '#10b981';
+    else if (item.type === 'total') color = item.value >= 0 ? '#10b981' : '#ef4444';
+    else color = '#ef4444';
+    const border = item.type === 'total' ? 'border:2px solid #f59e0b;' : '';
+    const sign = item.value >= 0 ? '+' : '';
+    html += `<div class="wf-col">
+      <div class="wf-val" style="color:${color}">${sign}$${Math.abs(item.value).toLocaleString()}</div>
+      <div class="wf-bar" style="height:${h}px;background:${color};${border}"></div>
+      <div class="wf-lbl">${item.label}</div>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// Wire rolling + contribution into performance render
+const origRenderPerf = renderPerformanceCharts;
+renderPerformanceCharts = function() {
+  origRenderPerf();
+  renderRollingReturns();
+  renderContribution();
+};
+
+// twrPortfolio at module level for contribution analysis (same data as inside renderPerformanceCharts)
+const twrPortfolioGlobal = [100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,110.39];
+
+// Initial render
+renderGauge();
+renderPie();
+renderNWHistorico();
+</script>
+</body>
+</html>
