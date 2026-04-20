@@ -1,0 +1,155 @@
+{
+  "lastUpdated": "2026-04-20",
+  "patrimonio": {
+    "totalBruto": 401602,
+    "deuda": 57887,
+    "nwNeto": 343715,
+    "fiPct": 68.7,
+    "fiTarget": 500000,
+    "twr": null
+  },
+  "accounts": [
+    {
+      "name": "SEP IRA (TradeStation)",
+      "cat": "Retiro",
+      "value": 134858
+    },
+    {
+      "name": "Roth IRA (Betterment)",
+      "cat": "Retiro",
+      "value": 61658
+    },
+    {
+      "name": "Miguel Autos",
+      "cat": "Prestamos",
+      "value": 36415
+    },
+    {
+      "name": "CDs Ecuador",
+      "cat": "Cash",
+      "value": 35000
+    },
+    {
+      "name": "Tactical ETFs (TradeStation)",
+      "cat": "Trading",
+      "value": 33106
+    },
+    {
+      "name": "Emergency Fund (Betterment)",
+      "cat": "Cash",
+      "value": 31151
+    },
+    {
+      "name": "Traditional IRA (Betterment)",
+      "cat": "Retiro",
+      "value": 28187
+    },
+    {
+      "name": "Options (Tastytrade)",
+      "cat": "Trading",
+      "value": 15757
+    },
+    {
+      "name": "Pepe Loan 2",
+      "cat": "Prestamos",
+      "value": 7291
+    },
+    {
+      "name": "Pepe Loan 1",
+      "cat": "Prestamos",
+      "value": 6264
+    },
+    {
+      "name": "IBKR Bravos",
+      "cat": "Trading",
+      "value": 6174
+    },
+    {
+      "name": "Futures Alberto",
+      "cat": "Futures",
+      "value": 4002
+    },
+    {
+      "name": "Robinhood",
+      "cat": "Trading",
+      "value": 1739
+    }
+  ],
+  "nwHistory": {
+    "months": [
+      "Jun 24",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan 25",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun 25",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan 26",
+      "Feb",
+      "Mar 26",
+      "Apr 26"
+    ],
+    "totalBruto": [
+      396380,
+      396300,
+      400008,
+      406664,
+      398664,
+      423636,
+      415415,
+      390511,
+      382007,
+      372945,
+      380335,
+      391078,
+      405544,
+      396377,
+      408206,
+      412986,
+      425769,
+      413859,
+      417563,
+      431010,
+      404505,
+      394189,
+      401602
+    ],
+    "deuda": [
+      45000,
+      44000,
+      43000,
+      42000,
+      41000,
+      40000,
+      39000,
+      38000,
+      37000,
+      36000,
+      35000,
+      40000,
+      42000,
+      44000,
+      46000,
+      48000,
+      50000,
+      52000,
+      54000,
+      56000,
+      57000,
+      57887,
+      57887
+    ]
+  }
+}
