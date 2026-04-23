@@ -209,7 +209,7 @@
 <body>
 <div class="container">
   <h1>Portfolio Dashboard</h1>
-  <p class="subtitle">Alberto Rodriguez — Actualizado: 17 Abril 2026</p>
+  <p class="subtitle" id="dash-subtitle">Alberto Rodriguez — Actualizado: 17 Abril 2026</p>
 
   <!-- Print Button -->
   <button class="print-btn" onclick="window.print()">🖨️ Exportar PDF</button>
@@ -218,8 +218,8 @@
   <div class="top-cards">
     <div class="card">
       <div class="card-label">NW Bruto</div>
-      <div class="card-value blue">$401,602</div>
-      <div class="delta up">▲ $3,059 vs mes anterior</div>
+      <div class="card-value blue" id="nw-bruto-val">$401,602</div>
+      <div class="delta up" id="nw-bruto-delta">▲ $3,059 vs mes anterior</div>
     </div>
     <div class="card">
       <div class="card-label">Deuda</div>
@@ -228,8 +228,8 @@
     </div>
     <div class="card">
       <div class="card-label">NW Neto</div>
-      <div class="card-value green">$343,715</div>
-      <div class="delta up">▲ $3,059 vs mes anterior</div>
+      <div class="card-value green" id="nw-neto-val">$343,715</div>
+      <div class="delta up" id="nw-neto-delta">▲ $3,059 vs mes anterior</div>
     </div>
   </div>
 
@@ -237,10 +237,10 @@
   <div class="fi-bar-container">
     <div class="fi-header">
       <span class="label">Progreso FI (meta: $500,000)</span>
-      <span class="value">69% — faltan $156,285</span>
+      <span class="value" id="fi-header-text">69% — faltan $156,285</span>
     </div>
     <div class="fi-track">
-      <div class="fi-fill" style="width: 69%"></div>
+      <div class="fi-fill" id="fi-fill-bar" style="width: 69%"></div>
     </div>
     <div class="fi-labels">
       <span>$0</span>
@@ -260,9 +260,9 @@
     <div style="flex:1">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <h3 style="font-size:16px;color:#f8fafc;margin:0">🏥 Wealth Health Score</h3>
-        <span style="font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;background:#f59e0b22;color:#f59e0b">MODERADO</span>
+        <span style="font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;background:#f59e0b22;color:#f59e0b" id="health-label">MODERADO</span>
       </div>
-      <div class="health-breakdown">
+      <div class="health-breakdown" id="health-breakdown">
         <div class="hb-item"><div class="hb-val" style="color:#10b981">90</div><div class="hb-lbl">Retiro</div><div class="hb-bar"><div class="hb-fill" style="width:90%;background:#10b981"></div></div></div>
         <div class="hb-item"><div class="hb-val" style="color:#10b981">72</div><div class="hb-lbl">Diversific.</div><div class="hb-bar"><div class="hb-fill" style="width:72%;background:#10b981"></div></div></div>
         <div class="hb-item"><div class="hb-val" style="color:#f59e0b">69</div><div class="hb-lbl">Progreso FI</div><div class="hb-bar"><div class="hb-fill" style="width:69%;background:#f59e0b"></div></div></div>
@@ -284,7 +284,7 @@
     <div class="weekly-focus">
       <div class="wf-header">
         <span class="wf-badge">🎯 Foco Semanal</span>
-        <span style="font-size:11px;color:#64748b;">Semana del 17 Abr</span>
+        <span style="font-size:11px;color:#64748b;" id="weekly-focus-date">Semana del 17 Abr</span>
       </div>
       <div class="wf-title">Cerrar 1 venta en DEC esta semana</div>
       <div class="wf-body">DEC lleva $12,283 YTD vs $39,986 en 2025 — 69% menos. Sin ventas no hay surplus, sin surplus no se paga el LOC, y el score se estanca en 58. Esta semana: revisar los leads activos en Cloze, hacer follow-up a cotizaciones pendientes, y lanzar al menos 1 campaña de email en Mailchimp para productos de alta rotación.</div>
@@ -391,7 +391,7 @@
       </div>
       <div class="chart-box">
         <h3 style="font-size:16px;color:#f8fafc;margin-bottom:12px">Métricas Clave</h3>
-        <div class="metric-row"><span class="metric-label">Retiro (compounding core)</span><span class="metric-value" style="color:#60a5fa">$224,703</span></div>
+        <div class="metric-row"><span class="metric-label">Retiro (compounding core)</span><span class="metric-value" style="color:#60a5fa" id="metric-retirement">$224,703</span></div>
         <div class="metric-row"><span class="metric-label">Surplus mensual</span><span class="metric-value" style="color:#ef4444">$0</span></div>
         <div class="metric-row"><span class="metric-label">Interés LOC / mes</span><span class="metric-value" style="color:#ef4444">-$340</span></div>
         <div class="metric-row"><span class="metric-label">Michalitas / mes</span><span class="metric-value" style="color:#f59e0b">-$1,525</span></div>
@@ -416,7 +416,7 @@
       <table>
         <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th></tr></thead>
         <tbody id="accountsTable"></tbody>
-        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px">$401,602</td><td class="right" style="color:#94a3b8">100%</td><td></td></tr></tfoot>
+        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px" id="accounts-footer-total">$401,602</td><td class="right" style="color:#94a3b8">100%</td><td></td></tr></tfoot>
       </table>
     </div>
   </div>
@@ -494,8 +494,8 @@
       <h3>Camino a Independencia Financiera</h3>
       <div class="fi-cards">
         <div class="fi-card"><div class="fc-label">Meta FI @ 58</div><div class="fc-value" style="color:#60a5fa">$500,000</div></div>
-        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b">$156,285</div></div>
-        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444">$31,257</div></div>
+        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b" id="fi-gap-card">$156,285</div></div>
+        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">$31,257</div></div>
       </div>
       <canvas id="lineChart" style="max-height:300px"></canvas>
       <div class="supuestos">
@@ -518,18 +518,14 @@
       <strong style="color:#f59e0b">Recomendación:</strong> En Tactical, consolida las micro-posiciones (<$500) y elimina el solapamiento EWZ/ILF — quédate con EWZ que tiene más liquidez. El SEP IRA no lo toques.
     </div>
     <div class="panel">
-      <h3>SEP IRA — $133,518</h3>
+      <h3>SEP IRA — <span id="sep-ira-header">$133,518</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
-        <tbody>
-          <tr><td><strong>VOO</strong><br><span style="color:#64748b;font-size:11px">Vanguard S&P 500 ETF</span></td><td class="right bold">$81,269</td><td class="right" style="color:#94a3b8">61%</td><td class="right green">+$1,757</td></tr>
-          <tr><td><strong>SCHD</strong><br><span style="color:#64748b;font-size:11px">Schwab US Dividend Equity</span></td><td class="right bold">$32,948</td><td class="right" style="color:#94a3b8">25%</td><td class="right red">-$354</td></tr>
-          <tr><td><strong>AVDV</strong><br><span style="color:#64748b;font-size:11px">Avantis Intl Small Cap Value</span></td><td class="right bold">$19,302</td><td class="right" style="color:#94a3b8">14%</td><td class="right green">+$657</td></tr>
-        </tbody>
+        <tbody id="sepIRATable"></tbody>
       </table>
     </div>
     <div class="panel">
-      <h3>Tactical ETFs — $32,601 (+$505 cash)</h3>
+      <h3>Tactical ETFs — <span id="tactical-header">$32,601 (+$505 cash)</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
         <tbody id="tacticalTable"></tbody>
@@ -541,14 +537,10 @@
       </div>
     </div>
     <div class="panel">
-      <h3>Opciones — Tastytrade (NLV $15,757)</h3>
+      <h3>Opciones — Tastytrade (<span id="options-nlv">NLV $15,757</span>)</h3>
       <table>
         <thead><tr><th>Spread</th><th>Tipo</th><th class="right">DTE</th><th class="right">Exp</th></tr></thead>
-        <tbody>
-          <tr><td><strong>LULU</strong> 165P/160P</td><td><span class="badge">Credit Put</span></td><td class="right">28</td><td class="right">May 15</td></tr>
-          <tr><td><strong>TSM</strong> 340C/350C</td><td><span class="badge">LEAPS Call</span></td><td class="right">273</td><td class="right">Jan 27</td></tr>
-          <tr><td><strong>HIMS</strong> 15P</td><td><span class="badge">Long Put LEAPS</span></td><td class="right">644</td><td class="right">Jan 28</td></tr>
-        </tbody>
+        <tbody id="optionsTable"></tbody>
       </table>
     </div>
   </div>
@@ -638,8 +630,8 @@
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
       <div class="card" style="border-top:3px solid #10b981">
         <div class="card-label">🥇 Mejor 6M (TWR)</div>
-        <div class="card-value green" style="font-size:20px">RH Autopilot</div>
-        <div style="font-size:13px;color:#10b981;font-weight:600">+16.2%</div>
+        <div class="card-value green" style="font-size:20px" id="perf-best-name">RH Autopilot</div>
+        <div style="font-size:13px;color:#10b981;font-weight:600" id="perf-best-pct">+16.2%</div>
       </div>
       <div class="card" style="border-top:3px solid #f59e0b">
         <div class="card-label">🥈 2do 6M (TWR)</div>
@@ -648,8 +640,8 @@
       </div>
       <div class="card" style="border-top:3px solid #ef4444">
         <div class="card-label">🔻 Peor 6M (TWR)</div>
-        <div class="card-value red" style="font-size:20px">TS Futures</div>
-        <div style="font-size:13px;color:#ef4444;font-weight:600">-42.6%</div>
+        <div class="card-value red" style="font-size:20px" id="perf-worst-name">TS Futures</div>
+        <div style="font-size:13px;color:#ef4444;font-weight:600" id="perf-worst-pct">-42.6%</div>
       </div>
     </div>
 
@@ -870,7 +862,7 @@
     </div>
   </div>
 
-  <div class="footer">Datos: TradeStation MCP (live Apr 17) · Betterment (screenshot Apr 9 — stored) · PortfolioPilot · Xero (live YTD) · Tastytrade relay (Apr 17 14:10 PT)</div>
+  <div class="footer"><span id="dash-footer-note">Datos: TradeStation MCP (live Apr 17) · Betterment (screenshot Apr 9 — stored) · PortfolioPilot · Xero (live YTD) · Tastytrade relay (Apr 17 14:10 PT)</span></div>
 </div>
 
 <div id="auth-gate" style="position:fixed;inset:0;background:#0f172a;z-index:9999;display:flex;align-items:center;justify-content:center;">
@@ -903,13 +895,12 @@ function checkAuth(){
 </script>
 
 <script>
-// Tab switching
+// ═══ Tab switching ═══
 function showTab(id) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
-  // Render charts when tab is shown
   if (id === 'resumen') { renderPie(); renderNWHistorico(); }
   if (id === 'allocation') renderBar();
   if (id === 'fi') renderLine();
@@ -917,218 +908,334 @@ function showTab(id) {
   if (id === 'flujo') renderWaterfall();
 }
 
-// Data
-const accounts = [
-  { name: "SEP IRA (TradeStation)", cat: "Retiro", value: 134858, color: "#2563eb" },
-  { name: "Roth IRA (Betterment)", cat: "Retiro", value: 61658, color: "#3b82f6" },
-  { name: "Miguel Autos", cat: "Préstamos", value: 36415, color: "#ec4899" },
-  { name: "CDs Ecuador", cat: "Cash", value: 35000, color: "#fbbf24" },
-  { name: "Tactical ETFs (TradeStation)", cat: "Trading", value: 33106, color: "#10b981" },
-  { name: "Emergency Fund (Betterment)", cat: "Cash", value: 31151, color: "#f59e0b" },
-  { name: "Traditional IRA (Betterment)", cat: "Retiro", value: 28187, color: "#60a5fa" },
-  { name: "Options (Tastytrade)", cat: "Trading", value: 15757, color: "#34d399" },
-  { name: "Pepe Loan 2", cat: "Préstamos", value: 7291, color: "#f9a8d4" },
-  { name: "Pepe Loan 1", cat: "Préstamos", value: 6264, color: "#f472b6" },
-  { name: "IBKR Bravos", cat: "Trading", value: 6174, color: "#6ee7b7" },
-  { name: "Futures Alberto", cat: "Futures", value: 4002, color: "#8b5cf6" },
-  { name: "Robinhood", cat: "Trading", value: 1739, color: "#a7f3d0" },
-];
+// ═══ Global data (set by initFromData) ═══
+let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterfall, performance;
+let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
+let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkFUT, wkSP;
+let twrTT, twrIBKR, twrTSETF, twrRH, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
 
-const tactical = [
-  { sym: "FDL", val: 4679, pct: 14, pl: -80 },
-  { sym: "EWZ", val: 3921, pct: 12, pl: 435 },
-  { sym: "ILF", val: 3763, pct: 12, pl: 261 },
-  { sym: "IYZ", val: 3741, pct: 11, pl: 307 },
-  { sym: "EWY", val: 2416, pct: 7, pl: 149 },
-  { sym: "FCG", val: 2087, pct: 6, pl: -206 },
-  { sym: "EWT", val: 2076, pct: 6, pl: 267 },
-  { sym: "EWZS", val: 1908, pct: 6, pl: -19 },
-  { sym: "XBI", val: 1787, pct: 5, pl: 17 },
-  { sym: "OIH", val: 1610, pct: 5, pl: 154 },
-  { sym: "SMH", val: 1387, pct: 4, pl: 37 },
-  { sym: "XOP", val: 1299, pct: 4, pl: -203 },
-  { sym: "SHLD", val: 1117, pct: 3, pl: -48 },
-  { sym: "TAN", val: 810, pct: 2, pl: -52 },
-];
-
+// ═══ Helpers ═══
 const fmt = n => '$' + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits: 0});
 
-// Sparkline data per account (last 6 months trend)
-const sparkData = {
-  "SEP IRA (TradeStation)": [212761,214251,220096,223493,220319,224703],
-  "Roth IRA (Betterment)": [58000,59000,60000,61000,61200,61658],
-  "Miguel Autos": [30000,30000,30000,43000,43000,36415],
-  "CDs Ecuador": [37816,37817,37817,47097,30964,35000],
-  "Tactical ETFs (TradeStation)": [45690,46104,49043,35173,32847,33106],
-  "Emergency Fund (Betterment)": [55321,55466,47097,30964,31000,31151],
-  "Traditional IRA (Betterment)": [26000,26500,27000,27500,28000,28187],
-  "Options (Tastytrade)": [17949,16154,17742,16780,16790,15757],
-  "Pepe Loan 2": [7000,7100,7100,7200,7250,7291],
-  "Pepe Loan 1": [6100,6150,6200,6230,6250,6264],
-  "IBKR Bravos": [6000,6004,6097,6428,6290,6174],
-  "Futures Alberto": [3824,4510,6949,8320,4503,4002],
-  "Robinhood": [1048,1084,1123,1236,1591,1739],
-};
 function drawSparkline(canvas, data, color) {
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
-  const min = Math.min(...data), max = Math.max(...data);
+  const filtered = data.filter(v => v !== null);
+  const min = Math.min(...filtered), max = Math.max(...filtered);
   const range = max - min || 1;
   ctx.clearRect(0,0,w,h);
   ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+  let drawn = 0;
   data.forEach((v, i) => {
+    if (v === null || v === undefined) return;
     const x = (i / (data.length - 1)) * w;
     const y = h - ((v - min) / range) * (h - 4) - 2;
-    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    drawn === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    drawn++;
   });
   ctx.stroke();
 }
 
-// Populate accounts table
-const totalBruto = 401602;
-const tbody = document.getElementById('accountsTable');
-accounts.forEach((a, idx) => {
-  const pct = ((a.value / totalBruto) * 100).toFixed(1);
-  const cid = 'spark_' + idx;
-  const sd = sparkData[a.name];
-  const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
-  const tc = trend === '▲' ? '#10b981' : '#ef4444';
-  tbody.innerHTML += `<tr>
-    <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
-    <td><span class="badge">${a.cat}</span></td>
-    <td class="right bold">${fmt(a.value)}</td>
-    <td class="right" style="color:#94a3b8">${pct}%</td>
-    <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
-  </tr>`;
-});
-setTimeout(() => {
+// ═══ Table population functions ═══
+function populateAccountsTable() {
+  const tbody = document.getElementById('accountsTable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
   accounts.forEach((a, idx) => {
-    const c = document.getElementById('spark_' + idx);
-    const d = sparkData[a.name];
-    if (c && d) drawSparkline(c, d, a.color);
+    const pct = ((a.value / totalBruto) * 100).toFixed(1);
+    const cid = 'spark_' + idx;
+    const sd = sparkData[a.name];
+    const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
+    const tc = trend === '▲' ? '#10b981' : '#ef4444';
+    tbody.innerHTML += `<tr>
+      <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
+      <td><span class="badge">${a.cat}</span></td>
+      <td class="right bold">${fmt(a.value)}</td>
+      <td class="right" style="color:#94a3b8">${pct}%</td>
+      <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
+    </tr>`;
   });
-}, 50);
+  document.getElementById('accounts-footer-total').textContent = fmt(totalBruto);
+  setTimeout(() => {
+    accounts.forEach((a, idx) => {
+      const c = document.getElementById('spark_' + idx);
+      const d = sparkData[a.name];
+      if (c && d) drawSparkline(c, d, a.color);
+    });
+  }, 50);
+}
 
-// Populate tactical table
-const ttbody = document.getElementById('tacticalTable');
-tactical.forEach(t => {
-  const plClass = t.pl >= 0 ? 'green' : 'red';
-  const plSign = t.pl >= 0 ? '+' : '-';
-  ttbody.innerHTML += `<tr>
-    <td><strong>${t.sym}</strong></td>
-    <td class="right bold">${fmt(t.val)}</td>
-    <td class="right" style="color:#94a3b8">${t.pct}%</td>
-    <td class="right ${plClass}">${plSign}${fmt(t.pl)}</td>
-  </tr>`;
-});
+function populateTacticalTable() {
+  const ttbody = document.getElementById('tacticalTable');
+  if (!ttbody) return;
+  ttbody.innerHTML = '';
+  tactical.forEach(t => {
+    const plClass = t.plUp ? 'green' : 'red';
+    const plSign  = t.plUp ? '+' : '-';
+    ttbody.innerHTML += `<tr>
+      <td><strong>${t.sym}</strong></td>
+      <td class="right bold">${fmt(t.val)}</td>
+      <td class="right" style="color:#94a3b8">${t.pct}%</td>
+      <td class="right ${plClass}">${plSign}${fmt(t.pl)}</td>
+    </tr>`;
+  });
+}
 
-// Charts
+function populateSEPIRATable() {
+  const tbody = document.getElementById('sepIRATable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  sepIRA.positions.forEach(p => {
+    const plClass = p.plUp ? 'green' : 'red';
+    const plSign  = p.plUp ? '+' : '-';
+    tbody.innerHTML += `<tr>
+      <td><strong>${p.symbol}</strong><br><span style="color:#64748b;font-size:11px">${p.name}</span></td>
+      <td class="right bold">${fmt(p.mv)}</td>
+      <td class="right" style="color:#94a3b8">${p.pct}%</td>
+      <td class="right ${plClass}">${plSign}${fmt(p.pl)}</td>
+    </tr>`;
+  });
+}
+
+function populateOptionsTable() {
+  const tbody = document.getElementById('optionsTable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  options.positions.forEach(o => {
+    const expStyle = o.expSoon ? ' style="color:#f59e0b"' : '';
+    tbody.innerHTML += `<tr>
+      <td><strong>${o.symbol}</strong> ${o.spread}</td>
+      <td><span class="badge">${o.type}</span></td>
+      <td class="right">${o.dte}</td>
+      <td class="right"${expStyle}>${o.exp}</td>
+    </tr>`;
+  });
+}
+
+function populateHealthBreakdown() {
+  const bd = document.getElementById('health-breakdown');
+  if (!bd) return;
+  const scores = dashMeta.healthSubScores;
+  const items = [
+    {key:'retiro',      lbl:'Retiro'},
+    {key:'diversif',    lbl:'Diversific.'},
+    {key:'progresoFI',  lbl:'Progreso FI'},
+    {key:'performance', lbl:'Performance'},
+    {key:'deuda',       lbl:'Deuda'},
+    {key:'surplus',     lbl:'Surplus'},
+    {key:'liquidez',    lbl:'Liquidez'},
+    {key:'riesgo',      lbl:'Riesgo'}
+  ];
+  bd.innerHTML = items.map(({key, lbl}) => {
+    const {val, color} = scores[key];
+    return `<div class="hb-item">
+      <div class="hb-val" style="color:${color}">${val}</div>
+      <div class="hb-lbl">${lbl}</div>
+      <div class="hb-bar"><div class="hb-fill" style="width:${val}%;background:${color}"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ═══ initFromData: called after JSON loaded ═══
+function initFromData(d) {
+  dashMeta   = d.meta;
+  accounts   = d.accounts;
+  tactical   = d.tactical;
+  sparkData  = d.sparkData;
+  totalBruto = d.meta.totalBruto;
+  sepIRA     = d.sepIRA;
+  options    = d.options;
+  waterfall  = d.waterfall;
+  performance = d.performance;
+
+  // Monthly arrays
+  fmMonths    = d.monthly.months;
+  fmTotal     = d.monthly.total;
+  fmRate      = d.monthly.rate;
+  fmRetirement= d.monthly.retirement;
+  fmStocks    = d.monthly.stocks;
+  fmCDs       = d.monthly.cds;
+  fmCash      = d.monthly.cash;
+  fmCarros    = d.monthly.carros;
+  fmCrypto    = d.monthly.crypto;
+
+  // Weekly arrays
+  wkDates = d.weekly.dates;
+  wkTT    = d.weekly.tt;
+  wkIBKR  = d.weekly.ibkr;
+  wkTSETF = d.weekly.tsetf;
+  wkRH    = d.weekly.rh;
+  wkFUT   = d.weekly.fut;
+  wkSP    = d.weekly.sp;
+
+  // TWR arrays
+  twrPortfolio      = d.twr.portfolio;
+  twrPortfolioGlobal= d.twr.portfolioGlobal;
+  sp500Monthly      = d.twr.sp500Monthly;
+  twrTT    = d.twr.tt;
+  twrIBKR  = d.twr.ibkr;
+  twrTSETF = d.twr.tsetf;
+  twrRH    = d.twr.rh;
+  twrFUT   = d.twr.fut;
+  twrSP    = d.twr.sp;
+
+  // ── Update DOM display values ──
+  const m = dashMeta;
+  document.getElementById('dash-subtitle').textContent =
+    'Alberto Rodriguez — Actualizado: ' + m.subtitle;
+
+  const bv = document.getElementById('nw-bruto-val');
+  const bd = document.getElementById('nw-bruto-delta');
+  if (bv) bv.textContent = fmt(m.nwBruto);
+  if (bd) {
+    bd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwBrutoDelta + ' vs mes anterior';
+    bd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
+  }
+
+  const nv = document.getElementById('nw-neto-val');
+  const nd = document.getElementById('nw-neto-delta');
+  if (nv) nv.textContent = fmt(m.nwNeto);
+  if (nd) {
+    nd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwNetoDelta + ' vs mes anterior';
+    nd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
+  }
+
+  const fi = document.getElementById('fi-header-text');
+  if (fi) fi.textContent = m.fiPct + '% — faltan $' + m.fiGap.toLocaleString();
+  const fill = document.getElementById('fi-fill-bar');
+  if (fill) fill.style.width = m.fiPct + '%';
+
+  const hs = document.getElementById('healthScoreNum');
+  if (hs) hs.textContent = m.healthScore;
+
+  const hl = document.getElementById('health-label');
+  if (hl) hl.textContent = m.healthLabel;
+  populateHealthBreakdown();
+
+  const wfd = document.getElementById('weekly-focus-date');
+  if (wfd) wfd.textContent = m.weeklyFocusDate;
+
+  const sih = document.getElementById('sep-ira-header');
+  if (sih) sih.textContent = sepIRA.header;
+
+  const th = document.getElementById('tactical-header');
+  if (th) th.textContent = dashMeta.tacticalHeader || '';
+
+  const onlv = document.getElementById('options-nlv');
+  if (onlv) onlv.textContent = 'NLV ' + fmt(options.nlv);
+
+  const mr = document.getElementById('metric-retirement');
+  if (mr) mr.textContent = '$' + m.retirementCore.toLocaleString();
+  const mg = document.getElementById('metric-gap');
+  if (mg) mg.textContent = '$' + m.fiGap.toLocaleString();
+
+  const gc = document.getElementById('fi-gap-card');
+  if (gc) gc.textContent = '$' + m.fiGap.toLocaleString();
+  const ga = document.getElementById('fi-gap-annual');
+  if (ga) ga.textContent = '$' + m.fiGapAnnual.toLocaleString();
+
+  // Performance cards
+  const pt = document.getElementById('perf-twr-total');
+  if (pt) pt.textContent = (performance.twrTotal >= 0 ? '+' : '') + performance.twrTotal + '%';
+  const pbn = document.getElementById('perf-best-name');
+  if (pbn) pbn.textContent = performance.best6mName;
+  const pbp = document.getElementById('perf-best-pct');
+  if (pbp) pbp.textContent = (performance.best6mPct >= 0 ? '+' : '') + performance.best6mPct + '%';
+  const pwn = document.getElementById('perf-worst-name');
+  if (pwn) pwn.textContent = performance.worst6mName;
+  const pwp = document.getElementById('perf-worst-pct');
+  if (pwp) pwp.textContent = performance.worst6mPct + '%';
+
+  const fn = document.getElementById('dash-footer-note');
+  if (fn) fn.textContent = m.footerNote;
+
+  // ── Populate tables ──
+  populateAccountsTable();
+  populateTacticalTable();
+  populateSEPIRATable();
+  populateOptionsTable();
+
+  // ── Initial renders ──
+  renderGauge();
+  renderPie();
+  renderNWHistorico();
+}
+
+// ═══ CHART RENDERING FUNCTIONS (unchanged logic, use global vars) ═══
 Chart.defaults.color = '#94a3b8';
 Chart.defaults.borderColor = '#334155';
 
 function renderPie() {
   const ctx = document.getElementById('pieCategory');
+  if (!ctx || !accounts) return;
   if (ctx._chart) ctx._chart.destroy();
   const data = [
-    { label: 'Retiro 55%', value: 220477, color: '#2563eb' },
-    { label: 'Trading 15%', value: 58297, color: '#10b981' },
-    { label: 'Cash/Fijo 17%', value: 66151, color: '#f59e0b' },
-    { label: 'Futures 1%', value: 4507, color: '#8b5cf6' },
-    { label: 'Préstamos 13%', value: 49970, color: '#ec4899' },
+    { label: 'Retiro 55%',   value: 220477, color: '#2563eb' },
+    { label: 'Trading 15%',  value: 58297,  color: '#10b981' },
+    { label: 'Cash/Fijo 17%',value: 66151,  color: '#f59e0b' },
+    { label: 'Futures 1%',   value: 4507,   color: '#8b5cf6' },
+    { label: 'Préstamos 13%',value: 49970,  color: '#ec4899' },
   ];
   ctx._chart = new Chart(ctx, {
     type: 'doughnut',
-    data: {
-      labels: data.map(d => d.label),
-      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderWidth: 0 }]
-    },
-    options: {
-      cutout: '55%',
-      plugins: {
-        legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
-        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } }
-      }
-    }
+    data: { labels: data.map(d => d.label),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderWidth: 0 }]},
+    options: { cutout: '55%',
+      plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } } } }
   });
 }
 
 function renderBar() {
   const ctx = document.getElementById('barAllocation');
+  if (!ctx) return;
   if (ctx._chart) ctx._chart.destroy();
   const data = [
-    { name: 'US Large Cap', value: 146500, color: '#2563eb' },
-    { name: 'Cash/Renta Fija', value: 66151, color: '#f59e0b' },
-    { name: 'Préstamos', value: 49970, color: '#ec4899' },
-    { name: 'Internacional', value: 45000, color: '#06b6d4' },
-    { name: 'US Dividend', value: 37668, color: '#3b82f6' },
-    { name: 'Cash Brokerages', value: 26370, color: '#fbbf24' },
-    { name: 'Bonos', value: 20700, color: '#64748b' },
-    { name: 'Opciones', value: 17614, color: '#a855f7' },
-    { name: 'Sectorial', value: 5554, color: '#f97316' },
-    { name: 'Energía', value: 5264, color: '#ef4444' },
+    { name: 'US Large Cap',    value: 146500, color: '#2563eb' },
+    { name: 'Cash/Renta Fija', value: 66151,  color: '#f59e0b' },
+    { name: 'Préstamos',       value: 49970,  color: '#ec4899' },
+    { name: 'Internacional',   value: 45000,  color: '#06b6d4' },
+    { name: 'US Dividend',     value: 37668,  color: '#3b82f6' },
+    { name: 'Cash Brokerages', value: 26370,  color: '#fbbf24' },
+    { name: 'Bonos',           value: 20700,  color: '#64748b' },
+    { name: 'Opciones',        value: 17614,  color: '#a855f7' },
+    { name: 'Sectorial',       value: 5554,   color: '#f97316' },
+    { name: 'Energía',         value: 5264,   color: '#ef4444' },
   ];
   ctx._chart = new Chart(ctx, {
     type: 'bar',
-    data: {
-      labels: data.map(d => d.name),
-      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderRadius: 6 }]
-    },
-    options: {
-      indexAxis: 'y',
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed.x) } }
-      },
-      scales: {
-        x: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
-        y: { grid: { display: false } }
-      }
-    }
+    data: { labels: data.map(d => d.name),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderRadius: 6 }]},
+    options: { indexAxis: 'y',
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed.x) } } },
+      scales: { x: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
+                y: { grid: { display: false } } } }
   });
 }
 
 function renderLine() {
   const ctx = document.getElementById('lineChart');
+  if (!ctx) return;
   if (ctx._chart) ctx._chart.destroy();
+  const nwNeto = dashMeta ? dashMeta.nwNeto : 343715;
   const labels = ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
-  const base =       [340656, 369000, 399000, 434000, 471000, 511000];
-  const optimistic =  [340656, 389000, 439000, 494000, 544000, 599000];
-  const pessimistic = [340656, 349000, 364000, 381000, 399000, 419000];
-  const target =      [500000, 500000, 500000, 500000, 500000, 500000];
+  const base =       [nwNeto, 369000, 399000, 434000, 471000, 511000];
+  const optimistic = [nwNeto, 389000, 439000, 494000, 544000, 599000];
+  const pessimistic =[nwNeto, 349000, 364000, 381000, 399000, 419000];
+  const target =     [500000, 500000, 500000, 500000, 500000, 500000];
   ctx._chart = new Chart(ctx, {
     type: 'line',
-    data: {
-      labels,
-      datasets: [
-        { label: '🟢 Optimista (DEC $4K/mes + Michalitas cierra)', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
-        { label: '🔵 Base (surplus gradual, 7% retorno)', data: base, borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
-        { label: '🔴 Pesimista (DEC bajo, sin surplus)', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
-        { label: 'Meta FI $500K', data: target, borderColor: '#f59e0b', borderDash: [8, 4], borderWidth: 2, pointRadius: 0, fill: false }
-      ]
-    },
-    options: {
-      plugins: {
-        legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
-        tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } }
-      },
-      scales: {
-        y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
-        x: { grid: { display: false } }
-      }
-    }
+    data: { labels, datasets: [
+      { label: '🟢 Optimista (DEC $4K/mes + Michalitas cierra)', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
+      { label: '🔵 Base (surplus gradual, 7% retorno)', data: base, borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
+      { label: '🔴 Pesimista (DEC bajo, sin surplus)', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
+      { label: 'Meta FI $500K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false }
+    ]},
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } } },
+      scales: { y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } }, x: { grid: { display: false } } } }
   });
 }
-
-// FREEDOM MENSUAL — Alberto's actual data (Jun 24 → Mar 26)
-const fmMonths = ['Jun 24','Jul','Aug','Sep','Oct','Nov','Dec','Jan 25','Feb','Mar','Apr','May','Jun 25','Jul','Aug','Sep','Oct','Nov','Dec','Jan 26','Feb','Mar 26','Apr 26'];
-const fmTotal = [396380,396300,400008,406664,398664,423636,415415,390511,382007,372945,380335,391078,405544,396377,408206,412986,425769,413859,417563,431010,404505,394189,401602];
-const fmRate = [1.1,-0.0,0.9,1.7,-2.0,6.3,-1.9,-6.0,-2.2,-2.4,2.0,2.8,3.7,-2.3,3.0,1.2,3.1,-2.8,0.9,3.2,-6.1,-2.6,1.9];
-const fmRetirement = [148668,150758,153126,158467,155100,160543,156566,159743,159167,154980,180807,187132,197392,195181,203067,205445,211706,212761,214251,220096,223493,220319,224703];
-const fmStocks = [55363,55363,60137,60071,58379,63500,61146,59509,57000,54000,30600,51500,54121,57145,72300,80500,86907,74660,77034,80900,67131,61903,56776];
-const fmCDs = [62070,64265,64600,65098,65541,65951,66523,60214,60836,60956,57860,61796,62379,45487,42535,36841,37816,37817,37817,47097,30964,31150,31151];
-const fmCash = [41878,29017,32315,34015,22280,22280,22436,2436,20496,20496,37860,37860,38143,38247,44247,44500,44500,55321,55466,47097,30964,31150,31151];
-const fmCarros = [30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,43000,43000,43000,49970];
-const fmCrypto = [17040,25153,18414,17470,25795,37323,35488,34821,32283,10600,19692,22790,23509,30317,16057,15700,14840,3100,2995,2100,2100,0,0];
 
 function makeAcctChart(canvasId, label, data, color) {
   const ctx = document.getElementById(canvasId);
@@ -1145,47 +1252,38 @@ function makeAcctChart(canvasId, label, data, color) {
       tension: 0.3, pointRadius: 3, pointBackgroundColor: color, borderWidth: 2.5
     }]},
     options: {
-      plugins: {
-        legend: { display:true, position:'top', labels: { font:{size:12,weight:'bold'}, color: up?'#10b981':'#ef4444' }},
-        tooltip: { callbacks: { label: c => '$'+c.parsed.y.toLocaleString() }}
-      },
-      scales: {
-        y: { ticks: { callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
-        x: { ticks:{font:{size:9}}, grid:{display:false} }
-      }
+      plugins: { legend: { display:true, position:'top', labels: { font:{size:12,weight:'bold'}, color: up?'#10b981':'#ef4444' }},
+        tooltip: { callbacks: { label: c => '$'+c.parsed.y.toLocaleString() }}},
+      scales: { y: { ticks: { callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } }
     }
   });
 }
 
 function renderPerformanceCharts() {
-  // ═══ SECTION 1: Total Portfolio TWR (FREEDOM MENSUAL) ═══
-  const twrPortfolio = [100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,111.26];
-  // S&P 500 monthly index (base 100 = Jun 2024, from multpl.com actual closes)
-  const sp500Monthly = [100.0,102.36,101.61,103.89,106.97,109.51,111.00,110.42,111.51,104.96,99.16,107.31,111.35,116.27,118.35,121.58,124.38,124.48,126.55,127.95,127.30,125.98,130.01];
+  // ── Total portfolio TWR ──
   const ctxTotalTWR = document.getElementById('chartTotalTWR');
   if (ctxTotalTWR) {
     if (ctxTotalTWR._chart) ctxTotalTWR._chart.destroy();
+    const twrPct = (twrPortfolio[twrPortfolio.length-1] - 100).toFixed(1);
+    const spPct  = (sp500Monthly[sp500Monthly.length-1] - 100).toFixed(1);
     ctxTotalTWR._chart = new Chart(ctxTotalTWR, {
       type: 'line',
       data: { labels: fmMonths, datasets: [
-        { label:'TWR Real (+11.3%)', data:twrPortfolio, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
-        { label:'S&P 500 (+30.0%)', data:sp500Monthly, borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
-        { label:'Raw (con flujos: -0.6%)', data:fmTotal.map(v=>(v/fmTotal[0]*100).toFixed(1)), borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
+        { label:'TWR Real (+'+twrPct+'%)', data:twrPortfolio, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+        { label:'S&P 500 (+'+spPct+'%)', data:sp500Monthly, borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
+        { label:'Raw (con flujos)', data:fmTotal.map(v=>(v/fmTotal[0]*100).toFixed(1)), borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
       ]},
-      options: {
-        plugins: {
+      options: { plugins: {
           legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11,weight:'bold'},color:'#e2e8f0'}},
-          tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}
-        },
-        scales: {
-          y: { ticks:{ font:{size:11} }, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = Jun 2024',color:'#64748b',font:{size:11}} },
-          x: { ticks:{font:{size:9}}, grid:{display:false} }
-        }
+          tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}},
+        scales: { y: { ticks:{ font:{size:11} }, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = Jun 2024',color:'#64748b',font:{size:11}} },
+                  x: { ticks:{font:{size:9}}, grid:{display:false} } }
       }
     });
   }
 
-  // Monthly rate bar chart
+  // Monthly rate bar
   const ctxRate = document.getElementById('chartMonthlyRate');
   if (ctxRate) {
     if (ctxRate._chart) ctxRate._chart.destroy();
@@ -1197,28 +1295,13 @@ function renderPerformanceCharts() {
         borderColor: fmRate.map(r => r >= 0 ? '#10b981' : '#ef4444'),
         borderWidth: 1, borderRadius: 4
       }]},
-      options: {
-        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> (c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(1)+'%' }}},
-        scales: {
-          y: { ticks:{ callback: v=>v+'%', font:{size:11} }, grid:{color:'#33415540'} },
-          x: { ticks:{font:{size:9}}, grid:{display:false} }
-        }
-      }
+      options: { plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> (c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(1)+'%' }}},
+        scales: { y: { ticks:{ callback: v=>v+'%', font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}}, grid:{display:false} } } }
     });
   }
 
-  // ═══ SECTION 2: Individual Trading Account Charts ═══
-  // Weekly data from Stock Candidates.numbers (Aug 2025 → Apr 2026)
-  const wkDates = ['Aug 2','Aug 9','Aug 16','Aug 23','Aug 30','Sep 6','Sep 13','Sep 20','Sep 27','Oct 4','Oct 11','Oct 18','Oct 25','Nov 1','Nov 8','Nov 15','Nov 22','Nov 29','Dec 6','Dec 13','Dec 20','Dec 27','Jan 3','Jan 10','Jan 17','Jan 24','Jan 31','Feb 7','Feb 14','Feb 21','Feb 28','Mar 7','Mar 14','Mar 21','Mar 28','Apr 4','Apr 11','Apr 17'];
-
-  const wkTT = [12020,13131,12040,9452,8685,8226,9871,14902,14239,14239,20192,21049,21049,22280,18938,18349,16994,17306,17949,17949,16154,15675,15761,15600,15666,15379,17742,17292,17324,17108,17295,16780,16625,16625,16625,16625,16790,15757];
-  const wkIBKR = [1620,2092,2449,2396,3444,3679,3666,3770,3776,3776,5852,5863,5844,5898,5933,5905,5876,6000,6004,6004,6097,6013,6101,6467,6520,6534,6428,6435,6614,6691,6819,6290,6307,6307,6307,6307,6174,6174];
-  const wkTSETF = [38446,40021,40831,41700,45077,45563,47098,47231,48005,48005,47691,49152,48900,48277,46965,46887,45069,45690,46104,46104,46604,47036,48048,50600,51187,52180,49043,49349,35173,36049,35848,34079,33411,33411,33411,33411,32847,33106];
-  const wkRH = [null,null,null,null,null,null,null,6369,6369,6369,null,null,null,null,null,null,null,null,null,1048,1084,1086,1123,1180,1195,1232,1236,1173,1173,1675,1663,1591,1605,1605,1605,1605,1743,1739];
-  const wkFUT = [4995,6251,5180,4184,4896,4711,4790,3880,4727,4727,7077,10425,8700,7724,5489,3916,3547,3760,3824,3824,4510,4629,4629,5100,5065,5066,6949,6768,6152,5744,5506,8320,7073,7073,7073,7073,4503,4002];
-  const wkSP = [626,626,645,647,646,648,658,666,664,664,655,666,679,684,672,673,660,685,687,687,681,683,683,690,694,689,693,693,684,691,686,686,662,662,662,662,679,704];
-
-  // Helper: make a trading chart (line with fill)
+  // Individual trading charts
   function makeTradingChart(id, data, color, label) {
     const ctx = document.getElementById(id);
     if (!ctx) return;
@@ -1226,79 +1309,58 @@ function renderPerformanceCharts() {
     ctx._chart = new Chart(ctx, {
       type: 'line',
       data: { labels: wkDates, datasets: [{
-        label: label || '',
-        data: data,
-        borderColor: color,
-        backgroundColor: color + '20',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 2,
-        borderWidth: 2.5,
-        spanGaps: true
+        label: label || '', data: data, borderColor: color, backgroundColor: color + '20',
+        fill: true, tension: 0.3, pointRadius: 2, borderWidth: 2.5, spanGaps: true
       }]},
-      options: {
-        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> '$'+c.parsed.y.toLocaleString() }}},
-        scales: {
-          y: { ticks:{ callback: v=>'$'+(v>=1000?(v/1000).toFixed(1)+'K':v), font:{size:11} }, grid:{color:'#33415540'} },
-          x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} }
-        }
-      }
+      options: { plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> '$'+c.parsed.y.toLocaleString() }}},
+        scales: { y: { ticks:{ callback: v=>'$'+(v>=1000?(v/1000).toFixed(1)+'K':v), font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} } } }
     });
   }
-
-  makeTradingChart('chartTT', wkTT, '#8b5cf6', 'TastyTrade');
-  makeTradingChart('chartIBKR', wkIBKR, '#10b981', 'IBKR Bravo');
+  makeTradingChart('chartTT',    wkTT,    '#8b5cf6', 'TastyTrade');
+  makeTradingChart('chartIBKR',  wkIBKR,  '#10b981', 'IBKR Bravo');
   makeTradingChart('chartTSETF', wkTSETF, '#3b82f6', 'TS ETF Tactical');
-  makeTradingChart('chartRH', wkRH, '#f59e0b', 'RH Autopilot');
-  makeTradingChart('chartFUT', wkFUT, '#ef4444', 'TS Futures');
+  makeTradingChart('chartRH',    wkRH,    '#f59e0b', 'RH Autopilot');
+  makeTradingChart('chartFUT',   wkFUT,   '#ef4444', 'TS Futures');
 
-  // ═══ TWR Normalized Comparison (base 100 = Aug 2, 2025) ═══
-  // TWR series: cumulative time-weighted returns excluding deposits/withdrawals
-  const twrTT = [100.0,109.24,100.17,100.17,92.04,87.17,104.61,104.61,99.95,99.95,99.95,104.19,104.19,110.29,93.75,90.83,84.12,85.67,88.85,88.85,79.96,77.59,78.02,77.22,77.55,76.13,87.82,85.6,85.76,84.69,85.61,83.06,82.3,82.3,82.3,82.3,83.12,78.00];
-  const twrIBKR = [100.0,100.0,100.0,97.84,97.84,104.51,104.14,107.1,107.27,107.27,107.27,107.47,107.12,108.11,108.75,108.24,107.71,109.98,110.05,110.05,111.76,110.22,111.83,118.54,119.51,119.77,117.83,117.95,121.23,122.65,124.99,115.3,115.61,115.61,115.61,115.61,113.17,113.17];
-  const twrTSETF = [100.0,104.1,106.2,108.46,117.25,118.51,122.5,122.85,124.86,124.86,124.05,127.85,127.19,125.57,122.16,121.96,117.23,118.84,119.92,119.92,121.22,122.34,124.98,131.61,133.14,135.72,127.56,128.36,128.36,131.56,130.82,124.37,121.93,121.93,121.93,121.93,119.87,120.82];
-  const twrRH = [100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,103.44,103.63,107.16,112.6,114.03,117.56,117.94,111.93,111.93,111.93,111.13,106.31,107.25,107.25,107.25,107.25,116.47,116.20];
-  const twrFUT = [100.0,100.0,82.87,66.93,78.32,75.36,76.63,62.07,75.62,75.62,75.62,75.62,63.11,56.03,56.03,56.03,50.75,53.8,54.71,54.71,64.53,66.23,66.23,72.97,72.47,72.48,72.48,70.59,64.17,59.91,57.43,57.43,48.82,48.82,48.82,48.82,48.82,43.39];
-  const twrSP = [100.0,100.0,103.04,103.35,103.19,103.51,105.11,106.39,106.07,106.07,104.63,106.39,108.47,109.27,107.35,107.51,105.43,109.42,109.74,109.74,108.79,109.11,109.11,110.22,110.86,110.06,110.7,110.7,109.27,110.38,109.58,109.58,105.75,105.75,105.75,105.75,108.47,112.46];
-
+  // TWR Normalized
+  const twrPcts = {
+    tsetf: (twrTSETF[twrTSETF.length-1]-100).toFixed(1),
+    rh:    (twrRH[twrRH.length-1]-100).toFixed(1),
+    ibkr:  (twrIBKR[twrIBKR.length-1]-100).toFixed(1),
+    sp:    (twrSP[twrSP.length-1]-100).toFixed(1),
+    tt:    (twrTT[twrTT.length-1]-100).toFixed(1),
+    fut:   (twrFUT[twrFUT.length-1]-100).toFixed(1)
+  };
   const ctxNorm = document.getElementById('chartTradingNorm');
   if (ctxNorm) {
     if (ctxNorm._chart) ctxNorm._chart.destroy();
     ctxNorm._chart = new Chart(ctxNorm, {
       type: 'line',
       data: { labels: wkDates, datasets: [
-        { label:'TS ETF (+20.8%)', data:twrTSETF, borderColor:'#3b82f6', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
-        { label:'RH Autopilot (+16.2%)', data:twrRH, borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
-        { label:'IBKR Bravo (+13.2%)', data:twrIBKR, borderColor:'#10b981', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
-        { label:'S&P 500 (+12.5%)', data:twrSP, borderColor:'#94a3b8', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[6,3], fill:false },
-        { label:'TastyTrade (-22.0%)', data:twrTT, borderColor:'#8b5cf6', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
-        { label:'TS Futures (-56.6%)', data:twrFUT, borderColor:'#ef4444', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+        { label:'TS ETF (+'+twrPcts.tsetf+'%)',      data:twrTSETF, borderColor:'#3b82f6', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'RH Autopilot (+'+twrPcts.rh+'%)',   data:twrRH,   borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'IBKR Bravo (+'+twrPcts.ibkr+'%)',   data:twrIBKR, borderColor:'#10b981', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'S&P 500 (+'+twrPcts.sp+'%)',         data:twrSP,   borderColor:'#94a3b8', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[6,3], fill:false },
+        { label:'TastyTrade ('+twrPcts.tt+'%)',       data:twrTT,   borderColor:'#8b5cf6', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+        { label:'TS Futures ('+twrPcts.fut+'%)',      data:twrFUT,  borderColor:'#ef4444', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
       ]},
-      options: {
-        plugins: {
+      options: { plugins: {
           legend:{display:true,position:'top',labels:{boxWidth:12,padding:10,font:{size:11},color:'#e2e8f0'}},
-          tooltip:{ callbacks:{ label: c=> c.dataset.label.split('(')[0].trim()+': '+c.parsed.y.toFixed(1) }}
-        },
-        scales: {
-          y: {
-            ticks:{ font:{size:11}, color:'#94a3b8' },
-            grid:{color:'#33415540'},
-            title:{display:true,text:'TWR Base 100 = Ago 2, 2025 (sin depósitos/retiros)',color:'#64748b',font:{size:11}}
-          },
-          x: { ticks:{font:{size:9}, maxRotation:45, color:'#64748b'}, grid:{display:false} }
-        }
-      }
+          tooltip:{ callbacks:{ label: c=> c.dataset.label.split('(')[0].trim()+': '+c.parsed.y.toFixed(1) }}},
+        scales: { y: { ticks:{font:{size:11}, color:'#94a3b8'}, grid:{color:'#33415540'},
+                  title:{display:true,text:'TWR Base 100 = Ago 2, 2025 (sin depósitos/retiros)',color:'#64748b',font:{size:11}} },
+                  x: { ticks:{font:{size:9}, maxRotation:45, color:'#64748b'}, grid:{display:false} } } }
     });
   }
 
-  // ═══ Trading Total Combined ═══
+  // Trading Total Combined
   const wkTradingTotal = wkDates.map((_, i) => {
     let sum = 0;
     [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUT[i]].forEach(v => { if(v) sum += v; });
     if (wkRH[i]) sum += wkRH[i];
     return sum;
   });
-
   const ctxTTotal = document.getElementById('chartTradingTotal');
   if (ctxTTotal) {
     if (ctxTTotal._chart) ctxTTotal._chart.destroy();
@@ -1309,29 +1371,21 @@ function renderPerformanceCharts() {
         { label:'IBKR', data:wkIBKR.map((v,i)=>v!=null?v+wkTT[i]:null), borderColor:'#10b981', backgroundColor:'#10b98120', fill:'-1', tension:0.3, pointRadius:0, borderWidth:0 },
         { label:'Total', data:wkTradingTotal, borderColor:'#60a5fa', fill:false, tension:0.3, pointRadius:2, borderWidth:2.5 },
       ]},
-      options: {
-        plugins: {
-          legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
-          tooltip:{ mode:'index', callbacks:{ label: c=>'$'+c.parsed.y.toLocaleString() }}
-        },
-        scales: {
-          y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
-          x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} }
-        }
-      }
+      options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{ mode:'index', callbacks:{ label: c=>'$'+c.parsed.y.toLocaleString() }}},
+        scales: { y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} } } }
     });
   }
 
-  // ═══ Risk Metrics Calculation & Render ═══
+  // Risk Metrics
   function calcRiskMetrics(twrArr, name, color) {
-    // Max Drawdown
     let peak = twrArr[0], maxDD = 0;
     for (let i = 1; i < twrArr.length; i++) {
       if (twrArr[i] > peak) peak = twrArr[i];
       const dd = (peak - twrArr[i]) / peak * 100;
       if (dd > maxDD) maxDD = dd;
     }
-    // Weekly returns for volatility
     const returns = [];
     for (let i = 1; i < twrArr.length; i++) {
       if (twrArr[i-1] > 0) returns.push((twrArr[i] - twrArr[i-1]) / twrArr[i-1] * 100);
@@ -1339,30 +1393,25 @@ function renderPerformanceCharts() {
     const mean = returns.reduce((a,b) => a+b, 0) / returns.length;
     const variance = returns.reduce((a,r) => a + (r-mean)**2, 0) / returns.length;
     const vol = Math.sqrt(variance);
-    // Total return
     const totalReturn = twrArr[twrArr.length-1] - 100;
-    // Return/Risk ratio
     const ratio = maxDD > 0 ? totalReturn / maxDD : 0;
-    // Grade
     let grade, gradeColor;
-    if (ratio >= 1.5) { grade = 'A'; gradeColor = '#10b981'; }
+    if (ratio >= 1.5)      { grade = 'A'; gradeColor = '#10b981'; }
     else if (ratio >= 1.0) { grade = 'B'; gradeColor = '#6ee7b7'; }
     else if (ratio >= 0.5) { grade = 'C'; gradeColor = '#f59e0b'; }
-    else if (ratio >= 0) { grade = 'D'; gradeColor = '#f97316'; }
-    else if (ratio >= -1) { grade = 'E'; gradeColor = '#ef4444'; }
-    else { grade = 'F'; gradeColor = '#991b1b'; }
+    else if (ratio >= 0)   { grade = 'D'; gradeColor = '#f97316'; }
+    else if (ratio >= -1)  { grade = 'E'; gradeColor = '#ef4444'; }
+    else                   { grade = 'F'; gradeColor = '#991b1b'; }
     return { name, color, totalReturn, maxDD, vol, ratio, grade, gradeColor };
   }
-
   const riskData = [
-    calcRiskMetrics(twrRH, 'RH Autopilot', '#f59e0b'),
+    calcRiskMetrics(twrRH,    'RH Autopilot',   '#f59e0b'),
     calcRiskMetrics(twrTSETF, 'TS ETF Tactical', '#3b82f6'),
-    calcRiskMetrics(twrIBKR, 'IBKR Bravo', '#10b981'),
-    calcRiskMetrics(twrSP, 'S&P 500', '#94a3b8'),
-    calcRiskMetrics(twrTT, 'TastyTrade', '#8b5cf6'),
-    calcRiskMetrics(twrFUT, 'TS Futures', '#ef4444'),
+    calcRiskMetrics(twrIBKR,  'IBKR Bravo',      '#10b981'),
+    calcRiskMetrics(twrSP,    'S&P 500',          '#94a3b8'),
+    calcRiskMetrics(twrTT,    'TastyTrade',       '#8b5cf6'),
+    calcRiskMetrics(twrFUT,   'TS Futures',       '#ef4444'),
   ];
-
   const riskGrid = document.getElementById('riskMetricsGrid');
   if (riskGrid) {
     riskGrid.innerHTML = riskData.map(r => {
@@ -1383,12 +1432,11 @@ function renderPerformanceCharts() {
   }
 }
 
-// NW Histórico chart (Resumen tab)
+// NW Histórico
 function renderNWHistorico() {
   const ctx = document.getElementById('chartNWHistorico');
-  if (!ctx) return;
+  if (!ctx || !fmTotal) return;
   if (ctx._chart) ctx._chart.destroy();
-  // Estimate debt per month (simplified: last known = $57,887)
   const debtEstimate = [45000,44000,43000,42000,41000,40000,39000,38000,37000,36000,35000,40000,42000,44000,46000,48000,50000,52000,54000,56000,57000,57887,57887];
   const nwNeto = fmTotal.map((v,i) => v - debtEstimate[i]);
   ctx._chart = new Chart(ctx, {
@@ -1397,64 +1445,43 @@ function renderNWHistorico() {
       { label:'NW Bruto', data:fmTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
       { label:'NW Neto (est.)', data:nwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
     ]},
-    options: {
-      plugins: {
-        legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
-        tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}
-      },
-      scales: {
-        y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
-        x: { ticks:{font:{size:9}}, grid:{display:false} }
-      }
-    }
+    options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+        tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}},
+      scales: { y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } } }
   });
 }
 
-// Heatmap renderer
+// Heatmap
 function renderHeatmap() {
   const container = document.getElementById('heatmapContainer');
-  if (!container) return;
-  // Organize fmRate by year and month
-  const monthNames = ['Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'];
-  const years = ['2024','2025','2026'];
-  // Map: fmMonths[0]='Jun 24' → 2024-Jun, etc.
-  const grid = {};
+  if (!container || !fmRate) return;
   const allMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const years = ['2024','2025','2026'];
+  const grid = {};
   fmMonths.forEach((m, i) => {
     let yr, mn;
     if (m.includes('24')) { yr='2024'; mn=m.replace(' 24',''); }
     else if (m.includes('25')) { yr='2025'; mn=m.replace(' 25',''); }
     else if (m.includes('26')) { yr='2026'; mn=m.replace(' 26',''); }
     else {
-      // Infer year from position
-      if (i <= 6) yr='2024';
-      else if (i <= 18) yr='2025';
-      else yr='2026';
+      if (i <= 6) yr='2024'; else if (i <= 18) yr='2025'; else yr='2026';
       mn = m;
     }
     if (!grid[yr]) grid[yr] = {};
     grid[yr][mn] = fmRate[i];
   });
-
   function getColor(v) {
-    if (v > 3) return '#065f46';
-    if (v > 1) return '#10b981';
-    if (v > 0) return '#6ee7b780';
-    if (v > -1) return '#fca5a580';
-    if (v > -3) return '#ef4444';
-    return '#991b1b';
+    if (v > 3) return '#065f46'; if (v > 1) return '#10b981';
+    if (v > 0) return '#6ee7b780'; if (v > -1) return '#fca5a580';
+    if (v > -3) return '#ef4444'; return '#991b1b';
   }
   function getTextColor(v) {
-    if (v > 3 || v < -3) return '#fff';
-    if (v > 1 || v < -1) return '#fff';
-    return '#e2e8f0';
+    if (v > 3 || v < -3) return '#fff'; if (v > 1 || v < -1) return '#fff'; return '#e2e8f0';
   }
-
   let html = '<div class="heatmap" style="grid-template-columns:60px repeat(12,1fr)">';
-  // Header row
   html += '<div class="heatmap-header"></div>';
   allMonths.forEach(m => { html += '<div class="heatmap-header">'+m+'</div>'; });
-  // Data rows
   years.forEach(yr => {
     html += '<div style="font-weight:700;color:#f8fafc;padding:6px 4px;font-size:12px">'+yr+'</div>';
     allMonths.forEach(mn => {
@@ -1478,12 +1505,10 @@ function renderGauge() {
   const ctx = canvas.getContext('2d');
   const cx = 60, cy = 65, r = 50;
   const startAngle = 0.75 * Math.PI, endAngle = 2.25 * Math.PI;
-  const score = 59;
+  const score = dashMeta ? dashMeta.healthScore : 59;
   const pct = score / 100;
   ctx.clearRect(0, 0, 120, 120);
-  // Background arc
   ctx.beginPath(); ctx.arc(cx, cy, r, startAngle, endAngle); ctx.strokeStyle = '#334155'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
-  // Score arc
   const scoreAngle = startAngle + pct * (endAngle - startAngle);
   const gradient = ctx.createLinearGradient(0, 0, 120, 0);
   gradient.addColorStop(0, '#ef4444'); gradient.addColorStop(0.5, '#f59e0b'); gradient.addColorStop(1, '#10b981');
@@ -1493,27 +1518,14 @@ function renderGauge() {
 // Rolling Returns
 function renderRollingReturns() {
   const ctx = document.getElementById('chartRolling');
-  if (!ctx) return;
+  if (!ctx || !fmRate) return;
   if (ctx._chart) ctx._chart.destroy();
-  // Calculate rolling returns from fmRate
   const roll3 = [], roll6 = [], roll12 = [], rollLabels = [];
   for (let i = 0; i < fmRate.length; i++) {
     rollLabels.push(fmMonths[i]);
-    // 3M rolling
-    if (i >= 2) {
-      let cum = 1; for (let j = i-2; j <= i; j++) cum *= (1 + fmRate[j]/100);
-      roll3.push(((cum - 1) * 100).toFixed(1));
-    } else roll3.push(null);
-    // 6M rolling
-    if (i >= 5) {
-      let cum = 1; for (let j = i-5; j <= i; j++) cum *= (1 + fmRate[j]/100);
-      roll6.push(((cum - 1) * 100).toFixed(1));
-    } else roll6.push(null);
-    // 12M rolling
-    if (i >= 11) {
-      let cum = 1; for (let j = i-11; j <= i; j++) cum *= (1 + fmRate[j]/100);
-      roll12.push(((cum - 1) * 100).toFixed(1));
-    } else roll12.push(null);
+    if (i >= 2) { let cum = 1; for (let j = i-2; j <= i; j++) cum *= (1 + fmRate[j]/100); roll3.push(((cum-1)*100).toFixed(1)); } else roll3.push(null);
+    if (i >= 5) { let cum = 1; for (let j = i-5; j <= i; j++) cum *= (1 + fmRate[j]/100); roll6.push(((cum-1)*100).toFixed(1)); } else roll6.push(null);
+    if (i >= 11){ let cum = 1; for (let j = i-11; j <= i; j++) cum *= (1 + fmRate[j]/100); roll12.push(((cum-1)*100).toFixed(1)); } else roll12.push(null);
   }
   ctx._chart = new Chart(ctx, {
     type: 'line',
@@ -1523,65 +1535,53 @@ function renderRollingReturns() {
       { label: 'Rolling 12M', data: roll12, borderColor: '#10b981', tension: 0.3, pointRadius: 3, borderWidth: 3, fill: false },
       { label: '0%', data: Array(fmRate.length).fill(0), borderColor: '#64748b', borderDash: [4,4], borderWidth: 1, pointRadius: 0, fill: false },
     ]},
-    options: {
-      plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
-        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.parsed.y >= 0 ? '+' : '') + parseFloat(c.parsed.y).toFixed(1) + '%' } }
-      },
-      scales: {
-        y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#33415540' } },
-        x: { ticks: { font: { size: 9 } }, grid: { display: false } }
-      }
-    }
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.parsed.y >= 0 ? '+' : '') + parseFloat(c.parsed.y).toFixed(1) + '%' } } },
+      scales: { y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#33415540' } },
+                x: { ticks: { font: { size: 9 } }, grid: { display: false } } } }
   });
 }
 
 // Contribution Analysis
 function renderContribution() {
   const ctx = document.getElementById('chartContribution');
-  if (!ctx) return;
+  if (!ctx || !twrPortfolioGlobal) return;
   if (ctx._chart) ctx._chart.destroy();
-  // For each month, separate: investment return vs external flow
   const invReturn = [], extFlow = [];
   for (let i = 1; i < fmTotal.length; i++) {
     const totalChange = fmTotal[i] - fmTotal[i-1];
-    // Use TWR rate as investment return
     const twrPct = (twrPortfolioGlobal[i] / twrPortfolioGlobal[i-1] - 1);
     const invRet = fmTotal[i-1] * twrPct;
     const ext = totalChange - invRet;
     invReturn.push(Math.round(invRet));
     extFlow.push(Math.round(ext));
   }
-  const contribLabels = fmMonths.slice(1);
   ctx._chart = new Chart(ctx, {
     type: 'bar',
-    data: { labels: contribLabels, datasets: [
+    data: { labels: fmMonths.slice(1), datasets: [
       { label: 'Retorno inversiones', data: invReturn, backgroundColor: invReturn.map(v => v >= 0 ? '#10b98180' : '#ef444480'), borderRadius: 3 },
       { label: 'Flujos externos', data: extFlow, backgroundColor: extFlow.map(v => v >= 0 ? '#3b82f680' : '#f59e0b80'), borderRadius: 3 },
     ]},
-    options: {
-      plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
-        tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString() } }
-      },
-      scales: {
-        x: { stacked: true, ticks: { font: { size: 9 } }, grid: { display: false } },
-        y: { stacked: true, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } }, grid: { color: '#33415540' } }
-      }
-    }
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString() } } },
+      scales: { x: { stacked: true, ticks: { font: { size: 9 } }, grid: { display: false } },
+                y: { stacked: true, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } }, grid: { color: '#33415540' } } } }
   });
 }
 
-// Waterfall chart
+// Waterfall — now uses waterfall object from JSON
 function renderWaterfall() {
   const container = document.getElementById('waterfallChart');
-  if (!container) return;
+  if (!container || !waterfall) return;
+  const w = waterfall;
   const items = [
-    { label: 'DEC W2', value: 3460, type: 'in' },
-    { label: 'Ingreso Pasivo', value: 952, type: 'in' },
-    { label: 'Gastos Vida', value: -4167, type: 'out' },
-    { label: 'Michalitas', value: -1525, type: 'out' },
-    { label: 'Interés LOC', value: -340, type: 'out' },
-    { label: 'Interés Auto', value: -54, type: 'out' },
-    { label: 'SURPLUS', value: -1681, type: 'total' },
+    { label: 'DEC W2',         value: w.decIncome,       type: 'in' },
+    { label: 'Ingreso Pasivo', value: w.passiveIncome,   type: 'in' },
+    { label: 'Gastos Vida',    value: w.livingExpenses,  type: 'out' },
+    { label: 'Michalitas',     value: w.michalitas,      type: 'out' },
+    { label: 'Interés LOC',    value: w.locInterest,     type: 'out' },
+    { label: 'Interés Auto',   value: w.carInterest,     type: 'out' },
+    { label: 'SURPLUS',        value: w.surplus,         type: 'total' },
   ];
   const maxVal = Math.max(...items.map(i => Math.abs(i.value)));
   let html = '<div class="waterfall-bar">';
@@ -1601,6 +1601,12 @@ function renderWaterfall() {
   });
   html += '</div>';
   container.innerHTML = html;
+  // Also update the surplus table cell
+  const surplusCell = document.querySelector('tfoot td[style*="color:#ef4444;font-size:18px"]');
+  if (surplusCell) {
+    surplusCell.textContent = (w.surplus >= 0 ? '+' : '') + '$' + Math.abs(w.surplus).toLocaleString();
+    surplusCell.style.color = w.surplus >= 0 ? '#10b981' : '#ef4444';
+  }
 }
 
 // Wire rolling + contribution into performance render
@@ -1611,13 +1617,14 @@ renderPerformanceCharts = function() {
   renderContribution();
 };
 
-// twrPortfolio at module level for contribution analysis (same data as inside renderPerformanceCharts)
-const twrPortfolioGlobal = [100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,111.26];
-
-// Initial render
-renderGauge();
-renderPie();
-renderNWHistorico();
+// ═══ LOAD DATA & INIT ═══
+fetch('data.json')
+  .then(r => r.json())
+  .then(d => initFromData(d))
+  .catch(e => {
+    console.error('Error loading data.json:', e);
+    document.body.innerHTML += '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ef444420;border:2px solid #ef4444;padding:24px;border-radius:12px;color:#ef4444;font-size:14px;text-align:center;z-index:10000;">⚠️ Error cargando datos del dashboard.<br>Verifica que data.json existe en el mismo directorio.<br><small>' + e.message + '</small></div>';
+  });
 </script>
 </body>
 </html>
