@@ -1,11 +1,11 @@
 {
   "meta": {
     "subtitle": "24 Abril 2026",
-    "healthScore": 59,
+    "healthScore": 58,
     "healthLabel": "MODERADO",
     "healthSubScores": {
       "retiro": {
-        "val": 90,
+        "val": 89,
         "color": "#10b981"
       },
       "diversif": {
@@ -21,15 +21,15 @@
         "color": "#f59e0b"
       },
       "deuda": {
-        "val": 35,
-        "color": "#ef4444"
+        "val": 42,
+        "color": "#f59e0b"
       },
       "surplus": {
         "val": 20,
         "color": "#ef4444"
       },
       "liquidez": {
-        "val": 60,
+        "val": 62,
         "color": "#f59e0b"
       },
       "riesgo": {
@@ -37,25 +37,25 @@
         "color": "#f59e0b"
       }
     },
-    "nwBruto": 401602,
-    "nwNeto": 343715,
+    "nwBruto": 401659,
+    "nwNeto": 343772,
     "deuda": 57887,
-    "nwBrutoDelta": "+$3,059",
-    "nwNetoDelta": "+$3,059",
+    "nwBrutoDelta": "+$57",
+    "nwNetoDelta": "+$57",
     "nwDeltaUp": true,
     "fiPct": 69,
-    "fiGap": 156285,
-    "fiGapAnnual": 31257,
-    "totalBruto": 401602,
-    "retirementCore": 224703,
-    "weeklyFocusDate": "Semana del 17 Abr",
-    "footerNote": "Datos: TradeStation (live Apr 17) · Betterment (Apr 9) · Xero (live YTD) · Tastytrade relay (Apr 17) · Updated: 2026-04-24"
+    "fiGap": 156228,
+    "fiGapAnnual": 31246,
+    "totalBruto": 401659,
+    "retirementCore": 223631,
+    "weeklyFocusDate": "Semana del 24 Abr",
+    "footerNote": "Datos: TS (\u26a0\ufe0f DEGRADED \u2014 Apr 24 daily briefing snapshot) \u00b7 Betterment (Apr 9 stored) \u00b7 TT relay (Apr 24 14:09 PT LIVE) \u00b7 Xero YTD live \u00b7 TradeStation MCP not authenticated Apr 24 17h"
   },
   "accounts": [
     {
       "name": "SEP IRA (TradeStation)",
       "cat": "Retiro",
-      "value": 134858,
+      "value": 133786,
       "color": "#2563eb"
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "name": "Miguel Autos",
-      "cat": "Préstamos",
+      "cat": "Pr\u00e9stamos",
       "value": 36415,
       "color": "#ec4899"
     },
@@ -79,7 +79,7 @@
     {
       "name": "Tactical ETFs (TradeStation)",
       "cat": "Trading",
-      "value": 33106,
+      "value": 37569,
       "color": "#10b981"
     },
     {
@@ -97,18 +97,18 @@
     {
       "name": "Options (Tastytrade)",
       "cat": "Trading",
-      "value": 15757,
+      "value": 16425,
       "color": "#34d399"
     },
     {
       "name": "Pepe Loan 2",
-      "cat": "Préstamos",
+      "cat": "Pr\u00e9stamos",
       "value": 7291,
       "color": "#f9a8d4"
     },
     {
       "name": "Pepe Loan 1",
-      "cat": "Préstamos",
+      "cat": "Pr\u00e9stamos",
       "value": 6264,
       "color": "#f472b6"
     },
@@ -121,7 +121,7 @@
     {
       "name": "Futures Alberto",
       "cat": "Futures",
-      "value": 4002,
+      "value": 0,
       "color": "#8b5cf6"
     },
     {
@@ -133,12 +133,12 @@
   ],
   "sparkData": {
     "SEP IRA (TradeStation)": [
-      212761,
       214251,
       220096,
       223493,
       220319,
-      224703
+      224703,
+      223631
     ],
     "Roth IRA (Betterment)": [
       58000,
@@ -165,12 +165,12 @@
       35000
     ],
     "Tactical ETFs (TradeStation)": [
-      45690,
       46104,
       49043,
       35173,
       32847,
-      33106
+      33106,
+      37569
     ],
     "Emergency Fund (Betterment)": [
       55321,
@@ -189,12 +189,12 @@
       28187
     ],
     "Options (Tastytrade)": [
-      17949,
       16154,
       17742,
       16780,
       16790,
-      15757
+      15757,
+      16425
     ],
     "Pepe Loan 2": [
       7000,
@@ -221,12 +221,12 @@
       6174
     ],
     "Futures Alberto": [
-      3824,
       4510,
       6949,
       8320,
       4503,
-      4002
+      4002,
+      0
     ],
     "Robinhood": [
       1048,
@@ -238,31 +238,31 @@
     ]
   },
   "sepIRA": {
-    "header": "$133,518",
-    "equity": 134858,
+    "header": "$133,786",
+    "equity": 133786,
     "positions": [
       {
         "symbol": "VOO",
         "name": "Vanguard S&P 500 ETF",
-        "mv": 81269,
+        "mv": 81643,
         "pct": 61,
-        "pl": 1757,
+        "pl": 2131,
         "plUp": true
       },
       {
         "symbol": "SCHD",
-        "name": "Schwab US Dividend Equity",
-        "mv": 32948,
+        "name": "Schwab US Dividend Equity ETF",
+        "mv": 33492,
         "pct": 25,
-        "pl": -354,
-        "plUp": false
+        "pl": 191,
+        "plUp": true
       },
       {
         "symbol": "AVDV",
-        "name": "Avantis Intl Small Cap Value",
-        "mv": 19302,
+        "name": "Avantis Intl Small Cap Value ETF",
+        "mv": 18651,
         "pct": 14,
-        "pl": 657,
+        "pl": 6,
         "plUp": true
       }
     ]
@@ -270,134 +270,158 @@
   "tactical": [
     {
       "sym": "FDL",
-      "name": "First Tr Morningstar Div Lead",
-      "val": 4679,
-      "pct": 14,
-      "pl": -80,
+      "name": "First Trust Morningstar Div Leaders ETF",
+      "val": 4709,
+      "pct": 13,
+      "pl": -50,
       "plUp": false
+    },
+    {
+      "sym": "IYZ",
+      "name": "iShares US Telecom ETF",
+      "val": 3763,
+      "pct": 10,
+      "pl": 329,
+      "plUp": true
     },
     {
       "sym": "EWZ",
       "name": "iShares MSCI Brazil ETF",
-      "val": 3921,
-      "pct": 12,
-      "pl": 435,
+      "val": 3714,
+      "pct": 10,
+      "pl": 228,
       "plUp": true
     },
     {
       "sym": "ILF",
       "name": "iShares Latin America 40 ETF",
-      "val": 3763,
-      "pct": 12,
-      "pl": 261,
-      "plUp": true
-    },
-    {
-      "sym": "IYZ",
-      "name": "iShares US Telecom ETF",
-      "val": 3741,
-      "pct": 11,
-      "pl": 307,
-      "plUp": true
-    },
-    {
-      "sym": "EWY",
-      "name": "iShares MSCI South Korea ETF",
-      "val": 2416,
-      "pct": 7,
-      "pl": 149,
-      "plUp": true
-    },
-    {
-      "sym": "FCG",
-      "name": "First Trust Nat Gas ETF",
-      "val": 2087,
-      "pct": 6,
-      "pl": -206,
-      "plUp": false
-    },
-    {
-      "sym": "EWT",
-      "name": "iShares MSCI Taiwan ETF",
-      "val": 2076,
-      "pct": 6,
-      "pl": 267,
-      "plUp": true
-    },
-    {
-      "sym": "EWZS",
-      "name": "iShares MSCI Brazil Small-Cap",
-      "val": 1908,
-      "pct": 6,
-      "pl": -19,
-      "plUp": false
-    },
-    {
-      "sym": "XBI",
-      "name": "SPDR S&P Biotech ETF",
-      "val": 1787,
-      "pct": 5,
-      "pl": 17,
+      "val": 3616,
+      "pct": 10,
+      "pl": 114,
       "plUp": true
     },
     {
       "sym": "OIH",
       "name": "VanEck Oil Services ETF",
-      "val": 1610,
-      "pct": 5,
-      "pl": 154,
+      "val": 2954,
+      "pct": 8,
+      "pl": 216,
+      "plUp": true
+    },
+    {
+      "sym": "EWY",
+      "name": "iShares MSCI South Korea ETF",
+      "val": 2454,
+      "pct": 7,
+      "pl": 187,
+      "plUp": true
+    },
+    {
+      "sym": "IWM",
+      "name": "iShares Russell 2000 ETF",
+      "val": 2210,
+      "pct": 6,
+      "pl": -5,
+      "plUp": false
+    },
+    {
+      "sym": "EWT",
+      "name": "iShares MSCI Taiwan ETF",
+      "val": 2185,
+      "pct": 6,
+      "pl": 376,
       "plUp": true
     },
     {
       "sym": "SMH",
       "name": "VanEck Semiconductor ETF",
-      "val": 1387,
+      "val": 1998,
+      "pct": 5,
+      "pl": 180,
+      "plUp": true
+    },
+    {
+      "sym": "EWZS",
+      "name": "iShares MSCI Brazil Small-Cap ETF",
+      "val": 1849,
+      "pct": 5,
+      "pl": -78,
+      "plUp": false
+    },
+    {
+      "sym": "XBI",
+      "name": "SPDR S&P Biotech ETF",
+      "val": 1753,
+      "pct": 5,
+      "pl": -17,
+      "plUp": false
+    },
+    {
+      "sym": "QCLN",
+      "name": "First Trust NASDAQ Clean Energy ETF",
+      "val": 1728,
+      "pct": 5,
+      "pl": 44,
+      "plUp": true
+    },
+    {
+      "sym": "SOXX",
+      "name": "iShares Semiconductor ETF",
+      "val": 1373,
       "pct": 4,
-      "pl": 37,
+      "pl": 38,
       "plUp": true
     },
     {
       "sym": "XOP",
       "name": "SPDR Oil & Gas Exploration ETF",
-      "val": 1299,
+      "val": 1346,
       "pct": 4,
-      "pl": -203,
+      "pl": -156,
       "plUp": false
     },
     {
       "sym": "SHLD",
       "name": "Global X Defense Tech ETF",
-      "val": 1117,
+      "val": 1028,
       "pct": 3,
-      "pl": -48,
+      "pl": -137,
       "plUp": false
     },
     {
       "sym": "TAN",
       "name": "Invesco Solar Energy ETF",
-      "val": 810,
+      "val": 888,
       "pct": 2,
-      "pl": -52,
-      "plUp": false
+      "pl": 26,
+      "plUp": true
     }
   ],
-  "tacticalHeader": "$32,601 (+$505 cash)",
+  "tacticalHeader": "$37,569 MV (\u26a0\ufe0f TS fallback \u2014 Apr 24 daily briefing)",
   "options": {
-    "nlv": 15757,
+    "nlv": 16425,
     "positions": [
+      {
+        "symbol": "NFLX",
+        "spread": "96P/92P",
+        "type": "Debit Put Spread",
+        "dte": 28,
+        "exp": "May 22",
+        "expSoon": false
+      },
       {
         "symbol": "LULU",
         "spread": "165P/160P",
-        "type": "Credit Put",
-        "dte": 28,
+        "type": "Debit Put Spread",
+        "dte": 21,
         "exp": "May 15",
-        "expSoon": false
+        "expSoon": true
       },
       {
         "symbol": "TSM",
         "spread": "340C/350C",
-        "type": "LEAPS Call",
-        "dte": 273,
+        "type": "LEAPS Call Spread",
+        "dte": 266,
         "exp": "Jan 27",
         "expSoon": false
       },
@@ -405,7 +429,7 @@
         "symbol": "HIMS",
         "spread": "15P",
         "type": "Long Put LEAPS",
-        "dte": 644,
+        "dte": 637,
         "exp": "Jan 28",
         "expSoon": false
       }
@@ -479,7 +503,7 @@
       431010,
       404505,
       394189,
-      401602
+      401659
     ],
     "rate": [
       1.1,
@@ -529,7 +553,7 @@
       220096,
       223493,
       220319,
-      224703
+      223631
     ],
     "stocks": [
       55363,
@@ -554,7 +578,7 @@
       80900,
       67131,
       61903,
-      56776
+      57905
     ],
     "cds": [
       62070,
@@ -696,7 +720,8 @@
       "Mar 28",
       "Apr 4",
       "Apr 11",
-      "Apr 17"
+      "Apr 17",
+      "Apr 24"
     ],
     "tt": [
       12020,
@@ -736,7 +761,8 @@
       16625,
       16625,
       16790,
-      15757
+      15757,
+      16425
     ],
     "ibkr": [
       1620,
@@ -775,6 +801,7 @@
       6307,
       6307,
       6307,
+      6174,
       6174,
       6174
     ],
@@ -816,7 +843,8 @@
       33411,
       33411,
       32847,
-      33106
+      33106,
+      37569
     ],
     "rh": [
       null,
@@ -856,6 +884,7 @@
       1605,
       1605,
       1743,
+      1739,
       1739
     ],
     "fut": [
@@ -896,7 +925,8 @@
       7073,
       7073,
       4503,
-      4002
+      4002,
+      0
     ],
     "sp": [
       626,
@@ -936,7 +966,8 @@
       662,
       662,
       679,
-      704
+      704,
+      710
     ]
   },
   "twr": {
@@ -1012,8 +1043,8 @@
       126.55,
       127.95,
       127.3,
-      125.98,
-      130.01
+      122.89,
+      132.01
     ],
     "tt": [
       100.0,
@@ -1053,7 +1084,8 @@
       82.3,
       82.3,
       83.12,
-      78.0
+      78.0,
+      81.31
     ],
     "ibkr": [
       100.0,
@@ -1092,6 +1124,7 @@
       115.61,
       115.61,
       115.61,
+      113.17,
       113.17,
       113.17
     ],
@@ -1133,7 +1166,8 @@
       121.93,
       121.93,
       119.87,
-      120.82
+      120.82,
+      137.11
     ],
     "rh": [
       100.0,
@@ -1173,6 +1207,7 @@
       107.25,
       107.25,
       116.47,
+      116.2,
       116.2
     ],
     "fut": [
@@ -1213,6 +1248,7 @@
       48.82,
       48.82,
       48.82,
+      43.39,
       43.39
     ],
     "sp": [
@@ -1253,7 +1289,8 @@
       105.75,
       105.75,
       108.47,
-      112.46
+      112.46,
+      113.42
     ]
   }
 }
