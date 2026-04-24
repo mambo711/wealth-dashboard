@@ -1,6 +1,6 @@
 {
   "meta": {
-    "subtitle": "17 Abril 2026",
+    "subtitle": "24 Abril 2026",
     "healthScore": 59,
     "healthLabel": "MODERADO",
     "healthSubScores": {
@@ -49,7 +49,7 @@
     "totalBruto": 401602,
     "retirementCore": 224703,
     "weeklyFocusDate": "Semana del 17 Abr",
-    "footerNote": "Datos: TradeStation MCP (live Apr 17) · Betterment (screenshot Apr 9 — stored) · PortfolioPilot · Xero (live YTD) · Tastytrade relay (Apr 17 14:10 PT)"
+    "footerNote": "Datos: TradeStation (live Apr 17) · Betterment (Apr 9) · Xero (live YTD) · Tastytrade relay (Apr 17) · Updated: 2026-04-24"
   },
   "accounts": [
     {
