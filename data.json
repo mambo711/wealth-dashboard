@@ -49,8 +49,8 @@
     "totalBruto": 410976,
     "retirementCore": 229681,
     "weeklyFocusDate": "Semana del 14 May",
-    "tacticalHeader": "$54,613 MV \u00b7 $34,878 equity (TS LIVE May 14)",
-    "footerNote": "Datos: TradeStation MCP LIVE May 14 \u00b7 TT relay May 13 21:58 CST \u00b7 Xero YTD live May 14 \u00b7 Betterment/Ecuador/Loans Apr 9 (stale)"
+    "tacticalHeader": "$54,613 MV · $34,878 equity (TS LIVE May 14)",
+    "footerNote": "Datos: TradeStation MCP LIVE May 14 · TT relay May 13 21:58 CST · Xero YTD live May 14 · Betterment/Ecuador/Loans Apr 9 (stale)"
   },
   "accounts": [
     {
@@ -67,7 +67,7 @@
     },
     {
       "name": "Miguel Autos",
-      "cat": "Pr\u00e9stamos",
+      "cat": "Préstamos",
       "value": 36415,
       "color": "#ec4899"
     },
@@ -103,13 +103,13 @@
     },
     {
       "name": "Pepe Loan 2",
-      "cat": "Pr\u00e9stamos",
+      "cat": "Préstamos",
       "value": 7291,
       "color": "#f9a8d4"
     },
     {
       "name": "Pepe Loan 1",
-      "cat": "Pr\u00e9stamos",
+      "cat": "Préstamos",
       "value": 6264,
       "color": "#f472b6"
     },
@@ -1397,5 +1397,5 @@
       118.79
     ]
   },
-  "lastUpdated": "2026-05-14"
+  "lastUpdated": "2026-05-15"
 }
