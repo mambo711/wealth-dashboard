@@ -1157,7 +1157,7 @@ function initFromData(d) {
 
   const dv = document.getElementById('debt-val');
   const dd = document.getElementById('debt-delta');
-  if (dv) dv.textContent = '-$' + m.debtTotal.toLocaleString();
+  if (dv) dv.textContent = '-$' + (m.debtTotal || m.deuda || 0).toLocaleString();
   if (dd) {
     dd.textContent = m.debtDelta;
     dd.className = 'delta ' + (m.debtDeltaUp ? 'up' : 'down');
@@ -1175,7 +1175,7 @@ function initFromData(d) {
   if (fi) fi.textContent = m.fiPct + '% — faltan $' + m.fiGap.toLocaleString();
 
   const fibl = document.getElementById('fi-bar-label');
-  if (fibl) fibl.textContent = 'Progreso FI (meta: $' + m.fiTarget.toLocaleString() + ')';
+  if (fibl) fibl.textContent = 'Progreso FI (meta: $' + (m.fiTarget || 500000).toLocaleString() + ')';
   const fill = document.getElementById('fi-fill-bar');
   if (fill) fill.style.width = m.fiPct + '%';
 
@@ -1736,7 +1736,7 @@ renderPerformanceCharts = function() {
 };
 
 // ═══ LOAD DATA & INIT ═══
-fetch('data.json')
+fetch('data.json?v=' + Date.now())
   .then(r => r.json())
   .then(d => initFromData(d))
   .catch(e => {
