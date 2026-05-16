@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "15 Mayo 2026",
     "weeklyFocusDate": "Semana del 15 May",
-    "nwBruto": 409059,
-    "nwBrutoDelta": "$7,457 vs mes anterior",
+    "nwBruto": 409586,
+    "nwBrutoDelta": "$7,984 vs mes anterior",
     "nwDeltaUp": true,
-    "nwNeto": 350826,
-    "nwNetoDelta": "$7,457 vs mes anterior",
+    "nwNeto": 351353,
+    "nwNetoDelta": "$7,984 vs mes anterior",
     "fiPct": 70,
-    "fiGap": 149174,
+    "fiGap": 148647,
     "fiGapAnnual": 29952,
     "fiTarget": 500000,
     "healthScore": 59,
@@ -299,7 +299,7 @@
     { "name": "TS ETF Tactical", "color": "#3b82f6", "current": 33597, "move": null, "newVal": 33597, "twr": "+26.4%", "twrUp": true },
     { "name": "TastyTrade",       "color": "#8b5cf6", "current": 17026, "move": -4000, "newVal": 13026, "twr": "-15.7%", "twrUp": false },
     { "name": "IBKR Bravo",       "color": "#10b981", "current": 6426,  "move": 2000,  "newVal": 8426,  "twr": "+13.2%", "twrUp": true },
-    { "name": "RH AP Act Managed","color": "#f59e0b", "current": 2323,  "move": 2000,  "newVal": 4323,  "twr": "+43.4%", "twrUp": true },
+    { "name": "RH AP (2 ctas)",   "color": "#f59e0b", "current": 2850,  "move": 2000,  "newVal": 4850,  "twr": "+43.4%", "twrUp": true },
     { "name": "TS Futures",       "color": "#ef4444", "current": 5247,  "move": null, "newVal": 5247,  "twr": "-58.2%", "twrUp": false }
   ],
   "rebalanceTotal": 64530,
@@ -425,7 +425,7 @@
     {"name":"Pepe Loans",            "cat":"Préstamo", "value":13555, "color":"#f472b6"},
     {"name":"IBKR Bravo",            "cat":"Trading",  "value":6174,  "color":"#06b6d4"},
     {"name":"TS Futures",            "cat":"Trading",  "value":5247,  "color":"#ef4444"},
-    {"name":"Robinhood AP",          "cat":"Trading",  "value":2323,  "color":"#f59e0b"},
+    {"name":"Robinhood AP (2 ctas)", "cat":"Trading",  "value":2850,  "color":"#f59e0b"},
     {"name":"TS Cash (SEP)",         "cat":"Cash/Fijo","value":2,     "color":"#64748b"}
   ],
 
@@ -441,7 +441,7 @@
     "Pepe Loans":          [13555,13555,13555,13555,13555,13555,13555],
     "IBKR Bravo":          [5000,5500,5800,6000,6200,6300,6174],
     "TS Futures":          [8000,6000,5500,5000,4800,5100,5247],
-    "Robinhood AP":        [1620,1645,1660,1640,1620,2100,2323],
+    "Robinhood AP (2 ctas)": [2100,2150,2200,2250,2300,2400,2850],
     "TS Cash (SEP)":       [2,2,2,2,2,2,2]
   },
 
@@ -497,7 +497,7 @@
     "tt":    [20000,20200,20400,20800,21000,21200,21500,21800,22000,21800,21600,21200,20800,20500,20200,19800,19500,19200,18900,18600,18200,18000,17600,17200,16800,16500,16200,15900,15700,16000,16300,16600,16800,17000,17100,17050,17000,16900,16950,17000,17010,17026],
     "ibkr":  [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4500,4700,4900,5100,5300,5500,5700,5900,6100,6200,6250,6300,6350,6380,6400,6420,6174],
     "tsetf": [32000,33000,34000,35000,36000,37000,38000,39000,40000,41000,42000,43000,44000,45000,46000,47000,48000,49000,50000,51000,52000,48000,46000,44000,42000,40000,38000,22000,24000,25000,26000,27000,28000,29000,30000,31000,32000,33000,33200,33400,33500,33597],
-    "rh":    [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1620,1640,1900,2323],
+    "rh":    [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2100,2200,2400,2850],
     "fut":   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5100,5247],
     "sp":    [100,99.5,100.5,101,102,103,104,105,106,107,107.5,108,108.5,109,110,111,112,113,114,115,114,113,112,111,110,109,108,107,106,105,104,103,102,101,100,101,102,103,104,105,106,107.5]
   },
