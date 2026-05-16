@@ -223,8 +223,8 @@
     </div>
     <div class="card">
       <div class="card-label">Deuda</div>
-      <div class="card-value red">-$58,233</div>
-      <div class="delta down">▲ $346 vs mes anterior</div>
+      <div class="card-value red" id="debt-val">-$73,206</div>
+      <div class="delta down" id="debt-delta">▲ $346 vs mes anterior</div>
     </div>
     <div class="card">
       <div class="card-label">NW Neto</div>
@@ -236,7 +236,7 @@
   <!-- FI Progress Bar -->
   <div class="fi-bar-container">
     <div class="fi-header">
-      <span class="label">Progreso FI (meta: $500,000)</span>
+      <span class="label" id="fi-bar-label">Progreso FI (meta: $500,000)</span>
       <span class="value" id="fi-header-text">69% — faltan $156,285</span>
     </div>
     <div class="fi-track">
@@ -273,7 +273,7 @@
         <div class="hb-item"><div class="hb-val" style="color:#f59e0b">55</div><div class="hb-lbl">Riesgo</div><div class="hb-bar"><div class="hb-fill" style="width:55%;background:#f59e0b"></div></div></div>
       </div>
       <div style="margin-top:10px;font-size:11px;color:#94a3b8;line-height:1.5">
-        <strong style="color:#f59e0b">Diagnóstico:</strong> El core de retiro (85/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con $0 de surplus genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus y atacar la LOC.
+        <strong style="color:#f59e0b">Diagnóstico:</strong> <span id="health-diagnostic"></span>
       </div>
     </div>
   </div>
@@ -292,17 +292,9 @@
 
   <!-- TAB: Resumen -->
   <div id="tab-resumen" class="tab-content active">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Iniciar pagos extra al LOC con el surplus de +$686/mes. Michalitas está casi en break-even (mayo proyecta +$121 vs PE) — no cerrar. El LOC al 8.5% es la prioridad.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>🚀 Tu patrimonio neto es <strong style="color:#10b981">$352,743</strong> — al <strong>71%</strong> de tu meta FI de $500K (+2pp vs semana pasada). NW Bruto subió +$9,317 impulsado por la SEP IRA (+$6,050 a $139,836 — nuevo ATH) y Futuros re-abiertos (+$5,442: MHGN26 Copper + M6AM26 Mexican Peso). El núcleo de retiro llegó a <strong style="color:#60a5fa">$229,681</strong> entre SEP IRA + Betterment.</li>
-        <li>💹 <strong style="color:#10b981">DEC YTD 2026 (Xero LIVE May 14):</strong> Ingresos $200,402 · COGS $119,741 · <strong style="color:#10b981">Net Income $23,703</strong> → promedio $5,267/mes (vs $1,626/mes en Apr 17 — ¡+224% en 4 semanas!). El surplus mensual ahora es <strong style="color:#10b981">+$132/mes</strong> (¡apenas positivo por primera vez!). Kevin Warsh tomó posesión como Fed Chair (May 15). Nasdaq en nuevo ATH.</li>
-        <li>📋 <strong>Opciones TT:</strong> LULU 165P/160P CERRADA (likely max profit ~+$1,000). Nuevas: UBER 77.5P/72.5P, UPS 100P/95P, PG 145P/140P Jun 18. NFLX rolada a Jun 18. NLV $16,941.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> El DEC está en recuperación real. Con surplus positivo por primera vez, ejecutar paso #2: atacar LOC agresivamente. No tocar retiro — sigue compoundando.</li>
-      </ul>
+    <div id="insight-resumen-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-resumen"></div>
+      <ul id="insight-resumen" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <!-- NW Histórico Chart -->
     <div class="panel" style="margin-bottom:16px">
@@ -313,81 +305,19 @@
     <!-- Income Streams -->
     <div class="panel" style="margin-bottom:16px">
       <h3>💰 Fuentes de Ingreso Pasivo — Estimado Mensual</h3>
-      <div class="income-grid">
-        <div class="income-card" style="border-color:#10b981"><div class="ic-label">Pepe Loans</div><div class="ic-amount" style="color:#10b981">$542</div><div class="ic-source">4%/mes × $13,555</div></div>
-        <div class="income-card" style="border-color:#3b82f6"><div class="ic-label">CDs Ecuador</div><div class="ic-amount" style="color:#3b82f6">$190</div><div class="ic-source">6.5%/año × $35,000</div></div>
-        <div class="income-card" style="border-color:#f59e0b"><div class="ic-label">Dividendos</div><div class="ic-amount" style="color:#f59e0b">$115</div><div class="ic-source">SCHD $85 + FDL $30</div></div>
-        <div class="income-card" style="border-color:#8b5cf6"><div class="ic-label">Betterment Int.</div><div class="ic-amount" style="color:#8b5cf6">$105</div><div class="ic-source">~4%/año × $31,151</div></div>
-      </div>
+      <div class="income-grid" id="income-grid"></div>
       <div style="display:flex;justify-content:space-between;margin-top:12px;padding:8px 12px;background:#10b98115;border-radius:8px;font-size:13px">
         <span style="color:#94a3b8">Total ingreso pasivo mensual:</span>
-        <span style="color:#10b981;font-weight:700">~$952/mes ($11,424/año)</span>
+        <span style="color:#10b981;font-weight:700" id="income-total-label">~$952/mes ($11,424/año)</span>
       </div>
-      <div style="font-size:11px;color:#64748b;margin-top:6px">Esto cubre el 32% de tu meta de $35K/año en lifestyle blended. Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.</div>
+      <div style="font-size:11px;color:#64748b;margin-top:6px" id="income-coverage-note">Esto cubre el 32% de tu meta de $35K/año en lifestyle blended. Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.</div>
     </div>
 
     <!-- Strategic Roadmap — solo en Resumen -->
     <div class="roadmap">
       <h3>🗺️ Hoja de Ruta Estratégica — Camino a Score 75+</h3>
-      <div class="weekly-focus">
-        <div class="wf-header">
-          <span class="wf-badge">🎯 Foco Semanal</span>
-          <span style="font-size:11px;color:#64748b;" id="weekly-focus-date">Semana del 15 May</span>
-        </div>
-        <div class="wf-title">Primer pago extra al LOC con el surplus de +$686/mes</div>
-        <div class="wf-body">Michalitas llegó a casi break-even (mayo proyecta +$121 vs PE de $4,216 — fuente: dashboard live May 15). El flujo mensual es ahora +$686/mes de surplus real. La única sangría activa es el LOC ($48,233 @ 8.5% = $341/mes en intereses). Cada $686 que apliques al principal reduce los intereses futuros y acelera el paydown.</div>
-        <div class="wf-why">⚡ Por qué importa: pagar LOC es retorno garantizado del 8.5% — mejor que cualquier CD o bono disponible ahora</div>
-      </div>
-      <div class="roadmap-timeline">
-        <div class="rm-step urgent">
-          <div class="rm-title">1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)</div>
-          <div class="rm-detail">Con surplus actual de +$686/mes aplicado íntegro: LOC liquidada en ~70 meses. Si DEC sube a $6,500/mes, se acelera a ~30 meses. Cada $10K pagado ahorra $850/año en intereses.</div>
-          <div class="rm-impact" style="color:#ef4444">Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar</div>
-          <span class="rm-timeline">Jun 2026 — 2029</span>
-        </div>
-        <div class="rm-step urgent">
-          <div class="rm-title">2. Sostener Michalitas sobre PE ($4,216/mes)</div>
-          <div class="rm-detail">Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.</div>
-          <div class="rm-impact" style="color:#ef4444">Impacto: Mantiene surplus +$686/mes · Cierre reduciría riesgo pero perdería momentum</div>
-          <span class="rm-timeline">May — Jul 2026 (decisión en Aug)</span>
-        </div>
-        <div class="rm-step high">
-          <div class="rm-title">3. Rebalancear cuentas de trading</div>
-          <div class="rm-detail">Mover $4K de TastyTrade → IBKR (+$2K) y RH (+$2K). Futures se mantiene intacto (gestión activa con tesis propia).</div>
-          <div class="rm-impact" style="color:#f59e0b">Impacto: Performance 57→65, Riesgo 53→60</div>
-          <span class="rm-timeline">May — Jun 2026</span>
-        </div>
-        <div class="rm-step high">
-          <div class="rm-title">4. Crecer DEC a $6,500+/mes</div>
-          <div class="rm-detail">DEC promedia $4,795/mes YTD. Con $6,500/mes el surplus sube a ~$2,400/mes → LOC liquidada en ~20 meses. Palancas: SEO, campañas email, leads Cloze.</div>
-          <div class="rm-impact" style="color:#f59e0b">Impacto: Acelera todo el plan FI en ~2 años</div>
-          <span class="rm-timeline">May — Dic 2026</span>
-        </div>
-        <div class="rm-step medium">
-          <div class="rm-title">5. Maximizar SEP IRA en año rentable</div>
-          <div class="rm-detail">Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.</div>
-          <div class="rm-impact" style="color:#3b82f6">Impacto: Retiro 91→95, FI Progress 71→78</div>
-          <span class="rm-timeline">Dic 2026 (tax planning)</span>
-        </div>
-        <div class="rm-step medium">
-          <div class="rm-title">6. Subir bonos de 6% a 15%</div>
-          <div class="rm-detail">Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.</div>
-          <div class="rm-impact" style="color:#3b82f6">Impacto: Diversific. 70→82, Riesgo 53→68</div>
-          <span class="rm-timeline">Q1 2027</span>
-        </div>
-        <div class="rm-step low">
-          <div class="rm-title">7. Evaluar Roth conversion en año de bajo ingreso</div>
-          <div class="rm-detail">Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.</div>
-          <div class="rm-impact" style="color:#10b981">Impacto: Optimización fiscal de largo plazo</div>
-          <span class="rm-timeline">2027+ (con CPA)</span>
-        </div>
-        <div class="rm-step low">
-          <div class="rm-title">8. Testamento + seguro de discapacidad</div>
-          <div class="rm-detail">Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.</div>
-          <div class="rm-impact" style="color:#10b981">Impacto: Protección patrimonial</div>
-          <span class="rm-timeline">2026 (urgente pero no financiero)</span>
-        </div>
-      </div>
+      <div id="weekly-focus-container"></div>
+      <div class="roadmap-timeline" id="roadmapTimeline"></div>
     </div>
 
     <div class="chart-row">
@@ -398,31 +328,16 @@
       </div>
       <div class="chart-box">
         <h3 style="font-size:16px;color:#f8fafc;margin-bottom:12px">Métricas Clave</h3>
-        <div class="metric-row"><span class="metric-label">Retiro (compounding core)</span><span class="metric-value" style="color:#60a5fa" id="metric-retirement">$224,703</span></div>
-        <div class="metric-row"><span class="metric-label">Surplus mensual</span><span class="metric-value" style="color:#ef4444">$0</span></div>
-        <div class="metric-row"><span class="metric-label">Interés LOC / mes</span><span class="metric-value" style="color:#ef4444">-$340</span></div>
-        <div class="metric-row"><span class="metric-label">Michalitas / mes</span><span class="metric-value" style="color:#f59e0b">-$1,525</span></div>
-        <div class="metric-row"><span class="metric-label">SS estimado @ 67</span><span class="metric-value" style="color:#10b981">$2,000/mo</span></div>
-        <div class="metric-row"><span class="metric-label">Gap FI (5 años)</span><span class="metric-value" style="color:#f59e0b">$156,285</span></div>
-        <div class="metric-row"><span class="metric-label">Bonos (% total)</span><span class="metric-value" style="color:#ef4444">6%</span></div>
-        <div class="metric-row"><span class="metric-label">Cash (% total)</span><span class="metric-value" style="color:#10b981">19%</span></div>
+        <div id="metrics-resumen"></div>
       </div>
     </div>
   </div>
 
   <!-- TAB: Cuentas -->
   <div id="tab-cuentas" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Ejecutar rebalanceo: retirar $4,000 de TastyTrade → depositar $2,000 en IBKR Bravo + $2,000 en RH AP Act Managed.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Tienes 13 cuentas activas distribuidas entre retiro, trading, cash, préstamos y deuda. La SEP IRA ($130K) es tu cuenta más grande y representa el 33% del portafolio — correctamente posicionada en fondos índice de bajo costo (VOO/SCHD/AVDV).</li>
-        <li>• El problema visible es la fragmentación: 5 cuentas de trading con un total de ~$62K repartidos de forma subóptima. Las dos cuentas con mejor rendimiento (IBKR y RH) son las más pequeñas.</li>
-        <li>• Los préstamos privados (Miguel Autos $36K + Pepe $13.5K) son el 12.5% del portafolio — ilíquidos y con riesgo de contraparte, aunque Pepe es consistente al 4%/mes.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Consolida las cuentas de trading — cierra Futures ($4,500) y redistribuye entre IBKR y TS ETF Tactical que tienen mejor track record.</li>
-      </ul>
+    <div id="insight-cuentas-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-cuentas"></div>
+      <ul id="insight-cuentas" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
       <h3>Todas las Cuentas</h3>
@@ -436,17 +351,9 @@
 
   <!-- TAB: Allocation -->
   <div id="tab-allocation" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#f59e0b18;border-left:3px solid #f59e0b;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Verificar que el préstamo Miguel Autos ($36,415) tiene contrato escrito vigente — es el 9% del portafolio total y el mayor riesgo de concentración ilíquida.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Tu allocation actual es 62% equity, 19% cash, 14% préstamos privados y solo 6% bonos. Para alguien a 5 años de FI, los bonos deberían ser 15-20% para reducir volatilidad cuando empieces a retirar.</li>
-        <li>• La exposición a US Large Cap (VOO+SCHD = 53% del equity) es alta pero razonable para un portafolio growth. Internacional (AVDV) solo es 13% — bajo considerando que planeas retirarte en Ecuador/España.</li>
-        <li>• Los préstamos privados al 14% son un riesgo de concentración: si Miguel deja de pagar, pierdes $36K de un golpe. Pepe es más seguro (4%/mes con contrato) pero ilíquido.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> En el próximo año, sube bonos al 12-15% redirigiendo $20K de cash reserve hacia BND o similar cuando la LOC esté pagada. Aumenta internacional a 18% gradualmente.</li>
-      </ul>
+    <div id="insight-allocation-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-allocation"></div>
+      <ul id="insight-allocation" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
       <h3>Allocation del Portafolio Completo</h3>
@@ -463,70 +370,33 @@
 
   <!-- TAB: Deuda -->
   <div id="tab-deuda" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Hacer el primer pago extra al LOC con el surplus de +$686/mes. Michalitas ya casi break-even — el LOC al 8.5% es ahora la mayor sangría financiera.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Tu deuda total es <strong style="color:#ef4444">$73,206</strong> (Xero LIVE) — el ancla más pesada de tu portafolio. La LOC de Wells Fargo (<strong>$48,233 al 8.5%</strong>) te cuesta $341/mes solo en intereses. Hace un año esta deuda era $10K — creció rápido y ahora supera los $48K.</li>
-        <li>• Las tarjetas ($15,920 combinadas) incluyen PP Credit ($7,391), Chase Ink ($5,384), Chase Biz Unlimited ($2,700), AMEX Gold ($418) y WF CC/AMEX Blue ($27). El car loan ($10K al 6.5%) sigue en schedule. ⚠️ Flujo actual en déficit (-$341/mes) — cerrar Michalitas es el paso #1.</li>
-        <li>• Cada $10K que pagues de la LOC te ahorra $850/año en intereses — retorno garantizado del 8.5%, mejor que cualquier inversión de renta fija.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Primero cerrar Michalitas para liberar +$1,525/mes → surplus → atacar LOC. Meta: $0 en LOC para 2027-2028 dependiendo de velocidad de surplus.</li>
-      </ul>
+    <div id="insight-deuda-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-deuda"></div>
+      <ul id="insight-deuda" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="debt-cards">
-      <div class="debt-card high">
-        <div class="debt-name">Wells Fargo LOC</div>
-        <div class="debt-value">$48,233</div>
-        <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">8.5%</span></div>
-        <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$341</span></div>
-        <div class="debt-detail"><span class="dl">Xero LIVE</span><span class="dv">May 15, 2026</span></div>
-      </div>
-      <div class="debt-card med">
-        <div class="debt-name">Car Loan</div>
-        <div class="debt-value" style="color:#f59e0b">$10,000</div>
-        <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">6.5%</span></div>
-        <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$54</span></div>
-        <div class="debt-detail"><span class="dl">Status</span><span class="dv">En schedule</span></div>
-      </div>
-    </div>
+    <div class="debt-cards" id="debt-cards-container"></div>
     <div class="panel">
       <h3>Tarjetas de Crédito (Xero)</h3>
       <table>
         <thead><tr><th>Tarjeta</th><th class="right">Saldo</th></tr></thead>
-        <tbody>
-          <tr><td>PP Credit</td><td class="right bold">$7,391</td></tr>
-          <tr><td>Chase Ink Business</td><td class="right bold">$5,384</td></tr>
-          <tr><td>Chase Biz Unlimited</td><td class="right bold">$2,700</td></tr>
-          <tr><td>AMEX Gold</td><td class="right bold">$418</td></tr>
-          <tr><td>WF CC / AMEX Blue</td><td class="right bold">$27</td></tr>
-        </tbody>
-        <tfoot><tr><td style="color:#ef4444">DEUDA TOTAL (Xero LIVE May 15)</td><td class="right" style="color:#ef4444;font-size:16px">$73,206</td></tr></tfoot>
+        <tbody id="credit-cards-body"></tbody>
+        <tfoot><tr><td id="debt-total-label" style="color:#ef4444">DEUDA TOTAL (Xero LIVE May 15)</td><td class="right" style="color:#ef4444;font-size:16px" id="debt-total-val">$73,206</td></tr></tfoot>
       </table>
     </div>
   </div>
 
   <!-- TAB: FI Path -->
   <div id="tab-fi" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#f59e0b18;border-left:3px solid #f59e0b;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Aplicar el surplus de +$686/mes íntegro al LOC. Con Michalitas ya en break-even (mayo +$121 proyectado), el LOC es el único obstáculo real entre tú y el FI a los 58.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Necesitas <strong style="color:#f59e0b">$144,679</strong> adicionales en 5 años para alcanzar $500K de NW neto — eso es $28,936/año o $2,411/mes. NW Neto actual: $355,321. DEC promedia $4,795/mes YTD — flujo en déficit temporalmente (-$341/mes).</li>
-        <li>📊 Retiro core ($232,374 — SEP IRA + Roth + Trad): base sólida en construcción. Betterment ahora con datos LIVE (Roth $65,018 + Trad $28,631). FI al 71%.</li>
-        <li>• Social Security a los 67 ($2,000/mo) reduce tu necesidad de retiro en $275K en perpetuidad — eso significa que tu meta real post-SS es mucho más alcanzable.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Las 3 palancas clave: (1) Resolver Michalitas → libera +$1,525/mes, (2) atacar LOC cuando surplus sea positivo, (3) maximizar SEP IRA si DEC mantiene $50K+ anual. FI a los 57-58 sigue siendo realista.</li>
-      </ul>
+    <div id="insight-fi-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-fi"></div>
+      <ul id="insight-fi" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
       <h3>Camino a Independencia Financiera</h3>
       <div class="fi-cards">
-        <div class="fi-card"><div class="fc-label">Meta FI @ 58</div><div class="fc-value" style="color:#60a5fa">$500,000</div></div>
-        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b" id="fi-gap-card">$156,285</div></div>
-        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">$31,257</div></div>
+        <div class="fi-card"><div class="fc-label">Meta FI @ 58</div><div class="fc-value" style="color:#60a5fa" id="fi-target-card">$500,000</div></div>
+        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b" id="fi-gap-card">$149,758</div></div>
+        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">$29,952</div></div>
       </div>
       <canvas id="lineChart" style="max-height:300px"></canvas>
       <div class="supuestos">
@@ -542,17 +412,9 @@
 
   <!-- TAB: Posiciones -->
   <div id="tab-posiciones" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">No abrir posiciones nuevas en el Tactical ETF — margen en $30,990 (demasiado expandido). Esperar que baje a &lt;$20K antes de cualquier entrada nueva.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• La SEP IRA ($138,725) está bien construida: VOO (61%), SCHD (24%), AVDV (14%) — core diversificado de bajo costo. Leve corrección May 15 (-$554 vs May 14, VOO -0.74%).</li>
-        <li>• El Tactical ETF tiene MV $64,588 con equity $33,597 — margen expandido a $30,990 esta semana con nuevas posiciones (BAI, HAL, VWO, UFO). ⚠️ XLP es ahora el 18.9% del MV total — concentración en consumer staples. Total: 23 posiciones. En Futuros: MNGM26 (Micro Nat Gas Jun 26 × 5 long) + MYMM26 (Micro Dow Jun 26 × 1 short); equity $5,247.</li>
-        <li>• En Tastytrade (7 posiciones): NVTS P21/18 (nuevo), UBER/UPS/NFLX/PG spreads Jun 18 (DTE 34), + TSM call LEAPS (DTE 245) + HIMS put LEAPS (DTE 616). Todas las OCO configuradas correctamente.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Monitorear XLP concentración (18.9% de tactical). ⚠️ Margen expandido — no abrir nuevas posiciones hasta que baje. OCO activos en todas las opciones. SEP IRA — no tocar.</li>
-      </ul>
+    <div id="insight-posiciones-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-posiciones"></div>
+      <ul id="insight-posiciones" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
       <h3>SEP IRA — <span id="sep-ira-header">$133,518</span></h3>
@@ -597,21 +459,13 @@
       <div class="card" style="border-top:3px solid #f59e0b"><div class="card-label">TWR 3M</div><div class="card-value" style="font-size:24px;color:#f59e0b">+0.6%</div><div style="font-size:11px;color:#64748b">Feb 26 → May 26</div></div>
     </div>
 
-    <div style="margin-bottom:16px;padding:10px 14px;background:#10b98115;border:1px solid #10b98140;border-radius:8px;font-size:12px;color:#94a3b8">
-      <strong style="color:#10b981">TWR vs Raw:</strong> Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversión es <strong style="color:#10b981">+10.4%</strong>.
-      La diferencia se debe a 3 flujos externos neutralizados: préstamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26).
+    <div id="twr-note-banner" style="margin-bottom:16px;padding:10px 14px;background:#10b98115;border:1px solid #10b98140;border-radius:8px;font-size:12px;color:#94a3b8">
+      <strong style="color:#10b981">TWR vs Raw:</strong> <span id="twr-note-text"></span>
     </div>
 
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Ejecutar rebalanceo: retirar $4,000 de TastyTrade → $2,000 a IBKR + $2,000 a RH. Es el movimiento de mayor impacto ajustado por riesgo disponible ahora mismo.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Tu portafolio ha rendido <strong style="color:#10b981">+11.3% real (TWR)</strong> en 23 meses (~5.9% anualizado). El S&P 500 rindió <strong style="color:#f59e0b">+30.0%</strong> en el mismo período — la brecha de 18.7pp se explica porque tu portafolio tiene 38% en activos no-equity (CDs, cash, préstamos) que no siguen al mercado.</li>
-        <li>• El pico TWR fue Oct 2025 (114.25) impulsado por crypto y stocks. Los últimos 6M (-1.5%) reflejan la corrección, no deterioro estructural. La línea gris (-0.6%) incluye $50K en flujos externos.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> El gap vs S&P es esperado por tu allocation defensiva. Para cerrar la brecha, sube equity de 62% a 70% gradualmente cuando la LOC esté pagada.</li>
-      </ul>
+    <div id="insight-performance-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <div id="action-performance"></div>
+      <ul id="insight-performance" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>Patrimonio Total — TWR vs Raw (22 Meses)</h3>
@@ -695,12 +549,7 @@
     </div>
 
     <!-- TWR Performance Table -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Solo 2 de 5 cuentas superan al S&P 500 en 6M: RH AP Act Managed (+16.2%) e IBKR Bravo (+5.5%). TS ETF Tactical tiene el mejor TWR total (+26.4%) pero cae -2.6% en 6M.</li>
-        <li>• TastyTrade (opciones: -15.7%, mejorando en 3M) y Futures (-58.2%) siguen por debajo del benchmark. Las cuentas simples y pequeñas rinden mejor que las activas y complejas.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Redistribuir $4,000 de TastyTrade hacia IBKR (+$2K) y RH (+$2K) — las dos cuentas con mejor edge ajustado por riesgo. Ver tabla de rebalanceo abajo.</li>
-      </ul>
+    <div id="insight-twr-table-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>Performance Real por Cuenta — Time-Weighted Return (TWR)</h3>
@@ -786,65 +635,35 @@
     <!-- Individual Trading Account Charts — ORDERED BY TWR (best → worst) -->
 
     <!-- #1: TS ETF Tactical +19.6% -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• <strong style="color:#3b82f6">#1 en TWR total.</strong> Tu cuenta más grande y rentable: +19.6% en 37 semanas (~27% anualizado), superando al S&P por 11pp. El pico fue $52K en Ene 2026 antes de corregir.</li>
-        <li>• Los últimos 6M (-4.2%) reflejan la volatilidad por aranceles, no fallo de estrategia. El retiro de $14K en Feb distorsionaba el raw a -31%.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Mantener estrategia momentum/rotación. Implementar stop-losses más estrictos para proteger ganancias en correcciones.</li>
-      </ul>
-    </div>
+    <div id="insight-acct-0" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>🔵 #1 TS ETF Tactical — Margin ($33,597) · TWR: +26.4%</h3>
       <canvas id="chartTSETF" style="max-height:200px"></canvas>
     </div>
 
     <!-- #2: RH Autopilot +16.5% -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• <strong style="color:#f59e0b">#2 en TWR total y #1 en 6M.</strong> Solo $2,234 pero +16.2% en 6M — la estrategia funciona. Si tuviera el capital de TS ETF ($33.6K), habría generado ~$5,400 en ganancias.</li>
-        <li>• El problema es que con &lt;1% del portafolio, el impacto es casi invisible. Subida consistente desde Ene 2026 sin volatilidad extrema. También existe una cuenta RH AP Photonic ($528) en etapa inicial.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Plan inmediato: +$2,000 desde TastyTrade → $4,234. Objetivo 6M: escalar a $6,000-$8,000 con próximos excedentes de cash flow para capitalizar el edge demostrado.</li>
-      </ul>
-    </div>
+    <div id="insight-acct-1" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>🟡 #2 RH AP Act Managed ($2,234) · TWR: +16.2%</h3>
       <canvas id="chartRH" style="max-height:200px"></canvas>
     </div>
 
     <!-- #3: IBKR Bravo +13.6% -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• <strong style="color:#10b981">#3 en TWR total.</strong> +13.2% (~18% anualizado), superando al S&P por 5pp. Es tu cuenta con mejor rendimiento ajustado por riesgo — subida gradual con la menor volatilidad de todas.</li>
-        <li>• Incluso en el pullback de Mar 2026, la caída fue moderada. Tu selección de stocks individuales funciona bien aquí.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Plan inmediato: +$2,000 desde TastyTrade → $8,426. Objetivo 6-12M: escalar a $12,000-$15,000 con excedentes de cash flow.</li>
-      </ul>
-    </div>
+    <div id="insight-acct-2" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>🟢 #3 IBKR Bravo — Stocks ($6,426) · TWR: +13.2%</h3>
       <canvas id="chartIBKR" style="max-height:200px"></canvas>
     </div>
 
     <!-- #4: TastyTrade -17.4% -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• <strong style="color:#ef4444">#4 — Perdiendo pero mejorando.</strong> -15.7% TWR desde inicio, aunque el 3M reciente (+5.9%) sugiere cambio de tendencia con la estrategia de bear puts. Pico en Nov 2025 ($22K) → caída sostenida, NLV actual $17,026.</li>
-        <li>• Opciones requieren disciplina en sizing y gestión de riesgo — los spreads de 5 puntos muestran mejor control de pérdida máxima.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Reducir $4,000 ahora → $13,026 (capital suficiente para spreads y LEAPS). Evaluar en 3M: si el 3M TWR se mantiene positivo (+5%+), considerar escalar de nuevo. Si regresa negativo, reducir a $10K.</li>
-      </ul>
-    </div>
+    <div id="insight-acct-3" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>🟣 #4 TastyTrade — Opciones ($17,026) · TWR: -15.7%</h3>
       <canvas id="chartTT" style="max-height:200px"></canvas>
     </div>
 
     <!-- #5: TS Futures -51.2% -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• <strong style="color:#ef4444">#5 — La peor cuenta en TWR.</strong> -58.2% TWR, más de la mitad del capital destruido históricamente. 8+ eventos de depósito/retiro detectados — patrón de meter dinero, perder, sacar, repetir.</li>
-        <li>• Posiciones activas: MNGM26 (Micro Nat Gas Jun 26 × 5 long) + MYMM26 (Micro Dow Jun 26 × 1 short). Equity actual $5,247.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Esta cuenta se gestiona activamente con tesis específicas — no entra en el plan de rebalanceo. Mantener capital actual ($5,247) para oportunidades de futuros en curso. No añadir capital nuevo hasta ver TWR estabilizarse.</li>
-      </ul>
-    </div>
+    <div id="insight-acct-4" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <h3>🔴 #5 TS Futures ($5,247) · TWR: -58.2%</h3>
       <canvas id="chartFUT" style="max-height:200px"></canvas>
@@ -864,27 +683,15 @@
     </div>
 
     <!-- Raw Value Total + Reallocation Suggestion -->
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• Capital de trading combinado: ~$64.5K. Pico $90K en Oct 2025, caída incluye retiros ($14K del ETF Tactical en Feb). TS ETF domina con 52% ($33.6K), TastyTrade 26% ($17K). Futuros activos ($5.2K) — gestión activa, no se tocan.</li>
-        <li><strong style="color:#f59e0b">Plan de rebalanceo sugerido (mover $4,000 de TastyTrade):</strong></li>
-      </ul>
+    <div id="rebalance-intro-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <table style="margin-bottom:16px">
+      <table id="rebalance-table" style="margin-bottom:16px">
         <thead><tr><th>Cuenta</th><th class="right">Actual</th><th class="right">Mover</th><th class="right">Nuevo</th><th class="right">TWR</th></tr></thead>
-        <tbody>
-          <tr><td><span class="dot" style="background:#3b82f6"></span>TS ETF Tactical</td><td class="right">$33,597</td><td class="right" style="color:#94a3b8">—</td><td class="right bold">$33,597</td><td class="right green">+26.4%</td></tr>
-          <tr><td><span class="dot" style="background:#8b5cf6"></span>TastyTrade</td><td class="right">$17,026</td><td class="right red">-$4,000</td><td class="right bold">$13,026</td><td class="right red">-15.7%</td></tr>
-          <tr><td><span class="dot" style="background:#10b981"></span>IBKR Bravo</td><td class="right">$6,426</td><td class="right green">+$2,000</td><td class="right bold">$8,426</td><td class="right green">+13.2%</td></tr>
-          <tr><td><span class="dot" style="background:#f59e0b"></span>RH AP Act Managed</td><td class="right">$2,234</td><td class="right green">+$2,000</td><td class="right bold">$4,234</td><td class="right green">+16.2%</td></tr>
-          <tr><td><span class="dot" style="background:#ef4444"></span>TS Futures</td><td class="right">$5,247</td><td class="right" style="color:#94a3b8">—</td><td class="right bold">$5,247</td><td class="right red">-58.2%</td></tr>
-        </tbody>
-        <tfoot><tr><td>TOTAL</td><td class="right">$64,530</td><td class="right" style="color:#94a3b8">$0 neto</td><td class="right" style="color:#60a5fa">$64,530</td><td></td></tr></tfoot>
+        <tbody id="rebalance-body"></tbody>
+        <tfoot id="rebalance-foot"></tfoot>
       </table>
-      <div style="font-size:12px;color:#94a3b8;line-height:1.6">
-        Impacto proyectado: reducir TastyTrade en $4K (a $13K — sigue siendo capital suficiente para spreads de opciones) y redistribuir hacia IBKR y RH donde el TWR demuestra mejor edge. Futuros se mantienen intactos — capital activo gestionado por Alberto. Si el TWR de cada cuenta continúa, el nuevo allocation generaría ~$800 adicionales en 6M sin aportar capital nuevo.
-      </div>
+      <div id="rebalance-note" style="font-size:12px;color:#94a3b8;line-height:1.6"></div>
       <h3 style="margin-top:16px">📈 Valor Total — Todas las Cuentas de Trading Combinadas</h3>
       <canvas id="chartTradingTotal" style="max-height:240px"></canvas>
     </div>
@@ -893,18 +700,9 @@
 
   <!-- TAB: Flujo de Caja -->
   <div id="tab-flujo" class="tab-content">
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
-      <div style="background:#ef444418;border-left:3px solid #ef4444;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-        <div style="font-size:10px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
-        <div style="font-size:13px;font-weight:600;color:#f8fafc">Redirigir el surplus de +$686/mes directamente al LOC ($48,233 @ 8.5%). Michalitas ya casi break-even — no cerrar. Cada mes de pago al LOC = $341 de intereses menos.</div>
-      </div>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>✅ <strong style="color:#10b981">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 15). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style="color:#10b981">+$686/mes</strong>.</li>
-        <li>📈 <strong>Michalitas mejorando dramáticamente:</strong> Abril cerró en $3,717 (déficit -$499 vs PE de $4,216). Mayo proyecta $4,337 → <strong style="color:#10b981">+$121 sobre PE</strong> — casi break-even por primera vez.</li>
-        <li>• Si mayo cierra sobre PE, el surplus mensual sube a ~+$1,185/mes → LOC pagada en ~41 meses sin cambiar nada más.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Mantener Michalitas — está en tendencia positiva clara. Redirigir el surplus de $686/mes directamente al LOC.</li>
-        <li><strong style="color:#60a5fa">💰 Fondo de Emergencia:</strong> $31,151 en Betterment — equivale a ~6 meses de gastos. Este fondo <strong>NO está disponible para inversiones ni deuda</strong> — es el colchón de seguridad mínimo. Mantenerlo intacto es no negociable para la estabilidad del plan de FI.</li>
-      </ul>
+    <div id="insight-flujo-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-flujo"></div>
+      <ul id="insight-flujo" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
       <h3>💧 Waterfall — Flujo de Caja Mensual Estimado</h3>
@@ -912,16 +710,9 @@
       <div style="margin-top:16px">
         <table>
           <thead><tr><th>Concepto</th><th class="right">Monto</th><th class="right">Tipo</th><th>Notas</th></tr></thead>
-          <tbody>
-            <tr><td style="color:#10b981;font-weight:600">Ingreso DEC (Net)</td><td class="right green">+$4,795</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Entrada</span></td><td style="color:#94a3b8;font-size:11px">Net Income promedio YTD May 15 (Xero LIVE $21,576 ÷ 4.5m)</td></tr>
-            <tr><td style="color:#10b981;font-weight:600">Ingreso pasivo</td><td class="right green">+$952</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Entrada</span></td><td style="color:#94a3b8;font-size:11px">Pepe + CDs + dividendos + Betterment</td></tr>
-            <tr><td>Gastos de vida (US)</td><td class="right red">-$4,167</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Fijo</span></td><td style="color:#94a3b8;font-size:11px">$50K/año baseline</td></tr>
-            <tr><td>Michalitas Xpress</td><td class="right" style="color:#f59e0b;font-weight:600">-$499</td><td class="right"><span class="badge" style="background:#f59e0b30;color:#f59e0b">Mejorando</span></td><td style="color:#94a3b8;font-size:11px">Abr: -$499 vs PE · May: +$121 proyectado (casi break-even)</td></tr>
-            <tr><td>Intereses LOC</td><td class="right red">-$341</td><td class="right"><span class="badge" style="background:#ef444430;color:#ef4444">Deuda</span></td><td style="color:#94a3b8;font-size:11px">8.5% × $48,233 ÷ 12</td></tr>
-            <tr><td>Intereses Car Loan</td><td class="right red">-$54</td><td class="right"><span class="badge" style="background:#f59e0b30;color:#f59e0b">Deuda</span></td><td style="color:#94a3b8;font-size:11px">6.5% × $10K ÷ 12</td></tr>
-          </tbody>
+          <tbody id="waterfall-table-body"></tbody>
           <tfoot>
-            <tr><td style="color:#f59e0b;font-weight:700">SURPLUS DISPONIBLE</td><td class="right" style="color:#10b981;font-size:18px;font-weight:700">+$686</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Surplus</span></td><td style="color:#94a3b8;font-size:11px">Redirigir 100% al LOC cada mes</td></tr>
+            <tr><td style="color:#f59e0b;font-weight:700">SURPLUS DISPONIBLE</td><td class="right" id="surplus-cell" style="font-size:18px;font-weight:700">+$686</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Surplus</span></td><td style="color:#94a3b8;font-size:11px">Redirigir 100% al LOC cada mes</td></tr>
           </tfoot>
         </table>
       </div>
@@ -1008,6 +799,174 @@ let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterf
 let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
 let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkFUT, wkSP;
 let twrTT, twrIBKR, twrTSETF, twrRH, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
+let dashRoadmap, dashActions, dashInsights, dashDebt, dashIncomeStreams, dashRebalance;
+let dashPieCategories, dashAllocationBar, dashWaterfallTable;
+
+// ═══ Action Banner renderer ═══
+function renderActionBanner(containerId, actionData) {
+  const el = document.getElementById(containerId);
+  if (!el || !actionData) return;
+  const bc = actionData.color || '#ef4444';
+  const bg = bc.replace('#', '') + '18';
+  el.innerHTML = `<div style="background:#${bg};border-left:3px solid ${bc};border-radius:6px;padding:10px 12px;margin-bottom:10px">
+    <div style="font-size:10px;font-weight:700;color:${bc};text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
+    <div style="font-size:13px;font-weight:600;color:#f8fafc">${actionData.text}</div>
+  </div>`;
+}
+
+// ═══ Insight bullets renderer ═══
+function renderInsightList(listId, items) {
+  const el = document.getElementById(listId);
+  if (!el || !items) return;
+  el.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+}
+
+// ═══ Roadmap renderer ═══
+function renderRoadmap(d) {
+  const wfc = document.getElementById('weekly-focus-container');
+  if (wfc && d.weeklyFocus) {
+    const wf = d.weeklyFocus;
+    const wfd = dashMeta ? dashMeta.weeklyFocusDate : '';
+    wfc.innerHTML = `<div class="weekly-focus">
+      <div class="wf-header">
+        <span class="wf-badge">🎯 Foco Semanal</span>
+        <span style="font-size:11px;color:#64748b;">${wfd}</span>
+      </div>
+      <div class="wf-title">${wf.title}</div>
+      <div class="wf-body">${wf.body}</div>
+      <div class="wf-why">${wf.why}</div>
+    </div>`;
+  }
+  const tl = document.getElementById('roadmapTimeline');
+  if (tl && d.steps) {
+    tl.innerHTML = d.steps.map(s => `<div class="rm-step ${s.urgency}">
+      <div class="rm-title">${s.title}</div>
+      <div class="rm-detail">${s.detail}</div>
+      <div class="rm-impact" style="color:${s.impactColor}">${s.impact}</div>
+      <span class="rm-timeline">${s.timeline}</span>
+    </div>`).join('');
+  }
+}
+
+// ═══ Income streams renderer ═══
+function renderIncomeStreams(streams, total, annual, coverage, ssNote) {
+  const grid = document.getElementById('income-grid');
+  if (grid && streams) {
+    grid.innerHTML = streams.map(s => `<div class="income-card" style="border-color:${s.color}">
+      <div class="ic-label">${s.label}</div>
+      <div class="ic-amount" style="color:${s.color}">$${s.amount.toLocaleString()}</div>
+      <div class="ic-source">${s.source}</div>
+    </div>`).join('');
+  }
+  const tl = document.getElementById('income-total-label');
+  if (tl) tl.textContent = `~$${total.toLocaleString()}/mes ($${annual.toLocaleString()}/año)`;
+  const cn = document.getElementById('income-coverage-note');
+  if (cn) cn.textContent = `Esto cubre el ${coverage}% de tu meta de $35K/año en lifestyle blended. ${ssNote}`;
+}
+
+// ═══ Debt cards renderer ═══
+function renderDebtCards(debt) {
+  const container = document.getElementById('debt-cards-container');
+  if (!container || !debt) return;
+  const p = debt.primary, s = debt.secondary;
+  container.innerHTML = `
+    <div class="debt-card ${p.severity}">
+      <div class="debt-name">${p.name}</div>
+      <div class="debt-value">$${p.value.toLocaleString()}</div>
+      <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">${p.rate}</span></div>
+      <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$${p.interestMonthly.toLocaleString()}</span></div>
+      <div class="debt-detail"><span class="dl">${p.status}</span><span class="dv">${p.statusDate}</span></div>
+    </div>
+    <div class="debt-card ${s.severity}">
+      <div class="debt-name">${s.name}</div>
+      <div class="debt-value" style="color:${s.valueColor || '#ef4444'}">$${s.value.toLocaleString()}</div>
+      <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">${s.rate}</span></div>
+      <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$${s.interestMonthly.toLocaleString()}</span></div>
+      <div class="debt-detail"><span class="dl">Status</span><span class="dv">${s.status}</span></div>
+    </div>`;
+  // Credit cards table
+  const tbody = document.getElementById('credit-cards-body');
+  if (tbody && debt.creditCards) {
+    tbody.innerHTML = debt.creditCards.map(c => `<tr><td>${c.name}</td><td class="right bold">$${c.balance.toLocaleString()}</td></tr>`).join('');
+  }
+  const dtv = document.getElementById('debt-total-val');
+  if (dtv) dtv.textContent = '$' + debt.totalDebt.toLocaleString();
+  const dtl = document.getElementById('debt-total-label');
+  if (dtl) dtl.textContent = 'DEUDA TOTAL (' + debt.totalDebtDate + ')';
+}
+
+// ═══ Metrics Resumen renderer ═══
+function renderMetricsResumen(metrics, meta) {
+  const el = document.getElementById('metrics-resumen');
+  if (!el || !metrics) return;
+  el.innerHTML = metrics.map(m => {
+    let val = m.value;
+    if (m.valueId === 'metric-retirement') val = '$' + (meta ? meta.retirementCore.toLocaleString() : '—');
+    else if (m.valueId === 'metric-gap') val = '$' + (meta ? meta.fiGap.toLocaleString() : '—');
+    return `<div class="metric-row"><span class="metric-label">${m.label}</span><span class="metric-value" style="color:${m.color}">${val}</span></div>`;
+  }).join('');
+}
+
+// ═══ Waterfall table renderer ═══
+function renderWaterfallTable(rows, surplus) {
+  const tbody = document.getElementById('waterfall-table-body');
+  if (!tbody || !rows) return;
+  tbody.innerHTML = rows.map(r => {
+    const amtStyle = r.sign === '+' ? 'class="right green"' : (r.labelColor ? `class="right" style="color:${r.labelColor};font-weight:600"` : 'class="right red"');
+    const labelStyle = r.labelColor ? `style="color:${r.labelColor};font-weight:600"` : '';
+    const badgeBg = r.typeColor.replace('#','') + '30';
+    return `<tr>
+      <td ${labelStyle}>${r.label}</td>
+      <td ${amtStyle}>${r.sign}$${r.amount.toLocaleString()}</td>
+      <td class="right"><span class="badge" style="background:#${badgeBg};color:${r.typeColor}">${r.type}</span></td>
+      <td style="color:#94a3b8;font-size:11px">${r.note}</td>
+    </tr>`;
+  }).join('');
+  const sc = document.getElementById('surplus-cell');
+  if (sc && surplus !== undefined) {
+    const sign = surplus >= 0 ? '+' : '';
+    sc.textContent = sign + '$' + Math.abs(surplus).toLocaleString();
+    sc.style.color = surplus >= 0 ? '#10b981' : '#ef4444';
+  }
+}
+
+// ═══ Rebalance table renderer ═══
+function renderRebalanceTable(rows, total, note) {
+  const tbody = document.getElementById('rebalance-body');
+  if (!tbody || !rows) return;
+  tbody.innerHTML = rows.map(r => {
+    const moveCell = r.move === null
+      ? `<td class="right" style="color:#94a3b8">—</td>`
+      : `<td class="right ${r.move > 0 ? 'green' : 'red'}">${r.move > 0 ? '+' : ''}$${Math.abs(r.move).toLocaleString()}</td>`;
+    const twrClass = r.twrUp ? 'green' : 'red';
+    return `<tr>
+      <td><span class="dot" style="background:${r.color}"></span>${r.name}</td>
+      <td class="right">$${r.current.toLocaleString()}</td>
+      ${moveCell}
+      <td class="right bold">$${r.newVal.toLocaleString()}</td>
+      <td class="right ${twrClass}">${r.twr}</td>
+    </tr>`;
+  }).join('');
+  const tfoot = document.getElementById('rebalance-foot');
+  if (tfoot && total) {
+    tfoot.innerHTML = `<tr><td>TOTAL</td><td class="right">$${total.toLocaleString()}</td><td class="right" style="color:#94a3b8">$0 neto</td><td class="right" style="color:#60a5fa">$${total.toLocaleString()}</td><td></td></tr>`;
+  }
+  const noteEl = document.getElementById('rebalance-note');
+  if (noteEl && note) noteEl.textContent = note;
+}
+
+// ═══ Account insight panels renderer ═══
+function renderAccountInsights(accountsInsights) {
+  if (!accountsInsights) return;
+  accountsInsights.forEach((acct, i) => {
+    const el = document.getElementById('insight-acct-' + i);
+    if (!el) return;
+    el.innerHTML = `<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+      <li>• <strong style="color:${acct.rankColor}">${acct.rank}</strong> ${acct.text}</li>
+      <li><strong style="color:#f59e0b">🎯 Rec:</strong> ${acct.rec}</li>
+    </ul>`;
+  });
+}
 
 // ═══ Helpers ═══
 const fmt = n => '$' + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits: 0});
@@ -1133,15 +1092,24 @@ function populateHealthBreakdown() {
 
 // ═══ initFromData: called after JSON loaded ═══
 function initFromData(d) {
-  dashMeta   = d.meta;
-  accounts   = d.accounts;
-  tactical   = d.tactical;
-  sparkData  = d.sparkData;
-  totalBruto = d.meta.totalBruto;
-  sepIRA     = d.sepIRA;
-  options    = d.options;
-  waterfall  = d.waterfall;
-  performance = d.performance;
+  dashMeta         = d.meta;
+  accounts         = d.accounts;
+  tactical         = d.tactical;
+  sparkData        = d.sparkData;
+  totalBruto       = d.meta.totalBruto;
+  sepIRA           = d.sepIRA;
+  options          = d.options;
+  waterfall        = d.waterfall;
+  performance      = d.performance;
+  dashRoadmap      = d.roadmap;
+  dashActions      = d.actions;
+  dashInsights     = d.insights;
+  dashDebt         = d.debt;
+  dashIncomeStreams = d.incomeStreams;
+  dashRebalance    = d.rebalance;
+  dashPieCategories  = d.pieCategories;
+  dashAllocationBar  = d.allocationBar;
+  dashWaterfallTable = d.waterfallTable;
 
   // Monthly arrays
   fmMonths    = d.monthly.months;
@@ -1183,20 +1151,31 @@ function initFromData(d) {
   const bd = document.getElementById('nw-bruto-delta');
   if (bv) bv.textContent = fmt(m.nwBruto);
   if (bd) {
-    bd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwBrutoDelta + ' vs mes anterior';
+    bd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwBrutoDelta;
     bd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
+  }
+
+  const dv = document.getElementById('debt-val');
+  const dd = document.getElementById('debt-delta');
+  if (dv) dv.textContent = '-$' + m.debtTotal.toLocaleString();
+  if (dd) {
+    dd.textContent = m.debtDelta;
+    dd.className = 'delta ' + (m.debtDeltaUp ? 'up' : 'down');
   }
 
   const nv = document.getElementById('nw-neto-val');
   const nd = document.getElementById('nw-neto-delta');
   if (nv) nv.textContent = fmt(m.nwNeto);
   if (nd) {
-    nd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwNetoDelta + ' vs mes anterior';
+    nd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwNetoDelta;
     nd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
   }
 
   const fi = document.getElementById('fi-header-text');
   if (fi) fi.textContent = m.fiPct + '% — faltan $' + m.fiGap.toLocaleString();
+
+  const fibl = document.getElementById('fi-bar-label');
+  if (fibl) fibl.textContent = 'Progreso FI (meta: $' + m.fiTarget.toLocaleString() + ')';
   const fill = document.getElementById('fi-fill-bar');
   if (fill) fill.style.width = m.fiPct + '%';
 
@@ -1219,15 +1198,12 @@ function initFromData(d) {
   const onlv = document.getElementById('options-nlv');
   if (onlv) onlv.textContent = 'NLV ' + fmt(options.nlv);
 
-  const mr = document.getElementById('metric-retirement');
-  if (mr) mr.textContent = '$' + m.retirementCore.toLocaleString();
-  const mg = document.getElementById('metric-gap');
-  if (mg) mg.textContent = '$' + m.fiGap.toLocaleString();
-
   const gc = document.getElementById('fi-gap-card');
   if (gc) gc.textContent = '$' + m.fiGap.toLocaleString();
   const ga = document.getElementById('fi-gap-annual');
   if (ga) ga.textContent = '$' + m.fiGapAnnual.toLocaleString();
+  const ftc = document.getElementById('fi-target-card');
+  if (ftc) ftc.textContent = '$' + (m.fiTarget || 500000).toLocaleString();
 
   // Performance cards
   const pt = document.getElementById('perf-twr-total');
@@ -1241,14 +1217,61 @@ function initFromData(d) {
   const pwp = document.getElementById('perf-worst-pct');
   if (pwp) pwp.textContent = performance.worst6mPct + '%';
 
+  // TWR note banner
+  const twrNoteEl = document.getElementById('twr-note-text');
+  if (twrNoteEl && performance.twrNote) twrNoteEl.innerHTML = performance.twrNote;
+
   const fn = document.getElementById('dash-footer-note');
   if (fn) fn.textContent = m.footerNote;
+
+  // Health diagnostic
+  const hd = document.getElementById('health-diagnostic');
+  if (hd) hd.textContent = m.healthDiagnostic || '';
 
   // ── Populate tables ──
   populateAccountsTable();
   populateTacticalTable();
   populateSEPIRATable();
   populateOptionsTable();
+
+  // ── Render roadmap ──
+  renderRoadmap(dashRoadmap);
+
+  // ── Render action banners ──
+  if (dashActions) {
+    ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo'].forEach(tab => {
+      renderActionBanner('action-' + tab, dashActions[tab]);
+    });
+  }
+
+  // ── Render insight lists ──
+  if (dashInsights) {
+    ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo'].forEach(tab => {
+      renderInsightList('insight-' + tab, dashInsights[tab]);
+    });
+    renderAccountInsights(dashInsights.accounts);
+  }
+
+  // ── Render income streams ──
+  renderIncomeStreams(
+    dashIncomeStreams,
+    d.incomeTotal || 952,
+    d.incomeAnnual || 11424,
+    d.incomePassiveCoverage || '32',
+    d.incomeSSNote || ''
+  );
+
+  // ── Render debt cards ──
+  renderDebtCards(dashDebt);
+
+  // ── Render metrics resumen ──
+  renderMetricsResumen(d.metricsResumen, m);
+
+  // ── Render waterfall table ──
+  renderWaterfallTable(dashWaterfallTable, waterfall ? waterfall.surplus : undefined);
+
+  // ── Render rebalance table ──
+  renderRebalanceTable(dashRebalance, d.rebalanceTotal, d.rebalanceNote);
 
   // ── Initial renders ──
   renderGauge();
@@ -1264,7 +1287,7 @@ function renderPie() {
   const ctx = document.getElementById('pieCategory');
   if (!ctx || !accounts) return;
   if (ctx._chart) ctx._chart.destroy();
-  const data = [
+  const data = dashPieCategories || [
     { label: 'Retiro 55%',   value: 220477, color: '#2563eb' },
     { label: 'Trading 15%',  value: 58297,  color: '#10b981' },
     { label: 'Cash/Fijo 17%',value: 66151,  color: '#f59e0b' },
@@ -1285,7 +1308,7 @@ function renderBar() {
   const ctx = document.getElementById('barAllocation');
   if (!ctx) return;
   if (ctx._chart) ctx._chart.destroy();
-  const data = [
+  const data = dashAllocationBar || [
     { name: 'US Large Cap',    value: 146500, color: '#2563eb' },
     { name: 'Cash/Renta Fija', value: 66151,  color: '#f59e0b' },
     { name: 'Préstamos',       value: 49970,  color: '#ec4899' },
