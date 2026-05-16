@@ -847,7 +847,7 @@ function showTab(id) {
 // ═══ Global data (set by initFromData) ═══
 let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterfall, performance;
 let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
-let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkRHPhotonics, wkFUT, wkFUT2, wkSP;
+let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkRHPhotonics, wkFUT, wkFUT2, wkFUTCombined, wkSP;
 let twrTT, twrIBKR, twrTSETF, twrRH, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
 let dashRoadmap, dashActions, dashInsights, dashDebt, dashIncomeStreams, dashRebalance;
 let dashPieCategories, dashAllocationBar, dashWaterfallTable;
@@ -1179,8 +1179,9 @@ function initFromData(d) {
   wkTSETF = d.weekly.tsetf;
   wkRH         = d.weekly.rh;
   wkRHPhotonics= d.weekly.rhPhotonics || [];
-  wkFUT   = d.weekly.fut;
-  wkFUT2  = d.weekly.fut2 || [];
+  wkFUT         = d.weekly.fut;           // PKG27 only — chart use
+  wkFUT2        = d.weekly.fut2 || [];    // VLV23 only — chart use
+  wkFUTCombined = d.weekly.futCombined || d.weekly.fut; // combined historical — total sum
   wkSP    = d.weekly.sp;
 
   // TWR arrays
@@ -1531,7 +1532,7 @@ function renderPerformanceCharts() {
   // Trading Total Combined
   const wkTradingTotal = wkDates.map((_, i) => {
     let sum = 0;
-    [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUT[i]].forEach(v => { if(v) sum += v; });
+    [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUTCombined[i]].forEach(v => { if(v) sum += v; });
     if (wkRH[i]) sum += wkRH[i];
     if (wkRHPhotonics && wkRHPhotonics[i]) sum += wkRHPhotonics[i];
     return sum;
