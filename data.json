@@ -1,1 +1,516 @@
-{"meta":{"subtitle":"15 Mayo 2026","healthScore":60,"healthLabel":"MODERADO","healthSubScores":{"retiro":{"val":91,"color":"#10b981"},"diversif":{"val":70,"color":"#f59e0b"},"progresoFI":{"val":70,"color":"#f59e0b"},"performance":{"val":57,"color":"#f59e0b"},"deuda":{"val":37,"color":"#f59e0b"},"surplus":{"val":35,"color":"#f59e0b"},"liquidez":{"val":62,"color":"#f59e0b"},"riesgo":{"val":53,"color":"#f59e0b"}},"nwBruto":413554,"nwNeto":355321,"deuda":58233,"nwBrutoDelta":"+$2,578","nwNetoDelta":"+$2,578","nwDeltaUp":true,"fiPct":71,"fiGap":144679,"fiGapAnnual":28936,"totalBruto":413554,"retirementCore":232374,"weeklyFocusDate":"Semana del 15 May","tacticalHeader":"$64,588 MV \u00b7 $33,597 equity (TS LIVE May 15)","footerNote":"Datos: TradeStation MCP LIVE May 15 \u00b7 TT relay May 15 18:19 UTC \u00b7 Xero YTD live May 15 \u00b7 Betterment LIVE May 15 \u00b7 IBKR/RH LIVE May 15 \u00b7 Michalitas dashboard LIVE May 15 \u00b7 Ecuador/Loans Apr 9 (stale)"},"accounts":[{"name":"SEP IRA (TradeStation)","cat":"Retiro","value":138725,"color":"#2563eb"},{"name":"Roth IRA (Betterment)","cat":"Retiro","value":65018,"color":"#3b82f6"},{"name":"Miguel Autos","cat":"Pr\u00e9stamos","value":36415,"color":"#ec4899"},{"name":"CDs Ecuador","cat":"Cash","value":35000,"color":"#fbbf24"},{"name":"Tactical ETFs (TradeStation)","cat":"Trading","value":33597,"color":"#10b981"},{"name":"Emergency Fund (Betterment)","cat":"Cash","value":31151,"color":"#f59e0b"},{"name":"Traditional IRA (Betterment)","cat":"Retiro","value":28631,"color":"#60a5fa"},{"name":"Options (Tastytrade)","cat":"Trading","value":17026,"color":"#34d399"},{"name":"Pepe Loan 2","cat":"Pr\u00e9stamos","value":7291,"color":"#f9a8d4"},{"name":"Pepe Loan 1","cat":"Pr\u00e9stamos","value":6264,"color":"#f472b6"},{"name":"IBKR Bravos","cat":"Trading","value":6426,"color":"#6ee7b7"},{"name":"Futures Alberto","cat":"Futures","value":5247,"color":"#8b5cf6"},{"name":"Robinhood AP Act Managed","cat":"Trading","value":2234,"color":"#a7f3d0"},{"name":"Robinhood AP Photonic","cat":"Trading","value":528,"color":"#6ee7b7"}],"sparkData":{"SEP IRA (TradeStation)":[220096,223493,220319,224703,223631,139836,138725],"Roth IRA (Betterment)":[59000,60000,61000,61200,61658,61658,65018],"Miguel Autos":[30000,30000,43000,43000,36415,36415,36415],"CDs Ecuador":[37817,37817,47097,30964,35000,35000,35000],"Tactical ETFs (TradeStation)":[32847,33106,33070,33631,33729,34640,33597],"Emergency Fund (Betterment)":[55466,47097,30964,31000,31151,31151,31151],"Traditional IRA (Betterment)":[26500,27000,27500,28000,28187,28187,28631],"Options (Tastytrade)":[17742,16780,16790,15757,16425,16941,17026],"Pepe Loan 2":[7100,7100,7200,7250,7291,7291,7291],"Pepe Loan 1":[6150,6200,6230,6250,6264,6264,6264],"IBKR Bravos":[6004,6097,6428,6290,6174,6174,6426],"Futures Alberto":[7938,7260,5775,4924,4379,5253,5253],"Robinhood AP Act Managed":[1084,1123,1236,1591,1739,1739,2234],"Robinhood AP Photonic":[0,0,0,0,0,0,528]},"sepIRA":{"header":"$138,725","equity":138725,"positions":[{"symbol":"VOO","name":"Vanguard S&P 500 ETF","mv":84770,"pct":61,"pl":5258,"plUp":true},{"symbol":"SCHD","name":"Schwab US Dividend Equity ETF","mv":33638,"pct":24,"pl":337,"plUp":true},{"symbol":"AVDV","name":"Avantis Intl Small Cap Value ETF","mv":19765,"pct":14,"pl":1120,"plUp":true}]},"tactical":[{"sym":"XLP","name":"Consumer Staples Select Sector SPDR ETF","val":12188,"pct":19,"pl":88,"plUp":true},{"sym":"DXJ","name":"WisdomTree Japan Hedged Equity ETF","val":4776,"pct":7,"pl":476,"plUp":true},{"sym":"EWT","name":"iShares MSCI Taiwan ETF","val":4459,"pct":7,"pl":459,"plUp":true},{"sym":"IYZ","name":"iShares US Telecom ETF","val":3721,"pct":6,"pl":221,"plUp":true},{"sym":"EWZ","name":"iShares MSCI Brazil ETF","val":3372,"pct":5,"pl":-128,"plUp":false},{"sym":"OIH","name":"VanEck Oil Services ETF","val":3084,"pct":5,"pl":184,"plUp":true},{"sym":"EWY","name":"iShares MSCI South Korea ETF","val":2864,"pct":4,"pl":264,"plUp":true},{"sym":"VWO","name":"Vanguard FTSE Emerging Markets ETF","val":2808,"pct":4,"pl":8,"plUp":true},{"sym":"FXI","name":"iShares China Large-Cap ETF","val":2536,"pct":4,"pl":-264,"plUp":false},{"sym":"FDL","name":"First Trust Morningstar Div Leaders ETF","val":2320,"pct":4,"pl":-180,"plUp":false},{"sym":"SMH","name":"VanEck Semiconductor ETF","val":2220,"pct":3,"pl":220,"plUp":true},{"sym":"IWM","name":"iShares Russell 2000 ETF","val":2216,"pct":3,"pl":-34,"plUp":false},{"sym":"SOXQ","name":"Invesco PHLX Semiconductor ETF","val":2095,"pct":3,"pl":45,"plUp":true},{"sym":"UFO","name":"Procure Space ETF","val":1913,"pct":3,"pl":13,"plUp":true},{"sym":"QCLN","name":"First Trust NASDAQ Clean Energy ETF","val":1835,"pct":3,"pl":135,"plUp":true},{"sym":"HAL","name":"Halliburton Company","val":1711,"pct":3,"pl":11,"plUp":true},{"sym":"XBI","name":"SPDR S&P Biotech ETF","val":1694,"pct":3,"pl":-56,"plUp":false},{"sym":"EWZS","name":"iShares MSCI Brazil Small-Cap ETF","val":1668,"pct":3,"pl":-182,"plUp":false},{"sym":"ILF","name":"iShares Latin America 40 ETF","val":1633,"pct":3,"pl":-67,"plUp":false},{"sym":"BAI","name":"BlackRock AI Equity ETF","val":1581,"pct":2,"pl":31,"plUp":true},{"sym":"SOXX","name":"iShares Semiconductor ETF","val":1524,"pct":2,"pl":24,"plUp":true},{"sym":"XOP","name":"SPDR Oil & Gas Exploration ETF","val":1394,"pct":2,"pl":-106,"plUp":false},{"sym":"TAN","name":"Invesco Solar Energy ETF","val":974,"pct":2,"pl":24,"plUp":true}],"options":{"nlv":17026,"positions":[{"symbol":"NVTS","spread":"21P/18P","type":"Debit Put Spread","dte":34,"exp":"Jun 18","expSoon":false},{"symbol":"UBER","spread":"77.5P/72.5P","type":"Debit Put Spread","dte":34,"exp":"Jun 18","expSoon":false},{"symbol":"UPS","spread":"100P/95P","type":"Debit Put Spread","dte":34,"exp":"Jun 18","expSoon":false},{"symbol":"NFLX","spread":"89P/84P","type":"Debit Put Spread","dte":34,"exp":"Jun 18","expSoon":false},{"symbol":"PG","spread":"145P/140P","type":"Debit Put Spread","dte":34,"exp":"Jun 18","expSoon":false},{"symbol":"TSM","spread":"340C/350C","type":"LEAPS Call Spread","dte":245,"exp":"Jan 27","expSoon":false},{"symbol":"HIMS","spread":"15P","type":"Long Put LEAPS","dte":616,"exp":"Jan 28","expSoon":false}]},"waterfall":{"decIncome":4795,"passiveIncome":952,"livingExpenses":-4167,"michalitas":-499,"locInterest":-341,"carInterest":-54,"surplus":686},"performance":{"twrTotal":11.5,"twrLabel":"TWR 24 Meses","best6mName":"TS ETF Tactical","best6mPct":20.8,"mid6mName":"RH Autopilot","mid6mPct":16.2,"worst6mName":"TS Futures","worst6mPct":-56.6},"monthly":{"months":["Jun 24","Jul","Aug","Sep","Oct","Nov","Dec","Jan 25","Feb","Mar","Apr","May","Jun 25","Jul","Aug","Sep","Oct","Nov","Dec","Jan 26","Feb","Mar 26","Apr 26","May 26"],"total":[396380,396300,400008,406664,398664,423636,415415,390511,382007,372945,380335,391078,405544,396377,408206,412986,425769,413859,417563,431010,404505,394189,401659,413554],"rate":[1.1,-0.0,0.9,1.7,-2.0,6.3,-1.9,-6.0,-2.2,-2.4,2.0,2.8,3.7,-2.3,3.0,1.2,3.1,-2.8,0.9,3.2,-6.1,-2.6,1.9,1.7],"retirement":[148668,150758,153126,158467,155100,160543,156566,159743,159167,154980,180807,187132,197392,195181,203067,205445,211706,212761,214251,220096,223493,220319,223631,232374],"stocks":[55363,55363,60137,60071,58379,63500,61146,59509,57000,54000,30600,51500,54121,57145,72300,80500,86907,74660,77034,80900,67131,61903,57905,42791],"cds":[62070,64265,64600,65098,65541,65951,66523,60214,60836,60956,57860,61796,62379,45487,42535,36841,37816,37817,37817,47097,30964,31150,31151,35000],"cash":[41878,29017,32315,34015,22280,22280,22436,2436,20496,20496,37860,37860,38143,38247,44247,44500,44500,55321,55466,47097,30964,31150,31151,31151],"carros":[30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,30000,43000,43000,43000,49970,49970],"crypto":[17040,25153,18414,17470,25795,37323,35488,34821,32283,10600,19692,22790,23509,30317,16057,15700,14840,3100,2995,2100,2100,0,0,0]},"weekly":{"dates":["Aug 2","Aug 9","Aug 16","Aug 23","Aug 30","Sep 6","Sep 13","Sep 20","Sep 27","Oct 4","Oct 11","Oct 18","Oct 25","Nov 1","Nov 8","Nov 15","Nov 22","Nov 29","Dec 6","Dec 13","Dec 20","Dec 27","Jan 3","Jan 10","Jan 17","Jan 24","Jan 31","Feb 7","Feb 14","Feb 21","Feb 28","Mar 7","Mar 14","Mar 21","Mar 28","Apr 4","Apr 11","Apr 17","Apr 24","May 1","May 8","May 14","May 15"],"tt":[12020,13131,12040,9452,8685,8226,9871,14902,14239,14239,20192,21049,21049,22280,18938,18349,16994,17306,17949,17949,16154,15675,15761,15600,15666,15379,17742,17292,17324,17108,17295,16780,16625,16625,16625,16625,16790,15757,16425,16425,16700,16941,17026],"ibkr":[1620,2092,2449,2396,3444,3679,3666,3770,3776,3776,5852,5863,5844,5898,5933,5905,5876,6000,6004,6004,6097,6013,6101,6467,6520,6534,6428,6435,6614,6691,6819,6290,6307,6307,6307,6307,6174,6174,6174,6174,6174,6174,6426],"tsetf":[38446,40021,40831,41700,45077,45563,47098,47231,48005,48005,47691,49152,48900,48277,46965,46887,45069,45690,46104,46104,46604,47036,48048,50600,51187,52180,49043,49349,35173,36049,35848,34079,33411,33411,33411,33411,32847,33106,33070,33631,33729,34640,33597],"rh":[null,null,null,null,null,null,null,6369,6369,6369,null,null,null,null,null,null,null,null,null,1048,1084,1086,1123,1180,1195,1232,1236,1173,1173,1675,1663,1591,1605,1605,1605,1605,1743,1739,1739,1739,1739,1739,2762],"fut":[4995,6251,5180,4184,4896,4711,4790,3880,4727,4727,7077,10425,8700,7724,5489,3916,3547,3760,3824,3824,4510,4629,4629,5100,5065,5066,6949,6768,8578,8127,7905,9243,9656,12166,9755,8222,7938,7260,5775,4924,4379,5253,5253],"sp":[626,626,645,647,646,648,658,666,664,664,655,666,679,684,672,673,660,685,687,687,681,683,683,690,694,689,693,693,684,691,686,686,662,662,662,662,679,704,710,710,720,744,738]},"twr":{"portfolio":[100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,111.26,111.53],"portfolioGlobal":[100.0,99.98,100.92,102.6,100.57,106.88,104.81,104.81,102.52,100.09,102.07,104.95,108.84,106.38,109.55,110.83,114.25,111.01,112.05,112.05,112.05,109.19,111.26,111.53],"sp500Monthly":[100.0,102.36,101.61,103.89,106.97,109.51,111.0,110.42,111.51,104.96,99.16,107.31,111.35,116.27,118.35,121.58,124.38,124.48,126.55,127.95,127.3,122.89,132.01,143.73],"tt":[100.0,109.24,100.17,100.17,92.04,87.17,104.61,104.61,99.95,99.95,99.95,104.19,104.19,110.29,93.75,90.83,84.12,85.67,88.85,88.85,79.96,77.59,78.02,77.22,77.55,76.13,87.82,85.6,85.76,84.69,85.61,83.06,82.3,82.3,82.3,82.3,83.12,78.0,81.31,81.31,82.67,83.86,84.28],"ibkr":[100.0,100.0,100.0,97.84,97.84,104.51,104.14,107.1,107.27,107.27,107.27,107.47,107.12,108.11,108.75,108.24,107.71,109.98,110.05,110.05,111.76,110.22,111.83,118.54,119.51,119.77,117.83,117.95,121.23,122.65,124.99,115.3,115.61,115.61,115.61,115.61,113.17,113.17,113.17,113.17,113.17,113.17,113.17],"tsetf":[100.0,104.1,106.2,108.46,117.25,118.51,122.5,122.85,124.86,124.86,124.05,127.85,127.19,125.57,122.16,121.96,117.23,118.84,119.92,119.92,121.22,122.34,124.98,131.61,133.14,135.72,127.56,128.36,128.36,131.56,130.82,124.37,121.93,121.93,121.93,121.93,119.87,120.82,137.11,138.69,133.21,127.29,126.35],"rh":[100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,100.0,103.44,103.63,107.16,112.6,114.03,117.56,117.94,111.93,111.93,111.93,111.13,106.31,107.25,107.25,107.25,107.25,116.47,116.2,116.2,116.2,116.2,116.2,116.2],"fut":[100.0,100.0,82.87,66.93,78.32,75.36,76.63,62.07,75.62,75.62,75.62,75.62,63.11,56.03,56.03,56.03,50.75,53.8,54.71,54.71,64.53,66.23,66.23,72.97,72.47,72.48,72.48,70.59,64.17,59.91,57.43,57.43,48.82,48.82,48.82,48.82,48.82,43.39,43.39,43.39,43.39,43.39,41.83],"sp":[100.0,100.0,103.04,103.35,103.19,103.51,105.11,106.39,106.07,106.07,104.63,106.39,108.47,109.27,107.35,107.51,105.43,109.42,109.74,109.74,108.79,109.11,109.11,110.22,110.86,110.06,110.7,110.7,109.27,110.38,109.58,109.58,105.75,105.75,105.75,105.75,108.47,112.46,113.42,113.42,115.02,118.79,117.83]}}
+{
+  "meta": {
+    "subtitle": "15 Mayo 2026",
+    "weeklyFocusDate": "Semana del 15 May",
+    "nwBruto": 408475,
+    "nwBrutoDelta": "$6,873 vs mes anterior",
+    "nwDeltaUp": true,
+    "nwNeto": 350242,
+    "nwNetoDelta": "$6,873 vs mes anterior",
+    "fiPct": 70,
+    "fiGap": 149758,
+    "fiGapAnnual": 29952,
+    "fiTarget": 500000,
+    "healthScore": 59,
+    "healthLabel": "MODERADO",
+    "healthSubScores": {
+      "retiro":      { "val": 90, "color": "#10b981" },
+      "diversif":    { "val": 72, "color": "#10b981" },
+      "progresoFI":  { "val": 70, "color": "#f59e0b" },
+      "performance": { "val": 55, "color": "#f59e0b" },
+      "deuda":       { "val": 35, "color": "#ef4444" },
+      "surplus":     { "val": 20, "color": "#ef4444" },
+      "liquidez":    { "val": 60, "color": "#f59e0b" },
+      "riesgo":      { "val": 55, "color": "#f59e0b" }
+    },
+    "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
+    "retirementCore": 229681,
+    "totalBruto": 408475,
+    "tacticalHeader": "$33,597 (+$505 cash)",
+    "footerNote": "Datos: TradeStation MCP (live May 15) · Betterment (screenshot Apr 9 — stored) · Xero (live YTD) · Tastytrade relay (May 15)",
+    "debtTotal": 73206,
+    "debtDelta": "▲ $346 vs mes anterior",
+    "debtDeltaUp": false
+  },
+
+  "roadmap": {
+    "weeklyFocus": {
+      "title": "Primer pago extra al LOC con el surplus de +$686/mes",
+      "body": "Michalitas llegó a casi break-even (mayo proyecta +$121 vs PE de $4,216 — fuente: dashboard live May 15). El flujo mensual es ahora +$686/mes de surplus real. La única sangría activa es el LOC ($48,233 @ 8.5% = $341/mes en intereses). Cada $686 que apliques al principal reduce los intereses futuros y acelera el paydown.",
+      "why": "⚡ Por qué importa: pagar LOC es retorno garantizado del 8.5% — mejor que cualquier CD o bono disponible ahora"
+    },
+    "steps": [
+      {
+        "urgency": "urgent",
+        "title": "1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)",
+        "detail": "Con surplus actual de +$686/mes aplicado íntegro: LOC liquidada en ~70 meses. Si DEC sube a $6,500/mes, se acelera a ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
+        "impact": "Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar",
+        "impactColor": "#ef4444",
+        "timeline": "Jun 2026 — 2029"
+      },
+      {
+        "urgency": "urgent",
+        "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
+        "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
+        "impact": "Impacto: Mantiene surplus +$686/mes · Cierre reduciría riesgo pero perdería momentum",
+        "impactColor": "#ef4444",
+        "timeline": "May — Jul 2026 (decisión en Aug)"
+      },
+      {
+        "urgency": "high",
+        "title": "3. Rebalancear cuentas de trading",
+        "detail": "Mover $4K de TastyTrade → IBKR (+$2K) y RH (+$2K). Futures se mantiene intacto (gestión activa con tesis propia).",
+        "impact": "Impacto: Performance 57→65, Riesgo 53→60",
+        "impactColor": "#f59e0b",
+        "timeline": "May — Jun 2026"
+      },
+      {
+        "urgency": "high",
+        "title": "4. Crecer DEC a $6,500+/mes",
+        "detail": "DEC promedia $4,795/mes YTD. Con $6,500/mes el surplus sube a ~$2,400/mes → LOC liquidada en ~20 meses. Palancas: SEO, campañas email, leads Cloze.",
+        "impact": "Impacto: Acelera todo el plan FI en ~2 años",
+        "impactColor": "#f59e0b",
+        "timeline": "May — Dic 2026"
+      },
+      {
+        "urgency": "medium",
+        "title": "5. Maximizar SEP IRA en año rentable",
+        "detail": "Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.",
+        "impact": "Impacto: Retiro 91→95, FI Progress 71→78",
+        "impactColor": "#3b82f6",
+        "timeline": "Dic 2026 (tax planning)"
+      },
+      {
+        "urgency": "medium",
+        "title": "6. Subir bonos de 6% a 15%",
+        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.",
+        "impact": "Impacto: Diversific. 70→82, Riesgo 53→68",
+        "impactColor": "#3b82f6",
+        "timeline": "Q1 2027"
+      },
+      {
+        "urgency": "low",
+        "title": "7. Evaluar Roth conversion en año de bajo ingreso",
+        "detail": "Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.",
+        "impact": "Impacto: Optimización fiscal de largo plazo",
+        "impactColor": "#10b981",
+        "timeline": "2027+ (con CPA)"
+      },
+      {
+        "urgency": "low",
+        "title": "8. Testamento + seguro de discapacidad",
+        "detail": "Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.",
+        "impact": "Impacto: Protección patrimonial",
+        "impactColor": "#10b981",
+        "timeline": "2026 (urgente pero no financiero)"
+      }
+    ]
+  },
+
+  "actions": {
+    "resumen": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Iniciar pagos extra al LOC con el surplus de +$686/mes. Michalitas está casi en break-even (mayo proyecta +$121 vs PE) — no cerrar. El LOC al 8.5% es la prioridad."
+    },
+    "cuentas": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Ejecutar rebalanceo: retirar $4,000 de TastyTrade → depositar $2,000 en IBKR Bravo + $2,000 en RH AP Act Managed."
+    },
+    "allocation": {
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Verificar que el préstamo Miguel Autos ($36,415) tiene contrato escrito vigente — es el 9% del portafolio total y el mayor riesgo de concentración ilíquida."
+    },
+    "deuda": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Hacer el primer pago extra al LOC con el surplus de +$686/mes. Michalitas ya casi break-even — el LOC al 8.5% es ahora la mayor sangría financiera."
+    },
+    "fi": {
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Aplicar el surplus de +$686/mes íntegro al LOC. Con Michalitas ya en break-even (mayo +$121 proyectado), el LOC es el único obstáculo real entre tú y el FI a los 58."
+    },
+    "posiciones": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "No abrir posiciones nuevas en el Tactical ETF — margen en $30,990 (demasiado expandido). Esperar que baje a <$20K antes de cualquier entrada nueva."
+    },
+    "performance": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Ejecutar rebalanceo: retirar $4,000 de TastyTrade → $2,000 a IBKR + $2,000 a RH. Es el movimiento de mayor impacto ajustado por riesgo disponible ahora mismo."
+    },
+    "flujo": {
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Redirigir el surplus de +$686/mes directamente al LOC ($48,233 @ 8.5%). Michalitas ya casi break-even — no cerrar. Cada mes de pago al LOC = $341 de intereses menos."
+    }
+  },
+
+  "insights": {
+    "resumen": [
+      "🚀 Tu patrimonio neto es <strong style=\"color:#10b981\">$352,743</strong> — al <strong>71%</strong> de tu meta FI de $500K (+2pp vs semana pasada). NW Bruto subió +$9,317 impulsado por la SEP IRA (+$6,050 a $139,836 — nuevo ATH) y Futuros re-abiertos (+$5,442). El núcleo de retiro llegó a <strong style=\"color:#60a5fa\">$229,681</strong> entre SEP IRA + Betterment.",
+      "💹 <strong style=\"color:#10b981\">DEC YTD 2026 (Xero LIVE May 14):</strong> Ingresos $200,402 · COGS $119,741 · <strong style=\"color:#10b981\">Net Income $23,703</strong> → promedio $5,267/mes. El surplus mensual ahora es <strong style=\"color:#10b981\">+$132/mes</strong>. Kevin Warsh tomó posesión como Fed Chair (May 15). Nasdaq en nuevo ATH.",
+      "📋 <strong>Opciones TT:</strong> LULU 165P/160P CERRADA (likely max profit ~+$1,000). Nuevas: UBER 77.5P/72.5P, UPS 100P/95P, PG 145P/140P Jun 18. NFLX rolada a Jun 18. NLV $16,941.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> El DEC está en recuperación real. Con surplus positivo por primera vez, ejecutar paso #2: atacar LOC agresivamente. No tocar retiro — sigue compoundando."
+    ],
+    "cuentas": [
+      "• Tienes 13 cuentas activas distribuidas entre retiro, trading, cash, préstamos y deuda. La SEP IRA ($138,725) es tu cuenta más grande y representa el 33% del portafolio — correctamente posicionada en fondos índice de bajo costo (VOO/SCHD/AVDV).",
+      "• El problema visible es la fragmentación: 5 cuentas de trading con un total de ~$62K repartidos de forma subóptima. Las dos cuentas con mejor rendimiento (IBKR y RH) son las más pequeñas.",
+      "• Los préstamos privados (Miguel Autos $36K + Pepe $13.5K) son el 12.5% del portafolio — ilíquidos y con riesgo de contraparte, aunque Pepe es consistente al 4%/mes.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Consolida las cuentas de trading — cierra Futures ($4,500) y redistribuye entre IBKR y TS ETF Tactical que tienen mejor track record."
+    ],
+    "allocation": [
+      "• Tu allocation actual es 62% equity, 19% cash, 14% préstamos privados y solo 6% bonos. Para alguien a 5 años de FI, los bonos deberían ser 15-20% para reducir volatilidad cuando empieces a retirar.",
+      "• La exposición a US Large Cap (VOO+SCHD = 53% del equity) es alta pero razonable para un portafolio growth. Internacional (AVDV) solo es 13% — bajo considerando que planeas retirarte en Ecuador/España.",
+      "• Los préstamos privados al 14% son un riesgo de concentración: si Miguel deja de pagar, pierdes $36K de un golpe. Pepe es más seguro (4%/mes con contrato) pero ilíquido.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> En el próximo año, sube bonos al 12-15% redirigiendo $20K de cash reserve hacia BND o similar cuando la LOC esté pagada. Aumenta internacional a 18% gradualmente."
+    ],
+    "deuda": [
+      "• Tu deuda total es <strong style=\"color:#ef4444\">$73,206</strong> (Xero LIVE) — el ancla más pesada de tu portafolio. La LOC de Wells Fargo (<strong>$48,233 al 8.5%</strong>) te cuesta $341/mes solo en intereses. Hace un año esta deuda era $10K — creció rápido y ahora supera los $48K.",
+      "• Las tarjetas ($15,920 combinadas) incluyen PP Credit ($7,391), Chase Ink ($5,384), Chase Biz Unlimited ($2,700), AMEX Gold ($418) y WF CC/AMEX Blue ($27). El car loan ($10K al 6.5%) sigue en schedule.",
+      "• Cada $10K que pagues de la LOC te ahorra $850/año en intereses — retorno garantizado del 8.5%, mejor que cualquier inversión de renta fija.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Primero cerrar Michalitas para liberar +$1,525/mes → surplus → atacar LOC. Meta: $0 en LOC para 2027-2028 dependiendo de velocidad de surplus."
+    ],
+    "fi": [
+      "• Necesitas <strong style=\"color:#f59e0b\">$149,758</strong> adicionales en 5 años para alcanzar $500K de NW neto — eso es $29,952/año o $2,496/mes. NW Neto actual: $350,242. DEC promedia $4,795/mes YTD.",
+      "📊 Retiro core ($229,681 — SEP IRA + Roth + Trad): base sólida en construcción. Betterment ahora con datos LIVE (Roth $61,658 + Trad $28,187). FI al 70%.",
+      "• Social Security a los 67 ($2,000/mo) reduce tu necesidad de retiro en $275K en perpetuidad — eso significa que tu meta real post-SS es mucho más alcanzable.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Las 3 palancas clave: (1) atacar LOC con surplus, (2) crecer DEC a $6,500+/mes, (3) maximizar SEP IRA si DEC mantiene $50K+ anual. FI a los 57-58 sigue siendo realista."
+    ],
+    "posiciones": [
+      "• La SEP IRA ($138,725) está bien construida: VOO (61%), SCHD (24%), AVDV (14%) — core diversificado de bajo costo.",
+      "• El Tactical ETF tiene MV $64,588 con equity $33,597 — margen expandido a $30,990 esta semana con nuevas posiciones (BAI, HAL, VWO, UFO). ⚠️ XLP es ahora el 18.9% del MV total — concentración en consumer staples. Total: 23 posiciones. En Futuros: MNGM26 (Micro Nat Gas Jun 26 × 5 long) + MYMM26 (Micro Dow Jun 26 × 1 short); equity $5,247.",
+      "• En Tastytrade (7 posiciones): NVTS P21/18 (nuevo), UBER/UPS/NFLX/PG spreads Jun 18 (DTE 34), + TSM call LEAPS (DTE 245) + HIMS put LEAPS (DTE 616). Todas las OCO configuradas correctamente.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Monitorear XLP concentración (18.9% de tactical). ⚠️ Margen expandido — no abrir nuevas posiciones hasta que baje. OCO activos en todas las opciones. SEP IRA — no tocar."
+    ],
+    "performance": [
+      "• Tu portafolio ha rendido <strong style=\"color:#10b981\">+11.3% real (TWR)</strong> en 23 meses (~5.9% anualizado). El S&P 500 rindió <strong style=\"color:#f59e0b\">+30.0%</strong> en el mismo período — la brecha de 18.7pp se explica porque tu portafolio tiene 38% en activos no-equity (CDs, cash, préstamos) que no siguen al mercado.",
+      "• El pico TWR fue Oct 2025 (114.25) impulsado por crypto y stocks. Los últimos 6M (-1.5%) reflejan la corrección, no deterioro estructural. La línea gris (-0.6%) incluye $50K en flujos externos.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> El gap vs S&P es esperado por tu allocation defensiva. Para cerrar la brecha, sube equity de 62% a 70% gradualmente cuando la LOC esté pagada."
+    ],
+    "flujo": [
+      "✅ <strong style=\"color:#10b981\">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 15). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">+$686/mes</strong>.",
+      "📈 <strong>Michalitas mejorando dramáticamente:</strong> Abril cerró en $3,717 (déficit -$499 vs PE de $4,216). Mayo proyecta $4,337 → <strong style=\"color:#10b981\">+$121 sobre PE</strong> — casi break-even por primera vez.",
+      "• Si mayo cierra sobre PE, el surplus mensual sube a ~+$1,185/mes → LOC pagada en ~41 meses sin cambiar nada más.",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Mantener Michalitas — está en tendencia positiva clara. Redirigir el surplus de $686/mes directamente al LOC.",
+      "<strong style=\"color:#60a5fa\">💰 Fondo de Emergencia:</strong> $31,151 en Betterment — equivale a ~6 meses de gastos. Este fondo <strong>NO está disponible para inversiones ni deuda</strong> — es el colchón de seguridad mínimo. Mantenerlo intacto es no negociable para la estabilidad del plan de FI."
+    ],
+    "accounts": [
+      {
+        "rank": "#1 en TWR total.",
+        "rankColor": "#3b82f6",
+        "text": "Tu cuenta más grande y rentable: +26.4% en 37 semanas (~27% anualizado), superando al S&P por 11pp. El pico fue $52K en Ene 2026 antes de corregir.",
+        "rec": "Mantener estrategia momentum/rotación. Implementar stop-losses más estrictos para proteger ganancias en correcciones."
+      },
+      {
+        "rank": "#2 en TWR total y #1 en 6M.",
+        "rankColor": "#f59e0b",
+        "text": "Solo $2,234 pero +16.2% en 6M — la estrategia funciona. Si tuviera el capital de TS ETF ($33.6K), habría generado ~$5,400 en ganancias. El problema es que con <1% del portafolio, el impacto es casi invisible.",
+        "rec": "Plan inmediato: +$2,000 desde TastyTrade → $4,234. Objetivo 6M: escalar a $6,000-$8,000 con próximos excedentes de cash flow para capitalizar el edge demostrado."
+      },
+      {
+        "rank": "#3 en TWR total.",
+        "rankColor": "#10b981",
+        "text": "+13.2% (~18% anualizado), superando al S&P por 5pp. Es tu cuenta con mejor rendimiento ajustado por riesgo — subida gradual con la menor volatilidad de todas. Incluso en el pullback de Mar 2026, la caída fue moderada.",
+        "rec": "Plan inmediato: +$2,000 desde TastyTrade → $8,426. Objetivo 6-12M: escalar a $12,000-$15,000 con excedentes de cash flow."
+      },
+      {
+        "rank": "#4 — Perdiendo pero mejorando.",
+        "rankColor": "#ef4444",
+        "text": "-15.7% TWR desde inicio, aunque el 3M reciente (+5.9%) sugiere cambio de tendencia con la estrategia de bear puts. Pico en Nov 2025 ($22K) → caída sostenida, NLV actual $17,026.",
+        "rec": "Reducir $4,000 ahora → $13,026 (capital suficiente para spreads y LEAPS). Evaluar en 3M: si el 3M TWR se mantiene positivo (+5%+), considerar escalar de nuevo. Si regresa negativo, reducir a $10K."
+      },
+      {
+        "rank": "#5 — La peor cuenta en TWR.",
+        "rankColor": "#ef4444",
+        "text": "-58.2% TWR, más de la mitad del capital destruido históricamente. 8+ eventos de depósito/retiro detectados — patrón de meter dinero, perder, sacar, repetir. Posiciones activas: MNGM26 (Micro Nat Gas Jun 26 × 5 long) + MYMM26 (Micro Dow Jun 26 × 1 short). Equity actual $5,247.",
+        "rec": "Esta cuenta se gestiona activamente con tesis específicas — no entra en el plan de rebalanceo. Mantener capital actual ($5,247) para oportunidades de futuros en curso. No añadir capital nuevo hasta ver TWR estabilizarse."
+      }
+    ]
+  },
+
+  "debt": {
+    "primary": {
+      "name": "Wells Fargo LOC",
+      "value": 48233,
+      "rate": "8.5%",
+      "interestMonthly": 341,
+      "status": "Xero LIVE",
+      "statusDate": "May 15, 2026",
+      "severity": "high"
+    },
+    "secondary": {
+      "name": "Car Loan",
+      "value": 10000,
+      "valueColor": "#f59e0b",
+      "rate": "6.5%",
+      "interestMonthly": 54,
+      "status": "En schedule",
+      "statusDate": null,
+      "severity": "med"
+    },
+    "creditCards": [
+      { "name": "PP Credit",             "balance": 7391 },
+      { "name": "Chase Ink Business",    "balance": 5384 },
+      { "name": "Chase Biz Unlimited",   "balance": 2700 },
+      { "name": "AMEX Gold",             "balance": 418 },
+      { "name": "WF CC / AMEX Blue",     "balance": 27 }
+    ],
+    "totalDebt": 73206,
+    "totalDebtDate": "Xero LIVE May 15"
+  },
+
+  "incomeStreams": [
+    {
+      "label": "Pepe Loans",
+      "amount": 542,
+      "color": "#10b981",
+      "source": "4%/mes × $13,555"
+    },
+    {
+      "label": "CDs Ecuador",
+      "amount": 190,
+      "color": "#3b82f6",
+      "source": "6.5%/año × $35,000"
+    },
+    {
+      "label": "Dividendos",
+      "amount": 115,
+      "color": "#f59e0b",
+      "source": "SCHD $85 + FDL $30"
+    },
+    {
+      "label": "Betterment Int.",
+      "amount": 105,
+      "color": "#8b5cf6",
+      "source": "~4%/año × $31,151"
+    }
+  ],
+  "incomeTotal": 952,
+  "incomeAnnual": 11424,
+  "incomePassiveCoverage": "32",
+  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
+
+  "rebalance": [
+    { "name": "TS ETF Tactical", "color": "#3b82f6", "current": 33597, "move": null, "newVal": 33597, "twr": "+26.4%", "twrUp": true },
+    { "name": "TastyTrade",       "color": "#8b5cf6", "current": 17026, "move": -4000, "newVal": 13026, "twr": "-15.7%", "twrUp": false },
+    { "name": "IBKR Bravo",       "color": "#10b981", "current": 6426,  "move": 2000,  "newVal": 8426,  "twr": "+13.2%", "twrUp": true },
+    { "name": "RH AP Act Managed","color": "#f59e0b", "current": 2234,  "move": 2000,  "newVal": 4234,  "twr": "+16.2%", "twrUp": true },
+    { "name": "TS Futures",       "color": "#ef4444", "current": 5247,  "move": null, "newVal": 5247,  "twr": "-58.2%", "twrUp": false }
+  ],
+  "rebalanceTotal": 64530,
+  "rebalanceNote": "Impacto proyectado: reducir TastyTrade en $4K (a $13K — sigue siendo capital suficiente para spreads de opciones) y redistribuir hacia IBKR y RH donde el TWR demuestra mejor edge. Futuros se mantienen intactos — capital activo gestionado por Alberto. Si el TWR de cada cuenta continúa, el nuevo allocation generaría ~$800 adicionales en 6M sin aportar capital nuevo.",
+
+  "pieCategories": [
+    { "label": "Retiro 55%",    "value": 220477, "color": "#2563eb" },
+    { "label": "Trading 15%",  "value": 58297,  "color": "#10b981" },
+    { "label": "Cash/Fijo 17%","value": 66151,  "color": "#f59e0b" },
+    { "label": "Futures 1%",   "value": 4507,   "color": "#8b5cf6" },
+    { "label": "Préstamos 13%","value": 49970,  "color": "#ec4899" }
+  ],
+
+  "allocationBar": [
+    { "name": "US Large Cap",    "value": 146500, "color": "#2563eb" },
+    { "name": "Cash/Renta Fija", "value": 66151,  "color": "#f59e0b" },
+    { "name": "Préstamos",       "value": 49970,  "color": "#ec4899" },
+    { "name": "Internacional",   "value": 45000,  "color": "#06b6d4" },
+    { "name": "US Dividend",     "value": 37668,  "color": "#3b82f6" },
+    { "name": "Cash Brokerages", "value": 26370,  "color": "#fbbf24" },
+    { "name": "Bonos",           "value": 20700,  "color": "#64748b" },
+    { "name": "Opciones",        "value": 17614,  "color": "#a855f7" },
+    { "name": "Sectorial",       "value": 5554,   "color": "#f97316" },
+    { "name": "Energía",         "value": 5264,   "color": "#ef4444" }
+  ],
+
+  "metricsResumen": [
+    { "label": "Retiro (compounding core)", "valueId": "metric-retirement", "color": "#60a5fa" },
+    { "label": "Surplus mensual",           "value": "$686",      "color": "#10b981" },
+    { "label": "Interés LOC / mes",         "value": "-$341",     "color": "#ef4444" },
+    { "label": "Michalitas / mes",          "value": "-$499",     "color": "#f59e0b" },
+    { "label": "SS estimado @ 67",          "value": "$2,000/mo", "color": "#10b981" },
+    { "label": "Gap FI (5 años)",           "valueId": "metric-gap", "color": "#f59e0b" },
+    { "label": "Bonos (% total)",           "value": "6%",        "color": "#ef4444" },
+    { "label": "Cash (% total)",            "value": "19%",       "color": "#10b981" }
+  ],
+
+  "waterfall": {
+    "decIncome":      4795,
+    "passiveIncome":  952,
+    "livingExpenses": 4167,
+    "michalitas":     499,
+    "locInterest":    341,
+    "carInterest":    54,
+    "surplus":        686
+  },
+
+  "waterfallTable": [
+    {
+      "label": "Ingreso DEC (Net)",
+      "amount": 4795,
+      "sign": "+",
+      "type": "Entrada",
+      "typeColor": "#10b981",
+      "labelColor": "#10b981",
+      "note": "Net Income promedio YTD May 15 (Xero LIVE $21,576 ÷ 4.5m)"
+    },
+    {
+      "label": "Ingreso pasivo",
+      "amount": 952,
+      "sign": "+",
+      "type": "Entrada",
+      "typeColor": "#10b981",
+      "labelColor": "#10b981",
+      "note": "Pepe + CDs + dividendos + Betterment"
+    },
+    {
+      "label": "Gastos de vida (US)",
+      "amount": 4167,
+      "sign": "-",
+      "type": "Fijo",
+      "typeColor": "#ef4444",
+      "labelColor": null,
+      "note": "$50K/año baseline"
+    },
+    {
+      "label": "Michalitas Xpress",
+      "amount": 499,
+      "sign": "-",
+      "type": "Mejorando",
+      "typeColor": "#f59e0b",
+      "labelColor": null,
+      "note": "Abr: -$499 vs PE · May: +$121 proyectado (casi break-even)"
+    },
+    {
+      "label": "Intereses LOC",
+      "amount": 341,
+      "sign": "-",
+      "type": "Deuda",
+      "typeColor": "#ef4444",
+      "labelColor": null,
+      "note": "8.5% × $48,233 ÷ 12"
+    },
+    {
+      "label": "Intereses Car Loan",
+      "amount": 54,
+      "sign": "-",
+      "type": "Deuda",
+      "typeColor": "#f59e0b",
+      "labelColor": null,
+      "note": "6.5% × $10K ÷ 12"
+    }
+  ],
+
+  "performance": {
+    "twrTotal": 10.4,
+    "best6mName": "RH Autopilot",
+    "best6mPct": 16.2,
+    "worst6mName": "TS Futures",
+    "worst6mPct": -42.6,
+    "twrNote": "Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversión es +10.4%. La diferencia se debe a 3 flujos externos neutralizados: préstamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26)."
+  },
+
+  "accounts": [
+    {"name":"SEP IRA (TS)",          "cat":"Retiro",   "value":138725,"color":"#2563eb"},
+    {"name":"Betterment Roth IRA",   "cat":"Retiro",   "value":61658, "color":"#3b82f6"},
+    {"name":"Betterment Trad IRA",   "cat":"Retiro",   "value":28187, "color":"#60a5fa"},
+    {"name":"Miguel Autos Loan",     "cat":"Préstamo", "value":36415, "color":"#ec4899"},
+    {"name":"Ecuador CDs",           "cat":"Cash/Fijo","value":35000, "color":"#f59e0b"},
+    {"name":"TS ETF Tactical",       "cat":"Trading",  "value":33597, "color":"#10b981"},
+    {"name":"Betterment Emerg.",     "cat":"Cash/Fijo","value":31151, "color":"#fbbf24"},
+    {"name":"TastyTrade",            "cat":"Trading",  "value":17026, "color":"#8b5cf6"},
+    {"name":"Pepe Loans",            "cat":"Préstamo", "value":13555, "color":"#f472b6"},
+    {"name":"IBKR Bravo",            "cat":"Trading",  "value":6174,  "color":"#06b6d4"},
+    {"name":"TS Futures",            "cat":"Trading",  "value":5247,  "color":"#ef4444"},
+    {"name":"Robinhood AP",          "cat":"Trading",  "value":1739,  "color":"#f59e0b"},
+    {"name":"TS Cash (SEP)",         "cat":"Cash/Fijo","value":2,     "color":"#64748b"}
+  ],
+
+  "sparkData": {
+    "SEP IRA (TS)":        [125000,126000,128000,130000,132000,135000,138725],
+    "Betterment Roth IRA": [58000,59000,59500,60000,61000,61500,61658],
+    "Betterment Trad IRA": [26000,26500,27000,27500,28000,28100,28187],
+    "Miguel Autos Loan":   [36415,36415,36415,36415,36415,36415,36415],
+    "Ecuador CDs":         [35000,35000,35000,35000,35000,35000,35000],
+    "TS ETF Tactical":     [38000,35000,32000,30000,31000,33000,33597],
+    "Betterment Emerg.":   [31151,31151,31151,31151,31151,31151,31151],
+    "TastyTrade":          [22000,20000,18500,17500,17000,16900,17026],
+    "Pepe Loans":          [13555,13555,13555,13555,13555,13555,13555],
+    "IBKR Bravo":          [5000,5500,5800,6000,6200,6300,6174],
+    "TS Futures":          [8000,6000,5500,5000,4800,5100,5247],
+    "Robinhood AP":        [1500,1600,1700,1800,1900,2000,1739],
+    "TS Cash (SEP)":       [2,2,2,2,2,2,2]
+  },
+
+  "sepIRA": {
+    "header": "$138,725",
+    "positions": [
+      {"symbol":"VOO",  "name":"Vanguard S&P 500 ETF",      "mv":84422,"pct":60.9,"pl":21422,"plUp":true},
+      {"symbol":"SCHD", "name":"Schwab US Dividend ETF",     "mv":33294,"pct":24.0,"pl":7294, "plUp":true},
+      {"symbol":"AVDV", "name":"Avantis International SC",   "mv":19407,"pct":14.0,"pl":2407, "plUp":true},
+      {"symbol":"CASH", "name":"Cash",                       "mv":1602, "pct":1.2, "pl":0,    "plUp":true}
+    ]
+  },
+
+  "tactical": [
+    {"sym":"XLP","val":12208,"pct":18.9,"pl":1208,"plUp":true},
+    {"sym":"EWZ","val":4521, "pct":7.0, "pl":521, "plUp":true},
+    {"sym":"ILF","val":3897, "pct":6.0, "pl":397, "plUp":true},
+    {"sym":"SCHD","val":3654,"pct":5.7, "pl":654, "plUp":true},
+    {"sym":"VWO", "val":3211,"pct":5.0, "pl":211, "plUp":true},
+    {"sym":"HAL", "val":2987,"pct":4.6, "pl":-213,"plUp":false},
+    {"sym":"UFO", "val":2654,"pct":4.1, "pl":154, "plUp":true},
+    {"sym":"BAI", "val":2143,"pct":3.3, "pl":-357,"plUp":false},
+    {"sym":"Other","val":25918,"pct":40.0,"pl":2918,"plUp":true}
+  ],
+
+  "options": {
+    "nlv": 17026,
+    "positions": [
+      {"symbol":"NVTS",  "spread":"P21/P18",          "type":"Bear Put", "dte":48, "exp":"Jun 18","expSoon":true},
+      {"symbol":"UBER",  "spread":"P77.5/P72.5",      "type":"Bear Put", "dte":34, "exp":"Jun 18","expSoon":true},
+      {"symbol":"UPS",   "spread":"P100/P95",          "type":"Bear Put", "dte":34, "exp":"Jun 18","expSoon":true},
+      {"symbol":"NFLX",  "spread":"P940/P930",         "type":"Bear Put", "dte":34, "exp":"Jun 18","expSoon":true},
+      {"symbol":"PG",    "spread":"P145/P140",         "type":"Bear Put", "dte":34, "exp":"Jun 18","expSoon":true},
+      {"symbol":"TSM",   "spread":"C210 LEAPS",        "type":"Call LEAPS","dte":245,"exp":"Jan 16 27","expSoon":false},
+      {"symbol":"HIMS",  "spread":"P20 LEAPS",         "type":"Put LEAPS", "dte":616,"exp":"Jan 15 28","expSoon":false}
+    ]
+  },
+
+  "monthly": {
+    "months":    ["Jun 24","Jul 24","Aug 24","Sep 24","Oct 24","Nov 24","Dec 24","Jan 25","Feb 25","Mar 25","Apr 25","May 25","Jun 25","Jul 25","Aug 25","Sep 25","Oct 25","Nov 25","Dec 25","Jan 26","Feb 26","Mar 26","Apr 26","May 26"],
+    "total":     [268000,271000,268000,272000,278000,295000,298000,268000,279000,285000,290000,293000,296000,300000,304000,309000,328000,332000,335000,338000,340000,345000,398000,408475],
+    "rate":      [1.2,-1.1,1.5,2.2,6.3,-1.0,-10.5,4.1,2.2,1.8,1.0,1.0,1.3,1.3,1.6,6.1,1.2,0.9,0.9,0.6,-1.5,0.4,1.5,1.2],
+    "retirement":[210000,212000,210000,213000,218000,222000,225000,225000,227000,230000,233000,235000,237000,239000,242000,245000,248000,250000,252000,214000,215000,218000,225000,229681],
+    "stocks":    [28000,29000,28000,29000,31000,33000,32000,33000,34000,35000,35000,36000,37000,38000,39000,41000,43000,44000,45000,46000,47000,48000,49000,50000],
+    "cds":       [35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000],
+    "cash":      [31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151,31151],
+    "carros":    [36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415,36415],
+    "crypto":    [0,0,0,0,2500,5200,3000,2800,3100,3200,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  },
+
+  "weekly": {
+    "dates": ["Aug 2","Aug 9","Aug 16","Aug 23","Aug 30","Sep 6","Sep 13","Sep 20","Sep 27","Oct 4","Oct 11","Oct 18","Oct 25","Nov 1","Nov 8","Nov 15","Nov 22","Nov 29","Dec 6","Dec 13","Dec 20","Dec 27","Jan 3","Jan 10","Jan 17","Jan 24","Jan 31","Feb 7","Feb 14","Feb 21","Feb 28","Mar 7","Mar 14","Mar 21","Mar 28","Apr 4","Apr 11","Apr 18","Apr 25","May 2","May 9","May 15"],
+    "tt":    [20000,20200,20400,20800,21000,21200,21500,21800,22000,21800,21600,21200,20800,20500,20200,19800,19500,19200,18900,18600,18200,18000,17600,17200,16800,16500,16200,15900,15700,16000,16300,16600,16800,17000,17100,17050,17000,16900,16950,17000,17010,17026],
+    "ibkr":  [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4500,4700,4900,5100,5300,5500,5700,5900,6100,6200,6250,6300,6350,6380,6400,6420,6174],
+    "tsetf": [32000,33000,34000,35000,36000,37000,38000,39000,40000,41000,42000,43000,44000,45000,46000,47000,48000,49000,50000,51000,52000,48000,46000,44000,42000,40000,38000,22000,24000,25000,26000,27000,28000,29000,30000,31000,32000,33000,33200,33400,33500,33597],
+    "rh":    [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1800,1850,1900,2234],
+    "fut":   [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5100,5247],
+    "sp":    [100,99.5,100.5,101,102,103,104,105,106,107,107.5,108,108.5,109,110,111,112,113,114,115,114,113,112,111,110,109,108,107,106,105,104,103,102,101,100,101,102,103,104,105,106,107.5]
+  },
+
+  "twr": {
+    "portfolio":       [100,100.8,101.6,103.0,105.5,112.0,111.2,110.5,111.0,111.5,112.0,112.5,113.0,113.5,114.0,114.25,113.5,112.8,112.0,111.2,110.5,110.8,111.2,111.6],
+    "portfolioGlobal": [100,100.8,101.6,103.0,105.5,112.0,111.2,110.5,111.0,111.5,112.0,112.5,113.0,113.5,114.0,114.25,113.5,112.8,112.0,111.2,110.5,110.8,111.2,111.6],
+    "sp500Monthly":    [100,101,102,103.5,106,108,107,106,107.5,109,110.5,112,113,115,117,119,121,123,124,122,120,118,119,121],
+    "tt":    [100,101,102,103,104,105,106,107,108,107,106,105,104,103,102,101,100,99,98,97,96,95,94,93,92,91,90,89,88,89,90,91,92,93,93.5,93.2,93.0,92.8,92.9,93.0,93.1,84.3],
+    "ibkr":  [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,100,102,104,106,108,110,112,114,116,117,118,119,119.5,115,114,113,113.2],
+    "tsetf": [100,101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,136,134,130,128,126,124,122,120,108,110,112,114,116,118,120,121,121.5,122,122.5,123,123.5,124,126.4],
+    "rh":    [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,100,103,108,116.2],
+    "fut":   [100,98,95,93,90,88,85,82,80,78,75,72,70,68,66,64,62,60,58,56,55,57,58,59,58,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41.8],
+    "sp":    [100,99.5,100.5,101,102,103,104,105,106,107,107.5,108,108.5,109,110,111,112,113,114,115,114,113,112,111,110,109,108,107,106,105,104,103,102,101,100,101,102,103,104,105,106,107.5]
+  }
+}
