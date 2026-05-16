@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "15 Mayo 2026",
     "weeklyFocusDate": "Semana del 15 May",
-    "nwBruto": 409847,
+    "nwBruto": 409843,
     "nwBrutoDelta": "$8,245 vs mes anterior",
     "nwDeltaUp": true,
-    "nwNeto": 351614,
+    "nwNeto": 351610,
     "nwNetoDelta": "$8,245 vs mes anterior",
     "fiPct": 70,
-    "fiGap": 148386,
+    "fiGap": 148390,
     "fiGapAnnual": 29952,
     "fiTarget": 500000,
     "healthScore": 59,
@@ -633,10 +633,16 @@
       "color": "#06b6d4"
     },
     {
-      "name": "TS Futures",
+      "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 5247,
+      "value": 2060,
       "color": "#ef4444"
+    },
+    {
+      "name": "TS Futures VLV23",
+      "cat": "Trading",
+      "value": 3183,
+      "color": "#f87171"
     },
     {
       "name": "RH AP Act Managed",
@@ -748,15 +754,6 @@
       6200,
       6435
     ],
-    "TS Futures": [
-      8000,
-      7000,
-      7375,
-      6875,
-      6375,
-      5875,
-      5247
-    ],
     "RH AP Act Managed": [
       1620,
       1640,
@@ -783,6 +780,24 @@
       2,
       2,
       2
+    ],
+    "TS Futures PKG27": [
+      3143,
+      2750,
+      2898,
+      2701,
+      2505,
+      2308,
+      2060
+    ],
+    "TS Futures VLV23": [
+      4857,
+      4250,
+      4477,
+      4174,
+      3870,
+      3567,
+      3183
     ]
   },
   "sepIRA": {
@@ -1491,7 +1506,7 @@
       5500,
       5375,
       5100,
-      5247
+      2060
     ],
     "sp": [
       100,
@@ -1579,7 +1594,7 @@
       null,
       null,
       null,
-      null
+      3183
     ]
   },
   "twr": {
