@@ -561,15 +561,23 @@
         <tbody>
           <tr style="background:#10b98110">
             <td><span class="dot" style="background:#f59e0b"></span><strong>RH AP Act Managed</strong> <span class="badge">Robinhood</span></td>
-            <td class="right bold">$2,234</td>
+            <td class="right bold">$2,323</td>
             <td class="right green">+3.2%</td>
             <td class="right green">+16.2%</td>
-            <td class="right green">+16.2%</td>
+            <td class="right green">+43.4%</td>
             <td class="right green">+8.7pp</td>
+          </tr>
+          <tr style="background:#fb923c10">
+            <td><span class="dot" style="background:#fb923c"></span><strong>RH Ap-photonics</strong> <span class="badge">Robinhood</span></td>
+            <td class="right bold">$527</td>
+            <td class="right green">+31.8%</td>
+            <td class="right" style="color:#64748b">—</td>
+            <td class="right green">+31.8%</td>
+            <td class="right" style="color:#64748b">—</td>
           </tr>
           <tr>
             <td><span class="dot" style="background:#10b981"></span><strong>IBKR Bravo</strong> <span class="badge">Stocks</span></td>
-            <td class="right bold">$6,426</td>
+            <td class="right bold">$6,435</td>
             <td class="right red">-4.5%</td>
             <td class="right green">+5.5%</td>
             <td class="right green">+13.2%</td>
@@ -848,7 +856,7 @@ function showTab(id) {
 let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterfall, performance;
 let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
 let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkRHPhotonics, wkFUT, wkFUT2, wkFUTCombined, wkSP;
-let twrTT, twrIBKR, twrTSETF, twrRH, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
+let twrTT, twrIBKR, twrTSETF, twrRH, twrRHPhotonics, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
 let dashRoadmap, dashActions, dashInsights, dashDebt, dashIncomeStreams, dashRebalance;
 let dashPieCategories, dashAllocationBar, dashWaterfallTable;
 
@@ -1191,8 +1199,9 @@ function initFromData(d) {
   twrTT    = d.twr.tt;
   twrIBKR  = d.twr.ibkr;
   twrTSETF = d.twr.tsetf;
-  twrRH    = d.twr.rh;
-  twrFUT   = d.twr.fut;
+  twrRH         = d.twr.rh;
+  twrRHPhotonics= d.twr.rhPhotonics || [];
+  twrFUT        = d.twr.fut;
   twrSP    = d.twr.sp;
 
   // ── Update DOM display values ──
@@ -1500,12 +1509,13 @@ function renderPerformanceCharts() {
 
   // TWR Normalized
   const twrPcts = {
-    tsetf: (twrTSETF[twrTSETF.length-1]-100).toFixed(1),
-    rh:    (twrRH[twrRH.length-1]-100).toFixed(1),
-    ibkr:  (twrIBKR[twrIBKR.length-1]-100).toFixed(1),
-    sp:    (twrSP[twrSP.length-1]-100).toFixed(1),
-    tt:    (twrTT[twrTT.length-1]-100).toFixed(1),
-    fut:   (twrFUT[twrFUT.length-1]-100).toFixed(1)
+    tsetf:   (twrTSETF[twrTSETF.length-1]-100).toFixed(1),
+    rh:      (twrRH[twrRH.length-1]-100).toFixed(1),
+    rhph:    twrRHPhotonics.length ? (twrRHPhotonics.filter(v=>v!==null).slice(-1)[0]-100).toFixed(1) : '0',
+    ibkr:    (twrIBKR[twrIBKR.length-1]-100).toFixed(1),
+    sp:      (twrSP[twrSP.length-1]-100).toFixed(1),
+    tt:      (twrTT[twrTT.length-1]-100).toFixed(1),
+    fut:     (twrFUT.filter(v=>v!==null).slice(-1)[0]-100).toFixed(1)
   };
   const ctxNorm = document.getElementById('chartTradingNorm');
   if (ctxNorm) {
@@ -1514,7 +1524,8 @@ function renderPerformanceCharts() {
       type: 'line',
       data: { labels: wkDates, datasets: [
         { label:'TS ETF (+'+twrPcts.tsetf+'%)',      data:twrTSETF, borderColor:'#3b82f6', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
-        { label:'RH Autopilot (+'+twrPcts.rh+'%)',   data:twrRH,   borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'RH AP Act Managed (+'+twrPcts.rh+'%)',      data:twrRH,          borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false, spanGaps:true },
+        { label:'RH Ap-photonics (+'+twrPcts.rhph+'%)',      data:twrRHPhotonics,  borderColor:'#fb923c', tension:0.3, pointRadius:2, borderWidth:2, fill:false, spanGaps:true },
         { label:'IBKR Bravo (+'+twrPcts.ibkr+'%)',   data:twrIBKR, borderColor:'#10b981', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
         { label:'S&P 500 (+'+twrPcts.sp+'%)',         data:twrSP,   borderColor:'#94a3b8', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[6,3], fill:false },
         { label:'TastyTrade ('+twrPcts.tt+'%)',       data:twrTT,   borderColor:'#8b5cf6', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
@@ -1581,12 +1592,13 @@ function renderPerformanceCharts() {
     return { name, color, totalReturn, maxDD, vol, ratio, grade, gradeColor };
   }
   const riskData = [
-    calcRiskMetrics(twrRH,    'RH Autopilot',   '#f59e0b'),
-    calcRiskMetrics(twrTSETF, 'TS ETF Tactical', '#3b82f6'),
-    calcRiskMetrics(twrIBKR,  'IBKR Bravo',      '#10b981'),
-    calcRiskMetrics(twrSP,    'S&P 500',          '#94a3b8'),
-    calcRiskMetrics(twrTT,    'TastyTrade',       '#8b5cf6'),
-    calcRiskMetrics(twrFUT,   'TS Futures',       '#ef4444'),
+    calcRiskMetrics(twrRH,          'RH AP Act Managed',  '#f59e0b'),
+    calcRiskMetrics(twrRHPhotonics, 'RH Ap-photonics',    '#fb923c'),
+    calcRiskMetrics(twrTSETF,       'TS ETF Tactical',    '#3b82f6'),
+    calcRiskMetrics(twrIBKR,        'IBKR Bravo',         '#10b981'),
+    calcRiskMetrics(twrSP,          'S&P 500',             '#94a3b8'),
+    calcRiskMetrics(twrTT,          'TastyTrade',          '#8b5cf6'),
+    calcRiskMetrics(twrFUT,         'TS Futures PKG27',    '#ef4444'),
   ];
   const riskGrid = document.getElementById('riskMetricsGrid');
   if (riskGrid) {
