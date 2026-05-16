@@ -35,9 +35,9 @@
 
   "roadmap": {
     "weeklyFocus": {
-      "title": "Primer pago extra al LOC con el surplus de +$686/mes",
-      "body": "Michalitas llegó a casi break-even (mayo proyecta +$121 vs PE de $4,216 — fuente: dashboard live May 15). El flujo mensual es ahora +$686/mes de surplus real. La única sangría activa es el LOC ($48,233 @ 8.5% = $341/mes en intereses). Cada $686 que apliques al principal reduce los intereses futuros y acelera el paydown.",
-      "why": "⚡ Por qué importa: pagar LOC es retorno garantizado del 8.5% — mejor que cualquier CD o bono disponible ahora"
+      "title": "Acumular buffer DEC: $27,993 → $39,000 (faltan $11,007)",
+      "body": "El surplus mensual está en -$341 (DEC promedió $4,795/mes en lo que va del año). La regla DEC: 3× opex mensual ($13,143) = $39,000 de buffer antes de atacar el LOC. Mientras DEC no llegue a $39K, pagar mínimos del LOC y dejar que la cuenta acumule. Sin buffer, un mes flojo de DEC fuerza re-draw del LOC y retrocedes todo lo ganado.",
+      "why": "⚡ Por qué importa: el buffer protege contra re-draw del LOC. Una vez llegues a $39K en DEC, TODO el surplus va al LOC @ 8.5% garantizado."
     },
     "steps": [
       {
@@ -109,9 +109,9 @@
 
   "actions": {
     "resumen": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "Iniciar pagos extra al LOC con el surplus de +$686/mes. Michalitas está casi en break-even (mayo proyecta +$121 vs PE) — no cerrar. El LOC al 8.5% es la prioridad."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Acumular buffer DEC: $27,993 actuales → meta $39,000 (3× opex mensual). Faltan $11,007. NO pagar LOC extra todavía — con buffer bajo, un mes malo de DEC fuerza re-draw del LOC."
     },
     "cuentas": {
       "color": "#ef4444",
@@ -124,14 +124,14 @@
       "text": "Verificar que el préstamo Miguel Autos ($36,415) tiene contrato escrito vigente — es el 9% del portafolio total y el mayor riesgo de concentración ilíquida."
     },
     "deuda": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "Hacer el primer pago extra al LOC con el surplus de +$686/mes. Michalitas ya casi break-even — el LOC al 8.5% es ahora la mayor sangría financiera."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Buffer DEC en $27,993 — faltan $11,007 para llegar a $39K (3× opex). Mientras no se alcance el buffer, NO hacer pagos extra al LOC. Pagar mínimos y dejar acumular DEC."
     },
     "fi": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Aplicar el surplus de +$686/mes íntegro al LOC. Con Michalitas ya en break-even (mayo +$121 proyectado), el LOC es el único obstáculo real entre tú y el FI a los 58."
+      "text": "DEC buffer en $27,993 — meta $39,000 (3× opex). Mientras el buffer no esté completo, el LOC espera. Sin buffer, un mes malo de DEC fuerza re-draw del LOC y retrocedes. Primero: acumular $11,007 más en DEC."
     },
     "posiciones": {
       "color": "#ef4444",
@@ -144,9 +144,9 @@
       "text": "Ejecutar rebalanceo: retirar $4,000 de TastyTrade → $2,000 a IBKR + $2,000 a RH. Es el movimiento de mayor impacto ajustado por riesgo disponible ahora mismo."
     },
     "flujo": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "Redirigir el surplus de +$686/mes directamente al LOC ($48,233 @ 8.5%). Michalitas ya casi break-even — no cerrar. Cada mes de pago al LOC = $341 de intereses menos."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Flujo ajustado: surplus negativo -$341/mes (DEC bajó a $4,795/mes promedio). Objetivo inmediato: que DEC acumule hasta $39K buffer (3× opex) antes de atacar LOC. NO hacer pagos extra al LOC todavía — riesgo de re-draw en mes flojo."
     }
   },
 
