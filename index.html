@@ -207,6 +207,14 @@
     .top-cards, .debt-cards, .fi-cards, .chart-row { grid-template-columns: 1fr; }
     .print-btn { bottom: 10px; right: 10px; padding: 8px 14px; font-size: 12px; }
   }
+  @keyframes flashStale {
+    0%,100% { color: #ef4444; }
+    50%      { color: #fca5a5; }
+  }
+  .source-badge.stale {
+    animation: flashStale 1.2s ease-in-out infinite;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
@@ -658,7 +666,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🔵 #1 TS ETF Tactical ·4090 — Margin ($33,597) · TWR: +26.4%</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
       </div>
       <canvas id="chartTSETF" style="max-height:200px"></canvas>
     </div>
@@ -668,7 +676,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🟡 #2 RH AP Act Managed ($2,323) · TWR: +43.4%</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
       </div>
       <canvas id="chartRH" style="max-height:200px"></canvas>
     </div>
@@ -680,7 +688,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🟠 #2b RH Ap-photonics ($527) · Autopilot</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
       </div>
       <canvas id="chartRHPhotonics" style="max-height:200px"></canvas>
     </div>
@@ -690,7 +698,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🟢 #3 IBKR Bravo ·4229 — Stocks ($6,435) · TWR: +13.2%</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot IBKR · May 16 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot IBKR · May 16 2026</span>
       </div>
       <canvas id="chartIBKR" style="max-height:200px"></canvas>
     </div>
@@ -700,7 +708,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🟣 #4 TastyTrade — Opciones ($17,026) · TWR: -15.7%</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 Relay Zapier/Gmail · May 15 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📡 Relay Zapier/Gmail · May 15 2026</span>
       </div>
       <canvas id="chartTT" style="max-height:200px"></canvas>
     </div>
@@ -710,7 +718,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🔴 #5a TS Futures ·PKG27 — MNGM26 x5 Long ($2,060)</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
       </div>
       <canvas id="chartFUT" style="max-height:200px"></canvas>
     </div>
@@ -722,7 +730,7 @@
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <h3 style="margin:0">🔴 #5b TS Futures ·VLV23 — MYMM26 x1 Short ($3,183)</h3>
-        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
+        <span class="source-badge" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
       </div>
       <canvas id="chartFUT2" style="max-height:200px"></canvas>
     </div>
@@ -1187,9 +1195,9 @@ function initFromData(d) {
   wkTSETF = d.weekly.tsetf;
   wkRH         = d.weekly.rh;
   wkRHPhotonics= d.weekly.rhPhotonics || [];
-  wkFUT         = d.weekly.fut;           // PKG27 only — chart use
-  wkFUT2        = d.weekly.fut2 || [];    // VLV23 only — chart use
-  wkFUTCombined = d.weekly.futCombined || d.weekly.fut; // combined historical — total sum
+  wkFUTCombined = d.weekly.futCombined || d.weekly.fut; // combined historical — total portfolio sum
+  wkFUT         = d.weekly.futCombined || d.weekly.fut; // PKG27 chart: use full combined history (pre-split data + PKG27 current)
+  wkFUT2        = d.weekly.fut2 || [];    // VLV23 only — chart use (current data only)
   wkSP    = d.weekly.sp;
 
   // TWR arrays
@@ -1805,10 +1813,29 @@ renderPerformanceCharts = function() {
   renderContribution();
 };
 
+// ═══ STALE SOURCE BADGE CHECK (flash red if > 7 days) ═══
+function checkStaleBadges() {
+  const monthMap = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  const today = new Date();
+  document.querySelectorAll('.source-badge').forEach(el => {
+    // Match "Month DD YYYY" pattern, e.g. "May 15 2026"
+    const m = el.textContent.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/);
+    if (!m) return;
+    const mo = monthMap[m[1].toLowerCase()];
+    if (mo === undefined) return;
+    const badgeDate = new Date(parseInt(m[3]), mo, parseInt(m[2]));
+    const days = Math.floor((today - badgeDate) / 86400000);
+    if (days > 7) {
+      el.classList.add('stale');
+      el.title = `⚠️ Datos con ${days} días de antigüedad`;
+    }
+  });
+}
+
 // ═══ LOAD DATA & INIT ═══
 fetch('data.json?v=' + Date.now())
   .then(r => r.json())
-  .then(d => initFromData(d))
+  .then(d => { initFromData(d); checkStaleBadges(); })
   .catch(e => {
     console.error('Error loading data.json:', e);
     document.body.innerHTML += '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ef444420;border:2px solid #ef4444;padding:24px;border-radius:12px;color:#ef4444;font-size:14px;text-align:center;z-index:10000;">⚠️ Error cargando datos del dashboard.<br>Verifica que data.json existe en el mismo directorio.<br><small>' + e.message + '</small></div>';
