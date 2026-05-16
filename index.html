@@ -881,12 +881,32 @@
   </div>
 </div>
 <script>
+var AUTH_HASH='919c5c38b9b0c0f0320e507f41bd9ba9182589998d049eb57cb4ca45894e661b';
+var COOKIE_NAME='mmw_auth';
+var COOKIE_DAYS=30;
+
+function setCookie(val,days){
+  var d=new Date();d.setTime(d.getTime()+(days*24*60*60*1000));
+  document.cookie=COOKIE_NAME+'='+val+';expires='+d.toUTCString()+';path=/;SameSite=Strict';
+}
+function getCookie(){
+  var n=COOKIE_NAME+'=';
+  var ca=document.cookie.split(';');
+  for(var i=0;i<ca.length;i++){var c=ca[i].trim();if(c.indexOf(n)===0)return c.substring(n.length);}
+  return '';
+}
+
+// Auto-unlock if valid cookie exists
+if(getCookie()===AUTH_HASH){
+  document.getElementById('auth-gate').style.display='none';
+}
+
 function checkAuth(){
   var p=document.getElementById('auth-pw').value;
-  // SHA-256 hash of the password — not the password itself in source
   crypto.subtle.digest('SHA-256',new TextEncoder().encode(p)).then(function(h){
     var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-    if(hex==='919c5c38b9b0c0f0320e507f41bd9ba9182589998d049eb57cb4ca45894e661b'){
+    if(hex===AUTH_HASH){
+      setCookie(hex,COOKIE_DAYS);
       document.getElementById('auth-gate').style.display='none';
     } else {
       document.getElementById('auth-err').style.display='block';
