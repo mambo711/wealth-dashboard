@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "15 Mayo 2026",
     "weeklyFocusDate": "Semana del 15 May",
-    "nwBruto": 408475,
-    "nwBrutoDelta": "$6,873 vs mes anterior",
+    "nwBruto": 408970,
+    "nwBrutoDelta": "$7,368 vs mes anterior",
     "nwDeltaUp": true,
-    "nwNeto": 350242,
-    "nwNetoDelta": "$6,873 vs mes anterior",
+    "nwNeto": 350737,
+    "nwNetoDelta": "$7,368 vs mes anterior",
     "fiPct": 70,
-    "fiGap": 149758,
+    "fiGap": 149263,
     "fiGapAnnual": 29952,
     "fiTarget": 500000,
     "healthScore": 59,
@@ -425,7 +425,7 @@
     {"name":"Pepe Loans",            "cat":"Préstamo", "value":13555, "color":"#f472b6"},
     {"name":"IBKR Bravo",            "cat":"Trading",  "value":6174,  "color":"#06b6d4"},
     {"name":"TS Futures",            "cat":"Trading",  "value":5247,  "color":"#ef4444"},
-    {"name":"Robinhood AP",          "cat":"Trading",  "value":1739,  "color":"#f59e0b"},
+    {"name":"Robinhood AP",          "cat":"Trading",  "value":2234,  "color":"#f59e0b"},
     {"name":"TS Cash (SEP)",         "cat":"Cash/Fijo","value":2,     "color":"#64748b"}
   ],
 
@@ -441,7 +441,7 @@
     "Pepe Loans":          [13555,13555,13555,13555,13555,13555,13555],
     "IBKR Bravo":          [5000,5500,5800,6000,6200,6300,6174],
     "TS Futures":          [8000,6000,5500,5000,4800,5100,5247],
-    "Robinhood AP":        [1500,1600,1700,1800,1900,2000,1739],
+    "Robinhood AP":        [1500,1600,1700,1800,1900,2000,2234],
     "TS Cash (SEP)":       [2,2,2,2,2,2,2]
   },
 
