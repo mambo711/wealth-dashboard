@@ -420,14 +420,14 @@
       <ul id="insight-posiciones" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel">
-      <h3>SEP IRA — <span id="sep-ira-header">$133,518</span></h3>
+      <h3>SEP IRA ·6362 — <span id="sep-ira-header">$133,518</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
         <tbody id="sepIRATable"></tbody>
       </table>
     </div>
     <div class="panel">
-      <h3>Tactical ETFs — <span id="tactical-header">$32,601 (+$505 cash)</span></h3>
+      <h3>Tactical ETFs ·4090 — <span id="tactical-header">$32,601 (+$505 cash)</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
         <tbody id="tacticalTable"></tbody>
@@ -637,39 +637,78 @@
 
     <!-- Individual Trading Account Charts — ORDERED BY TWR (best → worst) -->
 
-    <!-- #1: TS ETF Tactical +19.6% -->
+    <!-- #1: TS ETF Tactical -->
     <div id="insight-acct-0" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🔵 #1 TS ETF Tactical — Margin ($33,597) · TWR: +26.4%</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🔵 #1 TS ETF Tactical ·4090 — Margin ($33,597) · TWR: +26.4%</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
+      </div>
       <canvas id="chartTSETF" style="max-height:200px"></canvas>
     </div>
 
-    <!-- #2: RH Autopilot +16.5% -->
+    <!-- #2: RH AP Act Managed -->
     <div id="insight-acct-1" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🟡 #2 RH AP Act Managed ($2,234) · TWR: +16.2%</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🟡 #2 RH AP Act Managed ($2,323) · TWR: +43.4%</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+      </div>
       <canvas id="chartRH" style="max-height:200px"></canvas>
     </div>
 
-    <!-- #3: IBKR Bravo +13.6% -->
+    <!-- #2b: RH Ap-photonics -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0"><li>📸 RH Ap-photonics — Autopilot sector fotónica. +11.61% última semana.</li></ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🟠 #2b RH Ap-photonics ($527) · Autopilot</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+      </div>
+      <canvas id="chartRHPhotonics" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #3: IBKR Bravo -->
     <div id="insight-acct-2" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🟢 #3 IBKR Bravo — Stocks ($6,426) · TWR: +13.2%</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🟢 #3 IBKR Bravo ·4229 — Stocks ($6,435) · TWR: +13.2%</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot IBKR · May 16 2026</span>
+      </div>
       <canvas id="chartIBKR" style="max-height:200px"></canvas>
     </div>
 
-    <!-- #4: TastyTrade -17.4% -->
+    <!-- #4: TastyTrade -->
     <div id="insight-acct-3" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🟣 #4 TastyTrade — Opciones ($17,026) · TWR: -15.7%</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🟣 #4 TastyTrade — Opciones ($17,026) · TWR: -15.7%</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 Relay Zapier/Gmail · May 15 2026</span>
+      </div>
       <canvas id="chartTT" style="max-height:200px"></canvas>
     </div>
 
-    <!-- #5: TS Futures -51.2% -->
+    <!-- #5a: TS Futures PKG27 -->
     <div id="insight-acct-4" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🔴 #5 TS Futures ($5,247) · TWR: -58.2%</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🔴 #5a TS Futures ·PKG27 — MNGM26 x5 Long</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
+      </div>
       <canvas id="chartFUT" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #5b: TS Futures VLV23 -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0"><li>📡 Cuenta VLV23 — posición corta MYMM26 (Micro Dow Jun 26).</li></ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0">🔴 #5b TS Futures ·VLV23 — MYMM26 x1 Short</h3>
+        <span style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
+      </div>
+      <canvas id="chartFUT2" style="max-height:200px"></canvas>
     </div>
 
     <!-- TWR Normalized Comparison -->
@@ -800,7 +839,7 @@ function showTab(id) {
 // ═══ Global data (set by initFromData) ═══
 let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterfall, performance;
 let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
-let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkFUT, wkSP;
+let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkRHPhotonics, wkFUT, wkFUT2, wkSP;
 let twrTT, twrIBKR, twrTSETF, twrRH, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
 let dashRoadmap, dashActions, dashInsights, dashDebt, dashIncomeStreams, dashRebalance;
 let dashPieCategories, dashAllocationBar, dashWaterfallTable;
@@ -1130,8 +1169,10 @@ function initFromData(d) {
   wkTT    = d.weekly.tt;
   wkIBKR  = d.weekly.ibkr;
   wkTSETF = d.weekly.tsetf;
-  wkRH    = d.weekly.rh;
+  wkRH         = d.weekly.rh;
+  wkRHPhotonics= d.weekly.rhPhotonics || [];
   wkFUT   = d.weekly.fut;
+  wkFUT2  = d.weekly.fut2 || [];
   wkSP    = d.weekly.sp;
 
   // TWR arrays
@@ -1441,8 +1482,12 @@ function renderPerformanceCharts() {
   makeTradingChart('chartTT',    wkTT,    '#8b5cf6', 'TastyTrade');
   makeTradingChart('chartIBKR',  wkIBKR,  '#10b981', 'IBKR Bravo');
   makeTradingChart('chartTSETF', wkTSETF, '#3b82f6', 'TS ETF Tactical');
-  makeTradingChart('chartRH',    wkRH,    '#f59e0b', 'RH Autopilot');
-  makeTradingChart('chartFUT',   wkFUT,   '#ef4444', 'TS Futures');
+  makeTradingChart('chartRH',         wkRH,          '#f59e0b', 'RH AP Act Managed');
+  makeTradingChart('chartRHPhotonics',wkRHPhotonics, '#fb923c', 'RH Ap-photonics');
+  makeTradingChart('chartFUT',   wkFUT,   '#ef4444', 'TS Futures PKG27');
+  if (wkFUT2 && wkFUT2.some(v => v !== null)) {
+    makeTradingChart('chartFUT2', wkFUT2, '#f87171', 'TS Futures VLV23');
+  }
 
   // TWR Normalized
   const twrPcts = {
@@ -1480,6 +1525,7 @@ function renderPerformanceCharts() {
     let sum = 0;
     [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUT[i]].forEach(v => { if(v) sum += v; });
     if (wkRH[i]) sum += wkRH[i];
+    if (wkRHPhotonics && wkRHPhotonics[i]) sum += wkRHPhotonics[i];
     return sum;
   });
   const ctxTTotal = document.getElementById('chartTradingTotal');
