@@ -335,6 +335,19 @@
 
   <!-- TAB: Resumen -->
   <div id="tab-resumen" class="tab-content active">
+
+    <!-- ⚡ WEEKLY ACTIONS — top of resumen -->
+    <div id="weekly-actions-panel" style="margin-bottom:18px;display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:18px">⚡</span>
+          <span style="font-size:15px;font-weight:700;color:#f8fafc">Acciones de Esta Semana</span>
+        </div>
+        <span id="weekly-actions-date" style="font-size:11px;color:#64748b"></span>
+      </div>
+      <div id="weekly-actions-list" style="display:flex;flex-direction:column;gap:8px"></div>
+    </div>
+
     <div id="insight-resumen-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
       <div id="action-resumen"></div>
       <ul id="insight-resumen" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
@@ -1045,6 +1058,35 @@ function renderMacroTab(mr, meta) {
   `;
 }
 
+// ═══ Weekly Actions renderer ═══
+function renderWeeklyActions(actions, meta) {
+  const panel = document.getElementById('weekly-actions-panel');
+  const list  = document.getElementById('weekly-actions-list');
+  const dateEl= document.getElementById('weekly-actions-date');
+  if (!panel || !list || !actions || !actions.length) return;
+
+  if (dateEl && meta && meta.weeklyFocusDate) dateEl.textContent = meta.weeklyFocusDate;
+
+  const catColors = { RIESGO:'#ef4444', FLUJO:'#f59e0b', OPCIONES:'#8b5cf6', MACRO:'#60a5fa', DEUDA:'#10b981' };
+
+  list.innerHTML = actions.map(a => {
+    const cc = catColors[a.category] || '#64748b';
+    return `<div style="display:flex;gap:12px;align-items:flex-start;background:#1e293b;border:1px solid ${a.priorityColor}33;border-left:4px solid ${a.priorityColor};border-radius:0 8px 8px 0;padding:12px 14px">
+      <span style="font-size:20px;flex-shrink:0;margin-top:1px">${a.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
+          <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:${a.priorityColor}22;color:${a.priorityColor};border:1px solid ${a.priorityColor}44;letter-spacing:.5px">${a.priority}</span>
+          <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;background:${cc}15;color:${cc}">${a.category}</span>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#f8fafc;margin-bottom:3px">${a.action}</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.5">${a.why}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  panel.style.display = 'block';
+}
+
 // ═══ Income streams renderer ═══
 function renderIncomeStreams(streams, total, annual, coverage, ssNote) {
   const grid = document.getElementById('income-grid');
@@ -1518,6 +1560,7 @@ function initFromData(d) {
   // ── Render roadmap ──
   renderRoadmap(dashRoadmap);
   renderMacroTab(d.macroReadiness, d.meta);
+  renderWeeklyActions(d.weeklyActions, d.meta);
 
   // ── Render action banners ──
   if (dashActions) {
