@@ -440,7 +440,7 @@
     <div class="panel">
       <h3>Camino a Independencia Financiera</h3>
       <div class="fi-cards">
-        <div class="fi-card"><div class="fc-label">Meta FI @ 58</div><div class="fc-value" style="color:#60a5fa" id="fi-target-card">—</div></div>
+        <div class="fi-card"><div class="fc-label" id="fi-target-label">Meta FI</div><div class="fc-value" style="color:#60a5fa" id="fi-target-card">—</div></div>
         <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b" id="fi-gap-card">—</div></div>
         <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">—</div></div>
       </div>
@@ -776,6 +776,9 @@
           Calculando escenarios...
         </div>
       </div>
+      <div id="income-section-note" style="display:none;margin-top:12px;padding:10px 14px;background:#1e293b;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;font-size:12px;color:#94a3b8;line-height:1.6">
+        ℹ️ <span id="income-note-text"></span>
+      </div>
     </div>
   </div>
 
@@ -971,6 +974,7 @@ function renderMetricsResumen(metrics, meta) {
     let val = m.value;
     if (m.valueId === 'metric-retirement') val = '$' + (meta ? meta.retirementCore.toLocaleString() : '—');
     else if (m.valueId === 'metric-gap') val = '$' + (meta ? meta.fiGap.toLocaleString() : '—');
+    else if (m.valueId === 'metric-ss') val = meta && meta.ssMonthly ? '$' + meta.ssMonthly.toLocaleString() + '/mo' : '—';
     return `<div class="metric-row"><span class="metric-label">${m.label}</span><span class="metric-value" style="color:${m.color}">${val}</span></div>`;
   }).join('');
 }
@@ -983,11 +987,14 @@ function renderWaterfallTable(rows, surplus) {
     const amtStyle = r.sign === '+' ? 'class="right green"' : (r.labelColor ? `class="right" style="color:${r.labelColor};font-weight:600"` : 'class="right red"');
     const labelStyle = r.labelColor ? `style="color:${r.labelColor};font-weight:600"` : '';
     const badgeBg = r.typeColor.replace('#','') + '30';
+    const amtDisplay = (r.amount === 0 && r.projected)
+      ? `<span style="color:#64748b">$0</span> <span style="color:#94a3b8;font-size:10px">(proy. $${r.projected.toLocaleString()})</span>`
+      : `${r.sign}$${r.amount.toLocaleString()}`;
     return `<tr>
       <td ${labelStyle}>${r.label}</td>
-      <td ${amtStyle}>${r.sign}$${r.amount.toLocaleString()}</td>
+      <td ${amtStyle}>${amtDisplay}</td>
       <td class="right"><span class="badge" style="background:#${badgeBg};color:${r.typeColor}">${r.type}</span></td>
-      <td style="color:#94a3b8;font-size:11px">${r.note}</td>
+      <td style="color:#94a3b8;font-size:11px">${r.note || ''}</td>
     </tr>`;
   }).join('');
   const sc = document.getElementById('surplus-cell');
@@ -1345,6 +1352,10 @@ function initFromData(d) {
   if (ga) ga.textContent = '$' + m.fiGapAnnual.toLocaleString();
   const ftc = document.getElementById('fi-target-card');
   if (ftc) ftc.textContent = '$' + (m.fiTarget || 500000).toLocaleString();
+  const ftl = document.getElementById('fi-target-label');
+  if (ftl && m.fiTargetAge) ftl.textContent = 'Meta FI @ ' + m.fiTargetAge;
+  const ssCard = document.getElementById('ss-monthly-card');
+  if (ssCard && m.ssMonthly) ssCard.textContent = '$' + m.ssMonthly.toLocaleString() + '/mo';
 
   // Performance cards
   const pt = document.getElementById('perf-twr-total');
@@ -1395,6 +1406,14 @@ function initFromData(d) {
       renderInsightList('insight-' + tab, dashInsights[tab]);
     });
     renderAccountInsights(dashInsights.accounts);
+  }
+
+  // ── Render incomeSectionNote ──
+  const incNoteEl = document.getElementById('income-section-note');
+  const incNoteText = document.getElementById('income-note-text');
+  if (incNoteEl && incNoteText && d.incomeSectionNote) {
+    incNoteText.textContent = d.incomeSectionNote;
+    incNoteEl.style.display = 'block';
   }
 
   // ── Render income streams ──
@@ -1581,7 +1600,7 @@ function renderLine() {
   if (!ctx) return;
   if (ctx._chart) ctx._chart.destroy();
   const nwNeto = dashMeta ? dashMeta.nwNeto : 0;
-  const fp = (dashData && dashData.fiProjections) ? dashData.fiProjections : {};
+  const fp = (dashData && dashData.fiProjection) ? dashData.fiProjection : {};
   const labels      = fp.labels      || ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
   const fiTarget    = fp.target      || 500000;
   const baseRaw     = (fp.base        && fp.base.length)        ? fp.base        : [null, 369000, 399000, 434000, 471000, 511000];
