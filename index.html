@@ -544,14 +544,7 @@
       <canvas id="chartTotalTWR" style="max-height:300px"></canvas>
     </div>
 
-    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• 13 meses positivos vs 9 negativos. Mejor mes: Nov 2024 (+6.3%, crypto rally). Peor: Ene 2025 (-6.0%, pero era el préstamo a Miguel, no pérdida de mercado).</li>
-        <li>• Patrón claro: después de 2-3 meses de caída siempre hay recuperación. Los últimos 3 meses negativos raw incluyen el pago de LOC — en TWR solo 2 fueron realmente negativos.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> No entres en pánico por rachas rojas de 2-3 meses — tu historial muestra que se recuperan. Mantén la disciplina.</li>
-      </ul>
-    </div>
-    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+    <div class="panel" style="margin-top:16px">
       <h3>Rendimiento Mensual (%)</h3>
       <canvas id="chartMonthlyRate" style="max-height:240px"></canvas>
     </div>
@@ -633,7 +626,7 @@
       <div style="margin-top:12px;font-size:11px;color:#64748b">
         TWR = Time-Weighted Return — elimina el efecto de depósitos y retiros para medir rendimiento puro de inversión.<br>
         Método: retorno semanal encadenado, semanas con movimientos >15-25% (depósito/retiro detectado) neutralizadas a 0%.<br>
-        3M = desde Ene 10, 2026. 6M = desde Oct 11, 2025. Total = desde Ago 2, 2025 (43 semanas · actualizado May 16, 2026).
+        3M = últimas 13 semanas. 6M = últimas 26 semanas. Total = desde Ago 2, 2025 (inicio del tracking semanal).
       </div>
     </div>
 
@@ -642,7 +635,7 @@
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
         <li>• El rendimiento sin contexto de riesgo es incompleto. <strong style="color:#60a5fa">Max Drawdown</strong> mide la peor caída desde un pico — cuánto dolor puedes esperar. <strong style="color:#60a5fa">Volatilidad</strong> mide la variación semanal — cuánto se mueve la cuenta.</li>
         <li>• El <strong style="color:#10b981">Ratio Retorno/Riesgo</strong> (TWR ÷ MaxDD) combina ambos: &gt;1.0 = bueno, &gt;1.5 = excelente, &lt;0 = destruyendo valor.</li>
-        <li>• RH Autopilot es la más eficiente (A) — alta ganancia, bajo drawdown. Futures es la peor (F) — perdió más de la mitad con drawdown del 51%.</li>
+        <li>• Grados A-B = compounding eficiente. Grados D-F = capital destruyéndose — candidatos a reducción o cierre.</li>
         <li><strong style="color:#f59e0b">🎯 Rec:</strong> Prioriza capital hacia cuentas con grado A-B. Las grado D-F necesitan cambio de estrategia o cierre.</li>
       </ul>
     </div>
@@ -678,7 +671,7 @@
 
     <!-- #2b: RH Ap-photonics -->
     <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
-      <ul style="list-style:none;padding:0;margin:0"><li>📸 RH Ap-photonics — Autopilot sector fotónica. +11.61% última semana.</li></ul>
+      <ul style="list-style:none;padding:0;margin:0"><li id="rhph-note">📸 RH Ap-photonics — Autopilot sector fotónica. Cuenta secundaria, balance pequeño.</li></ul>
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
@@ -733,9 +726,9 @@
     <!-- TWR Normalized Comparison -->
     <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
-        <li>• El gráfico clave: todas las cuentas en base 100 con TWR real. TS ETF (azul) llegó a 136 antes de corregir a 120. IBKR (verde) fue la más estable. TastyTrade (morado) nunca pasó de 110 y cayó a 83. Futures (rojo) se desplomó a 49.</li>
-        <li>• Tus stocks y ETFs superan al S&P (gris). Opciones y futuros están muy por debajo — la capital allocation es tu mayor palanca de mejora.</li>
-        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Plan aprobado: mover $4K de TastyTrade → IBKR (+$2K) y RH (+$2K). Futures se mantiene intacto (gestión activa con tesis propia). Objetivo: concentrar capital progresivamente en las líneas ARRIBA del S&P.</li>
+        <li id="twr-norm-line1">• Este gráfico es el más importante de la sección: muestra el rendimiento real (TWR) de cada cuenta normalizado a base 100. Las líneas por encima del S&P (gris) son cuentas que te están generando valor.</li>
+        <li>• Stocks y ETFs tienden a superar al S&P. Opciones y futuros tienden a quedar por debajo — la reallocation de capital entre cuentas es tu mayor palanca de mejora sin riesgo adicional.</li>
+        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Concentrar capital progresivamente hacia las cuentas con líneas por encima del benchmark (S&P). Ver tabla de rebalanceo abajo.</li>
       </ul>
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
