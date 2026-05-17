@@ -1815,15 +1815,20 @@ function renderPerformanceCharts() {
 
   // Risk Metrics
   function calcRiskMetrics(twrArr, name, color) {
-    let peak = twrArr[0], maxDD = 0;
-    for (let i = 1; i < twrArr.length; i++) {
+    // Skip leading nulls — accounts with partial history
+    const firstValid = twrArr.findIndex(v => v != null && v > 0);
+    if (firstValid < 0) return { name, color, totalReturn:0, maxDD:0, vol:0, ratio:0, grade:'—', gradeColor:'#64748b' };
+    let peak = twrArr[firstValid], maxDD = 0;
+    for (let i = firstValid + 1; i < twrArr.length; i++) {
+      if (twrArr[i] == null) continue;
       if (twrArr[i] > peak) peak = twrArr[i];
       const dd = (peak - twrArr[i]) / peak * 100;
       if (dd > maxDD) maxDD = dd;
     }
     const returns = [];
-    for (let i = 1; i < twrArr.length; i++) {
-      if (twrArr[i-1] > 0) returns.push((twrArr[i] - twrArr[i-1]) / twrArr[i-1] * 100);
+    for (let i = firstValid + 1; i < twrArr.length; i++) {
+      if (twrArr[i] == null || twrArr[i-1] == null || twrArr[i-1] <= 0) continue;
+      returns.push((twrArr[i] - twrArr[i-1]) / twrArr[i-1] * 100);
     }
     const mean = returns.reduce((a,b) => a+b, 0) / returns.length;
     const variance = returns.reduce((a,r) => a + (r-mean)**2, 0) / returns.length;
@@ -1981,10 +1986,14 @@ function renderRollingReturns() {
 // Contribution Analysis
 function renderContribution() {
   const ctx = document.getElementById('chartContribution');
-  if (!ctx || !twrPortfolioGlobal) return;
+  if (!ctx || !twrPortfolioGlobal || !fmTotal) return;
   if (ctx._chart) ctx._chart.destroy();
+  const len = Math.min(fmTotal.length, twrPortfolioGlobal.length);
   const invReturn = [], extFlow = [];
-  for (let i = 1; i < fmTotal.length; i++) {
+  for (let i = 1; i < len; i++) {
+    if (twrPortfolioGlobal[i] == null || twrPortfolioGlobal[i-1] == null || twrPortfolioGlobal[i-1] === 0) {
+      invReturn.push(0); extFlow.push(0); continue;
+    }
     const totalChange = fmTotal[i] - fmTotal[i-1];
     const twrPct = (twrPortfolioGlobal[i] / twrPortfolioGlobal[i-1] - 1);
     const invRet = fmTotal[i-1] * twrPct;
@@ -2011,7 +2020,7 @@ function renderWaterfall() {
   if (!container || !waterfall) return;
   const w = waterfall;
   const items = [
-    { label: 'DEC W2',         value: w.decIncome,       type: 'in' },
+    { label: 'DEC Net',        value: w.decIncome,       type: 'in' },
     { label: 'Ingreso Pasivo', value: w.passiveIncome,   type: 'in' },
     { label: 'Gastos Vida',    value: w.livingExpenses,  type: 'out' },
     { label: 'Michalitas',     value: w.michalitas,      type: 'out' },
@@ -2038,7 +2047,7 @@ function renderWaterfall() {
   html += '</div>';
   container.innerHTML = html;
   // Also update the surplus table cell
-  const surplusCell = document.querySelector('tfoot td[style*="color:#ef4444;font-size:18px"]');
+  const surplusCell = document.getElementById('surplus-cell');
   if (surplusCell) {
     surplusCell.textContent = (w.surplus >= 0 ? '+' : '') + '$' + Math.abs(w.surplus).toLocaleString();
     surplusCell.style.color = w.surplus >= 0 ? '#10b981' : '#ef4444';
