@@ -73,7 +73,7 @@
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)",
-        "detail": "Con surplus actual negativo (-$345/mes), la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
+        "detail": "Con déficit actual de −$345/mes, la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
         "impact": "Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar",
         "impactColor": "#ef4444",
         "timeline": "Jun 2026 — 2029"
