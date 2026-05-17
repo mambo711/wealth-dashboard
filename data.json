@@ -595,7 +595,9 @@
     "best6mPct": 43.4,
     "worst6mName": "TS Futures",
     "worst6mPct": -58.2,
-    "twrNote": "Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversi\u00f3n es +10.4%. La diferencia se debe a 3 flujos externos neutralizados: pr\u00e9stamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26)."
+    "twrNote": "Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversi\u00f3n es +10.4%. La diferencia se debe a 3 flujos externos neutralizados: pr\u00e9stamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26).",
+    "second6mName": "IBKR Bravo",
+    "second6mPct": 13.2
   },
   "accounts": [
     {
