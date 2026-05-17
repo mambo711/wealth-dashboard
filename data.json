@@ -73,7 +73,7 @@
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)",
-        "detail": "Con déficit actual de −$345/mes, la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
+        "detail": "Con déficit actual de −$261/mes, la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
         "impact": "Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar",
         "impactColor": "#ef4444",
         "timeline": "Jun 2026 — 2029"
@@ -82,7 +82,7 @@
         "urgency": "urgent",
         "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
-        "impact": "Impacto: Mantiene surplus −$345/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
+        "impact": "Impacto: Mantiene surplus −$261/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
         "impactColor": "#ef4444",
         "timeline": "May — Jul 2026 (decisión en Aug)"
       },
@@ -181,7 +181,7 @@
   "insights": {
     "resumen": [
       "🚀 <strong>NW Neto: $337,007</strong> — al <strong>67% del target FI ($500K)</strong>. Gap: $162,993. Foco: reducir deuda y mantener compounding.",
-      "💹 <strong>DEC 2026 YTD (Xero LIVE May 17):</strong> $21,576 ($5394/mes promedio, 4.5 meses). Flujo mensual actual: <strong style='color:#ef4444'>-$345/mes déficit</strong>.",
+      "💹 <strong>DEC 2026 YTD (Xero LIVE May 17):</strong> $21,576 ($5394/mes promedio, 4.5 meses). Flujo mensual actual: <strong style='color:#ef4444'>-$261/mes déficit</strong>.",
       "📋 <strong>Posiciones activas:</strong> 23 ETFs tácticos | TT: NVTS/UBER/UPS/NFLX/PG spreads + HIMS/TSM LEAPS | Futures: MNGM26 x5 long + MYMM26 x1 short.",
       "<strong style='color:#f59e0b'>🎯 Rec:</strong> Prioridad #1 — acumular buffer DEC a $39K. Cuando DEC ≥ $39K, comenzar paydown agresivo de LOC ($48,233 @ 8.5%)."
     ],
@@ -222,10 +222,10 @@
       "<strong style='color:#f59e0b'>🎯 Rec:</strong> Plan activo — redirigir capital de TT hacia IBKR y RH cuando expire el ciclo de opciones actual. Futures se mantiene con tesis propia."
     ],
     "flujo": [
-      "✅ <strong style=\"color:#ef4444\">Flujo de caja en DÉFICIT: −$345/mes (déficit actual — DEC ingreso bajó)</strong> (dato actualizado May 17). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">−$345/mes (déficit actual — DEC ingreso bajó)</strong>.",
+      "✅ <strong style=\"color:#ef4444\">Flujo de caja en DÉFICIT: −$261/mes (déficit actual — DEC ingreso bajó)</strong> (dato actualizado May 17). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">−$261/mes (déficit actual — DEC ingreso bajó)</strong>.",
       "📈 <strong>Michalitas mejorando dramáticamente:</strong> Abril cerró en $3,717 (déficit -$499 vs PE de $4,216). Mayo proyecta $4,337 → <strong style=\"color:#10b981\">+$121 sobre PE</strong> — casi break-even por primera vez.",
       "• Si mayo cierra sobre PE, el surplus mensual sube a ~+$1,185/mes → LOC pagada en ~41 meses sin cambiar nada más.",
-      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Con déficit actual de −$345/mes, prioridad es recuperar cashflow positivo. Meta: DEC a $6,500+/mes para generar excedente real. Una vez positivo, redirigir todo excedente agresivamente al LOC ($48,233 @ 8.5%).",
+      "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Con déficit actual de −$261/mes, prioridad es recuperar cashflow positivo. Meta: DEC a $6,500+/mes para generar excedente real. Una vez positivo, redirigir todo excedente agresivamente al LOC ($48,233 @ 8.5%).",
       "<strong style=\"color:#60a5fa\">💰 Fondo de Emergencia:</strong> $31,151 en Betterment — equivale a ~6 meses de gastos. Este fondo <strong>NO está disponible para inversiones ni deuda</strong> — es el colchón de seguridad mínimo. Mantenerlo intacto es no negociable para la estabilidad del plan de FI."
     ],
     "accounts": [
@@ -490,12 +490,12 @@
     },
     {
       "label": "Surplus mensual",
-      "value": "-$345",
+      "value": "-$261",
       "color": "#ef4444"
     },
     {
       "label": "Interés LOC / mes",
-      "value": "-$345",
+      "value": "-$341",
       "color": "#ef4444"
     },
     {
@@ -528,17 +528,17 @@
     "decIncome": 4795,
     "passiveIncome": 0,
     "livingExpenses": 4167,
-    "michalitas": 574,
-    "locInterest": 345,
-    "carInterest": 54,
-    "surplus": -345
+    "michalitas": 499,
+    "locInterest": 341,
+    "carInterest": 49,
+    "surplus": -261
   },
   "waterfallScenarios": [
     {
       "icon": "🔴",
       "label": "Actual (May 17)",
-      "surplus": -345,
-      "note": "DEC income bajó a $4,795/mes avg → prioridad: cerrar Michalitas"
+      "surplus": -261,
+      "note": "DEC income bajó a $4,795/mes avg → prioridad: crecer DEC o cerrar Michalitas"
     },
     {
       "icon": "🟡",
@@ -609,7 +609,7 @@
     },
     {
       "label": "Intereses Car Loan",
-      "amount": 54,
+      "amount": 49,
       "sign": "-",
       "type": "Deuda",
       "typeColor": "#f59e0b",
