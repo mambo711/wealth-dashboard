@@ -87,10 +87,7 @@
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
         "impact": "Impacto: Mantiene surplus −$261/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
         "impactColor": "#ef4444",
-        "timeline": "May — Jul 2026 (decisión en Aug)",
-        "macroWeight": "ALTO",
-        "macroWeightColor": "#f59e0b",
-        "macroNote": "Consumer spending se resiente en estanflación. Michalitas sobre PE reduce exposición a ciclo económico adverso."
+        "timeline": "May — Jul 2026 (decisión en Aug)"
       },
       {
         "urgency": "high",
@@ -109,10 +106,7 @@
         "detail": "DEC promedia $4,795/mes YTD. Con $6,500/mes el surplus sube a ~$2,400/mes → LOC liquidada en ~20 meses. Palancas: SEO, campañas email, leads Cloze.",
         "impact": "Impacto: Acelera todo el plan FI en ~2 años",
         "impactColor": "#f59e0b",
-        "timeline": "May — Dic 2026",
-        "macroWeight": "ALTO",
-        "macroWeightColor": "#f59e0b",
-        "macroNote": "DEC a $6,500+/mes genera surplus positivo — única forma de crear colchón ante escenario bear o recesión 2027."
+        "timeline": "May — Dic 2026"
       },
       {
         "urgency": "medium",
@@ -120,10 +114,7 @@
         "detail": "Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.",
         "impact": "Impacto: Retiro 91→95, FI Progress 71→78",
         "impactColor": "#3b82f6",
-        "timeline": "Dic 2026 (tax planning)",
-        "macroWeight": "MODERADO",
-        "macroWeightColor": "#60a5fa",
-        "macroNote": "En año de alta inflación, maxing SEP IRA reduce base imponible. Hacerlo cuando DEC supere $50K anuales."
+        "timeline": "Dic 2026 (tax planning)"
       },
       {
         "urgency": "medium",
@@ -131,10 +122,7 @@
         "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.",
         "impact": "Impacto: Diversific. 70→82, Riesgo 53→68",
         "impactColor": "#3b82f6",
-        "timeline": "Q1 2027",
-        "macroWeight": "MODERADO",
-        "macroWeightColor": "#60a5fa",
-        "macroNote": "Con Fed en hold hawkish, bonos a corto plazo ofrecen 4.5–5%. Subir BND de 6% a 15% mejora resiliencia bear."
+        "timeline": "Q1 2027"
       },
       {
         "urgency": "low",
@@ -142,10 +130,7 @@
         "detail": "Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.",
         "impact": "Impacto: Optimización fiscal de largo plazo",
         "impactColor": "#10b981",
-        "timeline": "2027+ (con CPA)",
-        "macroWeight": "BAJO",
-        "macroWeightColor": "#94a3b8",
-        "macroNote": "Evaluar solo en año de ingreso bajo. Con macro incierta, prioridad es flujo y deuda antes de conversión."
+        "timeline": "2027+ (con CPA)"
       },
       {
         "urgency": "low",
@@ -153,10 +138,7 @@
         "detail": "Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.",
         "impact": "Impacto: Protección patrimonial",
         "impactColor": "#10b981",
-        "timeline": "2026 (urgente pero no financiero)",
-        "macroWeight": "BAJO",
-        "macroWeightColor": "#94a3b8",
-        "macroNote": "Urgente por complejidad de activos (préstamos, Ecuador, S-Corp). Macro no impacta urgencia, pero sí la necesidad."
+        "timeline": "2026 (urgente pero no financiero)"
       }
     ]
   },
@@ -2375,5 +2357,47 @@
         "reason": "Spread de 300bps vs Fed rate 3.5%. Mejor activo sin riesgo del portafolio en este régimen"
       }
     ]
-  }
+  },
+  "weeklyActions": [
+    {
+      "priority": "CRÍTICO",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Reducir margen táctica TS de $30,990 → <$15,000",
+      "why": "VIX ~19.5 + geopolítica activa = riesgo de margin call en el peor momento. Vender posición con menor convicción primero.",
+      "category": "RIESGO"
+    },
+    {
+      "priority": "CRÍTICO",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Resolver déficit mensual — DEC necesita llegar a $5,500+/mes",
+      "why": "Sin flujo positivo no hay resiliencia ante ningún shock. Déficit actual: -$261/mes.",
+      "category": "FLUJO"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Revisar NVTS y HIMS — earnings dentro del vencimiento Jun 18",
+      "why": "Gap de earnings puede liquidar los spreads/LEAPS antes del vencimiento. Decidir: cerrar, rodar, o mantener.",
+      "category": "OPCIONES"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Evaluar agregar GLD/IAU 3–5% en cuenta táctica",
+      "why": "PCE 3.5% con pico proyectado 4.5% verano. El oro es el hedge inflacionario que falta en el portafolio.",
+      "category": "MACRO"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📋",
+      "action": "Pagar LOC (Wells Fargo $48,233 @ 8.5%) con cualquier excedente de DEC",
+      "why": "Fed en hold = tasas no bajan. Cada $1,000 pagado ahorra $85/año garantizado.",
+      "category": "DEUDA"
+    }
+  ]
 }
