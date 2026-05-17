@@ -80,7 +80,7 @@
         "urgency": "urgent",
         "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
-        "impact": "Impacto: Mantiene surplus +$686/mes · Cierre reduciría riesgo pero perdería momentum",
+        "impact": "Impacto: Mantiene surplus −$345/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
         "impactColor": "#ef4444",
         "timeline": "May — Jul 2026 (decisión en Aug)"
       },
@@ -220,7 +220,7 @@
       "<strong style='color:#f59e0b'>🎯 Rec:</strong> Plan activo — redirigir capital de TT hacia IBKR y RH cuando expire el ciclo de opciones actual. Futures se mantiene con tesis propia."
     ],
     "flujo": [
-      "✅ <strong style=\"color:#10b981\">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 17). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">+$686/mes</strong>.",
+      "✅ <strong style=\"color:#ef4444\">Flujo de caja en DÉFICIT: −$345/mes (déficit actual — DEC ingreso bajó)</strong> (dato actualizado May 17). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">−$345/mes (déficit actual — DEC ingreso bajó)</strong>.",
       "📈 <strong>Michalitas mejorando dramáticamente:</strong> Abril cerró en $3,717 (déficit -$499 vs PE de $4,216). Mayo proyecta $4,337 → <strong style=\"color:#10b981\">+$121 sobre PE</strong> — casi break-even por primera vez.",
       "• Si mayo cierra sobre PE, el surplus mensual sube a ~+$1,185/mes → LOC pagada en ~41 meses sin cambiar nada más.",
       "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Mantener Michalitas — está en tendencia positiva clara. Redirigir el surplus de $686/mes directamente al LOC.",
