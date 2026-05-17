@@ -173,10 +173,10 @@
   },
   "insights": {
     "resumen": [
-      "\ud83d\ude80 Tu patrimonio neto es <strong style=\"color:#10b981\">$352,743</strong> \u2014 al <strong>71%</strong> de tu meta FI de $500K (+2pp vs semana pasada). NW Bruto subi\u00f3 +$9,317 impulsado por la SEP IRA (+$6,050 a $139,836 \u2014 nuevo ATH) y Futuros re-abiertos (+$5,442). El n\u00facleo de retiro lleg\u00f3 a <strong style=\"color:#60a5fa\">$229,681</strong> entre SEP IRA + Betterment.",
-      "\ud83d\udcb9 <strong style=\"color:#10b981\">DEC YTD 2026 (Xero LIVE May 14):</strong> Ingresos $200,402 \u00b7 COGS $119,741 \u00b7 <strong style=\"color:#10b981\">Net Income $23,703</strong> \u2192 promedio $5,267/mes. El surplus mensual ahora es <strong style=\"color:#10b981\">+$132/mes</strong>. Kevin Warsh tom\u00f3 posesi\u00f3n como Fed Chair (May 15). Nasdaq en nuevo ATH.",
-      "\ud83d\udccb <strong>Opciones TT:</strong> LULU 165P/160P CERRADA (likely max profit ~+$1,000). Nuevas: UBER 77.5P/72.5P, UPS 100P/95P, PG 145P/140P Jun 18. NFLX rolada a Jun 18. NLV $16,941.",
-      "<strong style=\"color:#f59e0b\">\ud83c\udfaf Rec:</strong> El DEC est\u00e1 en recuperaci\u00f3n real. Con surplus positivo por primera vez, ejecutar paso #2: atacar LOC agresivamente. No tocar retiro \u2014 sigue compoundando."
+      "\ud83d\ude80 <strong>NW Neto: $337,007</strong> \u2014 al <strong>67% del target FI ($500K)</strong>. Gap: $162,993. Foco: reducir deuda y mantener compounding.",
+      "\ud83d\udcb9 <strong>DEC 2026 YTD (Xero LIVE May 15):</strong> $21,576 ($5394/mes promedio, 4.5 meses). Flujo mensual actual: <strong style='color:#ef4444'>-$345/mes d\u00e9ficit</strong>.",
+      "\ud83d\udccb <strong>Posiciones activas:</strong> 23 ETFs t\u00e1cticos | TT: NVTS/UBER/UPS/NFLX/PG spreads + HIMS/TSM LEAPS | Futures: MNGM26 x5 long + MYMM26 x1 short.",
+      "<strong style='color:#f59e0b'>\ud83c\udfaf Rec:</strong> Prioridad #1 \u2014 acumular buffer DEC a $39K. Cuando DEC \u2265 $39K, comenzar paydown agresivo de LOC ($48,233 @ 8.5%)."
     ],
     "cuentas": [
       "\u2022 Tienes 13 cuentas activas distribuidas entre retiro, trading, cash, pr\u00e9stamos y deuda. La SEP IRA ($138,725) es tu cuenta m\u00e1s grande y representa el 33% del portafolio \u2014 correctamente posicionada en fondos \u00edndice de bajo costo (VOO/SCHD/AVDV).",
@@ -209,9 +209,10 @@
       "<strong style=\"color:#f59e0b\">\ud83c\udfaf Rec:</strong> Monitorear XLP concentraci\u00f3n (18.9% de tactical). \u26a0\ufe0f Margen expandido \u2014 no abrir nuevas posiciones hasta que baje. OCO activos en todas las opciones. SEP IRA \u2014 no tocar."
     ],
     "performance": [
-      "\u2022 Tu portafolio ha rendido <strong style=\"color:#10b981\">+11.3% real (TWR)</strong> en 23 meses (~5.9% anualizado). El S&P 500 rindi\u00f3 <strong style=\"color:#f59e0b\">+30.0%</strong> en el mismo per\u00edodo \u2014 la brecha de 18.7pp se explica porque tu portafolio tiene 38% en activos no-equity (CDs, cash, pr\u00e9stamos) que no siguen al mercado.",
-      "\u2022 El pico TWR fue Oct 2025 (114.25) impulsado por crypto y stocks. Los \u00faltimos 6M (-1.5%) reflejan la correcci\u00f3n, no deterioro estructural. La l\u00ednea gris (-0.6%) incluye $50K en flujos externos.",
-      "<strong style=\"color:#f59e0b\">\ud83c\udfaf Rec:</strong> El gap vs S&P es esperado por tu allocation defensiva. Para cerrar la brecha, sube equity de 62% a 70% gradualmente cuando la LOC est\u00e9 pagada."
+      "\u2022 <strong>TWR real del portafolio: +11.3%</strong> (Jun 2024 \u2192 May 2026, 24 meses). Superamos al S&P solo en cuentas de stocks/ETFs \u2014 TT y Futures arrastran el total.",
+      "\u2022 <strong>Mejores cuentas (TWR total):</strong> RH Autopilot +43% \ud83e\udd47 | IBKR Bravo +13% \ud83e\udd48 | TS ETF Tactical +26%. <strong>Peores:</strong> TastyTrade -15.7% | Futures (PKG27) -activo.",
+      "\u2022 <strong>Risk-adjusted:</strong> RH Autopilot tiene el mejor ratio retorno/riesgo. TT tiene alto drawdown sin compensaci\u00f3n de retorno \u2014 candidato a reducci\u00f3n de capital.",
+      "<strong style='color:#f59e0b'>\ud83c\udfaf Rec:</strong> Plan activo \u2014 redirigir capital de TT hacia IBKR y RH cuando expire el ciclo de opciones actual. Futures se mantiene con tesis propia."
     ],
     "flujo": [
       "\u2705 <strong style=\"color:#10b981\">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 15). DEC $4,795/mes + pasivo $952 \u2212 gastos $4,167 \u2212 Michalitas $499 \u2212 LOC $341 \u2212 car $54 = <strong style=\"color:#10b981\">+$686/mes</strong>.",
@@ -379,27 +380,27 @@
   "rebalanceNote": "Impacto proyectado: reducir TastyTrade en $4K (a $13K \u2014 sigue siendo capital suficiente para spreads de opciones) y redistribuir hacia IBKR y RH donde el TWR demuestra mejor edge. Futuros se mantienen intactos \u2014 capital activo gestionado por Alberto. Si el TWR de cada cuenta contin\u00faa, el nuevo allocation generar\u00eda ~$800 adicionales en 6M sin aportar capital nuevo.",
   "pieCategories": [
     {
-      "label": "Retiro 55%",
-      "value": 220477,
+      "label": "Retiro 56%",
+      "value": 228570,
       "color": "#2563eb"
     },
     {
       "label": "Trading 15%",
-      "value": 58297,
+      "value": 59800,
       "color": "#10b981"
     },
     {
-      "label": "Cash/Fijo 17%",
-      "value": 66151,
+      "label": "Cash/Fijo 16%",
+      "value": 66153,
       "color": "#f59e0b"
     },
     {
       "label": "Futures 1%",
-      "value": 4507,
+      "value": 5243,
       "color": "#8b5cf6"
     },
     {
-      "label": "Pr\u00e9stamos 13%",
+      "label": "Pr\u00e9stamos 12%",
       "value": 49970,
       "color": "#ec4899"
     }
@@ -407,7 +408,7 @@
   "allocationBar": [
     {
       "name": "US Large Cap",
-      "value": 146500,
+      "value": 141184,
       "color": "#2563eb"
     },
     {
@@ -422,37 +423,37 @@
     },
     {
       "name": "Internacional",
-      "value": 45000,
+      "value": 43367,
       "color": "#06b6d4"
     },
     {
       "name": "US Dividend",
-      "value": 37668,
+      "value": 36301,
       "color": "#3b82f6"
     },
     {
       "name": "Cash Brokerages",
-      "value": 26370,
+      "value": 25413,
       "color": "#fbbf24"
     },
     {
       "name": "Bonos",
-      "value": 20700,
+      "value": 19949,
       "color": "#64748b"
     },
     {
       "name": "Opciones",
-      "value": 17614,
+      "value": 16975,
       "color": "#a855f7"
     },
     {
       "name": "Sectorial",
-      "value": 5554,
+      "value": 5352,
       "color": "#f97316"
     },
     {
       "name": "Energ\u00eda",
-      "value": 5264,
+      "value": 5073,
       "color": "#ef4444"
     }
   ],
