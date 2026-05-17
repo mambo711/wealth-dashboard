@@ -56,7 +56,10 @@
     "debtDelta": "▲ $346 vs mes anterior",
     "debtDeltaUp": false,
     "ssMonthly": 2000,
-    "fiTargetAge": 58
+    "fiTargetAge": 58,
+    "fiBlendedTarget": 275000,
+    "fiBlendedGap": 61530,
+    "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $336,530 — superado por $61,530."
   },
   "roadmap": {
     "weeklyFocus": {
@@ -68,7 +71,7 @@
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)",
-        "detail": "Con surplus actual de +$686/mes aplicado íntegro: LOC liquidada en ~70 meses. Si DEC sube a $6,500/mes, se acelera a ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
+        "detail": "Con surplus actual negativo (-$345/mes), la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
         "impact": "Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar",
         "impactColor": "#ef4444",
         "timeline": "Jun 2026 — 2029"
@@ -84,7 +87,7 @@
       {
         "urgency": "high",
         "title": "3. Rebalancear cuentas de trading",
-        "detail": "Mover $4K de TastyTrade → IBKR (+$2K) y RH (+$2K). Futures se mantiene intacto (gestión activa con tesis propia).",
+        "detail": "Evaluar rebalanceo trimestral. Posiciones actuales: TS ETF Tactical, TastyTrade, IBKR Bravo, RH AP. Sin movimientos pendientes confirmados.",
         "impact": "Impacto: Performance 57→65, Riesgo 53→60",
         "impactColor": "#f59e0b",
         "timeline": "May — Jun 2026"
@@ -194,7 +197,7 @@
     ],
     "deuda": [
       "• Tu deuda total es <strong style=\"color:#ef4444\">$73,206</strong> (Xero LIVE) — el ancla más pesada de tu portafolio. La LOC de Wells Fargo (<strong>$48,233 al 8.5%</strong>) te cuesta $341/mes solo en intereses. Hace un año esta deuda era $10K — creció rápido y ahora supera los $48K.",
-      "• Las tarjetas ($15,920 combinadas) incluyen PP Credit ($7,391), Chase Ink ($5,384), Chase Biz Unlimited ($2,700), AMEX Gold ($418) y WF CC/AMEX Blue ($27). El car loan ($10K al 6.5%) sigue en schedule.",
+      "• Las tarjetas ($15,920 combinadas) incluyen PP Credit ($7,391), Chase Ink ($5,384), Chase Biz Unlimited ($2,700), AMEX Gold ($418) y WF CC/AMEX Blue ($27). El car loan ($9,053 al 6.5%) sigue en schedule.",
       "• Cada $10K que pagues de la LOC te ahorra $850/año en intereses — retorno garantizado del 8.5%, mejor que cualquier inversión de renta fija.",
       "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Primero cerrar Michalitas para liberar +$1,525/mes → surplus → atacar LOC. Meta: $0 en LOC para 2027-2028 dependiendo de velocidad de surplus."
     ],
@@ -246,7 +249,7 @@
         "rank": "#4 — Perdiendo pero mejorando.",
         "rankColor": "#ef4444",
         "text": "-15.7% TWR desde inicio, aunque el 3M reciente (+5.9%) sugiere cambio de tendencia con la estrategia de bear puts. Pico en Nov 2025 ($22K) → caída sostenida, NLV actual $17,026.",
-        "rec": "Reducir $4,000 ahora → $13,026 (capital suficiente para spreads y LEAPS). Evaluar en 3M: si el 3M TWR se mantiene positivo (+5%+), considerar escalar de nuevo. Si regresa negativo, reducir a $10K."
+        "rec": "Mantener capital actual. Evaluar rebalanceo cuando el surplus vuelva a ser positivo. No hay movimientos pendientes."
       },
       {
         "rank": "#5 — La peor cuenta en TWR.",
@@ -357,8 +360,8 @@
       "name": "TastyTrade",
       "color": "#8b5cf6",
       "current": 17026,
-      "move": -4000,
-      "newVal": 13026,
+      "move": null,
+      "newVal": 17026,
       "twr": "-15.7%",
       "twrUp": false
     },
@@ -366,8 +369,8 @@
       "name": "IBKR Bravo",
       "color": "#10b981",
       "current": 6435,
-      "move": 2000,
-      "newVal": 8435,
+      "move": null,
+      "newVal": 6435,
       "twr": "+13.2%",
       "twrUp": true
     },
@@ -375,8 +378,8 @@
       "name": "RH AP Act Managed",
       "color": "#f59e0b",
       "current": 2323,
-      "move": 2000,
-      "newVal": 4323,
+      "move": null,
+      "newVal": 2323,
       "twr": "+43.4%",
       "twrUp": true
     },
@@ -603,7 +606,7 @@
       "type": "Deuda",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "6.5% × $10K ÷ 12"
+      "note": "6.5% × $9,053 ÷ 12"
     }
   ],
   "performance": {
@@ -2133,44 +2136,6 @@
       127.5,
       131.8
     ]
-  },
-  "fiProjections": {
-    "labels": [
-      "Hoy (53)",
-      "2027",
-      "2028",
-      "2029",
-      "2030",
-      "2031 (58)"
-    ],
-    "base": [
-      null,
-      369000,
-      399000,
-      434000,
-      471000,
-      511000
-    ],
-    "optimistic": [
-      null,
-      389000,
-      439000,
-      494000,
-      544000,
-      599000
-    ],
-    "pessimistic": [
-      null,
-      349000,
-      364000,
-      381000,
-      399000,
-      419000
-    ],
-    "target": 500000,
-    "labelBase": "🔵 Base (surplus gradual, 7% retorno)",
-    "labelOptimistic": "🟢 Optimista (DEC crece + cierra Michalitas)",
-    "labelPessimistic": "🔴 Pesimista (DEC bajo, sin surplus)"
   },
   "allocationAlerts": [
     {
