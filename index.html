@@ -186,6 +186,11 @@
   .heatmap-cell { border-radius: 4px; padding: 6px 4px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
   .heatmap-header { color: #64748b; font-weight: 700; font-size: 10px; text-transform: uppercase; }
 
+  /* Range buttons */
+  .range-btn { padding:4px 10px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#94a3b8; font-size:11px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+  .range-btn:hover { background:#334155; color:#e2e8f0; }
+  .range-btn.active-range { background:#2563eb; color:#fff; border-color:#2563eb; }
+
   /* Print button */
   .print-btn { position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px #0006; z-index: 999; transition: background 0.2s; }
   .print-btn:hover { background: #1d4ed8; }
@@ -206,6 +211,13 @@
   @media (max-width: 700px) {
     .top-cards, .debt-cards, .fi-cards, .chart-row { grid-template-columns: 1fr; }
     .print-btn { bottom: 10px; right: 10px; padding: 8px 14px; font-size: 12px; }
+    .health-breakdown { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .health-score-container { flex-direction: column; align-items: stretch; }
+    .health-gauge { width: 80px; height: 80px; margin: 0 auto; }
+  }
+  @media (max-width: 480px) {
+    .health-breakdown { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .hb-item .hb-val { font-size: 14px; }
   }
   @keyframes flashStale {
     0%,100% { color: #ef4444; }
@@ -324,7 +336,14 @@
     </div>
     <!-- NW Histórico Chart -->
     <div class="panel" style="margin-bottom:16px">
-      <h3>📈 Patrimonio Neto — 24 Meses (Jun 2024 → May 2026)</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">📈 Patrimonio Neto Histórico</h3>
+        <div style="display:flex;gap:6px" id="nw-range-btns">
+          <button onclick="renderNWHistorico(6)"  class="range-btn" id="rng-6m">6M</button>
+          <button onclick="renderNWHistorico(12)" class="range-btn" id="rng-12m">12M</button>
+          <button onclick="renderNWHistorico(0)"  class="range-btn active-range" id="rng-all">Todo</button>
+        </div>
+      </div>
       <canvas id="chartNWHistorico" style="max-height:280px"></canvas>
     </div>
 
@@ -422,6 +441,32 @@
         <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">$29,952</div></div>
       </div>
       <canvas id="lineChart" style="max-height:300px"></canvas>
+      <div style="margin-top:20px;padding:16px;background:#0f172a;border-radius:10px">
+        <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:12px">🧮 Estimador: ¿Cuándo llego a FI?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px">
+          <div>
+            <div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Retorno anual asumido</div>
+            <select id="fi-est-return" onchange="calcFIEstimate()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px">
+              <option value="0.05">5% (conservador)</option>
+              <option value="0.07" selected>7% (base)</option>
+              <option value="0.09">9% (optimista)</option>
+            </select>
+          </div>
+          <div>
+            <div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Aporte mensual adicional</div>
+            <select id="fi-est-contrib" onchange="calcFIEstimate()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px">
+              <option value="0">$0 (sin surplus)</option>
+              <option value="500">$500/mes</option>
+              <option value="1000">$1,000/mes</option>
+              <option value="2000">$2,000/mes</option>
+              <option value="3000">$3,000/mes</option>
+            </select>
+          </div>
+        </div>
+        <div id="fi-estimate-result" style="margin-top:12px;padding:12px;background:#1e293b;border-radius:8px;font-size:13px;line-height:1.8;color:#cbd5e1">
+          Calculando...
+        </div>
+      </div>
       <div class="supuestos">
         <div class="stitle">Supuestos de los 3 escenarios:</div>
         <div class="stext">
@@ -743,7 +788,14 @@
   <div class="footer">
     <span id="dash-footer-note">Datos: TradeStation MCP · Xero (live YTD) · Tastytrade relay</span>
     &nbsp;·&nbsp;
-    <span class="source-badge" id="src-betterment" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot Betterment · Apr 9 2026</span>
+    <span class="source-badge" id="src-betterment" style="font-size:10px;color:#64748b;white-space:nowrap;cursor:pointer" title="Betterment desactualizado. Para actualizar: abre Betterment app → toca el portfolio → toma screenshot → comparte con Claude" onclick="document.getElementById('betterment-update-tip').style.display=document.getElementById('betterment-update-tip').style.display==='none'?'block':'none'">📱 Screenshot Betterment · Apr 9 2026 ℹ️</span>
+    <div id="betterment-update-tip" style="display:none;margin-top:6px;padding:10px 14px;background:#1e3a5f;border:1px solid #2563eb;border-radius:8px;font-size:12px;color:#cbd5e1;max-width:400px;margin-left:auto;margin-right:auto;text-align:left">
+      <strong style="color:#60a5fa">🔄 Para actualizar Betterment:</strong><br>
+      1. Abre la app Betterment en tu teléfono<br>
+      2. Toca cada cuenta (Roth, Trad IRA, Emergency)<br>
+      3. Toma screenshot del saldo actual<br>
+      4. Comparte con Claude en una nueva conversación
+    </div>
   </div>
 </div>
 
@@ -1212,7 +1264,16 @@ function initFromData(d) {
   const fibl = document.getElementById('fi-bar-label');
   if (fibl) fibl.textContent = 'Progreso FI (meta: $' + (m.fiTarget || 500000).toLocaleString() + ')';
   const fill = document.getElementById('fi-fill-bar');
-  if (fill) fill.style.width = m.fiPct + '%';
+  if (fill) {
+    fill.style.width = m.fiPct + '%';
+    fill.style.background = m.fiPct < 50
+      ? 'linear-gradient(90deg, #991b1b, #ef4444)'
+      : m.fiPct < 75
+      ? 'linear-gradient(90deg, #92400e, #f59e0b)'
+      : m.fiPct < 90
+      ? 'linear-gradient(90deg, #065f46, #10b981)'
+      : 'linear-gradient(90deg, #1d4ed8, #3b82f6)';
+  }
 
   const hs = document.getElementById('healthScoreNum');
   if (hs) hs.textContent = m.healthScore;
@@ -1417,6 +1478,9 @@ function initFromData(d) {
       `<div class="alert"><span>${a.icon}</span><span>${a.text}</span></div>`
     ).join('');
   }
+
+  // ── FI Estimator auto-calculate ──
+  calcFIEstimate();
 }
 
 // ═══ CHART RENDERING FUNCTIONS (unchanged logic, use global vars) ═══
@@ -1961,18 +2025,37 @@ function renderPerformanceCharts() {
 }
 
 // NW Histórico
-function renderNWHistorico() {
+function renderNWHistorico(rangeMonths) {
+  // Update range button styles
+  ['6m','12m','all'].forEach(r => {
+    const btn = document.getElementById('rng-' + r);
+    if (btn) btn.classList.remove('active-range');
+  });
+  const activeId = rangeMonths === 6 ? 'rng-6m' : rangeMonths === 12 ? 'rng-12m' : 'rng-all';
+  const activeBtn = document.getElementById(activeId);
+  if (activeBtn) activeBtn.classList.add('active-range');
+
   const ctx = document.getElementById('chartNWHistorico');
   if (!ctx || !fmTotal) return;
   if (ctx._chart) ctx._chart.destroy();
   const debtSeries = (dashData && dashData.monthly && dashData.monthly.debt) ? dashData.monthly.debt
     : [59973,58973,57973,56973,55973,54973,53973,52973,51973,50973,49973,54973,56973,58973,60973,62973,64973,66973,68973,70973,71973,72860,72860,72729];
-  const nwNeto = fmTotal.map((v,i) => v - (debtSeries[i] || debtSeries[debtSeries.length-1]));
+  const allMonths   = fmMonths;
+  const allTotal    = fmTotal;
+  const allDebt     = debtSeries;
+  const allNwNeto   = fmTotal.map((v,i) => v - (debtSeries[i] || debtSeries[debtSeries.length-1]));
+  const n = (rangeMonths && rangeMonths > 0) ? rangeMonths : allMonths.length;
+  const slicedMonths = allMonths.slice(-n);
+  const slicedTotal  = allTotal.slice(-n);
+  const slicedDebt   = allDebt.slice(-n);
+  const slicedNwNeto = allNwNeto.slice(-n);
+  const fiTargetLine = slicedMonths.map(() => (dashMeta ? (dashMeta.fiTarget || 500000) : 500000));
   ctx._chart = new Chart(ctx, {
     type: 'line',
-    data: { labels: fmMonths, datasets: [
-      { label:'NW Bruto', data:fmTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
-      { label:'NW Neto (est.)', data:nwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+    data: { labels: slicedMonths, datasets: [
+      { label:'NW Bruto', data:slicedTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label:'NW Neto (est.)', data:slicedNwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label:'🎯 Meta FI $500K', data:fiTargetLine, borderColor:'#10b981', borderWidth:1.5, borderDash:[8,4], pointRadius:0, fill:false, tension:0 },
     ]},
     options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
         tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}},
@@ -2149,6 +2232,40 @@ renderPerformanceCharts = function() {
   renderRollingReturns();
   renderContribution();
 };
+
+// ═══ FI ESTIMATOR ═══
+function calcFIEstimate() {
+  const retEl = document.getElementById('fi-est-return');
+  const cntEl = document.getElementById('fi-est-contrib');
+  const resEl = document.getElementById('fi-estimate-result');
+  if (!retEl || !cntEl || !resEl || !dashMeta) return;
+  const annualReturn = parseFloat(retEl.value);
+  const monthlyContrib = parseFloat(cntEl.value);
+  const target = dashMeta.fiTarget || 500000;
+  const current = dashMeta.nwNeto;
+  const monthlyRate = annualReturn / 12;
+  // Numerical approach: iterate months
+  let nw = current;
+  let months = 0;
+  const maxMonths = 360; // 30 years cap
+  while (nw < target && months < maxMonths) {
+    nw = nw * (1 + monthlyRate) + monthlyContrib;
+    months++;
+  }
+  if (months >= maxMonths) {
+    resEl.innerHTML = `<span style="color:#ef4444">⚠️ Con estos parámetros el portafolio no alcanza $${target.toLocaleString()} en 30 años.</span><br><span style="color:#94a3b8">Necesitas más aporte mensual o un retorno más alto.</span>`;
+    return;
+  }
+  const years = Math.floor(months / 12);
+  const remMonths = months % 12;
+  const arrivalAge = 53 + years + (remMonths > 6 ? 1 : 0);
+  const arrivalDate = new Date();
+  arrivalDate.setMonth(arrivalDate.getMonth() + months);
+  const arrivalStr = arrivalDate.toLocaleDateString('es', {month:'long', year:'numeric'});
+  const emoji = arrivalAge <= 57 ? '🏆' : arrivalAge <= 60 ? '✅' : '⚠️';
+  resEl.innerHTML = `${emoji} <strong style="color:#f8fafc">Llegas a FI en ${years} años${remMonths ? ' y ' + remMonths + ' meses' : ''}</strong> — aprox. <strong style="color:#60a5fa">${arrivalStr}</strong> · a los <strong style="color:#f59e0b">${arrivalAge} años</strong><br>
+    <span style="color:#94a3b8">Portafolio actual: <strong style="color:#10b981">$${current.toLocaleString()}</strong> → Meta: $${target.toLocaleString()} · Falta: $${(target-current).toLocaleString()}</span>`;
+}
 
 // ═══ STALE SOURCE BADGE CHECK (flash red if > 7 days) ═══
 function checkStaleBadges() {
