@@ -594,6 +594,12 @@
       🏆 <strong style="color:#f8fafc">CUENTAS DE TRADING — RENDIMIENTO REAL (TWR)</strong> — Ago 2025 → May 2026 · Excluye depósitos y retiros
     </div>
 
+    <!-- TWR Total Summary -->
+    <div class="card" style="border-top:3px solid #60a5fa;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px">
+      <div><div class="card-label">📈 TWR Total Portfolio (ajustado flujos)</div></div>
+      <div class="card-value" style="font-size:24px;color:#60a5fa;margin:0" id="perf-twr-total">—</div>
+    </div>
+
     <!-- Trading Performance Summary Cards — TWR (dynamic, calculated in JS) -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px" id="twr-rank-cards">
       <div class="card" style="border-top:3px solid #10b981">
@@ -1334,8 +1340,7 @@ function initFromData(d) {
   if (hl) hl.textContent = m.healthLabel;
   populateHealthBreakdown();
 
-  const wfd = document.getElementById('weekly-focus-date');
-  if (wfd) wfd.textContent = m.weeklyFocusDate;
+  // weekly-focus-date rendered inline by renderRoadmap
 
   const sih = document.getElementById('sep-ira-header');
   if (sih) sih.textContent = sepIRA.header;
@@ -1354,8 +1359,7 @@ function initFromData(d) {
   if (ftc) ftc.textContent = '$' + (m.fiTarget || 500000).toLocaleString();
   const ftl = document.getElementById('fi-target-label');
   if (ftl && m.fiTargetAge) ftl.textContent = 'Meta FI @ ' + m.fiTargetAge;
-  const ssCard = document.getElementById('ss-monthly-card');
-  if (ssCard && m.ssMonthly) ssCard.textContent = '$' + m.ssMonthly.toLocaleString() + '/mo';
+  // ss-monthly-card rendered via metricsResumen metric-ss valueId
 
   // Performance cards
   const pt = document.getElementById('perf-twr-total');
