@@ -227,6 +227,10 @@
     animation: flashStale 1.2s ease-in-out infinite;
     font-weight: 600;
   }
+  .days-stale {
+    animation: flashStale 1.2s ease-in-out infinite;
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -387,9 +391,9 @@
     <div class="panel">
       <h3>Todas las Cuentas</h3>
       <table>
-        <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th></tr></thead>
+        <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th><th class="right">Actualiz.</th></tr></thead>
         <tbody id="accountsTable"></tbody>
-        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px" id="accounts-footer-total">$401,602</td><td class="right" style="color:#94a3b8">100%</td><td></td></tr></tfoot>
+        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px" id="accounts-footer-total">$401,602</td><td class="right" style="color:#94a3b8">100%</td><td></td><td></td></tr></tfoot>
       </table>
     </div>
   </div>
@@ -1064,18 +1068,64 @@ function populateAccountsTable() {
   const tbody = document.getElementById('accountsTable');
   if (!tbody) return;
   tbody.innerHTML = '';
+
+  // Map account names → source key in dashData.sources
+  const acctSourceMap = {
+    'SEP IRA (TS)':        'tsetf',
+    'TS ETF Tactical':     'tsetf',
+    'TS Cash (SEP)':       'tsetf',
+    'TS Futures PKG27':    'fut',
+    'TS Futures VLV23':    'fut2',
+    'TastyTrade':          'tt',
+    'IBKR Bravo':          'ibkr',
+    'RH AP Act Managed':   'rh',
+    'RH Ap-photonics':     'rhph',
+    'Betterment Roth IRA': 'betterment',
+    'Betterment Trad IRA': 'betterment',
+    'Betterment Emerg.':   'betterment',
+  };
+
+  // Parse "Mon DD YYYY" → Date
+  const monthMap = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  function parseSrcDate(str) {
+    if (!str) return null;
+    const m = str.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/);
+    if (!m) return null;
+    const mo = monthMap[m[1].toLowerCase()];
+    return mo !== undefined ? new Date(+m[3], mo, +m[2]) : null;
+  }
+
+  const today = new Date();
+  const sources = (dashData && dashData.sources) || {};
+
   accounts.forEach((a, idx) => {
     const pct = ((a.value / totalBruto) * 100).toFixed(1);
     const cid = 'spark_' + idx;
     const sd = sparkData[a.name];
     const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
     const tc = trend === '▲' ? '#10b981' : '#ef4444';
+
+    // Days-since calculation
+    const srcKey = acctSourceMap[a.name];
+    const src    = srcKey ? sources[srcKey] : null;
+    const srcDate = src ? parseSrcDate(src.date) : null;
+    let daysCell = '<td class="right" style="color:#475569;font-size:11px">—</td>';
+    if (srcDate) {
+      const days = Math.floor((today - srcDate) / 86400000);
+      const stale = days > 7;
+      daysCell = `<td class="right" style="font-size:11px;color:${stale ? '#ef4444' : '#10b981'}"
+        title="${src.label} · ${src.date}">
+        <span${stale ? ' class="days-stale"' : ''}>${days}d</span>
+      </td>`;
+    }
+
     tbody.innerHTML += `<tr>
       <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
       <td><span class="badge">${a.cat}</span></td>
       <td class="right bold">${fmt(a.value)}</td>
       <td class="right" style="color:#94a3b8">${pct}%</td>
       <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
+      ${daysCell}
     </tr>`;
   });
   document.getElementById('accounts-footer-total').textContent = fmt(totalBruto);
