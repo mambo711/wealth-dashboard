@@ -957,102 +957,82 @@ function renderMacroTab(mr, meta) {
   const el = document.getElementById('macro-content');
   if (!el || !mr) return;
 
-  const bearScore = mr.bearScore || 0;
-  const bullScore = mr.bullScore || 0;
-  const signalColor = s => s === 'ok' ? '#10b981' : s === 'warn' ? '#f59e0b' : '#ef4444';
-  const signalIcon  = s => s === 'ok' ? '✅' : s === 'warn' ? '⚠️' : '🚨';
+  const sc = mr.alignmentScore || 0;
+  const scoreW = Math.min(sc, 100);
 
   el.innerHTML = `
-    <!-- Header: Regime + Scores -->
-    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid ${mr.regimeColor}44;border-radius:12px;padding:20px;margin-bottom:16px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <span style="font-size:22px">🌐</span>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:#f8fafc">Macro Readiness — Portafolio vs. Mercado</div>
-          <div style="font-size:11px;color:#64748b">Actualizado: ${mr.lastUpdate || '—'}</div>
+    <!-- ── Header: Regime + Alignment Score ── -->
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid ${mr.regimeColor}44;border-radius:12px;padding:20px;margin-bottom:14px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <span style="font-size:18px">🌐</span>
+            <span style="font-size:15px;font-weight:700;color:#f8fafc">Portafolio vs. Mercado Actual</span>
+          </div>
+          <span style="display:inline-block;padding:3px 12px;background:${mr.regimeColor}22;color:${mr.regimeColor};border:1px solid ${mr.regimeColor}55;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px">${mr.regimeLabel || ''}</span>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.6">${mr.regimeContext || ''}</div>
+          <div style="font-size:10px;color:#475569;margin-top:6px">Actualizado: ${mr.lastUpdate || '—'}</div>
         </div>
-        <span style="margin-left:auto;padding:4px 12px;background:${mr.regimeColor}22;color:${mr.regimeColor};border:1px solid ${mr.regimeColor}55;border-radius:20px;font-size:12px;font-weight:700">⚠️ ${mr.regimeLabel || ''}</span>
-      </div>
-
-      <!-- Bear / Bull scores -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-        <div style="background:#ef444415;border:1px solid #ef444430;border-radius:10px;padding:14px;text-align:center">
-          <div style="font-size:11px;color:#ef4444;font-weight:700;letter-spacing:1px;margin-bottom:6px">🐻 PREPARACIÓN BEAR</div>
-          <div style="font-size:36px;font-weight:800;color:${bearScore>=70?'#10b981':bearScore>=50?'#f59e0b':'#ef4444'}">${bearScore}<span style="font-size:16px">/10</span></div>
-          <div style="height:6px;background:#1e293b;border-radius:3px;margin-top:8px"><div style="height:100%;width:${bearScore*10}%;background:${bearScore>=70?'#10b981':bearScore>=50?'#f59e0b':'#ef4444'};border-radius:3px;transition:width .6s"></div></div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px">${bearScore>=70?'BIEN PROTEGIDO':bearScore>=50?'MODERADO':'VULNERABLE'}</div>
-        </div>
-        <div style="background:#10b98115;border:1px solid #10b98130;border-radius:10px;padding:14px;text-align:center">
-          <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:1px;margin-bottom:6px">🐂 PREPARACIÓN BULL</div>
-          <div style="font-size:36px;font-weight:800;color:${bullScore>=70?'#10b981':bullScore>=50?'#f59e0b':'#ef4444'}">${bullScore}<span style="font-size:16px">/10</span></div>
-          <div style="height:6px;background:#1e293b;border-radius:3px;margin-top:8px"><div style="height:100%;width:${bullScore*10}%;background:${bullScore>=70?'#10b981':bullScore>=50?'#f59e0b':'#ef4444'};border-radius:3px;transition:width .6s"></div></div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:4px">${bullScore>=70?'BIEN POSICIONADO':bullScore>=50?'MODERADO':'LIMITADO'}</div>
+        <!-- Alignment gauge -->
+        <div style="text-align:center;background:#0f172a;border-radius:10px;padding:16px 24px;flex-shrink:0">
+          <div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:700;margin-bottom:4px">ALINEACIÓN TOTAL</div>
+          <div style="font-size:44px;font-weight:800;color:${mr.alignmentColor || '#f59e0b'};line-height:1">${sc}<span style="font-size:18px">%</span></div>
+          <div style="font-size:11px;color:${mr.alignmentColor || '#f59e0b'};margin-top:4px;font-weight:600">${mr.alignmentLabel || ''}</div>
+          <div style="height:6px;background:#1e293b;border-radius:3px;margin-top:8px;width:120px">
+            <div style="height:100%;width:${scoreW}%;background:${mr.alignmentColor || '#f59e0b'};border-radius:3px;transition:width .8s"></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Macro indicators grid -->
-      <div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:1px;margin-bottom:8px">INDICADORES MACRO</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
-        ${(mr.macroIndicators||[]).map(i=>`
-          <div style="background:#0f172a;border-radius:8px;padding:10px 12px;border-left:3px solid ${signalColor(i.signal)}">
-            <div style="font-size:10px;color:#64748b;margin-bottom:2px">${i.label}</div>
-            <div style="font-size:14px;font-weight:700;color:#f8fafc">${i.value}</div>
-            <div style="font-size:10px;color:${signalColor(i.signal)}">${signalIcon(i.signal)} ${i.signalLabel}</div>
+    <!-- ── Macro Sensitivities ── -->
+    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:14px">
+      <div style="font-size:13px;font-weight:700;color:#f8fafc;margin-bottom:12px">📊 Sensibilidades del Portafolio</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${(mr.macroFactors||[]).map(f => `
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+              <span style="font-size:12px;color:#cbd5e1;font-weight:600">${f.factor}</span>
+              <span style="font-size:12px;font-weight:700;color:${f.protectionColor}">${f.protection}% protegido</span>
+            </div>
+            <div style="height:7px;background:#0f172a;border-radius:4px">
+              <div style="height:100%;width:${f.protection}%;background:${f.protectionColor};border-radius:4px;transition:width .7s"></div>
+            </div>
+            <div style="font-size:11px;color:#64748b;margin-top:3px;line-height:1.4">${f.note}</div>
           </div>`).join('')}
       </div>
     </div>
 
-    <!-- Portfolio vs Macro cross-reference -->
-    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:16px">
-      <div style="font-size:14px;font-weight:700;color:#f8fafc;margin-bottom:12px">⚖️ Tu Portafolio vs. Macro Actual</div>
-      <table style="width:100%;border-collapse:collapse;font-size:12px">
-        <thead><tr>
-          <th style="text-align:left;color:#64748b;padding:6px 8px;border-bottom:1px solid #334155">Riesgo Macro</th>
-          <th style="text-align:left;color:#64748b;padding:6px 8px;border-bottom:1px solid #334155">Tu Posición</th>
-          <th style="text-align:center;color:#64748b;padding:6px 8px;border-bottom:1px solid #334155">Alineación</th>
-          <th style="text-align:left;color:#64748b;padding:6px 8px;border-bottom:1px solid #334155">Análisis</th>
-        </tr></thead>
-        <tbody>
-          ${(mr.portfolioVsMacro||[]).map(r=>{
-            const ac = r.alineacion==='ok'?'#10b981':r.alineacion==='warn'?'#f59e0b':'#ef4444';
-            const ai = r.alineacion==='ok'?'✅':r.alineacion==='warn'?'⚠️':'🚨';
-            return `<tr style="border-bottom:1px solid #1e293b">
-              <td style="padding:8px;color:#cbd5e1;font-weight:600">${r.area}</td>
-              <td style="padding:8px;color:#94a3b8">${r.posicion}</td>
-              <td style="padding:8px;text-align:center;font-size:16px">${ai}</td>
-              <td style="padding:8px;color:#64748b;font-size:11px;line-height:1.4">${r.nota}</td>
-            </tr>`;
-          }).join('')}
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Bear / Bull detail columns -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-      <div style="background:#1e293b;border-radius:12px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#ef4444;margin-bottom:10px">🐻 Fortalezas Bear</div>
-        ${(mr.bearStrengths||[]).map(s=>`<div style="font-size:12px;color:#cbd5e1;padding:5px 0;border-bottom:1px solid #334155;line-height:1.4">${s}</div>`).join('')}
-        <div style="font-size:13px;font-weight:700;color:#f59e0b;margin:12px 0 10px">⚠️ Vulnerabilidades Bear</div>
-        ${(mr.bearWeaknesses||[]).map(s=>`<div style="font-size:12px;color:#94a3b8;padding:5px 0;border-bottom:1px solid #334155;line-height:1.4">${s}</div>`).join('')}
-      </div>
-      <div style="background:#1e293b;border-radius:12px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#10b981;margin-bottom:10px">🐂 Fortalezas Bull</div>
-        ${(mr.bullStrengths||[]).map(s=>`<div style="font-size:12px;color:#cbd5e1;padding:5px 0;border-bottom:1px solid #334155;line-height:1.4">${s}</div>`).join('')}
-        <div style="font-size:13px;font-weight:700;color:#64748b;margin:12px 0 10px">📉 Limitaciones Bull</div>
-        ${(mr.bullLimitations||[]).map(s=>`<div style="font-size:12px;color:#94a3b8;padding:5px 0;border-bottom:1px solid #334155;line-height:1.4">${s}</div>`).join('')}
+    <!-- ── Recommended Moves ── -->
+    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:14px">
+      <div style="font-size:13px;font-weight:700;color:#f8fafc;margin-bottom:12px">⚡ Movimientos Recomendados</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${(mr.moves||[]).map(m => `
+          <div style="border:1px solid ${m.urgencyColor}33;border-left:4px solid ${m.urgencyColor};border-radius:0 8px 8px 0;padding:12px 14px;background:#0f172a">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <span style="font-size:16px">${m.icon}</span>
+              <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;background:${m.urgencyColor}22;color:${m.urgencyColor};border:1px solid ${m.urgencyColor}44;letter-spacing:.5px">${m.urgency}</span>
+              <span style="font-size:13px;font-weight:700;color:#f8fafc">${m.action}</span>
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:11px;margin-bottom:8px">
+              <span style="color:#475569;font-weight:600">MONTO</span><span style="color:#cbd5e1">${m.amount}</span>
+              <span style="color:#475569;font-weight:600">DE</span><span style="color:#94a3b8">${m.from}</span>
+              <span style="color:#475569;font-weight:600">HACIA</span><span style="color:#94a3b8">${m.to}</span>
+            </div>
+            <div style="font-size:11px;color:#64748b;line-height:1.5;border-top:1px solid #1e293b;padding-top:7px">${m.why}</div>
+          </div>`).join('')}
       </div>
     </div>
 
-    <!-- Macro Recommendations -->
-    <div style="background:#1e293b;border-radius:12px;padding:16px">
-      <div style="font-size:14px;font-weight:700;color:#f8fafc;margin-bottom:12px">🎯 Recomendaciones Macro-Ponderadas</div>
-      ${(mr.macroRecs||[]).map(r=>`
-        <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #334155;align-items:flex-start">
-          <span style="flex-shrink:0;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;background:${r.color}22;color:${r.color};border:1px solid ${r.color}44;white-space:nowrap">${r.priority}</span>
-          <div>
-            <div style="font-size:13px;color:#f8fafc;font-weight:600;margin-bottom:2px">${r.action}</div>
-            <div style="font-size:11px;color:#64748b;line-height:1.4">${r.reason}</div>
+    <!-- ── Regime Triggers ── -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+      ${(mr.triggers||[]).map(t => `
+        <div style="background:#1e293b;border-radius:10px;padding:14px;border-top:3px solid ${t.dirColor}">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span style="font-size:16px">${t.icon}</span>
+            <span style="font-size:11px;font-weight:700;color:${t.dirColor}">${t.label}</span>
           </div>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.5">${t.condition}</div>
         </div>`).join('')}
     </div>
   `;
