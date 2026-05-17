@@ -54,7 +54,8 @@
     "footerNote": "Datos: TradeStation MCP (live May 17) · Betterment (screenshot May 17) · Xero (live YTD) · Tastytrade relay (May 17)",
     "debtTotal": 72728.75,
     "debtDelta": "▲ $346 vs mes anterior",
-    "debtDeltaUp": false
+    "debtDeltaUp": false,
+    "totalNeto": 336530
   },
   "roadmap": {
     "weeklyFocus": {
@@ -174,7 +175,7 @@
   "insights": {
     "resumen": [
       "🚀 <strong>NW Neto: $337,007</strong> — al <strong>67% del target FI ($500K)</strong>. Gap: $162,993. Foco: reducir deuda y mantener compounding.",
-      "💹 <strong>DEC 2026 YTD (Xero LIVE May 15):</strong> $21,576 ($5394/mes promedio, 4.5 meses). Flujo mensual actual: <strong style='color:#ef4444'>-$345/mes déficit</strong>.",
+      "💹 <strong>DEC 2026 YTD (Xero LIVE May 17):</strong> $21,576 ($5394/mes promedio, 4.5 meses). Flujo mensual actual: <strong style='color:#ef4444'>-$345/mes déficit</strong>.",
       "📋 <strong>Posiciones activas:</strong> 23 ETFs tácticos | TT: NVTS/UBER/UPS/NFLX/PG spreads + HIMS/TSM LEAPS | Futures: MNGM26 x5 long + MYMM26 x1 short.",
       "<strong style='color:#f59e0b'>🎯 Rec:</strong> Prioridad #1 — acumular buffer DEC a $39K. Cuando DEC ≥ $39K, comenzar paydown agresivo de LOC ($48,233 @ 8.5%)."
     ],
@@ -215,7 +216,7 @@
       "<strong style='color:#f59e0b'>🎯 Rec:</strong> Plan activo — redirigir capital de TT hacia IBKR y RH cuando expire el ciclo de opciones actual. Futures se mantiene con tesis propia."
     ],
     "flujo": [
-      "✅ <strong style=\"color:#10b981\">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 15). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">+$686/mes</strong>.",
+      "✅ <strong style=\"color:#10b981\">Flujo de caja en SURPLUS: +$686/mes</strong> (dato actualizado May 17). DEC $4,795/mes + pasivo $952 − gastos $4,167 − Michalitas $499 − LOC $341 − car $54 = <strong style=\"color:#10b981\">+$686/mes</strong>.",
       "📈 <strong>Michalitas mejorando dramáticamente:</strong> Abril cerró en $3,717 (déficit -$499 vs PE de $4,216). Mayo proyecta $4,337 → <strong style=\"color:#10b981\">+$121 sobre PE</strong> — casi break-even por primera vez.",
       "• Si mayo cierra sobre PE, el surplus mensual sube a ~+$1,185/mes → LOC pagada en ~41 meses sin cambiar nada más.",
       "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Mantener Michalitas — está en tendencia positiva clara. Redirigir el surplus de $686/mes directamente al LOC.",
@@ -261,7 +262,7 @@
       "rate": "8.5%",
       "interestMonthly": 341,
       "status": "Xero LIVE",
-      "statusDate": "May 15, 2026",
+      "statusDate": "May 17, 2026",
       "severity": "high"
     },
     "secondary": {
@@ -304,25 +305,29 @@
       "label": "Pepe Loans",
       "amount": 542,
       "color": "#10b981",
-      "source": "4%/mes × $13,555"
+      "source": "4%/mes × $13,555",
+      "monthly": 542
     },
     {
       "label": "CDs Ecuador",
       "amount": 190,
       "color": "#3b82f6",
-      "source": "6.5%/año × $35,000"
+      "source": "6.5%/año × $35,000",
+      "monthly": 190
     },
     {
       "label": "Dividendos",
       "amount": 115,
       "color": "#f59e0b",
-      "source": "SCHD $85 + FDL $30"
+      "source": "SCHD $85 + FDL $30",
+      "monthly": 140
     },
     {
       "label": "Betterment Int.",
       "amount": 105,
       "color": "#8b5cf6",
-      "source": "~4%/año × $31,151"
+      "source": "~4%/año × $31,151",
+      "monthly": 80
     }
   ],
   "incomeTotal": 952,
@@ -542,7 +547,7 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD May 15 (Xero LIVE $21,576 ÷ 4.5m)"
+      "note": "Net Income promedio YTD May 17 (Xero LIVE $21,576 ÷ 4.5m)"
     },
     {
       "label": "Ingreso pasivo",
