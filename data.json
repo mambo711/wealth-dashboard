@@ -2363,41 +2363,41 @@
       "priority": "CRÍTICO",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Reducir margen táctica TS de $30,990 → <$15,000",
-      "why": "VIX ~19.5 + geopolítica activa = riesgo de margin call en el peor momento. Vender posición con menor convicción primero.",
-      "category": "RIESGO"
+      "action": "Pagar LOC Wells Fargo con excedente DEC de mayo",
+      "why": "Cada semana de espera = $65 en intereses. Abrir DEC → verificar saldo disponible → transferir a WF LOC. Mínimo $500.",
+      "category": "DEUDA"
     },
     {
       "priority": "CRÍTICO",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Resolver déficit mensual — DEC necesita llegar a $5,500+/mes",
-      "why": "Sin flujo positivo no hay resiliencia ante ningún shock. Déficit actual: -$261/mes.",
-      "category": "FLUJO"
+      "action": "Activar 2–3 leads de DEC pendientes en Cloze",
+      "why": "DEC necesita cerrar $705+/mes adicional para salir del déficit. Pipeline activo = única palanca inmediata.",
+      "category": "INGRESOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Revisar NVTS y HIMS — earnings dentro del vencimiento Jun 18",
-      "why": "Gap de earnings puede liquidar los spreads/LEAPS antes del vencimiento. Decidir: cerrar, rodar, o mantener.",
+      "action": "Decidir NVTS y HIMS antes del 18 jun — cerrar, rodar o mantener",
+      "why": "Ambas tienen earnings dentro del vencimiento. Un gap adverso puede liquidar el spread completo sin opción de reacción.",
       "category": "OPCIONES"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Evaluar agregar GLD/IAU 3–5% en cuenta táctica",
-      "why": "PCE 3.5% con pico proyectado 4.5% verano. El oro es el hedge inflacionario que falta en el portafolio.",
-      "category": "MACRO"
+      "action": "Confirmar Michalitas sobre PE por 2do mes consecutivo",
+      "why": "Mayo proyectó +$121 sobre PE por primera vez. Confirmar en mayo cerrado. Si no se sostiene → activar plan de cierre.",
+      "category": "NEGOCIOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "📋",
-      "action": "Pagar LOC (Wells Fargo $48,233 @ 8.5%) con cualquier excedente de DEC",
-      "why": "Fed en hold = tasas no bajan. Cada $1,000 pagado ahorra $85/año garantizado.",
-      "category": "DEUDA"
+      "action": "Verificar que contrato Miguel Autos ($36,415) está vigente",
+      "why": "Es el 9% del portafolio total y el mayor activo ilíquido. Sin contrato escrito vigente es un riesgo patrimonial real.",
+      "category": "ACTIVOS"
     }
   ]
 }
