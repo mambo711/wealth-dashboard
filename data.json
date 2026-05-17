@@ -2179,5 +2179,32 @@
       "text": "Préstamos privados 14% — ilíquido y concentrado"
     }
   ],
-  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo)."
+  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
+  "fiProjection": {
+    "base": [
+      null,
+      356000,
+      377000,
+      399000,
+      423000,
+      449000
+    ],
+    "pessimistic": [
+      null,
+      347000,
+      358000,
+      370000,
+      382000,
+      395000
+    ],
+    "optimistic": [
+      null,
+      379000,
+      425000,
+      475000,
+      530000,
+      590000
+    ],
+    "note": "Base: 7%/yr, -$4K surplus drag | Pess: 5%/yr, -$6K | Opt: 9%/yr, +$12K (Michalitas closure)"
+  }
 }
