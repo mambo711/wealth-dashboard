@@ -371,10 +371,7 @@
       <canvas id="barAllocation" style="max-height:340px"></canvas>
       <div style="margin-top:20px">
         <h4 style="font-size:14px;color:#f59e0b;margin-bottom:8px">Alertas de Allocation</h4>
-        <div class="alert"><span>🔴</span><span>Bonos a 6% — muy bajo para 5 años de FI. Target: 15%</span></div>
-        <div class="alert"><span>🟡</span><span>US Large Cap + Dividend = 53% — alta exposición al dólar</span></div>
-        <div class="alert"><span>🟡</span><span>Internacional solo 13% — bajo para retiro en Ecuador/España</span></div>
-        <div class="alert"><span>🟡</span><span>Préstamos privados 14% — ilíquido y concentrado</span></div>
+        <div id="allocation-alerts-container"></div>
       </div>
     </div>
   </div>
@@ -728,7 +725,11 @@
     </div>
   </div>
 
-  <div class="footer"><span id="dash-footer-note">Datos: TradeStation MCP (live Apr 17) · Betterment (screenshot Apr 9 — stored) · PortfolioPilot · Xero (live YTD) · Tastytrade relay (Apr 17 14:10 PT)</span></div>
+  <div class="footer">
+    <span id="dash-footer-note">Datos: TradeStation MCP · Xero (live YTD) · Tastytrade relay</span>
+    &nbsp;·&nbsp;
+    <span class="source-badge" id="src-betterment" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot Betterment · Apr 9 2026</span>
+  </div>
 </div>
 
 <div id="auth-gate" style="position:fixed;inset:0;background:#0f172a;z-index:9999;display:flex;align-items:center;justify-content:center;">
@@ -1337,12 +1338,20 @@ function initFromData(d) {
 
   // ── Update source badges (works without full chart render) ──
   if (d.sources) {
-    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡' };
+    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡', betterment:'📱' };
     Object.keys(d.sources).forEach(key => {
       const src = d.sources[key];
       const el = document.getElementById('src-' + key);
       if (el && src) el.innerHTML = `${emojiMap[key] || '📡'} ${src.label} · ${src.date}`;
     });
+  }
+
+  // ── Allocation alerts from data.json ──
+  const alertsContainer = document.getElementById('allocation-alerts-container');
+  if (alertsContainer && d.allocationAlerts) {
+    alertsContainer.innerHTML = d.allocationAlerts.map(a =>
+      `<div class="alert"><span>${a.icon}</span><span>${a.text}</span></div>`
+    ).join('');
   }
 }
 
@@ -1403,18 +1412,25 @@ function renderLine() {
   if (!ctx) return;
   if (ctx._chart) ctx._chart.destroy();
   const nwNeto = dashMeta ? dashMeta.nwNeto : 343715;
-  const labels = ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
-  const base =       [nwNeto, 369000, 399000, 434000, 471000, 511000];
-  const optimistic = [nwNeto, 389000, 439000, 494000, 544000, 599000];
-  const pessimistic =[nwNeto, 349000, 364000, 381000, 399000, 419000];
-  const target =     [500000, 500000, 500000, 500000, 500000, 500000];
+  const fp = (dashData && dashData.fiProjections) ? dashData.fiProjections : {};
+  const labels      = fp.labels      || ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
+  const fiTarget    = fp.target      || 500000;
+  const baseRaw     = fp.base        || [null, 369000, 399000, 434000, 471000, 511000];
+  const optimRaw    = fp.optimistic  || [null, 389000, 439000, 494000, 544000, 599000];
+  const pessRaw     = fp.pessimistic || [null, 349000, 364000, 381000, 399000, 419000];
+  // Replace null (index 0) with live nwNeto
+  const fill = v => (v === null || v === undefined) ? nwNeto : v;
+  const base       = baseRaw.map(fill);
+  const optimistic = optimRaw.map(fill);
+  const pessimistic= pessRaw.map(fill);
+  const target     = labels.map(() => fiTarget);
   ctx._chart = new Chart(ctx, {
     type: 'line',
     data: { labels, datasets: [
-      { label: '🟢 Optimista (DEC $4K/mes + Michalitas cierra)', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
-      { label: '🔵 Base (surplus gradual, 7% retorno)', data: base, borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
-      { label: '🔴 Pesimista (DEC bajo, sin surplus)', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
-      { label: 'Meta FI $500K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false }
+      { label: fp.labelOptimistic  || '🟢 Optimista', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
+      { label: fp.labelBase        || '🔵 Base',      data: base,       borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
+      { label: fp.labelPessimistic || '🔴 Pesimista', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
+      { label: 'Meta FI $' + (fiTarget/1000).toFixed(0) + 'K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false }
     ]},
     options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
         tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } } },
@@ -1878,8 +1894,9 @@ function renderNWHistorico() {
   const ctx = document.getElementById('chartNWHistorico');
   if (!ctx || !fmTotal) return;
   if (ctx._chart) ctx._chart.destroy();
-  const debtEstimate = [45000,44000,43000,42000,41000,40000,39000,38000,37000,36000,35000,40000,42000,44000,46000,48000,50000,52000,54000,56000,57000,57887,57887,58233];
-  const nwNeto = fmTotal.map((v,i) => v - debtEstimate[i]);
+  const debtSeries = (dashData && dashData.monthly && dashData.monthly.debt) ? dashData.monthly.debt
+    : [45000,44000,43000,42000,41000,40000,39000,38000,37000,36000,35000,40000,42000,44000,46000,48000,50000,52000,54000,56000,57000,57887,57887,58233];
+  const nwNeto = fmTotal.map((v,i) => v - (debtSeries[i] || debtSeries[debtSeries.length-1]));
   ctx._chart = new Chart(ctx, {
     type: 'line',
     data: { labels: fmMonths, datasets: [
