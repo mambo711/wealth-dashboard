@@ -259,6 +259,21 @@
     </div>
   </div>
 
+  <!-- Surplus Alert Banner (shown dynamically when surplus < 0) -->
+  <div id="surplus-alert-banner" style="display:none;margin-bottom:16px;padding:14px 18px;background:#ef444418;border:1.5px solid #ef4444;border-radius:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">🚨 Flujo de Caja Negativo</div>
+        <div style="font-size:14px;font-weight:700;color:#f8fafc" id="surplus-banner-text">Surplus: -$345/mes — la LOC crece $345/mes en interés</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;margin-left:16px">
+        <div style="font-size:11px;color:#94a3b8">Acción prioritaria:</div>
+        <div style="font-size:13px;font-weight:700;color:#f59e0b" id="surplus-banner-action">Cerrar Michalitas → +$574/mes surplus</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:#94a3b8" id="surplus-banner-payoff"></div>
+  </div>
+
   <!-- Wealth Health Score -->
   <div class="health-score-container">
     <div class="health-gauge">
@@ -1072,6 +1087,16 @@ function populateHealthBreakdown() {
   const bd = document.getElementById('health-breakdown');
   if (!bd) return;
   const scores = dashMeta.healthSubScores;
+  const healthHints = {
+    retiro:      null,
+    diversif:    'Añadir AVDV/VWO → sube este score',
+    progresoFI:  'Cada $10K de deuda pagada → +2pts FI',
+    performance: 'Mover capital TT/Futures → IBKR/RH',
+    deuda:       'Pagar $5K de LOC → +5pts deuda',
+    surplus:     'Cerrar Michalitas → surplus positivo → +15pts',
+    liquidez:    'Mantener EF > $35K y CDs Ecuador',
+    riesgo:      'Reducir margen táctico → <$20K'
+  };
   const items = [
     {key:'retiro',      lbl:'Retiro'},
     {key:'diversif',    lbl:'Diversific.'},
@@ -1084,10 +1109,13 @@ function populateHealthBreakdown() {
   ];
   bd.innerHTML = items.map(({key, lbl}) => {
     const {val, color} = scores[key];
+    const hint = healthHints[key];
+    const showHint = hint && val < 65;
     return `<div class="hb-item">
       <div class="hb-val" style="color:${color}">${val}</div>
       <div class="hb-lbl">${lbl}</div>
       <div class="hb-bar"><div class="hb-fill" style="width:${val}%;background:${color}"></div></div>
+      ${showHint ? `<div style="font-size:9px;color:#64748b;margin-top:3px;line-height:1.3">${hint}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -1277,14 +1305,51 @@ function initFromData(d) {
   // ── Render waterfall table ──
   renderWaterfallTable(dashWaterfallTable, waterfall ? waterfall.surplus : undefined);
 
+  // ── Surplus alert banner ──
+  const surplusBanner = document.getElementById('surplus-alert-banner');
+  if (surplusBanner && waterfall) {
+    const surplusVal = waterfall.surplus || 0;
+    if (surplusVal < 0) {
+      surplusBanner.style.display = 'block';
+      const bannerText = document.getElementById('surplus-banner-text');
+      const bannerAction = document.getElementById('surplus-banner-action');
+      const bannerPayoff = document.getElementById('surplus-banner-payoff');
+      if (bannerText) bannerText.textContent = `Surplus: -$${Math.abs(surplusVal).toLocaleString()}/mes — la LOC crece $${Math.abs(surplusVal).toLocaleString()}/mes`;
+      // Find best recovery scenario from waterfallScenarios
+      const bestScenario = d.waterfallScenarios ? d.waterfallScenarios.find(s => s.surplus > 0) : null;
+      if (bannerAction && bestScenario) bannerAction.textContent = `${bestScenario.label} → +$${bestScenario.surplus.toLocaleString()}/mes surplus`;
+      // LOC payoff estimate
+      const locBal = waterfall.locInterest > 0 ? Math.round(waterfall.locInterest / 0.085 * 12) : 0;
+      if (bannerPayoff && bestScenario && bestScenario.surplus > 0) {
+        const months = Math.ceil(locBal / bestScenario.surplus);
+        const payoffDate = new Date(); payoffDate.setMonth(payoffDate.getMonth() + months);
+        const payoffStr = payoffDate.toLocaleDateString('es', {month:'short',year:'numeric'});
+        bannerPayoff.textContent = `Con "${bestScenario.label}": LOC ($${locBal.toLocaleString()}) pagada en ${months} meses (~${payoffStr})`;
+      }
+    } else {
+      surplusBanner.style.display = 'none';
+    }
+  }
+
   // ── Render waterfall scenarios ──
   if (d.waterfallScenarios) {
     const el = document.getElementById('waterfall-scenarios');
     if (el) {
+      // Estimate LOC balance from interest: balance = interest / rate * 12
+      const locBal = waterfall && waterfall.locInterest > 0 ? Math.round(waterfall.locInterest / 0.085 * 12) : 48233;
       el.innerHTML = d.waterfallScenarios.map(s => {
-        const sign   = s.surplus >= 0 ? '+' : '';
-        const color  = s.surplus >= 0 ? '#10b981' : '#ef4444';
-        return `${s.icon} <strong>${s.label}:</strong> <span style="color:${color};font-weight:600">${sign}$${Math.abs(s.surplus).toLocaleString()}/mes</span> → ${s.note}`;
+        const sign  = s.surplus >= 0 ? '+' : '';
+        const color = s.surplus >= 0 ? '#10b981' : '#ef4444';
+        let payoffNote = '';
+        if (s.surplus > 0 && locBal > 0) {
+          const months = Math.ceil(locBal / s.surplus);
+          const pd = new Date(); pd.setMonth(pd.getMonth() + months);
+          const pdStr = pd.toLocaleDateString('es', {month:'short', year:'numeric'});
+          payoffNote = ` <span style="color:#64748b;font-size:11px">(LOC pagada en ${months} meses · ${pdStr})</span>`;
+        } else if (s.surplus < 0) {
+          payoffNote = ` <span style="color:#ef444490;font-size:11px">(LOC crece $${Math.abs(s.surplus)}/mes)</span>`;
+        }
+        return `${s.icon} <strong>${s.label}:</strong> <span style="color:${color};font-weight:600">${sign}$${Math.abs(s.surplus).toLocaleString()}/mes</span>${payoffNote} → ${s.note}`;
       }).join('<br>');
     }
   }
@@ -1302,12 +1367,11 @@ function initFromData(d) {
   if (twrPortfolioGlobal) {
     // Inline portfolio TWR calculation for initial load
     function _twrNM(arr, n) {
-      const vals = arr.filter(v => v !== null && v !== undefined);
-      if (vals.length < 2) return null;
-      const last = vals[vals.length - 1];
-      const startIdx = Math.max(0, vals.length - (n + 1));
-      const start = vals[startIdx];
-      return start > 0 ? ((last / start) - 1) * 100 : null;
+      const startIdx = arr.length - (n + 1);
+      if (startIdx < 0 || arr[startIdx] == null) return null;
+      const endVal = arr[arr.length - 1];
+      if (endVal == null) return null;
+      return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
     }
     function _twrTotal(arr) {
       const vals = arr.filter(v => v !== null && v !== undefined);
@@ -1415,9 +1479,9 @@ function renderLine() {
   const fp = (dashData && dashData.fiProjections) ? dashData.fiProjections : {};
   const labels      = fp.labels      || ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
   const fiTarget    = fp.target      || 500000;
-  const baseRaw     = fp.base        || [null, 369000, 399000, 434000, 471000, 511000];
-  const optimRaw    = fp.optimistic  || [null, 389000, 439000, 494000, 544000, 599000];
-  const pessRaw     = fp.pessimistic || [null, 349000, 364000, 381000, 399000, 419000];
+  const baseRaw     = (fp.base        && fp.base.length)        ? fp.base        : [null, 369000, 399000, 434000, 471000, 511000];
+  const optimRaw    = (fp.optimistic  && fp.optimistic.length)  ? fp.optimistic  : [null, 389000, 439000, 494000, 544000, 599000];
+  const pessRaw     = (fp.pessimistic && fp.pessimistic.length) ? fp.pessimistic : [null, 349000, 364000, 381000, 399000, 419000];
   // Replace null (index 0) with live nwNeto
   const fill = v => (v === null || v === undefined) ? nwNeto : v;
   const base       = baseRaw.map(fill);
@@ -1610,11 +1674,18 @@ function renderPerformanceCharts() {
       { name: 'TS Futures VLV23',  badge: 'Futuros',    color: '#f87171', twrArr: dashData ? dashData.twr.fut2 : [], highlight: false, isVlv23: true },
     ];
 
-    function fmtPct(val) {
-      if (val === null || val === undefined) return '<td class="right" style="color:#64748b">—</td>';
-      const cls = val >= 0 ? 'green' : 'red';
-      const sign = val >= 0 ? '+' : '';
-      return `<td class="right ${cls}">${sign}${val.toFixed(1)}%</td>`;
+    function fmtPct(val, arr, weeks) {
+      if (val !== null && val !== undefined) {
+        const cls = val >= 0 ? 'green' : 'red';
+        const sign = val >= 0 ? '+' : '';
+        return `<td class="right ${cls}">${sign}${val.toFixed(1)}%</td>`;
+      }
+      // Count non-null values to determine history length
+      if (arr && weeks) {
+        const histWeeks = arr.filter(x => x != null).length;
+        if (histWeeks > 0 && histWeeks < weeks) return `<td class="right" style="color:#64748b;font-size:10px">&lt; ${histWeeks}sem</td>`;
+      }
+      return '<td class="right" style="color:#64748b">—</td>';
     }
     function fmtVsSP(acctVal, spVal) {
       if (acctVal === null || spVal === null || spVal === undefined) return '<td class="right" style="color:#64748b">—</td>';
@@ -1638,8 +1709,8 @@ function renderPerformanceCharts() {
       rows += `<tr ${bgStyle}>
         <td><span class="dot" style="background:${acct.color}"></span><strong>${acct.name}</strong> <span class="badge">${acct.badge}</span></td>
         <td class="right bold">${balStr}</td>
-        ${fmtPct(t3M)}
-        ${fmtPct(t6M)}
+        ${fmtPct(t3M, acct.twrArr, 13)}
+        ${fmtPct(t6M, acct.twrArr, 26)}
         ${tTotal}
         ${fmtVsSP(t6M, sp6M)}
       </tr>`;
@@ -1895,7 +1966,7 @@ function renderNWHistorico() {
   if (!ctx || !fmTotal) return;
   if (ctx._chart) ctx._chart.destroy();
   const debtSeries = (dashData && dashData.monthly && dashData.monthly.debt) ? dashData.monthly.debt
-    : [45000,44000,43000,42000,41000,40000,39000,38000,37000,36000,35000,40000,42000,44000,46000,48000,50000,52000,54000,56000,57000,57887,57887,58233];
+    : [59973,58973,57973,56973,55973,54973,53973,52973,51973,50973,49973,54973,56973,58973,60973,62973,64973,66973,68973,70973,71973,72860,72860,72729];
   const nwNeto = fmTotal.map((v,i) => v - (debtSeries[i] || debtSeries[debtSeries.length-1]));
   ctx._chart = new Chart(ctx, {
     type: 'line',
