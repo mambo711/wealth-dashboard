@@ -537,25 +537,25 @@
 
     <!-- ═══════════════════ SECTION 2: TRADING ACCOUNTS — TWR (sin depósitos/retiros) ═══════════════════ -->
     <div style="margin:24px 0 8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
-      🏆 <strong style="color:#f8fafc">CUENTAS DE TRADING — RENDIMIENTO REAL (TWR)</strong> — Ago 2025 → Abr 2026 · Excluye depósitos y retiros
+      🏆 <strong style="color:#f8fafc">CUENTAS DE TRADING — RENDIMIENTO REAL (TWR)</strong> — Ago 2025 → May 2026 · Excluye depósitos y retiros
     </div>
 
-    <!-- Trading Performance Summary Cards — TWR -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+    <!-- Trading Performance Summary Cards — TWR (dynamic, calculated in JS) -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px" id="twr-rank-cards">
       <div class="card" style="border-top:3px solid #10b981">
         <div class="card-label">🥇 Mejor 6M (TWR)</div>
-        <div class="card-value green" style="font-size:20px" id="perf-best-name">RH Autopilot</div>
-        <div style="font-size:13px;color:#10b981;font-weight:600" id="perf-best-pct">+16.2%</div>
+        <div class="card-value green" style="font-size:20px" id="perf-best-name">—</div>
+        <div style="font-size:13px;color:#10b981;font-weight:600" id="perf-best-pct">—</div>
       </div>
       <div class="card" style="border-top:3px solid #f59e0b">
         <div class="card-label">🥈 2do 6M (TWR)</div>
-        <div class="card-value" style="font-size:20px;color:#f59e0b">IBKR Bravo</div>
-        <div style="font-size:13px;color:#f59e0b;font-weight:600">+5.5%</div>
+        <div class="card-value" style="font-size:20px;color:#f59e0b" id="perf-2nd-name">—</div>
+        <div style="font-size:13px;color:#f59e0b;font-weight:600" id="perf-2nd-pct">—</div>
       </div>
       <div class="card" style="border-top:3px solid #ef4444">
         <div class="card-label">🔻 Peor 6M (TWR)</div>
-        <div class="card-value red" style="font-size:20px" id="perf-worst-name">TS Futures</div>
-        <div style="font-size:13px;color:#ef4444;font-weight:600" id="perf-worst-pct">-42.6%</div>
+        <div class="card-value red" style="font-size:20px" id="perf-worst-name">—</div>
+        <div style="font-size:13px;color:#ef4444;font-weight:600" id="perf-worst-pct">—</div>
       </div>
     </div>
 
@@ -1515,15 +1515,59 @@ function renderPerformanceCharts() {
     makeTradingChart('chartFUT2', wkFUT2, '#f87171', 'TS Futures VLV23');
   }
 
+  // ── TWR 6M ranking: read from JSON arrays, calc last 26 weeks ──
+  function twr6M(arr) {
+    const vals = arr.filter(v => v !== null && v !== undefined);
+    if (vals.length < 2) return null;
+    const last = vals[vals.length - 1];
+    const startIdx = Math.max(0, vals.length - 27);
+    const start = vals[startIdx];
+    return start > 0 ? ((last / start) - 1) * 100 : null;
+  }
+  function twrTotal(arr) {
+    const vals = arr.filter(v => v !== null && v !== undefined);
+    if (!vals.length) return null;
+    return vals[vals.length - 1] - 100;
+  }
+  const twrAccounts = [
+    { name: 'RH AP Act Managed', color: '#f59e0b', arr: twrRH },
+    { name: 'RH Ap-photonics',   color: '#fb923c', arr: twrRHPhotonics },
+    { name: 'TS ETF Tactical',   color: '#3b82f6', arr: twrTSETF },
+    { name: 'IBKR Bravo',        color: '#10b981', arr: twrIBKR },
+    { name: 'TastyTrade',        color: '#8b5cf6', arr: twrTT },
+    { name: 'TS Futures PKG27',  color: '#ef4444', arr: twrFUT },
+  ].map(a => ({ ...a, val6M: twr6M(a.arr), valTotal: twrTotal(a.arr) }))
+   .filter(a => a.val6M !== null)
+   .sort((a, b) => b.val6M - a.val6M);
+
+  // Populate ranking cards from JSON data
+  if (twrAccounts.length >= 1) {
+    const best = twrAccounts[0];
+    document.getElementById('perf-best-name').textContent = best.name;
+    document.getElementById('perf-best-name').style.color = best.color;
+    document.getElementById('perf-best-pct').textContent = (best.val6M >= 0 ? '+' : '') + best.val6M.toFixed(1) + '%';
+  }
+  if (twrAccounts.length >= 2) {
+    const sec = twrAccounts[1];
+    document.getElementById('perf-2nd-name').textContent = sec.name;
+    document.getElementById('perf-2nd-name').style.color = sec.color;
+    document.getElementById('perf-2nd-pct').textContent = (sec.val6M >= 0 ? '+' : '') + sec.val6M.toFixed(1) + '%';
+  }
+  if (twrAccounts.length >= 3) {
+    const worst = twrAccounts[twrAccounts.length - 1];
+    document.getElementById('perf-worst-name').textContent = worst.name;
+    document.getElementById('perf-worst-pct').textContent = (worst.val6M >= 0 ? '+' : '') + worst.val6M.toFixed(1) + '%';
+  }
+
   // TWR Normalized
   const twrPcts = {
-    tsetf:   (twrTSETF[twrTSETF.length-1]-100).toFixed(1),
-    rh:      (twrRH[twrRH.length-1]-100).toFixed(1),
+    tsetf:   twrTotal(twrTSETF).toFixed(1),
+    rh:      twrTotal(twrRH).toFixed(1),
     rhph:    twrRHPhotonics.length ? (twrRHPhotonics.filter(v=>v!==null).slice(-1)[0]-100).toFixed(1) : '0',
-    ibkr:    (twrIBKR[twrIBKR.length-1]-100).toFixed(1),
-    sp:      (twrSP[twrSP.length-1]-100).toFixed(1),
-    tt:      (twrTT[twrTT.length-1]-100).toFixed(1),
-    fut:     (twrFUT.filter(v=>v!==null).slice(-1)[0]-100).toFixed(1)
+    ibkr:    twrTotal(twrIBKR).toFixed(1),
+    sp:      twrTotal(twrSP).toFixed(1),
+    tt:      twrTotal(twrTT).toFixed(1),
+    fut:     twrTotal(twrFUT).toFixed(1)
   };
   const ctxNorm = document.getElementById('chartTradingNorm');
   if (ctxNorm) {
