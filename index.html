@@ -1232,6 +1232,7 @@ function populateHealthBreakdown() {
 
 // ═══ initFromData: called after JSON loaded ═══
 function initFromData(d) {
+  if (!d) return;
   dashData         = d; // store full reference for use in renderPerformanceCharts
   dashMeta         = d.meta;
   accounts         = d.accounts;
@@ -1468,8 +1469,8 @@ function initFromData(d) {
   if (d.waterfallScenarios) {
     const el = document.getElementById('waterfall-scenarios');
     if (el) {
-      // Estimate LOC balance from interest: balance = interest / rate * 12
-      const locBal = waterfall && waterfall.locInterest > 0 ? Math.round(waterfall.locInterest / 0.085 * 12) : 48233;
+      // Read LOC balance from debt.primary.value (single source of truth)
+      const locBal = (d.debt && d.debt.primary && d.debt.primary.value) ? d.debt.primary.value : 0;
       el.innerHTML = d.waterfallScenarios.map(s => {
         const sign  = s.surplus >= 0 ? '+' : '';
         const color = s.surplus >= 0 ? '#10b981' : '#ef4444';
@@ -2119,7 +2120,7 @@ function renderNWHistorico(rangeMonths) {
     data: { labels: slicedMonths, datasets: [
       { label:'NW Bruto', data:slicedTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
       { label:'NW Neto (est.)', data:slicedNwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
-      { label:'🎯 Meta FI $500K', data:fiTargetLine, borderColor:'#10b981', borderWidth:1.5, borderDash:[8,4], pointRadius:0, fill:false, tension:0 },
+      { label:'🎯 Meta FI $' + ((dashMeta && dashMeta.fiTarget) ? (dashMeta.fiTarget/1000).toFixed(0) : '500') + 'K', data:fiTargetLine, borderColor:'#10b981', borderWidth:1.5, borderDash:[8,4], pointRadius:0, fill:false, tension:0 },
     ]},
     options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
         tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}},
