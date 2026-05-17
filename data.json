@@ -2321,7 +2321,7 @@
         "label": "Régimen continúa si:",
         "condition": "Datos mixtos sin tendencia. Estrategia: mantener defensivos, reducir margen, pagar LOC."
       }
-    ],
+    ]
   },
   "weeklyActions": [
     {
