@@ -1514,29 +1514,28 @@ function renderPerformanceCharts() {
 
   // ── TWR helper functions ──
   function twr6M(arr) {
-    const vals = arr.filter(v => v !== null && v !== undefined);
-    if (vals.length < 2) return null;
-    const last = vals[vals.length - 1];
-    const startIdx = Math.max(0, vals.length - 27);
-    const start = vals[startIdx];
-    return start > 0 ? ((last / start) - 1) * 100 : null;
+    // Only show if the account existed 26 weeks ago — verify actual array position
+    const startIdx = arr.length - 27;
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
   }
   function twr3M(arr) {
-    const vals = arr.filter(v => v !== null && v !== undefined);
-    if (vals.length < 2) return null;
-    const last = vals[vals.length - 1];
-    const startIdx = Math.max(0, vals.length - 14);
-    const start = vals[startIdx];
-    return start > 0 ? ((last / start) - 1) * 100 : null;
+    // Only show if the account existed 13 weeks ago — verify actual array position
+    const startIdx = arr.length - 14;
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
   }
   function twrNM(arr, n) {
-    // n = number of weeks back
-    const vals = arr.filter(v => v !== null && v !== undefined);
-    if (vals.length < 2) return null;
-    const last = vals[vals.length - 1];
-    const startIdx = Math.max(0, vals.length - (n + 1));
-    const start = vals[startIdx];
-    return start > 0 ? ((last / start) - 1) * 100 : null;
+    // n = number of weeks back — only show if account existed that far back
+    const startIdx = arr.length - (n + 1);
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
   }
   function twrTotal(arr) {
     const vals = arr.filter(v => v !== null && v !== undefined);
