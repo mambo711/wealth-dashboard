@@ -2214,149 +2214,114 @@
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "bearScore": 55,
-    "bullScore": 70,
-    "macroIndicators": [
+    "regimeContext": "Fed en pausa a 3.75%. PCE 3.5% sin ceder al target 2%. Crecimiento desacelerando pero sin recesión confirmada. Alta dispersión sectorial — valor y defensivos sobre growth.",
+    "alignmentScore": 58,
+    "alignmentColor": "#f59e0b",
+    "alignmentLabel": "Parcialmente Alineado",
+    "macroFactors": [
       {
-        "label": "Fed Rate",
-        "value": "3.50–3.75%",
-        "signal": "warn",
-        "signalLabel": "Hold — votación 8-4"
+        "factor": "Inflación (PCE 3.5%)",
+        "protection": 72,
+        "protectionColor": "#10b981",
+        "note": "Ecuador CDs 6.5% + XLP te protegen. Pero falta hedge GLD/IAU para inflación >4%."
       },
       {
-        "label": "PCE Inflación",
-        "value": "3.5% / 3.2% core",
-        "signal": "danger",
-        "signalLabel": "Sobre target 2%"
+        "factor": "Tasas altas (Fed 3.75%)",
+        "protection": 28,
+        "protectionColor": "#ef4444",
+        "note": "LOC @ 8.5% + margen $30,990 amplifican el costo de tasas altas. Mayor vulnerabilidad."
       },
       {
-        "label": "VIX",
-        "value": "~19.5",
-        "signal": "warn",
-        "signalLabel": "Moderado — bajando"
+        "factor": "Crecimiento lento",
+        "protection": 55,
+        "protectionColor": "#f59e0b",
+        "note": "Defensivos + dividendos amortiguan. VOO/SCHD aguantan largo plazo aunque múltiplos sufren."
       },
       {
-        "label": "S&P 500 Trend",
-        "value": "~7,000",
-        "signal": "ok",
-        "signalLabel": "+8.2% desde mínimos"
+        "factor": "Volatilidad (VIX ~19.5)",
+        "protection": 22,
+        "protectionColor": "#ef4444",
+        "note": "Margen $30,990 amplifica drawdowns. En pico de VIX puede triggear margin call."
       },
       {
-        "label": "EPS Growth 2026",
-        "value": "+17% proy.",
-        "signal": "ok",
-        "signalLabel": "Fuerte si se cumple"
-      },
-      {
-        "label": "Riesgo Petróleo",
-        "value": "Brent $120–140",
-        "signal": "danger",
-        "signalLabel": "⚠️ Medio Oriente"
+        "factor": "Riesgo geopolítico",
+        "protection": 65,
+        "protectionColor": "#10b981",
+        "note": "MNGM26 long Nat Gas es hedge energético natural. Ecuador dolarizado elimina riesgo FX."
       }
     ],
-    "bearStrengths": [
-      "🛡️ XLP al 18.9% del táctico — Consumer Staples outperforma en bear (mejor posición defensiva posible)",
-      "🇪🇨 Ecuador CDs 6.5% — $35,000 no correlacionados con mercados US. Inmunes a bear equity.",
-      "💵 Betterment Cash $31K — liquidez de emergencia intacta para bear prolongado",
-      "📉 MYMM26 short Dow (Futures) — hedge activo que gana si el Dow cae",
-      "📊 BND en SEP IRA — bonos que suben cuando caen las acciones en bear deflacionario"
-    ],
-    "bearWeaknesses": [
-      "🚨 Margen $30,990 en cuenta táctica — RIESGO CRÍTICO. Bear de -20% puede triggear margin call y liquidar posiciones en el peor momento",
-      "🚨 Déficit -$261/mes — sin dry powder para comprar dips. En bear, DEC también puede bajar",
-      "⚠️ HIMS LEAPS — biotech especulativo colapsa en risk-off. Posible pérdida total",
-      "⚠️ Deuda $73K al 8.5% — arrastre fijo de $261/mes independiente del mercado",
-      "⚠️ Sin cobertura en oro/commodities — ninguna posición en GLD/IAU para hedge inflacionario",
-      "⚠️ ITA (Aerospace) en SEP IRA — ETF sectorial, más volátil que VOO en bear"
-    ],
-    "bullStrengths": [
-      "📈 VOO + AVDV en SEP IRA — participación directa S&P 500 e internacional. En bull de +12%, capturas todo",
-      "🤖 TSM call LEAPS — upside apalancado en AI/semiconductores. Multiplicador si el rally tech continúa",
-      "💹 23 posiciones tácticas en rotación sectorial — momentum strategy captura sectores líderes",
-      "💰 SCHD — dividendos crecientes + calidad. Rendimiento sólido en bull sostenido",
-      "🔥 NVTS posiciones — high-beta tech/AI, alto upside en bull"
-    ],
-    "bullLimitations": [
-      "📦 XLP al 18.9% — Consumer Staples underperforma 5–8% vs S&P en bull fuerte. Mayor posición es un lastre",
-      "🇪🇨 Ecuador CDs — $35,000 a 6.5% fijo mientras mercado sube 12% = costo de oportunidad de ~$1,925/año",
-      "📉 Déficit -$261/mes impide reinvertir surplus en bull — no hay aportes frescos al portafolio"
-    ],
-    "portfolioVsMacro": [
+    "moves": [
       {
-        "area": "Inflación 3.5%",
-        "posicion": "XLP + CDs 6.5%",
-        "alineacion": "ok",
-        "nota": "Defensivos y renta fija alta protegen bien vs inflación moderada"
+        "urgency": "CRÍTICO",
+        "urgencyColor": "#ef4444",
+        "icon": "🚨",
+        "action": "Reducir margen táctico TS",
+        "from": "Posiciones tácticas con menor convicción (TS 4090)",
+        "to": "Cerrar hasta dejar margen ≤ $15,000",
+        "amount": "~$16,000 en posiciones a liquidar",
+        "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento."
       },
       {
-        "area": "Fed en hold hawkish",
-        "posicion": "LOC 8.5% variable",
-        "alineacion": "danger",
-        "nota": "Tasas altas por más tiempo = costo de deuda no baja. Urgente pagar LOC"
+        "urgency": "URGENTE",
+        "urgencyColor": "#f59e0b",
+        "icon": "⚠️",
+        "action": "Agregar GLD o IAU como hedge inflacionario",
+        "from": "Cash — Betterment Reserve ($31,151)",
+        "to": "Cuenta táctica TS (ETF GLD o IAU)",
+        "amount": "$5,000 – $8,000 (3–5% del táctico)",
+        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities."
       },
       {
-        "area": "VIX ~19.5 elevado",
-        "posicion": "Margen $30,990",
-        "alineacion": "danger",
-        "nota": "Volatilidad alta + margen = combinación peligrosa. Riesgo de margin call"
+        "urgency": "URGENTE",
+        "urgencyColor": "#f59e0b",
+        "icon": "⚠️",
+        "action": "Cerrar o rodar NVTS y HIMS antes del 18 junio",
+        "from": "TastyTrade — spreads y LEAPS activos",
+        "to": "Posiciones sin earnings en el periodo",
+        "amount": "Todas las legs afectadas por earnings",
+        "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción."
       },
       {
-        "area": "Riesgo geopolítico petróleo",
-        "posicion": "MNGM26 long Nat Gas",
-        "alineacion": "ok",
-        "nota": "Nat Gas correlaciona con crisis energética — hedge natural"
+        "urgency": "PLANEAR",
+        "urgencyColor": "#60a5fa",
+        "icon": "📋",
+        "action": "Reemplazar ITA → VOO en SEP IRA",
+        "from": "ITA — iShares Aerospace & Defense ETF (SEP IRA)",
+        "to": "VOO — Vanguard S&P 500 ETF (SEP IRA)",
+        "amount": "~$8,000 (posición ITA completa)",
+        "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad."
       },
       {
-        "area": "Rally AI/Tech",
-        "posicion": "TSM LEAPS + NVTS",
-        "alineacion": "ok",
-        "nota": "Exposición directa al motor del bull actual"
-      },
-      {
-        "area": "Recesión posible 2027",
-        "posicion": "Déficit -$261/mes",
-        "alineacion": "danger",
-        "nota": "Sin colchón de flujo, cualquier recesión corta el ingreso sin margen de maniobra"
+        "urgency": "CONDICIONAL",
+        "urgencyColor": "#94a3b8",
+        "icon": "⏳",
+        "action": "Reducir XLP de 18.9% → 12% cuando régimen mejore",
+        "from": "XLP — Consumer Staples (cuenta táctica TS)",
+        "to": "VOO o QQQ (mismo cuenta táctica)",
+        "amount": "~$4,000–5,000 al cambiar régimen",
+        "why": "XLP es correcto hoy (estanflación). En bull confirmado (PCE <2.5%), el exceso defensivo cuesta alpha."
       }
     ],
-    "macroRecs": [
+    "triggers": [
       {
-        "priority": "🚨 URGENTE",
-        "color": "#ef4444",
-        "action": "Reducir margen táctico de $30,990 → <$15,000",
-        "reason": "Con VIX ~19.5 y geopolítica activa, el margen es el riesgo #1 del portafolio en este régimen"
+        "icon": "📈",
+        "dirColor": "#10b981",
+        "label": "Régimen mejora si:",
+        "condition": "PCE < 2.5% por 2 meses + primer recorte Fed. Acción: rotar XLP → más VOO/QQQ."
       },
       {
-        "priority": "🚨 URGENTE",
-        "color": "#ef4444",
-        "action": "Recuperar flujo positivo — DEC debe llegar a $5,500+/mes",
-        "reason": "Sin flujo positivo no hay resiliencia ante ningún escenario adverso"
+        "icon": "📉",
+        "dirColor": "#ef4444",
+        "label": "Régimen empeora si:",
+        "condition": "PCE > 4.5% verano + GDP Q3 < 0%. Acción: eliminar margen inmediatamente, LOC urgente."
       },
       {
-        "priority": "⚠️ ALTO",
-        "color": "#f59e0b",
-        "action": "Agregar 3–5% en GLD o IAU a la cuenta táctica",
-        "reason": "PCE en 3.5% con riesgo de pico 4.5% verano — el oro es el hedge inflacionario que falta"
-      },
-      {
-        "priority": "⚠️ ALTO",
-        "color": "#f59e0b",
-        "action": "Reducir XLP de 18.9% → 10–12% cuando macro mejore",
-        "reason": "En bull confirmado, el exceso defensivo cuesta alpha. Redistribuir a VOO o SCHD"
-      },
-      {
-        "priority": "📋 MODERADO",
-        "color": "#60a5fa",
-        "action": "Reemplazar ITA → VOO en SEP IRA en próximo rebalanceo",
-        "reason": "ETF sectorial Aerospace concentra riesgo sin compensación suficiente vs. VOO broad market"
-      },
-      {
-        "priority": "✅ MANTENER",
-        "color": "#10b981",
-        "action": "Ecuador CDs 6.5% — no mover",
-        "reason": "Spread de 300bps vs Fed rate 3.5%. Mejor activo sin riesgo del portafolio en este régimen"
+        "icon": "⏸️",
+        "dirColor": "#64748b",
+        "label": "Régimen continúa si:",
+        "condition": "Datos mixtos sin tendencia. Estrategia: mantener defensivos, reducir margen, pagar LOC."
       }
-    ]
+    ],
   },
   "weeklyActions": [
     {
