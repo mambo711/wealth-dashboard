@@ -507,6 +507,12 @@
     "carInterest": 54,
     "surplus": 686
   },
+  "waterfallScenarios": [
+    {"icon": "🔴", "label": "Actual (May 15)", "surplus": -341, "note": "DEC income bajó a $4,795/mes avg → prioridad: cerrar Michalitas"},
+    {"icon": "🟡", "label": "Si Michalitas cierra", "surplus": 1184, "note": "LOC pagada en ~41 meses"},
+    {"icon": "🟢", "label": "Si DEC mantiene $6K/mes", "surplus": 2389, "note": "LOC pagada en 20 meses + algo a inversiones"},
+    {"icon": "🎯", "label": "Si ambos (DEC $6K + Michalitas cierra)", "surplus": 3914, "note": "LOC pagada en 12 meses, luego $3.9K/mes a inversiones"}
+  ],
   "waterfallTable": [
     {
       "label": "Ingreso DEC (Net)",
@@ -1640,6 +1646,15 @@
       5100,
       5243
     ]
+  },
+  "sources": {
+    "tsetf":  {"label": "TradeStation MCP", "date": "May 15 2026"},
+    "rh":     {"label": "Screenshot RH",    "date": "May 16 2026"},
+    "rhph":   {"label": "Screenshot RH",    "date": "May 16 2026"},
+    "ibkr":   {"label": "Screenshot IBKR",  "date": "May 16 2026"},
+    "tt":     {"label": "Relay Zapier/Gmail","date": "May 15 2026"},
+    "fut":    {"label": "TradeStation MCP", "date": "May 16 2026"},
+    "fut2":   {"label": "TradeStation MCP", "date": "May 16 2026"}
   },
   "twr": {
     "portfolio": [
