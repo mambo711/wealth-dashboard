@@ -958,9 +958,9 @@ function renderMacroTab(mr, meta) {
   if (!el || !mr) return;
 
   const sc = mr.alignmentScore || 0;
-  const potential = mr.alignmentPotential || sc;
   const moves = mr.moves || [];
   const totalImpact = moves.reduce((s, m) => s + (m.impact || 0), 0);
+  const potential = Math.min(sc + totalImpact, 100);
 
   // Running cumulative score for each move badge
   let runningScore = sc;
