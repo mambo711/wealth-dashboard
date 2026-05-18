@@ -1135,7 +1135,7 @@ function renderWeeklyActions(actions, meta) {
 
   if (dateEl && meta && meta.weeklyFocusDate) dateEl.textContent = meta.weeklyFocusDate;
 
-  const catColors = { RIESGO:'#ef4444', FLUJO:'#f59e0b', OPCIONES:'#8b5cf6', MACRO:'#60a5fa', DEUDA:'#10b981' };
+  const catColors = { RIESGO:'#ef4444', FLUJO:'#f59e0b', OPCIONES:'#8b5cf6', MACRO:'#60a5fa', DEUDA:'#10b981', INGRESOS:'#10b981', NEGOCIOS:'#3b82f6', ACTIVOS:'#a78bfa' };
 
   list.innerHTML = actions.map(a => {
     const cc = catColors[a.category] || '#64748b';
@@ -1790,7 +1790,7 @@ function initFromData(d) {
   // ── Restore last active tab (after all data is ready) ──
   try {
     const savedTab = localStorage.getItem('mmw_tab');
-    const validTabs = ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo'];
+    const validTabs = ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo','macro'];
     if (savedTab && validTabs.includes(savedTab) && savedTab !== 'resumen') {
       showTab(savedTab, true);
     }
