@@ -2285,19 +2285,20 @@
         "urgencyColor": "#f59e0b",
         "icon": "⚠️",
         "action": "Agregar GLD o IAU como hedge inflacionario",
-        "from": "Betterment Cash Reserve ($31,151) → checking → depósito a TS",
-        "to": "TradeStation · Cuenta Táctica #11484090",
+        "from": "TradeStation · Cuenta Táctica #11484090 — efectivo liberado al cerrar posiciones (Move 1)",
+        "to": "TradeStation · Cuenta Táctica #11484090 (misma cuenta — compra directa con cash disponible)",
         "amount": "$6,500 — 15 acc GLD @ $417.29 = $6,259 · ó 76 acc IAU @ $85.51 = $6,499",
-        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities.",
+        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities. ⚠️ Ejecutar DESPUÉS del Move 1 — el cash viene de las posiciones cerradas.",
         "impact": 6,
         "priceRef": "GLD $417.29 · IAU $85.51 — live 17 May 2026",
         "steps": [
-          "Betterment → Retirar $6,500 de Cash Reserve (tarda 1-2 días hábiles)",
-          "Depositar $6,500 en TradeStation Account #11484090",
-          "Ejecutar compra cuando el depósito esté disponible:",
+          "⚠️ PREREQUISITO: ejecutar Move 1 primero — este move usa el efectivo liberado de esas ventas",
+          "Verificar saldo cash disponible en TS Account #11484090 tras cerrar Move 1",
+          "Ejecutar compra en la misma cuenta táctica:",
           "  · OPCIÓN A: COMPRAR 15 acc GLD @ mercado ≈ $417.29/acc = $6,259",
           "  · OPCIÓN B: COMPRAR 76 acc IAU @ mercado ≈ $85.51/acc = $6,499",
-          "IAU recomendado — mismo subyacente (oro), más líquido y menor precio por acción"
+          "IAU recomendado — mismo subyacente (oro), más líquido y menor precio por acción",
+          "⛔ NO tocar Betterment Cash Reserve — es colchón personal intocable"
         ]
       },
       {
