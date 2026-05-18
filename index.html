@@ -1577,8 +1577,14 @@ function initFromData(d) {
 
   // ── Update DOM display values ──
   const m = dashMeta;
-  document.getElementById('dash-subtitle').textContent =
-    'Alberto Rodriguez — Actualizado: ' + m.subtitle;
+  // Subtitle with staleness badge if weekly data is >7 days old
+  const subtitleEl = document.getElementById('dash-subtitle');
+  const subtitleDate = m.subtitle ? new Date(m.subtitle.split(' ').reverse().join(' ')) : null;
+  const dashAgeDays = subtitleDate && !isNaN(subtitleDate)
+    ? Math.floor((Date.now() - subtitleDate.getTime()) / 86400000) : null;
+  const staleWeekly = dashAgeDays !== null && dashAgeDays >= 7;
+  subtitleEl.innerHTML = 'Alberto Rodriguez — Actualizado: ' + m.subtitle +
+    (staleWeekly ? ` <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55;border-radius:10px;font-size:11px;font-weight:700">⚠️ ${dashAgeDays}d sin actualizar</span>` : '');
 
   const bv = document.getElementById('nw-bruto-val');
   const bd = document.getElementById('nw-bruto-delta');
