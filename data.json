@@ -2250,6 +2250,7 @@
         "note": "MNGM26 long Nat Gas es hedge energético natural. Ecuador dolarizado elimina riesgo FX."
       }
     ],
+    "alignmentPotential": 84,
     "moves": [
       {
         "urgency": "CRÍTICO",
@@ -2259,7 +2260,8 @@
         "from": "Posiciones tácticas con menor convicción (TS 4090)",
         "to": "Cerrar hasta dejar margen ≤ $15,000",
         "amount": "~$16,000 en posiciones a liquidar",
-        "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento."
+        "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
+        "impact": 13
       },
       {
         "urgency": "URGENTE",
@@ -2269,7 +2271,8 @@
         "from": "Cash — Betterment Reserve ($31,151)",
         "to": "Cuenta táctica TS (ETF GLD o IAU)",
         "amount": "$5,000 – $8,000 (3–5% del táctico)",
-        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities."
+        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities.",
+        "impact": 6
       },
       {
         "urgency": "URGENTE",
@@ -2279,7 +2282,8 @@
         "from": "TastyTrade — spreads y LEAPS activos",
         "to": "Posiciones sin earnings en el periodo",
         "amount": "Todas las legs afectadas por earnings",
-        "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción."
+        "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción.",
+        "impact": 5
       },
       {
         "urgency": "PLANEAR",
@@ -2289,7 +2293,8 @@
         "from": "ITA — iShares Aerospace & Defense ETF (SEP IRA)",
         "to": "VOO — Vanguard S&P 500 ETF (SEP IRA)",
         "amount": "~$8,000 (posición ITA completa)",
-        "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad."
+        "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad.",
+        "impact": 4
       },
       {
         "urgency": "CONDICIONAL",
@@ -2299,7 +2304,8 @@
         "from": "XLP — Consumer Staples (cuenta táctica TS)",
         "to": "VOO o QQQ (mismo cuenta táctica)",
         "amount": "~$4,000–5,000 al cambiar régimen",
-        "why": "XLP es correcto hoy (estanflación). En bull confirmado (PCE <2.5%), el exceso defensivo cuesta alpha."
+        "why": "XLP es correcto hoy (estanflación). En bull confirmado (PCE <2.5%), el exceso defensivo cuesta alpha.",
+        "impact": 2
       }
     ],
     "triggers": [
