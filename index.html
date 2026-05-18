@@ -958,73 +958,105 @@ function renderMacroTab(mr, meta) {
   if (!el || !mr) return;
 
   const sc = mr.alignmentScore || 0;
-  const scoreW = Math.min(sc, 100);
+  const potential = mr.alignmentPotential || sc;
+  const moves = mr.moves || [];
+  const totalImpact = moves.reduce((s, m) => s + (m.impact || 0), 0);
+
+  // Running cumulative score for each move badge
+  let runningScore = sc;
 
   el.innerHTML = `
-    <!-- ── Header: Regime + Alignment Score ── -->
-    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid ${mr.regimeColor}44;border-radius:12px;padding:20px;margin-bottom:14px">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <div style="flex:1;min-width:200px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-            <span style="font-size:18px">🌐</span>
-            <span style="font-size:15px;font-weight:700;color:#f8fafc">Portafolio vs. Mercado Actual</span>
-          </div>
-          <span style="display:inline-block;padding:3px 12px;background:${mr.regimeColor}22;color:${mr.regimeColor};border:1px solid ${mr.regimeColor}55;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px">${mr.regimeLabel || ''}</span>
-          <div style="font-size:12px;color:#94a3b8;line-height:1.6">${mr.regimeContext || ''}</div>
-          <div style="font-size:10px;color:#475569;margin-top:6px">Actualizado: ${mr.lastUpdate || '—'}</div>
+    <!-- ── HEADER STRIP: Regime + Score compacto ── -->
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid ${mr.regimeColor}44;border-radius:12px;padding:14px 18px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-size:16px">🌐</span>
+        <span style="padding:3px 12px;background:${mr.regimeColor}22;color:${mr.regimeColor};border:1px solid ${mr.regimeColor}55;border-radius:20px;font-size:12px;font-weight:700">${mr.regimeLabel || ''}</span>
+        <span style="font-size:12px;color:#94a3b8;max-width:420px;line-height:1.4">${mr.regimeContext || ''}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <div style="text-align:right">
+          <div style="font-size:10px;color:#64748b;letter-spacing:1px;font-weight:700">ALINEACIÓN ACTUAL</div>
+          <div style="font-size:32px;font-weight:800;color:${mr.alignmentColor || '#f59e0b'};line-height:1.1">${sc}<span style="font-size:14px">%</span></div>
+          <div style="font-size:10px;color:${mr.alignmentColor || '#f59e0b'};font-weight:600">${mr.alignmentLabel || ''}</div>
         </div>
-        <!-- Alignment gauge -->
-        <div style="text-align:center;background:#0f172a;border-radius:10px;padding:16px 24px;flex-shrink:0">
-          <div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:700;margin-bottom:4px">ALINEACIÓN TOTAL</div>
-          <div style="font-size:44px;font-weight:800;color:${mr.alignmentColor || '#f59e0b'};line-height:1">${sc}<span style="font-size:18px">%</span></div>
-          <div style="font-size:11px;color:${mr.alignmentColor || '#f59e0b'};margin-top:4px;font-weight:600">${mr.alignmentLabel || ''}</div>
-          <div style="height:6px;background:#1e293b;border-radius:3px;margin-top:8px;width:120px">
-            <div style="height:100%;width:${scoreW}%;background:${mr.alignmentColor || '#f59e0b'};border-radius:3px;transition:width .8s"></div>
-          </div>
-        </div>
+        <div style="font-size:10px;color:#475569">Actualizado:<br>${mr.lastUpdate || '—'}</div>
       </div>
     </div>
 
-    <!-- ── Macro Sensitivities ── -->
-    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:14px">
-      <div style="font-size:13px;font-weight:700;color:#f8fafc;margin-bottom:12px">📊 Sensibilidades del Portafolio</div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        ${(mr.macroFactors||[]).map(f => `
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-              <span style="font-size:12px;color:#cbd5e1;font-weight:600">${f.factor}</span>
-              <span style="font-size:12px;font-weight:700;color:${f.protectionColor}">${f.protection}% protegido</span>
-            </div>
-            <div style="height:7px;background:#0f172a;border-radius:4px">
-              <div style="height:100%;width:${f.protection}%;background:${f.protectionColor};border-radius:4px;transition:width .7s"></div>
-            </div>
-            <div style="font-size:11px;color:#64748b;margin-top:3px;line-height:1.4">${f.note}</div>
-          </div>`).join('')}
-      </div>
-    </div>
+    <!-- ── MOVIMIENTOS — PROTAGONISTAS ── -->
+    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:12px">
 
-    <!-- ── Recommended Moves ── -->
-    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:14px">
-      <div style="font-size:13px;font-weight:700;color:#f8fafc;margin-bottom:12px">⚡ Movimientos Recomendados</div>
+      <!-- Potential bar -->
+      <div style="margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:13px;font-weight:700;color:#f8fafc">⚡ Si ejecutas estas acciones:</span>
+          <span style="font-size:13px;font-weight:800;color:#10b981">${sc}% → <span style="font-size:18px">${potential}%</span> alineado</span>
+        </div>
+        <div style="position:relative;height:10px;background:#0f172a;border-radius:5px;overflow:hidden">
+          <div style="position:absolute;left:0;top:0;height:100%;width:${sc}%;background:${mr.alignmentColor || '#f59e0b'};border-radius:5px;transition:width .8s"></div>
+          <div style="position:absolute;left:${sc}%;top:0;height:100%;width:${Math.min(potential - sc, 100 - sc)}%;background:#10b98166;border-radius:0 5px 5px 0;transition:width .8s 0.2s"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:#475569;margin-top:4px">
+          <span>Hoy: ${sc}%</span>
+          <span style="color:#10b981">Potencial: +${totalImpact} pts si completas todo</span>
+          <span>Meta: ${potential}%</span>
+        </div>
+      </div>
+
+      <!-- Move cards -->
       <div style="display:flex;flex-direction:column;gap:10px">
-        ${(mr.moves||[]).map(m => `
+        ${moves.map(m => {
+          const impactLabel = m.impact ? `+${m.impact} pts` : '';
+          runningScore += (m.impact || 0);
+          const newScore = runningScore;
+          return `
           <div style="border:1px solid ${m.urgencyColor}33;border-left:4px solid ${m.urgencyColor};border-radius:0 8px 8px 0;padding:12px 14px;background:#0f172a">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-              <span style="font-size:16px">${m.icon}</span>
-              <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;background:${m.urgencyColor}22;color:${m.urgencyColor};border:1px solid ${m.urgencyColor}44;letter-spacing:.5px">${m.urgency}</span>
-              <span style="font-size:13px;font-weight:700;color:#f8fafc">${m.action}</span>
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">
+                <span style="font-size:15px;flex-shrink:0">${m.icon}</span>
+                <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;background:${m.urgencyColor}22;color:${m.urgencyColor};border:1px solid ${m.urgencyColor}44;letter-spacing:.5px;flex-shrink:0">${m.urgency}</span>
+                <span style="font-size:13px;font-weight:700;color:#f8fafc">${m.action}</span>
+              </div>
+              ${impactLabel ? `<div style="flex-shrink:0;text-align:center;background:#10b98120;border:1px solid #10b98144;border-radius:8px;padding:4px 10px">
+                <div style="font-size:14px;font-weight:800;color:#10b981">${impactLabel}</div>
+                <div style="font-size:9px;color:#64748b">→ ${newScore}%</div>
+              </div>` : ''}
             </div>
-            <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:11px;margin-bottom:8px">
-              <span style="color:#475569;font-weight:600">MONTO</span><span style="color:#cbd5e1">${m.amount}</span>
+            <div style="display:grid;grid-template-columns:auto 1fr auto 1fr;gap:3px 8px;font-size:11px;margin-bottom:8px">
               <span style="color:#475569;font-weight:600">DE</span><span style="color:#94a3b8">${m.from}</span>
-              <span style="color:#475569;font-weight:600">HACIA</span><span style="color:#94a3b8">${m.to}</span>
+              <span style="color:#475569;font-weight:600;padding-left:8px">HACIA</span><span style="color:#cbd5e1">${m.to}</span>
+              <span style="color:#475569;font-weight:600">MONTO</span><span style="color:#cbd5e1;font-weight:600">${m.amount}</span>
             </div>
             <div style="font-size:11px;color:#64748b;line-height:1.5;border-top:1px solid #1e293b;padding-top:7px">${m.why}</div>
-          </div>`).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
 
-    <!-- ── Regime Triggers ── -->
+    <!-- ── SENSIBILIDADES — contexto secundario ── -->
+    <details style="margin-bottom:12px">
+      <summary style="background:#1e293b;border-radius:12px;padding:12px 16px;cursor:pointer;font-size:13px;font-weight:700;color:#94a3b8;list-style:none;display:flex;justify-content:space-between;align-items:center">
+        <span>📊 ¿Por qué estas acciones? — Sensibilidades del portafolio</span>
+        <span style="font-size:11px;color:#475569">▼ ver</span>
+      </summary>
+      <div style="background:#1e293b;border-radius:0 0 12px 12px;padding:14px 16px;margin-top:-2px;border-top:1px solid #0f172a">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          ${(mr.macroFactors||[]).map(f => `
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                <span style="font-size:12px;color:#cbd5e1;font-weight:600">${f.factor}</span>
+                <span style="font-size:12px;font-weight:700;color:${f.protectionColor}">${f.protection}% protegido ${f.protection < 35 ? '🚨' : f.protection < 65 ? '⚠️' : '✅'}</span>
+              </div>
+              <div style="height:6px;background:#0f172a;border-radius:4px">
+                <div style="height:100%;width:${f.protection}%;background:${f.protectionColor};border-radius:4px;transition:width .7s"></div>
+              </div>
+              <div style="font-size:11px;color:#64748b;margin-top:3px;line-height:1.4">${f.note}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </details>
+
+    <!-- ── TRIGGERS ── -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
       ${(mr.triggers||[]).map(t => `
         <div style="background:#1e293b;border-radius:10px;padding:14px;border-top:3px solid ${t.dirColor}">
