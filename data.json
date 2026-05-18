@@ -2250,62 +2250,113 @@
         "note": "MNGM26 long Nat Gas es hedge energético natural. Ecuador dolarizado elimina riesgo FX."
       }
     ],
-    "alignmentPotential": 84,
+    "alignmentPotential": 88,
+    "regimeCeiling": 88,
+    "regimeCeilingWhy": "En estanflación, inflación alta y crecimiento lento castigan activos distintos al mismo tiempo. Más GLD protege de inflación pero reduce retorno real. Más XLP reduce volatilidad pero sacrifica alpha. No existe posición que gane en ambos frentes — el techo físico del régimen es ~88%. En Goldilocks (Fed recorta + PIB crece) el techo sube a ~95%.",
     "moves": [
       {
         "urgency": "CRÍTICO",
         "urgencyColor": "#ef4444",
         "icon": "🚨",
         "action": "Reducir margen táctico TS",
-        "from": "Posiciones tácticas con menor convicción (TS 4090)",
-        "to": "Cerrar hasta dejar margen ≤ $15,000",
-        "amount": "~$16,000 en posiciones a liquidar",
+        "from": "TradeStation · Cuenta Táctica #11484090",
+        "to": "Sin destino — cerrar posiciones localmente (liberar margen)",
+        "amount": "$15,827 en MV a cerrar → margen baja de $31,278 a ~$15,000",
         "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
-        "impact": 13
+        "impact": 13,
+        "priceRef": "Precios live 17 May 2026",
+        "steps": [
+          "Abrir TradeStation → Account 11484090 (Táctica ETF)",
+          "Vender en orden (todas MARKET ORDER, misma sesión):",
+          "  · FXI (China) — VENDER 70 acc @ ~$36.20 = $2,534",
+          "  · EWZS (Brazil SC) — VENDER 120 acc @ ~$13.90 = $1,668",
+          "  · XBI (Biotech) — VENDER 13 acc @ ~$130.67 = $1,699",
+          "  · XOP (Oil Expl.) — VENDER 8 acc @ ~$174.15 = $1,393",
+          "  · HAL (Halliburton) — VENDER 41 acc @ ~$41.73 = $1,711",
+          "  · ILF (LatAm) — VENDER 48 acc @ ~$35.29 = $1,694",
+          "  · FDL (US Dividend) — VENDER 47 acc @ ~$49.43 = $2,323",
+          "  · VWO (Emerging Mkt) — VENDER 48 acc @ ~$58.44 = $2,805",
+          "Total: ~$15,827 en MV cerrado",
+          "Verificar: Balance → 'Margin Used' debe mostrar ≤ $15,000"
+        ]
       },
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
         "icon": "⚠️",
         "action": "Agregar GLD o IAU como hedge inflacionario",
-        "from": "Cash — Betterment Reserve ($31,151)",
-        "to": "Cuenta táctica TS (ETF GLD o IAU)",
-        "amount": "$5,000 – $8,000 (3–5% del táctico)",
+        "from": "Betterment Cash Reserve ($31,151) → checking → depósito a TS",
+        "to": "TradeStation · Cuenta Táctica #11484090",
+        "amount": "$6,500 — 15 acc GLD @ $417.29 = $6,259 · ó 76 acc IAU @ $85.51 = $6,499",
         "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities.",
-        "impact": 6
+        "impact": 6,
+        "priceRef": "GLD $417.29 · IAU $85.51 — live 17 May 2026",
+        "steps": [
+          "Betterment → Retirar $6,500 de Cash Reserve (tarda 1-2 días hábiles)",
+          "Depositar $6,500 en TradeStation Account #11484090",
+          "Ejecutar compra cuando el depósito esté disponible:",
+          "  · OPCIÓN A: COMPRAR 15 acc GLD @ mercado ≈ $417.29/acc = $6,259",
+          "  · OPCIÓN B: COMPRAR 76 acc IAU @ mercado ≈ $85.51/acc = $6,499",
+          "IAU recomendado — mismo subyacente (oro), más líquido y menor precio por acción"
+        ]
       },
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
         "icon": "⚠️",
         "action": "Cerrar o rodar NVTS y HIMS antes del 18 junio",
-        "from": "TastyTrade — spreads y LEAPS activos",
-        "to": "Posiciones sin earnings en el periodo",
-        "amount": "Todas las legs afectadas por earnings",
+        "from": "TastyTrade · Options Account (spreads + LEAPS activos)",
+        "to": "Cerrar (BTC) todas las legs afectadas por earnings",
+        "amount": "Todas las legs de NVTS y HIMS — verificar en TastyTrade → Positions",
         "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción.",
-        "impact": 5
+        "impact": 5,
+        "priceRef": "Verificar precios en vivo en TastyTrade",
+        "steps": [
+          "Abrir TastyTrade → Positions",
+          "Filtrar NVTS: seleccionar todas las legs → 'Close Position' (BTC al mercado o limit)",
+          "Filtrar HIMS: seleccionar LEAPS activos → 'Sell to Close' (STC)",
+          "Confirmar que no quedan legs de NVTS o HIMS en el portfolio",
+          "Alternativa — RODAR: cerrar legs actuales + abrir nuevas con vencimiento Sep/Oct (sin earnings)"
+        ]
       },
       {
         "urgency": "PLANEAR",
         "urgencyColor": "#60a5fa",
         "icon": "📋",
         "action": "Reemplazar ITA → VOO en SEP IRA",
-        "from": "ITA — iShares Aerospace & Defense ETF (SEP IRA)",
-        "to": "VOO — Vanguard S&P 500 ETF (SEP IRA)",
-        "amount": "~$8,000 (posición ITA completa)",
+        "from": "TradeStation · SEP IRA #12016362 — vender ITA (iShares Aerospace & Defense ETF)",
+        "to": "TradeStation · SEP IRA #12016362 — comprar VOO (Vanguard S&P 500 ETF)",
+        "amount": "Vender ~37 acc ITA @ $217.27 = $8,039 · Comprar 11 acc VOO @ $679.44 = $7,474",
         "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad.",
-        "impact": 4
+        "impact": 4,
+        "priceRef": "ITA $217.27 · VOO $679.44 — live 17 May 2026",
+        "steps": [
+          "Abrir TradeStation → Account 12016362 (SEP IRA) ⚠️ cuenta de retiro — NO usar margin",
+          "VENDER: ~37 acc ITA @ mercado ≈ $217.27/acc = $8,039 (verificar qty exacta en Positions)",
+          "Esperar ejecución completa (puede ser mismo día si es antes del cierre)",
+          "COMPRAR: 11 acc VOO @ mercado ≈ $679.44/acc = $7,474",
+          "Diferencia: ~$565 queda como cash en el SEP IRA (aceptable)",
+          "No ejecutar si ITA bajó >5% ese día — usar limit order a $206+"
+        ]
       },
       {
         "urgency": "CONDICIONAL",
         "urgencyColor": "#94a3b8",
         "icon": "⏳",
         "action": "Reducir XLP de 18.9% → 12% cuando régimen mejore",
-        "from": "XLP — Consumer Staples (cuenta táctica TS)",
-        "to": "VOO o QQQ (mismo cuenta táctica)",
-        "amount": "~$4,000–5,000 al cambiar régimen",
+        "from": "TradeStation · Cuenta Táctica #11484090 — XLP (144 acc actuales, MV $12,200)",
+        "to": "TradeStation · Cuenta Táctica #11484090 — comprar QQQ o VOO",
+        "amount": "Vender 52 acc XLP @ $84.72 = $4,405 · Comprar 6 acc QQQ @ $708.93 = $4,254",
         "why": "XLP es correcto hoy (estanflación). En bull confirmado (PCE <2.5%), el exceso defensivo cuesta alpha.",
-        "impact": 2
+        "impact": 2,
+        "priceRef": "XLP $84.72 · QQQ $708.93 — live 17 May 2026",
+        "steps": [
+          "⏳ ESPERAR SEÑAL: solo ejecutar cuando PCE < 2.5% por 2 meses consecutivos + Fed recorta",
+          "VENDER: 52 acc XLP @ mercado ≈ $84.72/acc = $4,405 (quedan 92 acc = 12% táctico)",
+          "COMPRAR: 6 acc QQQ @ mercado ≈ $708.93/acc = $4,254",
+          "Saldo restante ~$151 queda en cash táctico",
+          "Verificar: XLP debe representar ~12% del MV total táctico post-venta"
+        ]
       }
     ],
     "triggers": [
