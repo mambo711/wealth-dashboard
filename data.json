@@ -65,9 +65,9 @@
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Acumular buffer DEC: $27,993 → $39,000 (faltan $11,007)",
-      "body": "El surplus mensual está en -$341 (DEC promedió $4,795/mes en lo que va del año). La regla DEC: 3× opex mensual ($13,143) = $39,000 de buffer antes de atacar el LOC. Mientras DEC no llegue a $39K, pagar mínimos del LOC y dejar que la cuenta acumule. Sin buffer, un mes flojo de DEC fuerza re-draw del LOC y retrocedes todo lo ganado.",
-      "why": "⚡ Por qué importa: el buffer protege contra re-draw del LOC. Una vez llegues a $39K en DEC, TODO el surplus va al LOC @ 8.5% garantizado."
+      "title": "Prioridad #1: 🚨 Reducir margen táctico TS",
+      "body": "Move CRÍTICO activo en el Macro tab — debe ejecutarse antes de cualquier otra acción financiera esta semana. Mientras esté pendiente: no abrir posiciones nuevas, no pagar LOC extra, no rebalancear.",
+      "why": "⚡ Un move CRÍTICO sin ejecutar bloquea la alineación del portafolio con el régimen actual (STAGFLATION_RISK)."
     },
     "steps": [
       {
@@ -144,14 +144,14 @@
   },
   "actions": {
     "resumen": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "Acumular buffer DEC: $27,993 actuales → meta $39,000 (3× opex mensual). Faltan $11,007. NO pagar LOC extra todavía — con buffer bajo, un mes malo de DEC fuerza re-draw del LOC."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "3 prioridades en orden: (1) 🚨 Move CRÍTICO — Reducir margen táctico TS. (2) Acumular buffer DEC $27,993→$39,000 (faltan $11,007). (3) Crecer DEC a $6,500+/mes para recuperar surplus. LOC en espera."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Ejecutar rebalanceo: retirar $4,000 de TastyTrade → depositar $2,000 en IBKR Bravo + $2,000 en RH AP Act Managed."
+      "text": "Move CRÍTICO pendiente (margen TS) — rebalanceo TT→IBKR+RH se ejecuta DESPUÉS. Régimen STAGFLATION activo: no mover capital hacia sectores bloqueados (Tech/Semis, SmallCap). Mantener cuentas como están hasta cerrar el move CRÍTICO."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -161,27 +161,27 @@
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Buffer DEC en $27,993 — faltan $11,007 para llegar a $39K (3× opex). Mientras no se alcance el buffer, NO hacer pagos extra al LOC. Pagar mínimos y dejar acumular DEC."
+      "text": "Buffer DEC en $27,993 — faltan $11,007 para $39,000 (3× opex). NO hacer pagos extra al LOC. Pagar mínimos y dejar acumular DEC."
     },
     "fi": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "DEC buffer en $27,993 — meta $39,000 (3× opex). Mientras el buffer no esté completo, el LOC espera. Sin buffer, un mes malo de DEC fuerza re-draw del LOC y retrocedes. Primero: acumular $11,007 más en DEC."
+      "text": "DEC buffer en $27,993 — meta $39,000 (3× opex). LOC espera hasta buffer completo. Sin buffer, un mes flojo de DEC fuerza re-draw y retrocedes en FI. Move CRÍTICO también pendiente: 🚨 Reducir margen táctico TS."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "No abrir posiciones nuevas en el Tactical ETF — margen en $30,990 (demasiado expandido). Esperar que baje a <$20K antes de cualquier entrada nueva."
+      "text": "⛔ Move CRÍTICO pendiente: 🚨 Reducir margen táctico TS — NO abrir posiciones nuevas en ninguna cuenta hasta ejecutar este move. Prioridad #1 de la semana."
     },
     "performance": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Ejecutar rebalanceo: retirar $4,000 de TastyTrade → $2,000 a IBKR + $2,000 a RH. Es el movimiento de mayor impacto ajustado por riesgo disponible ahora mismo."
+      "text": "Move CRÍTICO pendiente: 🚨 Reducir margen táctico TS. Ejecutar ANTES de cualquier rebalanceo. Una vez ejecutado: Agregar GLD o IAU como hedge inflacionario — entonces evaluar rebalanceo TT→IBKR+RH."
     },
     "flujo": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "Flujo ajustado: surplus negativo -$341/mes (DEC bajó a $4,795/mes promedio). Objetivo inmediato: que DEC acumule hasta $39K buffer (3× opex) antes de atacar LOC. NO hacer pagos extra al LOC todavía — riesgo de re-draw en mes flojo."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Flujo de caja negativo: $-261/mes. DEC promedia $4,795/mes YTD. Prioridad: crecer DEC a $5,514+/mes para generar surplus. NO tocar LOC extra."
     }
   },
   "insights": {
@@ -2429,41 +2429,41 @@
       "priority": "CRÍTICO",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Pagar LOC Wells Fargo con excedente DEC de mayo",
-      "why": "Cada semana de espera = $65 en intereses. Abrir DEC → verificar saldo disponible → transferir a WF LOC. Mínimo $500.",
+      "action": "Reducir margen táctico TS",
+      "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "💰",
+      "action": "Acumular buffer DEC: $27,993 → $39,000 (faltan $11,007) — NO pagar LOC extra",
+      "why": "Con buffer incompleto, un mes flojo de DEC fuerza re-draw del LOC @ 8.5% — retroceso garantizado.",
       "category": "DEUDA"
     },
     {
-      "priority": "CRÍTICO",
-      "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Activar 2–3 leads de DEC pendientes en Cloze",
-      "why": "DEC necesita cerrar $705+/mes adicional para salir del déficit. Pipeline activo = única palanca inmediata.",
-      "category": "INGRESOS"
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Agregar GLD o IAU como hedge inflacionario",
+      "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities. ⚠️ Ejecutar DESPUÉS del Move 1 — el cash viene de las posiciones cerradas.",
+      "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Decidir NVTS y HIMS antes del 18 jun — cerrar, rodar o mantener",
-      "why": "Ambas tienen earnings dentro del vencimiento. Un gap adverso puede liquidar el spread completo sin opción de reacción.",
+      "action": "Cerrar o rodar NVTS y HIMS antes del 18 junio",
+      "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción.",
       "category": "OPCIONES"
-    },
-    {
-      "priority": "URGENTE",
-      "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Confirmar Michalitas sobre PE por 2do mes consecutivo",
-      "why": "Mayo proyectó +$121 sobre PE por primera vez. Confirmar en mayo cerrado. Si no se sostiene → activar plan de cierre.",
-      "category": "NEGOCIOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📋",
-      "action": "Verificar que contrato Miguel Autos ($36,415) está vigente",
-      "why": "Es el 9% del portafolio total y el mayor activo ilíquido. Sin contrato escrito vigente es un riesgo patrimonial real.",
-      "category": "ACTIVOS"
+      "icon": "🏢",
+      "action": "Confirmar Michalitas sobre PE por 2do mes consecutivo",
+      "why": "3 meses sobre PE confirma sostenibilidad — base para decisión de capital.",
+      "category": "NEGOCIOS"
     }
   ]
 }
