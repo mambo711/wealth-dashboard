@@ -1017,7 +1017,9 @@ function renderMacroTab(mr, meta) {
     if (txt.includes('tastytrade') || txt.includes('opciones') || txt.includes('nvts') || txt.includes('hims')) return {tab:'posiciones', label:'→ Ver Opciones'};
     if (txt.includes('sep ira') || txt.includes('12016362')) return {tab:'cuentas', label:'→ Ver Cuentas'};
     if (txt.includes('gld') || txt.includes('iau') || txt.includes('hedge')) return {tab:'allocation', label:'→ Ver Allocation'};
-    return null;
+    if (txt.includes('loc') || txt.includes('wells') || txt.includes('deuda') || txt.includes('loa')) return {tab:'deuda', label:'→ Ver Deuda'};
+    if (txt.includes('dec') || txt.includes('flujo') || txt.includes('surplus') || txt.includes('ingreso')) return {tab:'flujo', label:'→ Ver Flujo'};
+    return {tab:'resumen', label:'→ Ver Resumen'};  // generic fallback — never returns null
   }
 
   el.innerHTML = `
@@ -1044,6 +1046,16 @@ function renderMacroTab(mr, meta) {
         ${stalenessHtml}
       </div>
     </div>
+
+    <!-- ── ACTION BANNER (1-line from Master State, consistent with all tabs) ── -->
+    ${(() => {
+      const act = (dashActions || {}).posiciones;
+      if (!act || !act.text) return '';
+      return `<div style="border-left:3px solid ${act.borderColor || '#f59e0b'};background:${act.borderColor || '#f59e0b'}11;border-radius:0 8px 8px 0;padding:9px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <span style="font-size:12px;color:#e2e8f0;line-height:1.4;flex:1">${act.text}</span>
+        <a href="#" onclick="showTab('resumen');return false;" style="font-size:10px;font-weight:700;color:#60a5fa;text-decoration:none;white-space:nowrap;flex-shrink:0">Ver Resumen ↗</a>
+      </div>`;
+    })()}
 
     <!-- ── MACRO FACTORS STRIP (always visible) ── -->
     <div style="background:#1e293b;border-radius:10px;padding:12px 16px;margin-bottom:12px">
