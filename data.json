@@ -61,7 +61,7 @@
     "fiBlendedGap": 61530,
     "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $336,530 — superado por $61,530.",
     "totalAssets": 409736,
-    "totalDebt": 73206
+    "totalDebt": 72728.75
   },
   "roadmap": {
     "weeklyFocus": {
@@ -210,7 +210,7 @@
       "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Primero cerrar Michalitas para liberar +$1,525/mes → surplus → atacar LOC. Meta: $0 en LOC para 2027-2028 dependiendo de velocidad de surplus."
     ],
     "fi": [
-      "• Necesitas <strong style=\"color:#f59e0b\">$149,758</strong> adicionales en 5 años para alcanzar $500K de NW neto — eso es $29,952/año o $2,496/mes. NW Neto actual: $350,242. DEC promedia $4,795/mes YTD.",
+      "• Necesitas <strong style=\"color:#f59e0b\">$163,470</strong> adicionales en 5 años para alcanzar $500K de NW neto — eso es $32,694/año o $2,496/mes. NW Neto actual: $336,530. DEC promedia $4,795/mes YTD.",
       "📊 Retiro core ($229,681 — SEP IRA + Roth + Trad): base sólida en construcción. Betterment ahora con datos LIVE (Roth $61,658 + Trad $28,187). FI al 70%.",
       "• Social Security a los 67 ($2,000/mo) reduce tu necesidad de retiro en $275K en perpetuidad — eso significa que tu meta real post-SS es mucho más alcanzable.",
       "<strong style=\"color:#f59e0b\">🎯 Rec:</strong> Las 3 palancas clave: (1) atacar LOC con surplus, (2) crecer DEC a $6,500+/mes, (3) maximizar SEP IRA si DEC mantiene $50K+ anual. FI a los 57-58 sigue siendo realista."
@@ -2149,6 +2149,50 @@
       120.0,
       127.5,
       131.8
+    ],
+    "fut2": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      100,
+      98,
+      96,
+      41.8
     ]
   },
   "allocationAlerts": [
@@ -2250,7 +2294,6 @@
         "note": "MNGM26 long Nat Gas es hedge energético natural. Ecuador dolarizado elimina riesgo FX."
       }
     ],
-    "alignmentPotential": 88,
     "regimeCeiling": 88,
     "regimeCeilingWhy": "En estanflación, inflación alta y crecimiento lento castigan activos distintos al mismo tiempo. Más GLD protege de inflación pero reduce retorno real. Más XLP reduce volatilidad pero sacrifica alpha. No existe posición que gane en ambos frentes — el techo físico del régimen es ~88%. En Goldilocks (Fed recorta + PIB crece) el techo sube a ~95%.",
     "moves": [
