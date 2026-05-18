@@ -961,6 +961,28 @@ function renderMacroTab(mr, meta) {
   const moves = mr.moves || [];
   const totalImpact = moves.reduce((s, m) => s + (m.impact || 0), 0);
   const potential = Math.min(sc + totalImpact, 100);
+  const ceiling = mr.regimeCeiling || potential;
+  const ceilingWhy = mr.regimeCeilingWhy || '';
+
+  // Flashing badge CSS — injected once
+  if (!document.getElementById('macro-flash-style')) {
+    const st = document.createElement('style');
+    st.id = 'macro-flash-style';
+    st.textContent = `
+      @keyframes flashBadge {
+        0%,100%{opacity:1;box-shadow:0 0 0 0 #f59e0b55}
+        50%{opacity:.6;box-shadow:0 0 8px 3px #f59e0b88}
+      }
+      .estimated-badge {
+        display:inline-flex;align-items:center;gap:4px;
+        padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;
+        background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55;
+        letter-spacing:.5px;animation:flashBadge 1.4s ease-in-out infinite;
+        flex-shrink:0;cursor:help;
+      }
+    `;
+    document.head.appendChild(st);
+  }
 
   // Running cumulative score for each move badge
   let runningScore = sc;
@@ -987,7 +1009,7 @@ function renderMacroTab(mr, meta) {
     <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:12px">
 
       <!-- Potential bar -->
-      <div style="margin-bottom:16px">
+      <div style="margin-bottom:10px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
           <span style="font-size:13px;font-weight:700;color:#f8fafc">⚡ Si ejecutas estas acciones:</span>
           <span style="font-size:13px;font-weight:800;color:#10b981">${sc}% → <span style="font-size:18px">${potential}%</span> alineado</span>
@@ -995,6 +1017,7 @@ function renderMacroTab(mr, meta) {
         <div style="position:relative;height:10px;background:#0f172a;border-radius:5px;overflow:hidden">
           <div style="position:absolute;left:0;top:0;height:100%;width:${sc}%;background:${mr.alignmentColor || '#f59e0b'};border-radius:5px;transition:width .8s"></div>
           <div style="position:absolute;left:${sc}%;top:0;height:100%;width:${Math.min(potential - sc, 100 - sc)}%;background:#10b98166;border-radius:0 5px 5px 0;transition:width .8s 0.2s"></div>
+          ${ceiling < 100 ? `<div style="position:absolute;left:${ceiling}%;top:-2px;bottom:-2px;width:2px;background:#f59e0b;opacity:.7"></div>` : ''}
         </div>
         <div style="display:flex;justify-content:space-between;font-size:10px;color:#475569;margin-top:4px">
           <span>Hoy: ${sc}%</span>
@@ -1003,19 +1026,51 @@ function renderMacroTab(mr, meta) {
         </div>
       </div>
 
+      <!-- Regime ceiling callout -->
+      ${ceiling < 100 ? `
+      <div style="display:flex;align-items:flex-start;gap:8px;background:#f59e0b0d;border:1px solid #f59e0b33;border-radius:8px;padding:10px 13px;margin-bottom:14px">
+        <span style="font-size:14px;flex-shrink:0;margin-top:1px">🔒</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#f59e0b;margin-bottom:3px">Techo del régimen ${mr.regimeLabel || ''}: ${ceiling}%</div>
+          <div style="font-size:11px;color:#94a3b8;line-height:1.5">${ceilingWhy}</div>
+        </div>
+      </div>` : ''}
+
       <!-- Move cards -->
       <div style="display:flex;flex-direction:column;gap:10px">
         ${moves.map(m => {
           const impactLabel = m.impact ? `+${m.impact} pts` : '';
           runningScore += (m.impact || 0);
           const newScore = runningScore;
+          // Estimated data detection: missing priceRef OR priceRef does not contain "live" (English)
+          const isEstimated = !m.priceRef || !/live/i.test(m.priceRef);
+          const estimatedBadge = isEstimated
+            ? `<span class="estimated-badge" title="${m.priceRef || 'Precios no verificados en vivo — revisar antes de ejecutar'}">⚠️ DATOS ESTIMADOS</span>`
+            : `<span style="font-size:9px;color:#475569;flex-shrink:0" title="${m.priceRef}">✅ live</span>`;
+          // Steps list
+          const stepsHtml = (m.steps && m.steps.length)
+            ? `<details style="margin-top:8px">
+                <summary style="cursor:pointer;font-size:11px;font-weight:600;color:#60a5fa;list-style:none;display:flex;align-items:center;gap:6px">
+                  <span>📋 Pasos exactos (${m.steps.length})</span><span style="font-size:9px;color:#475569">▼ ver</span>
+                </summary>
+                <div style="margin-top:8px;padding:10px 12px;background:#1e293b;border-radius:8px;border-left:3px solid #60a5fa33">
+                  ${m.steps.map((step, i) => {
+                    const isHeader = !step.startsWith('  ');
+                    return isHeader
+                      ? `<div style="font-size:11px;color:#cbd5e1;padding:3px 0;${i > 0 ? 'margin-top:4px' : ''}"><span style="color:#60a5fa;font-weight:700;margin-right:6px">${i + 1}.</span>${step}</div>`
+                      : `<div style="font-size:11px;color:#64748b;padding:1px 0 1px 20px;line-height:1.5">${step.trim()}</div>`;
+                  }).join('')}
+                </div>
+              </details>`
+            : '';
           return `
           <div style="border:1px solid ${m.urgencyColor}33;border-left:4px solid ${m.urgencyColor};border-radius:0 8px 8px 0;padding:12px 14px;background:#0f172a">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
-              <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap">
                 <span style="font-size:15px;flex-shrink:0">${m.icon}</span>
                 <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;background:${m.urgencyColor}22;color:${m.urgencyColor};border:1px solid ${m.urgencyColor}44;letter-spacing:.5px;flex-shrink:0">${m.urgency}</span>
                 <span style="font-size:13px;font-weight:700;color:#f8fafc">${m.action}</span>
+                ${estimatedBadge}
               </div>
               ${impactLabel ? `<div style="flex-shrink:0;text-align:center;background:#10b98120;border:1px solid #10b98144;border-radius:8px;padding:4px 10px">
                 <div style="font-size:14px;font-weight:800;color:#10b981">${impactLabel}</div>
@@ -1028,6 +1083,7 @@ function renderMacroTab(mr, meta) {
               <span style="color:#475569;font-weight:600">MONTO</span><span style="color:#cbd5e1;font-weight:600">${m.amount}</span>
             </div>
             <div style="font-size:11px;color:#64748b;line-height:1.5;border-top:1px solid #1e293b;padding-top:7px">${m.why}</div>
+            ${stepsHtml}
           </div>`;
         }).join('')}
       </div>
