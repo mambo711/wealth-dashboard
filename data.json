@@ -151,37 +151,37 @@
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Move CRÍTICO pendiente (margen TS) — rebalanceo TT→IBKR+RH se ejecuta DESPUÉS. Régimen STAGFLATION activo: no mover capital hacia sectores bloqueados (Tech/Semis, SmallCap). Mantener cuentas como están hasta cerrar el move CRÍTICO."
+      "text": "Move CRÍTICO pendiente — rebalanceo TT→IBKR+RH se ejecuta después. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. Ver Resumen."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar que el préstamo Miguel Autos ($36,415) tiene contrato escrito vigente — es el 9% del portafolio total y el mayor riesgo de concentración ilíquida."
+      "text": "Verificar contrato Miguel Autos ($36,415) — 9% del portafolio sin garantía documental. Ver Resumen para contexto."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Buffer DEC en $27,993 — faltan $11,007 para $39,000 (3× opex). NO hacer pagos extra al LOC. Pagar mínimos y dejar acumular DEC."
+      "text": "⛔ NO pagar LOC extra — buffer DEC incompleto ($27,993 / $39,000). Ver Resumen."
     },
     "fi": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "DEC buffer en $27,993 — meta $39,000 (3× opex). LOC espera hasta buffer completo. Sin buffer, un mes flojo de DEC fuerza re-draw y retrocedes en FI. Move CRÍTICO también pendiente: 🚨 Reducir margen táctico TS."
+      "text": "LOC en espera: buffer DEC en $27,993 / $39,000. Move CRÍTICO también pendiente. Ver Resumen."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⛔ Move CRÍTICO pendiente: 🚨 Reducir margen táctico TS — NO abrir posiciones nuevas en ninguna cuenta hasta ejecutar este move. Prioridad #1 de la semana."
+      "text": "⛔ Move CRÍTICO pendiente: 🚨 Reducir margen táctico TS — ver Macro tab."
     },
     "performance": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Move CRÍTICO pendiente: 🚨 Reducir margen táctico TS. Ejecutar ANTES de cualquier rebalanceo. Una vez ejecutado: Agregar GLD o IAU como hedge inflacionario — entonces evaluar rebalanceo TT→IBKR+RH."
+      "text": "Ejecutar move CRÍTICO (🚨 margen TS) antes de rebalancear. Ver Resumen para orden de prioridades."
     },
     "flujo": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Flujo de caja negativo: $-261/mes. DEC promedia $4,795/mes YTD. Prioridad: crecer DEC a $5,514+/mes para generar surplus. NO tocar LOC extra."
+      "text": "Flujo −$261/mes. Meta: DEC a $5,514+/mes. Ver Resumen para plan completo."
     }
   },
   "insights": {
