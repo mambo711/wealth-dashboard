@@ -1061,25 +1061,25 @@ function renderMacroTab(mr, meta) {
     <div style="background:#1e293b;border-radius:10px;padding:12px 16px;margin-bottom:12px">
       <div style="font-size:11px;font-weight:700;color:#64748b;letter-spacing:1px;margin-bottom:10px">📊 SENSIBILIDADES DEL PORTAFOLIO</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
-        ${(mr.macroFactors||[]).map(f => `
+        ${(mr.macroFactors||[]).map(f => { const label=f.factor||f.name||'?'; const pct=f.protection??f.value??0; const clr=f.protectionColor||f.color||'#94a3b8'; return `
           <div style="text-align:center">
-            <div style="font-size:10px;color:#64748b;margin-bottom:4px;font-weight:600">${f.factor}</div>
+            <div style="font-size:10px;color:#64748b;margin-bottom:4px;font-weight:600">${label}</div>
             <div style="height:5px;background:#0f172a;border-radius:3px;margin-bottom:4px">
-              <div style="height:100%;width:${f.protection}%;background:${f.protectionColor};border-radius:3px;transition:width .7s"></div>
+              <div style="height:100%;width:${pct}%;background:${clr};border-radius:3px;transition:width .7s"></div>
             </div>
-            <div style="font-size:13px;font-weight:800;color:${f.protectionColor}">${f.protection}%</div>
-            <div style="font-size:9px;color:#475569">${f.protection < 35 ? '🚨' : f.protection < 65 ? '⚠️' : '✅'}</div>
-          </div>`).join('')}
+            <div style="font-size:13px;font-weight:800;color:${clr}">${pct}%</div>
+            <div style="font-size:9px;color:#475569">${pct < 35 ? '🚨' : pct < 65 ? '⚠️' : '✅'}</div>
+          </div>`; }).join('')}
       </div>
       ${(mr.macroFactors||[]).some(f => f.note) ? `
       <details style="margin-top:10px">
         <summary style="cursor:pointer;font-size:10px;color:#475569;list-style:none">▼ ver notas por factor</summary>
         <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
-          ${(mr.macroFactors||[]).filter(f=>f.note).map(f=>`
+          ${(mr.macroFactors||[]).filter(f=>f.note).map(f=>{ const label=f.factor||f.name||'?'; const clr=f.protectionColor||f.color||'#94a3b8'; return `
             <div style="display:flex;gap:8px;align-items:flex-start">
-              <span style="font-size:10px;font-weight:700;color:${f.protectionColor};min-width:70px">${f.factor}</span>
+              <span style="font-size:10px;font-weight:700;color:${clr};min-width:70px">${label}</span>
               <span style="font-size:11px;color:#64748b;line-height:1.4">${f.note}</span>
-            </div>`).join('')}
+            </div>`; }).join('')}
         </div>
       </details>` : ''}
     </div>
