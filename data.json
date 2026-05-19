@@ -1,15 +1,15 @@
 {
   "meta": {
-    "subtitle": "17 Mayo 2026",
-    "weeklyFocusDate": "Semana del 17 May",
-    "nwBruto": 409736,
-    "nwBrutoDelta": "$8,245 vs mes anterior",
-    "nwDeltaUp": true,
-    "nwNeto": 336530,
-    "nwNetoDelta": "$8,245 vs mes anterior",
-    "fiPct": 67,
-    "fiGap": 162992.75,
-    "fiGapAnnual": 32599,
+    "subtitle": "19 Mayo 2026",
+    "weeklyFocusDate": "Semana del 19 May",
+    "nwBruto": 401978,
+    "nwBrutoDelta": "▼$6,497 vs ayer (TT −$4,440 + TS ajustes)",
+    "nwDeltaUp": false,
+    "nwNeto": 343745,
+    "nwNetoDelta": "▼$6,497 vs ayer",
+    "fiPct": 69,
+    "fiGap": 156255,
+    "fiGapAnnual": 31251,
     "fiTarget": 500000,
     "healthScore": 59,
     "healthLabel": "MODERADO",
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
-    "retirementCore": 229681,
-    "totalBruto": 409736,
-    "tacticalHeader": "$33,597 (+$505 cash)",
-    "footerNote": "Datos: TradeStation MCP (live May 17) · Betterment (screenshot May 17) · Xero (live YTD) · Tastytrade relay (May 17)",
+    "retirementCore": 228060,
+    "totalBruto": 401978,
+    "tacticalHeader": "$33,001 (margen $19,921 ✅)",
+    "footerNote": "Datos: TradeStation MCP (live May 19) · TT Relay Gmail (May 19 09:53) · TS Historical Orders · Betterment (screenshot May 17) · Xero (live YTD)",
     "debtTotal": 72728.75,
     "debtDelta": "▲ $346 vs mes anterior",
     "debtDeltaUp": false,
@@ -60,14 +60,14 @@
     "fiBlendedTarget": 275000,
     "fiBlendedGap": 61530,
     "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $336,530 — superado por $61,530.",
-    "totalAssets": 409736,
+    "totalAssets": 401978,
     "totalDebt": 72728.75
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🚨 Reducir margen táctico TS",
-      "body": "Move CRÍTICO activo en el Macro tab — debe ejecutarse antes de cualquier otra acción financiera esta semana. Mientras esté pendiente: no abrir posiciones nuevas, no pagar LOC extra, no rebalancear.",
-      "why": "⚡ Un move CRÍTICO sin ejecutar bloquea la alineación del portafolio con el régimen actual (STAGFLATION_RISK)."
+      "title": "Prioridad #1: ⚠️ NVTS/HIMS — Monitorear SL y FOMC mañana",
+      "body": "Move CRÍTICO (margen) EJECUTADO ✅ y IAU EJECUTADO ✅. Alignment en techo 65/100. Mañana May 20: FOMC minutes @ 2PM ET — potencial volatilidad en bonds y tech. NVTS spread widening (adverse) — SL $2.10 activo.",
+      "why": "⭐ FOMC minutes mañana es el evento macro más importante de la semana. NVTS en posición adversa — monitorear SL."
     },
     "steps": [
       {
@@ -637,7 +637,7 @@
     {
       "name": "SEP IRA (TS)",
       "cat": "Retiro",
-      "value": 138725,
+      "value": 138215,
       "color": "#2563eb"
     },
     {
@@ -667,7 +667,7 @@
     {
       "name": "TS ETF Tactical",
       "cat": "Trading",
-      "value": 33597,
+      "value": 33001,
       "color": "#10b981"
     },
     {
@@ -679,7 +679,7 @@
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 17026,
+      "value": 12508,
       "color": "#8b5cf6"
     },
     {
@@ -697,13 +697,13 @@
     {
       "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 2060,
+      "value": 2184,
       "color": "#ef4444"
     },
     {
       "name": "TS Futures VLV23",
       "cat": "Trading",
-      "value": 3183,
+      "value": 2191,
       "color": "#f87171"
     },
     {
@@ -863,38 +863,30 @@
     ]
   },
   "sepIRA": {
-    "header": "$138,725",
+    "header": "$137,678 MV",
     "positions": [
       {
         "symbol": "VOO",
         "name": "Vanguard S&P 500 ETF",
-        "mv": 84422,
-        "pct": 60.9,
-        "pl": 21422,
+        "mv": 84138,
+        "pct": 61.1,
+        "pl": 21138,
         "plUp": true
       },
       {
         "symbol": "SCHD",
         "name": "Schwab US Dividend ETF",
-        "mv": 33294,
-        "pct": 24.0,
-        "pl": 7294,
+        "mv": 34245,
+        "pct": 24.9,
+        "pl": 7245,
         "plUp": true
       },
       {
         "symbol": "AVDV",
         "name": "Avantis International SC",
-        "mv": 19407,
+        "mv": 19295,
         "pct": 14.0,
-        "pl": 2407,
-        "plUp": true
-      },
-      {
-        "symbol": "CASH",
-        "name": "Cash",
-        "mv": 1602,
-        "pct": 1.2,
-        "pl": 0,
+        "pl": 2295,
         "plUp": true
       }
     ]
@@ -902,76 +894,84 @@
   "tactical": [
     {
       "sym": "XLP",
-      "val": 12208,
-      "pct": 18.9,
-      "pl": 1208,
+      "val": 12446,
+      "pct": 23.5,
+      "pl": 1446,
+      "plUp": true
+    },
+    {
+      "sym": "IAU",
+      "val": 6420,
+      "pct": 12.1,
+      "pl": -80,
+      "plUp": false
+    },
+    {
+      "sym": "DXJ",
+      "val": 4714,
+      "pct": 8.9,
+      "pl": 514,
+      "plUp": true
+    },
+    {
+      "sym": "EWT",
+      "val": 4364,
+      "pct": 8.2,
+      "pl": 364,
+      "plUp": true
+    },
+    {
+      "sym": "IYZ",
+      "val": 3683,
+      "pct": 7.0,
+      "pl": 383,
       "plUp": true
     },
     {
       "sym": "EWZ",
-      "val": 4521,
-      "pct": 7.0,
-      "pl": 521,
+      "val": 3338,
+      "pct": 6.3,
+      "pl": 338,
       "plUp": true
     },
     {
-      "sym": "ILF",
-      "val": 3897,
-      "pct": 6.0,
-      "pl": 397,
-      "plUp": true
-    },
-    {
-      "sym": "SCHD",
-      "val": 3654,
-      "pct": 5.7,
-      "pl": 654,
-      "plUp": true
-    },
-    {
-      "sym": "VWO",
-      "val": 3211,
-      "pct": 5.0,
-      "pl": 211,
-      "plUp": true
-    },
-    {
-      "sym": "HAL",
-      "val": 2987,
-      "pct": 4.6,
-      "pl": -213,
+      "sym": "OIH",
+      "val": 3136,
+      "pct": 5.9,
+      "pl": -164,
       "plUp": false
     },
     {
-      "sym": "UFO",
-      "val": 2654,
-      "pct": 4.1,
-      "pl": 154,
+      "sym": "EWY",
+      "val": 2721,
+      "pct": 5.1,
+      "pl": 221,
       "plUp": true
-    },
-    {
-      "sym": "BAI",
-      "val": 2143,
-      "pct": 3.3,
-      "pl": -357,
-      "plUp": false
     },
     {
       "sym": "Other",
-      "val": 25918,
-      "pct": 40.0,
-      "pl": 2918,
+      "val": 12125,
+      "pct": 22.9,
+      "pl": 875,
       "plUp": true
     }
   ],
   "options": {
-    "nlv": 17026,
+    "nlv": 12508,
     "positions": [
+      {
+        "symbol": "NVO",
+        "spread": "P45/P40",
+        "type": "Bear Put",
+        "dte": 30,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
       {
         "symbol": "NVTS",
         "spread": "P21/P18",
-        "type": "Bear Put",
-        "dte": 48,
+        "type": "Bull Put",
+        "dte": 30,
         "exp": "Jun 18",
         "expSoon": true
       },
@@ -979,7 +979,7 @@
         "symbol": "UBER",
         "spread": "P77.5/P72.5",
         "type": "Bear Put",
-        "dte": 34,
+        "dte": 30,
         "exp": "Jun 18",
         "expSoon": true
       },
@@ -987,15 +987,15 @@
         "symbol": "UPS",
         "spread": "P100/P95",
         "type": "Bear Put",
-        "dte": 34,
+        "dte": 30,
         "exp": "Jun 18",
         "expSoon": true
       },
       {
         "symbol": "NFLX",
-        "spread": "P940/P930",
+        "spread": "P89/P84",
         "type": "Bear Put",
-        "dte": 34,
+        "dte": 30,
         "exp": "Jun 18",
         "expSoon": true
       },
@@ -1003,24 +1003,24 @@
         "symbol": "PG",
         "spread": "P145/P140",
         "type": "Bear Put",
-        "dte": 34,
+        "dte": 30,
         "exp": "Jun 18",
         "expSoon": true
       },
       {
-        "symbol": "TSM",
-        "spread": "C210 LEAPS",
-        "type": "Call LEAPS",
-        "dte": 245,
-        "exp": "Jan 16 27",
+        "symbol": "HIMS",
+        "spread": "P15 LEAPS",
+        "type": "Put LEAPS",
+        "dte": 611,
+        "exp": "Jan 21 28",
         "expSoon": false
       },
       {
-        "symbol": "HIMS",
-        "spread": "P20 LEAPS",
-        "type": "Put LEAPS",
-        "dte": 616,
-        "exp": "Jan 15 28",
+        "symbol": "TSM",
+        "spread": "C350/C340",
+        "type": "Bull Call",
+        "dte": 241,
+        "exp": "Jan 15 27",
         "expSoon": false
       }
     ]
@@ -1076,7 +1076,7 @@
       340000,
       345000,
       398000,
-      408475
+      401978
     ],
     "rate": [
       1.2,
@@ -1732,7 +1732,7 @@
   "sources": {
     "tsetf": {
       "label": "TradeStation MCP",
-      "date": "May 15 2026"
+      "date": "May 19 2026"
     },
     "rh": {
       "label": "Screenshot RH",
@@ -1748,15 +1748,15 @@
     },
     "tt": {
       "label": "Relay Zapier/Gmail",
-      "date": "May 15 2026"
+      "date": "May 19 2026"
     },
     "fut": {
       "label": "TradeStation MCP",
-      "date": "May 16 2026"
+      "date": "May 19 2026"
     },
     "fut2": {
       "label": "TradeStation MCP",
-      "date": "May 16 2026"
+      "date": "May 19 2026"
     },
     "betterment": {
       "label": "Screenshot Betterment",
@@ -2254,14 +2254,14 @@
     "labelPessimistic": "🔴 Pesimista (5%/año)"
   },
   "macroReadiness": {
-    "lastUpdate": "2026-05-19T13:00:00Z",
+    "lastUpdate": "2026-05-19T19:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Brent $110+ (Iran tensions, negotiations in progress), 10Y 4.60% near 1yr highs, Warsh hawkish (0 cuts priced 2026, 77% FedWatch), tech selloff day 2 (Seagate -7%, Micron -6%). FOMC minutes May 20 key event.",
-    "alignmentScore": 43,
-    "alignmentColor": "#f59e0b",
-    "alignmentLabel": "Parcialmente Alineado",
+    "regimeContext": "Tech selloff day 2 (QQQ −1.24%), Iran tensions. FOMC April minutes mañana May 20 @ 2PM ET — 4 disidentes (hawkish). 0 recortes priced 2026. Margin táctico reducido a $19,921 ✅. IAU añadido como hedge ✅. Alignment en techo del régimen (65/65).",
+    "alignmentScore": 65,
+    "alignmentColor": "#10b981",
+    "alignmentLabel": "Mayormente Alineado (techo régimen)",
     "macroFactors": [
       {
         "name": "Inflación",
@@ -2290,53 +2290,37 @@
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap; margen táctico $31,005 CRÍTICO pendiente bloquea alineación máxima del portafolio.",
+    "regimeCeilingWhy": "STAGFLATION_RISK: techo 65 alcanzado. Moves CRÍTICO (margen $19,921) + URGENTE (IAU) + PLANEAR (ITA→VOO) ejecutados. Pendiente: NVTS/HIMS cierre y XLP trigger PCE.",
     "moves": [
       {
-        "urgency": "CRÍTICO",
-        "urgencyColor": "#ef4444",
-        "icon": "🚨",
-        "action": "Reducir margen táctico TS",
+        "urgency": "EJECUTADO ✅",
+        "urgencyColor": "#10b981",
+        "icon": "✅",
+        "action": "Reducir margen táctico TS — EJECUTADO",
         "from": "TradeStation · Cuenta Táctica #11484090",
         "to": "Sin destino — cerrar posiciones localmente (liberar margen)",
-        "amount": "$11,005 en MV a cerrar → margen baja de $31,005 a <$20,000",
+        "amount": "Margen reducido a $19,921 (objetivo <$20,000 alcanzado May 19)",
         "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
         "impact": 13,
-        "priceRef": "LIVE 2026-05-18 — EWZS $1,668 + XOP $1,383 + FXI $2,547 + HAL $1,704",
+        "priceRef": "LIVE May 19 — margen $19,921 confirmado",
         "steps": [
-          "Abrir TradeStation → Account 11484090 (Táctica ETF)",
-          "Vender en orden (todas MARKET ORDER, misma sesión):",
-          "  · FXI (China) — VENDER 70 acc @ ~$36.20 = $2,534",
-          "  · EWZS (Brazil SC) — VENDER 120 acc @ ~$13.90 = $1,668",
-          "  · XBI (Biotech) — VENDER 13 acc @ ~$130.67 = $1,699",
-          "  · XOP (Oil Expl.) — VENDER 8 acc @ ~$174.15 = $1,393",
-          "  · HAL (Halliburton) — VENDER 41 acc @ ~$41.73 = $1,711",
-          "  · ILF (LatAm) — VENDER 48 acc @ ~$35.29 = $1,694",
-          "  · FDL (US Dividend) — VENDER 47 acc @ ~$49.43 = $2,323",
-          "  · VWO (Emerging Mkt) — VENDER 48 acc @ ~$58.44 = $2,805",
-          "Total: ~$15,827 en MV cerrado",
-          "Verificar: Balance → 'Margin Used' debe mostrar ≤ $15,000"
+          "✅ COMPLETADO: Margen reducido de $31,005 (May 18) a $19,921 (May 19)",
+          "11 posiciones cerradas: VWO, FXI, FDL, IWM, UFO, QCLN, HAL, XBI, EWZS, ILF, XOP"
         ]
       },
       {
-        "urgency": "URGENTE",
-        "urgencyColor": "#f59e0b",
-        "icon": "⚠️",
-        "action": "Agregar GLD o IAU como hedge inflacionario",
+        "urgency": "EJECUTADO ✅",
+        "urgencyColor": "#10b981",
+        "icon": "✅",
+        "action": "Agregar IAU como hedge inflacionario — EJECUTADO",
         "from": "TradeStation · Cuenta Táctica #11484090 — efectivo liberado al cerrar posiciones (Move 1)",
         "to": "TradeStation · Cuenta Táctica #11484090 (misma cuenta — compra directa con cash disponible)",
-        "amount": "$6,500 — 15 acc GLD @ $417.29 = $6,259 · ó 76 acc IAU @ $85.51 = $6,499",
+        "amount": "IAU ×76 shares @ $6,419.72 en Tactical ETF (May 19)",
         "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities. ⚠️ Ejecutar DESPUÉS del Move 1 — el cash viene de las posiciones cerradas.",
         "impact": 6,
-        "priceRef": "GLD $417.29 · IAU $85.51 — live 17 May 2026",
+        "priceRef": "LIVE May 19 — IAU $6,419.72 confirmado en cuenta #11484090",
         "steps": [
-          "⚠️ PREREQUISITO: ejecutar Move 1 primero — este move usa el efectivo liberado de esas ventas",
-          "Verificar saldo cash disponible en TS Account #11484090 tras cerrar Move 1",
-          "Ejecutar compra en la misma cuenta táctica:",
-          "  · OPCIÓN A: COMPRAR 15 acc GLD @ mercado ≈ $417.29/acc = $6,259",
-          "  · OPCIÓN B: COMPRAR 76 acc IAU @ mercado ≈ $85.51/acc = $6,499",
-          "IAU recomendado — mismo subyacente (oro), más líquido y menor precio por acción",
-          "⛔ NO tocar Betterment Cash Reserve — es colchón personal intocable"
+          "✅ COMPLETADO: IAU ×76 comprado, peso 12.1% del MV táctico"
         ]
       },
       {
@@ -2359,23 +2343,18 @@
         ]
       },
       {
-        "urgency": "PLANEAR",
-        "urgencyColor": "#60a5fa",
-        "icon": "📋",
-        "action": "Reemplazar ITA → VOO en SEP IRA",
+        "urgency": "EJECUTADO ✅",
+        "urgencyColor": "#10b981",
+        "icon": "✅",
+        "action": "Reemplazar ITA → VOO en SEP IRA — EJECUTADO",
         "from": "TradeStation · SEP IRA #12016362 — vender ITA (iShares Aerospace & Defense ETF)",
         "to": "TradeStation · SEP IRA #12016362 — comprar VOO (Vanguard S&P 500 ETF)",
-        "amount": "Vender ~37 acc ITA @ $217.27 = $8,039 · Comprar 11 acc VOO @ $679.44 = $7,474",
+        "amount": "ITA vendido, VOO comprado en SEP IRA (Mar 23, 2026)",
         "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad.",
         "impact": 4,
-        "priceRef": "ITA $217.27 · VOO $679.44 — live 17 May 2026",
+        "priceRef": "CONFIRMED-RULES — ejecutado Mar 23, 2026",
         "steps": [
-          "Abrir TradeStation → Account 12016362 (SEP IRA) ⚠️ cuenta de retiro — NO usar margin",
-          "VENDER: ~37 acc ITA @ mercado ≈ $217.27/acc = $8,039 (verificar qty exacta en Positions)",
-          "Esperar ejecución completa (puede ser mismo día si es antes del cierre)",
-          "COMPRAR: 11 acc VOO @ mercado ≈ $679.44/acc = $7,474",
-          "Diferencia: ~$565 queda como cash en el SEP IRA (aceptable)",
-          "No ejecutar si ITA bajó >5% ese día — usar limit order a $206+"
+          "✅ COMPLETADO: ITA vendido y reemplazado por VOO en SEP IRA el 23 de marzo de 2026"
         ]
       },
       {
@@ -2421,44 +2400,44 @@
   },
   "weeklyActions": [
     {
-      "priority": "CRÍTICO",
-      "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Reducir margen táctico TS",
-      "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
+      "priority": "EJECUTADO ✅",
+      "priorityColor": "#10b981",
+      "icon": "✅",
+      "action": "Reducir margen táctico TS — COMPLETADO ($19,921 < $20K)",
+      "why": "Ejecutado May 19. 11 posiciones cerradas, margen bajo objetivo.",
       "category": "ACTIVOS"
     },
     {
-      "priority": "URGENTE",
-      "priorityColor": "#f59e0b",
-      "icon": "💰",
-      "action": "Acumular buffer DEC: $27,993 → $39,000 (faltan $11,007) — NO pagar LOC extra",
-      "why": "Con buffer incompleto, un mes flojo de DEC fuerza re-draw del LOC @ 8.5% — retroceso garantizado.",
-      "category": "DEUDA"
-    },
-    {
-      "priority": "URGENTE",
-      "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Agregar GLD o IAU como hedge inflacionario",
-      "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities. ⚠️ Ejecutar DESPUÉS del Move 1 — el cash viene de las posiciones cerradas.",
+      "priority": "EJECUTADO ✅",
+      "priorityColor": "#10b981",
+      "icon": "✅",
+      "action": "Agregar IAU como hedge inflacionario — COMPLETADO (76 shares @ $6,419)",
+      "why": "Ejecutado May 19. IAU añadido en Tactical ETF.",
       "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Cerrar o rodar NVTS y HIMS antes del 18 junio",
-      "why": "Gap de earnings puede liquidar spreads completos antes del vencimiento sin opción de reacción.",
+      "action": "Monitorear NVTS SL $2.10 debit — spread adverse hoy ($1.83)",
+      "why": "NVTS P21 widening adverso. SL en $2.10 debit aún no tocado. FOMC mañana puede generar volatilidad.",
       "category": "OPCIONES"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "🏢",
-      "action": "Confirmar Michalitas sobre PE por 2do mes consecutivo",
-      "why": "3 meses sobre PE confirma sostenibilidad — base para decisión de capital.",
-      "category": "NEGOCIOS"
+      "icon": "⭐",
+      "action": "FOMC Minutes mañana May 20 @ 2PM ET — prepararse para volatilidad",
+      "why": "4 disidentes, hawkish confirmado. Potencial selloff en bonds (TLT) y tech (QQQ).",
+      "category": "MACRO"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Confirmar MYMM26 status (VLV23) — relay no detectó posición",
+      "why": "VLV23 tiene $2,191 equity pero relay May 19 no muestra posiciones. Verificar si MYMM26 fue cerrado.",
+      "category": "FUTUROS"
     }
   ]
 }
