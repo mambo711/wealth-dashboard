@@ -65,9 +65,9 @@
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: ⚠️ NVTS/HIMS — Monitorear SL y FOMC mañana",
-      "body": "Move CRÍTICO (margen) EJECUTADO ✅ y IAU EJECUTADO ✅. Alignment en techo 65/100. Mañana May 20: FOMC minutes @ 2PM ET — potencial volatilidad en bonds y tech. NVTS spread widening (adverse) — SL $2.10 activo.",
-      "why": "⭐ FOMC minutes mañana es el evento macro más importante de la semana. NVTS en posición adversa — monitorear SL."
+      "title": "Prioridad #1: 🚨 Margen re-expandido $27,612 + ⚠️ NVTS adverse",
+      "body": "Margen táctico re-expandió de $19,921 → $27,612 por AMLP/XLE/XLV (May 20). NVTS spread adverse (P21 $3.81 vs entry $3.04). FOMC minutes HOY 2PM ET + NVDA earnings AMC. Alignment en techo 65/100.",
+      "why": "⭐ Margen re-expandido con petróleo cayendo -2% y posiciones energéticas es el riesgo #1 esta semana. NVTS cerca del SL trigger."
     },
     "steps": [
       {
@@ -146,7 +146,7 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "3 prioridades en orden: (1) 🚨 Move CRÍTICO — Reducir margen táctico TS. (2) Acumular buffer DEC $27,993→$39,000 (faltan $11,007). (3) Crecer DEC a $6,500+/mes para recuperar surplus. LOC en espera."
+      "text": "3 prioridades en orden: (1) 🚨 Reducir margen táctico TS ($27,612 → objetivo ≤$22K). (2) Cerrar/rodar NVTS y HIMS antes Jun 18. (3) Crecer DEC a $6,500+/mes para recuperar surplus. LOC en espera."
     },
     "cuentas": {
       "color": "#ef4444",
@@ -2373,43 +2373,43 @@
   },
   "weeklyActions": [
     {
-      "priority": "EJECUTADO ✅",
-      "priorityColor": "#10b981",
-      "icon": "✅",
-      "action": "Reducir margen táctico TS — COMPLETADO ($19,921 < $20K)",
-      "why": "Ejecutado May 19. 11 posiciones cerradas, margen bajo objetivo.",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "EJECUTADO ✅",
-      "priorityColor": "#10b981",
-      "icon": "✅",
-      "action": "Agregar IAU como hedge inflacionario — COMPLETADO (76 shares @ $6,419)",
-      "why": "Ejecutado May 19. IAU añadido en Tactical ETF.",
+      "priority": "URGENTE",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Reducir margen táctico TS — re-expandido a $27,612",
+      "why": "Reducido a $19,921 el May 19 pero AMLP/XLE/XLV abiertos May 20 lo subieron a $27,612. Candidatos a cerrar: AMLP o XLE.",
       "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Monitorear NVTS SL $2.10 debit — spread adverse hoy ($1.83)",
-      "why": "NVTS P21 widening adverso. SL en $2.10 debit aún no tocado. FOMC mañana puede generar volatilidad.",
+      "action": "Monitorear NVTS SL $2.10 debit — spread adverse (P21 $3.81)",
+      "why": "NVTS Bull Put Credit adverso. SL en $2.10 debit aún no tocado. FOMC hoy 2PM + NVDA earnings AMC generan volatilidad.",
       "category": "OPCIONES"
     },
     {
-      "priority": "ESTA SEMANA",
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Cerrar o rodar NVTS y HIMS antes del 18 junio (29 DTE)",
+      "why": "NVTS adverse + HIMS bajo entry estimado. Evaluar BTC o rodar a Sep/Oct sin earnings.",
+      "category": "OPCIONES"
+    },
+    {
+      "priority": "HOY",
       "priorityColor": "#60a5fa",
       "icon": "⭐",
-      "action": "FOMC Minutes mañana May 20 @ 2PM ET — prepararse para volatilidad",
-      "why": "4 disidentes, hawkish confirmado. Potencial selloff en bonds (TLT) y tech (QQQ).",
+      "action": "FOMC Minutes HOY 2PM ET + NVDA earnings AMC",
+      "why": "FOMC: 4 disidentes hawkish — potencial volatilidad bonds/tech. NVDA: $79.2B rev est — impacto directo SMH/SOXQ/SOXX/BAI.",
       "category": "MACRO"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Confirmar MYMM26 status (VLV23) — relay no detectó posición",
-      "why": "VLV23 tiene $2,191 equity pero relay May 19 no muestra posiciones. Verificar si MYMM26 fue cerrado.",
+      "action": "Confirmar estado VLV23 — $2,189 equity pero CERO posiciones",
+      "why": "MYMM26 (Dow short) y MNGM26 ×3 aparentemente cerrados. Cash inactivo — confirmar y reasignar si corresponde.",
       "category": "FUTUROS"
     }
   ]
