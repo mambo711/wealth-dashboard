@@ -2293,19 +2293,22 @@
     "regimeCeilingWhy": "STAGFLATION_RISK: techo 65. Moves CRÍTICO/IAU/ITA→VOO ejecutados. ⚠️ Margen re-expandido $27,612 (nuevas pos May 20). Pendiente: NVTS/HIMS cierre urgente y XLP trigger PCE. NVDA earnings AMC hoy — evento gamma semis.",
     "moves": [
       {
-        "urgency": "EJECUTADO ✅",
-        "urgencyColor": "#10b981",
-        "icon": "✅",
-        "action": "Reducir margen táctico TS — EJECUTADO",
+        "urgency": "URGENTE",
+        "urgencyColor": "#f59e0b",
+        "icon": "⚠️",
+        "action": "Reducir margen táctico TS — RE-EXPANDIDO ⚠️",
         "from": "TradeStation · Cuenta Táctica #11484090",
         "to": "Sin destino — cerrar posiciones localmente (liberar margen)",
-        "amount": "Margen reducido a $19,921 (objetivo <$20,000 alcanzado May 19)",
-        "why": "VIX ~19.5 + régimen volátil. Drawdown de -15% puede triggear margin call y liquidar todo en el peor momento.",
+        "amount": "Margen actual $27,612 — objetivo <$22,000. Re-expandió de $19,921 (May 19) por nuevas posiciones AMLP/XLE/XLV (May 20)",
+        "why": "Move ejecutado May 19 ($19,921 ✅) pero 3 nuevas posiciones abrieron el May 20 y re-expandieron margen a $27,612. Con petróleo cayendo -2% y VIX en zona de alerta, margen elevado en posiciones energéticas (XLE, OIH, AMLP) aumenta riesgo de margin call.",
         "impact": 13,
-        "priceRef": "LIVE May 19 — margen $19,921 confirmado",
+        "priceRef": "LIVE May 20 — margen $27,612 re-expandido",
         "steps": [
-          "✅ COMPLETADO: Margen reducido de $31,005 (May 18) a $19,921 (May 19)",
-          "11 posiciones cerradas: VWO, FXI, FDL, IWM, UFO, QCLN, HAL, XBI, EWZS, ILF, XOP"
+          "✅ May 19: Margen reducido de $31,005 → $19,921 (objetivo cumplido)",
+          "⚠️ May 20: AMLP, XLE, XLV abiertos — margen subió a $27,612 (+$7,691)",
+          "ACCIÓN: Evaluar cuál de las 3 nuevas posiciones cerrar (menor convicción vs riesgo macro)",
+          "TARGET: Volver a margen ≤$22,000 — cerrar ~$5,600 en posiciones marginadas",
+          "Candidatos a cerrar: AMLP (menor convicción, petróleo bajando) o XLE (solapado con OIH)"
         ]
       },
       {
