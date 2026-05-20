@@ -50,8 +50,8 @@
     "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
     "retirementCore": 228060,
     "totalBruto": 401978,
-    "tacticalHeader": "$33,001 (margen $19,921 ✅)",
-    "footerNote": "Datos: TradeStation MCP (live May 19) · TT Relay Gmail (May 19 09:53) · TS Historical Orders · Betterment (screenshot May 17) · Xero (live YTD)",
+    "tacticalHeader": "$33,495 (margen $27,612 ⚠️ re-expandido)",
+    "footerNote": "Datos: TradeStation MCP (live May 20 ~7:44 ET) · TT Relay Gmail (May 20 04:42 PDT) · Betterment (screenshot May 17) · Xero (live YTD)",
     "debtTotal": 72728.75,
     "debtDelta": "▲ $346 vs mes anterior",
     "debtDeltaUp": false,
@@ -2254,11 +2254,11 @@
     "labelPessimistic": "🔴 Pesimista (5%/año)"
   },
   "macroReadiness": {
-    "lastUpdate": "2026-05-19T19:00:00Z",
+    "lastUpdate": "2026-05-20T12:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tech selloff day 2 (QQQ −1.24%), Iran tensions. FOMC April minutes mañana May 20 @ 2PM ET — 4 disidentes (hawkish). 0 recortes priced 2026. Margin táctico reducido a $19,921 ✅. IAU añadido como hedge ✅. Alignment en techo del régimen (65/65).",
+    "regimeContext": "Nasdaq verde (+0.6%) pre-NVDA earnings AMC. FOMC April minutes HOY 2PM ET (4 disidentes hawkish). Petróleo ▼-2.0% (USO $149.90) — presión en OIH/XLE/AMLP. VIX 17.99 calmo. ⚠️ Margen táctico re-expandió a $27,612 (3 nuevas pos: AMLP/XLE/XLV) después de reducción May 19 ($19,921). NVTS adverse (P21 $3.81 vs entry $3.04). Alignment en techo régimen (65/65).",
     "alignmentScore": 65,
     "alignmentColor": "#10b981",
     "alignmentLabel": "Mayormente Alineado (techo régimen)",
@@ -2275,12 +2275,12 @@
       },
       {
         "name": "Crecimiento",
-        "value": 50,
+        "value": 48,
         "color": "#f59e0b"
       },
       {
         "name": "Volatilidad",
-        "value": 52,
+        "value": 55,
         "color": "#f59e0b"
       },
       {
@@ -2290,7 +2290,7 @@
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK: techo 65 alcanzado. Moves CRÍTICO (margen $19,921) + URGENTE (IAU) + PLANEAR (ITA→VOO) ejecutados. Pendiente: NVTS/HIMS cierre y XLP trigger PCE.",
+    "regimeCeilingWhy": "STAGFLATION_RISK: techo 65. Moves CRÍTICO/IAU/ITA→VOO ejecutados. ⚠️ Margen re-expandido $27,612 (nuevas pos May 20). Pendiente: NVTS/HIMS cierre urgente y XLP trigger PCE. NVDA earnings AMC hoy — evento gamma semis.",
     "moves": [
       {
         "urgency": "EJECUTADO ✅",
