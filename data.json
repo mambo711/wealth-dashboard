@@ -2312,21 +2312,6 @@
         ]
       },
       {
-        "urgency": "EJECUTADO ✅",
-        "urgencyColor": "#10b981",
-        "icon": "✅",
-        "action": "Agregar IAU como hedge inflacionario — EJECUTADO",
-        "from": "TradeStation · Cuenta Táctica #11484090 — efectivo liberado al cerrar posiciones (Move 1)",
-        "to": "TradeStation · Cuenta Táctica #11484090 (misma cuenta — compra directa con cash disponible)",
-        "amount": "IAU ×76 shares @ $6,419.72 en Tactical ETF (May 19)",
-        "why": "PCE 3.5% con riesgo de reaceleración a 4.5% en verano. Ninguna posición actual en oro/commodities. ⚠️ Ejecutar DESPUÉS del Move 1 — el cash viene de las posiciones cerradas.",
-        "impact": 6,
-        "priceRef": "LIVE May 19 — IAU $6,419.72 confirmado en cuenta #11484090",
-        "steps": [
-          "✅ COMPLETADO: IAU ×76 comprado, peso 12.1% del MV táctico"
-        ]
-      },
-      {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
         "icon": "⚠️",
@@ -2343,21 +2328,6 @@
           "Filtrar HIMS: seleccionar LEAPS activos → 'Sell to Close' (STC)",
           "Confirmar que no quedan legs de NVTS o HIMS en el portfolio",
           "Alternativa — RODAR: cerrar legs actuales + abrir nuevas con vencimiento Sep/Oct (sin earnings)"
-        ]
-      },
-      {
-        "urgency": "EJECUTADO ✅",
-        "urgencyColor": "#10b981",
-        "icon": "✅",
-        "action": "Reemplazar ITA → VOO en SEP IRA — EJECUTADO",
-        "from": "TradeStation · SEP IRA #12016362 — vender ITA (iShares Aerospace & Defense ETF)",
-        "to": "TradeStation · SEP IRA #12016362 — comprar VOO (Vanguard S&P 500 ETF)",
-        "amount": "ITA vendido, VOO comprado en SEP IRA (Mar 23, 2026)",
-        "why": "ETF sectorial concentrado en cuenta de retiro. VOO da exposición más amplia con menor volatilidad.",
-        "impact": 4,
-        "priceRef": "CONFIRMED-RULES — ejecutado Mar 23, 2026",
-        "steps": [
-          "✅ COMPLETADO: ITA vendido y reemplazado por VOO en SEP IRA el 23 de marzo de 2026"
         ]
       },
       {
