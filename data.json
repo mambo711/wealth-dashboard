@@ -311,51 +311,51 @@
     {
       "name": "TS ETF Tactical",
       "color": "#3b82f6",
-      "current": 33597,
+      "current": 34300,
       "move": null,
-      "newVal": 33597,
+      "newVal": 34300,
       "twr": "+26.4%",
       "twrUp": true
     },
     {
       "name": "TastyTrade",
       "color": "#8b5cf6",
-      "current": 17026,
+      "current": 8688,
       "move": null,
-      "newVal": 17026,
+      "newVal": 8688,
       "twr": "-15.7%",
       "twrUp": false
     },
     {
       "name": "IBKR Bravo",
       "color": "#10b981",
-      "current": 6435,
+      "current": 8346,
       "move": null,
-      "newVal": 6435,
+      "newVal": 8346,
       "twr": "+13.2%",
       "twrUp": true
     },
     {
       "name": "RH AP Act Managed",
       "color": "#f59e0b",
-      "current": 2323,
+      "current": 4412,
       "move": null,
-      "newVal": 2323,
+      "newVal": 4412,
       "twr": "+43.4%",
       "twrUp": true
     },
     {
       "name": "TS Futures",
       "color": "#ef4444",
-      "current": 5247,
+      "current": 3301,
       "move": null,
-      "newVal": 5247,
+      "newVal": 3301,
       "twr": "-58.2%",
       "twrUp": false
     }
   ],
-  "rebalanceTotal": 64530,
-  "rebalanceNote": "Impacto proyectado: reducir TastyTrade en $4K (a $13K \u2014 sigue siendo capital suficiente para spreads de opciones) y redistribuir hacia IBKR y RH donde el TWR demuestra mejor edge. Futuros se mantienen intactos \u2014 capital activo gestionado por Alberto. Si el TWR de cada cuenta contin\u00faa, el nuevo allocation generar\u00eda ~$800 adicionales en 6M sin aportar capital nuevo.",
+  "rebalanceTotal": 59047,
+  "rebalanceNote": "Transfers completados May 23: $4K sali\u00f3 de TastyTrade \u2192 $2K a RH Act Managed + $2K a IBKR Bravo. Futuros reducidos $1K (retiro VLV23). Capital trading activo: $59,047.",
   "pieCategories": [
     {
       "label": "Retiro 56%",
