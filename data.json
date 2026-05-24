@@ -377,7 +377,7 @@
     }
   ],
   "rebalanceTotal": 62959,
-  "rebalanceNote": "Capital trading activo: $71,559. TastyTrade $12,600 (9 spreads activos Jun 18/30). Transfers May 23: $2K \u2192 RH Act Managed, $2K \u2192 IBKR Bravo.",
+  "rebalanceNote": "Capital trading activo: $62,959. TastyTrade $12,600 (9 spreads activos Jun 18/30). Transfers May 23: $2K \u2192 RH Act Managed, $2K \u2192 IBKR Bravo. Futuros reducidos $1K (retiro VLV23).",
   "pieCategories": [
     {
       "label": "Retiro 56%",
