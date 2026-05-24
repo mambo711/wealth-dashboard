@@ -626,7 +626,7 @@
     {
       "name": "RH AP Act Managed",
       "cat": "Trading",
-      "value": 2215,
+      "value": 4412,
       "color": "#f59e0b"
     },
     {
@@ -1114,7 +1114,7 @@
       198875,
       199415,
       200135,
-      200855
+      202417
     ],
     "rate": [
       0.0,
@@ -1140,7 +1140,7 @@
       -0.6,
       0.3,
       0.4,
-      0.4
+      1.1
     ],
     "retirement": [
       210000,
@@ -1549,7 +1549,7 @@
       2100,
       2200,
       2215,
-      2850
+      4412
     ],
     "rhPhotonics": [
       null,
@@ -1784,11 +1784,11 @@
     },
     "rh": {
       "label": "Screenshot RH",
-      "date": "May 16 2026"
+      "date": "May 23 2026"
     },
     "rhph": {
       "label": "Screenshot RH",
-      "date": "May 16 2026"
+      "date": "May 23 2026"
     },
     "ibkr": {
       "label": "Screenshot IBKR",
