@@ -51,7 +51,7 @@
     "retirementCore": 140232,
     "totalBruto": 402531,
     "tacticalHeader": "$34,300 (margen $10,663 \u2705\u2705 excelente)",
-    "footerNote": "Datos: TradeStation MCP (live May 21 ~9:10 ET) \u00b7 TT Relay Gmail (May 21 06:04 PDT) \u00b7 Betterment (foto Apr 9) \u00b7 Xero (LIVE May 15)",
+    "footerNote": "Datos: TradeStation MCP (live May 22 LIVE \u2705) \u00b7 TT Relay Gmail (May 22 04:40 PDT \u2705) \u00b7 Betterment (foto Apr 9) \u00b7 Xero (LIVE May 22)",
     "debtTotal": 72728.75,
     "debtDelta": "\u25b2 $346 vs mes anterior",
     "debtDeltaUp": false,
@@ -1780,7 +1780,7 @@
   "sources": {
     "tsetf": {
       "label": "TradeStation MCP",
-      "date": "May 19 2026"
+      "date": "May 22 2026"
     },
     "rh": {
       "label": "Screenshot RH",
@@ -1796,15 +1796,15 @@
     },
     "tt": {
       "label": "Relay Zapier/Gmail",
-      "date": "May 19 2026"
+      "date": "May 22 2026"
     },
     "fut": {
       "label": "TradeStation MCP",
-      "date": "May 19 2026"
+      "date": "May 22 2026"
     },
     "fut2": {
       "label": "TradeStation MCP",
-      "date": "May 19 2026"
+      "date": "May 22 2026"
     },
     "betterment": {
       "label": "Screenshot Betterment",
