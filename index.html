@@ -305,7 +305,7 @@
 <body>
 <div class="container">
   <h1>Portfolio Dashboard</h1>
-  <p class="subtitle" id="dash-subtitle">Alberto Rodriguez — Actualizado: 24 Abril 2026</p>
+  <p class="subtitle" id="dash-subtitle">Alberto Rodriguez — Cargando...</p>
 
   <!-- Print Button -->
   <button class="print-btn" onclick="window.print()">🖨️ Exportar PDF</button>
@@ -340,7 +340,7 @@
     </div>
     <div class="fi-labels">
       <span>$0</span>
-      <span>FI @ 58 = $500K (blended lifestyle)</span>
+      <span id="fi-axis-label">FI @ 58 = $500K (blended lifestyle)</span>
     </div>
   </div>
 
@@ -374,14 +374,7 @@
         <span style="font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;background:#f59e0b22;color:#f59e0b" id="health-label">MODERADO</span>
       </div>
       <div class="health-breakdown" id="health-breakdown">
-        <div class="hb-item"><div class="hb-val" style="color:#10b981">90</div><div class="hb-lbl">Retiro</div><div class="hb-bar"><div class="hb-fill" style="width:90%;background:#10b981"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#10b981">72</div><div class="hb-lbl">Diversific.</div><div class="hb-bar"><div class="hb-fill" style="width:72%;background:#10b981"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">69</div><div class="hb-lbl">Progreso FI</div><div class="hb-bar"><div class="hb-fill" style="width:69%;background:#f59e0b"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">55</div><div class="hb-lbl">Performance</div><div class="hb-bar"><div class="hb-fill" style="width:55%;background:#f59e0b"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#ef4444">35</div><div class="hb-lbl">Deuda</div><div class="hb-bar"><div class="hb-fill" style="width:35%;background:#ef4444"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#ef4444">20</div><div class="hb-lbl">Surplus</div><div class="hb-bar"><div class="hb-fill" style="width:20%;background:#ef4444"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">60</div><div class="hb-lbl">Liquidez</div><div class="hb-bar"><div class="hb-fill" style="width:60%;background:#f59e0b"></div></div></div>
-        <div class="hb-item"><div class="hb-val" style="color:#f59e0b">55</div><div class="hb-lbl">Riesgo</div><div class="hb-bar"><div class="hb-fill" style="width:55%;background:#f59e0b"></div></div></div>
+        <div style="color:#64748b;font-size:12px;padding:4px 0">Cargando...</div>
       </div>
       <div style="margin-top:10px;font-size:11px;color:#94a3b8;line-height:1.5">
         <strong style="color:#f59e0b">Diagnóstico:</strong> <span id="health-diagnostic"></span>
@@ -509,7 +502,7 @@
       <table>
         <thead><tr><th>Tarjeta</th><th class="right">Saldo</th></tr></thead>
         <tbody id="credit-cards-body"></tbody>
-        <tfoot><tr><td id="debt-total-label" style="color:#ef4444">DEUDA TOTAL (Xero LIVE May 17)</td><td class="right" style="color:#ef4444;font-size:16px" id="debt-total-val">$73,206</td></tr></tfoot>
+        <tfoot><tr><td id="debt-total-label" style="color:#ef4444">DEUDA TOTAL</td><td class="right" style="color:#ef4444;font-size:16px" id="debt-total-val">—</td></tr></tfoot>
       </table>
     </div>
   </div>
@@ -584,11 +577,7 @@
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
         <tbody id="tacticalTable"></tbody>
       </table>
-      <div class="tags">
-        <span class="tag yellow">EWZ + ILF solapamiento</span>
-        <span class="tag yellow">3 ETFs energía fragmentados</span>
-        <span class="tag red">TAN/SHLD/XOP micro-posiciones</span>
-      </div>
+      <div class="tags" id="tactical-tags"></div>
     </div>
     <div class="panel">
       <h3>Opciones — Tastytrade (<span id="options-nlv">—</span>)</h3>
@@ -604,7 +593,7 @@
 
     <!-- ═══════════════════ SECTION 1: TOTAL PORTFOLIO (FREEDOM MENSUAL) ═══════════════════ -->
     <div style="margin-bottom:8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
-      📊 <strong style="color:#f8fafc">PORTAFOLIO TOTAL</strong> — 24 meses (Jun 2024 → May 2026)
+      📊 <strong style="color:#f8fafc">PORTAFOLIO TOTAL</strong> — <span id="perf-header-range">24 meses</span>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px" id="portfolio-twr-cards">
@@ -722,7 +711,7 @@
       <div style="margin-top:12px;font-size:11px;color:#64748b">
         TWR = Time-Weighted Return — elimina el efecto de depósitos y retiros para medir rendimiento puro de inversión.<br>
         Método: retorno semanal encadenado, semanas con movimientos >15-25% (depósito/retiro detectado) neutralizadas a 0%.<br>
-        3M = últimas 13 semanas. 6M = últimas 26 semanas. Total = desde Ago 2, 2025 (inicio del tracking semanal).
+        3M = últimas 13 semanas. 6M = últimas 26 semanas. Total = desde <span id="twr-tracking-start">Ago 2, 2025</span> (inicio del tracking semanal).
       </div>
     </div>
 
@@ -828,7 +817,7 @@
       </ul>
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>🏆 Comparativo TWR — Rendimiento Real Normalizado (base 100 = Ago 2, 2025)</h3>
+      <h3>🏆 Comparativo TWR — Rendimiento Real Normalizado (base 100 = <span id="twr-norm-start">Ago 2, 2025</span>)</h3>
       <canvas id="chartTradingNorm" style="max-height:340px"></canvas>
     </div>
 
@@ -1758,6 +1747,43 @@ function initFromData(d) {
   const hd = document.getElementById('health-diagnostic');
   if (hd) hd.textContent = m.healthDiagnostic || '';
 
+  // ── Dynamic fields previously hardcoded ──
+  // FI axis label
+  const fiAxisEl = document.getElementById('fi-axis-label');
+  if (fiAxisEl && m.fiTargetAge && m.fiTarget)
+    fiAxisEl.textContent = `FI @ ${m.fiTargetAge} = $${m.fiTarget.toLocaleString()} (blended lifestyle)`;
+
+  // Performance section header range (e.g. "24 meses (Jun 2024 → May 2026)")
+  const perfHeaderEl = document.getElementById('perf-header-range');
+  if (perfHeaderEl && d.monthly && d.monthly.months && d.monthly.months.length) {
+    const months = d.monthly.months;
+    perfHeaderEl.textContent = `${months.length} meses (${months[0]} → ${months[months.length-1]})`;
+  }
+
+  // Weekly tracking start date (3 places)
+  const twrStart = (m && m.weeklyTrackingStart) || 'Ago 2, 2025';
+  ['twr-tracking-start','twr-norm-start'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = twrStart;
+  });
+
+  // Tactical tags from data
+  const tagsEl = document.getElementById('tactical-tags');
+  if (tagsEl && m.tacticalTags && m.tacticalTags.length) {
+    tagsEl.innerHTML = m.tacticalTags.map(t =>
+      `<span class="tag ${t.color}">${t.text}</span>`
+    ).join('');
+  }
+
+  // Income labels
+  const incTotalEl = document.getElementById('income-total-label');
+  if (incTotalEl && d.incomeTotal) {
+    const annual = d.incomeAnnual || (d.incomeTotal * 12);
+    incTotalEl.textContent = `~$${d.incomeTotal.toLocaleString()}/mes ($${annual.toLocaleString()}/año)`;
+  }
+  const incCoverageEl = document.getElementById('income-coverage-note');
+  if (incCoverageEl && d.incomeSSNote) incCoverageEl.textContent = d.incomeSSNote;
+
   // ── Populate tables ──
   populateAccountsTable();
   populateTacticalTable();
@@ -2321,20 +2347,24 @@ function renderPerformanceCharts() {
       h3tt.textContent = `🟣 #4 TastyTrade — Opciones ($${ttBal.toLocaleString()}) · TWR: ${ttTWR}`;
 
     const h3fut = document.getElementById('chart-h3-fut');
-    if (h3fut && futBal !== null)
-      h3fut.textContent = `🔴 #5a TS Futures ·PKG27 — MNGM26 x5 Long ($${futBal.toLocaleString()})`;
+    if (h3fut && futBal !== null) {
+      const pkgDesc = (dashData && dashData.meta && dashData.meta.futPKGDesc) ? dashData.meta.futPKGDesc : 'PKG27';
+      h3fut.textContent = `🔴 #5a TS Futures ·PKG27 — ${pkgDesc} ($${futBal.toLocaleString()})`;
+    }
 
     const h3fut2 = document.getElementById('chart-h3-fut2');
-    if (h3fut2 && fut2Bal !== null)
-      h3fut2.textContent = `🔴 #5b TS Futures ·VLV23 — MYMM26 x1 Short ($${fut2Bal.toLocaleString()})`;
+    if (h3fut2 && fut2Bal !== null) {
+      const vlvDesc = (dashData && dashData.meta && dashData.meta.futVLVDesc) ? dashData.meta.futVLVDesc : 'VLV23';
+      h3fut2.textContent = `🔴 #5b TS Futures ·VLV23 — ${vlvDesc} ($${fut2Bal.toLocaleString()})`;
+    }
   }
 
   // ── Update source badges from dashData.sources ──
   function renderSourceBadges() {
     if (!dashData || !dashData.sources) return;
     const d = dashData;
-    const srcKeys = ['tsetf','rh','rhph','ibkr','tt','fut','fut2'];
-    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡' };
+    const srcKeys = ['tsetf','rh','rhph','ibkr','tt','fut','fut2','betterment'];
+    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡', betterment:'📱' };
     // Live MCP sources: derive date from last weekly entry (auto-updates with data)
     const liveSrcKeys = new Set(['tsetf', 'tt', 'fut', 'fut2']);
     const weeklyDates = (d.weekly && d.weekly.dates) || [];
@@ -2416,7 +2446,7 @@ function renderPerformanceCharts() {
           legend:{display:true,position:'top',labels:{boxWidth:12,padding:10,font:{size:11},color:'#e2e8f0'}},
           tooltip:{ callbacks:{ label: c=> c.dataset.label.split('(')[0].trim()+': '+c.parsed.y.toFixed(1) }}},
         scales: { y: { ticks:{font:{size:11}, color:'#94a3b8'}, grid:{color:'#33415540'},
-                  title:{display:true,text:'TWR Base 100 = Ago 2, 2025 (sin depósitos/retiros)',color:'#64748b',font:{size:11}} },
+                  title:{display:true,text:`TWR Base 100 = ${(dashData&&dashData.meta&&dashData.meta.weeklyTrackingStart)||'Ago 2, 2025'} (sin depósitos/retiros)`,color:'#64748b',font:{size:11}} },
                   x: { ticks:{font:{size:9}, maxRotation:45, color:'#64748b'}, grid:{display:false} } } }
     });
   }
