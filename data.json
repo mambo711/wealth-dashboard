@@ -61,7 +61,29 @@
     "fiBlendedGap": 61530,
     "fiBlendedNote": "Meta blended ($35K/yr \u2212 SS $24K/yr \u00f7 4%) = $275,000. NW actual $336,530 \u2014 superado por $61,530.",
     "totalAssets": 402531,
-    "totalDebt": 72728.75
+    "totalDebt": 72728.75,
+    "futPKGDesc": "ZERO posiciones \u2014 cash $2,135",
+    "futVLVDesc": "ZERO posiciones \u2014 cash $1,166",
+    "weeklyTrackingStart": "Ago 2, 2025",
+    "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
+    "tacticalTags": [
+      {
+        "text": "EWZ + ILF solapamiento",
+        "color": "yellow"
+      },
+      {
+        "text": "3 ETFs energ\u00eda fragmentados",
+        "color": "yellow"
+      },
+      {
+        "text": "\ud83d\udea8 Intl Asia (DXJ+EWT) = 21.1% \u2014 reducir",
+        "color": "red"
+      },
+      {
+        "text": "\ud83d\udea8 Tech/Semis = 17.1% \u2014 vigilar",
+        "color": "red"
+      }
+    ]
   },
   "roadmap": {
     "weeklyFocus": {
