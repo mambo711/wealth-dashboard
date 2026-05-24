@@ -1908,10 +1908,18 @@ function initFromData(d) {
   // ── Update source badges (works without full chart render) ──
   if (d.sources) {
     const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡', betterment:'📱' };
+    // Live MCP sources: derive date from last weekly entry (auto-updates with data)
+    const liveSrcKeys = new Set(['tsetf', 'tt', 'fut', 'fut2']);
+    const weeklyDates = (d.weekly && d.weekly.dates) || [];
+    const lastWeeklyDate = weeklyDates.length
+      ? weeklyDates[weeklyDates.length - 1] + ' ' + new Date().getFullYear()
+      : null;
     Object.keys(d.sources).forEach(key => {
       const src = d.sources[key];
       const el = document.getElementById('src-' + key);
-      if (el && src) el.innerHTML = `${emojiMap[key] || '📡'} ${src.label} · ${src.date}`;
+      if (!el || !src) return;
+      const dateStr = (liveSrcKeys.has(key) && lastWeeklyDate) ? lastWeeklyDate : src.date;
+      el.innerHTML = `${emojiMap[key] || '📡'} ${src.label} · ${dateStr}`;
     });
   }
 
@@ -2327,11 +2335,19 @@ function renderPerformanceCharts() {
     const d = dashData;
     const srcKeys = ['tsetf','rh','rhph','ibkr','tt','fut','fut2'];
     const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡' };
+    // Live MCP sources: derive date from last weekly entry (auto-updates with data)
+    const liveSrcKeys = new Set(['tsetf', 'tt', 'fut', 'fut2']);
+    const weeklyDates = (d.weekly && d.weekly.dates) || [];
+    const lastWeeklyDate = weeklyDates.length
+      ? weeklyDates[weeklyDates.length - 1] + ' ' + new Date().getFullYear()
+      : null;
     srcKeys.forEach(key => {
       const src = d.sources[key];
       if (!src) return;
       const el = document.getElementById('src-' + key);
-      if (el) el.innerHTML = `${emojiMap[key]} ${src.label} · ${src.date}`;
+      if (!el) return;
+      const dateStr = (liveSrcKeys.has(key) && lastWeeklyDate) ? lastWeeklyDate : src.date;
+      el.innerHTML = `${emojiMap[key]} ${src.label} · ${dateStr}`;
     });
   }
 
