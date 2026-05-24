@@ -320,9 +320,9 @@
     {
       "name": "TastyTrade",
       "color": "#8b5cf6",
-      "current": 8688,
+      "current": 12600,
       "move": null,
-      "newVal": 8688,
+      "newVal": 12600,
       "twr": "-15.7%",
       "twrUp": false
     },
@@ -354,8 +354,8 @@
       "twrUp": false
     }
   ],
-  "rebalanceTotal": 59047,
-  "rebalanceNote": "Transfers completados May 23: $4K sali\u00f3 de TastyTrade \u2192 $2K a RH Act Managed + $2K a IBKR Bravo. Futuros reducidos $1K (retiro VLV23). Capital trading activo: $59,047.",
+  "rebalanceTotal": 62959,
+  "rebalanceNote": "Capital trading activo: $71,559. TastyTrade $12,600 (9 spreads activos Jun 18/30). Transfers May 23: $2K \u2192 RH Act Managed, $2K \u2192 IBKR Bravo.",
   "pieCategories": [
     {
       "label": "Retiro 56%",
@@ -628,7 +628,7 @@
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 8688,
+      "value": 12600,
       "color": "#8b5cf6"
     },
     {
@@ -1019,7 +1019,7 @@
     }
   ],
   "options": {
-    "nlv": 8688,
+    "nlv": 12600,
     "positions": [
       {
         "symbol": "NVTS",
@@ -1146,7 +1146,7 @@
       198875,
       199415,
       200135,
-      199813
+      203725
     ],
     "rate": [
       0.0,
@@ -1172,7 +1172,7 @@
       -0.6,
       0.3,
       0.4,
-      -0.2
+      1.8
     ],
     "retirement": [
       210000,
@@ -1446,7 +1446,7 @@
       17000,
       17010,
       17026,
-      8688
+      12600
     ],
     "ibkr": [
       2200,
