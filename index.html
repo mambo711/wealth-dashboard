@@ -623,7 +623,14 @@
       <ul id="insight-performance" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
-      <h3>Patrimonio Total — TWR vs Raw (22 Meses)</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Patrimonio Total — TWR vs Raw</h3>
+        <div style="display:flex;gap:6px">
+          <button onclick="renderTotalTWR(6)"  class="range-btn" id="ttwr-6m">6M</button>
+          <button onclick="renderTotalTWR(12)" class="range-btn active-range" id="ttwr-12m">12M</button>
+          <button onclick="renderTotalTWR(0)"  class="range-btn" id="ttwr-all">Todo</button>
+        </div>
+      </div>
       <canvas id="chartTotalTWR" style="max-height:300px"></canvas>
     </div>
 
@@ -2018,28 +2025,58 @@ function makeAcctChart(canvasId, label, data, color) {
   });
 }
 
+function renderTotalTWR(n) {
+  // n = number of months to show; 0 = all
+  const ctx = document.getElementById('chartTotalTWR');
+  if (!ctx || !twrPortfolio || !sp500Monthly || !fmMonths) return;
+  if (ctx._chart) ctx._chart.destroy();
+
+  // Update range button states
+  ['ttwr-6m','ttwr-12m','ttwr-all'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.remove('active-range');
+  });
+  const activeId = n === 6 ? 'ttwr-6m' : n === 12 ? 'ttwr-12m' : 'ttwr-all';
+  const activeBtn = document.getElementById(activeId);
+  if (activeBtn) activeBtn.classList.add('active-range');
+
+  const total = fmMonths.length;
+  const start = (n > 0 && n < total) ? total - n : 0;
+  const labels   = fmMonths.slice(start);
+  const twrSlice = twrPortfolio.slice(start);
+  const spSlice  = sp500Monthly.slice(start);
+  const rawBase  = fmTotal[start] || fmTotal[0];
+  const rawSlice = fmTotal.slice(start).map(v => (v / rawBase * 100).toFixed(1));
+
+  // Rebase TWR and S&P to 100 at slice start
+  const twrBase = twrSlice[0] || 100;
+  const spBase  = spSlice[0]  || 100;
+  const twrRebased = twrSlice.map(v => v != null ? (v / twrBase * 100).toFixed(1) : null);
+  const spRebased  = spSlice.map(v  => v != null ? (v / spBase  * 100).toFixed(1) : null);
+
+  const twrPct = twrRebased.length ? (parseFloat(twrRebased[twrRebased.length-1]) - 100).toFixed(1) : '—';
+  const spPct  = spRebased.length  ? (parseFloat(spRebased[spRebased.length-1])   - 100).toFixed(1) : '—';
+  const rangeLabel = n > 0 ? n + 'M' : 'Todo';
+
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: 'TWR Real ('+(twrPct >= 0 ? '+' : '')+twrPct+'%)', data: twrRebased, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label: 'S&P 500 ('+(spPct >= 0 ? '+' : '')+spPct+'%)',   data: spRebased,  borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
+      { label: 'Raw (con flujos)', data: rawSlice, borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
+    ]},
+    options: { plugins: {
+        legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11,weight:'bold'},color:'#e2e8f0'}},
+        tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}},
+      scales: { y: { ticks:{font:{size:11}}, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = '+labels[0],color:'#64748b',font:{size:11}} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } }
+    }
+  });
+}
+
 function renderPerformanceCharts() {
-  // ── Total portfolio TWR ──
-  const ctxTotalTWR = document.getElementById('chartTotalTWR');
-  if (ctxTotalTWR) {
-    if (ctxTotalTWR._chart) ctxTotalTWR._chart.destroy();
-    const twrPct = (twrPortfolio[twrPortfolio.length-1] - 100).toFixed(1);
-    const spPct  = (sp500Monthly[sp500Monthly.length-1] - 100).toFixed(1);
-    ctxTotalTWR._chart = new Chart(ctxTotalTWR, {
-      type: 'line',
-      data: { labels: fmMonths, datasets: [
-        { label:'TWR Real (+'+twrPct+'%)', data:twrPortfolio, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
-        { label:'S&P 500 (+'+spPct+'%)', data:sp500Monthly, borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
-        { label:'Raw (con flujos)', data:fmTotal.map(v=>(v/fmTotal[0]*100).toFixed(1)), borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
-      ]},
-      options: { plugins: {
-          legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11,weight:'bold'},color:'#e2e8f0'}},
-          tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}},
-        scales: { y: { ticks:{ font:{size:11} }, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = Jun 2024',color:'#64748b',font:{size:11}} },
-                  x: { ticks:{font:{size:9}}, grid:{display:false} } }
-      }
-    });
-  }
+  // ── Total portfolio TWR — default 12M ──
+  renderTotalTWR(12);
 
   // Monthly rate bar
   const ctxRate = document.getElementById('chartMonthlyRate');
