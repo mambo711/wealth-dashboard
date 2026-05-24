@@ -202,13 +202,23 @@
     "primary": {
       "name": "Wells Fargo LOC",
       "balance": 48233,
-      "rate": 8.5,
-      "monthly": 342
+      "rate": "8.5%",
+      "monthly": 342,
+      "value": 48233,
+      "interestMonthly": 342,
+      "severity": "critical",
+      "status": "LOC Attack Mode",
+      "statusDate": "~20 meses payoff"
     },
     "secondary": {
       "name": "Car Loan (DCFCU)",
       "balance": 9523,
-      "rate": 6.49
+      "rate": "6.49%",
+      "value": 9523,
+      "interestMonthly": 52,
+      "severity": "warning",
+      "status": "Auto Loan (DCFCU)",
+      "valueColor": "#f59e0b"
     },
     "creditCards": [
       {
@@ -437,28 +447,15 @@
       "color": "#10b981"
     }
   ],
-  "waterfall": [
-    {
-      "label": "Ingreso DEC",
-      "value": 6904,
-      "type": "income"
-    },
-    {
-      "label": "Gastos fijos",
-      "value": -4167,
-      "type": "expense"
-    },
-    {
-      "label": "Interés LOC",
-      "value": -342,
-      "type": "expense"
-    },
-    {
-      "label": "Surplus mensual",
-      "value": 2395,
-      "type": "net"
-    }
-  ],
+  "waterfall": {
+    "decIncome": 6904,
+    "livingExpenses": 4167,
+    "locInterest": 342,
+    "surplus": 2395,
+    "passiveIncome": 952,
+    "michalitas": 499,
+    "carInterest": 51
+  },
   "waterfallScenarios": [
     {
       "icon": "🔴",
@@ -989,72 +986,83 @@
       "plUp": true
     }
   ],
-  "options": [
-    {
-      "symbol": "NVO",
-      "strategy": "Bear Put",
-      "strikes": "P45/P40",
-      "exp": "Jun 18",
-      "qty": 3,
-      "nlv_contrib": 519
-    },
-    {
-      "symbol": "PG",
-      "strategy": "Bear Put",
-      "strikes": "P145/P140",
-      "exp": "Jun 18",
-      "qty": 3,
-      "nlv_contrib": 786
-    },
-    {
-      "symbol": "UBER",
-      "strategy": "Bear Put",
-      "strikes": "P77.5/P72.5",
-      "exp": "Jun 18",
-      "qty": 2,
-      "nlv_contrib": 544
-    },
-    {
-      "symbol": "UPS",
-      "strategy": "Bear Put",
-      "strikes": "P100/P95",
-      "exp": "Jun 18",
-      "qty": 3,
-      "nlv_contrib": 759
-    },
-    {
-      "symbol": "NFLX",
-      "strategy": "Bear Put",
-      "strikes": "P89/P84",
-      "exp": "Jun 18",
-      "qty": 4,
-      "nlv_contrib": 680
-    },
-    {
-      "symbol": "NVTS",
-      "strategy": "Bull Put",
-      "strikes": "P21/P18",
-      "exp": "Jun 18",
-      "qty": 3,
-      "nlv_contrib": -540
-    },
-    {
-      "symbol": "HIMS",
-      "strategy": "Long Put LEAPS",
-      "strikes": "P15",
-      "exp": "Jan 28",
-      "qty": 1,
-      "nlv_contrib": 400
-    },
-    {
-      "symbol": "TSM",
-      "strategy": "Bull Call LEAPS",
-      "strikes": "C340/C350",
-      "exp": "Jan 27",
-      "qty": 1,
-      "nlv_contrib": 572
-    }
-  ],
+  "options": {
+    "nlv": 12688,
+    "positions": [
+      {
+        "symbol": "NVTS",
+        "spread": "P21/P18",
+        "type": "Bull Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "SLV",
+        "spread": "P65/P62.5",
+        "type": "Bull Put",
+        "dte": 39,
+        "exp": "Jun 30",
+        "expSoon": false
+      },
+      {
+        "symbol": "NVO",
+        "spread": "P45/P40",
+        "type": "Bear Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "UBER",
+        "spread": "P77.5/P72.5",
+        "type": "Bear Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "UPS",
+        "spread": "P100/P95",
+        "type": "Bear Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "NFLX",
+        "spread": "P89/P84",
+        "type": "Bear Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "PG",
+        "spread": "P145/P140",
+        "type": "Bear Put",
+        "dte": 27,
+        "exp": "Jun 18",
+        "expSoon": true
+      },
+      {
+        "symbol": "TSM",
+        "spread": "C340/C350",
+        "type": "Bull Call",
+        "dte": 238,
+        "exp": "Jan 15 27",
+        "expSoon": false
+      },
+      {
+        "symbol": "HIMS",
+        "spread": "P15 LEAPS",
+        "type": "Put LEAPS",
+        "dte": 610,
+        "exp": "Jan 21 28",
+        "expSoon": false
+      }
+    ]
+  },
   "monthly": {
     "months": [
       "Jun 24",
