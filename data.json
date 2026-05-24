@@ -196,7 +196,39 @@
       "performance": 60,
       "diversif": 65,
       "riesgo": 55
-    }
+    },
+    "accounts": [
+      {
+        "rank": "Grado A \u2014 ETF Core \u00b7 TWR +26.4%",
+        "rankColor": "#10b981",
+        "text": "La cuenta principal de trading. 16 posiciones ETF diversificadas con margen controlado ($10,663). R\u00e9gimen STAGFLATION_RISK activo \u2014 sobreponderar defensivos (XLP, XLV, IAU) y reducir Intl Asia (DXJ+EWT = 21.1% \u2192 meta \u226419%).",
+        "rec": "Reducir DXJ o EWT en pr\u00f3ximo rally. Vigilar Tech/Semis (BAI+SMH+SOXQ+SOXX = 17.1% \u2014 umbral 15%)."
+      },
+      {
+        "rank": "Grado A+ \u2014 Mejor TWR \u00b7 +43.4%",
+        "rankColor": "#10b981",
+        "text": "RH Autopilot Act Managed \u2014 la cuenta de mejor rendimiento del portafolio. Gesti\u00f3n activa automatizada. YTD +22.03% ($796). Cuenta actualizada May 23 con recepci\u00f3n de $2K transfer de TastyTrade.",
+        "rec": "Mantener y considerar aumentar capital aqu\u00ed \u2014 consistentemente supera al S&P. Candidato a recibir capital de cuentas de bajo rendimiento."
+      },
+      {
+        "rank": "Grado B \u2014 Stocks Activo \u00b7 TWR +13.2%",
+        "rankColor": "#10b981",
+        "text": "IBKR Bravo \u2014 cuenta de acciones individuales. TWR s\u00f3lido +13.2%, supera al S&P. Saldo actualizado a $8,346 May 23 (recepci\u00f3n de $2K transfer de TastyTrade + rendimiento propio).",
+        "rec": "Mantener estrategia actual. Evaluar concentraci\u00f3n de posiciones individuales \u2014 diversificaci\u00f3n adecuada reduce riesgo idiosincr\u00e1tico."
+      },
+      {
+        "rank": "Grado D \u2014 Opciones \u00b7 TWR -15.7%",
+        "rankColor": "#ef4444",
+        "text": "TastyTrade \u2014 portafolio de opciones. 9 posiciones activas (6 Bear Puts, 2 Bull Puts, 1 LEAPS). NLV $8,688 post-transfer de $4K a RH/IBKR. NFLX spread declining \u25bc ($1.71 vs $2.18 entrada). OCO stops activos en todos los spreads.",
+        "rec": "Vigilar NFLX spread \u2014 SL trigger $1.09. No abrir nuevas posiciones hasta mejorar TWR. Evaluar cierre anticipado de spreads pr\u00f3ximos a vencer Jun 18."
+      },
+      {
+        "rank": "Grado F \u2014 Futuros \u00b7 TWR -58.2%",
+        "rankColor": "#ef4444",
+        "text": "TS Futures PKG27 \u2014 cuenta de micro-futuros. CERO posiciones activas ($2,135 cash). MNGM26 cerrado May 20-21 por raz\u00f3n desconocida. Capital disponible para nueva oportunidad.",
+        "rec": "No repatriar capital \u2014 Alberto gestiona activamente para oportunidades. Documentar raz\u00f3n de cierre de MNGM26 antes de abrir nueva posici\u00f3n."
+      }
+    ]
   },
   "debt": {
     "primary": {
