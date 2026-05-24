@@ -2245,22 +2245,16 @@
   },
   "allocationAlerts": [
     {
-      "symbol": "Tech/Semis (BAI+SMH+SOXQ+SOXX)",
-      "pct": 17.5,
-      "threshold": 17,
-      "status": "CRÍTICO"
+      "icon": "🚨",
+      "text": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.1% — excede umbral 15% en régimen STAGFLATION"
     },
     {
-      "symbol": "Intl Asia (DXJ+EWT)",
-      "pct": 19.5,
-      "threshold": 20,
-      "status": "URGENTE"
+      "icon": "🚨",
+      "text": "Intl Asia (DXJ+EWT) = 21.1% — excede umbral 20%, reducir ~$940 en DXJ o EWT"
     },
     {
-      "symbol": "Margin TS Tactical",
-      "value": 9813,
-      "threshold": 20000,
-      "status": "OK"
+      "icon": "✅",
+      "text": "Margen Táctico $10,663 — excelente (objetivo <$20K ✅✅)"
     }
   ],
   "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
