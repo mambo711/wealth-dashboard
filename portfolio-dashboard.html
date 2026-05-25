@@ -1,0 +1,2907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Portfolio Dashboard — Alberto Rodriguez</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function() {
+  const COOKIE_NAME = 'dash_auth';
+  const COOKIE_DAYS = 7;
+  const PWD_HASH = '3c4a6b1d9e2f8a7b5c0d1e3f2a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1'; // placeholder, replaced below
+
+  function hashStr(s) {
+    // Simple deterministic obfuscation — not crypto, just obscures plaintext in source
+    let h = 0;
+    for (let i = 0; i < s.length; i++) { h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; }
+    return h.toString(16);
+  }
+
+  function getCookie(name) {
+    const v = document.cookie.split('; ').find(r => r.startsWith(name + '='));
+    return v ? decodeURIComponent(v.split('=')[1]) : null;
+  }
+
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Strict';
+  }
+
+  const CORRECT_HASH = hashStr('0914256326');
+
+  if (getCookie(COOKIE_NAME) === CORRECT_HASH) return; // already authenticated
+
+  // Block page render until authenticated
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.createElement('div');
+    overlay.id = 'auth-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#0f172a;z-index:99999;display:flex;align-items:center;justify-content:center;';
+    overlay.innerHTML = `
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:16px;padding:40px 48px;text-align:center;width:320px;box-shadow:0 25px 60px rgba(0,0,0,.6)">
+        <div style="font-size:32px;margin-bottom:12px">🔒</div>
+        <div style="font-size:18px;font-weight:700;color:#f8fafc;margin-bottom:4px">Portfolio Dashboard</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:24px">Alberto Rodriguez</div>
+        <input id="pwd-input" type="password" placeholder="Contraseña" autocomplete="current-password"
+          style="width:100%;padding:12px 16px;background:#0f172a;border:1px solid #334155;border-radius:8px;color:#f8fafc;font-size:15px;outline:none;margin-bottom:12px;box-sizing:border-box;text-align:center;letter-spacing:2px">
+        <button id="pwd-btn"
+          style="width:100%;padding:12px;background:#3b82f6;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;cursor:pointer;">
+          Entrar
+        </button>
+        <div id="pwd-err" style="color:#ef4444;font-size:12px;margin-top:12px;min-height:16px"></div>
+      </div>`;
+    document.body.appendChild(overlay);
+
+    function attempt() {
+      const val = document.getElementById('pwd-input').value;
+      if (hashStr(val) === CORRECT_HASH) {
+        setCookie(COOKIE_NAME, CORRECT_HASH, COOKIE_DAYS);
+        overlay.remove();
+      } else {
+        const err = document.getElementById('pwd-err');
+        err.textContent = 'Contraseña incorrecta';
+        document.getElementById('pwd-input').value = '';
+        document.getElementById('pwd-input').focus();
+        setTimeout(() => { err.textContent = ''; }, 2500);
+      }
+    }
+
+    document.getElementById('pwd-btn').addEventListener('click', attempt);
+    document.getElementById('pwd-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') attempt();
+    });
+    document.getElementById('pwd-input').focus();
+  });
+})();
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; color: #f8fafc; text-align: center; }
+  .subtitle { color: #94a3b8; font-size: 14px; text-align: center; margin: 4px 0 20px; }
+
+  /* Top Cards */
+  .top-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .card { background: #1e293b; border-radius: 12px; padding: 16px; text-align: center; }
+  .card-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+  .card-value { font-size: 28px; font-weight: 700; }
+  .card-value.blue { color: #60a5fa; }
+  .card-value.red { color: #ef4444; }
+  .card-value.green { color: #10b981; }
+
+  /* FI Progress */
+  .fi-bar-container { background: #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+  .fi-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+  .fi-header .label { color: #94a3b8; }
+  .fi-header .value { font-weight: 600; color: #f59e0b; }
+  .fi-track { background: #334155; border-radius: 8px; height: 24px; overflow: hidden; }
+  .fi-fill { background: linear-gradient(90deg, #2563eb, #3b82f6); height: 100%; border-radius: 8px; transition: width 0.8s ease; }
+  .fi-labels { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: #64748b; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; background: #1e293b; color: #94a3b8; transition: all 0.2s; }
+  .tab:hover { background: #334155; }
+  .tab.active { background: #2563eb; color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Panels */
+  .panel { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 16px; color: #f8fafc; margin-bottom: 16px; }
+
+  /* Date Stamp Badges */
+  .ds-footer { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; padding-top:8px; border-top:1px solid #334155; }
+  .ds-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; padding:2px 8px; border-radius:20px; font-weight:600; letter-spacing:0.3px; white-space:nowrap; }
+  .ds-live  { background:#10b98122; color:#10b981; border:1px solid #10b98140; }
+  .ds-recent{ background:#f59e0b22; color:#f59e0b; border:1px solid #f59e0b40; }
+  .ds-stale { background:#ef444422; color:#ef4444; border:1px solid #ef444440; }
+  .card .ds-footer { margin-top:8px; padding-top:6px; justify-content:center; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 6px; color: #94a3b8; font-weight: 600; border-bottom: 2px solid #334155; }
+  th.right { text-align: right; }
+  td { padding: 10px 6px; color: #e2e8f0; border-bottom: 1px solid #1e293b40; }
+  td.right { text-align: right; font-variant-numeric: tabular-nums; }
+  td.bold { font-weight: 600; }
+  td.green { color: #10b981; font-weight: 600; }
+  td.red { color: #ef4444; font-weight: 600; }
+  tfoot td { border-top: 2px solid #334155; font-weight: 700; font-size: 14px; }
+
+  /* Category badge */
+  .badge { background: #334155; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: #94a3b8; }
+
+  /* Dot */
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; flex-shrink: 0; }
+
+  /* Metric rows */
+  .metric-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #334155; font-size: 13px; }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: #94a3b8; }
+  .metric-value { font-weight: 600; }
+
+  /* Alert */
+  .alert { display: flex; gap: 8px; padding: 6px 0; font-size: 13px; color: #cbd5e1; }
+
+  /* Debt card */
+  .debt-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .debt-card { background: #1e293b; border-radius: 12px; padding: 20px; }
+  .debt-card.high { border-left: 4px solid #ef4444; }
+  .debt-card.med { border-left: 4px solid #f59e0b; }
+  .debt-card .debt-name { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+  .debt-card .debt-value { font-size: 28px; font-weight: 700; color: #ef4444; margin: 8px 0; }
+  .debt-detail { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; }
+  .debt-detail .dl { color: #94a3b8; }
+  .debt-detail .dv { color: #f8fafc; font-weight: 600; }
+  .debt-detail .dv.red { color: #ef4444; }
+
+  /* FI path cards */
+  .fi-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .fi-card { background: #0f172a; border-radius: 8px; padding: 12px; text-align: center; }
+  .fi-card .fc-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+  .fi-card .fc-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+  /* Tags */
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .tag { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+  .tag.yellow { background: #f59e0b22; color: #f59e0b; }
+  .tag.red { background: #ef444422; color: #ef4444; }
+
+  /* Chart containers */
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chart-box { background: #1e293b; border-radius: 12px; padding: 20px; }
+  .chart-box canvas { max-height: 260px; }
+
+  /* Supuestos box */
+  .supuestos { margin-top: 16px; padding: 12px; background: #0f172a; border-radius: 8px; font-size: 13px; }
+  .supuestos .stitle { color: #10b981; font-weight: 600; margin-bottom: 6px; }
+  .supuestos .stext { color: #94a3b8; line-height: 1.8; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 24px; padding: 12px; color: #475569; font-size: 11px; }
+
+  /* Legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #94a3b8; }
+
+  /* Health Score */
+  .health-score-container { display: flex; align-items: center; gap: 20px; background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .health-gauge { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+  .health-gauge canvas { width: 120px; height: 120px; }
+  .health-number { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+  .health-number .hn-score { font-size: 36px; font-weight: 800; line-height: 1; }
+  .health-number .hn-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .health-breakdown { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .hb-item { text-align: center; }
+  .hb-item .hb-val { font-size: 16px; font-weight: 700; }
+  .hb-item .hb-lbl { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .hb-item .hb-bar { height: 4px; border-radius: 2px; background: #334155; margin-top: 4px; }
+  .hb-item .hb-fill { height: 100%; border-radius: 2px; }
+
+  /* Roadmap */
+  .roadmap { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .roadmap h3 { font-size: 16px; color: #f8fafc; margin-bottom: 12px; }
+  .roadmap-timeline { position: relative; padding-left: 24px; }
+  .roadmap-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #334155; }
+  .rm-step { position: relative; margin-bottom: 14px; padding-bottom: 2px; }
+  .rm-step::before { content: ''; position: absolute; left: -20px; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid; background: #0f172a; }
+  .rm-step.urgent::before { border-color: #ef4444; }
+  .rm-step.high::before { border-color: #f59e0b; }
+  .rm-step.medium::before { border-color: #3b82f6; }
+  .rm-step.low::before { border-color: #10b981; }
+  .rm-step .rm-title { font-size: 13px; font-weight: 700; color: #f8fafc; }
+  .rm-step .rm-detail { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+  .rm-step .rm-impact { font-size: 11px; font-weight: 600; margin-top: 2px; }
+  .rm-step .rm-timeline { display: inline-block; font-size: 10px; background: #334155; color: #94a3b8; padding: 1px 6px; border-radius: 4px; margin-top: 3px; }
+  .weekly-focus { background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%); border: 1px solid #2563eb; border-radius: 12px; padding: 16px 20px; margin-bottom: 14px; }
+  .weekly-focus .wf-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .weekly-focus .wf-badge { background: #2563eb; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .weekly-focus .wf-title { font-size: 15px; font-weight: 700; color: #60a5fa; }
+  .weekly-focus .wf-body { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+  .weekly-focus .wf-why { font-size: 12px; color: #f59e0b; margin-top: 6px; font-weight: 600; }
+
+  /* Income streams */
+  .income-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .income-card { background: #0f172a; border-radius: 8px; padding: 10px; text-align: center; border-top: 3px solid; }
+  .income-card .ic-amount { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .income-card .ic-label { font-size: 10px; color: #64748b; text-transform: uppercase; }
+  .income-card .ic-source { font-size: 11px; color: #94a3b8; }
+
+  /* Sparkline */
+  .sparkline { display: inline-block; vertical-align: middle; }
+
+  /* Waterfall */
+  .waterfall-bar { display: flex; align-items: flex-end; gap: 6px; height: 200px; padding: 0 8px; }
+  .wf-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .wf-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; transition: height 0.5s; }
+  .wf-val { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .wf-lbl { font-size: 9px; color: #64748b; text-align: center; margin-top: 6px; word-wrap: break-word; max-width: 60px; }
+
+  /* Risk meter bar */
+  .risk-bar { height: 6px; border-radius: 3px; background: #334155; position: relative; margin-top: 4px; }
+  .risk-fill { height: 100%; border-radius: 3px; }
+  .risk-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 12px; }
+  .risk-card { background: #0f172a; border-radius: 8px; padding: 12px; text-align: center; }
+  .risk-card .rc-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .risk-card .rc-name { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .risk-card .rc-metric { font-size: 11px; margin: 2px 0; }
+  .risk-card .rc-metric span { font-weight: 600; }
+  .risk-grade { font-size: 20px; font-weight: 800; margin: 4px 0; }
+
+  /* Delta badge */
+  .delta { font-size: 11px; margin-top: 4px; font-weight: 600; }
+  .delta.up { color: #10b981; }
+  .delta.down { color: #ef4444; }
+
+  /* Heatmap grid */
+  .heatmap { display: grid; gap: 3px; font-size: 11px; }
+  .heatmap-cell { border-radius: 4px; padding: 6px 4px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .heatmap-header { color: #64748b; font-weight: 700; font-size: 10px; text-transform: uppercase; }
+
+  /* Range buttons */
+  .range-btn { padding:4px 10px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:#94a3b8; font-size:11px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+  .range-btn:hover { background:#334155; color:#e2e8f0; }
+  .range-btn.active-range { background:#2563eb; color:#fff; border-color:#2563eb; }
+
+  /* Print button */
+  .print-btn { position: fixed; bottom: 20px; right: 20px; background: #2563eb; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px #0006; z-index: 999; transition: background 0.2s; }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    .print-btn { display: none !important; }
+    .tabs { display: none !important; }
+    .tab-content { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
+    body { background: #fff; color: #1e293b; padding: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100%; }
+    .card, .panel, .chart-box, .fi-bar-container, .debt-card, .fi-card { background: #f1f5f9; border: 1px solid #e2e8f0; }
+    .card-value.blue, .card-value.green { color: #2563eb; }
+    .card-value.red { color: #dc2626; }
+    h1, .subtitle { color: #1e293b; }
+    .footer { page-break-before: avoid; }
+  }
+
+  @media (max-width: 700px) {
+    .top-cards, .debt-cards, .fi-cards, .chart-row { grid-template-columns: 1fr; }
+    .print-btn { bottom: 10px; right: 10px; padding: 8px 14px; font-size: 12px; }
+    .health-breakdown { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .health-score-container { flex-direction: column; align-items: stretch; }
+    .health-gauge { width: 80px; height: 80px; margin: 0 auto; }
+  }
+  @media (max-width: 480px) {
+    .health-breakdown { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .hb-item .hb-val { font-size: 14px; }
+  }
+  @keyframes flashStale {
+    0%,100% { color: #ef4444; }
+    50%      { color: #fca5a5; }
+  }
+  .source-badge.stale {
+    animation: flashStale 1.2s ease-in-out infinite;
+    font-weight: 600;
+  }
+  .days-stale {
+    animation: flashStale 1.2s ease-in-out infinite;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Portfolio Dashboard</h1>
+  <p class="subtitle" id="dash-subtitle">Alberto Rodriguez — Cargando...</p>
+
+  <!-- Print Button -->
+  <button class="print-btn" onclick="window.print()">🖨️ Exportar PDF</button>
+
+  <!-- Top Cards -->
+  <div class="top-cards">
+    <div class="card" id="card-nwbruto">
+      <div class="card-label">NW Bruto</div>
+      <div class="card-value blue" id="nw-bruto-val">—</div>
+      <div class="delta up" id="nw-bruto-delta"></div>
+    </div>
+    <div class="card" id="card-deuda">
+      <div class="card-label">Deuda</div>
+      <div class="card-value red" id="debt-val">—</div>
+      <div class="delta down" id="debt-delta"></div>
+    </div>
+    <div class="card" id="card-nwneto">
+      <div class="card-label">NW Neto</div>
+      <div class="card-value green" id="nw-neto-val">—</div>
+      <div class="delta up" id="nw-neto-delta"></div>
+    </div>
+  </div>
+
+  <!-- FI Progress Bar -->
+  <div class="fi-bar-container">
+    <div class="fi-header">
+      <span class="label" id="fi-bar-label">Progreso FI (meta: $500,000)</span>
+      <span class="value" id="fi-header-text">—</span>
+    </div>
+    <div class="fi-track">
+      <div class="fi-fill" id="fi-fill-bar" style="width: 0%"></div>
+    </div>
+    <div class="fi-labels">
+      <span>$0</span>
+      <span id="fi-axis-label">FI @ 58 = $500K (blended lifestyle)</span>
+    </div>
+  </div>
+
+  <!-- Surplus Alert Banner (shown dynamically when surplus < 0) -->
+  <div id="surplus-alert-banner" style="display:none;margin-bottom:16px;padding:14px 18px;background:#ef444418;border:1.5px solid #ef4444;border-radius:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">🚨 Flujo de Caja Negativo</div>
+        <div style="font-size:14px;font-weight:700;color:#f8fafc" id="surplus-banner-text">Surplus: -$345/mes — la LOC crece $345/mes en interés</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;margin-left:16px">
+        <div style="font-size:11px;color:#94a3b8">Acción prioritaria:</div>
+        <div style="font-size:13px;font-weight:700;color:#f59e0b" id="surplus-banner-action">Cerrar Michalitas → +$574/mes surplus</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:#94a3b8" id="surplus-banner-payoff"></div>
+  </div>
+
+  <!-- Wealth Health Score -->
+  <div class="health-score-container">
+    <div class="health-gauge">
+      <canvas id="gaugeCanvas" width="120" height="120"></canvas>
+      <div class="health-number">
+        <div class="hn-score" id="healthScoreNum" style="color:#f59e0b">—</div>
+        <div class="hn-label">Salud</div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="font-size:16px;color:#f8fafc;margin:0">🏥 Wealth Health Score</h3>
+        <span style="font-size:12px;padding:3px 10px;border-radius:6px;font-weight:700;background:#f59e0b22;color:#f59e0b" id="health-label">MODERADO</span>
+      </div>
+      <div class="health-breakdown" id="health-breakdown">
+        <div style="color:#64748b;font-size:12px;padding:4px 0">Cargando...</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:#94a3b8;line-height:1.5">
+        <strong style="color:#f59e0b">Diagnóstico:</strong> <span id="health-diagnostic"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('resumen')">Resumen</button>
+    <button class="tab" onclick="showTab('fi')">FI Path</button>
+    <button class="tab" onclick="showTab('macro')">🌐 Macro</button>
+    <button class="tab" onclick="showTab('cuentas')">Cuentas</button>
+    <button class="tab" onclick="showTab('allocation')">Allocation</button>
+    <button class="tab" onclick="showTab('posiciones')">Posiciones</button>
+    <button class="tab" onclick="showTab('performance')">Performance</button>
+    <button class="tab" onclick="showTab('flujo')">Flujo de Caja</button>
+    <button class="tab" onclick="showTab('deuda')">Deuda</button>
+  </div>
+
+  <!-- TAB: Resumen -->
+  <div id="tab-resumen" class="tab-content active">
+
+    <!-- ⚡ WEEKLY ACTIONS — top of resumen -->
+    <div id="weekly-actions-panel" style="margin-bottom:18px;display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:18px">⚡</span>
+          <span style="font-size:15px;font-weight:700;color:#f8fafc">Acciones de Esta Semana</span>
+        </div>
+        <span id="weekly-actions-date" style="font-size:11px;color:#64748b"></span>
+      </div>
+      <div id="weekly-actions-list" style="display:flex;flex-direction:column;gap:8px"></div>
+    </div>
+
+    <div id="insight-resumen-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-resumen"></div>
+      <ul id="insight-resumen" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <!-- NW Histórico Chart -->
+    <div class="panel" id="panel-nwhistorico" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">📈 Patrimonio Neto Histórico</h3>
+        <div style="display:flex;gap:6px" id="nw-range-btns">
+          <button onclick="renderNWHistorico(6)"  class="range-btn" id="rng-6m">6M</button>
+          <button onclick="renderNWHistorico(12)" class="range-btn" id="rng-12m">12M</button>
+          <button onclick="renderNWHistorico(0)"  class="range-btn active-range" id="rng-all">Todo</button>
+        </div>
+      </div>
+      <canvas id="chartNWHistorico" style="max-height:280px"></canvas>
+    </div>
+
+    <!-- Income Streams -->
+    <div class="panel" id="panel-income" style="margin-bottom:16px">
+      <h3>💰 Fuentes de Ingreso Pasivo — Estimado Mensual</h3>
+      <div class="income-grid" id="income-grid"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;padding:8px 12px;background:#10b98115;border-radius:8px;font-size:13px">
+        <span style="color:#94a3b8">Total ingreso pasivo mensual:</span>
+        <span style="color:#10b981;font-weight:700" id="income-total-label">~$952/mes ($11,424/año)</span>
+      </div>
+      <div style="font-size:11px;color:#64748b;margin-top:6px" id="income-coverage-note">Esto cubre el 32% de tu meta de $35K/año en lifestyle blended. Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.</div>
+    </div>
+
+    <!-- Strategic Roadmap — solo en Resumen -->
+    <div class="roadmap">
+      <h3>🗺️ Hoja de Ruta Estratégica — Camino a Score 75+</h3>
+      <div id="weekly-focus-container"></div>
+      <div class="roadmap-timeline" id="roadmapTimeline"></div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3 style="font-size:16px;color:#f8fafc;margin-bottom:16px">Distribución por Categoría</h3>
+        <canvas id="pieCategory"></canvas>
+        <div class="legend" id="pieLegend"></div>
+      </div>
+      <div class="chart-box">
+        <h3 style="font-size:16px;color:#f8fafc;margin-bottom:12px">Métricas Clave</h3>
+        <div id="metrics-resumen"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Cuentas -->
+  <div id="tab-cuentas" class="tab-content">
+    <div id="insight-cuentas-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-cuentas"></div>
+      <ul id="insight-cuentas" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" id="panel-cuentas">
+      <h3>Todas las Cuentas</h3>
+      <table>
+        <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th><th class="right">Actualiz.</th></tr></thead>
+        <tbody id="accountsTable"></tbody>
+        <tfoot><tr><td colspan="2" style="color:#f8fafc">TOTAL BRUTO</td><td class="right" style="color:#60a5fa;font-size:16px" id="accounts-footer-total">—</td><td class="right" style="color:#94a3b8">100%</td><td></td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Allocation -->
+  <div id="tab-allocation" class="tab-content">
+    <div id="insight-allocation-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-allocation"></div>
+      <ul id="insight-allocation" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" id="panel-allocation">
+      <h3>Allocation del Portafolio Completo</h3>
+      <canvas id="barAllocation" style="max-height:340px"></canvas>
+      <div style="margin-top:20px">
+        <h4 style="font-size:14px;color:#f59e0b;margin-bottom:8px">Alertas de Allocation</h4>
+        <div id="allocation-alerts-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Deuda -->
+  <div id="tab-deuda" class="tab-content">
+    <div id="insight-deuda-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-deuda"></div>
+      <ul id="insight-deuda" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="debt-cards" id="debt-cards-container"></div>
+    <div class="panel" id="panel-cc">
+      <h3>Tarjetas de Crédito (Xero)</h3>
+      <table>
+        <thead><tr><th>Tarjeta</th><th class="right">Saldo</th></tr></thead>
+        <tbody id="credit-cards-body"></tbody>
+        <tfoot><tr><td id="debt-total-label" style="color:#ef4444">DEUDA TOTAL</td><td class="right" style="color:#ef4444;font-size:16px" id="debt-total-val">—</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: FI Path -->
+  <div id="tab-fi" class="tab-content">
+    <div id="insight-fi-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-fi"></div>
+      <ul id="insight-fi" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" id="panel-fi">
+      <h3>Camino a Independencia Financiera</h3>
+      <div class="fi-cards">
+        <div class="fi-card"><div class="fc-label" id="fi-target-label">Meta FI</div><div class="fc-value" style="color:#60a5fa" id="fi-target-card">—</div></div>
+        <div class="fi-card"><div class="fc-label">Gap</div><div class="fc-value" style="color:#f59e0b" id="fi-gap-card">—</div></div>
+        <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">—</div></div>
+      </div>
+      <canvas id="lineChart" style="max-height:300px"></canvas>
+      <div style="margin-top:20px;padding:16px;background:#0f172a;border-radius:10px">
+        <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:12px">🧮 Estimador: ¿Cuándo llego a FI?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px">
+          <div>
+            <div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Retorno anual asumido</div>
+            <select id="fi-est-return" onchange="calcFIEstimate()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px">
+              <option value="0.05">5% (conservador)</option>
+              <option value="0.07" selected>7% (base)</option>
+              <option value="0.09">9% (optimista)</option>
+            </select>
+          </div>
+          <div>
+            <div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Aporte mensual adicional</div>
+            <select id="fi-est-contrib" onchange="calcFIEstimate()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px">
+              <option value="0">$0 (sin surplus)</option>
+              <option value="500">$500/mes</option>
+              <option value="1000">$1,000/mes</option>
+              <option value="2000">$2,000/mes</option>
+              <option value="3000">$3,000/mes</option>
+            </select>
+          </div>
+        </div>
+        <div id="fi-estimate-result" style="margin-top:12px;padding:12px;background:#1e293b;border-radius:8px;font-size:13px;line-height:1.8;color:#cbd5e1">
+          Calculando...
+        </div>
+      </div>
+      <div class="supuestos">
+        <div class="stitle">Supuestos de los 3 escenarios:</div>
+        <div class="stext">
+          🟢 <strong>Optimista:</strong> DEC genera $4K+/mes surplus, Michalitas cierra, LOC pagada en 12 meses, 8% retorno anual. FI a los 57.<br>
+          🔵 <strong>Base:</strong> DEC recupera $2K/mes gradualmente, 7% retorno, debt paydown moderado. FI a los 58.<br>
+          🔴 <strong>Pesimista:</strong> DEC sigue bajo, surplus $0, solo crece por retorno de inversiones (6%). FI se retrasa a 60+.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Posiciones -->
+  <div id="tab-posiciones" class="tab-content">
+    <div id="insight-posiciones-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-posiciones"></div>
+      <ul id="insight-posiciones" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" id="panel-sepp">
+      <h3>SEP IRA ·6362 — <span id="sep-ira-header">—</span></h3>
+      <table>
+        <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
+        <tbody id="sepIRATable"></tbody>
+      </table>
+    </div>
+    <div class="panel" id="panel-tactical">
+      <h3>Tactical ETFs ·4090 — <span id="tactical-header">—</span></h3>
+      <table>
+        <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
+        <tbody id="tacticalTable"></tbody>
+      </table>
+      <div class="tags" id="tactical-tags"></div>
+    </div>
+    <div class="panel" id="panel-options">
+      <h3>Opciones — Tastytrade (<span id="options-nlv">—</span>)</h3>
+      <table>
+        <thead><tr><th>Spread</th><th>Tipo</th><th class="right">DTE</th><th class="right">Exp</th></tr></thead>
+        <tbody id="optionsTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Performance -->
+  <div id="tab-performance" class="tab-content">
+
+    <!-- ═══════════════════ SECTION 1: TOTAL PORTFOLIO (FREEDOM MENSUAL) ═══════════════════ -->
+    <div style="margin-bottom:8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
+      📊 <strong style="color:#f8fafc">PORTAFOLIO TOTAL</strong> — <span id="perf-header-range">24 meses</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px" id="portfolio-twr-cards">
+      <div class="card" style="border-top:3px solid #10b981"><div class="card-label">TWR 24 Meses</div><div class="card-value green" style="font-size:24px" id="twr-24m">—</div><div style="font-size:11px;color:#64748b" id="twr-24m-label">Jun 24 → May 26</div></div>
+      <div class="card" style="border-top:3px solid #10b981"><div class="card-label">TWR 12M</div><div class="card-value green" style="font-size:24px" id="twr-12m">—</div><div style="font-size:11px;color:#64748b" id="twr-12m-label">May 25 → May 26</div></div>
+      <div class="card" style="border-top:3px solid #ef4444"><div class="card-label">TWR 6M</div><div class="card-value red" style="font-size:24px" id="twr-6m">—</div><div style="font-size:11px;color:#64748b" id="twr-6m-label">Nov 25 → May 26</div></div>
+      <div class="card" style="border-top:3px solid #f59e0b"><div class="card-label">TWR 3M</div><div class="card-value" style="font-size:24px;color:#f59e0b" id="twr-3m">—</div><div style="font-size:11px;color:#64748b" id="twr-3m-label">Feb 26 → May 26</div></div>
+    </div>
+
+    <div id="twr-note-banner" style="margin-bottom:16px;padding:10px 14px;background:#10b98115;border:1px solid #10b98140;border-radius:8px;font-size:12px;color:#94a3b8">
+      <strong style="color:#10b981">TWR vs Raw:</strong> <span id="twr-note-text"></span>
+    </div>
+
+    <div id="insight-performance-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <div id="action-performance"></div>
+      <ul id="insight-performance" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="margin:0">Patrimonio Total — TWR vs Raw</h3>
+        <div style="display:flex;gap:6px">
+          <button onclick="renderTotalTWR(6)"  class="range-btn" id="ttwr-6m">6M</button>
+          <button onclick="renderTotalTWR(12)" class="range-btn active-range" id="ttwr-12m">12M</button>
+          <button onclick="renderTotalTWR(0)"  class="range-btn" id="ttwr-all">Todo</button>
+        </div>
+      </div>
+      <canvas id="chartTotalTWR" style="max-height:300px"></canvas>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <h3>Rendimiento Mensual (%)</h3>
+      <canvas id="chartMonthlyRate" style="max-height:240px"></canvas>
+    </div>
+
+    <!-- Heatmap de Retornos Mensuales -->
+    <div class="panel" style="margin-top:16px">
+      <h3>🗓️ Heatmap de Retornos Mensuales</h3>
+      <div id="heatmapContainer"></div>
+      <div style="margin-top:8px;display:flex;gap:12px;justify-content:center;font-size:10px;color:#64748b">
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#065f46;vertical-align:middle"></span> &gt;+3%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10b981;vertical-align:middle"></span> +1% a +3%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#6ee7b780;vertical-align:middle"></span> 0% a +1%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#fca5a580;vertical-align:middle"></span> -1% a 0%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ef4444;vertical-align:middle"></span> -3% a -1%</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#991b1b;vertical-align:middle"></span> &lt;-3%</span>
+      </div>
+    </div>
+
+    <!-- Rolling Returns Chart -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+        <li>• Los rolling returns muestran tu rendimiento en ventanas móviles — si las líneas suben, tu momentum está mejorando. Si bajan, estás perdiendo impulso.</li>
+        <li>• El rolling 12M es el más importante: muestra tu rendimiento anualizado real en cualquier punto. Si está por debajo de 0%, tu portafolio encogió en los últimos 12 meses.</li>
+        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Monitorea el rolling 6M — si cae debajo de -5% por 2+ meses consecutivos, es señal de revisar allocation.</li>
+      </ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>📉 Rolling Returns — Ventana Móvil (3M / 6M / 12M)</h3>
+      <canvas id="chartRolling" style="max-height:260px"></canvas>
+    </div>
+
+    <!-- Contribution Analysis -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+        <li>• Esta gráfica separa cuánto creció tu portafolio por rendimiento de inversiones vs cuánto cambió por meter o sacar dinero.</li>
+        <li>• Las barras verdes son crecimiento real de inversiones — lo que tu dinero generó trabajando. Las barras naranjas son flujos externos (depósitos/retiros de capital nuevo).</li>
+        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Idealmente las barras verdes deben dominar — significa que tu dinero trabaja por ti. Si las naranjas dominan, dependes de capital nuevo.</li>
+      </ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🔬 Contribution Analysis — Retorno de Inversión vs Flujos de Capital</h3>
+      <canvas id="chartContribution" style="max-height:260px"></canvas>
+    </div>
+
+    <!-- ═══════════════════ SECTION 2: TRADING ACCOUNTS — TWR (sin depósitos/retiros) ═══════════════════ -->
+    <div style="margin:24px 0 8px;padding:8px 12px;background:#334155;border-radius:8px;font-size:13px;color:#94a3b8">
+      🏆 <strong style="color:#f8fafc">CUENTAS DE TRADING — RENDIMIENTO REAL (TWR)</strong> — Ago 2025 → May 2026 · Excluye depósitos y retiros
+    </div>
+
+    <!-- TWR Total Summary -->
+    <div class="card" style="border-top:3px solid #60a5fa;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px">
+      <div><div class="card-label">📈 TWR Total Portfolio (ajustado flujos)</div></div>
+      <div class="card-value" style="font-size:24px;color:#60a5fa;margin:0" id="perf-twr-total">—</div>
+    </div>
+
+    <!-- Trading Performance Summary Cards — TWR (dynamic, calculated in JS) -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px" id="twr-rank-cards">
+      <div class="card" style="border-top:3px solid #10b981">
+        <div class="card-label">🥇 Mejor 6M (TWR)</div>
+        <div class="card-value green" style="font-size:20px" id="perf-best-name">—</div>
+        <div style="font-size:13px;color:#10b981;font-weight:600" id="perf-best-pct">—</div>
+      </div>
+      <div class="card" style="border-top:3px solid #f59e0b">
+        <div class="card-label">🥈 2do 6M (TWR)</div>
+        <div class="card-value" style="font-size:20px;color:#f59e0b" id="perf-2nd-name">—</div>
+        <div style="font-size:13px;color:#f59e0b;font-weight:600" id="perf-2nd-pct">—</div>
+      </div>
+      <div class="card" style="border-top:3px solid #ef4444">
+        <div class="card-label">🔻 Peor 6M (TWR)</div>
+        <div class="card-value red" style="font-size:20px" id="perf-worst-name">—</div>
+        <div style="font-size:13px;color:#ef4444;font-weight:600" id="perf-worst-pct">—</div>
+      </div>
+    </div>
+
+    <!-- TWR Performance Table -->
+    <div id="insight-twr-table-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>Performance Real por Cuenta — Time-Weighted Return (TWR)</h3>
+      <table>
+        <thead><tr><th>Cuenta</th><th class="right">Valor</th><th class="right">3M TWR</th><th class="right">6M TWR</th><th class="right">Total TWR</th><th class="right">vs S&P 6M</th></tr></thead>
+        <tbody id="twr-table-body"></tbody>
+        <tfoot id="twr-table-foot"></tfoot>
+      </table>
+      <div style="margin-top:12px;font-size:11px;color:#64748b">
+        TWR = Time-Weighted Return — elimina el efecto de depósitos y retiros para medir rendimiento puro de inversión.<br>
+        Método: retorno semanal encadenado, semanas con movimientos >15-25% (depósito/retiro detectado) neutralizadas a 0%.<br>
+        3M = últimas 13 semanas. 6M = últimas 26 semanas. Total = desde <span id="twr-tracking-start">Ago 2, 2025</span> (inicio del tracking semanal).
+      </div>
+    </div>
+
+    <!-- Risk Metrics Panel -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+        <li>• El rendimiento sin contexto de riesgo es incompleto. <strong style="color:#60a5fa">Max Drawdown</strong> mide la peor caída desde un pico — cuánto dolor puedes esperar. <strong style="color:#60a5fa">Volatilidad</strong> mide la variación semanal — cuánto se mueve la cuenta.</li>
+        <li>• El <strong style="color:#10b981">Ratio Retorno/Riesgo</strong> (TWR ÷ MaxDD) combina ambos: &gt;1.0 = bueno, &gt;1.5 = excelente, &lt;0 = destruyendo valor.</li>
+        <li>• Grados A-B = compounding eficiente. Grados D-F = capital destruyéndose — candidatos a reducción o cierre.</li>
+        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Prioriza capital hacia cuentas con grado A-B. Las grado D-F necesitan cambio de estrategia o cierre.</li>
+      </ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>📊 Risk Metrics — Retorno Ajustado por Riesgo (37 semanas)</h3>
+      <div id="riskMetricsGrid" class="risk-grid"></div>
+      <div style="margin-top:12px;font-size:11px;color:#64748b">
+        Max Drawdown = mayor caída pico→valle en TWR. Volatilidad = desviación estándar de retornos semanales. Grado = A (excelente) → F (destruyendo valor).
+      </div>
+    </div>
+
+    <!-- Individual Trading Account Charts — ORDERED BY TWR (best → worst) -->
+
+    <!-- #1: TS ETF Tactical -->
+    <div id="insight-acct-0" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-tsetf">🔵 #1 TS ETF Tactical ·4090 — Margin ($33,597) · TWR: +26.4%</h3>
+        <span class="source-badge" id="src-tsetf" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 15 2026</span>
+      </div>
+      <canvas id="chartTSETF" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #2: RH AP Act Managed -->
+    <div id="insight-acct-1" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-rh">🟡 #2 RH AP Act Managed ($2,323) · TWR: +43.4%</h3>
+        <span class="source-badge" id="src-rh" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+      </div>
+      <canvas id="chartRH" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #2b: RH Ap-photonics -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0"><li id="rhph-note">📸 RH Ap-photonics — Autopilot sector fotónica. Cuenta secundaria, balance pequeño.</li></ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-rhph">🟠 #2b RH Ap-photonics ($527) · Autopilot</h3>
+        <span class="source-badge" id="src-rhph" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot RH · May 16 2026</span>
+      </div>
+      <canvas id="chartRHPhotonics" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #3: IBKR Bravo -->
+    <div id="insight-acct-2" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-ibkr">🟢 #3 IBKR Bravo ·4229 — Stocks ($6,435) · TWR: +13.2%</h3>
+        <span class="source-badge" id="src-ibkr" style="font-size:10px;color:#64748b;white-space:nowrap">📱 Screenshot IBKR · May 16 2026</span>
+      </div>
+      <canvas id="chartIBKR" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #4: TastyTrade -->
+    <div id="insight-acct-3" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-tt">🟣 #4 TastyTrade — Opciones ($17,026) · TWR: -15.7%</h3>
+        <span class="source-badge" id="src-tt" style="font-size:10px;color:#64748b;white-space:nowrap">📡 Relay Zapier/Gmail · May 15 2026</span>
+      </div>
+      <canvas id="chartTT" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #5a: TS Futures PKG27 -->
+    <div id="insight-acct-4" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-fut">🔴 #5a TS Futures ·PKG27 — MNGM26 x5 Long ($2,060)</h3>
+        <span class="source-badge" id="src-fut" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
+      </div>
+      <canvas id="chartFUT" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- #5b: TS Futures VLV23 -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0"><li>📡 Cuenta VLV23 — posición corta MYMM26 (Micro Dow Jun 26).</li></ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="margin:0" id="chart-h3-fut2">🔴 #5b TS Futures ·VLV23 — MYMM26 x1 Short ($3,183)</h3>
+        <span class="source-badge" id="src-fut2" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
+      </div>
+      <canvas id="chartFUT2" style="max-height:200px"></canvas>
+    </div>
+
+    <!-- TWR Normalized Comparison -->
+    <div style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+        <li id="twr-norm-line1">• Este gráfico es el más importante de la sección: muestra el rendimiento real (TWR) de cada cuenta normalizado a base 100. Las líneas por encima del S&P (gris) son cuentas que te están generando valor.</li>
+        <li>• Stocks y ETFs tienden a superar al S&P. Opciones y futuros tienden a quedar por debajo — la reallocation de capital entre cuentas es tu mayor palanca de mejora sin riesgo adicional.</li>
+        <li><strong style="color:#f59e0b">🎯 Rec:</strong> Concentrar capital progresivamente hacia las cuentas con líneas por encima del benchmark (S&P). Ver tabla de rebalanceo abajo.</li>
+      </ul>
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <h3>🏆 Comparativo TWR — Rendimiento Real Normalizado (base 100 = <span id="twr-norm-start">Ago 2, 2025</span>)</h3>
+      <canvas id="chartTradingNorm" style="max-height:340px"></canvas>
+    </div>
+
+    <!-- Raw Value Total + Reallocation Suggestion -->
+    <div id="rebalance-intro-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155">
+    </div>
+    <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
+      <table id="rebalance-table" style="margin-bottom:16px">
+        <thead><tr><th>Cuenta</th><th class="right">Actual</th><th class="right">Mover</th><th class="right">Nuevo</th><th class="right">TWR</th></tr></thead>
+        <tbody id="rebalance-body"></tbody>
+        <tfoot id="rebalance-foot"></tfoot>
+      </table>
+      <div id="rebalance-note" style="font-size:12px;color:#94a3b8;line-height:1.6"></div>
+      <h3 style="margin-top:16px">📈 Valor Total — Todas las Cuentas de Trading Combinadas</h3>
+      <canvas id="chartTradingTotal" style="max-height:240px"></canvas>
+    </div>
+
+  </div>
+
+  <!-- TAB: Flujo de Caja -->
+  <div id="tab-flujo" class="tab-content">
+    <div id="insight-flujo-panel" style="padding:12px 16px;background:#1e293b;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.6;color:#cbd5e1">
+      <div id="action-flujo"></div>
+      <ul id="insight-flujo" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
+    </div>
+    <div class="panel" id="panel-waterfall">
+      <h3>💧 Waterfall — Flujo de Caja Mensual Estimado</h3>
+      <div id="waterfallChart"></div>
+      <div style="margin-top:16px">
+        <table>
+          <thead><tr><th>Concepto</th><th class="right">Monto</th><th class="right">Tipo</th><th>Notas</th></tr></thead>
+          <tbody id="waterfall-table-body"></tbody>
+          <tfoot>
+            <tr><td style="color:#f59e0b;font-weight:700">SURPLUS DISPONIBLE</td><td class="right" id="surplus-cell" style="font-size:18px;font-weight:700">—</td><td class="right"><span class="badge" style="background:#10b98130;color:#10b981">Surplus</span></td><td style="color:#94a3b8;font-size:11px">Redirigir 100% al LOC cada mes</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="margin-top:16px;padding:12px;background:#0f172a;border-radius:8px">
+        <div style="font-size:12px;font-weight:600;color:#f59e0b;margin-bottom:6px">Escenarios de surplus:</div>
+        <div id="waterfall-scenarios" style="font-size:12px;color:#94a3b8;line-height:1.8">
+          Calculando escenarios...
+        </div>
+      </div>
+      <div id="income-section-note" style="display:none;margin-top:12px;padding:10px 14px;background:#1e293b;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;font-size:12px;color:#94a3b8;line-height:1.6">
+        ℹ️ <span id="income-note-text"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: Macro Readiness -->
+  <div id="tab-macro" class="tab-content">
+    <div id="macro-content">
+      <div style="color:#94a3b8;text-align:center;padding:40px">Cargando análisis macro...</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span id="dash-footer-note">Datos: TradeStation MCP · Xero (live YTD) · Tastytrade relay</span>
+    &nbsp;·&nbsp;
+    <span class="source-badge" id="src-betterment" style="font-size:10px;color:#64748b;white-space:nowrap;cursor:pointer" title="Betterment desactualizado. Para actualizar: abre Betterment app → toca el portfolio → toma screenshot → comparte con Claude" onclick="document.getElementById('betterment-update-tip').style.display=document.getElementById('betterment-update-tip').style.display==='none'?'block':'none'">📱 Screenshot Betterment · May 17 2026 ℹ️</span>
+    <div id="betterment-update-tip" style="display:none;margin-top:6px;padding:10px 14px;background:#1e3a5f;border:1px solid #2563eb;border-radius:8px;font-size:12px;color:#cbd5e1;max-width:400px;margin-left:auto;margin-right:auto;text-align:left">
+      <strong style="color:#60a5fa">🔄 Para actualizar Betterment:</strong><br>
+      1. Abre la app Betterment en tu teléfono<br>
+      2. Toca cada cuenta (Roth, Trad IRA, Emergency)<br>
+      3. Toma screenshot del saldo actual<br>
+      4. Comparte con Claude en una nueva conversación
+    </div>
+  </div>
+</div>
+
+<div id="auth-gate" style="position:fixed;inset:0;background:#0f172a;z-index:9999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#1e293b;padding:40px;border-radius:16px;text-align:center;max-width:360px;width:90%;">
+    <div style="font-size:36px;margin-bottom:12px;">🔒</div>
+    <h2 style="color:#f8fafc;margin-bottom:8px;font-size:20px;">Portfolio Dashboard</h2>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">Ingresa la contraseña para acceder</p>
+    <input id="auth-pw" type="password" placeholder="Contraseña"
+      style="width:100%;padding:12px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#e2e8f0;font-size:15px;margin-bottom:12px;outline:none;"
+      onkeydown="if(event.key==='Enter')checkAuth()">
+    <button onclick="checkAuth()"
+      style="width:100%;padding:12px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-size:15px;font-weight:600;cursor:pointer;">Entrar</button>
+    <p id="auth-err" style="color:#ef4444;font-size:13px;margin-top:10px;display:none;">Contraseña incorrecta</p>
+  </div>
+</div>
+<script>
+var AUTH_HASH='919c5c38b9b0c0f0320e507f41bd9ba9182589998d049eb57cb4ca45894e661b';
+var COOKIE_NAME='mmw_auth';
+var COOKIE_DAYS=30;
+
+function setCookie(val,days){
+  var d=new Date();d.setTime(d.getTime()+(days*24*60*60*1000));
+  document.cookie=COOKIE_NAME+'='+val+';expires='+d.toUTCString()+';path=/;SameSite=Strict';
+}
+function getCookie(){
+  var n=COOKIE_NAME+'=';
+  var ca=document.cookie.split(';');
+  for(var i=0;i<ca.length;i++){var c=ca[i].trim();if(c.indexOf(n)===0)return c.substring(n.length);}
+  return '';
+}
+
+// Auto-unlock if valid cookie exists
+if(getCookie()===AUTH_HASH){
+  document.getElementById('auth-gate').style.display='none';
+}
+
+function checkAuth(){
+  var p=document.getElementById('auth-pw').value;
+  crypto.subtle.digest('SHA-256',new TextEncoder().encode(p)).then(function(h){
+    var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    if(hex===AUTH_HASH){
+      setCookie(hex,COOKIE_DAYS);
+      document.getElementById('auth-gate').style.display='none';
+    } else {
+      document.getElementById('auth-err').style.display='block';
+      document.getElementById('auth-pw').value='';
+    }
+  });
+}
+</script>
+
+<script>
+// ═══ Tab switching ═══
+function showTab(id, fromRestore) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  // Highlight the correct tab button
+  const btn = Array.from(document.querySelectorAll('.tab')).find(b => b.getAttribute('onclick') === "showTab('" + id + "')");
+  if (btn) btn.classList.add('active');
+  else if (!fromRestore && event && event.target) event.target.classList.add('active');
+  // Persist tab selection
+  try { localStorage.setItem('mmw_tab', id); } catch(e) {}
+  if (id === 'resumen') { renderPie(); renderNWHistorico(); }
+  if (id === 'allocation') renderBar();
+  if (id === 'fi') renderLine();
+  if (id === 'performance') { renderPerformanceCharts(); renderHeatmap(); }
+  if (id === 'flujo') renderWaterfall();
+}
+
+// ═══ Global data (set by initFromData) ═══
+let dashData; // full data.json object reference
+let accounts, tactical, sparkData, totalBruto, dashMeta, sepIRA, options, waterfall, performance;
+let fmMonths, fmTotal, fmRate, fmRetirement, fmStocks, fmCDs, fmCash, fmCarros, fmCrypto;
+let wkDates, wkTT, wkIBKR, wkTSETF, wkRH, wkRHPhotonics, wkFUT, wkFUT2, wkFUTCombined, wkSP;
+let twrTT, twrIBKR, twrTSETF, twrRH, twrRHPhotonics, twrFUT, twrSP, twrPortfolio, twrPortfolioGlobal, sp500Monthly;
+let dashRoadmap, dashActions, dashInsights, dashDebt, dashIncomeStreams, dashRebalance;
+let dashPieCategories, dashAllocationBar, dashWaterfallTable;
+
+// ═══ Action Banner renderer ═══
+function renderActionBanner(containerId, actionData) {
+  const el = document.getElementById(containerId);
+  if (!el || !actionData) return;
+  const bc = actionData.color || '#ef4444';
+  const bg = bc.replace('#', '') + '18';
+  el.innerHTML = `<div style="background:#${bg};border-left:3px solid ${bc};border-radius:6px;padding:10px 12px;margin-bottom:10px">
+    <div style="font-size:10px;font-weight:700;color:${bc};text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">⚡ Acción #1 Esta Semana</div>
+    <div style="font-size:13px;font-weight:600;color:#f8fafc">${actionData.text}</div>
+  </div>`;
+}
+
+// ═══ Insight bullets renderer ═══
+function renderInsightList(listId, items) {
+  const el = document.getElementById(listId);
+  if (!el || !items) return;
+  el.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+}
+
+// ═══ Roadmap renderer ═══
+function renderRoadmap(d) {
+  const wfc = document.getElementById('weekly-focus-container');
+  if (wfc && d.weeklyFocus) {
+    const wf = d.weeklyFocus;
+    const wfd = dashMeta ? dashMeta.weeklyFocusDate : '';
+    wfc.innerHTML = `<div class="weekly-focus">
+      <div class="wf-header">
+        <span class="wf-badge">🎯 Foco Semanal</span>
+        <span style="font-size:11px;color:#64748b;">${wfd}</span>
+      </div>
+      <div class="wf-title">${wf.title}</div>
+      <div class="wf-body">${wf.body}</div>
+      <div class="wf-why">${wf.why}</div>
+    </div>`;
+  }
+  const tl = document.getElementById('roadmapTimeline');
+  if (tl && d.steps) {
+    tl.innerHTML = d.steps.map(s => {
+      const macroTag = s.macroWeight ? `<span style="display:inline-block;margin-bottom:6px;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:${s.macroWeightColor}22;color:${s.macroWeightColor};border:1px solid ${s.macroWeightColor}44;letter-spacing:0.5px">🌐 MACRO: ${s.macroWeight}</span>` : '';
+      const macroNote = s.macroNote ? `<div style="margin-top:5px;padding:6px 10px;background:#0f172a;border-left:2px solid ${s.macroWeightColor || '#334155'};border-radius:0 4px 4px 0;font-size:11px;color:#94a3b8;line-height:1.5">${s.macroNote}</div>` : '';
+      return `<div class="rm-step ${s.urgency}">
+        ${macroTag}
+        <div class="rm-title">${s.title}</div>
+        <div class="rm-detail">${s.detail}</div>
+        <div class="rm-impact" style="color:${s.impactColor}">${s.impact}</div>
+        ${macroNote}
+        <span class="rm-timeline">${s.timeline}</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+// ═══ Macro Readiness tab renderer ═══
+function renderMacroTab(mr, meta) {
+  const el = document.getElementById('macro-content');
+  if (!el || !mr) return;
+
+  const sc = mr.alignmentScore || 0;
+  const moves = mr.moves || [];
+  const totalImpact = moves.reduce((s, m) => s + (m.impact || 0), 0);
+  const potential = Math.min(sc + totalImpact, 100);
+  const ceiling = mr.regimeCeiling || potential;
+  const ceilingWhy = mr.regimeCeilingWhy || '';
+  const criticoCount = moves.filter(m => m.urgency === 'CRÍTICO').length;
+
+  // Derive investment bias from regime
+  const biasMap = {
+    STAGFLATION_RISK:'DEFENSIVO 🛡️', RISK_OFF:'DEFENSIVO 🛡️', RECESSION_WATCH:'DEFENSIVO 🛡️',
+    LATE_CYCLE:'NEUTRO ⚖️', EXPANSION:'OFENSIVO 🚀', GOLDILOCKS:'OFENSIVO 🚀'
+  };
+  const biasColors = { DEFENSIVO:'#ef4444', NEUTRO:'#f59e0b', OFENSIVO:'#10b981' };
+  const biasLabel = biasMap[mr.regime] || 'NEUTRO ⚖️';
+  const biasKey = biasLabel.split(' ')[0];
+  const biasColor = biasColors[biasKey] || '#f59e0b';
+
+  // Staleness warning — if lastUpdate > 2 days ago
+  let stalenessHtml = '';
+  if (mr.lastUpdate) {
+    const months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+    const parts = mr.lastUpdate.split(' ');
+    if (parts.length >= 3) {
+      const d = new Date(parseInt(parts[2]), months[parts[0]] ?? 0, parseInt(parts[1]));
+      const ageDays = Math.floor((Date.now() - d.getTime()) / 86400000);
+      if (ageDays >= 2) stalenessHtml = `<span style="font-size:10px;background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:4px;padding:2px 7px;font-weight:700">⚠️ Datos de hace ${ageDays}d</span>`;
+    }
+  }
+
+  // Flashing badge CSS — injected once
+  if (!document.getElementById('macro-flash-style')) {
+    const st = document.createElement('style');
+    st.id = 'macro-flash-style';
+    st.textContent = `
+      @keyframes flashBadge {
+        0%,100%{opacity:1;box-shadow:0 0 0 0 #f59e0b55}
+        50%{opacity:.6;box-shadow:0 0 8px 3px #f59e0b88}
+      }
+      .estimated-badge {
+        display:inline-flex;align-items:center;gap:4px;
+        padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;
+        background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55;
+        letter-spacing:.5px;animation:flashBadge 1.4s ease-in-out infinite;
+        flex-shrink:0;cursor:help;
+      }
+    `;
+    document.head.appendChild(st);
+  }
+
+  // Running cumulative score for each move badge
+  let runningScore = sc;
+
+  // Tab shortcut map — links move keywords to dashboard tabs
+  function moveTabHint(m) {
+    const txt = (m.action + m.from + (m.why||'')).toLowerCase();
+    if (txt.includes('margen') || txt.includes('táctica') || txt.includes('4090')) return {tab:'posiciones', label:'→ Ver Posiciones'};
+    if (txt.includes('tastytrade') || txt.includes('opciones') || txt.includes('nvts') || txt.includes('hims')) return {tab:'posiciones', label:'→ Ver Opciones'};
+    if (txt.includes('sep ira') || txt.includes('12016362')) return {tab:'cuentas', label:'→ Ver Cuentas'};
+    if (txt.includes('gld') || txt.includes('iau') || txt.includes('hedge')) return {tab:'allocation', label:'→ Ver Allocation'};
+    if (txt.includes('loc') || txt.includes('wells') || txt.includes('deuda') || txt.includes('loa')) return {tab:'deuda', label:'→ Ver Deuda'};
+    if (txt.includes('dec') || txt.includes('flujo') || txt.includes('surplus') || txt.includes('ingreso')) return {tab:'flujo', label:'→ Ver Flujo'};
+    return {tab:'resumen', label:'→ Ver Resumen'};  // generic fallback — never returns null
+  }
+
+  el.innerHTML = `
+    <!-- ── HEADER STRIP: Regime + Bias + Score + CRÍTICO alert ── -->
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid ${mr.regimeColor}44;border-radius:12px;padding:14px 18px;margin-bottom:12px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-size:16px">🌐</span>
+          <span style="padding:3px 12px;background:${mr.regimeColor}22;color:${mr.regimeColor};border:1px solid ${mr.regimeColor}55;border-radius:20px;font-size:12px;font-weight:700">${mr.regimeLabel || ''}</span>
+          <span style="padding:3px 12px;background:${biasColor}18;color:${biasColor};border:1px solid ${biasColor}44;border-radius:20px;font-size:12px;font-weight:700">Sesgo: ${biasLabel}</span>
+          ${criticoCount > 0 ? `<span style="padding:3px 10px;background:#ef444422;color:#ef4444;border:1px solid #ef444455;border-radius:20px;font-size:11px;font-weight:700">🚨 ${criticoCount} CRÍTICO${criticoCount>1?'s':''} pendiente${criticoCount>1?'s':''}</span>` : '<span style="padding:3px 10px;background:#10b98115;color:#10b981;border:1px solid #10b98133;border-radius:20px;font-size:11px;font-weight:700">✅ Sin moves CRÍTICOS</span>'}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <div style="text-align:right">
+            <div style="font-size:10px;color:#64748b;letter-spacing:1px;font-weight:700">ALINEACIÓN</div>
+            <div style="font-size:32px;font-weight:800;color:${mr.alignmentColor || '#f59e0b'};line-height:1.1">${sc}<span style="font-size:14px">%</span></div>
+            <div style="font-size:10px;color:${mr.alignmentColor || '#f59e0b'};font-weight:600">${mr.alignmentLabel || ''}</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#94a3b8;line-height:1.5;margin-bottom:8px">${mr.regimeContext || ''}</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-size:10px;color:#475569">📅 ${mr.lastUpdate || '—'}</span>
+        ${stalenessHtml}
+      </div>
+    </div>
+
+    <!-- ── ACTION BANNER (1-line from Master State, consistent with all tabs) ── -->
+    ${(() => {
+      const act = (dashActions || {}).posiciones;
+      if (!act || !act.text) return '';
+      return `<div style="border-left:3px solid ${act.borderColor || '#f59e0b'};background:${act.borderColor || '#f59e0b'}11;border-radius:0 8px 8px 0;padding:9px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <span style="font-size:12px;color:#e2e8f0;line-height:1.4;flex:1">${act.text}</span>
+        <a href="#" onclick="showTab('resumen');return false;" style="font-size:10px;font-weight:700;color:#60a5fa;text-decoration:none;white-space:nowrap;flex-shrink:0">Ver Resumen ↗</a>
+      </div>`;
+    })()}
+
+    <!-- ── MACRO FACTORS STRIP (always visible) ── -->
+    <div style="background:#1e293b;border-radius:10px;padding:12px 16px;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;color:#64748b;letter-spacing:1px;margin-bottom:10px">📊 SENSIBILIDADES DEL PORTAFOLIO</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+        ${(mr.macroFactors||[]).map(f => { const label=f.factor||f.name||'?'; const pct=f.protection??f.value??0; const clr=f.protectionColor||f.color||'#94a3b8'; return `
+          <div style="text-align:center">
+            <div style="font-size:10px;color:#64748b;margin-bottom:4px;font-weight:600">${label}</div>
+            <div style="height:5px;background:#0f172a;border-radius:3px;margin-bottom:4px">
+              <div style="height:100%;width:${pct}%;background:${clr};border-radius:3px;transition:width .7s"></div>
+            </div>
+            <div style="font-size:13px;font-weight:800;color:${clr}">${pct}%</div>
+            <div style="font-size:9px;color:#475569">${pct < 35 ? '🚨' : pct < 65 ? '⚠️' : '✅'}</div>
+          </div>`; }).join('')}
+      </div>
+      ${(mr.macroFactors||[]).some(f => f.note) ? `
+      <details style="margin-top:10px">
+        <summary style="cursor:pointer;font-size:10px;color:#475569;list-style:none">▼ ver notas por factor</summary>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+          ${(mr.macroFactors||[]).filter(f=>f.note).map(f=>{ const label=f.factor||f.name||'?'; const clr=f.protectionColor||f.color||'#94a3b8'; return `
+            <div style="display:flex;gap:8px;align-items:flex-start">
+              <span style="font-size:10px;font-weight:700;color:${clr};min-width:70px">${label}</span>
+              <span style="font-size:11px;color:#64748b;line-height:1.4">${f.note}</span>
+            </div>`; }).join('')}
+        </div>
+      </details>` : ''}
+    </div>
+
+    <!-- ── MOVIMIENTOS — PROTAGONISTAS ── -->
+    <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:12px">
+
+      <!-- Potential bar -->
+      <div style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:13px;font-weight:700;color:#f8fafc">⚡ Si ejecutas estas acciones:</span>
+          <span style="font-size:13px;font-weight:800;color:#10b981">${sc}% → <span style="font-size:18px">${potential}%</span> alineado</span>
+        </div>
+        <div style="position:relative;height:10px;background:#0f172a;border-radius:5px;overflow:hidden">
+          <div style="position:absolute;left:0;top:0;height:100%;width:${sc}%;background:${mr.alignmentColor || '#f59e0b'};border-radius:5px;transition:width .8s"></div>
+          <div style="position:absolute;left:${sc}%;top:0;height:100%;width:${Math.min(potential - sc, 100 - sc)}%;background:#10b98166;border-radius:0 5px 5px 0;transition:width .8s 0.2s"></div>
+          ${ceiling < 100 ? `<div style="position:absolute;left:${ceiling}%;top:-2px;bottom:-2px;width:2px;background:#f59e0b;opacity:.7"></div>` : ''}
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:#475569;margin-top:4px">
+          <span>Hoy: ${sc}%</span>
+          <span style="color:#10b981">Potencial: +${totalImpact} pts si completas todo</span>
+          <span>Meta: ${potential}%</span>
+        </div>
+      </div>
+
+      <!-- Regime ceiling callout -->
+      ${ceiling < 100 ? `
+      <div style="display:flex;align-items:flex-start;gap:8px;background:#f59e0b0d;border:1px solid #f59e0b33;border-radius:8px;padding:10px 13px;margin-bottom:14px">
+        <span style="font-size:14px;flex-shrink:0;margin-top:1px">🔒</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#f59e0b;margin-bottom:3px">Techo del régimen ${mr.regimeLabel || ''}: ${ceiling}%</div>
+          <div style="font-size:11px;color:#94a3b8;line-height:1.5">${ceilingWhy}</div>
+        </div>
+      </div>` : ''}
+
+      <!-- Move cards -->
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${moves.map(m => {
+          const impactLabel = m.impact ? `+${m.impact} pts` : '';
+          runningScore += (m.impact || 0);
+          const newScore = runningScore;
+          // Estimated data detection: missing priceRef OR priceRef does not contain "live" (English)
+          const isEstimated = !m.priceRef || !/live/i.test(m.priceRef);
+          const estimatedBadge = isEstimated
+            ? `<span class="estimated-badge" title="${m.priceRef || 'Precios no verificados en vivo — revisar antes de ejecutar'}">⚠️ DATOS ESTIMADOS</span>`
+            : `<span style="font-size:9px;color:#475569;flex-shrink:0" title="${m.priceRef}">✅ live</span>`;
+          // Steps list
+          const stepsHtml = (m.steps && m.steps.length)
+            ? `<details style="margin-top:8px">
+                <summary style="cursor:pointer;font-size:11px;font-weight:600;color:#60a5fa;list-style:none;display:flex;align-items:center;gap:6px">
+                  <span>📋 Pasos exactos (${m.steps.length})</span><span style="font-size:9px;color:#475569">▼ ver</span>
+                </summary>
+                <div style="margin-top:8px;padding:10px 12px;background:#1e293b;border-radius:8px;border-left:3px solid #60a5fa33">
+                  ${m.steps.map((step, i) => {
+                    const isHeader = !step.startsWith('  ');
+                    return isHeader
+                      ? `<div style="font-size:11px;color:#cbd5e1;padding:3px 0;${i > 0 ? 'margin-top:4px' : ''}"><span style="color:#60a5fa;font-weight:700;margin-right:6px">${i + 1}.</span>${step}</div>`
+                      : `<div style="font-size:11px;color:#64748b;padding:1px 0 1px 20px;line-height:1.5">${step.trim()}</div>`;
+                  }).join('')}
+                </div>
+              </details>`
+            : '';
+          return `
+          <div style="border:1px solid ${m.urgencyColor}33;border-left:4px solid ${m.urgencyColor};border-radius:0 8px 8px 0;padding:12px 14px;background:#0f172a">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap">
+                <span style="font-size:15px;flex-shrink:0">${m.icon}</span>
+                <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;background:${m.urgencyColor}22;color:${m.urgencyColor};border:1px solid ${m.urgencyColor}44;letter-spacing:.5px;flex-shrink:0">${m.urgency}</span>
+                <span style="font-size:13px;font-weight:700;color:#f8fafc">${m.action}</span>
+                ${estimatedBadge}
+              </div>
+              ${impactLabel ? `<div style="flex-shrink:0;text-align:center;background:#10b98120;border:1px solid #10b98144;border-radius:8px;padding:4px 10px">
+                <div style="font-size:14px;font-weight:800;color:#10b981">${impactLabel}</div>
+                <div style="font-size:9px;color:#64748b">→ ${newScore}%</div>
+              </div>` : ''}
+            </div>
+            <div style="display:grid;grid-template-columns:auto 1fr auto 1fr;gap:3px 8px;font-size:11px;margin-bottom:8px">
+              <span style="color:#475569;font-weight:600">DE</span><span style="color:#94a3b8">${m.from}</span>
+              <span style="color:#475569;font-weight:600;padding-left:8px">HACIA</span><span style="color:#cbd5e1">${m.to}</span>
+              <span style="color:#475569;font-weight:600">MONTO</span><span style="color:#cbd5e1;font-weight:600">${m.amount}</span>
+            </div>
+            <div style="font-size:11px;color:#64748b;line-height:1.5;border-top:1px solid #1e293b;padding-top:7px">${m.why}</div>
+            ${(() => { const hint = moveTabHint(m); return hint ? `<div style="margin-top:6px"><a href="#" onclick="showTab('${hint.tab}');return false;" style="font-size:10px;font-weight:700;color:#60a5fa;text-decoration:none;letter-spacing:.3px">${hint.label} ↗</a></div>` : ''; })()}
+            ${stepsHtml}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <!-- ── TRIGGERS ── -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+      ${(mr.triggers||[]).map(t => `
+        <div style="background:#1e293b;border-radius:10px;padding:14px;border-top:3px solid ${t.dirColor}">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span style="font-size:16px">${t.icon}</span>
+            <span style="font-size:11px;font-weight:700;color:${t.dirColor}">${t.label}</span>
+          </div>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.5">${t.condition}</div>
+        </div>`).join('')}
+    </div>
+  `;
+}
+
+// ═══ Weekly Actions renderer ═══
+function renderWeeklyActions(actions, meta) {
+  const panel = document.getElementById('weekly-actions-panel');
+  const list  = document.getElementById('weekly-actions-list');
+  const dateEl= document.getElementById('weekly-actions-date');
+  if (!panel || !list || !actions || !actions.length) return;
+
+  if (dateEl && meta && meta.weeklyFocusDate) dateEl.textContent = meta.weeklyFocusDate;
+
+  const catColors = { RIESGO:'#ef4444', FLUJO:'#f59e0b', OPCIONES:'#8b5cf6', MACRO:'#60a5fa', DEUDA:'#10b981', INGRESOS:'#10b981', NEGOCIOS:'#3b82f6', ACTIVOS:'#a78bfa' };
+
+  list.innerHTML = actions.map(a => {
+    const cc = catColors[a.category] || '#64748b';
+    return `<div style="display:flex;gap:12px;align-items:flex-start;background:#1e293b;border:1px solid ${a.priorityColor}33;border-left:4px solid ${a.priorityColor};border-radius:0 8px 8px 0;padding:12px 14px">
+      <span style="font-size:20px;flex-shrink:0;margin-top:1px">${a.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
+          <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;background:${a.priorityColor}22;color:${a.priorityColor};border:1px solid ${a.priorityColor}44;letter-spacing:.5px">${a.priority}</span>
+          <span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;background:${cc}15;color:${cc}">${a.category}</span>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#f8fafc;margin-bottom:3px">${a.action}</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.5">${a.why}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  panel.style.display = 'block';
+}
+
+// ═══ Income streams renderer ═══
+function renderIncomeStreams(streams, total, annual, coverage, ssNote) {
+  const grid = document.getElementById('income-grid');
+  if (grid && streams) {
+    grid.innerHTML = streams.map(s => `<div class="income-card" style="border-color:${s.color}">
+      <div class="ic-label">${s.label}</div>
+      <div class="ic-amount" style="color:${s.color}">$${s.amount.toLocaleString()}</div>
+      <div class="ic-source">${s.source}</div>
+    </div>`).join('');
+  }
+  const tl = document.getElementById('income-total-label');
+  if (tl) tl.textContent = `~$${total.toLocaleString()}/mes ($${annual.toLocaleString()}/año)`;
+  const cn = document.getElementById('income-coverage-note');
+  if (cn) cn.textContent = `Esto cubre el ${coverage}% de tu meta de $35K/año en lifestyle blended. ${ssNote}`;
+}
+
+// ═══ Debt cards renderer ═══
+function renderDebtCards(debt) {
+  const container = document.getElementById('debt-cards-container');
+  if (!container || !debt) return;
+  const p = debt.primary, s = debt.secondary;
+  container.innerHTML = `
+    <div class="debt-card ${p.severity}">
+      <div class="debt-name">${p.name}</div>
+      <div class="debt-value">$${p.value.toLocaleString()}</div>
+      <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">${p.rate}</span></div>
+      <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$${p.interestMonthly.toLocaleString()}</span></div>
+      <div class="debt-detail"><span class="dl">${p.status}</span><span class="dv">${p.statusDate}</span></div>
+    </div>
+    <div class="debt-card ${s.severity}">
+      <div class="debt-name">${s.name}</div>
+      <div class="debt-value" style="color:${s.valueColor || '#ef4444'}">$${s.value.toLocaleString()}</div>
+      <div class="debt-detail"><span class="dl">Tasa</span><span class="dv">${s.rate}</span></div>
+      <div class="debt-detail"><span class="dl">Interés / mes</span><span class="dv red">~$${s.interestMonthly.toLocaleString()}</span></div>
+      <div class="debt-detail"><span class="dl">Status</span><span class="dv">${s.status}</span></div>
+    </div>`;
+  // Credit cards table
+  const tbody = document.getElementById('credit-cards-body');
+  if (tbody && debt.creditCards) {
+    tbody.innerHTML = debt.creditCards.map(c => `<tr><td>${c.name}</td><td class="right bold">$${c.balance.toLocaleString()}</td></tr>`).join('');
+  }
+  const dtv = document.getElementById('debt-total-val');
+  if (dtv) dtv.textContent = '$' + debt.totalDebt.toLocaleString();
+  const dtl = document.getElementById('debt-total-label');
+  if (dtl) dtl.textContent = 'DEUDA TOTAL (' + debt.totalDebtDate + ')';
+}
+
+// ═══ Metrics Resumen renderer ═══
+function renderMetricsResumen(metrics, meta) {
+  const el = document.getElementById('metrics-resumen');
+  if (!el || !metrics) return;
+  el.innerHTML = metrics.map(m => {
+    let val = m.value;
+    if (m.valueId === 'metric-retirement') val = '$' + (meta ? meta.retirementCore.toLocaleString() : '—');
+    else if (m.valueId === 'metric-gap') val = '$' + (meta ? meta.fiGap.toLocaleString() : '—');
+    else if (m.valueId === 'metric-ss') val = meta && meta.ssMonthly ? '$' + meta.ssMonthly.toLocaleString() + '/mo' : '—';
+    return `<div class="metric-row"><span class="metric-label">${m.label}</span><span class="metric-value" style="color:${m.color}">${val}</span></div>`;
+  }).join('');
+}
+
+// ═══ Waterfall table renderer ═══
+function renderWaterfallTable(rows, surplus) {
+  const tbody = document.getElementById('waterfall-table-body');
+  if (!tbody || !rows) return;
+  tbody.innerHTML = rows.map(r => {
+    const amtStyle = r.sign === '+' ? 'class="right green"' : (r.labelColor ? `class="right" style="color:${r.labelColor};font-weight:600"` : 'class="right red"');
+    const labelStyle = r.labelColor ? `style="color:${r.labelColor};font-weight:600"` : '';
+    const badgeBg = r.typeColor.replace('#','') + '30';
+    const amtDisplay = (r.amount === 0 && r.projected)
+      ? `<span style="color:#64748b">$0</span> <span style="color:#94a3b8;font-size:10px">(proy. $${r.projected.toLocaleString()})</span>`
+      : `${r.sign}$${r.amount.toLocaleString()}`;
+    return `<tr>
+      <td ${labelStyle}>${r.label}</td>
+      <td ${amtStyle}>${amtDisplay}</td>
+      <td class="right"><span class="badge" style="background:#${badgeBg};color:${r.typeColor}">${r.type}</span></td>
+      <td style="color:#94a3b8;font-size:11px">${r.note || ''}</td>
+    </tr>`;
+  }).join('');
+  const sc = document.getElementById('surplus-cell');
+  if (sc && surplus !== undefined) {
+    const sign = surplus >= 0 ? '+' : '';
+    sc.textContent = sign + '$' + Math.abs(surplus).toLocaleString();
+    sc.style.color = surplus >= 0 ? '#10b981' : '#ef4444';
+  }
+}
+
+// ═══ Rebalance table renderer ═══
+function renderRebalanceTable(rows, total, note) {
+  const tbody = document.getElementById('rebalance-body');
+  if (!tbody || !rows) return;
+  tbody.innerHTML = rows.map(r => {
+    const moveCell = r.move === null
+      ? `<td class="right" style="color:#94a3b8">—</td>`
+      : `<td class="right ${r.move > 0 ? 'green' : 'red'}">${r.move > 0 ? '+' : ''}$${Math.abs(r.move).toLocaleString()}</td>`;
+    const twrClass = r.twrUp ? 'green' : 'red';
+    return `<tr>
+      <td><span class="dot" style="background:${r.color}"></span>${r.name}</td>
+      <td class="right">$${r.current.toLocaleString()}</td>
+      ${moveCell}
+      <td class="right bold">$${r.newVal.toLocaleString()}</td>
+      <td class="right ${twrClass}">${r.twr}</td>
+    </tr>`;
+  }).join('');
+  const tfoot = document.getElementById('rebalance-foot');
+  if (tfoot && total) {
+    tfoot.innerHTML = `<tr><td>TOTAL</td><td class="right">$${total.toLocaleString()}</td><td class="right" style="color:#94a3b8">$0 neto</td><td class="right" style="color:#60a5fa">$${total.toLocaleString()}</td><td></td></tr>`;
+  }
+  const noteEl = document.getElementById('rebalance-note');
+  if (noteEl && note) noteEl.textContent = note;
+}
+
+// ═══ Account insight panels renderer ═══
+function renderAccountInsights(accountsInsights) {
+  if (!accountsInsights) return;
+  accountsInsights.forEach((acct, i) => {
+    const el = document.getElementById('insight-acct-' + i);
+    if (!el) return;
+    el.innerHTML = `<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+      <li>• <strong style="color:${acct.rankColor}">${acct.rank}</strong> ${acct.text}</li>
+      <li><strong style="color:#f59e0b">🎯 Rec:</strong> ${acct.rec}</li>
+    </ul>`;
+  });
+}
+
+// ═══ Helpers ═══
+const fmt = n => '$' + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits: 0});
+
+function drawSparkline(canvas, data, color) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const filtered = data.filter(v => v !== null);
+  const min = Math.min(...filtered), max = Math.max(...filtered);
+  const range = max - min || 1;
+  ctx.clearRect(0,0,w,h);
+  ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+  let drawn = 0;
+  data.forEach((v, i) => {
+    if (v === null || v === undefined) return;
+    const x = (i / (data.length - 1)) * w;
+    const y = h - ((v - min) / range) * (h - 4) - 2;
+    drawn === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    drawn++;
+  });
+  ctx.stroke();
+}
+
+// ═══ Table population functions ═══
+function populateAccountsTable() {
+  const tbody = document.getElementById('accountsTable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  // Map account names → source key in dashData.sources
+  const acctSourceMap = {
+    'SEP IRA (TS)':        'tsetf',
+    'TS ETF Tactical':     'tsetf',
+    'TS Cash (SEP)':       'tsetf',
+    'TS Futures PKG27':    'fut',
+    'TS Futures VLV23':    'fut2',
+    'TastyTrade':          'tt',
+    'IBKR Bravo':          'ibkr',
+    'RH AP Act Managed':   'rh',
+    'RH Ap-photonics':     'rhph',
+    'Betterment Roth IRA': 'betterment',
+    'Betterment Trad IRA': 'betterment',
+    'Betterment Emerg.':   'betterment',
+  };
+
+  // Parse "Mon DD YYYY" → Date
+  const monthMap = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  function parseSrcDate(str) {
+    if (!str) return null;
+    const m = str.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/);
+    if (!m) return null;
+    const mo = monthMap[m[1].toLowerCase()];
+    return mo !== undefined ? new Date(+m[3], mo, +m[2]) : null;
+  }
+
+  const today = new Date();
+  const sources = (dashData && dashData.sources) || {};
+
+  accounts.forEach((a, idx) => {
+    const pct = ((a.value / totalBruto) * 100).toFixed(1);
+    const cid = 'spark_' + idx;
+    const sd = sparkData[a.name];
+    const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
+    const tc = trend === '▲' ? '#10b981' : '#ef4444';
+
+    // Days-since calculation
+    const srcKey = acctSourceMap[a.name];
+    const src    = srcKey ? sources[srcKey] : null;
+    const srcDate = src ? parseSrcDate(src.date) : null;
+    let daysCell = '<td class="right" style="color:#475569;font-size:11px">—</td>';
+    if (srcDate) {
+      const days = Math.floor((today - srcDate) / 86400000);
+      const stale = days > 7;
+      daysCell = `<td class="right" style="font-size:11px;color:${stale ? '#ef4444' : '#10b981'}"
+        title="${src.label} · ${src.date}">
+        <span${stale ? ' class="days-stale"' : ''}>${days}d</span>
+      </td>`;
+    }
+
+    tbody.innerHTML += `<tr>
+      <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
+      <td><span class="badge">${a.cat}</span></td>
+      <td class="right bold">${fmt(a.value)}</td>
+      <td class="right" style="color:#94a3b8">${pct}%</td>
+      <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
+      ${daysCell}
+    </tr>`;
+  });
+  document.getElementById('accounts-footer-total').textContent = fmt(totalBruto);
+  setTimeout(() => {
+    accounts.forEach((a, idx) => {
+      const c = document.getElementById('spark_' + idx);
+      const d = sparkData[a.name];
+      if (c && d) drawSparkline(c, d, a.color);
+    });
+  }, 50);
+}
+
+function populateTacticalTable() {
+  const ttbody = document.getElementById('tacticalTable');
+  if (!ttbody) return;
+  ttbody.innerHTML = '';
+  tactical.forEach(t => {
+    const plClass = t.plUp ? 'green' : 'red';
+    const plSign  = t.plUp ? '+' : '-';
+    ttbody.innerHTML += `<tr>
+      <td><strong>${t.sym}</strong></td>
+      <td class="right bold">${fmt(t.val)}</td>
+      <td class="right" style="color:#94a3b8">${t.pct}%</td>
+      <td class="right ${plClass}">${plSign}${fmt(t.pl)}</td>
+    </tr>`;
+  });
+}
+
+function populateSEPIRATable() {
+  const tbody = document.getElementById('sepIRATable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  sepIRA.positions.forEach(p => {
+    const plClass = p.plUp ? 'green' : 'red';
+    const plSign  = p.plUp ? '+' : '-';
+    tbody.innerHTML += `<tr>
+      <td><strong>${p.symbol}</strong><br><span style="color:#64748b;font-size:11px">${p.name}</span></td>
+      <td class="right bold">${fmt(p.mv)}</td>
+      <td class="right" style="color:#94a3b8">${p.pct}%</td>
+      <td class="right ${plClass}">${plSign}${fmt(p.pl)}</td>
+    </tr>`;
+  });
+}
+
+function populateOptionsTable() {
+  const tbody = document.getElementById('optionsTable');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  options.positions.forEach(o => {
+    const expStyle = o.expSoon ? ' style="color:#f59e0b"' : '';
+    tbody.innerHTML += `<tr>
+      <td><strong>${o.symbol}</strong> ${o.spread}</td>
+      <td><span class="badge">${o.type}</span></td>
+      <td class="right">${o.dte}</td>
+      <td class="right"${expStyle}>${o.exp}</td>
+    </tr>`;
+  });
+}
+
+function populateHealthBreakdown() {
+  const bd = document.getElementById('health-breakdown');
+  if (!bd) return;
+  const scores = dashMeta.healthSubScores;
+  const healthHints = {
+    retiro:      null,
+    diversif:    'Añadir AVDV/VWO → sube este score',
+    progresoFI:  'Cada $10K de deuda pagada → +2pts FI',
+    performance: 'Mover capital TT/Futures → IBKR/RH',
+    deuda:       'Pagar $5K de LOC → +5pts deuda',
+    surplus:     'Cerrar Michalitas → surplus positivo → +15pts',
+    liquidez:    'Mantener EF > $35K y CDs Ecuador',
+    riesgo:      'Reducir margen táctico → <$20K'
+  };
+  const items = [
+    {key:'retiro',      lbl:'Retiro'},
+    {key:'diversif',    lbl:'Diversific.'},
+    {key:'progresoFI',  lbl:'Progreso FI'},
+    {key:'performance', lbl:'Performance'},
+    {key:'deuda',       lbl:'Deuda'},
+    {key:'surplus',     lbl:'Surplus'},
+    {key:'liquidez',    lbl:'Liquidez'},
+    {key:'riesgo',      lbl:'Riesgo'}
+  ];
+  bd.innerHTML = items.map(({key, lbl}) => {
+    const {val, color} = scores[key];
+    const hint = healthHints[key];
+    const showHint = hint && val < 65;
+    return `<div class="hb-item">
+      <div class="hb-val" style="color:${color}">${val}</div>
+      <div class="hb-lbl">${lbl}</div>
+      <div class="hb-bar"><div class="hb-fill" style="width:${val}%;background:${color}"></div></div>
+      ${showHint ? `<div style="font-size:9px;color:#64748b;margin-top:3px;line-height:1.3">${hint}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ═══ initFromData: called after JSON loaded ═══
+function initFromData(d) {
+  if (!d) return;
+  dashData         = d; // store full reference for use in renderPerformanceCharts
+  dashMeta         = d.meta;
+  accounts         = d.accounts;
+  tactical         = d.tactical;
+  sparkData        = d.sparkData;
+  totalBruto       = d.meta.totalBruto;
+  sepIRA           = d.sepIRA;
+  options          = d.options;
+  waterfall        = d.waterfall;
+  performance      = d.performance;
+  dashRoadmap      = d.roadmap;
+  dashActions      = d.actions;
+  dashInsights     = d.insights;
+  dashDebt         = d.debt;
+  dashIncomeStreams = d.incomeStreams;
+  dashRebalance    = d.rebalance;
+  dashPieCategories  = d.pieCategories;
+  dashAllocationBar  = d.allocationBar;
+  dashWaterfallTable = d.waterfallTable;
+
+  // Monthly arrays
+  fmMonths    = d.monthly.months;
+  fmTotal     = d.monthly.total;
+  fmRate      = d.monthly.rate;
+  fmRetirement= d.monthly.retirement;
+  fmStocks    = d.monthly.stocks;
+  fmCDs       = d.monthly.cds;
+  fmCash      = d.monthly.cash;
+  fmCarros    = d.monthly.carros;
+  fmCrypto    = d.monthly.crypto;
+
+  // Weekly arrays
+  wkDates = d.weekly.dates;
+  wkTT    = d.weekly.tt;
+  wkIBKR  = d.weekly.ibkr;
+  wkTSETF = d.weekly.tsetf;
+  wkRH         = d.weekly.rh;
+  wkRHPhotonics= d.weekly.rhPhotonics || [];
+  wkFUTCombined = d.weekly.futCombined || d.weekly.fut; // combined historical — total portfolio sum
+  wkFUT         = d.weekly.futCombined || d.weekly.fut; // PKG27 chart: use full combined history (pre-split data + PKG27 current)
+  wkFUT2        = d.weekly.fut2 || [];    // VLV23 only — chart use (current data only)
+  wkSP    = d.weekly.sp;
+
+  // TWR arrays
+  twrPortfolio      = d.twr.portfolio;
+  twrPortfolioGlobal= d.twr.portfolioGlobal;
+  sp500Monthly      = d.twr.sp500Monthly;
+  twrTT    = d.twr.tt;
+  twrIBKR  = d.twr.ibkr;
+  twrTSETF = d.twr.tsetf;
+  twrRH         = d.twr.rh;
+  twrRHPhotonics= d.twr.rhPhotonics || [];
+  twrFUT        = d.twr.fut;
+  twrSP    = d.twr.sp;
+
+  // ── Update DOM display values ──
+  const m = dashMeta;
+  // Subtitle with staleness badge if weekly data is >7 days old
+  const subtitleEl = document.getElementById('dash-subtitle');
+  const subtitleDate = m.subtitle ? new Date(m.subtitle.split(' ').reverse().join(' ')) : null;
+  const dashAgeDays = subtitleDate && !isNaN(subtitleDate)
+    ? Math.floor((Date.now() - subtitleDate.getTime()) / 86400000) : null;
+  const staleWeekly = dashAgeDays !== null && dashAgeDays >= 7;
+  subtitleEl.innerHTML = 'Alberto Rodriguez — Actualizado: ' + m.subtitle +
+    (staleWeekly ? ` <span style="display:inline-block;margin-left:8px;padding:1px 8px;background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55;border-radius:10px;font-size:11px;font-weight:700">⚠️ ${dashAgeDays}d sin actualizar</span>` : '');
+
+  const bv = document.getElementById('nw-bruto-val');
+  const bd = document.getElementById('nw-bruto-delta');
+  if (bv) bv.textContent = fmt(m.nwBruto);
+  if (bd) {
+    bd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwBrutoDelta;
+    bd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
+  }
+
+  const dv = document.getElementById('debt-val');
+  const dd = document.getElementById('debt-delta');
+  if (dv) dv.textContent = '-$' + (m.debtTotal || m.deuda || 0).toLocaleString();
+  if (dd) {
+    dd.textContent = m.debtDelta;
+    dd.className = 'delta ' + (m.debtDeltaUp ? 'up' : 'down');
+  }
+
+  const nv = document.getElementById('nw-neto-val');
+  const nd = document.getElementById('nw-neto-delta');
+  if (nv) nv.textContent = fmt(m.nwNeto);
+  if (nd) {
+    nd.textContent = (m.nwDeltaUp ? '▲ ' : '▼ ') + m.nwNetoDelta;
+    nd.className = 'delta ' + (m.nwDeltaUp ? 'up' : 'down');
+  }
+
+  const fi = document.getElementById('fi-header-text');
+  if (fi) fi.textContent = m.fiPct + '% — faltan $' + m.fiGap.toLocaleString();
+
+  const fibl = document.getElementById('fi-bar-label');
+  if (fibl) fibl.textContent = 'Progreso FI (meta: $' + (m.fiTarget || 500000).toLocaleString() + ')';
+  const fill = document.getElementById('fi-fill-bar');
+  if (fill) {
+    fill.style.width = m.fiPct + '%';
+    fill.style.background = m.fiPct < 50
+      ? 'linear-gradient(90deg, #991b1b, #ef4444)'
+      : m.fiPct < 75
+      ? 'linear-gradient(90deg, #92400e, #f59e0b)'
+      : m.fiPct < 90
+      ? 'linear-gradient(90deg, #065f46, #10b981)'
+      : 'linear-gradient(90deg, #1d4ed8, #3b82f6)';
+  }
+
+  const hs = document.getElementById('healthScoreNum');
+  if (hs) hs.textContent = m.healthScore;
+
+  const hl = document.getElementById('health-label');
+  if (hl) hl.textContent = m.healthLabel;
+  populateHealthBreakdown();
+
+  // weekly-focus-date rendered inline by renderRoadmap
+
+  const sih = document.getElementById('sep-ira-header');
+  if (sih) sih.textContent = sepIRA.header;
+
+  const th = document.getElementById('tactical-header');
+  if (th) th.textContent = dashMeta.tacticalHeader || '';
+
+  const onlv = document.getElementById('options-nlv');
+  if (onlv) onlv.textContent = 'NLV ' + fmt(options.nlv);
+
+  const gc = document.getElementById('fi-gap-card');
+  if (gc) gc.textContent = '$' + m.fiGap.toLocaleString();
+  const ga = document.getElementById('fi-gap-annual');
+  if (ga) ga.textContent = '$' + m.fiGapAnnual.toLocaleString();
+  const ftc = document.getElementById('fi-target-card');
+  if (ftc) ftc.textContent = '$' + (m.fiTarget || 500000).toLocaleString();
+  const ftl = document.getElementById('fi-target-label');
+  if (ftl && m.fiTargetAge) ftl.textContent = 'Meta FI @ ' + m.fiTargetAge;
+  // ss-monthly-card rendered via metricsResumen metric-ss valueId
+
+  // Performance cards
+  const pt = document.getElementById('perf-twr-total');
+  if (pt) pt.textContent = (performance.twrTotal >= 0 ? '+' : '') + performance.twrTotal + '%';
+  const pbn = document.getElementById('perf-best-name');
+  if (pbn) pbn.textContent = performance.best6mName;
+  const pbp = document.getElementById('perf-best-pct');
+  if (pbp) pbp.textContent = (performance.best6mPct >= 0 ? '+' : '') + performance.best6mPct + '%';
+  const p2n = document.getElementById('perf-2nd-name');
+  if (p2n) p2n.textContent = performance.second6mName || '—';
+  const p2p = document.getElementById('perf-2nd-pct');
+  if (p2p && performance.second6mPct !== undefined) p2p.textContent = (performance.second6mPct >= 0 ? '+' : '') + performance.second6mPct + '% TWR total';
+  const pwn = document.getElementById('perf-worst-name');
+  if (pwn) pwn.textContent = performance.worst6mName;
+  const pwp = document.getElementById('perf-worst-pct');
+  if (pwp) pwp.textContent = performance.worst6mPct + '%';
+
+  // TWR note banner
+  const twrNoteEl = document.getElementById('twr-note-text');
+  if (twrNoteEl && performance.twrNote) twrNoteEl.innerHTML = performance.twrNote;
+
+  const fn = document.getElementById('dash-footer-note');
+  if (fn) fn.textContent = m.footerNote;
+
+  // Health diagnostic
+  const hd = document.getElementById('health-diagnostic');
+  if (hd) hd.textContent = m.healthDiagnostic || '';
+
+  // ── Dynamic fields previously hardcoded ──
+  // FI axis label
+  const fiAxisEl = document.getElementById('fi-axis-label');
+  if (fiAxisEl && m.fiTargetAge && m.fiTarget)
+    fiAxisEl.textContent = `FI @ ${m.fiTargetAge} = $${m.fiTarget.toLocaleString()} (blended lifestyle)`;
+
+  // Performance section header range (e.g. "24 meses (Jun 2024 → May 2026)")
+  const perfHeaderEl = document.getElementById('perf-header-range');
+  if (perfHeaderEl && d.monthly && d.monthly.months && d.monthly.months.length) {
+    const months = d.monthly.months;
+    perfHeaderEl.textContent = `${months.length} meses (${months[0]} → ${months[months.length-1]})`;
+  }
+
+  // Weekly tracking start date (3 places)
+  const twrStart = (m && m.weeklyTrackingStart) || 'Ago 2, 2025';
+  ['twr-tracking-start','twr-norm-start'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = twrStart;
+  });
+
+  // Tactical tags from data
+  const tagsEl = document.getElementById('tactical-tags');
+  if (tagsEl && m.tacticalTags && m.tacticalTags.length) {
+    tagsEl.innerHTML = m.tacticalTags.map(t =>
+      `<span class="tag ${t.color}">${t.text}</span>`
+    ).join('');
+  }
+
+  // Income labels
+  const incTotalEl = document.getElementById('income-total-label');
+  if (incTotalEl && d.incomeTotal) {
+    const annual = d.incomeAnnual || (d.incomeTotal * 12);
+    incTotalEl.textContent = `~$${d.incomeTotal.toLocaleString()}/mes ($${annual.toLocaleString()}/año)`;
+  }
+  const incCoverageEl = document.getElementById('income-coverage-note');
+  if (incCoverageEl && d.incomeSSNote) incCoverageEl.textContent = d.incomeSSNote;
+
+  // ── Populate tables ──
+  populateAccountsTable();
+  populateTacticalTable();
+  populateSEPIRATable();
+  populateOptionsTable();
+
+  // ── Render roadmap ──
+  renderRoadmap(dashRoadmap);
+  renderMacroTab(d.macroReadiness, d.meta);
+  renderWeeklyActions(d.weeklyActions, d.meta);
+
+  // ── Render action banners ──
+  if (dashActions) {
+    ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo'].forEach(tab => {
+      renderActionBanner('action-' + tab, dashActions[tab]);
+    });
+  }
+
+  // ── Render insight lists ──
+  if (dashInsights) {
+    ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo'].forEach(tab => {
+      renderInsightList('insight-' + tab, dashInsights[tab]);
+    });
+    renderAccountInsights(dashInsights.accounts);
+  }
+
+  // ── Render incomeSectionNote ──
+  const incNoteEl = document.getElementById('income-section-note');
+  const incNoteText = document.getElementById('income-note-text');
+  if (incNoteEl && incNoteText && d.incomeSectionNote) {
+    incNoteText.textContent = d.incomeSectionNote;
+    incNoteEl.style.display = 'block';
+  }
+
+  // ── Render income streams ──
+  renderIncomeStreams(
+    dashIncomeStreams,
+    d.incomeTotal || 0,
+    d.incomeAnnual || 0,
+    d.incomePassiveCoverage || '—',
+    d.incomeSSNote || ''
+  );
+
+  // ── Render debt cards ──
+  renderDebtCards(dashDebt);
+
+  // ── Render metrics resumen ──
+  renderMetricsResumen(d.metricsResumen, m);
+
+  // ── Render waterfall table ──
+  renderWaterfallTable(dashWaterfallTable, waterfall ? waterfall.surplus : undefined);
+
+  // ── Surplus alert banner ──
+  const surplusBanner = document.getElementById('surplus-alert-banner');
+  if (surplusBanner && waterfall) {
+    const surplusVal = waterfall.surplus || 0;
+    if (surplusVal < 0) {
+      surplusBanner.style.display = 'block';
+      const bannerText = document.getElementById('surplus-banner-text');
+      const bannerAction = document.getElementById('surplus-banner-action');
+      const bannerPayoff = document.getElementById('surplus-banner-payoff');
+      if (bannerText) bannerText.textContent = `Surplus: -$${Math.abs(surplusVal).toLocaleString()}/mes — la LOC crece $${Math.abs(surplusVal).toLocaleString()}/mes`;
+      // Find best recovery scenario from waterfallScenarios
+      const bestScenario = d.waterfallScenarios ? d.waterfallScenarios.find(s => s.surplus > 0) : null;
+      if (bannerAction && bestScenario) bannerAction.textContent = `${bestScenario.label} → +$${bestScenario.surplus.toLocaleString()}/mes surplus`;
+      // LOC payoff estimate
+      const locBal = waterfall.locInterest > 0 ? Math.round(waterfall.locInterest / 0.085 * 12) : 0;
+      if (bannerPayoff && bestScenario && bestScenario.surplus > 0) {
+        const months = Math.ceil(locBal / bestScenario.surplus);
+        const payoffDate = new Date(); payoffDate.setMonth(payoffDate.getMonth() + months);
+        const payoffStr = payoffDate.toLocaleDateString('es', {month:'short',year:'numeric'});
+        bannerPayoff.textContent = `Con "${bestScenario.label}": LOC ($${locBal.toLocaleString()}) pagada en ${months} meses (~${payoffStr})`;
+      }
+    } else {
+      surplusBanner.style.display = 'none';
+    }
+  }
+
+  // ── Render waterfall scenarios ──
+  if (d.waterfallScenarios) {
+    const el = document.getElementById('waterfall-scenarios');
+    if (el) {
+      // Read LOC balance from debt.primary.value (single source of truth)
+      const locBal = (d.debt && d.debt.primary && d.debt.primary.value) ? d.debt.primary.value : 0;
+      el.innerHTML = d.waterfallScenarios.map(s => {
+        const sign  = s.surplus >= 0 ? '+' : '';
+        const color = s.surplus >= 0 ? '#10b981' : '#ef4444';
+        let payoffNote = '';
+        if (s.surplus > 0 && locBal > 0) {
+          const months = Math.ceil(locBal / s.surplus);
+          const pd = new Date(); pd.setMonth(pd.getMonth() + months);
+          const pdStr = pd.toLocaleDateString('es', {month:'short', year:'numeric'});
+          payoffNote = ` <span style="color:#64748b;font-size:11px">(LOC pagada en ${months} meses · ${pdStr})</span>`;
+        } else if (s.surplus < 0) {
+          payoffNote = ` <span style="color:#ef444490;font-size:11px">(LOC crece $${Math.abs(s.surplus)}/mes)</span>`;
+        }
+        return `${s.icon} <strong>${s.label}:</strong> <span style="color:${color};font-weight:600">${sign}$${Math.abs(s.surplus).toLocaleString()}/mes</span>${payoffNote} → ${s.note}`;
+      }).join('<br>');
+    }
+  }
+
+  // ── Render rebalance table ──
+  renderRebalanceTable(dashRebalance, d.rebalanceTotal, d.rebalanceNote);
+
+  // ── Initial renders ──
+  renderGauge();
+  renderPie();
+  renderNWHistorico();
+
+  // ── Pre-populate Performance tab static elements (cards, source badges) ──
+  // These don't require chart rendering so safe to call immediately
+  if (twrPortfolioGlobal) {
+    // Inline portfolio TWR calculation for initial load
+    function _twrNM(arr, n) {
+      const startIdx = arr.length - (n + 1);
+      if (startIdx < 0 || arr[startIdx] == null) return null;
+      const endVal = arr[arr.length - 1];
+      if (endVal == null) return null;
+      return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
+    }
+    function _twrTotal(arr) {
+      const vals = arr.filter(v => v !== null && v !== undefined);
+      if (!vals.length) return null;
+      return vals[vals.length - 1] - 100;
+    }
+    function _pctStr(val) {
+      if (val === null) return '—';
+      return (val >= 0 ? '+' : '') + val.toFixed(1) + '%';
+    }
+    function _colorForVal(val) {
+      if (val === null) return '#94a3b8';
+      return val >= 0 ? '#10b981' : '#ef4444';
+    }
+    const _24 = _twrTotal(twrPortfolioGlobal);
+    const _12 = _twrNM(twrPortfolioGlobal, 12);
+    const _6  = _twrNM(twrPortfolioGlobal, 6);
+    const _3  = _twrNM(twrPortfolioGlobal, 3);
+    const el24 = document.getElementById('twr-24m');
+    const el12 = document.getElementById('twr-12m');
+    const el6  = document.getElementById('twr-6m');
+    const el3  = document.getElementById('twr-3m');
+    if (el24) { el24.textContent = _pctStr(_24); el24.style.color = _colorForVal(_24); }
+    if (el12) { el12.textContent = _pctStr(_12); el12.style.color = _colorForVal(_12); }
+    if (el6)  { el6.textContent  = _pctStr(_6);  el6.style.color  = _colorForVal(_6); }
+    if (el3)  { el3.textContent  = _pctStr(_3);  el3.style.color  = _colorForVal(_3); }
+  }
+
+  // ── Update source badges (works without full chart render) ──
+  if (d.sources) {
+    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡', betterment:'📱' };
+    // Live MCP sources: derive date from last weekly entry (auto-updates with data)
+    const liveSrcKeys = new Set(['tsetf', 'tt', 'fut', 'fut2']);
+    const weeklyDates = (d.weekly && d.weekly.dates) || [];
+    const lastWeeklyDate = weeklyDates.length
+      ? weeklyDates[weeklyDates.length - 1] + ' ' + new Date().getFullYear()
+      : null;
+    Object.keys(d.sources).forEach(key => {
+      const src = d.sources[key];
+      const el = document.getElementById('src-' + key);
+      if (!el || !src) return;
+      const dateStr = (liveSrcKeys.has(key) && lastWeeklyDate) ? lastWeeklyDate : src.date;
+      el.innerHTML = `${emojiMap[key] || '📡'} ${src.label} · ${dateStr}`;
+    });
+  }
+
+  // ── Allocation alerts from data.json ──
+  const alertsContainer = document.getElementById('allocation-alerts-container');
+  if (alertsContainer && d.allocationAlerts) {
+    alertsContainer.innerHTML = d.allocationAlerts.map(a =>
+      `<div class="alert"><span>${a.icon}</span><span>${a.text}</span></div>`
+    ).join('');
+  }
+
+  // ── FI Estimator auto-calculate ──
+  calcFIEstimate();
+
+  // ── Restore last active tab (after all data is ready) ──
+  try {
+    const savedTab = localStorage.getItem('mmw_tab');
+    const validTabs = ['resumen','cuentas','allocation','deuda','fi','posiciones','performance','flujo','macro'];
+    if (savedTab && validTabs.includes(savedTab) && savedTab !== 'resumen') {
+      showTab(savedTab, true);
+    }
+  } catch(e) {}
+
+  // ── Date Stamps ──
+  injectAllDateStamps(d);
+}
+
+// ═══ DATE STAMP HELPERS ═══
+function dsBadge(isoDate, label) {
+  if (!isoDate) return '';
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const d = new Date(isoDate + 'T00:00:00');
+  const days = Math.floor((today - d) / 86400000);
+  let cls, icon, age;
+  if (days <= 1)      { cls = 'ds-live';   icon = '✅'; age = days === 0 ? 'HOY' : 'AYER'; }
+  else if (days <= 7) { cls = 'ds-recent'; icon = '⚠️'; age = days + 'd'; }
+  else                { cls = 'ds-stale';  icon = '🔴'; age = days + 'd · STALE'; }
+  const lbl = label ? `${label} · ` : '';
+  return `<span class="ds-badge ${cls}" title="${isoDate}">${icon} ${lbl}${age}</span>`;
+}
+
+function dsFooter(html) {
+  return `<div class="ds-footer">${html}</div>`;
+}
+
+function injectAllDateStamps(d) {
+  const ds = (d && d.datestamps) || {};
+
+  // Helper: append ds-footer to a panel/card by ID
+  function inject(elId, badgesHtml) {
+    const el = document.getElementById(elId);
+    if (!el || !badgesHtml) return;
+    // Remove any previously injected footer to avoid duplication
+    const old = el.querySelector('.ds-footer');
+    if (old) old.remove();
+    el.insertAdjacentHTML('beforeend', dsFooter(badgesHtml));
+  }
+
+  // Top-level cards — all sourced from TS + Xero + manual snapshot
+  const tsBadge  = dsBadge(ds.ts,   'TS MCP');
+  const ttBadge  = dsBadge(ds.tt,   'TT Relay');
+  const xeroBadge= dsBadge(ds.xero, 'Xero');
+  const manBadge = dsBadge(ds.manual,'Manual');
+  const betBadge = dsBadge(ds.betterment,'Betterment');
+  const ibkrBadge= dsBadge(ds.ibkr, 'IBKR');
+  const rhBadge  = dsBadge(ds.rh,   'RH');
+  const ecBadge  = dsBadge(ds.ecuador,'Ecuador CDs');
+  const pepBadge = dsBadge(ds.pepe, 'Préstamo');
+  const migBadge = dsBadge(ds.miguel,'Miguel Auto');
+  const futBadge = dsBadge(ds.fut,  'TS Futures');
+
+  // NW Bruto = TS + Betterment + manual loans + Ecuador
+  inject('card-nwbruto', tsBadge + ttBadge + betBadge + manBadge);
+  // Deuda = Xero LIVE
+  inject('card-deuda', xeroBadge);
+  // NW Neto = composite
+  inject('card-nwneto', tsBadge + betBadge + xeroBadge);
+
+  // Cuentas panel — all sources
+  inject('panel-cuentas', tsBadge + ttBadge + betBadge + ibkrBadge + rhBadge + ecBadge + pepBadge + migBadge + futBadge);
+
+  // NW Histórico chart — TS + manual estimates
+  inject('panel-nwhistorico', tsBadge + manBadge);
+
+  // Income panel — Xero for DEC, manual for others
+  inject('panel-income', xeroBadge + manBadge);
+
+  // Allocation — composite of all accounts
+  inject('panel-allocation', tsBadge + ttBadge + betBadge + manBadge);
+
+  // Deuda tab panels
+  const debtCards = document.getElementById('debt-cards-container');
+  if (debtCards) {
+    const old = debtCards.querySelector('.ds-footer');
+    if (old) old.remove();
+    debtCards.insertAdjacentHTML('beforeend', dsFooter(xeroBadge));
+  }
+  inject('panel-cc', xeroBadge);
+
+  // FI Path — uses NW Neto (composite)
+  inject('panel-fi', tsBadge + betBadge + manBadge);
+
+  // Posiciones panels
+  inject('panel-sepp',    tsBadge);
+  inject('panel-tactical', tsBadge);
+  inject('panel-options',  ttBadge);
+
+  // Waterfall — Xero + TS
+  inject('panel-waterfall', xeroBadge + tsBadge);
+}
+
+// ═══ CHART RENDERING FUNCTIONS (unchanged logic, use global vars) ═══
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+
+function renderPie() {
+  const ctx = document.getElementById('pieCategory');
+  if (!ctx || !accounts) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const data = dashPieCategories || [];
+  ctx._chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels: data.map(d => d.label),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderWidth: 0 }]},
+    options: { cutout: '55%',
+      plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+        tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) } } } }
+  });
+}
+
+function renderBar() {
+  const ctx = document.getElementById('barAllocation');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const data = dashAllocationBar || [];
+  ctx._chart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: data.map(d => d.name),
+      datasets: [{ data: data.map(d => d.value), backgroundColor: data.map(d => d.color), borderRadius: 6 }]},
+    options: { indexAxis: 'y',
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed.x) } } },
+      scales: { x: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } },
+                y: { grid: { display: false } } } }
+  });
+}
+
+function renderLine() {
+  const ctx = document.getElementById('lineChart');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const nwNeto = dashMeta ? dashMeta.nwNeto : 0;
+  const fp = (dashData && dashData.fiProjection) ? dashData.fiProjection : {};
+  const labels      = fp.labels      || ['Hoy (53)', '2027', '2028', '2029', '2030', '2031 (58)'];
+  const fiTarget    = fp.target      || 500000;
+  const baseRaw     = (fp.base        && fp.base.length)        ? fp.base        : [null, 369000, 399000, 434000, 471000, 511000];
+  const optimRaw    = (fp.optimistic  && fp.optimistic.length)  ? fp.optimistic  : [null, 389000, 439000, 494000, 544000, 599000];
+  const pessRaw     = (fp.pessimistic && fp.pessimistic.length) ? fp.pessimistic : [null, 349000, 364000, 381000, 399000, 419000];
+  // Replace null (index 0) with live nwNeto
+  const fill = v => (v === null || v === undefined) ? nwNeto : v;
+  const base       = baseRaw.map(fill);
+  const optimistic = optimRaw.map(fill);
+  const pessimistic= pessRaw.map(fill);
+  const target     = labels.map(() => fiTarget);
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: fp.labelOptimistic  || '🟢 Optimista', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
+      { label: fp.labelBase        || '🔵 Base',      data: base,       borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
+      { label: fp.labelPessimistic || '🔴 Pesimista', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
+      { label: 'Meta FI $' + (fiTarget/1000).toFixed(0) + 'K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false }
+    ]},
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } } },
+      scales: { y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function makeAcctChart(canvasId, label, data, color) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const s = data[0], e = data[data.length-1];
+  const chg = ((e-s)/s*100).toFixed(1);
+  const up = e >= s;
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: fmMonths, datasets: [{
+      label: label + ' (' + (up?'+':'') + chg + '%)',
+      data: data, borderColor: color, backgroundColor: color+'20', fill: true,
+      tension: 0.3, pointRadius: 3, pointBackgroundColor: color, borderWidth: 2.5
+    }]},
+    options: {
+      plugins: { legend: { display:true, position:'top', labels: { font:{size:12,weight:'bold'}, color: up?'#10b981':'#ef4444' }},
+        tooltip: { callbacks: { label: c => '$'+c.parsed.y.toLocaleString() }}},
+      scales: { y: { ticks: { callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } }
+    }
+  });
+}
+
+function renderTotalTWR(n) {
+  // n = number of months to show; 0 = all
+  const ctx = document.getElementById('chartTotalTWR');
+  if (!ctx || !twrPortfolio || !sp500Monthly || !fmMonths) return;
+  if (ctx._chart) ctx._chart.destroy();
+
+  // Update range button states
+  ['ttwr-6m','ttwr-12m','ttwr-all'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.remove('active-range');
+  });
+  const activeId = n === 6 ? 'ttwr-6m' : n === 12 ? 'ttwr-12m' : 'ttwr-all';
+  const activeBtn = document.getElementById(activeId);
+  if (activeBtn) activeBtn.classList.add('active-range');
+
+  const total = fmMonths.length;
+  const start = (n > 0 && n < total) ? total - n : 0;
+  const labels   = fmMonths.slice(start);
+  const twrSlice = twrPortfolio.slice(start);
+  const spSlice  = sp500Monthly.slice(start);
+  const rawBase  = fmTotal[start] || fmTotal[0];
+  const rawSlice = fmTotal.slice(start).map(v => (v / rawBase * 100).toFixed(1));
+
+  // Rebase TWR and S&P to 100 at slice start
+  const twrBase = twrSlice[0] || 100;
+  const spBase  = spSlice[0]  || 100;
+  const twrRebased = twrSlice.map(v => v != null ? (v / twrBase * 100).toFixed(1) : null);
+  const spRebased  = spSlice.map(v  => v != null ? (v / spBase  * 100).toFixed(1) : null);
+
+  const twrPct = twrRebased.length ? (parseFloat(twrRebased[twrRebased.length-1]) - 100).toFixed(1) : '—';
+  const spPct  = spRebased.length  ? (parseFloat(spRebased[spRebased.length-1])   - 100).toFixed(1) : '—';
+  const rangeLabel = n > 0 ? n + 'M' : 'Todo';
+
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: 'TWR Real ('+(twrPct >= 0 ? '+' : '')+twrPct+'%)', data: twrRebased, borderColor:'#10b981', backgroundColor:'#10b98120', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label: 'S&P 500 ('+(spPct >= 0 ? '+' : '')+spPct+'%)',   data: spRebased,  borderColor:'#f59e0b', fill:false, tension:0.3, pointRadius:2, borderWidth:2, borderDash:[6,3] },
+      { label: 'Raw (con flujos)', data: rawSlice, borderColor:'#64748b', fill:false, tension:0.3, pointRadius:2, borderWidth:1.5, borderDash:[3,3] },
+    ]},
+    options: { plugins: {
+        legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11,weight:'bold'},color:'#e2e8f0'}},
+        tooltip:{ callbacks:{ label: c=>c.dataset.label.split('(')[0].trim()+': '+parseFloat(c.parsed.y).toFixed(1) }}},
+      scales: { y: { ticks:{font:{size:11}}, grid:{color:'#33415540'}, title:{display:true,text:'Base 100 = '+labels[0],color:'#64748b',font:{size:11}} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } }
+    }
+  });
+}
+
+function renderPerformanceCharts() {
+  // ── Total portfolio TWR — default 12M ──
+  renderTotalTWR(12);
+
+  // Monthly rate bar
+  const ctxRate = document.getElementById('chartMonthlyRate');
+  if (ctxRate) {
+    if (ctxRate._chart) ctxRate._chart.destroy();
+    ctxRate._chart = new Chart(ctxRate, {
+      type: 'bar',
+      data: { labels: fmMonths, datasets: [{
+        data: fmRate,
+        backgroundColor: fmRate.map(r => r >= 0 ? '#10b98180' : '#ef444480'),
+        borderColor: fmRate.map(r => r >= 0 ? '#10b981' : '#ef4444'),
+        borderWidth: 1, borderRadius: 4
+      }]},
+      options: { plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> (c.parsed.y>=0?'+':'')+c.parsed.y.toFixed(1)+'%' }}},
+        scales: { y: { ticks:{ callback: v=>v+'%', font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}}, grid:{display:false} } } }
+    });
+  }
+
+  // Individual trading charts
+  function makeTradingChart(id, data, color, label) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [{
+        label: label || '', data: data, borderColor: color, backgroundColor: color + '20',
+        fill: true, tension: 0.3, pointRadius: 2, borderWidth: 2.5, spanGaps: true
+      }]},
+      options: { plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> '$'+c.parsed.y.toLocaleString() }}},
+        scales: { y: { ticks:{ callback: v=>'$'+(v>=1000?(v/1000).toFixed(1)+'K':v), font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} } } }
+    });
+  }
+  makeTradingChart('chartTT',    wkTT,    '#8b5cf6', 'TastyTrade');
+  makeTradingChart('chartIBKR',  wkIBKR,  '#10b981', 'IBKR Bravo');
+  makeTradingChart('chartTSETF', wkTSETF, '#3b82f6', 'TS ETF Tactical');
+  makeTradingChart('chartRH',         wkRH,          '#f59e0b', 'RH AP Act Managed');
+  makeTradingChart('chartRHPhotonics',wkRHPhotonics, '#fb923c', 'RH Ap-photonics');
+  makeTradingChart('chartFUT',   wkFUT,   '#ef4444', 'TS Futures PKG27');
+  if (wkFUT2 && wkFUT2.some(v => v !== null)) {
+    makeTradingChart('chartFUT2', wkFUT2, '#f87171', 'TS Futures VLV23');
+  }
+
+  // ── TWR helper functions ──
+  function twr6M(arr) {
+    // Only show if the account existed 26 weeks ago — verify actual array position
+    const startIdx = arr.length - 27;
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
+  }
+  function twr3M(arr) {
+    // Only show if the account existed 13 weeks ago — verify actual array position
+    const startIdx = arr.length - 14;
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
+  }
+  function twrNM(arr, n) {
+    // n = number of weeks back — only show if account existed that far back
+    const startIdx = arr.length - (n + 1);
+    if (startIdx < 0 || arr[startIdx] == null) return null;
+    const endVal = arr[arr.length - 1];
+    if (endVal == null) return null;
+    return arr[startIdx] > 0 ? ((endVal / arr[startIdx]) - 1) * 100 : null;
+  }
+  function twrTotal(arr) {
+    const vals = arr.filter(v => v !== null && v !== undefined);
+    if (!vals.length) return null;
+    return vals[vals.length - 1] - 100;
+  }
+
+  // ── Portfolio-level monthly TWR cards (from portfolioGlobal, monthly data) ──
+  function renderPortfolioTWRCards() {
+    const arr = twrPortfolioGlobal;
+    if (!arr || arr.length < 2) return;
+    function pctStr(val) {
+      if (val === null) return '—';
+      return (val >= 0 ? '+' : '') + val.toFixed(1) + '%';
+    }
+    function colorForVal(val) {
+      if (val === null) return '#94a3b8';
+      return val >= 0 ? '#10b981' : '#ef4444';
+    }
+
+    const twr24 = twrTotal(arr); // full period ≈ 24 months
+    const twr12 = twrNM(arr, 12);
+    const twr6  = twrNM(arr, 6);
+    const twr3  = twrNM(arr, 3);
+
+    const el24 = document.getElementById('twr-24m');
+    const el12 = document.getElementById('twr-12m');
+    const el6  = document.getElementById('twr-6m');
+    const el3  = document.getElementById('twr-3m');
+
+    if (el24) { el24.textContent = pctStr(twr24); el24.style.color = colorForVal(twr24); }
+    if (el12) { el12.textContent = pctStr(twr12); el12.style.color = colorForVal(twr12); }
+    if (el6)  { el6.textContent  = pctStr(twr6);  el6.style.color  = colorForVal(twr6); }
+    if (el3)  { el3.textContent  = pctStr(twr3);  el3.style.color  = colorForVal(twr3); }
+  }
+
+  // ── Generate TWR performance table rows from data ──
+  function renderTWRTable() {
+    const sp6M   = twr6M(twrSP);
+    const sp3M   = twr3M(twrSP);
+    const spTotal = twrTotal(twrSP);
+
+    function getBalance(accountName) {
+      if (!accounts) return null;
+      const acct = accounts.find(a => a.name === accountName);
+      return acct ? acct.value : null;
+    }
+
+    const tableAccounts = [
+      { name: 'RH AP Act Managed', badge: 'Robinhood',  color: '#f59e0b', twrArr: twrRH,          highlight: true },
+      { name: 'RH Ap-photonics',   badge: 'Robinhood',  color: '#fb923c', twrArr: twrRHPhotonics,  highlight: true },
+      { name: 'IBKR Bravo',        badge: 'Stocks',     color: '#10b981', twrArr: twrIBKR,         highlight: false },
+      { name: 'TS ETF Tactical',   badge: 'ETFs Margin',color: '#3b82f6', twrArr: twrTSETF,        highlight: false },
+      { name: 'TastyTrade',        badge: 'Opciones',   color: '#8b5cf6', twrArr: twrTT,           highlight: false },
+      { name: 'TS Futures PKG27',  badge: 'Futuros',    color: '#ef4444', twrArr: twrFUT,          highlight: false },
+      { name: 'TS Futures VLV23',  badge: 'Futuros',    color: '#f87171', twrArr: dashData ? dashData.twr.fut2 : [], highlight: false, isVlv23: true },
+    ];
+
+    function fmtPct(val, arr, weeks) {
+      if (val !== null && val !== undefined) {
+        const cls = val >= 0 ? 'green' : 'red';
+        const sign = val >= 0 ? '+' : '';
+        return `<td class="right ${cls}">${sign}${val.toFixed(1)}%</td>`;
+      }
+      // Count non-null values to determine history length
+      if (arr && weeks) {
+        const histWeeks = arr.filter(x => x != null).length;
+        if (histWeeks > 0 && histWeeks < weeks) return `<td class="right" style="color:#64748b;font-size:10px">&lt; ${histWeeks}sem</td>`;
+      }
+      return '<td class="right" style="color:#64748b">—</td>';
+    }
+    function fmtVsSP(acctVal, spVal) {
+      if (acctVal === null || spVal === null || spVal === undefined) return '<td class="right" style="color:#64748b">—</td>';
+      const diff = acctVal - spVal;
+      const cls = diff >= 0 ? 'green' : 'red';
+      const sign = diff >= 0 ? '+' : '';
+      return `<td class="right ${cls}">${sign}${diff.toFixed(1)}pp</td>`;
+    }
+
+    let rows = '';
+    tableAccounts.forEach(acct => {
+      const bal = getBalance(acct.name);
+      const balStr = bal !== null ? '$' + bal.toLocaleString() : '—';
+      const t3M    = acct.isVlv23 ? null : twr3M(acct.twrArr);
+      const t6M    = acct.isVlv23 ? null : twr6M(acct.twrArr);
+      const tTotal = acct.isVlv23
+        ? '<td class="right green">+live</td>'
+        : fmtPct(twrTotal(acct.twrArr));
+      const bgStyle = acct.highlight ? `style="background:${acct.color}10"` : '';
+
+      rows += `<tr ${bgStyle}>
+        <td><span class="dot" style="background:${acct.color}"></span><strong>${acct.name}</strong> <span class="badge">${acct.badge}</span></td>
+        <td class="right bold">${balStr}</td>
+        ${fmtPct(t3M, acct.twrArr, 13)}
+        ${fmtPct(t6M, acct.twrArr, 26)}
+        ${tTotal}
+        ${fmtVsSP(t6M, sp6M)}
+      </tr>`;
+    });
+
+    const tbody = document.getElementById('twr-table-body');
+    if (tbody) tbody.innerHTML = rows;
+
+    // S&P footer row
+    const sp3Str   = sp3M   !== null ? (sp3M   >= 0 ? '+' : '') + sp3M.toFixed(1)   + '%' : '—';
+    const sp6Str   = sp6M   !== null ? (sp6M   >= 0 ? '+' : '') + sp6M.toFixed(1)   + '%' : '—';
+    const spTotStr = spTotal !== null ? (spTotal >= 0 ? '+' : '') + spTotal.toFixed(1) + '%' : '—';
+    const tfoot = document.getElementById('twr-table-foot');
+    if (tfoot) {
+      tfoot.innerHTML = `<tr>
+        <td style="color:#94a3b8"><span class="dot" style="background:#94a3b8"></span><strong>S&amp;P 500</strong> <span class="badge">Benchmark</span></td>
+        <td class="right" style="color:#94a3b8">—</td>
+        <td class="right" style="color:#94a3b8">${sp3Str}</td>
+        <td class="right" style="color:#94a3b8">${sp6Str}</td>
+        <td class="right" style="color:#94a3b8">${spTotStr}</td>
+        <td class="right" style="color:#64748b">—</td>
+      </tr>`;
+    }
+  }
+
+  // ── Update chart h3 titles and source badges from data ──
+  function renderChartH3Titles() {
+    function getBalance(accountName) {
+      if (!accounts) return null;
+      const acct = accounts.find(a => a.name === accountName);
+      return acct ? acct.value : null;
+    }
+    function pctStr(val) {
+      if (val === null) return '—';
+      return (val >= 0 ? '+' : '') + val.toFixed(1) + '%';
+    }
+
+    const tsetfBal  = getBalance('TS ETF Tactical');
+    const rhBal     = getBalance('RH AP Act Managed');
+    const rhphBal   = getBalance('RH Ap-photonics');
+    const ibkrBal   = getBalance('IBKR Bravo');
+    const ttBal     = getBalance('TastyTrade');
+    const futBal    = getBalance('TS Futures PKG27');
+    const fut2Bal   = getBalance('TS Futures VLV23');
+
+    const tsetfTWR  = pctStr(twrTotal(twrTSETF));
+    const rhTWR     = pctStr(twrTotal(twrRH));
+    const ibkrTWR   = pctStr(twrTotal(twrIBKR));
+    const ttTWR     = pctStr(twrTotal(twrTT));
+    const futTWR    = pctStr(twrTotal(twrFUT));
+
+    const h3tsetf = document.getElementById('chart-h3-tsetf');
+    if (h3tsetf && tsetfBal !== null)
+      h3tsetf.textContent = `🔵 #1 TS ETF Tactical ·4090 — Margin ($${tsetfBal.toLocaleString()}) · TWR: ${tsetfTWR}`;
+
+    const h3rh = document.getElementById('chart-h3-rh');
+    if (h3rh && rhBal !== null)
+      h3rh.textContent = `🟡 #2 RH AP Act Managed ($${rhBal.toLocaleString()}) · TWR: ${rhTWR}`;
+
+    const h3rhph = document.getElementById('chart-h3-rhph');
+    if (h3rhph && rhphBal !== null)
+      h3rhph.textContent = `🟠 #2b RH Ap-photonics ($${rhphBal.toLocaleString()}) · Autopilot`;
+
+    const h3ibkr = document.getElementById('chart-h3-ibkr');
+    if (h3ibkr && ibkrBal !== null)
+      h3ibkr.textContent = `🟢 #3 IBKR Bravo ·4229 — Stocks ($${ibkrBal.toLocaleString()}) · TWR: ${ibkrTWR}`;
+
+    const h3tt = document.getElementById('chart-h3-tt');
+    if (h3tt && ttBal !== null)
+      h3tt.textContent = `🟣 #4 TastyTrade — Opciones ($${ttBal.toLocaleString()}) · TWR: ${ttTWR}`;
+
+    const h3fut = document.getElementById('chart-h3-fut');
+    if (h3fut && futBal !== null) {
+      const pkgDesc = (dashData && dashData.meta && dashData.meta.futPKGDesc) ? dashData.meta.futPKGDesc : 'PKG27';
+      h3fut.textContent = `🔴 #5a TS Futures ·PKG27 — ${pkgDesc} ($${futBal.toLocaleString()})`;
+    }
+
+    const h3fut2 = document.getElementById('chart-h3-fut2');
+    if (h3fut2 && fut2Bal !== null) {
+      const vlvDesc = (dashData && dashData.meta && dashData.meta.futVLVDesc) ? dashData.meta.futVLVDesc : 'VLV23';
+      h3fut2.textContent = `🔴 #5b TS Futures ·VLV23 — ${vlvDesc} ($${fut2Bal.toLocaleString()})`;
+    }
+  }
+
+  // ── Update source badges from dashData.sources ──
+  function renderSourceBadges() {
+    if (!dashData || !dashData.sources) return;
+    const d = dashData;
+    const srcKeys = ['tsetf','rh','rhph','ibkr','tt','fut','fut2','betterment'];
+    const emojiMap = { tsetf:'📡', rh:'📱', rhph:'📱', ibkr:'📱', tt:'📡', fut:'📡', fut2:'📡', betterment:'📱' };
+    // Live MCP sources: derive date from last weekly entry (auto-updates with data)
+    const liveSrcKeys = new Set(['tsetf', 'tt', 'fut', 'fut2']);
+    const weeklyDates = (d.weekly && d.weekly.dates) || [];
+    const lastWeeklyDate = weeklyDates.length
+      ? weeklyDates[weeklyDates.length - 1] + ' ' + new Date().getFullYear()
+      : null;
+    srcKeys.forEach(key => {
+      const src = d.sources[key];
+      if (!src) return;
+      const el = document.getElementById('src-' + key);
+      if (!el) return;
+      const dateStr = (liveSrcKeys.has(key) && lastWeeklyDate) ? lastWeeklyDate : src.date;
+      el.innerHTML = `${emojiMap[key]} ${src.label} · ${dateStr}`;
+    });
+  }
+
+  // ── TWR 6M ranking: read from JSON arrays, calc last 26 weeks ──
+  const twrAccounts = [
+    { name: 'RH AP Act Managed', color: '#f59e0b', arr: twrRH },
+    { name: 'RH Ap-photonics',   color: '#fb923c', arr: twrRHPhotonics },
+    { name: 'TS ETF Tactical',   color: '#3b82f6', arr: twrTSETF },
+    { name: 'IBKR Bravo',        color: '#10b981', arr: twrIBKR },
+    { name: 'TastyTrade',        color: '#8b5cf6', arr: twrTT },
+    { name: 'TS Futures PKG27',  color: '#ef4444', arr: twrFUT },
+  ].map(a => ({ ...a, val6M: twr6M(a.arr), valTotal: twrTotal(a.arr) }))
+   .filter(a => a.val6M !== null)
+   .sort((a, b) => b.val6M - a.val6M);
+
+  // Populate ranking cards from JSON data
+  if (twrAccounts.length >= 1) {
+    const best = twrAccounts[0];
+    document.getElementById('perf-best-name').textContent = best.name;
+    document.getElementById('perf-best-name').style.color = best.color;
+    document.getElementById('perf-best-pct').textContent = (best.val6M >= 0 ? '+' : '') + best.val6M.toFixed(1) + '%';
+  }
+  if (twrAccounts.length >= 2) {
+    const sec = twrAccounts[1];
+    document.getElementById('perf-2nd-name').textContent = sec.name;
+    document.getElementById('perf-2nd-name').style.color = sec.color;
+    document.getElementById('perf-2nd-pct').textContent = (sec.val6M >= 0 ? '+' : '') + sec.val6M.toFixed(1) + '%';
+  }
+  if (twrAccounts.length >= 3) {
+    const worst = twrAccounts[twrAccounts.length - 1];
+    document.getElementById('perf-worst-name').textContent = worst.name;
+    document.getElementById('perf-worst-pct').textContent = (worst.val6M >= 0 ? '+' : '') + worst.val6M.toFixed(1) + '%';
+  }
+
+  // ── Render TWR table, chart h3 titles, source badges, portfolio TWR cards ──
+  renderTWRTable();
+  renderChartH3Titles();
+  renderSourceBadges();
+  renderPortfolioTWRCards();
+
+  // TWR Normalized
+  const twrPcts = {
+    tsetf:   twrTotal(twrTSETF).toFixed(1),
+    rh:      twrTotal(twrRH).toFixed(1),
+    rhph:    twrRHPhotonics.length ? (twrRHPhotonics.filter(v=>v!==null).slice(-1)[0]-100).toFixed(1) : '0',
+    ibkr:    twrTotal(twrIBKR).toFixed(1),
+    sp:      twrTotal(twrSP).toFixed(1),
+    tt:      twrTotal(twrTT).toFixed(1),
+    fut:     twrTotal(twrFUT).toFixed(1)
+  };
+  const ctxNorm = document.getElementById('chartTradingNorm');
+  if (ctxNorm) {
+    if (ctxNorm._chart) ctxNorm._chart.destroy();
+    ctxNorm._chart = new Chart(ctxNorm, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [
+        { label:'TS ETF (+'+twrPcts.tsetf+'%)',      data:twrTSETF, borderColor:'#3b82f6', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'RH AP Act Managed (+'+twrPcts.rh+'%)',      data:twrRH,          borderColor:'#f59e0b', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false, spanGaps:true },
+        { label:'RH Ap-photonics (+'+twrPcts.rhph+'%)',      data:twrRHPhotonics,  borderColor:'#fb923c', tension:0.3, pointRadius:2, borderWidth:2, fill:false, spanGaps:true },
+        { label:'IBKR Bravo (+'+twrPcts.ibkr+'%)',   data:twrIBKR, borderColor:'#10b981', tension:0.3, pointRadius:2, borderWidth:2.5, fill:false },
+        { label:'S&P 500 (+'+twrPcts.sp+'%)',         data:twrSP,   borderColor:'#94a3b8', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[6,3], fill:false },
+        { label:'TastyTrade ('+twrPcts.tt+'%)',       data:twrTT,   borderColor:'#8b5cf6', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+        { label:'TS Futures ('+twrPcts.fut+'%)',      data:twrFUT,  borderColor:'#ef4444', tension:0.3, pointRadius:2, borderWidth:2, fill:false },
+      ]},
+      options: { plugins: {
+          legend:{display:true,position:'top',labels:{boxWidth:12,padding:10,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{ callbacks:{ label: c=> c.dataset.label.split('(')[0].trim()+': '+c.parsed.y.toFixed(1) }}},
+        scales: { y: { ticks:{font:{size:11}, color:'#94a3b8'}, grid:{color:'#33415540'},
+                  title:{display:true,text:`TWR Base 100 = ${(dashData&&dashData.meta&&dashData.meta.weeklyTrackingStart)||'Ago 2, 2025'} (sin depósitos/retiros)`,color:'#64748b',font:{size:11}} },
+                  x: { ticks:{font:{size:9}, maxRotation:45, color:'#64748b'}, grid:{display:false} } } }
+    });
+  }
+
+  // Trading Total Combined
+  const wkTradingTotal = wkDates.map((_, i) => {
+    let sum = 0;
+    [wkTT[i], wkIBKR[i], wkTSETF[i], wkFUTCombined[i]].forEach(v => { if(v) sum += v; });
+    if (wkRH[i]) sum += wkRH[i];
+    if (wkRHPhotonics && wkRHPhotonics[i]) sum += wkRHPhotonics[i];
+    return sum;
+  });
+  const ctxTTotal = document.getElementById('chartTradingTotal');
+  if (ctxTTotal) {
+    if (ctxTTotal._chart) ctxTTotal._chart.destroy();
+    ctxTTotal._chart = new Chart(ctxTTotal, {
+      type: 'line',
+      data: { labels: wkDates, datasets: [
+        { label:'TastyTrade', data:wkTT, borderColor:'#8b5cf6', backgroundColor:'#8b5cf620', fill:true, tension:0.3, pointRadius:0, borderWidth:0 },
+        { label:'IBKR', data:wkIBKR.map((v,i)=>v!=null?v+wkTT[i]:null), borderColor:'#10b981', backgroundColor:'#10b98120', fill:'-1', tension:0.3, pointRadius:0, borderWidth:0 },
+        { label:'Total', data:wkTradingTotal, borderColor:'#60a5fa', fill:false, tension:0.3, pointRadius:2, borderWidth:2.5 },
+      ]},
+      options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{ mode:'index', callbacks:{ label: c=>'$'+c.parsed.y.toLocaleString() }}},
+        scales: { y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                  x: { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} } } }
+    });
+  }
+
+  // Risk Metrics
+  function calcRiskMetrics(twrArr, name, color) {
+    // Skip leading nulls — accounts with partial history
+    const firstValid = twrArr.findIndex(v => v != null && v > 0);
+    if (firstValid < 0) return { name, color, totalReturn:0, maxDD:0, vol:0, ratio:0, grade:'—', gradeColor:'#64748b' };
+    let peak = twrArr[firstValid], maxDD = 0;
+    for (let i = firstValid + 1; i < twrArr.length; i++) {
+      if (twrArr[i] == null) continue;
+      if (twrArr[i] > peak) peak = twrArr[i];
+      const dd = (peak - twrArr[i]) / peak * 100;
+      if (dd > maxDD) maxDD = dd;
+    }
+    const returns = [];
+    for (let i = firstValid + 1; i < twrArr.length; i++) {
+      if (twrArr[i] == null || twrArr[i-1] == null || twrArr[i-1] <= 0) continue;
+      returns.push((twrArr[i] - twrArr[i-1]) / twrArr[i-1] * 100);
+    }
+    const mean = returns.reduce((a,b) => a+b, 0) / returns.length;
+    const variance = returns.reduce((a,r) => a + (r-mean)**2, 0) / returns.length;
+    const vol = Math.sqrt(variance);
+    const totalReturn = twrArr[twrArr.length-1] - 100;
+    const ratio = maxDD > 0 ? totalReturn / maxDD : 0;
+    let grade, gradeColor;
+    if (ratio >= 1.5)      { grade = 'A'; gradeColor = '#10b981'; }
+    else if (ratio >= 1.0) { grade = 'B'; gradeColor = '#6ee7b7'; }
+    else if (ratio >= 0.5) { grade = 'C'; gradeColor = '#f59e0b'; }
+    else if (ratio >= 0)   { grade = 'D'; gradeColor = '#f97316'; }
+    else if (ratio >= -1)  { grade = 'E'; gradeColor = '#ef4444'; }
+    else                   { grade = 'F'; gradeColor = '#991b1b'; }
+    return { name, color, totalReturn, maxDD, vol, ratio, grade, gradeColor };
+  }
+  const riskData = [
+    calcRiskMetrics(twrRH,          'RH AP Act Managed',  '#f59e0b'),
+    calcRiskMetrics(twrRHPhotonics, 'RH Ap-photonics',    '#fb923c'),
+    calcRiskMetrics(twrTSETF,       'TS ETF Tactical',    '#3b82f6'),
+    calcRiskMetrics(twrIBKR,        'IBKR Bravo',         '#10b981'),
+    calcRiskMetrics(twrSP,          'S&P 500',             '#94a3b8'),
+    calcRiskMetrics(twrTT,          'TastyTrade',          '#8b5cf6'),
+    calcRiskMetrics(twrFUT,         'TS Futures PKG27',    '#ef4444'),
+  ];
+  const riskGrid = document.getElementById('riskMetricsGrid');
+  if (riskGrid) {
+    riskGrid.innerHTML = riskData.map(r => {
+      const retSign = r.totalReturn >= 0 ? '+' : '';
+      const retColor = r.totalReturn >= 0 ? '#10b981' : '#ef4444';
+      const ddWidth = Math.min(r.maxDD, 60) / 60 * 100;
+      const ddColor = r.maxDD < 10 ? '#10b981' : r.maxDD < 20 ? '#f59e0b' : '#ef4444';
+      return `<div class="risk-card" style="border-top:3px solid ${r.color}">
+        <div class="rc-name" style="color:${r.color}">${r.name}</div>
+        <div class="risk-grade" style="color:${r.gradeColor}">${r.grade}</div>
+        <div class="rc-metric">TWR: <span style="color:${retColor}">${retSign}${r.totalReturn.toFixed(1)}%</span></div>
+        <div class="rc-metric">Max DD: <span style="color:${ddColor}">-${r.maxDD.toFixed(1)}%</span></div>
+        <div class="risk-bar"><div class="risk-fill" style="width:${ddWidth}%;background:${ddColor}"></div></div>
+        <div class="rc-metric" style="margin-top:4px">Vol: <span style="color:#60a5fa">${r.vol.toFixed(1)}%</span>/sem</div>
+        <div class="rc-metric">Ratio: <span style="color:${r.gradeColor}">${r.ratio.toFixed(2)}</span></div>
+      </div>`;
+    }).join('');
+  }
+}
+
+// NW Histórico
+function renderNWHistorico(rangeMonths) {
+  // Update range button styles
+  ['6m','12m','all'].forEach(r => {
+    const btn = document.getElementById('rng-' + r);
+    if (btn) btn.classList.remove('active-range');
+  });
+  const activeId = rangeMonths === 6 ? 'rng-6m' : rangeMonths === 12 ? 'rng-12m' : 'rng-all';
+  const activeBtn = document.getElementById(activeId);
+  if (activeBtn) activeBtn.classList.add('active-range');
+
+  const ctx = document.getElementById('chartNWHistorico');
+  if (!ctx || !fmTotal) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const debtSeries = (dashData && dashData.monthly && dashData.monthly.debt) ? dashData.monthly.debt
+    : [59973,58973,57973,56973,55973,54973,53973,52973,51973,50973,49973,54973,56973,58973,60973,62973,64973,66973,68973,70973,71973,72860,72860,72729];
+  const allMonths   = fmMonths;
+  const allTotal    = fmTotal;
+  const allDebt     = debtSeries;
+  const allNwNeto   = fmTotal.map((v,i) => v - (debtSeries[i] || debtSeries[debtSeries.length-1]));
+  const n = (rangeMonths && rangeMonths > 0) ? rangeMonths : allMonths.length;
+  const slicedMonths = allMonths.slice(-n);
+  const slicedTotal  = allTotal.slice(-n);
+  const slicedDebt   = allDebt.slice(-n);
+  const slicedNwNeto = allNwNeto.slice(-n);
+  const fiTargetLine = slicedMonths.map(() => (dashMeta ? (dashMeta.fiTarget || 500000) : 500000));
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: slicedMonths, datasets: [
+      { label:'NW Bruto', data:slicedTotal, borderColor:'#60a5fa', backgroundColor:'#60a5fa15', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label:'NW Neto (est.)', data:slicedNwNeto, borderColor:'#10b981', backgroundColor:'#10b98115', fill:true, tension:0.3, pointRadius:3, borderWidth:2.5 },
+      { label:'🎯 Meta FI $' + ((dashMeta && dashMeta.fiTarget) ? (dashMeta.fiTarget/1000).toFixed(0) : '500') + 'K', data:fiTargetLine, borderColor:'#10b981', borderWidth:1.5, borderDash:[8,4], pointRadius:0, fill:false, tension:0 },
+    ]},
+    options: { plugins: { legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:11},color:'#e2e8f0'}},
+        tooltip:{ callbacks:{ label: c=> c.dataset.label+': $'+c.parsed.y.toLocaleString() }}},
+      scales: { y: { ticks:{ callback: v=>'$'+(v/1000).toFixed(0)+'K', font:{size:11} }, grid:{color:'#33415540'} },
+                x: { ticks:{font:{size:9}}, grid:{display:false} } } }
+  });
+}
+
+// Heatmap
+function renderHeatmap() {
+  const container = document.getElementById('heatmapContainer');
+  if (!container || !fmRate) return;
+  const allMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const years = ['2024','2025','2026'];
+  const grid = {};
+  fmMonths.forEach((m, i) => {
+    let yr, mn;
+    if (m.includes('24')) { yr='2024'; mn=m.replace(' 24',''); }
+    else if (m.includes('25')) { yr='2025'; mn=m.replace(' 25',''); }
+    else if (m.includes('26')) { yr='2026'; mn=m.replace(' 26',''); }
+    else {
+      if (i <= 6) yr='2024'; else if (i <= 18) yr='2025'; else yr='2026';
+      mn = m;
+    }
+    if (!grid[yr]) grid[yr] = {};
+    grid[yr][mn] = fmRate[i];
+  });
+  function getColor(v) {
+    if (v > 3) return '#065f46'; if (v > 1) return '#10b981';
+    if (v > 0) return '#6ee7b780'; if (v > -1) return '#fca5a580';
+    if (v > -3) return '#ef4444'; return '#991b1b';
+  }
+  function getTextColor(v) {
+    if (v > 3 || v < -3) return '#fff'; if (v > 1 || v < -1) return '#fff'; return '#e2e8f0';
+  }
+  let html = '<div class="heatmap" style="grid-template-columns:60px repeat(12,1fr)">';
+  html += '<div class="heatmap-header"></div>';
+  allMonths.forEach(m => { html += '<div class="heatmap-header">'+m+'</div>'; });
+  years.forEach(yr => {
+    html += '<div style="font-weight:700;color:#f8fafc;padding:6px 4px;font-size:12px">'+yr+'</div>';
+    allMonths.forEach(mn => {
+      const v = grid[yr] && grid[yr][mn];
+      if (v !== undefined && v !== null) {
+        const sign = v >= 0 ? '+' : '';
+        html += '<div class="heatmap-cell" style="background:'+getColor(v)+';color:'+getTextColor(v)+'">'+sign+v.toFixed(1)+'%</div>';
+      } else {
+        html += '<div class="heatmap-cell" style="background:#1e293b;color:#334155">—</div>';
+      }
+    });
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// Health Score Gauge
+function renderGauge() {
+  const canvas = document.getElementById('gaugeCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 60, cy = 65, r = 50;
+  const startAngle = 0.75 * Math.PI, endAngle = 2.25 * Math.PI;
+  const score = dashMeta ? dashMeta.healthScore : 59;
+  const pct = score / 100;
+  ctx.clearRect(0, 0, 120, 120);
+  ctx.beginPath(); ctx.arc(cx, cy, r, startAngle, endAngle); ctx.strokeStyle = '#334155'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
+  const scoreAngle = startAngle + pct * (endAngle - startAngle);
+  const gradient = ctx.createLinearGradient(0, 0, 120, 0);
+  gradient.addColorStop(0, '#ef4444'); gradient.addColorStop(0.5, '#f59e0b'); gradient.addColorStop(1, '#10b981');
+  ctx.beginPath(); ctx.arc(cx, cy, r, startAngle, scoreAngle); ctx.strokeStyle = gradient; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
+}
+
+// Rolling Returns
+function renderRollingReturns() {
+  const ctx = document.getElementById('chartRolling');
+  if (!ctx || !fmRate) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const roll3 = [], roll6 = [], roll12 = [], rollLabels = [];
+  for (let i = 0; i < fmRate.length; i++) {
+    rollLabels.push(fmMonths[i]);
+    if (i >= 2) { let cum = 1; for (let j = i-2; j <= i; j++) cum *= (1 + fmRate[j]/100); roll3.push(((cum-1)*100).toFixed(1)); } else roll3.push(null);
+    if (i >= 5) { let cum = 1; for (let j = i-5; j <= i; j++) cum *= (1 + fmRate[j]/100); roll6.push(((cum-1)*100).toFixed(1)); } else roll6.push(null);
+    if (i >= 11){ let cum = 1; for (let j = i-11; j <= i; j++) cum *= (1 + fmRate[j]/100); roll12.push(((cum-1)*100).toFixed(1)); } else roll12.push(null);
+  }
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: rollLabels, datasets: [
+      { label: 'Rolling 3M', data: roll3, borderColor: '#f59e0b', tension: 0.3, pointRadius: 2, borderWidth: 2, fill: false },
+      { label: 'Rolling 6M', data: roll6, borderColor: '#3b82f6', tension: 0.3, pointRadius: 2, borderWidth: 2.5, fill: false },
+      { label: 'Rolling 12M', data: roll12, borderColor: '#10b981', tension: 0.3, pointRadius: 3, borderWidth: 3, fill: false },
+      { label: '0%', data: Array(fmRate.length).fill(0), borderColor: '#64748b', borderDash: [4,4], borderWidth: 1, pointRadius: 0, fill: false },
+    ]},
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + (c.parsed.y >= 0 ? '+' : '') + parseFloat(c.parsed.y).toFixed(1) + '%' } } },
+      scales: { y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#33415540' } },
+                x: { ticks: { font: { size: 9 } }, grid: { display: false } } } }
+  });
+}
+
+// Contribution Analysis
+function renderContribution() {
+  const ctx = document.getElementById('chartContribution');
+  if (!ctx || !twrPortfolioGlobal || !fmTotal) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const len = Math.min(fmTotal.length, twrPortfolioGlobal.length);
+  const invReturn = [], extFlow = [];
+  for (let i = 1; i < len; i++) {
+    if (twrPortfolioGlobal[i] == null || twrPortfolioGlobal[i-1] == null || twrPortfolioGlobal[i-1] === 0) {
+      invReturn.push(0); extFlow.push(0); continue;
+    }
+    const totalChange = fmTotal[i] - fmTotal[i-1];
+    const twrPct = (twrPortfolioGlobal[i] / twrPortfolioGlobal[i-1] - 1);
+    const invRet = fmTotal[i-1] * twrPct;
+    const ext = totalChange - invRet;
+    invReturn.push(Math.round(invRet));
+    extFlow.push(Math.round(ext));
+  }
+  ctx._chart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: fmMonths.slice(1), datasets: [
+      { label: 'Retorno inversiones', data: invReturn, backgroundColor: invReturn.map(v => v >= 0 ? '#10b98180' : '#ef444480'), borderRadius: 3 },
+      { label: 'Flujos externos', data: extFlow, backgroundColor: extFlow.map(v => v >= 0 ? '#3b82f680' : '#f59e0b80'), borderRadius: 3 },
+    ]},
+    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString() } } },
+      scales: { x: { stacked: true, ticks: { font: { size: 9 } }, grid: { display: false } },
+                y: { stacked: true, ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'K', font: { size: 11 } }, grid: { color: '#33415540' } } } }
+  });
+}
+
+// Waterfall — now uses waterfall object from JSON
+function renderWaterfall() {
+  const container = document.getElementById('waterfallChart');
+  if (!container || !waterfall) return;
+  const w = waterfall;
+  const items = [
+    { label: 'DEC Net',        value: w.decIncome,       type: 'in' },
+    { label: 'Ingreso Pasivo', value: w.passiveIncome,   type: 'in' },
+    { label: 'Gastos Vida',    value: w.livingExpenses,  type: 'out' },
+    { label: 'Michalitas',     value: w.michalitas,      type: 'out' },
+    { label: 'Interés LOC',    value: w.locInterest,     type: 'out' },
+    { label: 'Interés Auto',   value: w.carInterest,     type: 'out' },
+    { label: 'SURPLUS',        value: w.surplus,         type: 'total' },
+  ];
+  const maxVal = Math.max(...items.map(i => Math.abs(i.value)));
+  let html = '<div class="waterfall-bar">';
+  items.forEach(item => {
+    const h = Math.max((Math.abs(item.value) / maxVal) * 160, 8);
+    let color;
+    if (item.type === 'in') color = '#10b981';
+    else if (item.type === 'total') color = item.value >= 0 ? '#10b981' : '#ef4444';
+    else color = '#ef4444';
+    const border = item.type === 'total' ? 'border:2px solid #f59e0b;' : '';
+    const sign = item.value >= 0 ? '+' : '';
+    html += `<div class="wf-col">
+      <div class="wf-val" style="color:${color}">${sign}$${Math.abs(item.value).toLocaleString()}</div>
+      <div class="wf-bar" style="height:${h}px;background:${color};${border}"></div>
+      <div class="wf-lbl">${item.label}</div>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  // Also update the surplus table cell
+  const surplusCell = document.getElementById('surplus-cell');
+  if (surplusCell) {
+    surplusCell.textContent = (w.surplus >= 0 ? '+' : '') + '$' + Math.abs(w.surplus).toLocaleString();
+    surplusCell.style.color = w.surplus >= 0 ? '#10b981' : '#ef4444';
+  }
+}
+
+// Wire rolling + contribution into performance render
+const origRenderPerf = renderPerformanceCharts;
+renderPerformanceCharts = function() {
+  origRenderPerf();
+  renderRollingReturns();
+  renderContribution();
+};
+
+// ═══ FI ESTIMATOR ═══
+function calcFIEstimate() {
+  const retEl = document.getElementById('fi-est-return');
+  const cntEl = document.getElementById('fi-est-contrib');
+  const resEl = document.getElementById('fi-estimate-result');
+  if (!retEl || !cntEl || !resEl || !dashMeta) return;
+  const annualReturn = parseFloat(retEl.value);
+  const monthlyContrib = parseFloat(cntEl.value);
+  const target = dashMeta.fiTarget || 500000;
+  const current = dashMeta.nwNeto;
+  const monthlyRate = annualReturn / 12;
+  // Numerical approach: iterate months
+  let nw = current;
+  let months = 0;
+  const maxMonths = 360; // 30 years cap
+  while (nw < target && months < maxMonths) {
+    nw = nw * (1 + monthlyRate) + monthlyContrib;
+    months++;
+  }
+  if (months >= maxMonths) {
+    resEl.innerHTML = `<span style="color:#ef4444">⚠️ Con estos parámetros el portafolio no alcanza $${target.toLocaleString()} en 30 años.</span><br><span style="color:#94a3b8">Necesitas más aporte mensual o un retorno más alto.</span>`;
+    return;
+  }
+  const years = Math.floor(months / 12);
+  const remMonths = months % 12;
+  const arrivalAge = 53 + years + (remMonths > 6 ? 1 : 0);
+  const arrivalDate = new Date();
+  arrivalDate.setMonth(arrivalDate.getMonth() + months);
+  const arrivalStr = arrivalDate.toLocaleDateString('es', {month:'long', year:'numeric'});
+  const emoji = arrivalAge <= 57 ? '🏆' : arrivalAge <= 60 ? '✅' : '⚠️';
+  resEl.innerHTML = `${emoji} <strong style="color:#f8fafc">Llegas a FI en ${years} años${remMonths ? ' y ' + remMonths + ' meses' : ''}</strong> — aprox. <strong style="color:#60a5fa">${arrivalStr}</strong> · a los <strong style="color:#f59e0b">${arrivalAge} años</strong><br>
+    <span style="color:#94a3b8">Portafolio actual: <strong style="color:#10b981">$${current.toLocaleString()}</strong> → Meta: $${target.toLocaleString()} · Falta: $${(target-current).toLocaleString()}</span>`;
+}
+
+// ═══ STALE SOURCE BADGE CHECK (flash red if > 7 days) ═══
+function checkStaleBadges() {
+  const monthMap = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  const today = new Date();
+  document.querySelectorAll('.source-badge').forEach(el => {
+    // Match "Month DD YYYY" pattern, e.g. "May 15 2026"
+    const m = el.textContent.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/);
+    if (!m) return;
+    const mo = monthMap[m[1].toLowerCase()];
+    if (mo === undefined) return;
+    const badgeDate = new Date(parseInt(m[3]), mo, parseInt(m[2]));
+    const days = Math.floor((today - badgeDate) / 86400000);
+    if (days > 7) {
+      el.classList.add('stale');
+      el.title = `⚠️ Datos con ${days} días de antigüedad`;
+    }
+  });
+}
+
+// ═══ LOAD DATA & INIT ═══
+fetch('data.json?v=' + Date.now())
+  .then(r => r.json())
+  .then(d => { initFromData(d); checkStaleBadges(); })
+  .catch(e => {
+    console.error('Error loading data.json:', e);
+    document.body.innerHTML += '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ef444420;border:2px solid #ef4444;padding:24px;border-radius:12px;color:#ef4444;font-size:14px;text-align:center;z-index:10000;">⚠️ Error cargando datos del dashboard.<br>Verifica que data.json existe en el mismo directorio.<br><small>' + e.message + '</small></div>';
+  });
+</script>
+</body>
+</html>
