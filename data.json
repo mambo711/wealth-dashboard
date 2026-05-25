@@ -1835,35 +1835,55 @@
   "sources": {
     "tsetf": {
       "label": "TradeStation MCP",
-      "date": "May 22 2026"
+      "date": "May 25 2026"
     },
-    "rh": {
-      "label": "Screenshot RH",
-      "date": "May 23 2026"
-    },
-    "rhph": {
-      "label": "Screenshot RH",
-      "date": "May 23 2026"
+    "tt": {
+      "label": "TastyTrade Relay",
+      "date": "May 25 2026"
     },
     "ibkr": {
       "label": "Screenshot IBKR",
       "date": "May 16 2026"
     },
-    "tt": {
-      "label": "Relay Zapier/Gmail",
-      "date": "May 23 2026"
+    "rh": {
+      "label": "Screenshot RH",
+      "date": "May 16 2026"
+    },
+    "rhph": {
+      "label": "Screenshot RH",
+      "date": "May 16 2026"
+    },
+    "betterment": {
+      "label": "Betterment App",
+      "date": "Apr 09 2026"
     },
     "fut": {
       "label": "TradeStation MCP",
-      "date": "May 22 2026"
+      "date": "May 25 2026"
     },
     "fut2": {
       "label": "TradeStation MCP",
+      "date": "May 25 2026"
+    },
+    "xero": {
+      "label": "Xero",
+      "date": "May 25 2026"
+    },
+    "manual": {
+      "label": "Manual",
       "date": "May 22 2026"
     },
-    "betterment": {
-      "label": "Screenshot Betterment",
-      "date": "May 17 2026"
+    "ecuador": {
+      "label": "Manual (CDs Ecuador)",
+      "date": "Jan 01 2026"
+    },
+    "pepe": {
+      "label": "Manual (Préstamo)",
+      "date": "Jan 01 2026"
+    },
+    "miguel": {
+      "label": "Manual (Auto Loan)",
+      "date": "Jan 01 2026"
     }
   },
   "twr": {
@@ -2498,5 +2518,19 @@
       "why": "DEC YTD avg $6,904/mes es el motor del surplus. Mantener pipeline activo protege el LOC paydown.",
       "category": "INGRESOS"
     }
-  ]
+  ],
+  "datestamps": {
+    "ts": "2026-05-25",
+    "tt": "2026-05-25",
+    "xero": "2026-05-25",
+    "betterment": "2026-04-09",
+    "ibkr": "2026-05-16",
+    "rh": "2026-05-16",
+    "ecuador": "2026-01-01",
+    "pepe": "2026-01-01",
+    "miguel": "2026-01-01",
+    "manual": "2026-05-22",
+    "fut": "2026-05-25",
+    "fut2": "2026-05-25"
+  }
 }
