@@ -2,16 +2,16 @@
   "meta": {
     "subtitle": "25 Mayo 2026",
     "weeklyFocusDate": "Semana del 25 May",
-    "nwBruto": 402531,
-    "nwBrutoDelta": "▲+$553 vs ayer (SEP +$470 · Tactical +$296 · Futures -$34 · TT -$178)",
+    "nwBruto": 454725,
+    "nwBrutoDelta": "▲+$52,194 vs May 22 snapshot (actualización live May 25)",
     "nwDeltaUp": true,
-    "nwNeto": 344298,
-    "nwNetoDelta": "▲+$553 vs ayer",
-    "fiPct": 69,
-    "fiGap": 155702,
-    "fiGapAnnual": 31251,
+    "nwNeto": 384194,
+    "nwNetoDelta": "▲+$39,649 vs May 22 snapshot",
+    "fiPct": 77,
+    "fiGap": 115806,
+    "fiGapAnnual": 23161,
     "fiTarget": 500000,
-    "healthScore": 59,
+    "healthScore": 65,
     "healthLabel": "MODERADO",
     "healthSubScores": {
       "retiro": {
@@ -31,12 +31,12 @@
         "color": "#f59e0b"
       },
       "deuda": {
-        "val": 35,
-        "color": "#ef4444"
+        "val": 45,
+        "color": "#f59e0b"
       },
       "surplus": {
-        "val": 20,
-        "color": "#ef4444"
+        "val": 75,
+        "color": "#10b981"
       },
       "liquidez": {
         "val": 60,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
-    "retirementCore": 140232,
-    "totalBruto": 402531,
-    "tacticalHeader": "$34,300 (margen $10,663 ✅✅ excelente)",
-    "footerNote": "Datos: TradeStation MCP (live May 22 LIVE ✅) · TT Relay Gmail (May 22 04:40 PDT ✅) · Betterment (foto Apr 9) · Xero (LIVE May 22)",
+    "retirementCore": 140728,
+    "totalBruto": 454725,
+    "tacticalHeader": "$34,529 (margen $9,813 ✅✅ excelente)",
+    "footerNote": "TradeStation MCP (live May 25 12:57 ET) · TT Relay Gmail (May 25 08:42 ET) · Betterment (foto Apr 9) · Xero (LIVE May 25)",
     "debtTotal": 72728.75,
     "debtDelta": "▲ $346 vs mes anterior",
     "debtDeltaUp": false,
@@ -62,8 +62,8 @@
     "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $336,530 — superado por $61,530.",
     "totalAssets": 402531,
     "totalDebt": 72728.75,
-    "futPKGDesc": "ZERO posiciones — cash $2,135",
-    "futVLVDesc": "ZERO posiciones — cash $1,166",
+    "futPKGDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW 🆕)",
+    "futVLVDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW 🆕)",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
@@ -72,24 +72,20 @@
         "color": "yellow"
       },
       {
-        "text": "3 ETFs energía fragmentados",
-        "color": "yellow"
-      },
-      {
-        "text": "🚨 Intl Asia (DXJ+EWT) = 21.1% — reducir",
+        "text": "🚨 Intl Asia (DXJ+EWT) = 19.5% — reducir",
         "color": "red"
       },
       {
-        "text": "🚨 Tech/Semis = 17.1% — vigilar",
+        "text": "🚨 Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% — VENDER SMH MAÑANA",
         "color": "red"
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🚨 Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% — vender SMH ($2,300) + parcial SOXQ",
-      "body": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% vendiendo SMH y parcial SOXQ esta semana.",
-      "why": "⚡ Exposición bloqueada reduce rendimiento ajustado por riesgo. Buffer ✅ + LOC paydown activo (20 meses) libera foco para ejecutar el move."
+      "title": "💥 MAÑANA MARTES: Vender SMH (4 shares ~$2,297) — bajar Tech/Semis de 17.4% a ~12.2% (bajo umbral 15%)",
+      "body": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Vender SMH completo mañana martes (reapertura post-Memorial Day). También monitorear PCE miércoles 28 mayo — evento macro pivotal.",
+      "why": "⚡ Memorial Day hoy — sin trading. Acción prioritaria es Martes 27 mayo al abrir. SMH venta libera ~$2,297 + reduce concentración. PCE miércoles puede cambiar régimen."
     },
     "steps": [
       {
@@ -168,12 +164,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "3 prioridades: (1) 🚨 Move CRÍTICO — Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% — vender SMH ($2,300) + parcial SOXQ. (2) Buffer DEC ✅ ($47,366 ≥ $41,052). (3) Surplus $+2,395/mes → aplicar íntegro al LOC $48,233 @ 8.5% (payoff en ~20 meses)."
+      "text": "3 prioridades: (1) 🚨 MAÑANA MARTES — Vender SMH (4 shares) para bajar Tech/Semis 17.4% → <13% (umbral 15% STAGFLATION_RISK). (2) PCE miércoles 28 mayo — evento crítico. (3) Surplus $+1,988/mes → aplicar íntegro al LOC $48,233 @ 8.5% (payoff en ~24 meses)."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Move CRÍTICO pendiente — Tech/Semis 17% en régimen Stagflation/Inflación (DEFENSIVO) = sector bloqueado. Ver Resumen."
+      "text": "Move CRÍTICO pendiente — Vender SMH MAÑANA MARTES (4 shares). Tech/Semis 17.4% en régimen Stagflation = sector bloqueado. Nuevas posiciones futures: M6EM26+MNGN26 en PKG27+VLV23."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -183,12 +179,12 @@
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer ✅ ($47,366 ≥ $41,052) — aplicar surplus $+2,395/mes al LOC $48,233 @ 8.5%. Payoff ~20 meses. Ver Resumen."
+      "text": "Buffer ✅ ($47,365 ≥ $39K) — DEC surplus $+1,988/mes → aplicar al LOC $48,233 @ 8.5%. DEC avg $7,124/mes (Xero LIVE May 25)."
     },
     "fi": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer ✅ + LOC paydown activo (~20 meses). FI al 77% — gap $115,455. Ver Resumen."
+      "text": "FI al 76.8% (NW Neto ~$384K vs meta $500K). Surplus positivo $+1,988/mes. LOC paydown activo."
     },
     "posiciones": {
       "color": "#ef4444",
@@ -247,8 +243,8 @@
       {
         "rank": "Grado F — Futuros · TWR -58.2%",
         "rankColor": "#ef4444",
-        "text": "TS Futures PKG27 — cuenta de micro-futuros. CERO posiciones activas ($2,135 cash). MNGM26 cerrado May 20-21 por razón desconocida. Capital disponible para nueva oportunidad.",
-        "rec": "No repatriar capital — Alberto gestiona activamente para oportunidades. Documentar razón de cierre de MNGM26 antes de abrir nueva posición."
+        "text": "TS Futures PKG27+VLV23 — NUEVAS posiciones este fin de semana: M6EM26 (4x Long Micro EUR/USD Jun26) + MNGN26 (1x Short Micro Nat Gas Jul26) en ambas cuentas. PKG27 equity $2,088 | VLV23 equity $2,123. Buying power limitado — no abrir nuevas posiciones.",
+        "rec": "Monitorear M6EM26 (EUR/USD) y MNGN26 (Short Nat Gas). Confirmar detalles de entrada y tesis. Buying power PKG27 $730 — capacidad limitada."
       }
     ]
   },
@@ -333,18 +329,18 @@
     {
       "name": "TS ETF Tactical",
       "color": "#3b82f6",
-      "current": 34300,
+      "current": 34529,
       "move": null,
-      "newVal": 34300,
+      "newVal": 34529,
       "twr": "+26.4%",
       "twrUp": true
     },
     {
       "name": "TastyTrade",
       "color": "#8b5cf6",
-      "current": 12600,
+      "current": 12641,
       "move": null,
-      "newVal": 12600,
+      "newVal": 12641,
       "twr": "-15.7%",
       "twrUp": false
     },
@@ -369,15 +365,15 @@
     {
       "name": "TS Futures",
       "color": "#ef4444",
-      "current": 3301,
+      "current": 4211,
       "move": null,
-      "newVal": 3301,
+      "newVal": 4211,
       "twr": "-58.2%",
       "twrUp": false
     }
   ],
   "rebalanceTotal": 62959,
-  "rebalanceNote": "Capital trading activo: $62,959. TastyTrade $12,600 (9 spreads activos Jun 18/30). Transfers May 23: $2K → RH Act Managed, $2K → IBKR Bravo. Futuros reducidos $1K (retiro VLV23).",
+  "rebalanceNote": "Capital trading activo: ~$53,481. TastyTrade $12,641 (9 spreads activos Jun 18/30). Futures PKG27+VLV23 activos: M6EM26+MNGN26. 🦅 Memorial Day — sin trading hoy.",
   "pieCategories": [
     {
       "label": "Retiro 56%",
@@ -466,7 +462,7 @@
     },
     {
       "label": "Surplus mensual",
-      "value": "$+2,395",
+      "value": "$+1,988",
       "color": "#10b981"
     },
     {
@@ -502,20 +498,20 @@
     }
   ],
   "waterfall": {
-    "decIncome": 6904,
+    "decIncome": 7124,
     "livingExpenses": 4167,
     "locInterest": 342,
-    "surplus": 2395,
+    "surplus": 1988,
     "passiveIncome": 952,
     "michalitas": 499,
     "carInterest": 51
   },
   "waterfallScenarios": [
     {
-      "icon": "🔴",
-      "label": "Actual (May 17)",
-      "surplus": -261,
-      "note": "DEC income bajó a $4,795/mes avg → prioridad: crecer DEC o cerrar Michalitas"
+      "icon": "🟢",
+      "label": "Actual (May 25)",
+      "surplus": 1988,
+      "note": "DEC $7,124/mes avg (Xero LIVE May 25) — surplus POSITIVO ✅"
     },
     {
       "icon": "🟡",
@@ -539,12 +535,12 @@
   "waterfallTable": [
     {
       "label": "Ingreso DEC (Net)",
-      "amount": 4795,
+      "amount": 7124,
       "sign": "+",
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD May 17 (Xero LIVE $21,576 ÷ 4.5m)"
+      "note": "Net Income promedio YTD May 25 (Xero LIVE $34,411.82 ÷ 4.83m)"
     },
     {
       "label": "Ingreso pasivo",
@@ -608,7 +604,7 @@
     {
       "name": "SEP IRA (TS)",
       "cat": "Retiro",
-      "value": 140932,
+      "value": 140728,
       "color": "#2563eb"
     },
     {
@@ -638,7 +634,7 @@
     {
       "name": "TS ETF Tactical",
       "cat": "Trading",
-      "value": 34509,
+      "value": 34529,
       "color": "#10b981"
     },
     {
@@ -650,7 +646,7 @@
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 12600,
+      "value": 12641,
       "color": "#8b5cf6"
     },
     {
@@ -668,13 +664,13 @@
     {
       "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 2135,
+      "value": 2088,
       "color": "#ef4444"
     },
     {
       "name": "TS Futures VLV23",
       "cat": "Trading",
-      "value": 1166,
+      "value": 2123,
       "color": "#f87171"
     },
     {
@@ -692,7 +688,7 @@
     {
       "name": "TS Cash (SEP)",
       "cat": "Cash/Fijo",
-      "value": 2,
+      "value": 556,
       "color": "#64748b"
     }
   ],
@@ -704,7 +700,8 @@
       130000,
       132000,
       135000,
-      138725
+      138725,
+      140728
     ],
     "Betterment Roth IRA": [
       58000,
@@ -749,7 +746,8 @@
       22000,
       27000,
       31000,
-      33597
+      33597,
+      34529
     ],
     "Betterment Emerg.": [
       31151,
@@ -767,7 +765,8 @@
       16500,
       16300,
       17050,
-      17026
+      17026,
+      12641
     ],
     "Pepe Loans": [
       13555,
@@ -821,7 +820,8 @@
       2701,
       2505,
       2308,
-      2060
+      2060,
+      2088
     ],
     "TS Futures VLV23": [
       4857,
@@ -830,7 +830,8 @@
       4174,
       3870,
       3567,
-      3183
+      3183,
+      2123
     ]
   },
   "sepIRA": {
