@@ -5,10 +5,10 @@
     "nwBruto": 407171,
     "nwBrutoDelta": "▲$0 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 334442,
+    "nwNeto": 336640,
     "nwNetoDelta": "▲+$39,649 vs May 22 snapshot",
     "fiPct": 67,
-    "fiGap": 165558,
+    "fiGap": 163360,
     "fiGapAnnual": 23161,
     "fiTarget": 500000,
     "healthScore": 65,
@@ -52,8 +52,8 @@
     "totalBruto": 454725,
     "tacticalHeader": "$34,529 (margen $9,813 ✅✅ dentro objetivo)",
     "footerNote": "Datos: TradeStation MCP (LIVE May 26 ~07:12 ET) · TT Relay Gmail (May 26 03:10 ET) · Xero MCP (LIVE YTD net $32,917) · Betterment (stale Apr) · WebSearch (Barchart/Fed/macro)",
-    "debtTotal": 72728.75,
-    "debtDelta": "▲ $346 vs mes anterior",
+    "debtTotal": 70531,
+    "debtDelta": "▼$2,198 vs prior",
     "debtDeltaUp": false,
     "ssMonthly": 2000,
     "fiTargetAge": 58,
@@ -180,7 +180,7 @@
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $72,729 @ 8.5% — prioridad paydown. DEC promedio $6,815/mes → Superávit $+1,679/mes. Meta: ataque LOC ahora que DEC > buffer."
+      "text": "💳 LOC $70,531 @ 8.5% — prioridad paydown. DEC promedio $6,815.0/mes → Superávit $+1,679/mes. Buffer DEC ✅ permite ataque LOC."
     },
     "fi": {
       "color": "#10b981",
@@ -204,8 +204,6 @@
     }
   },
   "insights": {
-    "healthScore": 70,
-    "healthLabel": "BUENO",
     "subscores": {
       "retiro": 92,
       "fi": 77,
@@ -249,9 +247,9 @@
       }
     ],
     "resumen": [
-      "💰 NW Neto ~$384K | FI 76.8% (gap ~$116K vs $500K target) — sólido pero PCE jueves puede mover el dial",
-      "📊 DEC YTD net $32,917 ÷ 4.83mo = $6,815/mo avg | Surplus $1,679/mo — habilita paydown LOC agresivo",
-      "⚠️ Concentración Tactical: 3 buckets 🚨 (Asia 19.5%, Tech/Semis 17.4%, Energy 15.2%) — máxima multi-sector",
+      "💰 NW Neto $336,640 | FI 67% (gap $163,360) — sólido, PCE jueves puede mover dial",
+      "📊 DEC YTD $32,917 ÷ 4.83mo = $6,815/mo | Surplus $1,679/mo — habilita paydown LOC agresivo",
+      "⚠️ Concentración Tactical: 3 buckets 🚨 (Asia 19.5%, Tech/Semis 17.4%, Energy 15.2%)",
       "🚨 ACCIÓN: SELL SMH al open hoy para limpiar Tech/Semis antes del PCE Core jueves"
     ]
   },
@@ -2392,27 +2390,32 @@
       {
         "name": "Inflación",
         "value": 55,
-        "color": "#f59e0b"
+        "color": "#f59e0b",
+        "note": "Oil bid (USO ▲) pero gold dump (GLD ▼) = stagflation-style real-asset rotation"
       },
       {
         "name": "Tasas",
         "value": 50,
-        "color": "#f59e0b"
+        "color": "#f59e0b",
+        "note": "Warsh hawkish + CME implica solo 1 corte 2026 = duration vulnerable"
       },
       {
         "name": "Crecimiento",
         "value": 65,
-        "color": "#10b981"
+        "color": "#10b981",
+        "note": "Equity sigue ▲ pero rotation defensiva (XLV/XLP) = growth cooling"
       },
       {
         "name": "Volatilidad",
         "value": 70,
-        "color": "#10b981"
+        "color": "#10b981",
+        "note": "VIX ~17 calm — pre-PCE positioning sin stress"
       },
       {
         "name": "Geopolítico",
         "value": 45,
-        "color": "#f59e0b"
+        "color": "#f59e0b",
+        "note": "Oil bid persistente refleja tensiones (sin spike crítico)"
       }
     ],
     "regimeCeiling": 68,
@@ -2427,7 +2430,7 @@
         "to": "Venta SMH + SOXQ parcial → efectivo en cuenta",
         "amount": "$2,000–$3,000",
         "why": "Tech/Semis = 17% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% esta semana.",
-        "impact": 10,
+        "impact": 4,
         "priceRef": "live May 26 ~07:12 ET — SMH MV $2,297, Tactical $44,342 (TS LIVE)",
         "steps": [
           "1. Confirmar precio actual SMH al open (~$574)",
@@ -2445,7 +2448,7 @@
         "to": "DXJ parcial → efectivo",
         "amount": "$1,000–$2,000",
         "why": "Intl Asia en 20% — cerca del umbral del 20%. RISK_OFF y STAGFLATION_RISK penalizan EM Asia.",
-        "impact": 5,
+        "impact": 2,
         "priceRef": "live May 26 ~07:12 ET — DXJ $3,901 + EWT $4,763 = $8,664 (19.5%)",
         "steps": [
           "1. Monitorear Asia bucket intra-día",
@@ -2462,7 +2465,7 @@
         "to": "Wells Fargo LOC paydown",
         "amount": "$1,679/mes",
         "why": "DEC promedio $6,815/mo vs expenses $5,136 → surplus $1,679/mo. Buffer DEC ✅. Payoff ~29 meses @ pace actual. Retorno garantizado 8.5%.",
-        "impact": 3,
+        "impact": 1,
         "priceRef": "live May 26 — DEC YTD net $32,917 (Xero LIVE) ÷ 4.83mo = $6,815/mo",
         "steps": [
           "1. Esperar estado mensual LOC en rodalt Gmail",
@@ -2479,7 +2482,7 @@
         "to": "IAU o XLE",
         "amount": "$2,000",
         "why": "En STAGFLATION_RISK, oro (IAU) y energía (XLE) son defensivos. Mantener exposición a inflación mientras se reduce Tech.",
-        "impact": 2,
+        "impact": 1,
         "priceRef": "live May 26 ~07:12 ET — IAU $3,477 (7.8%), XLE $2,634 (5.9%)",
         "steps": [
           "1. Esperar ejecución del CRÍTICO SMH primero",
