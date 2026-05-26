@@ -1,12 +1,12 @@
 {
   "meta": {
-    "subtitle": "25 Mayo 2026",
+    "subtitle": "26 Mayo 2026",
     "weeklyFocusDate": "Semana del 25 May",
     "nwBruto": 454725,
-    "nwBrutoDelta": "▲+$52,194 vs May 22 snapshot (actualización live May 25)",
+    "nwBrutoDelta": "\u25b2+$52,194 vs May 22 snapshot (actualizaci\u00f3n live May 25)",
     "nwDeltaUp": true,
     "nwNeto": 384194,
-    "nwNetoDelta": "▲+$39,649 vs May 22 snapshot",
+    "nwNetoDelta": "\u25b2+$39,649 vs May 22 snapshot",
     "fiPct": 77,
     "fiGap": 115806,
     "fiGapAnnual": 23161,
@@ -47,23 +47,23 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
+    "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza \u2014 bien compuesto y en piloto autom\u00e1tico. Los puntos cr\u00edticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
     "retirementCore": 140728,
     "totalBruto": 454725,
-    "tacticalHeader": "$34,529 (margen $9,813 ✅✅ excelente)",
-    "footerNote": "TradeStation MCP (live May 25 12:57 ET) · TT Relay Gmail (May 25 08:42 ET) · Betterment (foto Apr 9) · Xero (LIVE May 25)",
+    "tacticalHeader": "$34,529 (margen $9,813 \u2705\u2705 excelente)",
+    "footerNote": "TradeStation MCP (live May 25 12:57 ET) \u00b7 TT Relay Gmail (May 25 08:42 ET) \u00b7 Betterment (foto Apr 9) \u00b7 Xero (LIVE May 25)",
     "debtTotal": 72728.75,
-    "debtDelta": "▲ $346 vs mes anterior",
+    "debtDelta": "\u25b2 $346 vs mes anterior",
     "debtDeltaUp": false,
     "ssMonthly": 2000,
     "fiTargetAge": 58,
     "fiBlendedTarget": 275000,
     "fiBlendedGap": 61530,
-    "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $336,530 — superado por $61,530.",
+    "fiBlendedNote": "Meta blended ($35K/yr \u2212 SS $24K/yr \u00f7 4%) = $275,000. NW actual $336,530 \u2014 superado por $61,530.",
     "totalAssets": 402531,
     "totalDebt": 72728.75,
-    "futPKGDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW 🆕)",
-    "futVLVDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW 🆕)",
+    "futPKGDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW \ud83c\udd95)",
+    "futVLVDesc": "M6EM26 4x Long Micro EUR/USD + MNGN26 1x Short Nat Gas (NEW \ud83c\udd95)",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
@@ -72,89 +72,89 @@
         "color": "yellow"
       },
       {
-        "text": "🚨 Intl Asia (DXJ+EWT) = 19.5% — reducir",
+        "text": "\ud83d\udea8 Intl Asia (DXJ+EWT) = 19.5% \u2014 reducir",
         "color": "red"
       },
       {
-        "text": "🚨 Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% — VENDER SMH MAÑANA",
+        "text": "\ud83d\udea8 Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% \u2014 VENDER SMH MA\u00d1ANA",
         "color": "red"
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "💥 MAÑANA MARTES: Vender SMH (4 shares ~$2,297) — bajar Tech/Semis de 17.4% a ~12.2% (bajo umbral 15%)",
-      "body": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Vender SMH completo mañana martes (reapertura post-Memorial Day). También monitorear PCE miércoles 28 mayo — evento macro pivotal.",
-      "why": "⚡ Memorial Day hoy — sin trading. Acción prioritaria es Martes 27 mayo al abrir. SMH venta libera ~$2,297 + reduce concentración. PCE miércoles puede cambiar régimen."
+      "title": "\ud83d\udca5 MA\u00d1ANA MARTES: Vender SMH (4 shares ~$2,297) \u2014 bajar Tech/Semis de 17.4% a ~12.2% (bajo umbral 15%)",
+      "body": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.4% del portafolio t\u00e1ctico. STAGFLATION_RISK bloquea este sector. Vender SMH completo ma\u00f1ana martes (reapertura post-Memorial Day). Tambi\u00e9n monitorear PCE mi\u00e9rcoles 28 mayo \u2014 evento macro pivotal.",
+      "why": "\u26a1 Memorial Day hoy \u2014 sin trading. Acci\u00f3n prioritaria es Martes 27 mayo al abrir. SMH venta libera ~$2,297 + reduce concentraci\u00f3n. PCE mi\u00e9rcoles puede cambiar r\u00e9gimen."
     },
     "steps": [
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($48,233 @ 8.5%)",
-        "detail": "Con déficit actual de −$261/mes, la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/año en intereses.",
-        "impact": "Impacto: Deuda 37→80, Score 60→72 · Libera $341/mes al completar",
+        "detail": "Con d\u00e9ficit actual de \u2212$261/mes, la prioridad es recuperar cashflow positivo primero. Si DEC sube a $6,500/mes y surplus vuelve a +$500/mes, LOC en ~30 meses. Cada $10K pagado ahorra $850/a\u00f1o en intereses.",
+        "impact": "Impacto: Deuda 37\u219280, Score 60\u219272 \u00b7 Libera $341/mes al completar",
         "impactColor": "#ef4444",
-        "timeline": "Jun 2026 — 2029",
-        "macroWeight": "CRÍTICO",
+        "timeline": "Jun 2026 \u2014 2029",
+        "macroWeight": "CR\u00cdTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Fed en hold 3.75% + inflación 3.5% = LOC al 8.5% no baja. Cada mes de espera cuesta $341. Régimen actual lo hace más urgente, no menos."
+        "macroNote": "Fed en hold 3.75% + inflaci\u00f3n 3.5% = LOC al 8.5% no baja. Cada mes de espera cuesta $341. R\u00e9gimen actual lo hace m\u00e1s urgente, no menos."
       },
       {
         "urgency": "urgent",
         "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
-        "impact": "Impacto: Mantiene surplus −$261/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
+        "impact": "Impacto: Mantiene surplus \u2212$261/mes (d\u00e9ficit actual) \u00b7 Cierre reducir\u00eda riesgo pero perder\u00eda momentum",
         "impactColor": "#ef4444",
-        "timeline": "May — Jul 2026 (decisión en Aug)"
+        "timeline": "May \u2014 Jul 2026 (decisi\u00f3n en Aug)"
       },
       {
         "urgency": "high",
         "title": "3. Rebalancear cuentas de trading",
         "detail": "Evaluar rebalanceo trimestral. Posiciones actuales: TS ETF Tactical, TastyTrade, IBKR Bravo, RH AP. Sin movimientos pendientes confirmados.",
-        "impact": "Impacto: Performance 57→65, Riesgo 53→60",
+        "impact": "Impacto: Performance 57\u219265, Riesgo 53\u219260",
         "impactColor": "#f59e0b",
-        "timeline": "May — Jun 2026",
-        "macroWeight": "CRÍTICO",
+        "timeline": "May \u2014 Jun 2026",
+        "macroWeight": "CR\u00cdTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Con VIX ~19.5 y régimen volátil, margen $30,990 es el riesgo #1 del portafolio. Acción más urgente en contexto macro actual."
+        "macroNote": "Con VIX ~19.5 y r\u00e9gimen vol\u00e1til, margen $30,990 es el riesgo #1 del portafolio. Acci\u00f3n m\u00e1s urgente en contexto macro actual."
       },
       {
         "urgency": "high",
         "title": "4. Crecer DEC a $6,500+/mes",
-        "detail": "DEC promedia $4,795/mes YTD. Con $6,500/mes el surplus sube a ~$2,400/mes → LOC liquidada en ~20 meses. Palancas: SEO, campañas email, leads Cloze.",
-        "impact": "Impacto: Acelera todo el plan FI en ~2 años",
+        "detail": "DEC promedia $4,795/mes YTD. Con $6,500/mes el surplus sube a ~$2,400/mes \u2192 LOC liquidada en ~20 meses. Palancas: SEO, campa\u00f1as email, leads Cloze.",
+        "impact": "Impacto: Acelera todo el plan FI en ~2 a\u00f1os",
         "impactColor": "#f59e0b",
-        "timeline": "May — Dic 2026"
+        "timeline": "May \u2014 Dic 2026"
       },
       {
         "urgency": "medium",
-        "title": "5. Maximizar SEP IRA en año rentable",
-        "detail": "Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.",
-        "impact": "Impacto: Retiro 91→95, FI Progress 71→78",
+        "title": "5. Maximizar SEP IRA en a\u00f1o rentable",
+        "detail": "Si DEC genera >$50K profit anual: aportar m\u00e1ximo SEP ($69K o 25% de compensaci\u00f3n). Reduce impuestos y acelera compounding.",
+        "impact": "Impacto: Retiro 91\u219295, FI Progress 71\u219278",
         "impactColor": "#3b82f6",
         "timeline": "Dic 2026 (tax planning)"
       },
       {
         "urgency": "medium",
         "title": "6. Subir bonos de 6% a 15%",
-        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.",
-        "impact": "Impacto: Diversific. 70→82, Riesgo 53→68",
+        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 a\u00f1os.",
+        "impact": "Impacto: Diversific. 70\u219282, Riesgo 53\u219268",
         "impactColor": "#3b82f6",
         "timeline": "Q1 2027"
       },
       {
         "urgency": "low",
-        "title": "7. Evaluar Roth conversion en año de bajo ingreso",
-        "detail": "Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.",
-        "impact": "Impacto: Optimización fiscal de largo plazo",
+        "title": "7. Evaluar Roth conversion en a\u00f1o de bajo ingreso",
+        "detail": "Si DEC tiene a\u00f1o bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en Espa\u00f1a.",
+        "impact": "Impacto: Optimizaci\u00f3n fiscal de largo plazo",
         "impactColor": "#10b981",
         "timeline": "2027+ (con CPA)"
       },
       {
         "urgency": "low",
         "title": "8. Testamento + seguro de discapacidad",
-        "detail": "Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.",
-        "impact": "Impacto: Protección patrimonial",
+        "detail": "Activos en 3 pa\u00edses, estructura S-Corp, pr\u00e9stamos privados \u2014 sin testamento todo se complica. Seguro protege el camino FI.",
+        "impact": "Impacto: Protecci\u00f3n patrimonial",
         "impactColor": "#10b981",
         "timeline": "2026 (urgente pero no financiero)"
       }
@@ -164,22 +164,22 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "3 prioridades: (1) 🚨 MAÑANA MARTES — Vender SMH (4 shares) para bajar Tech/Semis 17.4% → <13% (umbral 15% STAGFLATION_RISK). (2) PCE miércoles 28 mayo — evento crítico. (3) Surplus $+1,988/mes → aplicar íntegro al LOC $48,233 @ 8.5% (payoff en ~24 meses)."
+      "text": "3 prioridades: (1) \ud83d\udea8 MA\u00d1ANA MARTES \u2014 Vender SMH (4 shares) para bajar Tech/Semis 17.4% \u2192 <13% (umbral 15% STAGFLATION_RISK). (2) PCE mi\u00e9rcoles 28 mayo \u2014 evento cr\u00edtico. (3) Surplus $+1,988/mes \u2192 aplicar \u00edntegro al LOC $48,233 @ 8.5% (payoff en ~24 meses)."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Move CRÍTICO pendiente — Vender SMH MAÑANA MARTES (4 shares). Tech/Semis 17.4% en régimen Stagflation = sector bloqueado. Nuevas posiciones futures: M6EM26+MNGN26 en PKG27+VLV23."
+      "text": "Move CR\u00cdTICO pendiente \u2014 Vender SMH MA\u00d1ANA MARTES (4 shares). Tech/Semis 17.4% en r\u00e9gimen Stagflation = sector bloqueado. Nuevas posiciones futures: M6EM26+MNGN26 en PKG27+VLV23."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($36,415 — 8.0% del portafolio) sin garantía documental. Ver Resumen."
+      "text": "Verificar contrato Miguel Autos ($36,415 \u2014 8.0% del portafolio) sin garant\u00eda documental. Ver Resumen."
     },
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer ✅ ($47,365 ≥ $39K) — DEC surplus $+1,988/mes → aplicar al LOC $48,233 @ 8.5%. DEC avg $7,124/mes (Xero LIVE May 25)."
+      "text": "Buffer \u2705 ($47,365 \u2265 $39K) \u2014 DEC surplus $+1,988/mes \u2192 aplicar al LOC $48,233 @ 8.5%. DEC avg $7,124/mes (Xero LIVE May 25)."
     },
     "fi": {
       "color": "#10b981",
@@ -189,17 +189,17 @@
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⛔ Move CRÍTICO pendiente: 🚨 Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% — vender ... — ver Macro tab."
+      "text": "\u26d4 Move CR\u00cdTICO pendiente: \ud83d\udea8 Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% \u2014 vender ... \u2014 ver Macro tab."
     },
     "performance": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "Ejecutar move CRÍTICO (🚨 Tech/Semis 17% → <14%) antes de rebalancear. Ver Resumen para orden."
+      "text": "Ejecutar move CR\u00cdTICO (\ud83d\udea8 Tech/Semis 17% \u2192 <14%) antes de rebalancear. Ver Resumen para orden."
     },
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Surplus $+2,395/mes + buffer ✅ — redirigir íntegro al LOC @ 8.5%. Ver Resumen."
+      "text": "Surplus $+2,395/mes + buffer \u2705 \u2014 redirigir \u00edntegro al LOC @ 8.5%. Ver Resumen."
     }
   },
   "insights": {
@@ -217,34 +217,34 @@
     },
     "accounts": [
       {
-        "rank": "Grado A — ETF Core · TWR +26.4%",
+        "rank": "Grado A \u2014 ETF Core \u00b7 TWR +26.4%",
         "rankColor": "#10b981",
-        "text": "La cuenta principal de trading. 16 posiciones ETF diversificadas con margen controlado ($10,663). Régimen STAGFLATION_RISK activo — sobreponderar defensivos (XLP, XLV, IAU) y reducir Intl Asia (DXJ+EWT = 21.1% → meta ≤19%).",
-        "rec": "Reducir DXJ o EWT en próximo rally. Vigilar Tech/Semis (BAI+SMH+SOXQ+SOXX = 17.1% — umbral 15%)."
+        "text": "La cuenta principal de trading. 16 posiciones ETF diversificadas con margen controlado ($10,663). R\u00e9gimen STAGFLATION_RISK activo \u2014 sobreponderar defensivos (XLP, XLV, IAU) y reducir Intl Asia (DXJ+EWT = 21.1% \u2192 meta \u226419%).",
+        "rec": "Reducir DXJ o EWT en pr\u00f3ximo rally. Vigilar Tech/Semis (BAI+SMH+SOXQ+SOXX = 17.1% \u2014 umbral 15%)."
       },
       {
-        "rank": "Grado A+ — Mejor TWR · +43.4%",
+        "rank": "Grado A+ \u2014 Mejor TWR \u00b7 +43.4%",
         "rankColor": "#10b981",
-        "text": "RH Autopilot Act Managed — la cuenta de mejor rendimiento del portafolio. Gestión activa automatizada. YTD +22.03% ($796). Cuenta actualizada May 23 con recepción de $2K transfer de TastyTrade.",
-        "rec": "Mantener y considerar aumentar capital aquí — consistentemente supera al S&P. Candidato a recibir capital de cuentas de bajo rendimiento."
+        "text": "RH Autopilot Act Managed \u2014 la cuenta de mejor rendimiento del portafolio. Gesti\u00f3n activa automatizada. YTD +22.03% ($796). Cuenta actualizada May 23 con recepci\u00f3n de $2K transfer de TastyTrade.",
+        "rec": "Mantener y considerar aumentar capital aqu\u00ed \u2014 consistentemente supera al S&P. Candidato a recibir capital de cuentas de bajo rendimiento."
       },
       {
-        "rank": "Grado B — Stocks Activo · TWR +13.2%",
+        "rank": "Grado B \u2014 Stocks Activo \u00b7 TWR +13.2%",
         "rankColor": "#10b981",
-        "text": "IBKR Bravo — cuenta de acciones individuales. TWR sólido +13.2%, supera al S&P. Saldo actualizado a $8,346 May 23 (recepción de $2K transfer de TastyTrade + rendimiento propio).",
-        "rec": "Mantener estrategia actual. Evaluar concentración de posiciones individuales — diversificación adecuada reduce riesgo idiosincrático."
+        "text": "IBKR Bravo \u2014 cuenta de acciones individuales. TWR s\u00f3lido +13.2%, supera al S&P. Saldo actualizado a $8,346 May 23 (recepci\u00f3n de $2K transfer de TastyTrade + rendimiento propio).",
+        "rec": "Mantener estrategia actual. Evaluar concentraci\u00f3n de posiciones individuales \u2014 diversificaci\u00f3n adecuada reduce riesgo idiosincr\u00e1tico."
       },
       {
-        "rank": "Grado D — Opciones · TWR -15.7%",
+        "rank": "Grado D \u2014 Opciones \u00b7 TWR -15.7%",
         "rankColor": "#ef4444",
-        "text": "TastyTrade — portafolio de opciones. 9 posiciones activas (6 Bear Puts, 2 Bull Puts, 1 LEAPS). NLV $8,688 post-transfer de $4K a RH/IBKR. NFLX spread declining ▼ ($1.71 vs $2.18 entrada). OCO stops activos en todos los spreads.",
-        "rec": "Vigilar NFLX spread — SL trigger $1.09. No abrir nuevas posiciones hasta mejorar TWR. Evaluar cierre anticipado de spreads próximos a vencer Jun 18."
+        "text": "TastyTrade \u2014 portafolio de opciones. 9 posiciones activas (6 Bear Puts, 2 Bull Puts, 1 LEAPS). NLV $8,688 post-transfer de $4K a RH/IBKR. NFLX spread declining \u25bc ($1.71 vs $2.18 entrada). OCO stops activos en todos los spreads.",
+        "rec": "Vigilar NFLX spread \u2014 SL trigger $1.09. No abrir nuevas posiciones hasta mejorar TWR. Evaluar cierre anticipado de spreads pr\u00f3ximos a vencer Jun 18."
       },
       {
-        "rank": "Grado F — Futuros · TWR -58.2%",
+        "rank": "Grado F \u2014 Futuros \u00b7 TWR -58.2%",
         "rankColor": "#ef4444",
-        "text": "TS Futures PKG27+VLV23 — NUEVAS posiciones este fin de semana: M6EM26 (4x Long Micro EUR/USD Jun26) + MNGN26 (1x Short Micro Nat Gas Jul26) en ambas cuentas. PKG27 equity $2,088 | VLV23 equity $2,123. Buying power limitado — no abrir nuevas posiciones.",
-        "rec": "Monitorear M6EM26 (EUR/USD) y MNGN26 (Short Nat Gas). Confirmar detalles de entrada y tesis. Buying power PKG27 $730 — capacidad limitada."
+        "text": "TS Futures PKG27+VLV23 \u2014 NUEVAS posiciones este fin de semana: M6EM26 (4x Long Micro EUR/USD Jun26) + MNGN26 (1x Short Micro Nat Gas Jul26) en ambas cuentas. PKG27 equity $2,088 | VLV23 equity $2,123. Buying power limitado \u2014 no abrir nuevas posiciones.",
+        "rec": "Monitorear M6EM26 (EUR/USD) y MNGN26 (Short Nat Gas). Confirmar detalles de entrada y tesis. Buying power PKG27 $730 \u2014 capacidad limitada."
       }
     ]
   },
@@ -288,7 +288,7 @@
       "label": "Pepe Loans",
       "amount": 542,
       "color": "#10b981",
-      "source": "4%/mes × $13,555",
+      "source": "4%/mes \u00d7 $13,555",
       "monthly": 542,
       "annual": 6504,
       "note": "Proyectado. Actualmente redirigido a Michalitas."
@@ -297,10 +297,10 @@
       "label": "CDs Ecuador",
       "amount": 190,
       "color": "#3b82f6",
-      "source": "6.5%/año × $35,000",
+      "source": "6.5%/a\u00f1o \u00d7 $35,000",
       "monthly": 190,
       "annual": 2280,
-      "note": "6.5% APY sobre $35,000 — acumula en Bolivariano."
+      "note": "6.5% APY sobre $35,000 \u2014 acumula en Bolivariano."
     },
     {
       "label": "Dividendos",
@@ -315,16 +315,16 @@
       "label": "Betterment Int.",
       "amount": 105,
       "color": "#8b5cf6",
-      "source": "~4%/año × $31,151",
+      "source": "~4%/a\u00f1o \u00d7 $31,151",
       "monthly": 80,
       "annual": 960,
-      "note": "Interés de Cash Reserve Betterment."
+      "note": "Inter\u00e9s de Cash Reserve Betterment."
     }
   ],
   "incomeTotal": 952,
   "incomeAnnual": 11424,
   "incomePassiveCoverage": "32",
-  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
+  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrir\u00edas el 100% sin tocar el portafolio principal.",
   "rebalance": [
     {
       "name": "TS ETF Tactical",
@@ -373,7 +373,7 @@
     }
   ],
   "rebalanceTotal": 62959,
-  "rebalanceNote": "Capital trading activo: ~$53,481. TastyTrade $12,641 (9 spreads activos Jun 18/30). Futures PKG27+VLV23 activos: M6EM26+MNGN26. 🦅 Memorial Day — sin trading hoy.",
+  "rebalanceNote": "Capital trading activo: ~$53,481. TastyTrade $12,641 (9 spreads activos Jun 18/30). Futures PKG27+VLV23 activos: M6EM26+MNGN26. \ud83e\udd85 Memorial Day \u2014 sin trading hoy.",
   "pieCategories": [
     {
       "label": "Retiro 56%",
@@ -396,7 +396,7 @@
       "color": "#8b5cf6"
     },
     {
-      "label": "Préstamos 12%",
+      "label": "Pr\u00e9stamos 12%",
       "value": 49970,
       "color": "#ec4899"
     }
@@ -413,7 +413,7 @@
       "color": "#f59e0b"
     },
     {
-      "name": "Préstamos",
+      "name": "Pr\u00e9stamos",
       "value": 49970,
       "color": "#ec4899"
     },
@@ -448,7 +448,7 @@
       "color": "#f97316"
     },
     {
-      "name": "Energía",
+      "name": "Energ\u00eda",
       "value": 5073,
       "color": "#ef4444"
     }
@@ -466,7 +466,7 @@
       "color": "#10b981"
     },
     {
-      "label": "Interés LOC / mes",
+      "label": "Inter\u00e9s LOC / mes",
       "value": "-$341",
       "color": "#ef4444"
     },
@@ -481,7 +481,7 @@
       "valueId": "metric-ss"
     },
     {
-      "label": "Gap FI (5 años)",
+      "label": "Gap FI (5 a\u00f1os)",
       "valueId": "metric-gap",
       "color": "#f59e0b",
       "value": "77%"
@@ -508,25 +508,25 @@
   },
   "waterfallScenarios": [
     {
-      "icon": "🟢",
+      "icon": "\ud83d\udfe2",
       "label": "Actual (May 25)",
       "surplus": 1988,
-      "note": "DEC $7,124/mes avg (Xero LIVE May 25) — surplus POSITIVO ✅"
+      "note": "DEC $7,124/mes avg (Xero LIVE May 25) \u2014 surplus POSITIVO \u2705"
     },
     {
-      "icon": "🟡",
+      "icon": "\ud83d\udfe1",
       "label": "Si Michalitas cierra",
       "surplus": 1184,
       "note": "LOC pagada en ~41 meses"
     },
     {
-      "icon": "🟢",
+      "icon": "\ud83d\udfe2",
       "label": "Si DEC mantiene $6K/mes",
       "surplus": 2389,
       "note": "LOC pagada en 20 meses + algo a inversiones"
     },
     {
-      "icon": "🎯",
+      "icon": "\ud83c\udfaf",
       "label": "Si ambos (DEC $6K + Michalitas cierra)",
       "surplus": 3914,
       "note": "LOC pagada en 12 meses, luego $3.9K/mes a inversiones"
@@ -540,7 +540,7 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD May 25 (Xero LIVE $34,411.82 ÷ 4.83m)"
+      "note": "Net Income promedio YTD May 25 (Xero LIVE $34,411.82 \u00f7 4.83m)"
     },
     {
       "label": "Ingreso pasivo",
@@ -549,9 +549,9 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Pepe+CDs+dividendos acumulan en Ecuador — no disponible para gastos US",
+      "note": "Pepe+CDs+dividendos acumulan en Ecuador \u2014 no disponible para gastos US",
       "projected": 952,
-      "projectedNote": "Proyectado $952/mo (Pepe+CDs+div) — acumula Ecuador, no disponible US"
+      "projectedNote": "Proyectado $952/mo (Pepe+CDs+div) \u2014 acumula Ecuador, no disponible US"
     },
     {
       "label": "Gastos de vida (US)",
@@ -560,7 +560,7 @@
       "type": "Fijo",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "$50K/año baseline"
+      "note": "$50K/a\u00f1o baseline"
     },
     {
       "label": "Michalitas Xpress",
@@ -569,7 +569,7 @@
       "type": "Mejorando",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "Abr: -$499 vs PE · May: +$121 proyectado (casi break-even)"
+      "note": "Abr: -$499 vs PE \u00b7 May: +$121 proyectado (casi break-even)"
     },
     {
       "label": "Intereses LOC",
@@ -578,7 +578,7 @@
       "type": "Deuda",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "8.5% × $48,233 ÷ 12"
+      "note": "8.5% \u00d7 $48,233 \u00f7 12"
     },
     {
       "label": "Intereses Car Loan",
@@ -587,7 +587,7 @@
       "type": "Deuda",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "6.5% × $9,053 ÷ 12"
+      "note": "6.5% \u00d7 $9,053 \u00f7 12"
     }
   ],
   "performance": {
@@ -596,7 +596,7 @@
     "best6mPct": 43.4,
     "worst6mName": "TS Futures",
     "worst6mPct": -58.2,
-    "twrNote": "Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversión es +10.4%. La diferencia se debe a 3 flujos externos neutralizados: préstamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26).",
+    "twrNote": "Tu portafolio muestra -0.6% raw, pero el rendimiento real de inversi\u00f3n es +10.4%. La diferencia se debe a 3 flujos externos neutralizados: pr\u00e9stamo $20K a Miguel (Ene 25), repago $13K (Ene 26), y pago LOC $30K (Feb 26).",
     "second6mName": "IBKR Bravo",
     "second6mPct": 13.2
   },
@@ -621,7 +621,7 @@
     },
     {
       "name": "Miguel Autos Loan",
-      "cat": "Préstamo",
+      "cat": "Pr\u00e9stamo",
       "value": 36415,
       "color": "#ec4899"
     },
@@ -651,7 +651,7 @@
     },
     {
       "name": "Pepe Loans",
-      "cat": "Préstamo",
+      "cat": "Pr\u00e9stamo",
       "value": 13555,
       "color": "#f472b6"
     },
@@ -1878,7 +1878,7 @@
       "date": "Jan 01 2026"
     },
     "pepe": {
-      "label": "Manual (Préstamo)",
+      "label": "Manual (Pr\u00e9stamo)",
       "date": "Jan 01 2026"
     },
     "miguel": {
@@ -2320,19 +2320,19 @@
   },
   "allocationAlerts": [
     {
-      "icon": "🚨",
-      "text": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.1% — excede umbral 15% en régimen STAGFLATION"
+      "icon": "\ud83d\udea8",
+      "text": "Tech/Semis (BAI+SMH+SOXQ+SOXX) = 17.1% \u2014 excede umbral 15% en r\u00e9gimen STAGFLATION"
     },
     {
-      "icon": "🚨",
-      "text": "Intl Asia (DXJ+EWT) = 21.1% — excede umbral 20%, reducir ~$940 en DXJ o EWT"
+      "icon": "\ud83d\udea8",
+      "text": "Intl Asia (DXJ+EWT) = 21.1% \u2014 excede umbral 20%, reducir ~$940 en DXJ o EWT"
     },
     {
-      "icon": "✅",
-      "text": "Margen Táctico $10,663 — excelente (objetivo <$20K ✅✅)"
+      "icon": "\u2705",
+      "text": "Margen T\u00e1ctico $10,663 \u2014 excelente (objetivo <$20K \u2705\u2705)"
     }
   ],
-  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
+  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas \u2014 no refleja cashflow activo del waterfall ($0 pasivo).",
   "fiProjection": {
     "base": [
       null,
@@ -2368,22 +2368,22 @@
       "2031 (58)"
     ],
     "target": 500000,
-    "labelBase": "🔵 Base (7%/año)",
-    "labelOptimistic": "🟢 Optimista (9%/año + cierre Michalitas)",
-    "labelPessimistic": "🔴 Pesimista (5%/año)"
+    "labelBase": "\ud83d\udd35 Base (7%/a\u00f1o)",
+    "labelOptimistic": "\ud83d\udfe2 Optimista (9%/a\u00f1o + cierre Michalitas)",
+    "labelPessimistic": "\ud83d\udd34 Pesimista (5%/a\u00f1o)"
   },
   "macroReadiness": {
     "lastUpdate": "2026-05-22T15:00:00Z",
     "regime": "STAGFLATION_RISK",
-    "regimeLabel": "Riesgo Estanflación",
+    "regimeLabel": "Riesgo Estanflaci\u00f3n",
     "regimeColor": "#f59e0b",
-    "regimeContext": "NVDA beat AMC May 20 (Rev $81.6B, EPS $1.62 vs $1.52) pero acciones -0.87% premarket — sell the news. Petróleo revierte fuerte +2.44% (USO $147.79) por tensión nuclear con Irán. Jobless Claims 209K (beat 210K est). VIX 17.67 ▲+1.3%. ✅ Move 1 EJECUTADO — margen reducido $27,612 → $21,625 (objetivo <$22K CUMPLIDO). ⚠️ NUEVA ALERTA: Intl Asia (DXJ+EWT+EWY) = 21.7% 🚨 (excede umbral 20%). PKG27: MNGM26 cerrado — ambas cuentas futures en efectivo. NVTS mejorando ($1.28 net vs $1.40cr entry). Alignment 65/100 (techo régimen).",
+    "regimeContext": "NVDA beat AMC May 20 (Rev $81.6B, EPS $1.62 vs $1.52) pero acciones -0.87% premarket \u2014 sell the news. Petr\u00f3leo revierte fuerte +2.44% (USO $147.79) por tensi\u00f3n nuclear con Ir\u00e1n. Jobless Claims 209K (beat 210K est). VIX 17.67 \u25b2+1.3%. \u2705 Move 1 EJECUTADO \u2014 margen reducido $27,612 \u2192 $21,625 (objetivo <$22K CUMPLIDO). \u26a0\ufe0f NUEVA ALERTA: Intl Asia (DXJ+EWT+EWY) = 21.7% \ud83d\udea8 (excede umbral 20%). PKG27: MNGM26 cerrado \u2014 ambas cuentas futures en efectivo. NVTS mejorando ($1.28 net vs $1.40cr entry). Alignment 65/100 (techo r\u00e9gimen).",
     "alignmentScore": 65,
     "alignmentColor": "#10b981",
-    "alignmentLabel": "Mayormente Alineado (techo régimen)",
+    "alignmentLabel": "Mayormente Alineado (techo r\u00e9gimen)",
     "macroFactors": [
       {
-        "name": "Inflación",
+        "name": "Inflaci\u00f3n",
         "value": 45,
         "color": "#f59e0b"
       },
@@ -2403,118 +2403,118 @@
         "color": "#f59e0b"
       },
       {
-        "name": "Geopolítico",
+        "name": "Geopol\u00edtico",
         "value": 40,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK: techo 65. ✅ Move 1 margen ejecutado. ⚠️ Nueva concentración Intl Asia 21.7% 🚨 neutraliza el avance. Pendiente: NVTS/HIMS gestión + Intl Asia reducción + confirmar PKG27.",
+    "regimeCeilingWhy": "STAGFLATION_RISK: techo 65. \u2705 Move 1 margen ejecutado. \u26a0\ufe0f Nueva concentraci\u00f3n Intl Asia 21.7% \ud83d\udea8 neutraliza el avance. Pendiente: NVTS/HIMS gesti\u00f3n + Intl Asia reducci\u00f3n + confirmar PKG27.",
     "moves": [
       {
-        "urgency": "CRÍTICO",
+        "urgency": "CR\u00cdTICO",
         "urgencyColor": "#ef4444",
-        "icon": "🚨",
-        "action": "Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% — vender SMH ($2,300) + parcial SOXQ",
+        "icon": "\ud83d\udea8",
+        "action": "Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% \u2014 vender SMH ($2,300) + parcial SOXQ",
         "from": "TS 11484090 Tactical",
-        "to": "Venta SMH + SOXQ parcial → efectivo en cuenta",
-        "amount": "$2,000–$3,000",
-        "why": "Tech/Semis = 17% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% esta semana."
+        "to": "Venta SMH + SOXQ parcial \u2192 efectivo en cuenta",
+        "amount": "$2,000\u2013$3,000",
+        "why": "Tech/Semis = 17% del portafolio t\u00e1ctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% esta semana."
       },
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
-        "icon": "🌏",
-        "action": "Monitorear Intl Asia (DXJ+EWT = 20%) — reducir DXJ si cruza 20%",
+        "icon": "\ud83c\udf0f",
+        "action": "Monitorear Intl Asia (DXJ+EWT = 20%) \u2014 reducir DXJ si cruza 20%",
         "from": "TS 11484090 Tactical",
-        "to": "DXJ parcial → efectivo",
-        "amount": "$1,000–$2,000",
-        "why": "Intl Asia en 20% — cerca del umbral del 20%. RISK_OFF y STAGFLATION_RISK penalizan EM Asia."
+        "to": "DXJ parcial \u2192 efectivo",
+        "amount": "$1,000\u2013$2,000",
+        "why": "Intl Asia en 20% \u2014 cerca del umbral del 20%. RISK_OFF y STAGFLATION_RISK penalizan EM Asia."
       },
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
-        "icon": "💰",
+        "icon": "\ud83d\udcb0",
         "action": "Aplicar surplus mensual $+2,395 al LOC Wells Fargo $48,233 @ 8.5%",
-        "from": "DEC cash (buffer ✅)",
+        "from": "DEC cash (buffer \u2705)",
         "to": "Wells Fargo LOC paydown",
         "amount": "$2,395/mes",
-        "why": "Buffer DEC ✅ ($47,366 ≥ $41,052). Payoff en ~20 meses. Retorno garantizado 8.5%."
+        "why": "Buffer DEC \u2705 ($47,366 \u2265 $41,052). Payoff en ~20 meses. Retorno garantizado 8.5%."
       },
       {
         "urgency": "PLANEAR",
         "urgencyColor": "#3b82f6",
-        "icon": "📈",
-        "action": "Rotar efectivo de Tech/Semis hacia IAU/XLE (hedges de inflación) si régimen persiste",
+        "icon": "\ud83d\udcc8",
+        "action": "Rotar efectivo de Tech/Semis hacia IAU/XLE (hedges de inflaci\u00f3n) si r\u00e9gimen persiste",
         "from": "Efectivo post-venta Tech/Semis",
         "to": "IAU o XLE",
         "amount": "$2,000",
-        "why": "En STAGFLATION_RISK, oro (IAU) y energía (XLE) son defensivos. Mantener exposición a inflación mientras se reduce Tech."
+        "why": "En STAGFLATION_RISK, oro (IAU) y energ\u00eda (XLE) son defensivos. Mantener exposici\u00f3n a inflaci\u00f3n mientras se reduce Tech."
       },
       {
         "urgency": "CONDICIONAL",
         "urgencyColor": "#6b7280",
-        "icon": "🔄",
+        "icon": "\ud83d\udd04",
         "action": "Aumentar SCHD/VOO en SEP IRA si regime cambia a LATE_CYCLE o EXPANSION",
         "from": "SEP IRA cash (disponible $556)",
         "to": "SCHD o VOO adicional",
         "amount": "$500",
-        "why": "SEP IRA fully invested. Cash mínimo disponible. Esperar cambio de régimen antes de rebalancear hacia growth."
+        "why": "SEP IRA fully invested. Cash m\u00ednimo disponible. Esperar cambio de r\u00e9gimen antes de rebalancear hacia growth."
       }
     ],
     "triggers": [
       {
-        "trigger": "CPI reading > 3.5% → regime stays STAGFLATION, NO new Tech/Growth positions",
-        "icon": "📊"
+        "trigger": "CPI reading > 3.5% \u2192 regime stays STAGFLATION, NO new Tech/Growth positions",
+        "icon": "\ud83d\udcca"
       },
       {
-        "trigger": "10Y yield rises above 4.75% → add TLT short hedge, reduce duration",
-        "icon": "📉"
+        "trigger": "10Y yield rises above 4.75% \u2192 add TLT short hedge, reduce duration",
+        "icon": "\ud83d\udcc9"
       },
       {
-        "trigger": "S&P monthly close above 5,700 → reassess LATE_CYCLE transition, loosen blocked sectors",
-        "icon": "📈"
+        "trigger": "S&P monthly close above 5,700 \u2192 reassess LATE_CYCLE transition, loosen blocked sectors",
+        "icon": "\ud83d\udcc8"
       }
     ]
   },
   "weeklyActions": [
     {
-      "priority": "CRÍTICO",
+      "priority": "CR\u00cdTICO",
       "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% — vender SMH ($2,300) + parcial SOXQ",
-      "why": "Tech/Semis = 17% del portafolio táctico en régimen STAGFLATION_RISK. Sector bloqueado. Riesgo real de pérdida si inflación se re-acelera.",
+      "icon": "\ud83d\udea8",
+      "action": "Reducir Tech/Semis (BAI+SMH+SOXQ+SOXX) a <14% \u2014 vender SMH ($2,300) + parcial SOXQ",
+      "why": "Tech/Semis = 17% del portafolio t\u00e1ctico en r\u00e9gimen STAGFLATION_RISK. Sector bloqueado. Riesgo real de p\u00e9rdida si inflaci\u00f3n se re-acelera.",
       "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "💳",
+      "icon": "\ud83d\udcb3",
       "action": "Aplicar surplus $+2,395/mes al LOC Wells Fargo $48,233 @ 8.5%",
-      "why": "Buffer DEC ✅ ($47,366). Cada $1K pagado ahorra $85/año. Payoff en ~20 meses al ritmo actual.",
+      "why": "Buffer DEC \u2705 ($47,366). Cada $1K pagado ahorra $85/a\u00f1o. Payoff en ~20 meses al ritmo actual.",
       "category": "DEUDA"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "🌏",
-      "action": "Monitorear Intl Asia (DXJ+EWT = 20%) — si cruza 20% → vender DXJ parcialmente",
-      "why": "RISK_OFF y STAGFLATION_RISK bloquean exposure EM Asia. Al 20%, una semana de apreciación podría cruzar el umbral del 20%.",
+      "icon": "\ud83c\udf0f",
+      "action": "Monitorear Intl Asia (DXJ+EWT = 20%) \u2014 si cruza 20% \u2192 vender DXJ parcialmente",
+      "why": "RISK_OFF y STAGFLATION_RISK bloquean exposure EM Asia. Al 20%, una semana de apreciaci\u00f3n podr\u00eda cruzar el umbral del 20%.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📋",
-      "action": "Verificar contrato Miguel Autos ($36,415) está vigente",
-      "why": "Mayor activo ilíquido (8% NW bruto) — contrato escrito es control mínimo de riesgo.",
+      "icon": "\ud83d\udccb",
+      "action": "Verificar contrato Miguel Autos ($36,415) est\u00e1 vigente",
+      "why": "Mayor activo il\u00edquido (8% NW bruto) \u2014 contrato escrito es control m\u00ednimo de riesgo.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📊",
-      "action": "Revisar CRM Cloze — activar 2-3 leads DEC pendientes para sostener $6,900+/mes",
+      "icon": "\ud83d\udcca",
+      "action": "Revisar CRM Cloze \u2014 activar 2-3 leads DEC pendientes para sostener $6,900+/mes",
       "why": "DEC YTD avg $6,904/mes es el motor del surplus. Mantener pipeline activo protege el LOC paydown.",
       "category": "INGRESOS"
     }
