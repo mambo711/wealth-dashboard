@@ -2426,7 +2426,15 @@
         "from": "TS 11484090 Tactical",
         "to": "Venta SMH + SOXQ parcial → efectivo en cuenta",
         "amount": "$2,000–$3,000",
-        "why": "Tech/Semis = 17% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% esta semana."
+        "why": "Tech/Semis = 17% del portafolio táctico. STAGFLATION_RISK bloquea este sector. Reducir a <14% esta semana.",
+        "impact": 10,
+        "priceRef": "live May 26 ~07:12 ET — SMH MV $2,297, Tactical $44,342 (TS LIVE)",
+        "steps": [
+          "1. Confirmar precio actual SMH al open (~$574)",
+          "2. Vender 4 shares SMH @ market en cuenta TS #11484090",
+          "3. Verificar que Tech/Semis cae de 17.4% → 12.2% post-fill",
+          "4. Si Tech/Semis sigue >14% considerar parcial SOXQ (10-15 sh)"
+        ]
       },
       {
         "urgency": "URGENTE",
@@ -2436,17 +2444,31 @@
         "from": "TS 11484090 Tactical",
         "to": "DXJ parcial → efectivo",
         "amount": "$1,000–$2,000",
-        "why": "Intl Asia en 20% — cerca del umbral del 20%. RISK_OFF y STAGFLATION_RISK penalizan EM Asia."
+        "why": "Intl Asia en 20% — cerca del umbral del 20%. RISK_OFF y STAGFLATION_RISK penalizan EM Asia.",
+        "impact": 5,
+        "priceRef": "live May 26 ~07:12 ET — DXJ $3,901 + EWT $4,763 = $8,664 (19.5%)",
+        "steps": [
+          "1. Monitorear Asia bucket intra-día",
+          "2. Si DXJ ▲ y bucket cruza 20% → trim parcial DXJ (10 shares)",
+          "3. EWT mantener — Taiwan tiene mejor momentum AI/semis"
+        ]
       },
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
         "icon": "💰",
-        "action": "Aplicar surplus mensual $+2,395 al LOC Wells Fargo $48,233 @ 8.5%",
-        "from": "DEC cash (buffer ✅)",
+        "action": "Aplicar surplus mensual $+1,679 al LOC Wells Fargo $48,233 @ 8.5%",
+        "from": "DEC cash surplus (buffer ✅)",
         "to": "Wells Fargo LOC paydown",
-        "amount": "$2,395/mes",
-        "why": "Buffer DEC ✅ ($47,366 ≥ $41,052). Payoff en ~20 meses. Retorno garantizado 8.5%."
+        "amount": "$1,679/mes",
+        "why": "DEC promedio $6,815/mo vs expenses $5,136 → surplus $1,679/mo. Buffer DEC ✅. Payoff ~29 meses @ pace actual. Retorno garantizado 8.5%.",
+        "impact": 3,
+        "priceRef": "live May 26 — DEC YTD net $32,917 (Xero LIVE) ÷ 4.83mo = $6,815/mo",
+        "steps": [
+          "1. Esperar estado mensual LOC en rodalt Gmail",
+          "2. Verificar DEC cash > buffer ($39K) antes de pagar",
+          "3. Pagar surplus $1,679 a LOC desde DEC cuenta"
+        ]
       },
       {
         "urgency": "PLANEAR",
@@ -2456,7 +2478,14 @@
         "from": "Efectivo post-venta Tech/Semis",
         "to": "IAU o XLE",
         "amount": "$2,000",
-        "why": "En STAGFLATION_RISK, oro (IAU) y energía (XLE) son defensivos. Mantener exposición a inflación mientras se reduce Tech."
+        "why": "En STAGFLATION_RISK, oro (IAU) y energía (XLE) son defensivos. Mantener exposición a inflación mientras se reduce Tech.",
+        "impact": 2,
+        "priceRef": "live May 26 ~07:12 ET — IAU $3,477 (7.8%), XLE $2,634 (5.9%)",
+        "steps": [
+          "1. Esperar ejecución del CRÍTICO SMH primero",
+          "2. Usar ~$1,500 efectivo post-SMH para IAU (subir a ~10%)",
+          "3. ~$500 a XLE (subir a 6.5%) — Energy bucket ya 15.2% 🚨 cuidado"
+        ]
       },
       {
         "urgency": "CONDICIONAL",
@@ -2466,21 +2495,34 @@
         "from": "SEP IRA cash (disponible $556)",
         "to": "SCHD o VOO adicional",
         "amount": "$500",
-        "why": "SEP IRA fully invested. Cash mínimo disponible. Esperar cambio de régimen antes de rebalancear hacia growth."
+        "why": "SEP IRA fully invested. Cash mínimo disponible. Esperar cambio de régimen antes de rebalancear hacia growth.",
+        "impact": 0,
+        "priceRef": "live May 26 — régimen sigue STAGFLATION_RISK, trigger NO cumplido",
+        "steps": [
+          "1. Esperar PCE Core jueves 28 + reacción Warsh",
+          "2. Si PCE ≤0.2% mom + Warsh dovish → trigger LATE_CYCLE",
+          "3. Solo entonces añadir SCHD/VOO al SEP IRA con cash $556"
+        ]
       }
     ],
     "triggers": [
       {
-        "trigger": "CPI reading > 3.5% → regime stays STAGFLATION, NO new Tech/Growth positions",
-        "icon": "📊"
+        "icon": "📊",
+        "label": "CPI > 3.5%",
+        "condition": "Régimen STAGFLATION confirmado — NO abrir nuevas posiciones Tech/Growth",
+        "dirColor": "#ef4444"
       },
       {
-        "trigger": "10Y yield rises above 4.75% → add TLT short hedge, reduce duration",
-        "icon": "📉"
+        "icon": "📉",
+        "label": "10Y yield > 4.75%",
+        "condition": "Añadir TLT short hedge, reducir duración en bond holdings",
+        "dirColor": "#f59e0b"
       },
       {
-        "trigger": "S&P monthly close above 5,700 → reassess LATE_CYCLE transition, loosen blocked sectors",
-        "icon": "📈"
+        "icon": "📈",
+        "label": "S&P close > 5,700",
+        "condition": "Re-evaluar transición a LATE_CYCLE, liberar sectores bloqueados",
+        "dirColor": "#10b981"
       }
     ]
   },
