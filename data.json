@@ -80,7 +80,8 @@
         "color": "red"
       }
     ],
-    "decMonthlyAvg": 6815.0
+    "decMonthlyAvg": 6815.0,
+    "_buildTrigger": "2026-05-26T11:54:21.805193+00:00"
   },
   "roadmap": {
     "weeklyFocus": {
