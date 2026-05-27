@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "27 Mayo 2026",
     "weeklyFocusDate": "Semana del 27 May",
-    "nwBruto": 409855,
-    "nwBrutoDelta": "▲$0 vs ayer",
+    "nwBruto": 409963,
+    "nwBrutoDelta": "▲$108 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 339324,
+    "nwNeto": 339432,
     "nwNetoDelta": "▲+$39,649 vs May 22 snapshot",
     "fiPct": 68,
-    "fiGap": 160676,
+    "fiGap": 160568,
     "fiGapAnnual": 23161,
     "fiTarget": 500000,
     "healthScore": 65,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
-    "retirementCore": 263046,
+    "retirementCore": 262918,
     "totalBruto": 454725,
-    "tacticalHeader": "$35,449 (margen $9,813 ✅✅ bajo $20K)",
-    "footerNote": "Datos: TradeStation MCP (live May 27 ~7:10 ET) · TT Relay Gmail (May 27 03:10 ET) · Xero P&L (live YTD May 27) · Barchart WebSearch · Memory snapshot May 25",
+    "tacticalHeader": "$35,510 (margen $9,813 ✅✅ bajo $20K objetivo)",
+    "footerNote": "Datos: TradeStation MCP (live May 27 ~7:51 ET) · TT Relay Gmail (May 27 07:50 ET) · Xero P&L (live YTD May 27) · Barchart WebSearch + Gmail · FedWatch via WebSearch",
     "debtTotal": 70531,
     "debtDelta": "▼$2,198 vs prior",
     "debtDeltaUp": false,
@@ -80,14 +80,14 @@
         "color": "red"
       }
     ],
-    "decMonthlyAvg": 6664.4,
+    "decMonthlyAvg": 6720.34,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00"
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🚨 SELL SMH HOY al open",
-      "body": "Tech/Semis bucket = 18.3% del Tactical ETF — supera threshold 15% del régimen STAGFLATION_RISK. SMH lleva ▲+$628 unrealized (+34.5%). Vender 4x captura ganancia + libera $2,445 para hedges (IAU/XLE).",
-      "why": "Régimen STAGFLATION_RISK con Warsh hawkish penaliza estructuralmente Tech. PCE Jueves puede revertir el rally tech actual — capturar ganancia AHORA antes del catalizador binario."
+      "title": "Prioridad #1: 🔴 SELL SMH HOY al open",
+      "body": "Tech/Semis bucket = 18.5% del Tactical ETF — supera threshold 15% del régimen STAGFLATION_RISK. SMH lleva ▲+$652 unrealized (+35.9%). Vender 4× captura ganancia + libera $2,470 para hedges (IAU/XLP).",
+      "why": "Régimen STAGFLATION_RISK con Warsh hawkish penaliza estructuralmente Tech. PCE Jueves 28 May 8:30 ET puede revertir el rally tech actual — capturar ganancia AHORA antes del catalizador binario."
     },
     "steps": [
       {
@@ -166,7 +166,7 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) 🔴 SELL SMH @ open captura $628 + cumple CRÍTICO. (2) ⚠️ Monitorear DXJ/EWT 19.9% al borde. (3) 📊 PCE Jueves 28 May 8:30 AM ET = catalizador binario único de la semana."
+      "text": "(1) 🔴 SELL 4× SMH @ open captura +$652 + cumple CRÍTICO. (2) 🌏 Monitorear DXJ/EWT 19.9% al borde 20%. (3) 📊 PCE Jueves 28 May 8:30 ET = catalizador binario único de la semana."
     },
     "cuentas": {
       "color": "#f59e0b",
@@ -181,7 +181,7 @@
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $70,531 @ 8.5% — prioridad paydown. DEC promedio $6,664/mes → Superávit $+1,528/mes. Meta: flujo positivo antes de paydown agresivo."
+      "text": "💳 LOC $70,531 @ 8.5% — prioridad paydown. DEC promedio $6,720/mes → Superávit $+1,584/mes. Meta: flujo positivo antes de paydown agresivo."
     },
     "fi": {
       "color": "#10b981",
@@ -191,7 +191,7 @@
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "✅ Opciones sin alertas críticas — monitorear DTE. ✅ Margen táctico $9,813 dentro del objetivo."
+      "text": "✅ Opciones sin alertas críticas — monitorear NFLX/UPS/PG spreads. ✅ Margen táctico $9,813 dentro del objetivo."
     },
     "performance": {
       "color": "#f59e0b",
@@ -201,7 +201,7 @@
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+1,528/mes. DEC YTD promedio $6,664/mes. Meta: $6,500+/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
+      "text": "💰 ✅ Superávit $+1,584/mes. DEC YTD promedio $6,720/mes. Meta: $6,500+/mes ✅ logrado. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
     }
   },
   "insights": {
@@ -248,10 +248,10 @@
       }
     ],
     "resumen": [
-      "<strong>NW Neto:</strong> ~$354K (FI 71% del target $500K) | <strong>Deuda:</strong> $70.5K (Wells LOC $48K @ 8.5%)",
-      "<strong>TS Live total:</strong> $181,416 | <strong>TT NLV:</strong> $13,184 | <strong>DEC:</strong> $6,664/mes avg",
-      "<strong>Posiciones activas:</strong> SEP IRA 3 (VOO/SCHD/AVDV) | Tactical 16 ETFs | Futures 2x MYMM26 short Dow | TT 8 spreads | Margin ✅ $9,813",
-      "<strong>Acción HOY:</strong> 🔴 SELL 4x SMH @ open — Tech/Semis 18.3% > 15% threshold | 🌐 PCE Jueves catalizador binario | Régimen STAGFLATION_RISK persiste"
+      "<strong>NW Neto:</strong> ~$339K (FI 68% del target $500K) | <strong>Deuda:</strong> $70.5K (Wells LOC $48K @ 8.5%)",
+      "<strong>TS Live total:</strong> $181,523 | <strong>TT NLV:</strong> $13,184 | <strong>DEC:</strong> $6,720/mes avg",
+      "<strong>Posiciones activas:</strong> SEP IRA 3 (VOO/SCHD/AVDV) | Tactical 16 ETFs | Futures 2× MYMM26 short Dow (NEW) | TT 8 spreads | Margin ✅ $9,813",
+      "<strong>Acción HOY:</strong> 🔴 SELL 4× SMH @ open — Tech/Semis 18.5% > 15% threshold | 📊 PCE Jueves catalizador binario | Régimen STAGFLATION_RISK persiste"
     ]
   },
   "debt": {
@@ -2383,39 +2383,39 @@
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tech rally lidera (Micron $1T cap), oil colapsa -3.4% Iran truce. Warsh hawkish, 0 cuts priced 2026, PCE Jueves 28 May = catalizador binario. Stagflation persiste estructuralmente pese al risk-on táctico.",
+    "regimeContext": "Tech rally narrow (Micron $1T, QQQ rompe ATH +0.66%) vs commodities crash sincronizado (USO -3.1%, GLD -1.6%, SLV -4%). Warsh hawkish, 0 cuts priced 2026. PCE Jueves = catalizador binario único.",
     "alignmentScore": 61,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
         "name": "Inflación",
-        "value": 65,
-        "color": "#10b981"
-      },
-      {
-        "name": "Tasas",
         "value": 60,
         "color": "#f59e0b"
       },
       {
+        "name": "Tasas",
+        "value": 58,
+        "color": "#f59e0b"
+      },
+      {
         "name": "Crecimiento",
-        "value": 70,
+        "value": 72,
         "color": "#10b981"
       },
       {
         "name": "Volatilidad",
-        "value": 55,
-        "color": "#f59e0b"
+        "value": 68,
+        "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 55,
+        "value": 52,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 68,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap estructuralmente — techo del régimen ~68%",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis (18.5%) y SmallCap estructuralmente — techo del régimen ~68% hasta ejecutar move CRÍTICO SMH",
     "moves": [
       {
         "urgency": "CRÍTICO",
@@ -2530,48 +2530,48 @@
       "priority": "URGENTE",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "SELL 4x SMH @ ~$611 — Tactical ETF #11484090",
-      "why": "Tech/Semis cluster 18.3% > 15% threshold. SMH unrealized +$628 (+34.5%). Profit-take antes PCE Jueves.",
+      "action": "SELL 4× SMH ~$2,470 — Tactical ETF #11484090",
+      "why": "Tech/Semis cluster 18.5% > 15% threshold STAGFLATION. SMH unrealized +$652 (+35.9%). Profit-take antes PCE Jueves.",
       "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Monitorear DXJ — trim 5 shares si MV cruza $4,200",
-      "why": "Intl Asia (DXJ+EWT) = 19.9% al borde del 20% — trigger trimming activo",
+      "icon": "🌏",
+      "action": "Monitorear DXJ — trim 5 sh si MV cruza $4,200",
+      "why": "Intl Asia (DXJ+EWT) = 19.9% al borde del 20%. EWT rallying +$95 hoy presiona el bucket.",
       "category": "ACTIVOS"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
       "icon": "💳",
-      "action": "Aplicar surplus mensual $+1,528 al LOC Wells Fargo $48,233 @ 8.5%",
-      "why": "DEC YTD net $32,462 → $6,664/mes avg (vs expenses $5,136). LOC paydown trigger activo si DEC cash ≥ buffer $39K.",
+      "action": "Aplicar surplus mensual +$1,584/mo al LOC Wells Fargo $48,233 @ 8.5%",
+      "why": "DEC YTD net $32,462 / 4.83mo = $6,720/mo vs expenses $5,136. Surplus +$1,584. Buffer DEC ≥ $39K para activar paydown.",
       "category": "DEUDA"
     },
     {
       "priority": "HOY",
       "priorityColor": "#ef4444",
       "icon": "📊",
-      "action": "Preparar portfolio pre-PCE Jueves 28 May 8:30 AM ET",
-      "why": "Consensus core PCE ~3.2% YoY. Caliente → tech rally se revierte, dollar fortalece, gold rebote. Frío → cuts on table, regime puede shiftear LATE_CYCLE.",
+      "action": "Preparar portfolio pre-PCE Jueves 28 May 8:30 ET",
+      "why": "Consensus core PCE ~3.2% YoY. Caliente → tech rally se revierte. Frío → cuts on table, regime puede shiftear LATE_CYCLE.",
       "category": "MACRO"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📋",
-      "action": "Re-cargar IAU si SMH se ejecuta — reasignar $2,445 a precious metals",
-      "why": "IAU 7.6% → ~13% como hedge inflación si PCE caliente. Sector Energy también candidato pero ya 14.7%.",
+      "icon": "🥇",
+      "action": "Re-cargar IAU si SMH se ejecuta — reasignar ~$2,470 a Precious Metals",
+      "why": "IAU bucket 7.5% → subir a ~12.7% post-SMH. Hedge inflación si PCE caliente. XLE bucket Energy ya 14.7% ⚠️.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📈",
-      "action": "Watch OCO TT — NFLX/PG/UPS Bear Puts presionados por rally",
-      "why": "Tech rally hace bajar valor de Bear Puts. NFLX/PG/UPS margen vs SL ~$0.80 — monitorear durante PCE jueves.",
+      "icon": "📋",
+      "action": "Watch OCO TT — NFLX/PG/UPS Bear Puts presionados por rally tech",
+      "why": "Tech rally hace bajar valor Bear Puts. NFLX $1.71 vs entry $2.18 (▼0.47 margen vs SL $1.09). Monitorear durante PCE jueves.",
       "category": "OPCIONES"
     }
   ],
