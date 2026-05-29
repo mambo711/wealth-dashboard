@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "28 Mayo 2026",
-    "weeklyFocusDate": "Semana del 28 May",
-    "nwBruto": 408038,
+    "subtitle": "29 Mayo 2026",
+    "weeklyFocusDate": "Semana del 29 May",
+    "nwBruto": 408448,
     "nwBrutoDelta": "▲$0 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 337507,
+    "nwNeto": 337917,
     "nwNetoDelta": "▲+$39,649 vs May 22 snapshot",
     "fiPct": 68,
-    "fiGap": 162493,
+    "fiGap": 162083,
     "fiGapAnnual": 23161,
     "fiTarget": 500000,
     "healthScore": 65,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (90/100) es tu fortaleza — bien compuesto y en piloto automático. Los puntos críticos son surplus (20) y deuda (35): la LOC a 8.5% combinada con flujo ajustado genera un efecto de gravedad que frena todo el portafolio. Subir el score a 70+ requiere generar surplus constante y atacar la LOC.",
-    "retirementCore": 262094,
+    "retirementCore": 263374,
     "totalBruto": 454725,
-    "tacticalHeader": "$34,774 (margen $22,762 🚨 RE-EXPANDIDO)",
-    "footerNote": "Datos: TradeStation REST API (live May 28 11:54 ET via ts_api.py) · Xero MCP (live May P&L) · ⚠️ TT relay no entregó (snapshot May 27) · ⚠️ Gmail rodalt offline",
+    "tacticalHeader": "$35,476 (margen $24,349 🔴 sobre cap $20K)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE 29 May ~7:53 ET) · TT Relay Gmail (29 May 04:50 PDT) · Xero DEC YTD (LIVE) · WebSearch",
     "debtTotal": 70531,
     "debtDelta": "▼$2,198 vs prior",
     "debtDeltaUp": false,
@@ -80,15 +80,16 @@
         "color": "red"
       }
     ],
-    "decMonthlyAvg": 7200.0,
+    "decMonthlyAvg": 6648,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 3991.86
+    "futuresEquity": 3991.86,
+    "lastTacticalMargin": 24349.44
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "🚨 Prioridad #1: Margen táctico RE-EXPANDIÓ a $22,762 — VENDER SMH+SOXQ HOY",
-      "body": "Margen táctico saltó de $9,813 (May 27) a $22,761.72 hoy (▲+$12,948) por 5 nuevas posiciones (EWY, ITA, JETS, XLK, XLY). Tech/Semis ahora 18.4% (peor que ayer al añadir XLK). Régimen STAGFLATION_RISK persiste tras PCE in-line + Warsh hawkish.",
-      "why": "Priority #1 estratégica es reducir margen táctico <$20K. Ahora está $2,762 por encima del cap. Vender SMH ($2,355) + parcial SOXQ libera margen Y reduce Tech/Semis simultáneamente."
+      "title": "Prioridad #1: 🚨 Vender SMH+SOXQ (Tech/Semis 18.1% + margen $24K)",
+      "body": "Tech/Semis 18.1% e Intl Asia 17.5% sobre cap; margen táctico re-expandido a $24,349 por 6 entradas nuevas (27-28 May). Vender SMH+SOXQ reduce concentración y margen a la vez.",
+      "why": "Régimen STAGFLATION castiga semis; margen sobre cap $20K viola prioridad #1 estratégica."
     },
     "steps": [
       {
@@ -167,12 +168,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) VENDER SMH+SOXQ parcial → reduce Tech/Semis 18.4% Y libera margen $22,762→<$20K. (2) Evaluar EWY recién abierta — Intl Asia 17.8% over cap. (3) DEC mayo $11,497 net YTD ≈ $7,200/mo → aplicar surplus al LOC $48,233."
+      "text": "(1) Vender SMH+SOXQ: Tech/Semis 18.1% sobre cap y baja margen $24,349→<$20K (2) Trim EWY: Intl Asia 17.5% (3) Aplicar superávit DEC ~$1,512/mes al LOC."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Margen táctico $22,762 🚨 RE-EXPANDIDO (>20K cap). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,184 (stale May 27 — relay no entregó hoy)."
+      "text": "⚠️ Margen táctico $24,349 — objetivo ≤$22,000. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $12,690."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -182,7 +183,7 @@
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $70,531 @ 8.5% — prioridad paydown. DEC YTD avg $7,200/mes → Superávit $+2,064/mes. Aplicar surplus al LOC ahora que buffer DEC cubierto."
+      "text": "💳 LOC $70,531 @ 8.5% — prioridad paydown. DEC promedio $6,648/mes → Superávit $+1,512/mes."
     },
     "fi": {
       "color": "#10b981",
@@ -192,17 +193,17 @@
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Vender SMH (4sh, $2,355) + parcial SOXQ (12-15sh, ~$1,150) | ⚠️ Evaluar cerrar EWY ($1,372) recién abierta. ⚠️ Margen táctico $22,762 🚨 RE-EXPANDIDO (>20K cap). Tech/Semis 18.4% 🚨, Intl Asia 17.8% 🚨."
+      "text": "⚠️ Evaluar cerrar/trim EWY ($1,440) ⚠️ Margen táctico $24,349 — objetivo ≤$22,000."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 56% (techo 65%, ▼-5 vs ayer). 3 moves CRÍTICO/URGENTE pendientes. Regime: STAGFLATION_RISK."
+      "text": "Alignment 56% (techo 65%). 3 moves URGENTE/CRÍTICO pendientes. Regime: STAGFLATION_RISK."
     },
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+2,064/mes. DEC mayo 2026 $11,497 net (28d), YTD avg $7,200/mes. Régimen STAGFLATION_RISK → DEFENSIVO — preservar liquidez, paydown LOC con surplus."
+      "text": "💰 ✅ Superávit $+1,512/mes. DEC YTD promedio $6,648/mes. Meta: $6,500+/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
     }
   },
   "insights": {
@@ -249,10 +250,10 @@
       }
     ],
     "resumen": [
-      "💰 <b>NW Bruto:</b> ~$410K | NW Neto ~$339K | FI ~68% (target $500K neto edad 57-60)",
-      "📊 <b>DEC mayo 2026:</b> $11,497 net (28 días) | YTD avg ~$7,200/mo | Surplus +$2,064/mo ✅",
-      "📈 <b>Posiciones live:</b> SEP IRA $141K (3 ETFs DO NOT TOUCH) · Tactical $35K (21 pos, 2 sectores 🚨 over cap) · Futures $4K (MHGN26 short ×2) · TT NLV $13K (stale)",
-      "🎯 <b>Top priority HOY:</b> Vender SMH+SOXQ → reduce Tech/Semis 18.4%→<14% Y libera margen táctico $22,762→<$20K"
+      "💰 NW Neto ~$337,917 — FI 68% del objetivo $500K (gap $162,083)",
+      "📈 DEC YTD net $32,325 (▲+225% i/a) → ~$6,648/mes · superávit ~$1,512/mes ✅",
+      "⚠️ Tactical: 22 posiciones · margen $24,349 🔴 sobre cap $20K (6 entradas nuevas sin cierres)",
+      "🎯 Acción: vender SMH+SOXQ HOY (Tech/Semis 18.1% + margen) · trim EWY (Intl Asia 17.5%)"
     ]
   },
   "debt": {
@@ -2380,48 +2381,48 @@
     "labelPessimistic": "🔴 Pesimista (5%/año)"
   },
   "macroReadiness": {
-    "lastUpdate": "2026-05-28T12:00:00Z",
+    "lastUpdate": "2026-05-29T12:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "PCE April release sin sorpresa (mercados moderan: SPY ▼-0.23%, VIX modesto), Warsh hawkish confirmado May 22, energía resiste tregua Irán. Tactical margen re-expandió a $22.7K — viola priority #1.",
+    "regimeContext": "PCE core 3.3% pegajoso + GDP 2.0% al alza = estanflación suave. Fed (Warsh) sin recortes 2026. Oro rompe al alza; táctica sobreconcentrada en Tech/Semis 18.1% e Intl Asia 17.5%.",
     "alignmentScore": 56,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
         "name": "Inflación",
-        "value": 58,
+        "value": 50,
         "color": "#f59e0b"
       },
       {
         "name": "Tasas",
-        "value": 55,
+        "value": 45,
         "color": "#f59e0b"
       },
       {
         "name": "Crecimiento",
+        "value": 60,
+        "color": "#f59e0b"
+      },
+      {
+        "name": "Volatilidad",
         "value": 70,
         "color": "#10b981"
       },
       {
-        "name": "Volatilidad",
-        "value": 64,
-        "color": "#f59e0b"
-      },
-      {
         "name": "Geopolítico",
-        "value": 54,
+        "value": 55,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK con margen táctico re-expandido + Tech/Semis 18.4% + Asia 17.8% — techo estructural limita upside del alignment hasta que se ejecuten reducciones.",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen",
     "moves": [
       {
         "urgency": "CRÍTICO",
         "icon": "🚨",
-        "action": "Vender SMH (4sh, $2,355) + parcial SOXQ (12-15sh, ~$1,150) — reduce Tech/Semis 18.4%→<14% Y libera margen táctico",
+        "action": "Vender SMH (4sh, $2,420) + parcial SOXQ (12-15sh, ~$1,225) — reduce Tech/Semis 18.1%→<14% Y baja margen táctico $24,349→<$20K",
         "from": "Tactical ETF #11484090",
         "to": "Tech bucket <14%, margen <$20K",
         "amount": "$3,505",
@@ -2432,7 +2433,7 @@
       {
         "urgency": "URGENTE",
         "icon": "⚠️",
-        "action": "Evaluar cerrar EWY ($1,372) recién abierta — Intl Asia 17.8% over 15% cap",
+        "action": "Evaluar cerrar/trim EWY ($1,440) — Intl Asia 17.5% sobre cap 15%",
         "from": "Tactical ETF #11484090",
         "to": "Intl Asia bucket <15%",
         "amount": "$1,372",
@@ -2493,51 +2494,43 @@
   },
   "weeklyActions": [
     {
-      "priority": "URGENTE",
+      "priority": "HOY",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Vender SMH 4sh + parcial SOXQ — Tech/Semis a <14%, libera margen táctico",
-      "why": "Tech/Semis ahora 18.4% (over 15%), margen táctico $22,762 over $20K cap. SMH unrealized +$538 (29% UPL) — toma profit.",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "URGENTE",
-      "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Reducir margen táctico $22,762 → <$20K (priority #1 estratégica)",
-      "why": "Margen RE-EXPANDIÓ +$12,948 en 24h por 5 posiciones nuevas. Viola priority #1. Cerrar SMH+parcial SOXQ + evaluar EWY libera ~$5K margen.",
+      "action": "Vender SMH (4sh ~$2,420) + parcial SOXQ",
+      "why": "Tech/Semis 18.1% sobre cap 15% y reduce margen táctico $24,349",
       "category": "ACTIVOS"
     },
     {
       "priority": "HOY",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Reducir margen táctico <$20K",
+      "why": "Margen re-expandido a $24,349 (+$14,536 vs 27 May) por 6 entradas nuevas sin cierres",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "ESTA SEMANA",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Evaluar cerrar EWY recién abierta — Intl Asia 17.8% over cap",
-      "why": "EWY ($1,372) duplica thesis EWT/DXJ; bucket Asia ya 17.8%. Cerrar libera capital sin tocar la thesis core Asia.",
+      "action": "Evaluar/trim EWY ($1,440)",
+      "why": "Intl Asia 17.5% sobre cap 15%",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "⭐",
-      "action": "Aplicar surplus DEC mensual al LOC Wells Fargo $48,233 @ 8.5%",
-      "why": "DEC YTD ≈ $7,200/mo (vs gastos $5,136) → surplus ~$2,064/mo. Buffer DEC ya cubierto. LOC interest $341/mo = peor uso del capital.",
+      "action": "Aplicar superávit DEC ~$1,512/mes al LOC",
+      "why": "Wells Fargo $48,233 @ 8.5% — prioridad paydown",
       "category": "DEUDA"
-    },
-    {
-      "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "🟡",
-      "action": "Confirmar thesis JETS (posición nueva) o cerrar",
-      "why": "JETS 74sh ($2,104) recién abierta sin precedente en portfolio. Airlines NO calza con régimen STAGFLATION_RISK (consumer discretionary deteriora). Confirmar thesis o cerrar antes de profundizar.",
-      "category": "ACTIVOS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "Aumentar SCHD/VOO en SEP IRA si regime cambia a LATE_CYCLE",
-      "why": "Régimen sigue STAGFLATION_RISK — trigger no cumplido. Reactivar si VIX <14 + Fed dovish pivot.",
+      "action": "Aumentar SCHD/VOO en SEP IRA",
+      "why": "Solo si régimen vira a LATE_CYCLE/EXPANSION",
       "category": "MACRO"
     }
   ],
