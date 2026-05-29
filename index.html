@@ -1,4 +1,3 @@
-<!-- cachebust 1779796806 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -114,6 +113,14 @@
   /* Panels */
   .panel { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
   .panel h3 { font-size: 16px; color: #f8fafc; margin-bottom: 16px; }
+
+  /* Date Stamp Badges */
+  .ds-footer { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; padding-top:8px; border-top:1px solid #334155; }
+  .ds-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; padding:2px 8px; border-radius:20px; font-weight:600; letter-spacing:0.3px; white-space:nowrap; }
+  .ds-live  { background:#10b98122; color:#10b981; border:1px solid #10b98140; }
+  .ds-recent{ background:#f59e0b22; color:#f59e0b; border:1px solid #f59e0b40; }
+  .ds-stale { background:#ef444422; color:#ef4444; border:1px solid #ef444440; }
+  .card .ds-footer { margin-top:8px; padding-top:6px; justify-content:center; }
 
   /* Tables */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -313,17 +320,17 @@
 
   <!-- Top Cards -->
   <div class="top-cards">
-    <div class="card">
+    <div class="card" id="card-nwbruto">
       <div class="card-label">NW Bruto</div>
       <div class="card-value blue" id="nw-bruto-val">—</div>
       <div class="delta up" id="nw-bruto-delta"></div>
     </div>
-    <div class="card">
+    <div class="card" id="card-deuda">
       <div class="card-label">Deuda</div>
       <div class="card-value red" id="debt-val">—</div>
       <div class="delta down" id="debt-delta"></div>
     </div>
-    <div class="card">
+    <div class="card" id="card-nwneto">
       <div class="card-label">NW Neto</div>
       <div class="card-value green" id="nw-neto-val">—</div>
       <div class="delta up" id="nw-neto-delta"></div>
@@ -416,7 +423,7 @@
       <ul id="insight-resumen" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <!-- NW Histórico Chart -->
-    <div class="panel" style="margin-bottom:16px">
+    <div class="panel" id="panel-nwhistorico" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <h3 style="margin:0">📈 Patrimonio Neto Histórico</h3>
         <div style="display:flex;gap:6px" id="nw-range-btns">
@@ -429,7 +436,7 @@
     </div>
 
     <!-- Income Streams -->
-    <div class="panel" style="margin-bottom:16px">
+    <div class="panel" id="panel-income" style="margin-bottom:16px">
       <h3>💰 Fuentes de Ingreso Pasivo — Estimado Mensual</h3>
       <div class="income-grid" id="income-grid"></div>
       <div style="display:flex;justify-content:space-between;margin-top:12px;padding:8px 12px;background:#10b98115;border-radius:8px;font-size:13px">
@@ -465,7 +472,7 @@
       <div id="action-cuentas"></div>
       <ul id="insight-cuentas" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-cuentas">
       <h3>Todas las Cuentas</h3>
       <table>
         <thead><tr><th>Cuenta</th><th>Categoría</th><th class="right">Saldo</th><th class="right">% Total</th><th class="right">6M Trend</th><th class="right">Actualiz.</th></tr></thead>
@@ -481,7 +488,7 @@
       <div id="action-allocation"></div>
       <ul id="insight-allocation" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-allocation">
       <h3>Allocation del Portafolio Completo</h3>
       <canvas id="barAllocation" style="max-height:340px"></canvas>
       <div style="margin-top:20px">
@@ -498,7 +505,7 @@
       <ul id="insight-deuda" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
     <div class="debt-cards" id="debt-cards-container"></div>
-    <div class="panel">
+    <div class="panel" id="panel-cc">
       <h3>Tarjetas de Crédito (Xero)</h3>
       <table>
         <thead><tr><th>Tarjeta</th><th class="right">Saldo</th></tr></thead>
@@ -514,7 +521,7 @@
       <div id="action-fi"></div>
       <ul id="insight-fi" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-fi">
       <h3>Camino a Independencia Financiera</h3>
       <div class="fi-cards">
         <div class="fi-card"><div class="fc-label" id="fi-target-label">Meta FI</div><div class="fc-value" style="color:#60a5fa" id="fi-target-card">—</div></div>
@@ -565,14 +572,14 @@
       <div id="action-posiciones"></div>
       <ul id="insight-posiciones" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-sepp">
       <h3>SEP IRA ·6362 — <span id="sep-ira-header">—</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
         <tbody id="sepIRATable"></tbody>
       </table>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-tactical">
       <h3>Tactical ETFs ·4090 — <span id="tactical-header">—</span></h3>
       <table>
         <thead><tr><th>Symbol</th><th class="right">MV</th><th class="right">%</th><th class="right">P&L</th></tr></thead>
@@ -580,7 +587,7 @@
       </table>
       <div class="tags" id="tactical-tags"></div>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-options">
       <h3>Opciones — Tastytrade (<span id="options-nlv">—</span>)</h3>
       <table>
         <thead><tr><th>Spread</th><th>Tipo</th><th class="right">DTE</th><th class="right">Exp</th></tr></thead>
@@ -844,7 +851,7 @@
       <div id="action-flujo"></div>
       <ul id="insight-flujo" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px"></ul>
     </div>
-    <div class="panel">
+    <div class="panel" id="panel-waterfall">
       <h3>💧 Waterfall — Flujo de Caja Mensual Estimado</h3>
       <div id="waterfallChart"></div>
       <div style="margin-top:16px">
@@ -1969,6 +1976,94 @@ function initFromData(d) {
       showTab(savedTab, true);
     }
   } catch(e) {}
+
+  // ── Date Stamps ──
+  injectAllDateStamps(d);
+}
+
+// ═══ DATE STAMP HELPERS ═══
+function dsBadge(isoDate, label) {
+  if (!isoDate) return '';
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const d = new Date(isoDate + 'T00:00:00');
+  const days = Math.floor((today - d) / 86400000);
+  let cls, icon, age;
+  if (days <= 1)      { cls = 'ds-live';   icon = '✅'; age = days === 0 ? 'HOY' : 'AYER'; }
+  else if (days <= 7) { cls = 'ds-recent'; icon = '⚠️'; age = days + 'd'; }
+  else                { cls = 'ds-stale';  icon = '🔴'; age = days + 'd · STALE'; }
+  const lbl = label ? `${label} · ` : '';
+  return `<span class="ds-badge ${cls}" title="${isoDate}">${icon} ${lbl}${age}</span>`;
+}
+
+function dsFooter(html) {
+  return `<div class="ds-footer">${html}</div>`;
+}
+
+function injectAllDateStamps(d) {
+  const ds = (d && d.datestamps) || {};
+
+  // Helper: append ds-footer to a panel/card by ID
+  function inject(elId, badgesHtml) {
+    const el = document.getElementById(elId);
+    if (!el || !badgesHtml) return;
+    // Remove any previously injected footer to avoid duplication
+    const old = el.querySelector('.ds-footer');
+    if (old) old.remove();
+    el.insertAdjacentHTML('beforeend', dsFooter(badgesHtml));
+  }
+
+  // Top-level cards — all sourced from TS + Xero + manual snapshot
+  const tsBadge  = dsBadge(ds.ts,   'TS MCP');
+  const ttBadge  = dsBadge(ds.tt,   'TT Relay');
+  const xeroBadge= dsBadge(ds.xero, 'Xero');
+  const manBadge = dsBadge(ds.manual,'Manual');
+  const betBadge = dsBadge(ds.betterment,'Betterment');
+  const ibkrBadge= dsBadge(ds.ibkr, 'IBKR');
+  const rhBadge  = dsBadge(ds.rh,   'RH');
+  const ecBadge  = dsBadge(ds.ecuador,'Ecuador CDs');
+  const pepBadge = dsBadge(ds.pepe, 'Préstamo');
+  const migBadge = dsBadge(ds.miguel,'Miguel Auto');
+  const futBadge = dsBadge(ds.fut,  'TS Futures');
+
+  // NW Bruto = TS + Betterment + manual loans + Ecuador
+  inject('card-nwbruto', tsBadge + ttBadge + betBadge + manBadge);
+  // Deuda = Xero LIVE
+  inject('card-deuda', xeroBadge);
+  // NW Neto = composite
+  inject('card-nwneto', tsBadge + betBadge + xeroBadge);
+
+  // Cuentas panel — all sources
+  inject('panel-cuentas', tsBadge + ttBadge + betBadge + ibkrBadge + rhBadge + ecBadge + pepBadge + migBadge + futBadge);
+
+  // NW Histórico chart — TS + manual estimates
+  inject('panel-nwhistorico', tsBadge + manBadge);
+
+  // Income panel — Xero for DEC, manual for others
+  inject('panel-income', xeroBadge + manBadge);
+
+  // Allocation — composite of all accounts
+  inject('panel-allocation', tsBadge + ttBadge + betBadge + manBadge);
+
+  // Deuda tab panels
+  const debtCards = document.getElementById('debt-cards-container');
+  if (debtCards) {
+    const old = debtCards.querySelector('.ds-footer');
+    if (old) old.remove();
+    debtCards.insertAdjacentHTML('beforeend', dsFooter(xeroBadge));
+  }
+  inject('panel-cc', xeroBadge);
+
+  // FI Path — uses NW Neto (composite)
+  inject('panel-fi', tsBadge + betBadge + manBadge);
+
+  // Posiciones panels
+  inject('panel-sepp',    tsBadge);
+  inject('panel-tactical', tsBadge);
+  inject('panel-options',  ttBadge);
+
+  // Waterfall — Xero + TS
+  inject('panel-waterfall', xeroBadge + tsBadge);
 }
 
 // ═══ CHART RENDERING FUNCTIONS (unchanged logic, use global vars) ═══
