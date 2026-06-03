@@ -50,7 +50,7 @@
     "healthDiagnostic": "El core de retiro (93/100) sigue siendo tu fortaleza. Buffer DEC cubierto ($52,314 ≥ $41,052) y surplus $+2,045/mes habilitan el ataque al LOC. El freno principal es deuda (27/100): LOC $47,753 @ 8.5%. Resolver el margen táctico sobre cap y aplicar surplus al LOC sube el score hacia 75+.",
     "retirementCore": 263111,
     "totalBruto": 466171,
-    "tacticalHeader": "$35,509 (margen $6,741 🟢 dentro del cap)",
+    "tacticalHeader": "$35,509 | leverage 119% (cap 120%) 🟢 · sleeve independiente cap 25%/sector, drawdown 30%",
     "footerNote": "Datos: TradeStation REST ts_api.py (LIVE Jun 3 ~07:45 ET) · TT Relay Gmail (Jun 3 07:45 ET) · Xero YTD LIVE · Betterment/Ecuador/IBKR/RH (stale May 29)",
     "debtTotal": 73239,
     "debtDelta": "▲+$2,708 vs prior (incluye Chase Biz Unlimited $2,689 ahora rastreado)",
@@ -87,9 +87,9 @@
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🚨 Concentración sectorial (3 buckets sobre cap)",
-      "body": "Margen táctico resuelto ($6,741 <$20K 🎉). Foco rota a trims: Intl Asia 20.2%, Tech/Semis 18.3%, Energy 15.8% — todos sobre cap 15%.",
-      "why": "Con el margen ya holgado, la triple sobre-concentración es el mayor riesgo táctico abierto en un régimen estanflacionario."
+      "title": "Prioridad #1: 💰 Paydown LOC + monitorear sleeve táctico",
+      "body": "Cuenta táctica reconfigurada como sleeve independiente (cap 25%/sector, leverage 120/140%, drawdown 30%). Ahora DENTRO de política — sin trims forzados. Foco: aplicar surplus DEC al LOC $47,753 @ 8.5%.",
+      "why": "Con el sleeve táctico operando en su propio presupuesto de riesgo y dentro de límites, la prioridad de patrimonio vuelve al paydown de deuda cara."
     },
     "steps": [
       {
@@ -173,7 +173,7 @@
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $6,741 dentro del cap $20K. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,841. Futuros flat (cash idle)."
+      "text": "📈 Tactical = sleeve independiente: cap 25%/sector, leverage 120/140%, drawdown 30%, margen ~13% APR. Leverage 119% 🟢. TT NLV $13,841. Futuros flat."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -191,9 +191,9 @@
       "text": "Buffer ✅ + LOC paydown activo (~23 meses). FI al 79% — gap $107,068. Ver Resumen."
     },
     "posiciones": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "⚠️ 3 buckets táctico sobre cap 15% (Intl Asia 20.2%, Tech/Semis 18.3%, Energy 15.8%). ✅ Margen táctico $6,741 dentro del cap $20K."
+      "color": "#10b981",
+      "borderColor": "#10b981",
+      "text": "✅ Cuenta táctica DENTRO de nueva política: leverage 119% (cap 120%), todos los sectores <25% (Intl Asia 20.2% y Tech/Semis 18.3% en banda monitor 18-25%). Sin trims forzados."
     },
     "performance": {
       "color": "#f59e0b",
@@ -250,10 +250,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Neto ~$393,388 (79% de meta $500K) | gap $106,612",
+      "💰 NW Neto ~$393,388 (79% de meta $500K)",
       "🏢 DEC YTD net $27,547 → ~$5,401/mes (Xero LIVE)",
-      "🎉 Margen táctico RESUELTO $6,741 (<$20K cap) — prioridad #1 cumplida; pero 3 buckets sectoriales sobre cap 15%",
-      "📋 Tastytrade NLV $13,841 — 7 spreads, OCOs vivas (RDW nuevo, HIMS cerrado)"
+      "📈 Cuenta táctica reconfigurada Jun 3: sleeve independiente, cap 25%/sector, leverage 120/140%, drawdown 30% — DENTRO de política (leverage 119%)",
+      "📋 Tastytrade NLV $13,841 — 7 spreads, OCOs vivas"
     ]
   },
   "debt": {
@@ -2467,7 +2467,7 @@
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Hostilidades EE.UU.-Irán empujan crudo y rendimientos; Fed de Warsh hawkish, core ~2.8%, ~36% prob recorte junio. Sesgo defensivo.",
+    "regimeContext": "Hostilidades EE.UU.-Irán empujan crudo/yields; Fed Warsh hawkish, core ~2.8%. Cuenta táctica ahora sleeve independiente (cap 25%/sector, leverage 120/140%, drawdown 30%) — dentro de política.",
     "alignmentScore": 62,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
@@ -2502,46 +2502,37 @@
     "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen.",
     "moves": [
       {
-        "urgency": "URGENTE",
-        "priorityColor": "#ef4444",
-        "icon": "⚠️",
-        "action": "Trim Intl Asia (DXJ/EWT/EWY ~20.2%) sobre cap 15% — vender ~$2,200",
-        "from": "Tactical ETF",
-        "why": "3 buckets sobre cap; Intl Asia el más alto a 20.2%",
-        "impact": 5
-      },
-      {
-        "urgency": "URGENTE",
-        "priorityColor": "#ef4444",
-        "icon": "⚠️",
-        "action": "Trim Tech/Semis (SOXX/XLK/BAI/SOXQ = 18.3%) sobre cap 15%",
-        "from": "Tactical ETF",
-        "why": "Penalizado en estanflación; reducir ~$1,400",
-        "impact": 4
-      },
-      {
-        "urgency": "URGENTE",
-        "priorityColor": "#f59e0b",
+        "urgency": "HOY",
+        "priorityColor": "#60a5fa",
         "icon": "💰",
         "action": "Aplicar surplus DEC al LOC Wells Fargo $47,753 @ 8.5%",
         "from": "DEC cash",
-        "why": "DEC cash $52,314 ≥ buffer $41,052",
+        "why": "DEC cash $52,314 ≥ buffer $41,052; prioridad de paydown",
         "impact": 4
       },
       {
         "urgency": "PLANEAR",
         "priorityColor": "#60a5fa",
-        "icon": "🔄",
-        "action": "Rotar efectivo de cierres → IAU/metales si STAGFLATION persiste",
+        "icon": "📊",
+        "action": "Monitorear Intl Asia 20.2% y Tech/Semis 18.3% (banda 18-25%)",
         "from": "Tactical ETF",
-        "why": "Bucket metales 8.1% con espacio hasta 15%",
+        "why": "Bajo nuevo cap 25% NO sobre límite; solo vigilar, no trim forzado",
+        "impact": 2
+      },
+      {
+        "urgency": "PLANEAR",
+        "priorityColor": "#60a5fa",
+        "icon": "🥇",
+        "action": "Rotar a 🥇 metales (GDX/IAU) si Irán/estanflación persiste",
+        "from": "Tactical ETF",
+        "why": "Bucket metales 8.1% con espacio; favorecido en régimen",
         "impact": 3
       },
       {
         "urgency": "CONDICIONAL",
         "priorityColor": "#94a3b8",
         "icon": "⏸️",
-        "action": "Aumentar SCHD/VOO en SEP IRA si régimen vira a LATE_CYCLE/EXPANSION",
+        "action": "Aumentar SCHD/VOO en SEP IRA si vira a LATE_CYCLE/EXPANSION",
         "from": "—",
         "why": "Trigger no cumplido",
         "impact": 2
@@ -2570,28 +2561,20 @@
   },
   "weeklyActions": [
     {
-      "priority": "URGENTE",
-      "priorityColor": "#ef4444",
-      "icon": "⚠️",
-      "action": "Trim Intl Asia (DXJ/EWT) ~$2,200",
-      "why": "20.2% del táctico, sobre cap 15%",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "URGENTE",
-      "priorityColor": "#ef4444",
-      "icon": "⚠️",
-      "action": "Trim Tech/Semis (XLK/SOXX) ~$1,400",
-      "why": "18.3% sobre cap 15%",
-      "category": "ACTIVOS"
-    },
-    {
       "priority": "HOY",
       "priorityColor": "#60a5fa",
       "icon": "💰",
       "action": "Aplicar surplus DEC al LOC Wells Fargo",
       "why": "LOC $47,753 @ 8.5%; DEC cash $52,314 ≥ buffer",
       "category": "DEUDA"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#94a3b8",
+      "icon": "📊",
+      "action": "Monitorear Intl Asia 20.2% / Tech/Semis 18.3% (banda 18-25%)",
+      "why": "Dentro del nuevo cap 25% — sin trim forzado",
+      "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
