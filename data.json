@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "3 Junio 2026",
+    "subtitle": "4 Junio 2026",
     "weeklyFocusDate": "Semana del 1 Jun",
-    "nwBruto": 466627,
-    "nwBrutoDelta": "▲$6,915 vs ayer",
-    "nwDeltaUp": true,
-    "nwNeto": 393388,
+    "nwBruto": 464352,
+    "nwBrutoDelta": "▼$2,275 vs ayer",
+    "nwDeltaUp": false,
+    "nwNeto": 391113,
     "nwNetoDelta": "▲+$8,738 vs May 25 (NW Neto $384,194→$392,932)",
-    "fiPct": 79,
-    "fiGap": 106612,
+    "fiPct": 78,
+    "fiGap": 108887,
     "fiGapAnnual": 23161,
     "fiTarget": 500000,
     "healthScore": 70,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (93/100) sigue siendo tu fortaleza. Buffer DEC cubierto ($52,314 ≥ $41,052) y surplus $+2,045/mes habilitan el ataque al LOC. El freno principal es deuda (27/100): LOC $47,753 @ 8.5%. Resolver el margen táctico sobre cap y aplicar surplus al LOC sube el score hacia 75+.",
-    "retirementCore": 263111,
+    "retirementCore": 262380,
     "totalBruto": 466171,
-    "tacticalHeader": "$35,509 | leverage 119% (cap 120%) 🟢 · sleeve independiente cap 25%/sector, drawdown 30%",
-    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE Jun 3 ~07:45 ET) · TT Relay Gmail (Jun 3 07:45 ET) · Xero YTD LIVE · Betterment/Ecuador/IBKR/RH (stale May 29)",
+    "tacticalHeader": "$34,728 (margen $6,741 ✅ leverage 119.4% vs cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE Jun 4 ~7:50 ET) · TT Relay Gmail (LIVE Jun 4 07:49 ET) · Xero P&L (LIVE YTD) · Betterment/Ecuador/IBKR/RH cached",
     "debtTotal": 73239,
     "debtDelta": "▲+$2,708 vs prior (incluye Chase Biz Unlimited $2,689 ahora rastreado)",
     "debtDeltaUp": true,
@@ -80,16 +80,16 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 5401,
+    "decMonthlyAvg": 7067.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 3590,
     "lastTacticalMargin": 6741.34
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 💰 Paydown LOC + monitorear sleeve táctico",
-      "body": "Cuenta táctica reconfigurada como sleeve independiente (cap 25%/sector, leverage 120/140%, drawdown 30%). Ahora DENTRO de política — sin trims forzados. Foco: aplicar surplus DEC al LOC $47,753 @ 8.5%.",
-      "why": "Con el sleeve táctico operando en su propio presupuesto de riesgo y dentro de límites, la prioridad de patrimonio vuelve al paydown de deuda cara."
+      "title": "Prioridad #1: 🛑 Cero entradas nuevas — leverage al borde del cap",
+      "body": "Leverage táctico 119.4% vs cap 120% (STAGFLATION_RISK no habilita 140%). EEUU-Irán intercambiaron fuego: hedges energía 16% + IAU 8.4% trabajando. NFP Jun 5 + CPI Jun 10 + primer FOMC Warsh Jun 16-17 = 3 binarios en 13 días — defender, no atacar.",
+      "why": "Cualquier compra nueva rompe la política de leverage; el margen cuesta ~13% APR"
     },
     "steps": [
       {
@@ -166,14 +166,14 @@
   },
   "actions": {
     "resumen": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "(1) Trim Intl Asia 20.2% y Tech/Semis 18.3% (sobre cap). (2) Aplicar surplus DEC al LOC. (3) Margen táctico ya resuelto $6,741 ✅; monitorear bear puts Jun 18."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "(1) 🛑 Cero entradas tácticas — leverage 119.4% vs cap 120%. (2) 💰 Aplicar surplus DEC (~$1,931/mes) al LOC 8.5%. (3) 🔄 Decidir roll/close M6AM26 short AUD antes ~Jun 15."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "📈 Tactical = sleeve independiente: cap 25%/sector, leverage 120/140%, drawdown 30%, margen ~13% APR. Leverage 119% 🟢. TT NLV $13,841. Futuros flat."
+      "text": "✅ Margen táctico $6,741 — leverage 119.4% vs cap 120%. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,829."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -183,7 +183,7 @@
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $73,239 @ 8.5% — prioridad paydown. DEC YTD promedio $5,401/mes → Superávit $+265/mes."
+      "text": "💳 LOC $47,753 @ 8.5% — prioridad paydown. DEC promedio $7,067/mes → Superávit $+1,931/mes. Deuda total $73,239."
     },
     "fi": {
       "color": "#10b981",
@@ -191,19 +191,19 @@
       "text": "Buffer ✅ + LOC paydown activo (~23 meses). FI al 79% — gap $107,068. Ver Resumen."
     },
     "posiciones": {
-      "color": "#10b981",
-      "borderColor": "#10b981",
-      "text": "✅ Cuenta táctica DENTRO de nueva política: leverage 119% (cap 120%), todos los sectores <25% (Intl Asia 20.2% y Tech/Semis 18.3% en banda monitor 18-25%). Sin trims forzados."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "✅ Opciones sin alertas críticas — NVO/UBER/PG Jun18 a 14 DTE, monitorear. ✅ Margen táctico $6,741 — leverage 119.4% vs cap 120%."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 62% (techo 68%). 3 moves URGENTE pendientes. Regime: STAGFLATION_RISK."
+      "text": "Alignment 58% (techo 68%). 0 moves URGENTE pendientes. Regime: STAGFLATION_RISK."
     },
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+265/mes. DEC YTD net $5,401/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
+      "text": "💰 ✅ Superávit $+1,931/mes. DEC YTD promedio $7,067/mes. Meta: $6,500+/mes ✅ superada. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
     }
   },
   "insights": {
@@ -250,10 +250,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Neto ~$393,388 (79% de meta $500K)",
-      "🏢 DEC YTD net $27,547 → ~$5,401/mes (Xero LIVE)",
-      "📈 Cuenta táctica reconfigurada Jun 3: sleeve independiente, cap 25%/sector, leverage 120/140%, drawdown 30% — DENTRO de política (leverage 119%)",
-      "📋 Tastytrade NLV $13,841 — 7 spreads, OCOs vivas"
+      "💰 <b>NW Neto ~$391,113</b> (78% del target FI $500K) — NW Bruto $464,352 ▼$2,275 vs ayer (tech-led sell-off)",
+      "🏦 SEP IRA $141,384 (▲$9,372 unrealized) · Tactical $34,728 eq / $41,469 MV (17 pos, leverage 119.4%) · Futuros $3,373 · TT NLV $13,829 (7 pos)",
+      "📈 DEC YTD neto $36,256 (Xero LIVE) — promedio $7,067/mes, surplus ~$1,931/mes → combustible para LOC paydown",
+      "🛡️ Régimen STAGFLATION_RISK + escalada Irán: hedges Energy 16% + IAU 8.4% activos; sesgo DEFENSIVO hasta pasar NFP/CPI/FOMC"
     ]
   },
   "debt": {
@@ -2463,12 +2463,12 @@
     "labelPessimistic": "🔴 Pesimista (5%/año)"
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-03T12:00:00Z",
+    "lastUpdate": "2026-06-04T12:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Hostilidades EE.UU.-Irán empujan crudo/yields; Fed Warsh hawkish, core ~2.8%. Cuenta táctica ahora sleeve independiente (cap 25%/sector, leverage 120/140%, drawdown 30%) — dentro de política.",
-    "alignmentScore": 62,
+    "regimeContext": "EEUU-Irán intercambiaron fuego en el Golfo: crudo y oro suben con yields — shock estanflacionario. Warsh hawkish, 0-1 cuts priced 2026. NFP Jun 5, CPI Jun 10, primer FOMC Warsh Jun 16-17.",
+    "alignmentScore": 58,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
@@ -2489,17 +2489,17 @@
       },
       {
         "name": "Volatilidad",
-        "value": 70,
+        "value": 65,
         "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 65,
+        "value": 70,
         "color": "#10b981"
       }
     ],
     "regimeCeiling": 68,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen.",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen",
     "moves": [
       {
         "urgency": "HOY",
@@ -2562,34 +2562,50 @@
   "weeklyActions": [
     {
       "priority": "HOY",
-      "priorityColor": "#60a5fa",
+      "priorityColor": "#ef4444",
+      "icon": "🛑",
+      "action": "Cero entradas nuevas en Tactical ETF",
+      "why": "Leverage 119.4% vs cap 120% — STAGFLATION_RISK no habilita 140%; margen $6,741 @ ~13% APR",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "HOY",
+      "priorityColor": "#f59e0b",
       "icon": "💰",
-      "action": "Aplicar surplus DEC al LOC Wells Fargo",
-      "why": "LOC $47,753 @ 8.5%; DEC cash $52,314 ≥ buffer",
+      "action": "Aplicar surplus DEC al LOC Wells Fargo $47,753 @ 8.5%",
+      "why": "Xero LIVE: DEC YTD $36,256 neto (~$7,067/mes) → surplus ~$1,931/mes",
       "category": "DEUDA"
     },
     {
       "priority": "ESTA SEMANA",
-      "priorityColor": "#94a3b8",
-      "icon": "📊",
-      "action": "Monitorear Intl Asia 20.2% / Tech/Semis 18.3% (banda 18-25%)",
-      "why": "Dentro del nuevo cap 25% — sin trim forzado",
-      "category": "ACTIVOS"
+      "priorityColor": "#60a5fa",
+      "icon": "📋",
+      "action": "Vigilar NVO/UBER/PG bear puts Jun 18 (14 DTE)",
+      "why": "Entran en territorio forced-exit la próxima semana — detalle en options-daily-session",
+      "category": "OPCIONES"
     },
     {
       "priority": "ESTA SEMANA",
-      "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "Monitorear 4 bear puts Jun 18 (15 DTE)",
-      "why": "OCOs vivas; sin acción salvo trigger",
-      "category": "OPCIONES"
+      "priorityColor": "#60a5fa",
+      "icon": "🔄",
+      "action": "Decidir roll/close M6AM26 short AUD (2×+2×)",
+      "why": "FX futures dejan de operar ~Jun 15 — antes del FOMC Jun 16-17",
+      "category": "FUTUROS"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📊",
+      "action": "No aumentar riesgo pre-eventos: NFP Jun 5 + CPI Jun 10 + FOMC Warsh Jun 16-17",
+      "why": "3 catalizadores binarios en 13 días con VIX despertando (16.57 ▲+3.2%)",
+      "category": "MACRO"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
-      "icon": "🥇",
-      "action": "Evaluar add metales (GDX/IAU) si Irán persiste",
-      "why": "Bucket metales 8.1% con espacio",
+      "icon": "⏳",
+      "action": "Rotar a metales (vender algo → añadir IAU/GDX) si Irán escala",
+      "why": "Shock estanflacionario favorece oro; solo vía rotación por cap de leverage",
       "category": "ACTIVOS"
     }
   ],
