@@ -1872,20 +1872,20 @@
       "date": "Jun 05 2026"
     },
     "ibkr": {
-      "label": "Screenshot IBKR",
-      "date": "May 16 2026"
+      "label": "IBKR (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "rh": {
-      "label": "Screenshot RH",
-      "date": "May 16 2026"
+      "label": "RH AP (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "rhph": {
-      "label": "Screenshot RH",
-      "date": "May 16 2026"
+      "label": "RH Photonics (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "betterment": {
-      "label": "Betterment App",
-      "date": "Apr 09 2026"
+      "label": "Betterment App (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "fut": {
       "label": "TradeStation REST",
@@ -1901,19 +1901,19 @@
     },
     "manual": {
       "label": "Manual",
-      "date": "May 22 2026"
+      "date": "Jun 05 2026"
     },
     "ecuador": {
-      "label": "Manual (CDs Ecuador)",
-      "date": "Jan 01 2026"
+      "label": "JEP CDs (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "pepe": {
-      "label": "Manual (Préstamo)",
-      "date": "Jan 01 2026"
+      "label": "Préstamo Pepe (Alberto in-chat)",
+      "date": "Jun 05 2026"
     },
     "miguel": {
-      "label": "Manual (Auto Loan)",
-      "date": "Jan 01 2026"
+      "label": "Miguel Autos (Alberto in-chat)",
+      "date": "Jun 05 2026"
     }
   },
   "twr": {
