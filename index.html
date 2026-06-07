@@ -435,20 +435,6 @@
       <canvas id="chartNWHistorico" style="max-height:280px"></canvas>
     </div>
 
-    <!-- Wealth vs S&P 500 -->
-    <div class="panel" id="panel-wealthvssp" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <h3 style="margin:0">📊 Mi Wealth vs S&P 500 <span style="font-size:11px;color:#94a3b8;font-weight:400">(base 100 al inicio del periodo)</span></h3>
-        <div style="display:flex;gap:6px" id="wvsp-range-btns">
-          <button onclick="renderWealthVsSP(3)"  class="range-btn" id="wvsp-3m">3M</button>
-          <button onclick="renderWealthVsSP(6)"  class="range-btn" id="wvsp-6m">6M</button>
-          <button onclick="renderWealthVsSP(12)" class="range-btn active-range" id="wvsp-12m">12M</button>
-        </div>
-      </div>
-      <canvas id="chartWealthVsSP" style="max-height:280px"></canvas>
-      <div id="wvsp-summary" style="margin-top:8px;font-size:12px;color:#94a3b8"></div>
-    </div>
-
     <!-- Income Streams -->
     <div class="panel" id="panel-income" style="margin-bottom:16px">
       <h3>💰 Fuentes de Ingreso Pasivo — Estimado Mensual</h3>
@@ -971,7 +957,7 @@ function showTab(id, fromRestore) {
   else if (!fromRestore && event && event.target) event.target.classList.add('active');
   // Persist tab selection
   try { localStorage.setItem('mmw_tab', id); } catch(e) {}
-  if (id === 'resumen') { renderPie(); renderNWHistorico(); renderWealthVsSP(12); }
+  if (id === 'resumen') { renderPie(); renderNWHistorico(); }
   if (id === 'allocation') renderBar();
   if (id === 'fi') renderLine();
   if (id === 'performance') { renderPerformanceCharts(); renderHeatmap(); }
@@ -1914,7 +1900,6 @@ function initFromData(d) {
   renderGauge();
   renderPie();
   renderNWHistorico();
-  renderWealthVsSP(12);
 
   // ── Pre-populate Performance tab static elements (cards, source badges) ──
   // These don't require chart rendering so safe to call immediately
@@ -2648,52 +2633,6 @@ function renderPerformanceCharts() {
 }
 
 // NW Histórico
-function renderWealthVsSP(rangeMonths) {
-  rangeMonths = rangeMonths || 12;
-  ['wvsp-3m','wvsp-6m','wvsp-12m'].forEach(id => {
-    const b = document.getElementById(id);
-    if (b) b.classList.remove('active-range');
-  });
-  const ab = document.getElementById('wvsp-' + rangeMonths + 'm');
-  if (ab) ab.classList.add('active-range');
-
-  const ctx = document.getElementById('chartWealthVsSP');
-  if (!ctx || !dashData || !dashData.monthly || !dashData.twr || !dashData.twr.sp500Monthly) return;
-  const months = dashData.monthly.months || [];
-  const total  = dashData.monthly.total  || [];
-  const sp     = dashData.twr.sp500Monthly || [];
-  const len    = Math.min(months.length, total.length, sp.length);
-  if (len < 2) return;
-  // window: last N+1 points so the change spans exactly N months
-  const n = Math.min(rangeMonths + 1, len);
-  const mw = months.slice(len - n, len);
-  const tw = total.slice(len - n, len);
-  const sw = sp.slice(len - n, len);
-  // rebase both to 100 at window start
-  const tBase = tw[0] || 1, sBase = sw[0] || 1;
-  const tIdx = tw.map(v => +(v / tBase * 100).toFixed(2));
-  const sIdx = sw.map(v => +(v / sBase * 100).toFixed(2));
-  const tChg = tIdx[tIdx.length-1] - 100, sChg = sIdx[sIdx.length-1] - 100;
-  const fmt = x => (x >= 0 ? '+' : '') + x.toFixed(1) + '%';
-
-  if (ctx._chart) ctx._chart.destroy();
-  ctx._chart = new Chart(ctx, {
-    type: 'line',
-    data: { labels: mw, datasets: [
-      { label: '💰 Mi Wealth (' + fmt(tChg) + ')', data: tIdx, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 3, borderWidth: 2.5 },
-      { label: '📈 S&P 500 (' + fmt(sChg) + ')', data: sIdx, borderColor: '#60a5fa', borderWidth: 2, borderDash: [6,3], pointRadius: 2, fill: false, tension: 0.3 },
-    ]},
-    options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 }, color: '#e2e8f0' } },
-        tooltip: { callbacks: { label: c => c.dataset.label.split(' (')[0] + ': ' + c.parsed.y.toFixed(1) + ' (' + fmt(c.parsed.y - 100) + ')' } } },
-      scales: { y: { ticks: { callback: v => v.toFixed(0), font: { size: 11 } }, grid: { color: '#33415540' } },
-                x: { ticks: { font: { size: 9 } }, grid: { display: false } } } }
-  });
-
-  const diff = tChg - sChg;
-  const el = document.getElementById('wvsp-summary');
-  if (el) el.innerHTML = (diff >= 0 ? '✅' : '⚠️') + ' Tu wealth ' + (diff >= 0 ? 'SUPERA' : 'va detrás de') + ' al S&P 500 por <b style="color:' + (diff >= 0 ? '#10b981' : '#ef4444') + '">' + fmt(Math.abs(diff) * (diff >= 0 ? 1 : -1)) + '</b> en ' + rangeMonths + 'M · Wealth ' + fmt(tChg) + ' vs S&P ' + fmt(sChg) + ' · <span style="color:#64748b">ojo: tu wealth incluye aportes/ahorro, no solo retorno de mercado</span>';
-}
-
 function renderNWHistorico(rangeMonths) {
   // Update range button styles
   ['6m','12m','all'].forEach(r => {
