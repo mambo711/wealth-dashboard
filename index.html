@@ -2895,7 +2895,7 @@ function checkStaleBadges() {
 }
 
 // ═══ LOAD DATA & INIT ═══
-fetch('https://cdn.jsdelivr.net/gh/mambo711/wealth-dashboard@main/data.json?v=' + Date.now())
+fetch('data.json?v=' + Date.now())
   .then(r => r.json())
   .then(d => { initFromData(d); checkStaleBadges(); })
   .catch(e => {
