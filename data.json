@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "9 Junio 2026",
     "weeklyFocusDate": "Semana del 9 Jun",
-    "nwBruto": 446249,
-    "nwBrutoDelta": "▲ re-baseline NW (incluye DEC cash + IBKR/RH alineados al weekly)",
+    "nwBruto": 409439,
+    "nwBrutoDelta": "IBKR/RH alineados al weekly (DEC cash excluido del NW)",
     "nwDeltaUp": true,
-    "nwNeto": 372723,
+    "nwNeto": 335913,
     "nwNetoDelta": "▼$15,273 vs May 29 (NW Neto $392,932→$377,659 — sell-off Jun 5, parcialmente compensado por refresh manual +$5,275)",
-    "fiPct": 75,
-    "fiGap": 127277,
+    "fiPct": 67,
+    "fiGap": 164087,
     "fiGapAnnual": 23203,
     "fiTarget": 500000,
     "healthScore": 62,
@@ -83,8 +83,7 @@
     "decMonthlyAvg": 5565.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 3608,
-    "lastTacticalMargin": 3384.62,
-    "decCash": 36810.11
+    "lastTacticalMargin": 3384.62
   },
   "roadmap": {
     "weeklyFocus": {
