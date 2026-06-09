@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "8 Junio 2026",
-    "weeklyFocusDate": "Semana del 8 Jun",
-    "nwBruto": 403827,
-    "nwBrutoDelta": "▼$47,513 vs ayer",
-    "nwDeltaUp": false,
-    "nwNeto": 330301,
+    "subtitle": "9 Junio 2026",
+    "weeklyFocusDate": "Semana del 9 Jun",
+    "nwBruto": 404594,
+    "nwBrutoDelta": "▲$767 vs ayer",
+    "nwDeltaUp": true,
+    "nwNeto": 331068,
     "nwNetoDelta": "▼$15,273 vs May 29 (NW Neto $392,932→$377,659 — sell-off Jun 5, parcialmente compensado por refresh manual +$5,275)",
     "fiPct": 66,
-    "fiGap": 169699,
+    "fiGap": 168932,
     "fiGapAnnual": 23203,
     "fiTarget": 500000,
     "healthScore": 62,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (91/100) sigue siendo tu fortaleza. Score bajó a 62 porque DEC cash cayó bajo buffer ($38,370 < $41,897) → liquidez 62 y surplus 43. LOC paydown EN PAUSA hasta recuperar buffer. Lo positivo: margen táctico $3,385 ✅ (leverage 110.2% bajo cap 120%) y deuda estable. Recuperar buffer (~3 meses) restaura el ataque al LOC.",
-    "retirementCore": 260601,
+    "retirementCore": 260680,
     "totalBruto": 451340,
-    "tacticalHeader": "$33,759 (margen $3,385 ✅ leverage 110% bajo cap 120%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 8 ~7:50 ET) · TT Relay Gmail (Jun 8 04:42 PT) · Xero LIVE (P&L+cash Jun 6 refresh)",
+    "tacticalHeader": "$34,101 equity (MV $37,486, leverage 110% ✅, margen $3,385)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live 9-jun ~11:40 UTC) · TT Relay Gmail (9-jun 04:40 PDT) · Barchart WebSearch (9-jun) · Xero (live YTD)",
     "debtTotal": 73526,
     "debtDelta": "▲+$286 vs May 29 (Amex Gold $1,726 ahora rastreado; Chase Ink ▼$1,466)",
     "debtDeltaUp": true,
@@ -80,16 +80,16 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 5398.0,
+    "decMonthlyAvg": 5565.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 3609,
-    "lastTacticalMargin": 3385.0
+    "futuresEquity": 3608,
+    "lastTacticalMargin": 3384.62
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: ✂️ Recortar Tech/Semis en el rebote",
-      "body": "Tape risk-on (QQQ +1.4%, VIX -12%) abre ventana para recortar Tech/Semis 19%→<15% vendiendo SOXX/SOXQ en ganancia antes del CPI del miércoles. Reinvertir parte en hedge de metales GLD/IAU (0% hoy).",
-      "why": "En STAGFLATION_RISK + Fed hawkish, semis están estructuralmente penalizados; salir en fuerza reduce riesgo antes del catalizador CPI."
+      "title": "Prioridad #1: 🟡 Trim Tech/Semis en el rebote",
+      "body": "Usar el bounce de chips de hoy (QQQ +0.9%) para vender SOXX/SOXQ en ganancia y bajar Tech/Semis 19.4%→<15%, redirigiendo a hedge de oro antes del CPI.",
+      "why": "Tech/Semis está bloqueado en STAGFLATION_RISK y el CPI de esta semana es el catalizador #1 — vender en fuerza ahora reduce riesgo binario."
     },
     "steps": [
       {
@@ -168,12 +168,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) Recortar Tech/Semis 19%→<15% (SOXX/SOXQ) en el rebote de hoy; (2) Añadir hedge GLD/IAU al sleeve (0% metales); (3) LOC paydown EN PAUSA — sin capacidad sobre buffer (disponible -$10.5K)."
+      "text": "(1) Trim SOXX/SOXQ en el rebote (Tech 19.4%→<15%) · (2) Añadir hedge GLD/IAU (0% metales) antes del CPI · (3) Confirmar reuso de $3,608 en futuros (M6AM26 cerrado)"
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $73,526 — paydown EN PAUSA (sin capacidad sobre buffer). DEC promedio $5,398/mes → Superávit $+262/mes."
+      "text": "💳 LOC $73,526 @ 8.5% — prioridad paydown. DEC promedio $5,565/mes → Superávit $+429/mes. Meta: recuperar buffer antes de paydown."
     },
     "fi": {
       "color": "#f59e0b",
@@ -183,7 +183,7 @@
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+262/mes. DEC YTD promedio $5,398/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO."
+      "text": "💰 ✅ Superávit $+429/mes. DEC YTD promedio $5,565/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
     },
     "performance": {
       "color": "#f59e0b",
@@ -193,12 +193,12 @@
     "posiciones": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✂️ Recortar Tech/Semis 19%→<15%; 🥇 abrir hedge metales. ✅ Margen táctico $3,385 dentro de política (leverage 110% < cap 120%)."
+      "text": "✅ Opciones sin alertas — 4 spreads, OCOs 4/4, sin DTE≤5 ni earnings. ✅ Margen táctico $3,385 (leverage 110%, bajo cap 120%)."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $3,385 dentro de política (leverage 110% < cap 120%). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $12,975."
+      "text": "✅ Margen táctico $3,385 (leverage 110%, bajo cap 120%). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,321."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -250,10 +250,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Bruto $403,827 | Neto $330,301 | FI 66% (meta $500K)",
-      "📊 DEC YTD neto $28,016 → $5,398/mes promedio | Superávit $+262/mes",
-      "🏦 SEP IRA $139,601 (+$7,585 no-realiz) · Tactical $33,759 (110% lev) · TT NLV $12,975 (5 spreads)",
-      "🧭 Régimen STAGFLATION_RISK, alineación 58% — recortar Tech/Semis + añadir hedge metales antes del CPI (mié 10-jun)."
+      "🏦 <b>SEP IRA $139,680</b> — VOO/SCHD/AVDV, ▲$7,666 no-realizado, +$444 hoy. NO TOCAR.",
+      "⚠️ <b>Tactical ETF $34,101</b> (MV $37,486, leverage 110% ✅) — 16 posiciones; Tech/Semis 19.4% y Intl Asia 22.1% en banda monitor; 0% metales.",
+      "📋 <b>Tastytrade NLV $13,321</b> — 4 spreads (NFLX/CMG/RDW + TSM LEAPS), OCOs 4/4 vivos, sin DTE≤5 ni earnings.",
+      "🎯 <b>Recomendación:</b> usar rebote para trim Tech + add hedge oro antes del CPI; régimen STAGFLATION_RISK, alineación 58%."
     ]
   },
   "debt": {
@@ -2419,11 +2419,11 @@
     "labelPessimistic": "🔴 Pesimista (5%/año)"
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-08T12:00:00Z",
+    "lastUpdate": "2026-06-09T12:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tape risk-on hoy (VIX -12% a 18.86, QQQ +1.4%) pero estructura sigue estanflación: Fed hawkish (Warsh), CPI mayo pendiente (mié), crudo +1.7% por Israel-Irán. Sesgo defensivo.",
+    "regimeContext": "Rebote de chips y VIX a 17.96 hoy, pero empleo fuerte (172K), Fed Warsh hawkish y CPI inminente mantienen el régimen estanflacionario. Sesgo defensivo.",
     "alignmentScore": 58,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
@@ -2435,27 +2435,27 @@
       },
       {
         "name": "Tasas",
-        "value": 54,
+        "value": 45,
         "color": "#f59e0b"
       },
       {
         "name": "Crecimiento",
-        "value": 62,
-        "color": "#f59e0b"
+        "value": 65,
+        "color": "#10b981"
       },
       {
         "name": "Volatilidad",
-        "value": 72,
+        "value": 65,
         "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 48,
+        "value": 60,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen.",
     "moves": [
       {
         "urgency": "URGENTE",
@@ -2467,14 +2467,14 @@
       {
         "urgency": "URGENTE",
         "icon": "✂️",
-        "action": "Recortar Tech/Semis 19.0% → <15% (vender SOXX/SOXQ en ganancia)",
+        "action": "Recortar Tech/Semis 19.4% → <15% (vender SOXX/SOXQ en ganancia)",
         "why": "Bucket 19% en régimen que penaliza semis; rebote da ventana",
         "impact": 6
       },
       {
         "urgency": "PLANEAR",
         "icon": "🌏",
-        "action": "Vigilar Intl Asia 21.8% (DXJ+EWT+EWY) — bajo cap 25%",
+        "action": "Vigilar Intl Asia 22.1% (DXJ+EWT+EWY) — bajo cap 25%",
         "why": "En banda; trim EWY si rompe 25%",
         "impact": 3
       },
@@ -2511,42 +2511,34 @@
     {
       "priority": "HOY",
       "priorityColor": "#f59e0b",
-      "icon": "✂️",
-      "action": "Recortar Tech/Semis 19%→<15% (vender SOXX/SOXQ)",
-      "why": "Rebote risk-on (QQQ +1.4%) da ventana para salir en fuerza antes del CPI; bucket 19% en régimen que penaliza semis.",
+      "icon": "⚠️",
+      "action": "Trim SOXX/SOXQ en el rebote de chips",
+      "why": "Tech/Semis 19.4% bloqueado en STAGFLATION; ambos en ganancia, vender en fuerza pre-CPI",
       "category": "ACTIVOS"
     },
     {
-      "priority": "URGENTE",
-      "priorityColor": "#ef4444",
+      "priority": "HOY",
+      "priorityColor": "#f59e0b",
       "icon": "🥇",
-      "action": "Añadir hedge metales GLD/IAU al sleeve táctico",
-      "why": "0% metales hoy; escalada Israel-Irán + CPI pendiente refuerzan necesidad de hedge.",
+      "action": "Añadir hedge GLD/IAU al sleeve táctico",
+      "why": "Hoy 0% metales; hedge de inflación antes del CPI de mayo",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "📋",
-      "action": "Vigilar NVO/UBER (Jun 18, 10 DTE)",
-      "why": "Entran en ventana de gestión esta semana; OCOs activas pero monitorear.",
-      "category": "OPCIONES"
+      "icon": "📈",
+      "action": "Confirmar reuso de futuros PKG27/VLV23",
+      "why": "M6AM26 cerrado, $3,608 efectivo inactivo en ambas cuentas",
+      "category": "FUTUROS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "LOC paydown Wells Fargo — EN PAUSA",
-      "why": "Disponible neto -$10.5K sobre buffer $41,052; sin capacidad hasta reconstruir colchón.",
+      "action": "LOC paydown EN PAUSA — recuperar buffer DEC",
+      "why": "Cash $36,810 − payables $4,612 − buffer $41,052 = −$8,854: sin capacidad",
       "category": "DEUDA"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "❓",
-      "action": "Confirmar futuros PKG27/VLV23 ($3,609 idle)",
-      "why": "M6AM26 cerrado; cash inactivo — decidir redeploy (p.ej. MGC hedge oro) o dejar idle.",
-      "category": "FUTUROS"
     }
   ],
   "datestamps": {
