@@ -7,10 +7,10 @@
     "nwDeltaUp": true,
     "nwNeto": 335913,
     "nwNetoDelta": "▼$15,273 vs May 29 (NW Neto $392,932→$377,659 — sell-off Jun 5, parcialmente compensado por refresh manual +$5,275)",
-    "fiPct": 67,
-    "fiGap": 164087,
-    "fiGapAnnual": 23203,
-    "fiTarget": 500000,
+    "fiPct": 37,
+    "fiGap": 564087,
+    "fiGapAnnual": 56409,
+    "fiTarget": 900000,
     "healthScore": 62,
     "healthLabel": "BUENO",
     "healthSubScores": {
@@ -56,10 +56,10 @@
     "debtDelta": "▲+$286 vs May 29 (Amex Gold $1,726 ahora rastreado; Chase Ink ▼$1,466)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
-    "fiTargetAge": 58,
-    "fiBlendedTarget": 275000,
-    "fiBlendedGap": 97383,
-    "fiBlendedNote": "Meta blended ($35K/yr − SS $24K/yr ÷ 4%) = $275,000. NW actual $372,383 — superado por $97,383.",
+    "fiTargetAge": "60",
+    "fiBlendedTarget": 500000,
+    "fiBlendedGap": 164087,
+    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $335,913 = 67%.",
     "totalAssets": 451340,
     "totalDebt": 73526,
     "futPKGDesc": "Sin posiciones — M6AM26 cerrado (cash $1,796 inactivo)",
@@ -83,7 +83,10 @@
     "decMonthlyAvg": 5565.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 3608,
-    "lastTacticalMargin": 3384.62
+    "lastTacticalMargin": 3384.62,
+    "fiTargetWithDEC": 500000,
+    "fiPctWithDEC": 67,
+    "fiGapWithDEC": 164087
   },
   "roadmap": {
     "weeklyFocus": {
@@ -2382,41 +2385,42 @@
   "fiProjection": {
     "base": [
       null,
-      413000.0,
-      457000.0,
-      504000.0,
-      555000.0,
-      609000.0
+      469000,
+      633000,
+      833000,
+      1079000,
+      1379000
     ],
     "pessimistic": [
       null,
-      391000.0,
-      411000.0,
-      431000.0,
-      453000.0,
-      475000.0
+      408000,
+      491000,
+      587000,
+      699000,
+      828000
     ],
     "optimistic": [
       null,
-      430000.0,
-      493000.0,
-      561000.0,
-      635000.0,
-      717000.0
+      553000,
+      834000,
+      1198000,
+      1670000,
+      2281000
     ],
-    "note": "Base: 7%/yr + $15K surplus | Pess: 5%/yr, $0 surplus | Opt: 9%/yr + $24K (DEC $7.5K/mes + Michalitas BE)",
     "labels": [
-      "Hoy (53)",
-      "2027",
-      "2028",
-      "2029",
-      "2030",
-      "2031 (58)"
+      "Hoy (54)",
+      "2029 (57)",
+      "2032 (60)",
+      "2035 (63)",
+      "2038 (66)",
+      "2041 (69)"
     ],
-    "target": 500000,
-    "labelBase": "🔵 Base (7%/año)",
-    "labelOptimistic": "🟢 Optimista (9%/año + cierre Michalitas)",
-    "labelPessimistic": "🔴 Pesimista (5%/año)"
+    "target": 900000,
+    "targetWithDEC": 500000,
+    "labelBase": "🔵 Base (7%/año +$18K aporte)",
+    "labelOptimistic": "🟢 Optimista (9% +$36K, DEC→SEP IRA)",
+    "labelPessimistic": "🔴 Pesimista (5% +$6K)",
+    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $335,913 (37% / 67%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
     "lastUpdate": "2026-06-09T12:00:00Z",
