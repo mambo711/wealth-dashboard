@@ -1684,10 +1684,10 @@ function initFromData(d) {
   }
 
   const fi = document.getElementById('fi-header-text');
-  if (fi) fi.textContent = m.fiPct + '% — faltan $' + m.fiGap.toLocaleString();
+  if (fi) fi.textContent = m.fiPct + '% retiro pleno · ' + (m.fiPctWithDEC || 67) + '% con DEC';
 
   const fibl = document.getElementById('fi-bar-label');
-  if (fibl) fibl.textContent = 'Progreso FI (meta: $' + (m.fiTarget || 500000).toLocaleString() + ')';
+  if (fibl) fibl.textContent = 'Progreso FI — meta $' + (m.fiTarget || 900000).toLocaleString() + ' sin DEC · $' + (m.fiTargetWithDEC || 500000).toLocaleString() + ' con DEC';
   const fill = document.getElementById('fi-fill-bar');
   if (fill) {
     fill.style.width = m.fiPct + '%';
@@ -1759,7 +1759,7 @@ function initFromData(d) {
   // FI axis label
   const fiAxisEl = document.getElementById('fi-axis-label');
   if (fiAxisEl && m.fiTargetAge && m.fiTarget)
-    fiAxisEl.textContent = `FI @ ${m.fiTargetAge} = $${m.fiTarget.toLocaleString()} (blended lifestyle)`;
+    fiAxisEl.textContent = `FI @ ${m.fiTargetAge} = $${m.fiTarget.toLocaleString()} (retiro pleno $55K/año, sin DEC)`;
 
   // Performance section header range (e.g. "24 meses (Jun 2024 → May 2026)")
   const perfHeaderEl = document.getElementById('perf-header-range');
@@ -2124,7 +2124,8 @@ function renderLine() {
       { label: fp.labelOptimistic  || '🟢 Optimista', data: optimistic, borderColor: '#10b981', backgroundColor: '#10b98115', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#10b981', borderWidth: 2.5 },
       { label: fp.labelBase        || '🔵 Base',      data: base,       borderColor: '#3b82f6', backgroundColor: '#3b82f615', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#3b82f6', borderWidth: 2.5 },
       { label: fp.labelPessimistic || '🔴 Pesimista', data: pessimistic, borderColor: '#ef4444', backgroundColor: '#ef444415', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#ef4444', borderWidth: 2.5 },
-      { label: 'Meta FI $' + (fiTarget/1000).toFixed(0) + 'K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false }
+      { label: 'Meta retiro pleno $' + (fiTarget/1000).toFixed(0) + 'K', data: target, borderColor: '#f59e0b', borderDash: [8,4], borderWidth: 2, pointRadius: 0, fill: false },
+      { label: 'Meta con DEC $' + ((fp.targetWithDEC||500000)/1000).toFixed(0) + 'K', data: labels.map(()=>(fp.targetWithDEC||500000)), borderColor: '#22d3ee', borderDash: [4,4], borderWidth: 2, pointRadius: 0, fill: false }
     ]},
     options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
         tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } } },
@@ -2895,7 +2896,7 @@ function checkStaleBadges() {
 }
 
 // ═══ LOAD DATA & INIT ═══
-fetch('https://cdn.jsdelivr.net/gh/mambo711/wealth-dashboard@main/data.json?v=' + Date.now())
+fetch('data.json?v=' + Date.now())
   .then(r => r.json())
   .then(d => { initFromData(d); checkStaleBadges(); })
   .catch(e => {
