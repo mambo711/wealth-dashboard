@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "11 Junio 2026",
+    "subtitle": "12 Junio 2026",
     "weeklyFocusDate": "Semana del 8 Jun",
-    "nwBruto": 406254,
-    "nwBrutoDelta": "▲$0 vs ayer",
+    "nwBruto": 409535,
+    "nwBrutoDelta": "▲$3,281 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 332728,
+    "nwNeto": 336009,
     "nwNetoDelta": "▼$15,273 vs May 29 (NW Neto $392,932→$377,659 — sell-off Jun 5, parcialmente compensado por refresh manual +$5,275)",
     "fiPct": 37,
-    "fiGap": 567272,
+    "fiGap": 563991,
     "fiGapAnnual": 56409,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "El core de retiro (91/100) sigue siendo tu fortaleza. Score bajó a 62 porque DEC cash cayó bajo buffer ($38,370 < $41,897) → liquidez 62 y surplus 43. LOC paydown EN PAUSA hasta recuperar buffer. Lo positivo: margen táctico $3,385 ✅ (leverage 110.2% bajo cap 120%) y deuda estable. Recuperar buffer (~3 meses) restaura el ataque al LOC.",
-    "retirementCore": 258941,
+    "retirementCore": 261209,
     "totalBruto": 451340,
-    "tacticalHeader": "$32,999 (margen $29 ✅ ~cero, leverage 100.1%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 11 ~7:35 ET) · TT Relay Gmail (Jun 11 07:33 ET) · Xero P&L+Cash (live Jun 11) · Betterment/Ecuador (cached)",
+    "tacticalHeader": "$33,839 (margen $29 ✅ ~cero, leverage 100.1%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 12 10:20 ET) · TT Relay Gmail (Jun 12 10:17 ET) · Xero Cash (live) · Betterment/Ecuador (cached) — corrida manual de recuperación",
     "debtTotal": 73526,
     "debtDelta": "▲+$286 vs May 29 (Amex Gold $1,726 ahora rastreado; Chase Ink ▼$1,466)",
     "debtDeltaUp": true,
@@ -86,13 +86,13 @@
     "lastTacticalMargin": 29.17,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 67,
-    "fiGapWithDEC": 167272
+    "fiGapWithDEC": 163991
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 Roll/Close M6EU26 antes de Jun 15",
-      "body": "M6EU26 (Micro EUR/USD Jun26) 1x long en PKG27 y VLV23 vence ciclo IMM: último trading ≈ Lun Jun 15 (~2 sesiones). El M6AM26 anterior salió por STOP-OUT Jun 8 — esta vez decidir activamente: roll a Sep26 o cierre. Sleeve táctico ya saneado: IAU hedge ✅, Tech/Semis 12.4% ✅, margen ~$0 ✅.",
-      "why": "Vencimiento de futuros sin decisión = salida por inercia/stop; con PPI hoy y FOMC Warsh Jun 16-17 el EUR/USD tendrá volatilidad."
+      "title": "Prioridad #1: 🔴 BP de futuros casi cero ($193/$211)",
+      "body": "Tras la rotación a MHGN26 (cobre long) + MNGN26 (nat gas short) en ambas cuentas, el buying power quedó en $193 (PKG27) y $211 (VLV23) — colchón ~10% del equity. Un movimiento adverso moderado dispara margin call. M6EU26 cerrado activamente Jun 11 ✅.",
+      "why": "Riesgo operativo inmediato con FOMC Warsh el miércoles — la volatilidad de commodities puede saltar."
     },
     "steps": [
       {
@@ -169,9 +169,9 @@
   },
   "actions": {
     "resumen": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "(1) 🔴 Roll/close M6EU26 antes de Jun 15 (2 sesiones) · (2) ⏰ PPI hoy 8:30 ET + FOMC Warsh Jun 16-17 — sin nuevas entradas · (3) ✅ Sleeve táctico saneado: margen ~$0, IAU 9.5%, Tech/Semis 12.4%."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "(1) 🔴 BP futuros casi cero ($193/$211) con 2 contratos/cuenta — revisar HOY · (2) ⭐ FOMC Warsh Jun 16-17 — pausa de entradas · (3) 🟡 MNGN26 roll antes de Jun 26 + verificar cierre CMG."
     },
     "deuda": {
       "color": "#f59e0b",
@@ -191,17 +191,17 @@
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 63% (techo 68%). 0 moves URGENTE pendientes. Regime: STAGFLATION_RISK."
+      "text": "Alignment 63% (techo 68%). 1 move URGENTE pendiente (BP futuros). Regime: STAGFLATION_RISK."
     },
     "posiciones": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Opciones sin alertas críticas — monitorear DTE. ✅ Margen táctico $29 dentro del objetivo."
+      "text": "⚠️ CMG cerrada en TT (verificar fill). ✅ Margen táctico $29 ~cero. 🔴 BP futuros $193/$211 — colchón mínimo."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $29 dentro del objetivo. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $12,996."
+      "text": "✅ Margen táctico $29 dentro del objetivo. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,052. 🔴 BP futuros casi cero."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -253,10 +253,10 @@
       }
     ],
     "resumen": [
-      "💰 <b>NW Neto ~$332,700</b> — FI 37% del target $900K (67% del hito $500K con DEC)",
-      "📈 <b>TradeStation $174,530 equity</b> (+$980 hoy): SEP IRA $137,941 🟢 · Táctico $32,999 (margen ~$0 ✅, leverage 100%) · Futuros $3,590",
-      "🏢 <b>DEC YTD $32,411 neto</b> (avg $6,090/mes) — cash $38,978 aún bajo buffer $41,052 → LOC paydown en pausa",
-      "🎯 <b>Régimen STAGFLATION_RISK 63%</b> alineación (techo 68%) — hedge IAU ✅ y trim Tech/Semis ✅ ejecutados; foco: roll M6EU26"
+      "💰 <b>NW Neto ~$336,000</b> — FI 37% del target $900K (67% del hito $500K con DEC)",
+      "📈 <b>TradeStation $177,755 equity</b> (▲$977 hoy): SEP IRA $140,209 🟢 todas verdes · Táctico $33,839 (margen ~$0 ✅) · Futuros $3,707 ⚠️ BP casi cero",
+      "🏢 <b>DEC cash $37,223</b> bajo buffer $41,052 → LOC paydown en pausa (avg $6,090/mes)",
+      "🎯 <b>STAGFLATION_RISK 63%</b> — PPI caliente ignorado por el mercado; FOMC Warsh Jun 16-17 es el binario de la semana"
     ]
   },
   "debt": {
@@ -2423,11 +2423,11 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $335,913 (37% / 67%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-11T12:00:00Z",
+    "lastUpdate": "2026-06-12T15:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Rebote por esperanzas de paz EE.UU.-Irán, pero payrolls fuertes reavivan riesgo de HIKE; Warsh debuta en FOMC Jun 16-17 con ~0 cuts descontados y core PPI acelerando (5.4%e y/y).",
+    "regimeContext": "PPI mayo caliente (1.1% m/m, y/y 6.5% máx desde Nov 2022) pero mercado lo lee como shock de gasolina; UMich 48.9 con expectativas de inflación a la baja; FOMC debut de Warsh Jun 16-17 con hold descontado.",
     "alignmentScore": 63,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
@@ -2495,40 +2495,40 @@
       "priority": "URGENTE",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Roll o cierre de M6EU26 (Micro EUR/USD) en PKG27 + VLV23",
-      "why": "Último día de trading ≈ Jun 15 (ciclo IMM) — quedan ~2 sesiones; el M6AM26 anterior salió por stop-out sin decisión",
+      "action": "Revisar BP de futuros: PKG27 $193 / VLV23 $211 con 2 contratos por cuenta",
+      "why": "Colchón ~10% del equity — margin call con un movimiento adverso moderado en cobre o gas",
       "category": "FUTUROS"
     },
     {
       "priority": "HOY",
       "priorityColor": "#f59e0b",
       "icon": "⚠️",
-      "action": "Pausa de entradas hasta digerir PPI (hoy 8:30 ET) y FOMC Warsh (Jun 16-17)",
-      "why": "Core PPI y/y esperado 5.4% caliente + primer FOMC de Warsh = dos binarios en 4 sesiones",
-      "category": "MACRO"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "⭐",
-      "action": "Verificar OCOs de posiciones TT nuevas: SKM C35 LEAPS solo-stop sin TP, NVO rolled Jul 17",
-      "why": "SKM tiene stop $5.85 sin take-profit limit; NVO re-abierta Jun 10 con OCO $4.18/$0.91",
+      "action": "Verificar cierre de CMG (Chipotle) P30/P25 en Tastytrade",
+      "why": "Desapareció del relay Jun 11 — probable stop $0.89; confirmar fill y resultado",
       "category": "OPCIONES"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "⭐",
-      "action": "Monitorear Energía 23.5% del sleeve táctico (banda 18-25%)",
-      "why": "Crudo volátil por titulares Irán; acuerdo de paz confirmado podría corregir el bucket",
-      "category": "ACTIVOS"
+      "action": "Planear roll/close de MNGN26 (Micro Nat Gas Jul) — last trading ≈ Jun 26",
+      "why": "Ciclo NG vence ~10 sesiones; decidir activamente, no repetir el stop-out del M6AM26",
+      "category": "FUTUROS"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "⭐",
+      "action": "FOMC debut de Warsh Mar-Mié Jun 16-17 — pausa de entradas nuevas",
+      "why": "Primer dot plot + presser de Warsh = repricing de tasas del semestre",
+      "category": "MACRO"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
       "action": "LOC paydown Wells Fargo — sin capacidad actual",
-      "why": "Cash $38,978 − payables $5,932 − buffer $41,052 = −$8,006; superávit ~+$954/mes acumulando",
+      "why": "Cash $37,223 − payables $5,932 − buffer $41,052 = −$9,761",
       "category": "DEUDA"
     }
   ],
