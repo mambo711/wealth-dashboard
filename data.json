@@ -2,32 +2,32 @@
   "meta": {
     "subtitle": "12 Junio 2026",
     "weeklyFocusDate": "Semana del 8 Jun",
-    "nwBruto": 409535,
-    "nwBrutoDelta": "▲$3,281 vs ayer",
+    "nwBruto": 452954,
+    "nwBrutoDelta": "▲$1,771 vs Jun 5 ($451,184→$452,955)",
     "nwDeltaUp": true,
-    "nwNeto": 336009,
-    "nwNetoDelta": "▼$15,273 vs May 29 (NW Neto $392,932→$377,659 — sell-off Jun 5, parcialmente compensado por refresh manual +$5,275)",
-    "fiPct": 37,
-    "fiGap": 563991,
-    "fiGapAnnual": 56409,
+    "nwNeto": 378506,
+    "nwNetoDelta": "▲$848 vs Jun 5 ($377,659→$378,507) — TS/TT al alza, deuda ▲$922",
+    "fiPct": 42,
+    "fiGap": 521494,
+    "fiGapAnnual": 52149,
     "fiTarget": 900000,
     "healthScore": 62,
     "healthLabel": "BUENO",
     "healthSubScores": {
       "retiro": {
-        "val": 91,
+        "val": 94,
         "color": "#3b82f6"
       },
       "diversif": {
-        "val": 72,
-        "color": "#10b981"
-      },
-      "progresoFI": {
         "val": 74,
         "color": "#10b981"
       },
+      "progresoFI": {
+        "val": 76,
+        "color": "#10b981"
+      },
       "performance": {
-        "val": 60,
+        "val": 57,
         "color": "#10b981"
       },
       "deuda": {
@@ -35,70 +35,70 @@
         "color": "#ef4444"
       },
       "surplus": {
-        "val": 43,
+        "val": 48,
         "color": "#f59e0b"
       },
       "liquidez": {
-        "val": 62,
+        "val": 63,
         "color": "#10b981"
       },
       "riesgo": {
-        "val": 60,
-        "color": "#10b981"
+        "val": 52,
+        "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "El core de retiro (91/100) sigue siendo tu fortaleza. Score bajó a 62 porque DEC cash cayó bajo buffer ($38,370 < $41,897) → liquidez 62 y surplus 43. LOC paydown EN PAUSA hasta recuperar buffer. Lo positivo: margen táctico $3,385 ✅ (leverage 110.2% bajo cap 120%) y deuda estable. Recuperar buffer (~3 meses) restaura el ataque al LOC.",
-    "retirementCore": 261209,
-    "totalBruto": 451340,
-    "tacticalHeader": "$33,839 (margen $29 ✅ ~cero, leverage 100.1%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 12 10:20 ET) · TT Relay Gmail (Jun 12 10:17 ET) · Xero Cash (live) · Betterment/Ecuador (cached) — corrida manual de recuperación",
-    "debtTotal": 73526,
-    "debtDelta": "▲+$286 vs May 29 (Amex Gold $1,726 ahora rastreado; Chase Ink ▼$1,466)",
+    "healthDiagnostic": "Score 62 BUENO. Retiro 94/100 sigue siendo la fortaleza ($234,304). Lo bueno de la semana: hedge IAU añadido ✅ y Tech/Semis 14.2% bajo umbral ✅. Lo urgente: BP de futuros ~$280 (move CRÍTICO) y margen táctico $4,657 reapareció. Buffer DEC $37,494/$41,663 (faltan $4,169, ~3 meses) — LOC en pausa. Deuda 26/100 sigue siendo el lastre principal.",
+    "retirementCore": 234304,
+    "totalBruto": 452954,
+    "tacticalHeader": "$33,644 (margen $4,657 ⚠️, leverage 113.8% bajo cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE Jun 12 ~4:30pm ET) · TT Relay Gmail (Jun 12 2:54pm ET) · Xero (LIVE) · Betterment/Ecuador/IBKR/RH (Alberto in-chat Jun 5) — weekly scheduled run",
+    "debtTotal": 74448,
+    "debtDelta": "▲+$922 vs Jun 5 ($73,526→$74,448; Amex Gold +$703, Chase Ink +$219)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 164087,
-    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $335,913 = 67%.",
-    "totalAssets": 451340,
-    "totalDebt": 73526,
-    "futPKGDesc": "Sin posiciones — M6AM26 cerrado (cash $1,796 inactivo)",
-    "futVLVDesc": "Sin posiciones — M6AM26 cerrado (cash $1,813 inactivo)",
+    "fiBlendedGap": 121494,
+    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $378,506 = 76%.",
+    "totalAssets": 452954,
+    "totalDebt": 74448,
+    "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP $272 🚨",
+    "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP $290 🚨",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
       {
-        "text": "✅ Margen táctico $3,385 — leverage 110% bajo cap 120%",
+        "text": "⚠️ Margen táctico $4,657 reapareció — leverage 113.8% bajo cap 120%",
+        "color": "yellow"
+      },
+      {
+        "text": "✅ Tech/Semis (BAI+SOXX+XLK) = 14.2% — bajo umbral 15% (trim ejecutado)",
         "color": "green"
       },
       {
-        "text": "⚠️ Tech/Semis (BAI+SOXQ+SOXX+XLK) = 19.1% — sector bloqueado, trim hacia 15%",
-        "color": "yellow"
-      },
-      {
-        "text": "🌏 Intl Asia (DXJ+EWT+EWY) = 21.9% — bajo cap 25% ✅",
-        "color": "yellow"
+        "text": "✅ Oro IAU 8.5% añadido (hedge stagflación) · 🌏 Intl Asia (EWT+EWY) 11.4% bajo cap 25%",
+        "color": "green"
       }
     ],
-    "decMonthlyAvg": 6090.0,
+    "decMonthlyAvg": 5938,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 3608,
-    "lastTacticalMargin": 29.17,
+    "futuresEquity": 3818,
+    "lastTacticalMargin": 4657.25,
     "fiTargetWithDEC": 500000,
-    "fiPctWithDEC": 67,
-    "fiGapWithDEC": 163991
+    "fiPctWithDEC": 76,
+    "fiGapWithDEC": 121494
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 BP de futuros casi cero ($193/$211)",
-      "body": "Tras la rotación a MHGN26 (cobre long) + MNGN26 (nat gas short) en ambas cuentas, el buying power quedó en $193 (PKG27) y $211 (VLV23) — colchón ~10% del equity. Un movimiento adverso moderado dispara margin call. M6EU26 cerrado activamente Jun 11 ✅.",
-      "why": "Riesgo operativo inmediato con FOMC Warsh el miércoles — la volatilidad de commodities puede saltar."
+      "title": "Prioridad #1: 🚨 BP de futuros casi cero ($272 / $290)",
+      "body": "MHGN26 (Micro Cobre long, $16.2K notional) + MNGN26 (Micro Nat Gas short) en ambas cuentas dejan el buying power en ~14% del equity. Liberar margen (cerrar MNGN26 o aportar cash $1,500–$3,000/cuenta) ANTES del FOMC Jun 16-17. Mientras esté pendiente: no abrir posiciones nuevas, no pagar LOC extra, no rebalancear.",
+      "why": "⚡ FOMC debut de Warsh el miércoles — la volatilidad de commodities puede saltar y un margin call forzaría liquidación en el peor momento. Régimen STAGFLATION_RISK."
     },
     "steps": [
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($47,753 @ 8.5%)",
-        "detail": "EN PAUSA: buffer DEC incompleto ($38,370 / $41,897). Primero recuperar buffer (~3 meses con surplus $+1,291/mes), luego aplicar surplus íntegro al LOC. Cada $10K pagado ahorra $850/año ($338/mes actuales).",
+        "detail": "EN PAUSA: buffer DEC incompleto ($37,494 / $41,663, faltan $4,169). Primero recuperar buffer (~3 meses con surplus $+1,433/mes), luego aplicar surplus íntegro al LOC. Cada $10K pagado ahorra $850/año ($338/mes actuales).",
         "impact": "Impacto: Deuda 26→80, Score 62→70 · Libera $338/mes al completar",
         "impactColor": "#ef4444",
         "timeline": "Jun 2026 — 2029",
@@ -171,85 +171,85 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) 🔴 BP futuros casi cero ($193/$211) con 2 contratos/cuenta — revisar HOY · (2) ⭐ FOMC Warsh Jun 16-17 — pausa de entradas · (3) 🟡 MNGN26 roll antes de Jun 26 + verificar cierre CMG."
+      "text": "3 prioridades en orden: (1) 🚨 Move CRÍTICO — liberar BP en futuros (PKG27 $272 / VLV23 $290) antes del FOMC Jun 16-17. (2) Acumular buffer DEC $37,494→$41,663 (faltan $4,169) — NO pagar LOC extra. (3) Surplus $+1,433/mes → LOC $47,753 @ 8.5% una vez recuperado el buffer (~3 meses)."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $73,526 @ 8.5% — prioridad paydown. DEC promedio $6,090/mes → Superávit $+954/mes. Meta: flujo positivo antes de paydown agresivo."
+      "text": "⛔ NO pagar LOC extra — buffer DEC incompleto ($37,494 / $41,663, faltan $4,169). Ver Resumen."
     },
     "fi": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "LOC en espera: buffer DEC en $38,370 / $41,897. FI al 74% — gap $127,617. Ver Resumen."
+      "text": "LOC en espera: buffer DEC en $37,494 / $41,663. Move CRÍTICO también pendiente. Ver Resumen."
     },
     "flujo": {
-      "color": "#10b981",
-      "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+954/mes. DEC YTD promedio $6,090/mes. Meta: $6,500+/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Surplus $+1,433/mes pero buffer DEC incompleto — dejar acumular (~3 meses). Ver Resumen."
     },
     "performance": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "Alignment 63% (techo 68%). 1 move URGENTE pendiente (BP futuros). Regime: STAGFLATION_RISK."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Ejecutar move CRÍTICO (🚨 liberar BP futuros) antes de rebalancear. Régimen Stagflation/Inflación: sin nuevas entradas en sectores bloqueados. Ver Resumen."
     },
     "posiciones": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "⚠️ CMG cerrada en TT (verificar fill). ✅ Margen táctico $29 ~cero. 🔴 BP futuros $193/$211 — colchón mínimo."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "⛔ Move CRÍTICO pendiente: 🚨 BP futuros casi cero ($272/$290) — liberar margen antes del FOMC. Ver Macro tab."
     },
     "cuentas": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $29 dentro del objetivo. Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,052. 🔴 BP futuros casi cero."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "Move CRÍTICO pendiente (BP futuros) — no mover capital hasta resolver. Régimen Stagflation/Inflación: sesgo DEFENSIVO. Ver Resumen."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($36,415 — 8.2% del portafolio) sin garantía documental. Ver Resumen."
+      "text": "Verificar contrato Miguel Autos ($36,415 — 8.0% del portafolio) sin garantía documental. Ver Resumen."
     }
   },
   "insights": {
     "subscores": {
-      "retiro": 91,
-      "fi": 74,
+      "retiro": 94,
+      "diversif": 74,
+      "progresoFI": 76,
+      "performance": 57,
       "deuda": 26,
-      "surplus": 43,
-      "liquidez": 62,
-      "performance": 60,
-      "diversif": 72,
-      "riesgo": 60
+      "surplus": 48,
+      "liquidez": 63,
+      "riesgo": 52
     },
     "accounts": [
       {
-        "rank": "Grado A — ETF Core · TWR +21.2%",
+        "rank": "Grado A — ETF Core · TWR 6M -8.7%",
         "rankColor": "#10b981",
-        "text": "La cuenta principal de trading. 16 posiciones ETF. Margen $3,385 ✅ (leverage 110.2% bajo cap 120%). Régimen STAGFLATION_RISK — Tech/Semis 18.6% es el único bucket sobre el umbral defensivo.",
-        "rec": "Trim Tech/Semis (SOXX/SOXQ en ganancia) hacia <15% y añadir hedge GLD/IAU $1,500–2,000. Intl Asia 21.8% bajo cap 25% ✅."
+        "text": "La cuenta principal de trading. 16 posiciones ETF, MV $38,301. Margen $4,657 ⚠️ (leverage 113.8% bajo cap 120%). Tech/Semis 14.2% ✅ y oro IAU 8.5% ✅ — alineación con STAGFLATION_RISK mejoró esta semana.",
+        "rec": "Trim PBW (−11.5%) / UFO (−10.8%) para bajar margen y leverage a ~105% antes del FOMC. Completar IAU hacia 10%."
       },
       {
-        "rank": "Grado A+ — Mejor TWR · +36.7%",
+        "rank": "Grado A+ — Mejor TWR · +37.3%",
         "rankColor": "#10b981",
-        "text": "RH Autopilot Act Managed — mejor rendimiento del portafolio ($4,412, stale May 23). Gestión activa automatizada.",
-        "rec": "Mantener. Candidato a recibir capital de cuentas de bajo rendimiento cuando el régimen lo permita."
+        "text": "RH Autopilot Act Managed — mejor rendimiento del portafolio ($4,430, confirmado Jun 5). Gestión activa automatizada.",
+        "rec": "Mantener. Candidato a recibir capital (señal realocación ⚪ streak 1/3 — aún sin señal)."
       },
       {
-        "rank": "Grado B — Stocks Activo · TWR +13.2%",
+        "rank": "Grado B — Stocks Activo · TWR -1.0%",
         "rankColor": "#10b981",
-        "text": "IBKR Bravo — acciones individuales. TWR +13.2%. Saldo $8,346 (stale May 23).",
+        "text": "IBKR Bravo — acciones individuales. Saldo $8,025 (confirmado Jun 5).",
         "rec": "Mantener estrategia actual. Evaluar concentración de posiciones individuales."
       },
       {
-        "rank": "Grado D — Opciones · TWR -13.4%",
+        "rank": "Grado D — Opciones · TWR -11.1%",
         "rankColor": "#ef4444",
-        "text": "TastyTrade — 7 posiciones: NVO/UBER/PG (Jun 18), SLV (Jun 30), RDW/CMG (Jul 17 🆕) + TSM LEAPS. NLV $12,949. NFLX y HIMS cerradas esta semana. OCOs activos 7/7.",
-        "rec": "Vigilar 3 spreads Jun 18 (13 DTE — semana de decisión). No abrir nuevas posiciones hasta mejorar TWR."
+        "text": "TastyTrade — 5 estructuras: NFLX P82/P78 (Jul 10), RDW P14/P12 ×3 (reabierta Jun 12) + NVO P45/P40 (Jul 17), TSM C340/C350 + SKM C35 LEAPS (Ene 27). NLV $13,024. CMG/UBER/PG/SLV cerradas.",
+        "rec": "Verificar OCO de cada estructura nueva. NFLX 28 DTE — vigilar semana del FOMC. No abrir posiciones hasta mejorar TWR."
       },
       {
-        "rank": "Grado F — Futuros · TWR -64.2%",
+        "rank": "Grado F — Futuros · TWR -36.0%",
         "rankColor": "#ef4444",
-        "text": "TS Futures — M6AM26 2x Short Micro AUD/USD en cada cuenta. PKG27 $1,832 | VLV23 $1,851. uPL combinado +$378.",
-        "rec": "Decidir roll/close M6AM26 antes de ≈Jun 15 (move PLANEAR del Macro tab). Posición en ganancia."
+        "text": "PKG27 $1,900 + VLV23 $1,918. MHGN26 long cobre + MNGN26 short gas por cuenta. BP $272/$290 🚨 — colchón ~14%.",
+        "rec": "MOVE CRÍTICO: liberar BP (cerrar MNGN26 o aportar cash) antes del FOMC Jun 16-17. Roll/close MNGN26 antes de ~Jun 26."
       }
     ],
     "resumen": [
@@ -269,7 +269,7 @@
       "interestMonthly": 338,
       "severity": "critical",
       "status": "Paydown EN PAUSA (buffer)",
-      "statusDate": "reanudar al recuperar buffer"
+      "statusDate": "reanudar al recuperar buffer (~3 meses)"
     },
     "secondary": {
       "name": "Car Loan (DCFCU)",
@@ -284,7 +284,7 @@
     "creditCards": [
       {
         "name": "Chase Ink",
-        "balance": 5937
+        "balance": 6156
       },
       {
         "name": "PP Credit",
@@ -296,11 +296,11 @@
       },
       {
         "name": "Amex Gold",
-        "balance": 1726
+        "balance": 2429
       }
     ],
-    "totalDebt": 73526,
-    "totalDebtDate": "Jun 5, 2026"
+    "totalDebt": 74448,
+    "totalDebtDate": "Jun 12, 2026"
   },
   "incomeStreams": [
     {
@@ -314,12 +314,12 @@
     },
     {
       "label": "CDs Ecuador",
-      "amount": 190,
+      "amount": 197,
       "color": "#3b82f6",
-      "source": "6.5%/año × $35,000",
-      "monthly": 190,
-      "annual": 2280,
-      "note": "6.5% APY — Cooperativa JEP (Ecuador)."
+      "source": "6.5%/año × $36,449",
+      "monthly": 197,
+      "annual": 2364,
+      "note": "6.5% APY — Cooperativa JEP (Ecuador). Interés capitaliza en el CD."
     },
     {
       "label": "Dividendos",
@@ -332,81 +332,81 @@
     },
     {
       "label": "Betterment Int.",
-      "amount": 80,
+      "amount": 85,
       "color": "#8b5cf6",
-      "source": "~4%/año × $31,151",
-      "monthly": 80,
-      "annual": 960,
+      "source": "3.25% APY × $31,318",
+      "monthly": 85,
+      "annual": 1020,
       "note": "Interés de Cash Reserve Betterment."
     }
   ],
-  "incomeTotal": 952,
-  "incomeAnnual": 11424,
-  "incomePassiveCoverage": "32",
+  "incomeTotal": 964,
+  "incomeAnnual": 11568,
+  "incomePassiveCoverage": 23,
   "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
     {
       "name": "TS ETF Tactical",
       "color": "#3b82f6",
-      "current": 33082,
+      "current": 33644,
       "move": null,
-      "newVal": 33082,
-      "twr": "+21.2%",
-      "twrUp": true
+      "newVal": 33644,
+      "twr": "-8.7%",
+      "twrUp": false
     },
     {
       "name": "TastyTrade",
       "color": "#8b5cf6",
-      "current": 12949,
+      "current": 13024,
       "move": null,
-      "newVal": 12949,
-      "twr": "-13.4%",
+      "newVal": 13024,
+      "twr": "-11.1%",
       "twrUp": false
     },
     {
       "name": "IBKR Bravo",
       "color": "#10b981",
-      "current": 8346,
+      "current": 8025,
       "move": null,
-      "newVal": 8346,
-      "twr": "+13.2%",
-      "twrUp": true
+      "newVal": 8025,
+      "twr": "-1.0%",
+      "twrUp": false
     },
     {
       "name": "RH AP Act Managed",
       "color": "#f59e0b",
-      "current": 4412,
+      "current": 4430,
       "move": null,
-      "newVal": 4412,
-      "twr": "+36.7%",
+      "newVal": 4430,
+      "twr": "+37.3%",
       "twrUp": true
     },
     {
       "name": "TS Futures",
       "color": "#ef4444",
-      "current": 3683,
+      "current": 3818,
       "move": null,
-      "newVal": 3683,
-      "twr": "-62.2%",
+      "newVal": 3818,
+      "twr": "-36.0%",
       "twrUp": false
     }
   ],
-  "rebalanceTotal": 62472,
+  "rebalanceTotal": 63419,
   "rebalanceNote": "Capital trading activo: ~$61,335. TastyTrade $12,853 (7 posiciones, NVTS cerrado). Futures PKG27+VLV23: M6EM26+MNGN26.",
   "pieCategories": [
     {
-      "label": "Retiro 51%",
-      "value": 228412,
+      "label": "Retiro 52%",
+      "value": 234304,
       "color": "#2563eb"
     },
     {
       "label": "Cash/Fijo 23%",
-      "value": 104521,
+      "value": 105261,
       "color": "#f59e0b"
     },
     {
       "label": "Trading 13%",
-      "value": 59323,
+      "value": 59601,
       "color": "#10b981"
     },
     {
@@ -416,19 +416,19 @@
     },
     {
       "label": "Futures 1%",
-      "value": 3683,
+      "value": 3818,
       "color": "#8b5cf6"
     }
   ],
   "allocationBar": [
     {
       "name": "US Large Cap",
-      "value": 145283,
+      "value": 146199,
       "color": "#2563eb"
     },
     {
       "name": "Cash/Renta Fija",
-      "value": 69521,
+      "value": 67834,
       "color": "#f59e0b"
     },
     {
@@ -438,17 +438,17 @@
     },
     {
       "name": "Internacional",
-      "value": 49597,
+      "value": 49642,
       "color": "#06b6d4"
     },
     {
       "name": "US Dividend",
-      "value": 34432,
+      "value": 35064,
       "color": "#3b82f6"
     },
     {
       "name": "Cash Brokerages",
-      "value": 11419,
+      "value": 11810,
       "color": "#fbbf24"
     },
     {
@@ -458,17 +458,17 @@
     },
     {
       "name": "Opciones",
-      "value": 12949,
+      "value": 13024,
       "color": "#a855f7"
     },
     {
       "name": "Sectorial",
-      "value": 14864,
+      "value": 23753,
       "color": "#f97316"
     },
     {
       "name": "Energía",
-      "value": 6871,
+      "value": 6929,
       "color": "#ef4444"
     }
   ],
@@ -477,11 +477,11 @@
       "label": "Retiro (compounding core)",
       "valueId": "metric-retirement",
       "color": "#60a5fa",
-      "value": "$228,412"
+      "value": "$234,304"
     },
     {
       "label": "Surplus mensual",
-      "value": "$+1,291",
+      "value": "$+1,433",
       "color": "#10b981"
     },
     {
@@ -500,10 +500,10 @@
       "valueId": "metric-ss"
     },
     {
-      "label": "Gap FI (5 años)",
+      "label": "Gap FI (con DEC)",
       "valueId": "metric-gap",
       "color": "#f59e0b",
-      "value": "74%"
+      "value": "76%"
     },
     {
       "label": "Bonos (% total)",
@@ -512,30 +512,30 @@
     },
     {
       "label": "Cash (% total)",
-      "value": "16%",
+      "value": "23%",
       "color": "#10b981"
     }
   ],
   "waterfall": {
-    "decIncome": 5796,
+    "decIncome": 5938,
     "livingExpenses": 4167,
     "locInterest": 338,
-    "surplus": 1291,
-    "passiveIncome": 952,
+    "surplus": 1433,
+    "passiveIncome": 964,
     "michalitas": 499,
     "carInterest": 52
   },
   "waterfallScenarios": [
     {
       "icon": "🟡",
-      "label": "Actual (Jun 5)",
-      "surplus": 1291,
-      "note": "DEC $5,796/mes avg (Xero LIVE) — surplus positivo pero buffer incompleto"
+      "label": "Actual (Jun 12)",
+      "surplus": 1433,
+      "note": "DEC $5,938/mes avg (Xero LIVE YTD $32,068 ÷ 5.4m) — surplus positivo pero buffer incompleto (faltan $4,169)"
     },
     {
       "icon": "🟡",
       "label": "Si Michalitas cierra",
-      "surplus": 1291,
+      "surplus": 1433,
       "note": "Cierre libera carga pero pierde momentum"
     },
     {
@@ -554,12 +554,12 @@
   "waterfallTable": [
     {
       "label": "Ingreso DEC (Net)",
-      "amount": 5796,
+      "amount": 5938,
       "sign": "+",
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD Jun 5 (Xero LIVE $29,946 ÷ 5.17m)"
+      "note": "Net Income promedio YTD Jun 12 (Xero LIVE $32,068 ÷ 5.4m)"
     },
     {
       "label": "Ingreso pasivo",
@@ -569,8 +569,8 @@
       "typeColor": "#10b981",
       "labelColor": "#10b981",
       "note": "Pepe+CDs+dividendos acumulan en Ecuador — no disponible para gastos US",
-      "projected": 952,
-      "projectedNote": "Proyectado $952/mo (Pepe+CDs+div) — acumula Ecuador, no disponible US"
+      "projected": 964,
+      "projectedNote": "Proyectado $964/mo (Pepe+CDs+div) — acumula Ecuador, no disponible US"
     },
     {
       "label": "Gastos de vida (US)",
@@ -610,32 +610,32 @@
     }
   ],
   "performance": {
-    "twrTotal": 15.2,
-    "best6mName": "RH Autopilot",
-    "best6mPct": 36.7,
-    "worst6mName": "TS Futures",
-    "worst6mPct": -64.2,
-    "second6mName": "TS ETF Tactical",
-    "second6mPct": 21.2,
-    "twrNote": "Semana roja: S&P -2.5% (post-NFP Jun 5), Tactical -6.0% semanal (TWR +21.2%). RH Autopilot lidera +36.7% (stale). TT recuperando (-13.4%). Futures siguen siendo el lastre (-64.2%)."
+    "twrTotal": "+15.2%",
+    "best6mName": "RH AP Act Managed",
+    "best6mPct": "+37.3%",
+    "second6mName": "RH Photonics",
+    "second6mPct": "+18.2%",
+    "worst6mName": "TS Futures VLV23",
+    "worst6mPct": "-58.8%",
+    "twrNote": "TWR 6M (26 sem) vs S&P -6.1%. Series IBKR/RH congeladas entre confirmaciones manuales (último dato Jun 5)."
   },
   "accounts": [
     {
       "name": "SEP IRA (TS)",
       "cat": "Retiro",
-      "value": 138567,
+      "value": 140442,
       "color": "#2563eb"
     },
     {
       "name": "Betterment Roth IRA",
       "cat": "Retiro",
-      "value": 61658,
+      "value": 65092,
       "color": "#3b82f6"
     },
     {
       "name": "Betterment Trad IRA",
       "cat": "Retiro",
-      "value": 28187,
+      "value": 28770,
       "color": "#60a5fa"
     },
     {
@@ -647,25 +647,25 @@
     {
       "name": "Ecuador CDs",
       "cat": "Cash/Fijo",
-      "value": 35000,
+      "value": 36449,
       "color": "#f59e0b"
     },
     {
       "name": "TS ETF Tactical",
       "cat": "Trading",
-      "value": 33082,
+      "value": 33644,
       "color": "#10b981"
     },
     {
       "name": "Betterment Emerg.",
       "cat": "Cash/Fijo",
-      "value": 31151,
+      "value": 31318,
       "color": "#fbbf24"
     },
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 12949,
+      "value": 13024,
       "color": "#8b5cf6"
     },
     {
@@ -677,70 +677,70 @@
     {
       "name": "IBKR Bravo",
       "cat": "Trading",
-      "value": 8346,
+      "value": 8025,
       "color": "#06b6d4"
     },
     {
       "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 1832,
+      "value": 1900,
       "color": "#ef4444"
     },
     {
       "name": "TS Futures VLV23",
       "cat": "Trading",
-      "value": 1851,
+      "value": 1918,
       "color": "#f87171"
     },
     {
       "name": "RH AP Act Managed",
       "cat": "Trading",
-      "value": 4412,
+      "value": 4430,
       "color": "#f59e0b"
     },
     {
       "name": "RH Ap-photonics",
       "cat": "Trading",
-      "value": 534,
+      "value": 479,
       "color": "#fbbf24"
     },
     {
       "name": "TS Cash (SEP)",
       "cat": "Cash/Fijo",
-      "value": 556,
+      "value": 807,
       "color": "#64748b"
     }
   ],
   "sparkData": {
     "SEP IRA (TS)": [
-      128000,
       130000,
       132000,
       135000,
       138725,
       140728,
       142123,
-      138567
+      138567,
+      140442
     ],
     "Betterment Roth IRA": [
-      59000,
       59500,
       60000,
       61000,
       61500,
       61658,
       61658,
-      61658
+      61658,
+      65092
     ],
     "Betterment Trad IRA": [
-      26500,
       27000,
       27500,
       28000,
       28100,
       28187,
       28187,
-      28187
+      28187,
+      28770
     ],
     "Miguel Autos Loan": [
       36415,
@@ -760,17 +760,17 @@
       35000,
       35000,
       35000,
-      35000
+      36449
     ],
     "TS ETF Tactical": [
-      44000,
       22000,
       27000,
       31000,
       33597,
       34529,
       35190,
-      33082
+      33082,
+      33644
     ],
     "Betterment Emerg.": [
       31151,
@@ -780,17 +780,17 @@
       31151,
       31151,
       31151,
-      31151
+      31318
     ],
     "TastyTrade": [
-      17600,
       16500,
       16300,
       17050,
       17026,
       12641,
       12853,
-      12949
+      12949,
+      13024
     ],
     "Pepe Loans": [
       13555,
@@ -803,34 +803,34 @@
       13555
     ],
     "IBKR Bravo": [
-      6100,
       5900,
       6100,
       6000,
       6200,
       6435,
       8346,
-      8346
+      8346,
+      8025
     ],
     "RH AP Act Managed": [
-      1640,
       1640,
       1660,
       1640,
       1700,
       2215,
       4412,
-      4412
+      4412,
+      4430
     ],
     "RH Ap-photonics": [
-      430,
       460,
       480,
       500,
       510,
       527,
       534,
-      534
+      534,
+      479
     ],
     "TS Cash (SEP)": [
       2,
@@ -838,286 +838,262 @@
       2,
       2,
       2,
-      2,
       556,
-      556
+      556,
+      807
     ],
     "TS Futures PKG27": [
-      2898,
       2701,
       2505,
       2308,
       2060,
       2088,
       1932,
-      1832
+      1832,
+      1900
     ],
     "TS Futures VLV23": [
-      4477,
       4174,
       3870,
       3567,
       3183,
       2123,
       1945,
-      1851
+      1851,
+      1918
     ]
   },
   "sepIRA": {
-    "header": "$138,567 Equity LIVE",
+    "header": "$140,442 Equity LIVE",
     "positions": [
       {
         "symbol": "VOO",
         "name": "Vanguard S&P 500 ETF",
-        "mv": 84375,
+        "mv": 85291,
         "pct": 61.1,
-        "pl": 4864,
+        "pl": 5780,
         "plUp": true
       },
       {
         "symbol": "SCHD",
         "name": "Schwab US Dividend ETF",
-        "mv": 34432,
-        "pct": 24.9,
-        "pl": 1131,
+        "mv": 35064,
+        "pct": 25.1,
+        "pl": 1762,
         "plUp": true
       },
       {
         "symbol": "AVDV",
         "name": "Avantis International SC",
-        "mv": 19204,
-        "pct": 13.9,
-        "pl": 559,
+        "mv": 19280,
+        "pct": 13.8,
+        "pl": 635,
         "plUp": true
       }
     ]
   },
   "tactical": [
     {
-      "symbol": "EWT",
-      "qty": 29,
-      "value": 2814,
-      "pct": 7.7,
-      "sym": "EWT",
-      "val": 2814,
-      "name": "iShares MSCI Taiwan",
-      "pl": 387,
-      "plUp": true
-    },
-    {
-      "symbol": "DXJ",
-      "qty": 23,
-      "value": 3893,
-      "pct": 10.7,
-      "sym": "DXJ",
-      "val": 3893,
-      "name": "WisdomTree Japan Hedged",
-      "pl": -47,
-      "plUp": false
-    },
-    {
       "symbol": "IYZ",
       "qty": 87,
-      "value": 3704,
-      "pct": 10.2,
+      "value": 3807,
+      "pct": 9.9,
       "sym": "IYZ",
-      "val": 3704,
+      "val": 3807,
       "name": "iShares US Telecom",
-      "pl": 271,
+      "pl": 373,
       "plUp": true
     },
     {
       "symbol": "XLV",
       "qty": 24,
-      "value": 3658,
-      "pct": 10.0,
+      "value": 3691,
+      "pct": 9.6,
       "sym": "XLV",
-      "val": 3658,
+      "val": 3691,
       "name": "Health Care Select SPDR",
-      "pl": 108,
+      "pl": 142,
       "plUp": true
     },
     {
       "symbol": "ITA",
       "qty": 15,
-      "value": 3420,
-      "pct": 9.4,
+      "value": 3532,
+      "pct": 9.2,
       "sym": "ITA",
-      "val": 3420,
+      "val": 3532,
       "name": "iShares US Aerospace & Defense",
-      "pl": -23,
+      "pl": 88,
+      "plUp": true
+    },
+    {
+      "symbol": "SPCX",
+      "qty": 20,
+      "value": 3272,
+      "pct": 8.5,
+      "sym": "SPCX",
+      "val": 3272,
+      "name": "SPAC & New Issue ETF",
+      "pl": -78,
+      "plUp": false
+    },
+    {
+      "symbol": "IAU",
+      "qty": 41,
+      "value": 3260,
+      "pct": 8.5,
+      "sym": "IAU",
+      "val": 3260,
+      "name": "iShares Gold Trust",
+      "pl": -36,
       "plUp": false
     },
     {
       "symbol": "OIH",
       "qty": 7,
-      "value": 2903,
-      "pct": 8.0,
+      "value": 2989,
+      "pct": 7.8,
       "sym": "OIH",
-      "val": 2903,
+      "val": 2989,
       "name": "VanEck Oil Services",
-      "pl": 165,
+      "pl": 251,
+      "plUp": true
+    },
+    {
+      "symbol": "EWT",
+      "qty": 29,
+      "value": 2976,
+      "pct": 7.8,
+      "sym": "EWT",
+      "val": 2976,
+      "name": "iShares MSCI Taiwan",
+      "pl": 549,
+      "plUp": true
+    },
+    {
+      "symbol": "XLK",
+      "qty": 14,
+      "value": 2591,
+      "pct": 6.8,
+      "sym": "XLK",
+      "val": 2591,
+      "name": "Technology Select SPDR",
+      "pl": 33,
       "plUp": true
     },
     {
       "symbol": "XLE",
       "qty": 44,
-      "value": 2543,
-      "pct": 7.0,
+      "value": 2532,
+      "pct": 6.6,
       "sym": "XLE",
-      "val": 2543,
+      "val": 2532,
       "name": "Energy Select SPDR",
-      "pl": -92,
+      "pl": -103,
       "plUp": false
-    },
-    {
-      "symbol": "XLK",
-      "qty": 14,
-      "value": 2509,
-      "pct": 6.9,
-      "sym": "XLK",
-      "val": 2509,
-      "name": "Technology Select SPDR",
-      "pl": -49,
-      "plUp": false
-    },
-    {
-      "symbol": "UFO",
-      "qty": 31,
-      "value": 1695,
-      "pct": 4.6,
-      "sym": "UFO",
-      "val": 1695,
-      "name": "Procure Space ETF",
-      "pl": -145,
-      "plUp": false
-    },
-    {
-      "symbol": "SOXX",
-      "qty": 3,
-      "value": 1606,
-      "pct": 4.4,
-      "sym": "SOXX",
-      "val": 1606,
-      "name": "iShares Semiconductor",
-      "pl": 271,
-      "plUp": true
     },
     {
       "symbol": "BAI",
       "qty": 34,
-      "value": 1541,
-      "pct": 4.2,
+      "value": 1671,
+      "pct": 4.4,
       "sym": "BAI",
-      "val": 1541,
-      "name": "BlackRock AI Innovation",
-      "pl": 59,
+      "val": 1671,
+      "name": "BlackRock AI Innovation ETF",
+      "pl": 189,
       "plUp": true
     },
     {
-      "symbol": "PBW",
-      "qty": 35,
-      "value": 1426,
-      "pct": 3.9,
-      "sym": "PBW",
-      "val": 1426,
-      "name": "Invesco WilderHill Clean Energy",
-      "pl": -161,
+      "symbol": "UFO",
+      "qty": 31,
+      "value": 1641,
+      "pct": 4.3,
+      "sym": "UFO",
+      "val": 1641,
+      "name": "Procure Space ETF",
+      "pl": -199,
       "plUp": false
     },
     {
       "symbol": "AMLP",
       "qty": 27,
-      "value": 1425,
-      "pct": 3.9,
+      "value": 1408,
+      "pct": 3.7,
       "sym": "AMLP",
-      "val": 1425,
+      "val": 1408,
       "name": "Alerian MLP ETF",
-      "pl": -47,
+      "pl": -64,
       "plUp": false
     },
     {
-      "symbol": "SOXQ",
-      "qty": 12,
-      "value": 1145,
-      "pct": 3.1,
-      "sym": "SOXQ",
-      "val": 1145,
-      "name": "Invesco PHLX Semiconductor",
-      "pl": 172,
-      "plUp": true
+      "symbol": "PBW",
+      "qty": 35,
+      "value": 1405,
+      "pct": 3.7,
+      "sym": "PBW",
+      "val": 1405,
+      "name": "Invesco WilderHill Clean Energy",
+      "pl": -182,
+      "plUp": false
     },
     {
       "symbol": "EWY",
       "qty": 7,
-      "value": 1225,
-      "pct": 3.4,
+      "value": 1386,
+      "pct": 3.6,
       "sym": "EWY",
-      "val": 1225,
+      "val": 1386,
       "name": "iShares MSCI South Korea",
-      "pl": -144,
+      "pl": 17,
+      "plUp": true
+    },
+    {
+      "symbol": "SOXX",
+      "qty": 2,
+      "value": 1193,
+      "pct": 3.1,
+      "sym": "SOXX",
+      "val": 1193,
+      "name": "iShares Semiconductor",
+      "pl": -8,
       "plUp": false
     },
     {
       "symbol": "TAN",
       "qty": 15,
-      "value": 961,
-      "pct": 2.6,
+      "value": 950,
+      "pct": 2.5,
       "sym": "TAN",
-      "val": 961,
+      "val": 950,
       "name": "Invesco Solar",
-      "pl": 99,
+      "pl": 88,
       "plUp": true
     }
   ],
   "options": {
-    "nlv": 12949,
+    "nlv": 13024,
     "positions": [
       {
-        "symbol": "NVO",
-        "spread": "P45/P40",
+        "symbol": "NFLX",
+        "spread": "P82/P78 ×2",
         "type": "Bear Put",
-        "dte": 13,
-        "exp": "Jun 18",
+        "dte": 28,
+        "exp": "Jul 10",
         "expSoon": true
-      },
-      {
-        "symbol": "UBER",
-        "spread": "P77.5/P72.5",
-        "type": "Bear Put",
-        "dte": 13,
-        "exp": "Jun 18",
-        "expSoon": true
-      },
-      {
-        "symbol": "PG",
-        "spread": "P145/P140",
-        "type": "Bear Put",
-        "dte": 13,
-        "exp": "Jun 18",
-        "expSoon": true
-      },
-      {
-        "symbol": "SLV",
-        "spread": "P65/P62.5",
-        "type": "Bear Put",
-        "dte": 25,
-        "exp": "Jun 30",
-        "expSoon": false
       },
       {
         "symbol": "RDW",
-        "spread": "P19/P16",
-        "type": "Bear Put",
-        "dte": 42,
+        "spread": "P14/P12 ×3",
+        "type": "Bear Put (reabierta Jun 12)",
+        "dte": 35,
         "exp": "Jul 17",
         "expSoon": false
       },
       {
-        "symbol": "CMG",
-        "spread": "P30/P25",
+        "symbol": "NVO",
+        "spread": "P45/P40",
         "type": "Bear Put",
-        "dte": 42,
+        "dte": 35,
         "exp": "Jul 17",
         "expSoon": false
       },
@@ -1125,7 +1101,15 @@
         "symbol": "TSM",
         "spread": "C340/C350",
         "type": "Bull Call",
-        "dte": 224,
+        "dte": 217,
+        "exp": "Jan 15 27",
+        "expSoon": false
+      },
+      {
+        "symbol": "SKM",
+        "spread": "C35 LEAPS (long)",
+        "type": "Long Call",
+        "dte": 217,
         "exp": "Jan 15 27",
         "expSoon": false
       }
@@ -1439,7 +1423,8 @@
       "May 15",
       "May 22",
       "May 29",
-      "Jun 5"
+      "Jun 5",
+      "Jun 12"
     ],
     "tt": [
       20000,
@@ -1486,7 +1471,8 @@
       17026,
       12600,
       12853,
-      12949
+      12949,
+      13024
     ],
     "ibkr": [
       2200,
@@ -1533,7 +1519,8 @@
       6435,
       8346,
       8346,
-      8346
+      8025,
+      8025
     ],
     "tsetf": [
       32000,
@@ -1580,7 +1567,8 @@
       33597,
       34509,
       35190,
-      33082
+      33082,
+      33644
     ],
     "rh": [
       null,
@@ -1627,7 +1615,8 @@
       2215,
       4412,
       4412,
-      4412
+      4430,
+      4430
     ],
     "rhPhotonics": [
       null,
@@ -1674,7 +1663,8 @@
       527,
       534,
       534,
-      534
+      479,
+      479
     ],
     "fut": [
       null,
@@ -1721,7 +1711,8 @@
       2060,
       2135,
       1932,
-      1832
+      1832,
+      1900
     ],
     "sp": [
       100,
@@ -1768,7 +1759,8 @@
       107.5,
       107.5,
       109.0,
-      106.3
+      106.3,
+      107.0
     ],
     "fut2": [
       null,
@@ -1815,7 +1807,8 @@
       3183,
       1166,
       1945,
-      1851
+      1851,
+      1918
     ],
     "futCombined": [
       12500,
@@ -1862,17 +1855,18 @@
       5243,
       4301,
       3877,
-      3683
+      3683,
+      3818
     ]
   },
   "sources": {
     "tsetf": {
       "label": "TradeStation REST",
-      "date": "Jun 05 2026"
+      "date": "Jun 12 2026"
     },
     "tt": {
       "label": "TastyTrade Relay",
-      "date": "Jun 05 2026"
+      "date": "Jun 12 2026"
     },
     "ibkr": {
       "label": "IBKR (Alberto in-chat)",
@@ -1892,15 +1886,15 @@
     },
     "fut": {
       "label": "TradeStation REST",
-      "date": "Jun 05 2026"
+      "date": "Jun 12 2026"
     },
     "fut2": {
       "label": "TradeStation REST",
-      "date": "Jun 05 2026"
+      "date": "Jun 12 2026"
     },
     "xero": {
       "label": "Xero",
-      "date": "Jun 05 2026"
+      "date": "Jun 12 2026"
     },
     "manual": {
       "label": "Manual",
@@ -2042,7 +2036,8 @@
       93.1,
       84.3,
       86.0,
-      86.6
+      86.6,
+      87.1
     ],
     "ibkr": [
       100,
@@ -2088,7 +2083,8 @@
       113,
       113.2,
       113.2,
-      113.2
+      108.85,
+      108.85
     ],
     "tsetf": [
       100,
@@ -2134,7 +2130,8 @@
       124,
       126.4,
       128.9,
-      121.2
+      121.2,
+      123.26
     ],
     "rh": [
       null,
@@ -2180,7 +2177,8 @@
       135.78,
       136.71,
       136.71,
-      136.71
+      137.27,
+      137.27
     ],
     "fut": [
       100,
@@ -2226,7 +2224,8 @@
       42,
       41.8,
       37.8,
-      35.8
+      35.8,
+      37.13
     ],
     "sp": [
       100,
@@ -2272,7 +2271,8 @@
       106,
       107.5,
       109.0,
-      106.3
+      106.3,
+      107.0
     ],
     "rhPhotonics": [
       null,
@@ -2318,7 +2318,8 @@
       127.5,
       131.8,
       131.8,
-      131.8
+      118.23,
+      118.23
     ],
     "fut2": [
       null,
@@ -2364,48 +2365,57 @@
       96,
       41.8,
       41.8,
-      39.8
+      39.8,
+      41.24
     ]
   },
   "allocationAlerts": [
     {
-      "icon": "✅",
-      "text": "Margen táctico $3,385 — leverage 110.2% bajo cap 120% (resuelto vs May 29)"
+      "icon": "🚨",
+      "text": "Futuros: BP $272 (PKG27) / $290 (VLV23) — colchón ~14% del equity con MHGN26 cobre $16.2K notional c/u. Move CRÍTICO."
     },
     {
       "icon": "⚠️",
-      "text": "Tech/Semis (BAI+SOXQ+SOXX+XLK) = 18.6% — sector bloqueado en STAGFLATION_RISK, trim hacia 15%"
+      "text": "Margen táctico $4,657 reapareció (era $29 ayer) — leverage 113.8%, bajo cap 120% pero subiendo. Trim PBW/UFO antes del FOMC."
     },
     {
       "icon": "✅",
-      "text": "Intl Asia (DXJ+EWT+EWY) = 21.8% — bajo cap 25% del sleeve independiente"
+      "text": "Tech/Semis (BAI+SOXX+XLK) = 14.2% — BAJO el umbral 15% (trim ejecutado ✅, era 18.6% Jun 5)."
+    },
+    {
+      "icon": "✅",
+      "text": "Hedge de oro AÑADIDO: IAU 8.5% del sleeve ($3,260) — move URGENTE Jun 5 ejecutado. Objetivo ~10%."
+    },
+    {
+      "icon": "✅",
+      "text": "Intl Asia (EWT+EWY) = 11.4% — bajo cap 25% del sleeve independiente."
     }
   ],
   "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
   "fiProjection": {
     "base": [
       null,
-      469000,
-      633000,
-      833000,
-      1079000,
-      1379000
+      522000,
+      697000,
+      911000,
+      1174000,
+      1497000
     ],
     "pessimistic": [
       null,
-      408000,
-      491000,
-      587000,
-      699000,
-      828000
+      457000,
+      548000,
+      653000,
+      775000,
+      916000
     ],
     "optimistic": [
       null,
-      553000,
-      834000,
-      1198000,
-      1670000,
-      2281000
+      608000,
+      906000,
+      1291000,
+      1790000,
+      2436000
     ],
     "labels": [
       "Hoy (54)",
@@ -2420,7 +2430,7 @@
     "labelBase": "🔵 Base (7%/año +$18K aporte)",
     "labelOptimistic": "🟢 Optimista (9% +$36K, DEC→SEP IRA)",
     "labelPessimistic": "🔴 Pesimista (5% +$6K)",
-    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $335,913 (37% / 67%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
+    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $378,506 (42% / 76%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
     "lastUpdate": "2026-06-12T15:00:00Z",
@@ -2462,80 +2472,123 @@
     "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis y SmallCap — techo estructural del régimen",
     "moves": [
       {
+        "urgency": "CRÍTICO",
+        "urgencyColor": "#ef4444",
+        "icon": "🚨",
+        "action": "Liberar buying power en futuros: BP $272 (PKG27) / $290 (VLV23) con MHGN26 (Micro Cobre) $16.2K notional c/u",
+        "from": "TS Futures PKG27 + VLV23",
+        "to": "Cash o cierre de MNGN26 (Micro Nat Gas short)",
+        "amount": "$1,500–$3,000 por cuenta (o cerrar 1 pata)",
+        "why": "Colchón ~14% del equity — un movimiento adverso moderado en cobre/gas dispara margin call, con FOMC (debut Warsh) Jun 16-17. Maintenance margin $1,510 vs equity $1,900/$1,918."
+      },
+      {
+        "urgency": "URGENTE",
+        "urgencyColor": "#f59e0b",
+        "icon": "🛡️",
+        "action": "Reducir leverage táctico 113.8% → ~105% antes del FOMC: el margen debit reapareció ($4,657)",
+        "from": "TS 4090 Tactical (PBW −11.5%, UFO −10.8%)",
+        "to": "Cash (paydown margen)",
+        "amount": "$2,500–$4,700",
+        "why": "Régimen STAGFLATION_RISK (DEFENSIVO) + FOMC hawkish risk. Vender las posiciones más débiles reduce margen y beta a la vez."
+      },
+      {
+        "urgency": "PLANEAR",
+        "urgencyColor": "#3b82f6",
+        "icon": "🥇",
+        "action": "Completar hedge de oro: IAU (iShares Gold Trust) 8.5% → ~10% del sleeve",
+        "from": "Cash liberado del trim táctico",
+        "to": "IAU",
+        "amount": "~$600",
+        "why": "Hedge GLD/IAU ejecutado esta semana ✅ (era move URGENTE Jun 5). En STAGFLATION_RISK el objetivo es ~10% de metales."
+      },
+      {
         "urgency": "CONDICIONAL",
+        "urgencyColor": "#6b7280",
         "icon": "💳",
-        "action": "Aplicar surplus DEC al LOC Wells Fargo $47,753 @ 8.5%",
-        "why": "Sin capacidad: disponible -$10,019 sobre buffer",
-        "impact": 4
+        "action": "Aplicar surplus DEC (+$1,433/mes) al LOC Wells Fargo $47,753 @ 8.5%",
+        "from": "DEC Business Account",
+        "to": "Wells Fargo LOC",
+        "amount": "$1,400+/mes",
+        "why": "CONDICIONAL a recuperar buffer DEC: faltan $4,169 ($37,494 / $41,663). Al ritmo actual ~3 meses."
+      },
+      {
+        "urgency": "CONDICIONAL",
+        "urgencyColor": "#6b7280",
+        "icon": "📈",
+        "action": "S&P 500 cierre > 7,800 → re-evaluar transición a LATE_CYCLE y liberar Tech/Semis",
+        "from": "Posicionamiento defensivo",
+        "to": "Re-add growth selectivo",
+        "amount": "—",
+        "why": "Hoy S&P 7,431. La señal liberaría el bloqueo de Tech/Semis (hoy 14.2% ✅ bajo umbral 15%)."
       }
     ],
     "triggers": [
       {
-        "icon": "📊",
-        "label": "CPI Jun 10 > 3.5%",
-        "condition": "STAGFLATION confirmado — NO abrir nuevas posiciones Tech/Growth",
+        "icon": "🏛️",
+        "label": "FOMC Jun 16-17 (debut Warsh)",
+        "condition": "Hawkish sorpresa → reducir leverage táctico hacia 100% y NO abrir posiciones nuevas",
         "dirColor": "#ef4444"
       },
       {
-        "icon": "🏛️",
-        "label": "FOMC Jun 16-17 (Warsh)",
-        "condition": "Hawkish sorpresa → reducir leverage táctico hacia 100%",
-        "dirColor": "#f59e0b"
+        "icon": "🥉",
+        "label": "Cobre (MHGN26) −3% intradía",
+        "condition": "Margin call inminente en PKG27/VLV23 (BP ~$280) — cerrar o aportar cash YA",
+        "dirColor": "#ef4444"
       },
       {
         "icon": "📈",
         "label": "S&P close > 7,800",
-        "condition": "Re-evaluar transición a LATE_CYCLE, liberar sectores bloqueados",
+        "condition": "Re-evaluar LATE_CYCLE — liberar sectores bloqueados (Tech/Semis)",
         "dirColor": "#10b981"
       }
     ]
   },
   "weeklyActions": [
     {
-      "priority": "URGENTE",
+      "priority": "CRÍTICO",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Revisar BP de futuros: PKG27 $193 / VLV23 $211 con 2 contratos por cuenta",
-      "why": "Colchón ~10% del equity — margin call con un movimiento adverso moderado en cobre o gas",
-      "category": "FUTUROS"
+      "action": "Liberar BP en futuros: cerrar MNGN26 o aportar cash — PKG27 $272 / VLV23 $290 de buying power",
+      "why": "Colchón ~14% del equity con cobre $16.2K notional por cuenta y FOMC Jun 16-17. Margin call con un movimiento adverso moderado.",
+      "category": "ACTIVOS"
     },
     {
-      "priority": "HOY",
+      "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Verificar cierre de CMG (Chipotle) P30/P25 en Tastytrade",
-      "why": "Desapareció del relay Jun 11 — probable stop $0.89; confirmar fill y resultado",
+      "icon": "💰",
+      "action": "Acumular buffer DEC: $37,494 → $41,663 (faltan $4,169) — NO pagar LOC extra",
+      "why": "Con buffer incompleto, un mes flojo de DEC fuerza re-draw del LOC @ 8.5% — retroceso garantizado.",
+      "category": "DEUDA"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "🛡️",
+      "action": "Reducir leverage táctico 113.8% → ~105% (margen $4,657 reapareció) — vender PBW/UFO antes del FOMC",
+      "why": "Régimen defensivo + FOMC: bajar beta y margen a la vez vendiendo las posiciones más débiles (PBW −11.5%, UFO −10.8%).",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📋",
+      "action": "Verificar OCOs de las estructuras nuevas en Tastytrade: RDW P14/P12 ×3 (reabierta hoy) y NFLX P82/P78 ×2",
+      "why": "5 estructuras activas (RDW, NVO, NFLX, TSM, SKM LEAPS) — confirmar que cada una tiene OCO vivo tras los cambios de la semana.",
       "category": "OPCIONES"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "⭐",
-      "action": "Planear roll/close de MNGN26 (Micro Nat Gas Jul) — last trading ≈ Jun 26",
-      "why": "Ciclo NG vence ~10 sesiones; decidir activamente, no repetir el stop-out del M6AM26",
-      "category": "FUTUROS"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "⭐",
-      "action": "FOMC debut de Warsh Mar-Mié Jun 16-17 — pausa de entradas nuevas",
-      "why": "Primer dot plot + presser de Warsh = repricing de tasas del semestre",
-      "category": "MACRO"
-    },
-    {
-      "priority": "CONDICIONAL",
-      "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "LOC paydown Wells Fargo — sin capacidad actual",
-      "why": "Cash $37,223 − payables $5,932 − buffer $41,052 = −$9,761",
-      "category": "DEUDA"
+      "icon": "📊",
+      "action": "Revisar CRM Cloze — activar 2-3 leads DEC pendientes",
+      "why": "DEC a $6,500+/mes es la palanca principal: acelera buffer (~3 meses) y luego el ataque al LOC.",
+      "category": "INGRESOS"
     }
   ],
   "datestamps": {
-    "ts": "2026-06-05",
-    "tt": "2026-06-05",
-    "xero": "2026-06-05",
+    "ts": "2026-06-12",
+    "tt": "2026-06-12",
+    "xero": "2026-06-12",
     "betterment": "2026-06-05",
     "ibkr": "2026-06-05",
     "rh": "2026-06-05",
@@ -2543,7 +2596,36 @@
     "pepe": "2026-06-05",
     "miguel": "2026-06-05",
     "manual": "2026-06-05",
-    "fut": "2026-06-05",
-    "fut2": "2026-06-05"
+    "fut": "2026-06-12",
+    "fut2": "2026-06-12"
+  },
+  "reallocState": {
+    "pairs": {
+      "TastyTrade->RH AP (InTheMoney)": {
+        "monthsSustained": 1,
+        "lastEval": "2026-06-12",
+        "lastSignal": "⚪",
+        "lastSignalDate": null
+      },
+      "TastyTrade->IBKR Bravo": {
+        "monthsSustained": 1,
+        "lastEval": "2026-06-12",
+        "lastSignal": "⚪",
+        "lastSignalDate": null
+      },
+      "TS Futures->RH AP (InTheMoney)": {
+        "monthsSustained": 1,
+        "lastEval": "2026-06-12",
+        "lastSignal": "⚪",
+        "lastSignalDate": null
+      },
+      "TS Futures->IBKR Bravo": {
+        "monthsSustained": 1,
+        "lastEval": "2026-06-12",
+        "lastSignal": "⚪",
+        "lastSignalDate": null
+      }
+    },
+    "updated": "2026-06-12"
   }
 }
