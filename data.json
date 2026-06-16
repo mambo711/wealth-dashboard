@@ -2497,7 +2497,8 @@
         "from": "Tactical 11484090",
         "why": "Bajo cap 120% ✅ pero margen ~13% APR",
         "impact": 3,
-        "category": "CUENTAS"
+        "category": "CUENTAS",
+        "since": "2026-06-16"
       },
       {
         "urgency": "PLANEAR",
@@ -2506,7 +2507,8 @@
         "from": "Tactical 11484090",
         "why": "Hedge estanflación/geopolítica Irán",
         "impact": 3,
-        "category": "ACTIVOS"
+        "category": "ACTIVOS",
+        "since": "2026-06-16"
       },
       {
         "urgency": "CONDICIONAL",
@@ -2514,7 +2516,8 @@
         "action": "Aplicar surplus DEC al LOC Wells Fargo una vez completo el buffer",
         "why": "LOC disponible negativo (−$7,111); buffer no completo",
         "impact": 2,
-        "category": "DEUDA"
+        "category": "DEUDA",
+        "since": "2026-06-16"
       },
       {
         "urgency": "CONDICIONAL",
@@ -2522,7 +2525,8 @@
         "action": "S&P 500 cierre > 7,800 → re-evaluar transición a LATE_CYCLE",
         "why": "Actualmente S&P ~7,550",
         "impact": 2,
-        "category": "MACRO"
+        "category": "MACRO",
+        "since": "2026-06-16"
       }
     ],
     "triggers": [
