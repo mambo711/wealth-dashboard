@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "16 Junio 2026",
-    "weeklyFocusDate": "Semana del 16 Jun",
-    "nwBruto": 459783,
-    "nwBrutoDelta": "▲$2,063 vs ayer",
+    "subtitle": "17 Junio 2026",
+    "weeklyFocusDate": "Semana del 17 Jun",
+    "nwBruto": 460021,
+    "nwBrutoDelta": "▲$238 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 385997,
+    "nwNeto": 386235,
     "nwNetoDelta": "▲$3,030 vs Jun 13 ($379,168→$382,198) — trading al alza, deuda ≈ plana",
     "fiPct": 43,
-    "fiGap": 514003,
+    "fiGap": 513765,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -48,11 +48,11 @@
       }
     },
     "healthDiagnostic": "Score 62 BUENO. Retiro 94/100 sigue siendo la fortaleza ($234,304). Lo bueno de la semana: hedge IAU añadido ✅ y Tech/Semis 14.2% bajo umbral ✅. Lo urgente: BP de futuros ~$280 (move CRÍTICO) y margen táctico $4,657 reapareció. Buffer DEC $37,494/$41,663 (faltan $4,169, ~3 meses) — LOC en pausa. Deuda 26/100 sigue siendo el lastre principal.",
-    "retirementCore": 268786,
+    "retirementCore": 268156,
     "totalBruto": 452954,
-    "tacticalHeader": "$34,800 (margen $3,439 ✅, leverage 109.9% <120%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE 16-jun ~07:40 ET) · TT Relay Gmail (16-jun 07:40 ET) · Xero P&L+Cash LIVE · Barchart/WebSearch · CME FedWatch",
-    "debtTotal": 73786.0,
+    "tacticalHeader": "$34,455 equity (MV $38,495, margen $4,039 ✅, leverage 111.7% <120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 17 ~7:45 ET) · TT Relay Gmail (Jun 17 07:40 ET) · Xero (live YTD/cash) · Betterment+IBKR+RH+Ecuador (snapshot Jun 15)",
+    "debtTotal": 73786,
     "debtDelta": "▲+$922 vs Jun 5 ($73,526→$74,448; Amex Gold +$703, Chase Ink +$219)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
@@ -80,20 +80,20 @@
         "color": "green"
       }
     ],
-    "decMonthlyAvg": 6120.0,
+    "decMonthlyAvg": 5860.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 3704,
-    "lastTacticalMargin": 3439.08,
+    "lastTacticalMargin": 4039.24,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 77,
-    "fiGapWithDEC": 114003,
+    "fiGapWithDEC": 113765,
     "nwNetoDeltaUp": true
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🛡️ Pólvora seca pre-FOMC",
-      "body": "Futuros (cobre+gas) cerrados → BP 100% liberado. No re-abrir riesgo antes del FOMC de Warsh mañana 2pm ET.",
-      "why": "FOMC Warsh debut = evento binario; 97.4% espera hold pero el tono es la incógnita."
+      "title": "Prioridad #1: 🏛️ Mantener firme ante FOMC (debut Warsh)",
+      "body": "Decisión FOMC 2pm ET hoy, primera de Warsh. No iniciar riesgo nuevo antes del evento binario. Futuros ya cerrados pre-FOMC (BP liberado), táctico dentro de cap, opciones con OCO vivos.",
+      "why": "Evento binario del mes; el tono de Warsh define el régimen de tasas para 6-12 meses."
     },
     "steps": [
       {
@@ -172,12 +172,12 @@
     "resumen": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "(1) 🛡️ No abrir futuros antes del FOMC mañana — BP ya liberado. (2) ⚪ Leverage táctico 109.9% bajo cap. (3) 🟢 SEP IRA y opciones TT sin alertas."
+      "text": "(1) Mantener firme ante FOMC 2pm (debut Warsh) — sin riesgo nuevo. (2) Confirmar redespliegue de $3,703 cash inactivo en futuros post-FOMC. (3) Trim opcional PBW/XLE para bajar leverage táctico 111.7%→105%."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $73,786 @ 8.5% — paydown EN PAUSA (LOC disponible −$7,111). DEC promedio $6,120/mes → Superávit $+984/mes."
+      "text": "💳 LOC $73,786 @ 8.5% — paydown EN PAUSA (LOC disponible −$8,052, bajo buffer). DEC promedio $5,860/mes → Superávit $+724/mes."
     },
     "fi": {
       "color": "#f59e0b",
@@ -187,22 +187,22 @@
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+984/mes. DEC YTD promedio $6,120/mes. Meta: $6,500+/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
+      "text": "💰 ✅ Superávit $+724/mes. DEC YTD promedio $5,860/mes. Meta $6,500+/mes. Régimen STAGFLATION_RISK → sesgo DEFENSIVO — preservar liquidez."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 61% (techo 68%). 0 moves URGENTE pendientes. Regime: STAGFLATION_RISK."
+      "text": "Alignment 58% (techo 68%). 0 moves URGENTE. Regime: STAGFLATION_RISK."
     },
     "posiciones": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Opciones sin alertas críticas — 5 estructuras, OCOs vivos, NFLX 24 DTE sin gap. ✅ Margen táctico $3,439 dentro de objetivo (leverage 109.9% <120%)."
+      "text": "✅ Opciones sin alertas (5 estructuras, OCO vivos). ✅ Margen táctico $4,039 dentro del objetivo (leverage 111.7% <120%)."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $3,439 dentro de objetivo (leverage 109.9% <120%). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,028."
+      "text": "✅ Margen táctico $4,039 dentro del objetivo (leverage 111.7% <120%). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $12,883."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -254,10 +254,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Bruto ~$459.8K · Neto ~$386K (FI 43% / 77% con DEC)",
-      "🏦 SEP IRA $142,142 (VOO/SCHD/AVDV todos verdes, +$9.9K no realizado)",
-      "⚠️ Táctico $34,800 — 16 posiciones, leverage 109.9%, margen $3,439",
-      "📈 Futuros flat (cobre+gas cerrados) · 📋 TT NLV $13,028, 5 estructuras OCO vivas"
+      "💰 NW Bruto $460,021 | Neto $386,235 (deuda $73,786) — FI 43% del objetivo $900K / 77% con DEC",
+      "🏦 TradeStation LIVE: SEP IRA $140,705 (VOO/SCHD/AVDV todas verdes) · Táctico $38,495 (16 pos, leverage 111.7%, margen $4,039)",
+      "📋 Opciones TT NLV $12,883 — 5 estructuras, 8 OCO vivos · 📈 Futuros $3,703 cash inactivo (par cobre/gas cerrado pre-FOMC)",
+      "🏛️ Régimen STAGFLATION_RISK, alineación 58% — defensivo ante debut de Warsh; recomendación: mantener firme, sin riesgo nuevo pre-FOMC"
     ]
   },
   "debt": {
@@ -2452,48 +2452,48 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $378,506 (42% / 76%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-16T12:00:00Z",
+    "lastUpdate": "2026-06-17T12:00:00Z",
     "regime": "STAGFLATION_RISK",
     "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "FOMC Warsh debut (decisión 17-jun, 97.4% hold). S&P cerca de ATH con VIX 16, pero petróleo y yields suben por tensión EU-Irán. Fed sin recortes (1.4%) = estanflación intacta.",
-    "alignmentScore": 61,
+    "regimeContext": "FOMC hoy 2pm ET, debut de Warsh; hold 3.50-3.75% esperado con posible sesgo hawkish. CPI 3.8%/core PCE 3.3% atan a la Fed. SPY cerca de máximos pero postura defensiva.",
+    "alignmentScore": 58,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
         "name": "Inflación",
-        "value": 58,
-        "color": "#f59e0b"
-      },
-      {
-        "name": "Tasas",
         "value": 55,
         "color": "#f59e0b"
       },
       {
+        "name": "Tasas",
+        "value": 50,
+        "color": "#f59e0b"
+      },
+      {
         "name": "Crecimiento",
-        "value": 62,
+        "value": 55,
         "color": "#f59e0b"
       },
       {
         "name": "Volatilidad",
-        "value": 74,
+        "value": 70,
         "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 52,
+        "value": 60,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 68,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis, Healthcare y SmallCap — techo estructural; FOMC Warsh mañana = riesgo binario.",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis, Healthcare y SmallCap — techo estructural del régimen",
     "moves": [
       {
         "urgency": "PLANEAR",
         "icon": "⚪",
-        "action": "Bajar leverage táctico 109.9% → ~105% (trim UFO/PBW/XLE débiles)",
+        "action": "Bajar leverage táctico 111.7% → ~105% (UFO cerrado ✅; trim PBW/XLE débiles)",
         "from": "Tactical 11484090",
         "why": "Bajo cap 120% ✅ pero margen ~13% APR",
         "impact": 3,
@@ -2503,7 +2503,7 @@
       {
         "urgency": "PLANEAR",
         "icon": "⚪",
-        "action": "Completar hedge oro IAU 8.75% → ~10% del sleeve",
+        "action": "Completar hedge oro IAU 8.7% → ~10% del sleeve",
         "from": "Tactical 11484090",
         "why": "Hedge estanflación/geopolítica Irán",
         "impact": 3,
@@ -2554,33 +2554,41 @@
     {
       "priority": "HOY",
       "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "No re-abrir futuros antes del FOMC mañana",
-      "why": "Warsh debut 2pm ET = riesgo binario; BP ya liberado",
+      "icon": "🏛️",
+      "action": "Mantener firme ante FOMC 2pm ET (debut Warsh) — sin riesgo nuevo",
+      "why": "Evento binario; hold 3.50-3.75% esperado, el tono define el régimen de tasas",
+      "category": "MACRO"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📈",
+      "action": "Confirmar redespliegue de $3,703 cash inactivo en futuros post-FOMC",
+      "why": "Par cobre/gas cerrado pre-FOMC; cash en seco esperando el tono",
       "category": "FUTUROS"
     },
     {
       "priority": "ESTA SEMANA",
-      "priorityColor": "#94a3b8",
-      "icon": "⭐",
-      "action": "Trim opcional leverage táctico a ~105% (UFO/PBW/XLE)",
-      "why": "Leverage 109.9%, margen ~13% APR",
+      "priorityColor": "#60a5fa",
+      "icon": "📉",
+      "action": "Trim PBW/XLE para bajar leverage táctico 111.7%→~105%",
+      "why": "Débiles PBW −$212/XLE −$100; libera margen @ ~13% APR",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "⏳",
-      "action": "Hedge oro IAU → ~10% del sleeve post-FOMC",
-      "why": "Estanflación + geopolítica Irán",
+      "icon": "🥇",
+      "action": "Completar hedge oro IAU 8.7%→~10% del sleeve",
+      "why": "Hedge primario de estanflación aún incompleto",
       "category": "ACTIVOS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "LOC paydown cuando buffer completo",
-      "why": "LOC disponible −$7,111 hoy",
+      "action": "Aplicar surplus DEC al LOC una vez completo el buffer",
+      "why": "Buffer DEC aún incompleto; LOC disponible negativo (−$8,052)",
       "category": "DEUDA"
     }
   ],
