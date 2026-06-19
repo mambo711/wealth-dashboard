@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "18 Junio 2026",
-    "weeklyFocusDate": "Semana del 15 Jun",
-    "nwBruto": 452954,
-    "nwBrutoDelta": "\u25bc$2,350 vs ayer",
-    "nwDeltaUp": false,
-    "nwNeto": 383885,
-    "nwNetoDelta": "\u25b2$3,030 vs Jun 13 ($379,168\u2192$382,198) \u2014 trading al alza, deuda \u2248 plana",
+    "subtitle": "19 Junio 2026",
+    "weeklyFocusDate": "Semana del 22 Jun",
+    "nwBruto": 457909,
+    "nwBrutoDelta": "▲$238 vs ayer",
+    "nwDeltaUp": true,
+    "nwNeto": 384123,
+    "nwNetoDelta": "▲$3,030 vs Jun 13 ($379,168→$382,198) — trading al alza, deuda ≈ plana",
     "fiPct": 43,
-    "fiGap": 516115,
+    "fiGap": 515877,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -47,123 +47,140 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 62 BUENO. Retiro 94/100 sigue siendo la fortaleza ($234,304). Lo bueno de la semana: hedge IAU a\u00f1adido \u2705 y Tech/Semis 14.2% bajo umbral \u2705. Lo urgente: BP de futuros ~$280 (move CR\u00cdTICO) y margen t\u00e1ctico $4,657 reapareci\u00f3. Buffer DEC $37,494/$41,663 (faltan $4,169, ~3 meses) \u2014 LOC en pausa. Deuda 26/100 sigue siendo el lastre principal.",
-    "retirementCore": 266946,
+    "healthDiagnostic": "Score 62 BUENO. Retiro 94/100 sigue siendo la fortaleza ($234,304). Lo bueno de la semana: hedge IAU añadido ✅ y Tech/Semis 14.2% bajo umbral ✅. Lo urgente: BP de futuros ~$280 (move CRÍTICO) y margen táctico $4,657 reapareció. Buffer DEC $37,494/$41,663 (faltan $4,169, ~3 meses) — LOC en pausa. Deuda 26/100 sigue siendo el lastre principal.",
+    "retirementCore": 266851,
     "totalBruto": 452954,
-    "tacticalHeader": "$34,389 (margen $95 \u2014 leverage 100.3% \u2705)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 18 ~ET) \u00b7 TT Relay Gmail (Jun 18 05:59 PDT) \u00b7 Xero P&L+cash (live) \u00b7 Barchart email + WebSearch \u00b7 CME FedWatch",
+    "tacticalHeader": "$34,339 (margen $1,098 — leverage 103.2% ✅)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live Jun 19) · TT Relay Gmail (Jun 19 04:40 PDT) · Xero P&L+cash (live) · WebSearch (Barchart/CME FedWatch/Warsh/PCE) · feriado Juneteenth",
     "debtTotal": 73786,
-    "debtDelta": "\u25b2+$922 vs Jun 5 ($73,526\u2192$74,448; Amex Gold +$703, Chase Ink +$219)",
+    "debtDelta": "▲+$922 vs Jun 5 ($73,526→$74,448; Amex Gold +$703, Chase Ink +$219)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
     "fiBlendedGap": 121494,
-    "fiBlendedNote": "Meta con DEC ($55K/a\u00f1o; DEC+SS cubren el grueso, o venta de DEC) \u2248 $500,000. NW $378,506 = 76%.",
+    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $378,506 = 76%.",
     "totalAssets": 452954,
     "totalDebt": 74448,
-    "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) \u2014 BP $272 \ud83d\udea8",
-    "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) \u2014 BP $290 \ud83d\udea8",
+    "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP $272 🚨",
+    "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP $290 🚨",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
       {
-        "text": "\u26a0\ufe0f Margen t\u00e1ctico $4,657 reapareci\u00f3 \u2014 leverage 113.8% bajo cap 120%",
+        "text": "⚠️ Margen táctico $4,657 reapareció — leverage 113.8% bajo cap 120%",
         "color": "yellow"
       },
       {
-        "text": "\u2705 Tech/Semis (BAI+SOXX+XLK) = 14.2% \u2014 bajo umbral 15% (trim ejecutado)",
+        "text": "✅ Tech/Semis (BAI+SOXX+XLK) = 14.2% — bajo umbral 15% (trim ejecutado)",
         "color": "green"
       },
       {
-        "text": "\u2705 Oro IAU 8.5% a\u00f1adido (hedge stagflaci\u00f3n) \u00b7 \ud83c\udf0f Intl Asia (EWT+EWY) 11.4% bajo cap 25%",
+        "text": "✅ Oro IAU 8.5% añadido (hedge stagflación) · 🌏 Intl Asia (EWT+EWY) 11.4% bajo cap 25%",
         "color": "green"
       }
     ],
-    "decMonthlyAvg": 6224,
+    "decMonthlyAvg": 5827,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 3704,
-    "lastTacticalMargin": 94.97,
+    "lastTacticalMargin": 1098.38,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 77,
-    "fiGapWithDEC": 116115,
+    "fiGapWithDEC": 115877,
     "nwNetoDeltaUp": true,
-    "deuda": 69069
+    "heatmapHistory": [
+      {
+        "date": "2026-06-18",
+        "sep": 140302.33,
+        "tac": 34388.79,
+        "fut": 3664.83,
+        "tt": 13032.69,
+        "total": 178355.95
+      },
+      {
+        "date": "2026-06-19",
+        "sep": 140206.71,
+        "tac": 34339.37,
+        "fut": 4017.83,
+        "tt": 13062.69,
+        "total": 178563.91
+      }
+    ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: \ud83d\udd34 Futuros short BTC con BP cr\u00edtico",
-      "body": "MBTM26 (Micro Bitcoin SHORT) en PKG27+VLV23 con BP combinado $168 y ~8 DTE. Rotaci\u00f3n desde cobre/gas. Decidir roll vs cierre.",
-      "why": "Estar corto BTC en un rally risk-on con colch\u00f3n de margen casi nulo es el mayor riesgo t\u00e1ctico de la semana."
+      "title": "Prioridad #1: 🔴 Recortar Tech/Semis sobre cap",
+      "body": "Tech/Semis en 29.7% del sleeve táctico (~38% incl. AI/quantum) > cap 25%, en régimen STAGFLATION que penaliza tech. Hedge de oro además cayó a 0%.",
+      "why": "Concentración + régimen adverso = riesgo asimétrico; el rally tech del Jun 18 ofrece salida favorable."
     },
     "steps": [
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($47,753 @ 8.5%)",
-        "detail": "EN PAUSA: buffer DEC incompleto ($37,494 / $41,663, faltan $4,169). Primero recuperar buffer (~3 meses con surplus $+1,433/mes), luego aplicar surplus \u00edntegro al LOC. Cada $10K pagado ahorra $850/a\u00f1o ($338/mes actuales).",
-        "impact": "Impacto: Deuda 26\u219280, Score 62\u219270 \u00b7 Libera $338/mes al completar",
+        "detail": "EN PAUSA: buffer DEC incompleto ($37,494 / $41,663, faltan $4,169). Primero recuperar buffer (~3 meses con surplus $+1,433/mes), luego aplicar surplus íntegro al LOC. Cada $10K pagado ahorra $850/año ($338/mes actuales).",
+        "impact": "Impacto: Deuda 26→80, Score 62→70 · Libera $338/mes al completar",
         "impactColor": "#ef4444",
-        "timeline": "Jun 2026 \u2014 2029",
-        "macroWeight": "CR\u00cdTICO",
+        "timeline": "Jun 2026 — 2029",
+        "macroWeight": "CRÍTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Fed en hold + inflaci\u00f3n pegajosa = LOC al 8.5% no baja. R\u00e9gimen STAGFLATION lo hace m\u00e1s urgente, no menos."
+        "macroNote": "Fed en hold + inflación pegajosa = LOC al 8.5% no baja. Régimen STAGFLATION lo hace más urgente, no menos."
       },
       {
         "urgency": "urgent",
         "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
-        "impact": "Impacto: Mantiene surplus \u2212$261/mes (d\u00e9ficit actual) \u00b7 Cierre reducir\u00eda riesgo pero perder\u00eda momentum",
+        "impact": "Impacto: Mantiene surplus −$261/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
         "impactColor": "#ef4444",
-        "timeline": "May \u2014 Jul 2026 (decisi\u00f3n en Aug)"
+        "timeline": "May — Jul 2026 (decisión en Aug)"
       },
       {
         "urgency": "high",
         "title": "3. Rebalancear cuentas de trading",
-        "detail": "Posiciones: TS ETF Tactical (16 pos, margen $3,385 \u2705 bajo control, leverage 110.2%), TastyTrade (7), IBKR Bravo, RH AP. Prioridad: trim Tech/Semis 18.6%\u2192<15% y a\u00f1adir hedge GLD/IAU.",
-        "impact": "Impacto: Performance 57\u219265, Riesgo 53\u219260",
+        "detail": "Posiciones: TS ETF Tactical (16 pos, margen $3,385 ✅ bajo control, leverage 110.2%), TastyTrade (7), IBKR Bravo, RH AP. Prioridad: trim Tech/Semis 18.6%→<15% y añadir hedge GLD/IAU.",
+        "impact": "Impacto: Performance 57→65, Riesgo 53→60",
         "impactColor": "#f59e0b",
-        "timeline": "May \u2014 Jun 2026",
-        "macroWeight": "CR\u00cdTICO",
+        "timeline": "May — Jun 2026",
+        "macroWeight": "CRÍTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Margen t\u00e1ctico resuelto \u2705. En STAGFLATION_RISK la prioridad pasa a recortar Tech/Semis (bloqueado) y a\u00f1adir metales."
+        "macroNote": "Margen táctico resuelto ✅. En STAGFLATION_RISK la prioridad pasa a recortar Tech/Semis (bloqueado) y añadir metales."
       },
       {
         "urgency": "high",
         "title": "4. Crecer DEC a $6,500+/mes",
-        "detail": "DEC promedia $5,796/mes YTD (net). Con $7,500/mes el surplus sube a ~$3,000/mes \u2192 LOC liquidada en ~16 meses. Palancas: SEO, campa\u00f1as email, leads Cloze.",
-        "impact": "Impacto: Acelera todo el plan FI en ~2 a\u00f1os",
+        "detail": "DEC promedia $5,796/mes YTD (net). Con $7,500/mes el surplus sube a ~$3,000/mes → LOC liquidada en ~16 meses. Palancas: SEO, campañas email, leads Cloze.",
+        "impact": "Impacto: Acelera todo el plan FI en ~2 años",
         "impactColor": "#f59e0b",
-        "timeline": "May \u2014 Dic 2026"
+        "timeline": "May — Dic 2026"
       },
       {
         "urgency": "medium",
-        "title": "5. Maximizar SEP IRA en a\u00f1o rentable",
-        "detail": "Si DEC genera >$50K profit anual: aportar m\u00e1ximo SEP ($69K o 25% de compensaci\u00f3n). Reduce impuestos y acelera compounding.",
-        "impact": "Impacto: Retiro 91\u219295, FI Progress 71\u219278",
+        "title": "5. Maximizar SEP IRA en año rentable",
+        "detail": "Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.",
+        "impact": "Impacto: Retiro 91→95, FI Progress 71→78",
         "impactColor": "#3b82f6",
         "timeline": "Dic 2026 (tax planning)"
       },
       {
         "urgency": "medium",
         "title": "6. Subir bonos de 6% a 15%",
-        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 a\u00f1os.",
-        "impact": "Impacto: Diversific. 70\u219282, Riesgo 53\u219268",
+        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.",
+        "impact": "Impacto: Diversific. 70→82, Riesgo 53→68",
         "impactColor": "#3b82f6",
         "timeline": "Q1 2027"
       },
       {
         "urgency": "low",
-        "title": "7. Evaluar Roth conversion en a\u00f1o de bajo ingreso",
-        "detail": "Si DEC tiene a\u00f1o bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en Espa\u00f1a.",
-        "impact": "Impacto: Optimizaci\u00f3n fiscal de largo plazo",
+        "title": "7. Evaluar Roth conversion en año de bajo ingreso",
+        "detail": "Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.",
+        "impact": "Impacto: Optimización fiscal de largo plazo",
         "impactColor": "#10b981",
         "timeline": "2027+ (con CPA)"
       },
       {
         "urgency": "low",
         "title": "8. Testamento + seguro de discapacidad",
-        "detail": "Activos en 3 pa\u00edses, estructura S-Corp, pr\u00e9stamos privados \u2014 sin testamento todo se complica. Seguro protege el camino FI.",
-        "impact": "Impacto: Protecci\u00f3n patrimonial",
+        "detail": "Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.",
+        "impact": "Impacto: Protección patrimonial",
         "impactColor": "#10b981",
         "timeline": "2026 (urgente pero no financiero)"
       }
@@ -173,42 +190,42 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) Rolar/cerrar MBTM26 short BTC (BP $168). (2) Completar hedge oro IAU \u219210%. (3) Fed hawkish (Warsh, 0 recortes) \u2192 mantener sesgo defensivo, no perseguir tech."
+      "text": "(1) Recortar Tech/Semis 29.7%→≤20% lunes. (2) Re-establecer hedge oro (0% hoy). (3) Vigilar Micro Bitcoin short ~7 DTE."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "\ud83d\udcb3 LOC $73,786 @ 8.5% \u2014 paydown EN PAUSA (LOC disponible \u2212$8,052, bajo buffer). DEC promedio $5,860/mes \u2192 Super\u00e1vit $+724/mes."
+      "text": "💳 LOC $73,786 @ 8.5% — paydown EN PAUSA (cash neto -$2,678 bajo buffer). DEC promedio $5,827/mes → Superávit $+691/mes."
     },
     "fi": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "LOC en espera: buffer DEC en $37,494 / $41,663. Move CR\u00cdTICO tambi\u00e9n pendiente. FI al 42% (gap $517,802). Ver Resumen."
+      "text": "LOC en espera: buffer DEC en $37,494 / $41,663. Move CRÍTICO también pendiente. FI al 42% (gap $517,802). Ver Resumen."
     },
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "\ud83d\udcb0 \u2705 Super\u00e1vit $+724/mes. DEC YTD promedio $5,860/mes. Meta $6,500+/mes. R\u00e9gimen STAGFLATION_RISK \u2192 sesgo DEFENSIVO \u2014 preservar liquidez."
+      "text": "💰 ✅ Superávit $+691/mes. DEC YTD promedio $5,827/mes. Meta: $6,500+/mes. Régimen STAGFLATION → DEFENSIVO, preservar liquidez."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 61% (techo 65%). 0 moves URGENTE; 1 PLANEAR (oro) + 2 CONDICIONAL. Regime: STAGFLATION_RISK."
+      "text": "Alignment 58% (techo 65%). 0 moves URGENTE; 1 PLANEAR (oro) + 2 condicionales. Regime: STAGFLATION_RISK."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "\ud83d\udea8 MBTM26 short BTC BP cr\u00edtico ~8 DTE. \u2705 Opciones sin alertas (m\u00e1s cercano NFLX 22 DTE). \u2705 T\u00e1ctico leverage 100.3%."
+      "text": "🔴 Tech/Semis 29.7% sobre cap 25% — recortar lunes. 🥇 Hedge oro 0% — re-establecer."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "\u2705 Margen t\u00e1ctico $95 (leverage 100.3%). R\u00e9gimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,033. Futuros BP cr\u00edtico $168."
+      "text": "✅ Margen táctico $1,098 bajo objetivo (leverage 103%). Régimen STAGFLATION_RISK: sesgo DEFENSIVO. TT NLV $13,063."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($36,415 \u2014 8.0% del portafolio) sin garant\u00eda documental. Ver Resumen."
+      "text": "Verificar contrato Miguel Autos ($36,415 — 8.0% del portafolio) sin garantía documental. Ver Resumen."
     }
   },
   "insights": {
@@ -224,41 +241,41 @@
     },
     "accounts": [
       {
-        "rank": "Grado A \u2014 ETF Core \u00b7 TWR 6M -8.7%",
+        "rank": "Grado A — ETF Core · TWR 6M -8.7%",
         "rankColor": "#10b981",
-        "text": "La cuenta principal de trading. 16 posiciones ETF, MV $38,301. Margen $4,657 \u26a0\ufe0f (leverage 113.8% bajo cap 120%). Tech/Semis 14.2% \u2705 y oro IAU 8.5% \u2705 \u2014 alineaci\u00f3n con STAGFLATION_RISK mejor\u00f3 esta semana.",
-        "rec": "Trim PBW (\u221211.5%) / UFO (\u221210.8%) para bajar margen y leverage a ~105% antes del FOMC. Completar IAU hacia 10%."
+        "text": "La cuenta principal de trading. 16 posiciones ETF, MV $38,301. Margen $4,657 ⚠️ (leverage 113.8% bajo cap 120%). Tech/Semis 14.2% ✅ y oro IAU 8.5% ✅ — alineación con STAGFLATION_RISK mejoró esta semana.",
+        "rec": "Trim PBW (−11.5%) / UFO (−10.8%) para bajar margen y leverage a ~105% antes del FOMC. Completar IAU hacia 10%."
       },
       {
-        "rank": "Grado A+ \u2014 Mejor TWR \u00b7 +37.3%",
+        "rank": "Grado A+ — Mejor TWR · +37.3%",
         "rankColor": "#10b981",
-        "text": "RH Autopilot Act Managed \u2014 mejor rendimiento del portafolio ($4,430, confirmado Jun 5). Gesti\u00f3n activa automatizada.",
-        "rec": "Mantener. Candidato a recibir capital (se\u00f1al realocaci\u00f3n \u26aa streak 1/3 \u2014 a\u00fan sin se\u00f1al)."
+        "text": "RH Autopilot Act Managed — mejor rendimiento del portafolio ($4,430, confirmado Jun 5). Gestión activa automatizada.",
+        "rec": "Mantener. Candidato a recibir capital (señal realocación ⚪ streak 1/3 — aún sin señal)."
       },
       {
-        "rank": "Grado B \u2014 Stocks Activo \u00b7 TWR -1.0%",
+        "rank": "Grado B — Stocks Activo · TWR -1.0%",
         "rankColor": "#10b981",
-        "text": "IBKR Bravo \u2014 acciones individuales. Saldo $8,025 (confirmado Jun 5).",
-        "rec": "Mantener estrategia actual. Evaluar concentraci\u00f3n de posiciones individuales."
+        "text": "IBKR Bravo — acciones individuales. Saldo $8,025 (confirmado Jun 5).",
+        "rec": "Mantener estrategia actual. Evaluar concentración de posiciones individuales."
       },
       {
-        "rank": "Grado D \u2014 Opciones \u00b7 TWR -11.1%",
+        "rank": "Grado D — Opciones · TWR -11.1%",
         "rankColor": "#ef4444",
-        "text": "TastyTrade \u2014 5 estructuras: NFLX P82/P78 (Jul 10), RDW P14/P12 \u00d73 (reabierta Jun 12) + NVO P45/P40 (Jul 17), TSM C340/C350 + SKM C35 LEAPS (Ene 27). NLV $13,024. CMG/UBER/PG/SLV cerradas.",
-        "rec": "Verificar OCO de cada estructura nueva. NFLX 28 DTE \u2014 vigilar semana del FOMC. No abrir posiciones hasta mejorar TWR."
+        "text": "TastyTrade — 5 estructuras: NFLX P82/P78 (Jul 10), RDW P14/P12 ×3 (reabierta Jun 12) + NVO P45/P40 (Jul 17), TSM C340/C350 + SKM C35 LEAPS (Ene 27). NLV $13,024. CMG/UBER/PG/SLV cerradas.",
+        "rec": "Verificar OCO de cada estructura nueva. NFLX 28 DTE — vigilar semana del FOMC. No abrir posiciones hasta mejorar TWR."
       },
       {
-        "rank": "Grado F \u2014 Futuros \u00b7 TWR -36.0%",
+        "rank": "Grado F — Futuros · TWR -36.0%",
         "rankColor": "#ef4444",
-        "text": "PKG27 $1,900 + VLV23 $1,918. MHGN26 long cobre + MNGN26 short gas por cuenta. BP $272/$290 \ud83d\udea8 \u2014 colch\u00f3n ~14%.",
-        "rec": "MOVE CR\u00cdTICO: liberar BP (cerrar MNGN26 o aportar cash) antes del FOMC Jun 16-17. Roll/close MNGN26 antes de ~Jun 26."
+        "text": "PKG27 $1,900 + VLV23 $1,918. MHGN26 long cobre + MNGN26 short gas por cuenta. BP $272/$290 🚨 — colchón ~14%.",
+        "rec": "MOVE CRÍTICO: liberar BP (cerrar MNGN26 o aportar cash) antes del FOMC Jun 16-17. Roll/close MNGN26 antes de ~Jun 26."
       }
     ],
     "resumen": [
-      "\ud83d\udcb0 NW Bruto $460,021 | Neto $386,235 (deuda $73,786) \u2014 FI 43% del objetivo $900K / 77% con DEC",
-      "\ud83c\udfe6 TradeStation LIVE: SEP IRA $140,705 (VOO/SCHD/AVDV todas verdes) \u00b7 T\u00e1ctico $38,495 (16 pos, leverage 111.7%, margen $4,039)",
-      "\ud83d\udccb Opciones TT NLV $12,883 \u2014 5 estructuras, 8 OCO vivos \u00b7 \ud83d\udcc8 Futuros $3,703 cash inactivo (par cobre/gas cerrado pre-FOMC)",
-      "\ud83c\udfdb\ufe0f R\u00e9gimen STAGFLATION_RISK, alineaci\u00f3n 58% \u2014 defensivo ante debut de Warsh; recomendaci\u00f3n: mantener firme, sin riesgo nuevo pre-FOMC"
+      "💰 NW Bruto $457,909 | Neto $384,123 (▲$238 vs ayer) | FI 43% de $900K (77% con DEC)",
+      "🏦 SEP IRA $140,207 (VOO/SCHD/AVDV ▲$7,941) NO TOCAR | ⚠️ Tactical $34,339 — 🚨 Tech/Semis 29.7% sobre cap",
+      "📋 TT NLV $13,063 (5 estructuras, OCOs vivos) | 📈 Futuros Micro Bitcoin short ×2 (~7 DTE)",
+      "🥇 Hedge de oro = 0% (IAU vendido) — brecha de cobertura en régimen STAGFLATION. Re-establecer."
     ]
   },
   "debt": {
@@ -309,7 +326,7 @@
       "label": "Pepe Loans",
       "amount": 542,
       "color": "#10b981",
-      "source": "4%/mes \u00d7 $13,555",
+      "source": "4%/mes × $13,555",
       "monthly": 542,
       "annual": 6506,
       "note": "Proyectado. Actualmente redirigido a Michalitas."
@@ -318,10 +335,10 @@
       "label": "CDs Ecuador",
       "amount": 197,
       "color": "#3b82f6",
-      "source": "6.5%/a\u00f1o \u00d7 $36,449",
+      "source": "6.5%/año × $36,449",
       "monthly": 197,
       "annual": 2369,
-      "note": "6.5% APY \u2014 Cooperativa JEP (Ecuador). Inter\u00e9s capitaliza en el CD."
+      "note": "6.5% APY — Cooperativa JEP (Ecuador). Interés capitaliza en el CD."
     },
     {
       "label": "Dividendos",
@@ -336,16 +353,16 @@
       "label": "Betterment Int.",
       "amount": 85,
       "color": "#8b5cf6",
-      "source": "3.25% APY \u00d7 $31,318",
+      "source": "3.25% APY × $31,318",
       "monthly": 85,
       "annual": 1020,
-      "note": "Inter\u00e9s de Cash Reserve Betterment."
+      "note": "Interés de Cash Reserve Betterment."
     }
   ],
   "incomeTotal": 964,
   "incomeAnnual": 11575,
   "incomePassiveCoverage": 23,
-  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrir\u00edas el 100% sin tocar el portafolio principal.",
+  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
     {
       "name": "TS ETF Tactical",
@@ -412,7 +429,7 @@
       "color": "#10b981"
     },
     {
-      "label": "Pr\u00e9stamos 11%",
+      "label": "Préstamos 11%",
       "value": 49970,
       "color": "#ec4899"
     },
@@ -434,7 +451,7 @@
       "color": "#f59e0b"
     },
     {
-      "name": "Pr\u00e9stamos",
+      "name": "Préstamos",
       "value": 49970,
       "color": "#ec4899"
     },
@@ -469,7 +486,7 @@
       "color": "#f97316"
     },
     {
-      "name": "Energ\u00eda",
+      "name": "Energía",
       "value": 6929,
       "color": "#ef4444"
     }
@@ -487,7 +504,7 @@
       "color": "#10b981"
     },
     {
-      "label": "Inter\u00e9s LOC / mes",
+      "label": "Interés LOC / mes",
       "value": "-$338",
       "color": "#ef4444"
     },
@@ -529,25 +546,25 @@
   },
   "waterfallScenarios": [
     {
-      "icon": "\ud83d\udfe1",
+      "icon": "🟡",
       "label": "Actual (Jun 12)",
       "surplus": 1433,
-      "note": "DEC $5,938/mes avg (Xero LIVE YTD $32,068 \u00f7 5.4m) \u2014 surplus positivo pero buffer incompleto (faltan $4,169)"
+      "note": "DEC $5,938/mes avg (Xero LIVE YTD $32,068 ÷ 5.4m) — surplus positivo pero buffer incompleto (faltan $4,169)"
     },
     {
-      "icon": "\ud83d\udfe1",
+      "icon": "🟡",
       "label": "Si Michalitas cierra",
       "surplus": 1433,
       "note": "Cierre libera carga pero pierde momentum"
     },
     {
-      "icon": "\ud83d\udfe2",
+      "icon": "🟢",
       "label": "Si DEC sube a $7,500/mes",
       "surplus": 2995,
       "note": "LOC pagada en ~16 meses post-buffer"
     },
     {
-      "icon": "\ud83c\udfaf",
+      "icon": "🎯",
       "label": "Si DEC $7,500 + Michalitas break-even",
       "surplus": 3494,
       "note": "LOC pagada en ~14 meses, luego a inversiones"
@@ -561,7 +578,7 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD Jun 12 (Xero LIVE $32,068 \u00f7 5.4m)"
+      "note": "Net Income promedio YTD Jun 12 (Xero LIVE $32,068 ÷ 5.4m)"
     },
     {
       "label": "Ingreso pasivo",
@@ -570,9 +587,9 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Pepe+CDs+dividendos acumulan en Ecuador \u2014 no disponible para gastos US",
+      "note": "Pepe+CDs+dividendos acumulan en Ecuador — no disponible para gastos US",
       "projected": 964,
-      "projectedNote": "Proyectado $964/mo (Pepe+CDs+div) \u2014 acumula Ecuador, no disponible US"
+      "projectedNote": "Proyectado $964/mo (Pepe+CDs+div) — acumula Ecuador, no disponible US"
     },
     {
       "label": "Gastos de vida (US)",
@@ -581,7 +598,7 @@
       "type": "Fijo",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "$50K/a\u00f1o baseline"
+      "note": "$50K/año baseline"
     },
     {
       "label": "Michalitas Xpress",
@@ -590,7 +607,7 @@
       "type": "Mejorando",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "Abr: -$499 vs PE \u00b7 May: +$121 proyectado (casi break-even)"
+      "note": "Abr: -$499 vs PE · May: +$121 proyectado (casi break-even)"
     },
     {
       "label": "Intereses LOC",
@@ -599,7 +616,7 @@
       "type": "Deuda",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "8.5% \u00d7 $47,753 \u00f7 12"
+      "note": "8.5% × $47,753 ÷ 12"
     },
     {
       "label": "Intereses Car Loan",
@@ -608,7 +625,7 @@
       "type": "Deuda",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "6.49% \u00d7 $9,523 \u00f7 12"
+      "note": "6.49% × $9,523 ÷ 12"
     }
   ],
   "performance": {
@@ -619,7 +636,7 @@
     "second6mPct": "+18.2%",
     "worst6mName": "TS Futures VLV23",
     "worst6mPct": "-58.8%",
-    "twrNote": "TWR 6M (26 sem) vs S&P -6.1%. Series IBKR/RH congeladas entre confirmaciones manuales (\u00faltimo dato Jun 5)."
+    "twrNote": "TWR 6M (26 sem) vs S&P -6.1%. Series IBKR/RH congeladas entre confirmaciones manuales (último dato Jun 5)."
   },
   "accounts": [
     {
@@ -642,7 +659,7 @@
     },
     {
       "name": "Miguel Autos Loan",
-      "cat": "Pr\u00e9stamo",
+      "cat": "Préstamo",
       "value": 36415,
       "color": "#ec4899"
     },
@@ -672,7 +689,7 @@
     },
     {
       "name": "Pepe Loans",
-      "cat": "Pr\u00e9stamo",
+      "cat": "Préstamo",
       "value": 13555,
       "color": "#f472b6"
     },
@@ -1077,7 +1094,7 @@
     "positions": [
       {
         "symbol": "NFLX",
-        "spread": "P82/P78 \u00d72",
+        "spread": "P82/P78 ×2",
         "type": "Bear Put",
         "dte": 25,
         "exp": "Jul 10",
@@ -1085,7 +1102,7 @@
       },
       {
         "symbol": "RDW",
-        "spread": "P14/P12 \u00d73",
+        "spread": "P14/P12 ×3",
         "type": "Bear Put (reabierta Jun 12)",
         "dte": 32,
         "exp": "Jul 17",
@@ -2391,27 +2408,27 @@
   },
   "allocationAlerts": [
     {
-      "icon": "\ud83d\udea8",
-      "text": "Futuros: BP $272 (PKG27) / $290 (VLV23) \u2014 colch\u00f3n ~14% del equity con MHGN26 cobre $16.2K notional c/u. Move CR\u00cdTICO."
+      "icon": "🚨",
+      "text": "Futuros: BP $272 (PKG27) / $290 (VLV23) — colchón ~14% del equity con MHGN26 cobre $16.2K notional c/u. Move CRÍTICO."
     },
     {
-      "icon": "\u26a0\ufe0f",
-      "text": "Margen t\u00e1ctico $4,657 reapareci\u00f3 (era $29 ayer) \u2014 leverage 113.8%, bajo cap 120% pero subiendo. Trim PBW/UFO antes del FOMC."
+      "icon": "⚠️",
+      "text": "Margen táctico $4,657 reapareció (era $29 ayer) — leverage 113.8%, bajo cap 120% pero subiendo. Trim PBW/UFO antes del FOMC."
     },
     {
-      "icon": "\u2705",
-      "text": "Tech/Semis (BAI+SOXX+XLK) = 14.2% \u2014 BAJO el umbral 15% (trim ejecutado \u2705, era 18.6% Jun 5)."
+      "icon": "✅",
+      "text": "Tech/Semis (BAI+SOXX+XLK) = 14.2% — BAJO el umbral 15% (trim ejecutado ✅, era 18.6% Jun 5)."
     },
     {
-      "icon": "\u2705",
-      "text": "Hedge de oro A\u00d1ADIDO: IAU 8.5% del sleeve ($3,260) \u2014 move URGENTE Jun 5 ejecutado. Objetivo ~10%."
+      "icon": "✅",
+      "text": "Hedge de oro AÑADIDO: IAU 8.5% del sleeve ($3,260) — move URGENTE Jun 5 ejecutado. Objetivo ~10%."
     },
     {
-      "icon": "\u2705",
-      "text": "Intl Asia (EWT+EWY) = 11.4% \u2014 bajo cap 25% del sleeve independiente."
+      "icon": "✅",
+      "text": "Intl Asia (EWT+EWY) = 11.4% — bajo cap 25% del sleeve independiente."
     }
   ],
-  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas \u2014 no refleja cashflow activo del waterfall ($0 pasivo).",
+  "incomeSectionNote": "Ingreso pasivo proyectado ($952/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
   "fiProjection": {
     "base": [
       null,
@@ -2447,29 +2464,29 @@
     ],
     "target": 900000,
     "targetWithDEC": 500000,
-    "labelBase": "\ud83d\udd35 Base (7%/a\u00f1o +$18K aporte)",
-    "labelOptimistic": "\ud83d\udfe2 Optimista (9% +$36K, DEC\u2192SEP IRA)",
-    "labelPessimistic": "\ud83d\udd34 Pesimista (5% +$6K)",
-    "note": "Estilo de vida $55K/a\u00f1o. Metas: $900K retiro pleno SIN DEC (l\u00ednea \u00e1mbar) \u00b7 $500K si DEC sigue/se vende (l\u00ednea cian). Hoy $378,506 (42% / 76%). Base 7%+$18K \u00b7 Pes 5%+$6K \u00b7 Opt 9%+$36K. Supuestos en d\u00f3lares de hoy; retornos no garantizados."
+    "labelBase": "🔵 Base (7%/año +$18K aporte)",
+    "labelOptimistic": "🟢 Optimista (9% +$36K, DEC→SEP IRA)",
+    "labelPessimistic": "🔴 Pesimista (5% +$6K)",
+    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $378,506 (42% / 76%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-18T12:00:00Z",
+    "lastUpdate": "2026-06-19T12:00:00Z",
     "regime": "STAGFLATION_RISK",
-    "regimeLabel": "Riesgo Estanflaci\u00f3n",
+    "regimeLabel": "Riesgo Estanflación",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Fed de Warsh (debut) borr\u00f3 el sesgo acomodaticio y muestra sesgo de ALZA (mediana 3.8%, 0 recortes 2026); crudo a m\u00ednimo 3.5m por paz EE.UU.-Ir\u00e1n da risk-on t\u00e1ctico (Dow ATH, VIX 17) pero inflaci\u00f3n pegajosa mantiene postura defensiva.",
-    "alignmentScore": 61,
+    "regimeContext": "Feriado Juneteenth (mercados cerrados). FOMC Jun 17 (debut Warsh) mantuvo 3.50-3.75% con dot-plot girado a sesgo de SUBIDA. Hedge de oro vendido (0%). PCE Jun 25 esperado caliente (4.1%).",
+    "alignmentScore": 58,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
-        "name": "Inflaci\u00f3n",
-        "value": 55,
+        "name": "Inflación",
+        "value": 45,
         "color": "#f59e0b"
       },
       {
         "name": "Tasas",
-        "value": 40,
+        "value": 50,
         "color": "#f59e0b"
       },
       {
@@ -2483,56 +2500,56 @@
         "color": "#10b981"
       },
       {
-        "name": "Geopol\u00edtico",
-        "value": 75,
-        "color": "#10b981"
+        "name": "Geopolítico",
+        "value": 58,
+        "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 65,
-    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis, Healthcare y SmallCap \u2014 techo estructural del r\u00e9gimen.",
+    "regimeCeilingWhy": "STAGFLATION_RISK penaliza Tech/Semis, Healthcare y SmallCap — techo estructural del régimen.",
     "moves": [
       {
         "urgency": "PLANEAR",
-        "icon": "\ud83d\udfe1",
-        "action": "Completar hedge oro IAU 9.5% \u2192 ~10% del sleeve",
-        "why": "Fed hawkish + inflaci\u00f3n pegajosa favorecen oro",
+        "icon": "🟡",
+        "action": "Re-establecer hedge de oro (IAU/MGC) — sleeve oro actualmente 0% tras venta de IAU",
+        "why": "Régimen STAGFLATION favorece oro; cartera sin cobertura de inflación",
         "impact": 4,
         "since": "2026-06-16"
       },
       {
         "urgency": "CONDICIONAL",
-        "icon": "\u23f8\ufe0f",
+        "icon": "⏸️",
         "action": "Aplicar surplus DEC al LOC Wells Fargo una vez completo el buffer",
-        "why": "Disponible -$1,649 neto bajo buffer; sin capacidad a\u00fan",
+        "why": "Disponible -$2,678 neto bajo buffer; sin capacidad aún",
         "impact": 3,
         "since": "2026-06-16"
       },
       {
         "urgency": "CONDICIONAL",
-        "icon": "\u23f8\ufe0f",
-        "action": "S&P 500 cierre > 7,800 \u2192 re-evaluar transici\u00f3n a LATE_CYCLE",
-        "why": "Trigger no cumplido; S&P ~7,461",
+        "icon": "⏸️",
+        "action": "S&P 500 cierre > 7,800 → re-evaluar transición a LATE_CYCLE",
+        "why": "Trigger no cumplido; SPX ~7,467",
         "impact": 3,
         "since": "2026-06-16"
       }
     ],
     "triggers": [
       {
-        "icon": "\ud83c\udfdb\ufe0f",
+        "icon": "🏛️",
         "label": "FOMC Jun 16-17 (debut Warsh)",
-        "condition": "Hawkish sorpresa \u2192 reducir leverage t\u00e1ctico a ~100% y NO abrir posiciones nuevas",
+        "condition": "Hawkish sorpresa → reducir leverage táctico a ~100% y NO abrir posiciones nuevas",
         "dirColor": "#ef4444"
       },
       {
-        "icon": "\ud83e\udd49",
-        "label": "Cobre (MHGN26) \u22123% intrad\u00eda",
-        "condition": "Margin-call inminente en PKG27/VLV23 (colch\u00f3n <2%) \u2014 cerrar contrato de inmediato",
+        "icon": "🥉",
+        "label": "Cobre (MHGN26) −3% intradía",
+        "condition": "Margin-call inminente en PKG27/VLV23 (colchón <2%) — cerrar contrato de inmediato",
         "dirColor": "#ef4444"
       },
       {
-        "icon": "\ud83d\udcc8",
+        "icon": "📈",
         "label": "S&P 500 cierre > 7,800",
-        "condition": "Re-evaluar transici\u00f3n a LATE_CYCLE \u2014 reabrir Tech/Semis gradualmente",
+        "condition": "Re-evaluar transición a LATE_CYCLE — reabrir Tech/Semis gradualmente",
         "dirColor": "#10b981"
       }
     ]
@@ -2541,33 +2558,33 @@
     {
       "priority": "HOY",
       "priorityColor": "#ef4444",
-      "icon": "\ud83d\udea8",
-      "action": "Rolar o cerrar MBTM26 (short Micro Bitcoin)",
-      "why": "BP cr\u00edtico $73/$94, ~8 DTE, corto BTC en rally risk-on",
-      "category": "FUTUROS"
+      "icon": "🔴",
+      "action": "Recortar Tech/Semis 29.7%→≤20% (lunes Jun 22)",
+      "why": "Sobre cap 25% en régimen que bloquea tech; rally Jun 18 = ventana de salida",
+      "category": "POSICIONES"
     },
     {
       "priority": "ESTA SEMANA",
+      "priorityColor": "#f59e0b",
+      "icon": "🥇",
+      "action": "Re-establecer hedge de oro (IAU o MGC)",
+      "why": "Sleeve oro 0% tras venta IAU; STAGFLATION lo favorece",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "CONDICIONAL",
       "priorityColor": "#60a5fa",
-      "icon": "\u2b50",
-      "action": "Completar hedge oro IAU 9.5% \u2192 10%",
-      "why": "Fed hawkish + inflaci\u00f3n pegajosa favorecen oro",
-      "category": "ACTIVOS"
+      "icon": "⏸️",
+      "action": "Rodar/cerrar Micro Bitcoin short MBTM26 antes de Jun 26",
+      "why": "~7 DTE; libera BP para MGC",
+      "category": "FUTUROS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
-      "icon": "\u23f3",
-      "action": "Trim PBW/XLE si se reduce energ\u00eda/clean",
-      "why": "\u00danicos rezagados (-$144/-$121); opcional",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "CONDICIONAL",
-      "priorityColor": "#94a3b8",
-      "icon": "\u23f3",
-      "action": "Surplus DEC \u2192 LOC tras completar buffer",
-      "why": "Disponible -$1,649 neto bajo buffer",
+      "icon": "⏸️",
+      "action": "LOC paydown cuando el cash supere el buffer",
+      "why": "Disponible -$2,678 bajo buffer $41,052",
       "category": "DEUDA"
     }
   ],
@@ -2590,29 +2607,28 @@
       "TastyTrade->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-06-15",
-        "lastSignal": "\u26aa",
+        "lastSignal": "⚪",
         "lastSignalDate": null
       },
       "TastyTrade->IBKR Bravo": {
         "monthsSustained": 1,
         "lastEval": "2026-06-15",
-        "lastSignal": "\u26aa",
+        "lastSignal": "⚪",
         "lastSignalDate": null
       },
       "TS Futures->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-06-15",
-        "lastSignal": "\u26aa",
+        "lastSignal": "⚪",
         "lastSignalDate": null
       },
       "TS Futures->IBKR Bravo": {
         "monthsSustained": 1,
         "lastEval": "2026-06-15",
-        "lastSignal": "\u26aa",
+        "lastSignal": "⚪",
         "lastSignalDate": null
       }
     },
     "updated": "2026-06-15"
-  },
-  "lastUpdated": "2026-06-19"
+  }
 }
