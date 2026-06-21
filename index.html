@@ -2159,7 +2159,8 @@ function renderDecumulation() {
     if(/miguel|emerg/.test(nm)){_excl+=v;} else if(/roth/.test(nm)){_roth+=v;} else if(/sep ira|trad ira|traditional/.test(nm)){_taxDef+=v;} else {_taxOther+=v;}});
   const start=_nw-_excl;
   var _tb=_taxDef+_roth+_taxOther, effTax=_tb>0?(_taxDef*0.12+_taxOther*0.06)/_tb:0.12;
-  const curAge=53, plan=dc.planAge||95, floor=dc.bequestFloor||150000, infl=dc.inflation||0.033;
+  const curAge=53, plan=dc.planAge||95, floor=(dc.bequestFloor!=null?dc.bequestFloor:150000), infl=dc.inflation||0.033;
+  var goalEnd=Math.max(floor,1);
   const mcRuns=1200, SEED=20260621; var taxRate=effTax;
   function gv(id,def){var el=document.getElementById(id);return el?+el.value:def;}
   const retire=gv('decum-retire',67), spend=gv('decum-spend',63000);
@@ -2200,7 +2201,7 @@ function renderDecumulation() {
   var _seed; function _u(){_seed|=0;_seed=_seed+0x6D2B79F5|0;var t=Math.imul(_seed^_seed>>>15,1|_seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;}
   function rn(m,sd){var u1=_u()||1e-9,u2=_u();return m+sd*Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);}
   function successAt(ra){_seed=SEED;var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),ok=0;
-    for(var k=0;k<mcRuns;k++){var bal=start;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=floor)ok++;}
+    for(var k=0;k<mcRuns;k++){var bal=start;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=goalEnd)ok++;}
     return ok/mcRuns;}
   var succMap={}; for(var ra2=58;ra2<=75;ra2++) succMap[ra2]=successAt(ra2);
   var score=Math.round((succMap[retire]!=null?succMap[retire]:successAt(retire))*100);
@@ -2210,7 +2211,7 @@ function renderDecumulation() {
   for(var k2=0;k2<mcRuns;k2++){var vals=[],bal=start;for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}paths.push(vals);}
   var med=[],p10=[];for(var ai=0;ai<ages.length;ai++){var col=[];for(var p=0;p<paths.length;p++)col.push(paths[p][ai]);col.sort(function(x,y){return x-y;});med.push(Math.round(col[Math.floor(col.length*0.5)]));p10.push(Math.round(col[Math.floor(col.length*0.1)]));}
   function endMean(ra,sp){var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var net=(sp||spend)-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
-  var lo=0,hi=200000;for(var bi=0;bi<36;bi++){var m=(lo+hi)/2;if(endMean(retire,m)>=floor)lo=m;else hi=m;}
+  var lo=0,hi=200000;for(var bi=0;bi<36;bi++){var m=(lo+hi)/2;if(endMean(retire,m)>=goalEnd)lo=m;else hi=m;}
   var projMo=Math.round(lo/12),planMo=Math.round(spend/12);
   if(ctx._chart)ctx._chart.destroy();
   var bandPlugin={id:'lon',afterDatasetsDraw:function(ch){var ar=ch.chartArea;if(!ar)return;var g=ch.ctx;[{a:84,t:'~84'},{a:90,t:'~90'},{a:95,t:'95'}].forEach(function(mk){var x=ar.left+(ar.right-ar.left)*(mk.a-curAge)/(plan-curAge);g.save();g.strokeStyle='#64748b66';g.setLineDash([3,3]);g.beginPath();g.moveTo(x,ar.top);g.lineTo(x,ar.bottom);g.stroke();g.setLineDash([]);g.fillStyle='#94a3b8';g.font='10px sans-serif';g.textAlign='center';g.fillText(mk.t,x,ar.top+10);g.restore();});}};
@@ -2223,7 +2224,7 @@ function renderDecumulation() {
   var verdict=score>=85?('Sólido — a los '+retire+' aguanta con buen margen.'):(score>=70?('Razonable a los '+retire+', con algo de margen.'):(score>=55?('Ajustado a los '+retire+' — conviene esperar un poco.'):('Bajo a los '+retire+' — arriesgado a este ritmo.')));
   var sb=document.getElementById('decum-scorebox');
   if(sb){sb.innerHTML='<div style="flex-shrink:0;width:84px;height:84px;border-radius:50%;border:4px solid '+scColor+';display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+scColor+'"><div style="font-size:22px;font-weight:800">'+score+'%</div><div style="font-size:8px;color:#94a3b8">a los '+retire+'</div></div>'
-    +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(prob. de que el dinero dure a 95 dejando '+fmt(floor)+').</span>'
+    +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(prob. de que el dinero te dure hasta los 95'+(floor>1000?(' dejando '+fmt(floor)):' sin agotarse')+').</span>'
     +'<br><b style="color:#10b981">🎯 Retiro seguro (90%): a los '+(age90||'>75')+'</b> &nbsp; <span style="color:#f59e0b">aceptable (75%): a los '+(age75||'>75')+'</span>'
     +'<br><span style="color:#94a3b8;font-size:11px">Con tu retorno real '+(rMean*100).toFixed(1)+'% y volatilidad real '+(mcSd*100).toFixed(0)+'% · ahorro $'+Math.round(savMo).toLocaleString()+'/mo</span></div>';}
   var sa=document.getElementById('decum-spendability');
@@ -2251,7 +2252,7 @@ function renderDecumulation() {
     +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB, últimos 12 meses, dólares de hoy)</li>'
     +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 (reclamo = edad de retiro)</li>'
     +'<li>• Impuesto efectivo: <b>'+(taxRate*100).toFixed(1)+'%</b> (calculado de tu mezcla: SEP/Trad gravable, Roth libre, FL sin impuesto estatal)</li>'
-    +'<li>• Meta de herencia: <b>'+fmt(floor)+'</b> a los '+plan+'</li>'
+    +'<li>• Meta: <b>'+(floor>1000?(fmt(floor)+' de herencia'):'morir con lo justo (sin herencia)')+'</b> a los '+plan+'</li>'
     +'<li>• Simulación: Monte Carlo <b>'+mcRuns+'</b> escenarios (semilla fija → resultado estable)</li>'
     +'</ul>';}
 }
