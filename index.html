@@ -2154,7 +2154,9 @@ function renderDecumulation() {
   const dc=(dashData&&dashData.decumulation)?dashData.decumulation:{};
   const start=(dashMeta&&dashMeta.nwNeto)?dashMeta.nwNeto:(dc.startNW||0);
   const curAge=53, plan=dc.planAge||95, floor=dc.bequestFloor||150000, infl=dc.inflation||0.033;
-  const ssClaim=67, taxRate=0.15, mcSd=dc.mcSd||0.11, mcRuns=900;
+  const ssClaim=67, taxRate=0.15, mcRuns=700;
+  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.06,Math.sqrt(vv)*Math.sqrt(12));}
+  const mcSd=annVol();
   function gv(id,def){var el=document.getElementById(id);return el?+el.value:def;}
   const retire=gv('decum-retire',67), spend=gv('decum-spend',63000);
   function ssB(c){var p=dc.ssReal||{"62":15372,"67":24024,"70":31428};var a62=+p["62"],a67=+p["67"],a70=+p["70"];if(c<=62)return a62;if(c>=70)return a70;return (c<=67)?a62+(a67-a62)*(c-62)/5:a67+(a70-a67)*(c-67)/3;}
@@ -2183,12 +2185,19 @@ function renderDecumulation() {
     {label:'Pesimista (P10)',data:p10,borderColor:'#60a5fa',backgroundColor:'transparent',fill:false,tension:0.25,pointRadius:0,borderWidth:1.5,borderDash:[5,3]},
     {label:'Meta $'+(floor/1000).toFixed(0)+'K',data:ages.map(function(){return floor;}),borderColor:'#f59e0b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false}
   ]},options:{plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},tooltip:{callbacks:{title:function(it){return 'Edad '+it[0].label;},label:function(cc){return cc.dataset.label.split(' (')[0]+': '+fmt(cc.parsed.y);}}}},scales:{y:{ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}},x:{title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===retire)?aa:'';}},grid:{display:false}}}},plugins:[bandPlugin]});
-  // score box
-  var scColor=score>=80?'#10b981':(score>=50?'#f59e0b':'#ef4444');
-  var verdict=score>=80?('Vas en buena forma. Tu plan soporta tu retiro a los '+retire+'.'):(score>=50?('Vas encaminado a los '+retire+', con margen ajustado.'):('A los '+retire+' el plan no se sostiene a tu ritmo actual.'));
+  // confidence-age scan (when can you retire with 90% / 75%)
+  function endRand(ra){var bal=start;for(var age=curAge;age<=plan;age++){var r=randN(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}return bal;}
+  function succ(ra,runs){var okk=0;for(var z=0;z<runs;z++)if(endRand(ra)>=floor)okk++;return okk/runs;}
+  var age90=null, age75=null;
+  for(var ra2=curAge+4;ra2<=75;ra2++){var sc2=succ(ra2,360);if(age75===null&&sc2>=0.75)age75=ra2;if(sc2>=0.90){age90=ra2;break;}}
+  // score box (confidence-framed)
+  var scColor=score>=85?'#10b981':(score>=70?'#f59e0b':'#ef4444');
+  var verdict=score>=85?('Sólido — a los '+retire+' tu plan aguanta con buen margen.'):(score>=70?('Aceptable a los '+retire+', pero no holgado.'):('A los '+retire+' es arriesgado — la probabilidad es baja.'));
   var sb=document.getElementById('decum-scorebox');
-  if(sb){sb.innerHTML='<div style="flex-shrink:0;width:84px;height:84px;border-radius:50%;border:4px solid '+scColor+';display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:'+scColor+'">'+score+'%</div>'
-    +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(probabilidad de que dure a 95 dejando '+fmt(floor)+').</span><br><b style="color:#22d3ee">🎯 Edad mínima factible: '+(feas||'>80')+'</b> <span style="color:#94a3b8;font-size:11px">(con tu retorno real '+(rMean*100).toFixed(1)+'% y ahorro $'+Math.round(savMo).toLocaleString()+'/mo)</span></div>';}
+  if(sb){sb.innerHTML='<div style="flex-shrink:0;width:84px;height:84px;border-radius:50%;border:4px solid '+scColor+';display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+scColor+'"><div style="font-size:22px;font-weight:800">'+score+'%</div><div style="font-size:8px;color:#94a3b8">a los '+retire+'</div></div>'
+    +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(prob. de que el dinero dure a 95 dejando '+fmt(floor)+').</span>'
+    +'<br><b style="color:#10b981">🎯 Retiro seguro (90%): a los '+(age90||'>75')+'</b> &nbsp; <span style="color:#f59e0b">aceptable (75%): a los '+(age75||'>75')+'</span>'
+    +'<br><span style="color:#94a3b8;font-size:11px">Con tu retorno real '+(rMean*100).toFixed(1)+'% y volatilidad real '+(mcSd*100).toFixed(0)+'% · ahorro $'+Math.round(savMo).toLocaleString()+'/mo</span></div>';}
   // spending ability bar
   var sa=document.getElementById('decum-spendability');
   if(sa){var pct=Math.min(100,Math.round(planMo/Math.max(projMo,1)*100));
