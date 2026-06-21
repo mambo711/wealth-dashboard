@@ -548,6 +548,7 @@
         <div id="decum-scorebox" style="display:flex;gap:16px;align-items:center;margin-bottom:14px"></div>
         <canvas id="decumChart" style="max-height:300px"></canvas>
         <div id="decum-spendability" style="margin-top:14px;max-width:360px"></div>
+        <div id="decum-track" style="margin-top:12px;padding:10px 12px;background:#0f172a;border-radius:8px"></div>
         <div id="decum-cards" style="margin-top:16px"></div>
         <div id="decum-assumptions" style="margin-top:16px;background:#0f172a;border-radius:10px;padding:12px 14px"></div>
       </div>
@@ -2264,6 +2265,17 @@ function renderDecumulation() {
     +'<li>• Meta: <b>'+(floor>1000?(fmt(floor)+' de herencia'):'morir con lo justo (sin herencia)')+'</b> a los '+plan+'</li>'
     +'<li>• Simulación: Monte Carlo <b>'+mcRuns+'</b> escenarios (semilla fija → resultado estable)</li>'
     +'</ul>';}
+  // ¿Voy en camino? — capital necesario hoy para 90% con el plan elegido + tendencia NW 6m
+  function succStart(st){_seed=SEED;var cl=ssClaim,sb=ssben,ok=0,N=600;for(var k=0;k<N;k++){var bal=st;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var inc=((age+1>=cl)?sb:0)+((age<decUntil)?decInc:0);var net=spend-inc;var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=goalEnd)ok++;}return ok/N;}
+  var needStart=null; if(succStart(3000000)>=0.90){var lo2=0,hi2=3000000;for(var z=0;z<22;z++){var mid=(lo2+hi2)/2;if(succStart(mid)>=0.90)hi2=mid;else lo2=mid;}needStart=hi2;}
+  var mtot=(dashData&&dashData.monthly&&dashData.monthly.total)||[];
+  var nwTrend=(mtot.length>=7)?(mtot[mtot.length-1]-mtot[mtot.length-7]):null;
+  var tk=document.getElementById('decum-track');
+  if(tk){var trackTxt;
+    if(needStart!=null){var gap=start-needStart; trackTxt='Para <b>90%</b> con este plan necesitás <b>'+fmt(needStart)+'</b> invertible hoy · tenés <b>'+fmt(start)+'</b> → <b style="color:'+(gap>=0?'#10b981':'#ef4444')+'">'+(gap>=0?('vas adelantado '+fmt(gap)+' ✅'):('te faltan '+fmt(-gap)+' ⚠️'))+'</b>';}
+    else {trackTxt='Para 90% con este plan harían falta >$3M hoy — bajá el downshift, subí el ingreso DEC o bajá el gasto.';}
+    var trendTxt=(nwTrend!=null)?('<br><span style="color:#94a3b8">Tu patrimonio (nominal) en 6 meses: <b style="color:'+(nwTrend>=0?'#10b981':'#ef4444')+'">'+(nwTrend>=0?'+':'')+fmt(nwTrend)+' '+(nwTrend>=0?'↑':'↓')+'</b></span>'):'';
+    tk.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:4px">📍 ¿Voy en camino?</div><div style="font-size:11.5px;line-height:1.7;color:#cbd5e1">'+trackTxt+trendTxt+'</div>';}
 }
 
 function makeAcctChart(canvasId, label, data, color) {
