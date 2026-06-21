@@ -2890,6 +2890,9 @@
       "70": 31428
     },
     "ssRealNote": "SSA my Social Security statement 2026-04-10: $1,281/$2,002/$2,619 mo a 62/67/70. Edades intermedias interpoladas.",
-    "v6Note": "v6: SS usa datos reales del statement SSA (interpolados) en vez de factores genéricos."
+    "v6Note": "v6: SS usa datos reales del statement SSA (interpolados) en vez de factores genéricos.",
+    "inflation": 0.033,
+    "returnWindow": 0,
+    "v7Note": "v7: UNA línea = trayectoria real; retorno y ahorro se calculan dinámicamente del historial (portfolioGlobal TWR + surplus), con selector de ventana (default todo). Panel DÓNDE ESTÁS / QUÉ HACER."
   }
 }
