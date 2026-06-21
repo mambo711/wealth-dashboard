@@ -533,20 +533,22 @@
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 Decumulación — ¿hasta qué edad dura el dinero?</div>
         <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy, neto de impuestos. UNA línea = tu trayectoria real (retorno/ahorro de tu historial). Gasto real $63K/año. DEC = ingreso de semi-retiro (no venta). SS real del statement. El panel te dice dónde estás y qué hacer.</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:12px">
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Edad de retiro</div>
-            <select id="decum-retire" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="58">58</option><option value="60" selected>60</option><option value="62">62</option><option value="65">65</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Gasto anual (hoy $)</div>
-            <select id="decum-spend" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="50000">$50K</option><option value="55000">$55K</option><option value="60000">$60K</option><option value="63000" selected>$63K (real)</option><option value="70000">$70K</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Ahorro extra/mes (hasta retiro)</div>
-            <select id="decum-extra" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="500">$500</option><option value="1000">$1,000</option><option value="2000">$2,000</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Ingreso DEC semi-retiro ($/año)</div>
-            <select id="decum-decinc" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="20000">$20K</option><option value="30000">$30K</option><option value="40000">$40K</option><option value="50000">$50K</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">DEC hasta los...</div>
-            <select id="decum-decuntil" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="65">65</option><option value="68">68</option><option value="70" selected>70</option><option value="72">72</option><option value="75">75</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Impuesto efectivo</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 14px;margin-bottom:12px">
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Edad de retiro / downshift: <span id="decum-retire-v" style="color:#22d3ee;font-weight:700">60</span></div>
+            <input type="range" id="decum-retire" min="55" max="72" step="1" value="60" oninput="document.getElementById('decum-retire-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Gasto anual: <span id="decum-spend-v" style="color:#22d3ee;font-weight:700">$63K</span></div>
+            <input type="range" id="decum-spend" min="40000" max="90000" step="1000" value="63000" oninput="document.getElementById('decum-spend-v').textContent='$'+Math.round(this.value/1000)+'K'; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Ahorro extra/mes (hasta retiro): <span id="decum-extra-v" style="color:#22d3ee;font-weight:700">$0</span></div>
+            <input type="range" id="decum-extra" min="0" max="3000" step="100" value="0" oninput="document.getElementById('decum-extra-v').textContent='$'+(+this.value).toLocaleString(); renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Ingreso DEC semi-retiro ($/año): <span id="decum-decinc-v" style="color:#22d3ee;font-weight:700">$0</span></div>
+            <input type="range" id="decum-decinc" min="0" max="80000" step="1000" value="0" oninput="document.getElementById('decum-decinc-v').textContent='$'+Math.round(this.value/1000)+'K'; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">DEC hasta los...: <span id="decum-decuntil-v" style="color:#22d3ee;font-weight:700">70</span></div>
+            <input type="range" id="decum-decuntil" min="60" max="75" step="1" value="70" oninput="document.getElementById('decum-decuntil-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Reclamo SS (edad): <span id="decum-ssclaim-v" style="color:#22d3ee;font-weight:700">67</span></div>
+            <input type="range" id="decum-ssclaim" min="62" max="70" step="1" value="67" oninput="renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Impuesto efectivo</div>
             <select id="decum-tax" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0">0%</option><option value="0.10">10%</option><option value="0.15" selected>15%</option><option value="0.22">22%</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Promedio retorno</div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Promedio retorno</div>
             <select id="decum-window" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>Todo el historial</option><option value="12">Últimos 12m</option><option value="6">Últimos 6m</option></select></div>
         </div>
         <canvas id="decumChart" style="max-height:300px"></canvas>
@@ -2170,6 +2172,7 @@ function renderDecumulation() {
   function gv(id,def){ var el=document.getElementById(id); return el?+el.value:def; }
   const retire=gv('decum-retire',60), spend=gv('decum-spend',63000), extraMo=gv('decum-extra',0);
   const decInc=gv('decum-decinc',0), decUntil=gv('decum-decuntil',70), taxRate=gv('decum-tax',0.15), win=gv('decum-window',0);
+  const ssClaim=gv('decum-ssclaim',67);
   function ssBenefit(claim){ var pts=dc.ssReal||{"62":15372,"67":24024,"70":31428}; var a62=+pts["62"],a67=+pts["67"],a70=+pts["70"];
     if(claim<=62) return a62; if(claim>=70) return a70; return (claim<=67)?a62+(a67-a62)*(claim-62)/5:a67+(a70-a67)*(claim-67)/3; }
   function realBasis(){
@@ -2183,11 +2186,12 @@ function renderDecumulation() {
     return {ret:ret, nom:nom, savMo:savMo, wlab:wlab};
   }
   var rb=realBasis(), rr=rb.ret, contribY=rb.savMo*12+extraMo*12;
+  var _ssb=ssBenefit(Math.max(62,Math.min(70,ssClaim))); var _sl=document.getElementById('decum-ssclaim-v'); if(_sl) _sl.textContent=ssClaim+' → '+fmt(_ssb)+'/año';
   // sim: DEC is INCOME during semi-retirement (downshift age .. decUntil), reduces portfolio draw like SS
   function sim(rOf, ov){ ov=ov||{};
     var ra=(ov.retire!=null?ov.retire:retire), sp=(ov.spend!=null?ov.spend:spend), co=(ov.contrib!=null?ov.contrib:contribY);
     var di=(ov.decInc!=null?ov.decInc:decInc), du=(ov.decUntil!=null?ov.decUntil:decUntil), tx=taxRate;
-    var claim=Math.max(62,Math.min(70,ra)), ssben=ssBenefit(claim), bal=start, vals=[], dep=null;
+    var claim=Math.max(62,Math.min(70,ssClaim)), ssben=ssBenefit(claim), bal=start, vals=[], dep=null;
     for(var age=curAge; age<=plan; age++){ var v=Math.max(bal,0); vals.push(Math.round(v));
       if(v<=0&&dep===null&&age>ra) dep=age; var r=rOf(age);
       if(age<ra){ bal=bal*(1+r)+co; }
@@ -2244,7 +2248,11 @@ function renderDecumulation() {
     var standColor=surv?'#10b981':'#ef4444';
     var standMsg=surv?('tu dinero <b>dura a los 95</b> dejando <b>'+fmt(cR.end)+'</b> ✅'):('tu dinero <b>se agota a los '+(cR.dep||'—')+'</b> ❌');
     var decTxt=decInc>0?(' + DEC <b>'+fmt(decInc)+'/año hasta '+decUntil+'</b>'):'';
-    var html='<div style="padding:11px 13px;background:'+standColor+'15;border-left:4px solid '+standColor+';border-radius:8px;margin-bottom:10px">'
+    var hero='<div style="text-align:center;padding:12px;background:#22d3ee15;border:1px solid #22d3ee55;border-radius:10px;margin-bottom:10px">'
+      +'<div style="font-size:11px;color:#94a3b8;letter-spacing:.4px">CON TUS PROMEDIOS REALES — gasto '+fmt(spend)+' · '+(rr*100).toFixed(1)+'% real · inflación '+(infl*100).toFixed(1)+'% · imp '+(taxRate*100).toFixed(0)+'% · SS@'+ssClaim+'</div>'
+      +'<div style="font-size:15px;font-weight:800;color:#22d3ee;margin-top:4px">🎯 Te podés retirar (full) a los <span style="font-size:24px">'+(realAge||'>75')+'</span></div>'
+      +'<div style="font-size:11px;color:#94a3b8;margin-top:2px">…o bajar el ritmo antes manteniendo ingreso de DEC (ver Qué hacer)</div></div>';
+    var html=hero+'<div style="padding:11px 13px;background:'+standColor+'15;border-left:4px solid '+standColor+';border-radius:8px;margin-bottom:10px">'
       +'<div style="font-weight:700;font-size:13px;color:'+standColor+';margin-bottom:4px">📍 DÓNDE ESTÁS</div>'
       +'<div style="font-size:12.5px;line-height:1.7;color:#e2e8f0">Hoy tenés <b>'+fmt(start)+'</b>. Ahorrás <b>$'+Math.round(rb.savMo).toLocaleString()+'/mo</b>, crecés <b>'+(rr*100).toFixed(1)+'%/año real</b> (prom. '+rb.wlab+'). Gasto real <b>'+fmt(spend)+'/año</b>.<br>'
       +'Bajando el ritmo a los <b>'+retire+'</b>'+decTxt+': '+standMsg+'.<br><span style="color:#94a3b8">Meta: dejar '+fmt(floor)+' a los 95.</span></div></div>';
