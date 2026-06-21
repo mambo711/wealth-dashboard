@@ -2905,6 +2905,7 @@
     "v12bNote": "v12b: SS reclamado = edad de retiro (tarjeta dinámica 62/67/70); panel de Parámetros y promedios usados.",
     "v13Note": "v13: Monte Carlo con SEMILLA FIJA (determinista, no salta) — score y edades de confianza del MISMO cálculo (consistentes). Panel muestra período de datos (24 meses Jun24-May26). Verdict suavizado.",
     "v14Note": "v14: el gráfico AHORA es la curva decisión = probabilidad de éxito vs edad de retiro (una línea clara), con líneas 75%/90% y marcador de tu edad. Reemplaza la banda de saldo que confundía.",
-    "v15Note": "v15 realismo: (1) volatilidad realista 10% en vez de 6% medida (serie suave); (2) impuesto efectivo CALCULADO de la mezcla de cuentas (~8%) en vez de 15% plano; (3) patrimonio invertible = NW neto − Miguel(ilíquido) − fondo emergencia(intocable). Más conservador y honesto."
+    "v15Note": "v15 realismo: (1) volatilidad realista 10% en vez de 6% medida (serie suave); (2) impuesto efectivo CALCULADO de la mezcla de cuentas (~8%) en vez de 15% plano; (3) patrimonio invertible = NW neto − Miguel(ilíquido) − fondo emergencia(intocable). Más conservador y honesto.",
+    "v16Note": "v16: volatilidad ahora CALCULADA de la asignación real de cuentas (acciones 15-18% / opciones 25% / futuros 35% / bonos 6% / CDs-cash 0-1%, ponderada con factor de diversificación 0.82) = ~11%. Reemplaza el 10% genérico y el 6% medido (suave)."
   }
 }
