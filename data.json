@@ -2867,6 +2867,12 @@
     "bequestFloor": 150000,
     "annualContrib": 19500,
     "note": "Decumulación en dólares de hoy (real). Acumula 53→60 (+$19.5K/año aportes), luego retira $55K/año; SS $24K/año desde los 67; piso de herencia $150K; plan hasta los 95. Retornos REALES 3/4/5% (nominal − inflación). Curva conservadora se agota antes de los 95 = brecha sin DEC.",
-    "computedFrom": "meta.nwNeto live"
+    "computedFrom": "meta.nwNeto live",
+    "passiveAnnual": 11424,
+    "ctrlDefaults": {
+      "retireAge": 60,
+      "spend": 55000,
+      "extraMonthly": 0
+    }
   }
 }
