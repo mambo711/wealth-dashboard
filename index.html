@@ -2171,8 +2171,27 @@ function renderDecumulation() {
   var contribY=savMo*12;
   function annRet(k){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<2)return (dc.realReturn||0.04);var kk=(k&&k<pg.length)?k:(pg.length-1);var sub=pg.slice(pg.length-1-kk);var nn=sub.length-1;if(sub[0]<=0||nn<=0)return (dc.realReturn||0.04);return Math.pow(sub[sub.length-1]/sub[0],12/nn)-1-infl;}
   var rMean=annRet(0);
-  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.10,Math.sqrt(vv)*Math.sqrt(12));}
-  var mcSd=annVol();
+  function allocVol(){
+    var accs=(dashData&&dashData.accounts)||[], tot=0, wsum=0;
+    function volOf(nm){nm=(nm||'').toLowerCase();
+      if(/miguel|emerg|pepe/.test(nm))return null;
+      if(/trad ira/.test(nm))return 0.06;
+      if(/roth/.test(nm))return 0.16;
+      if(/sep/.test(nm)&&!/cash/.test(nm))return 0.15;
+      if(/etf/.test(nm))return 0.16;
+      if(/tasty/.test(nm))return 0.25;
+      if(/ibkr/.test(nm))return 0.16;
+      if(/photonics/.test(nm))return 0.20;
+      if(/rh /.test(nm))return 0.18;
+      if(/fut/.test(nm))return 0.35;
+      if(/cd/.test(nm))return 0.01;
+      if(/cash/.test(nm))return 0.00;
+      return 0.12;}
+    accs.forEach(function(a){var vol=volOf(a.name||'');if(vol===null)return;var v=+(a.balance||a.value||a.amount||0);tot+=v;wsum+=v*vol;});
+    if(tot<=0)return (dc.mcSd||0.11);
+    return (wsum/tot)*0.82;  // factor de diversificación (correlación<1)
+  }
+  var mcSd=allocVol();
   var nDatos=((dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[]).length;
   var mm=(dashData&&dashData.monthly&&dashData.monthly.months)||[];
   var dataRange=mm.length?(mm[0]+'–'+mm[mm.length-1]):(nDatos+' meses');
@@ -2227,7 +2246,7 @@ function renderDecumulation() {
     +'<li>• Patrimonio invertible hoy: <b>'+fmt(start)+'</b> (NW neto '+fmt(_nw)+' − ilíquido/intocable '+fmt(_excl)+': préstamo Miguel + fondo emergencia)</li>'
     +'<li>• Ahorro real: <b>$'+Math.round(savMo).toLocaleString()+'/mo</b> ('+fmt(savMo*12)+'/año) — surplus actual del dashboard</li>'
     +'<li>• Retorno real: <b>'+(rMean*100).toFixed(1)+'%/año</b> = TWR de tus '+nDatos+' meses ('+((rMean+infl)*100).toFixed(1)+'% nominal) − inflación</li>'
-    +'<li>• Volatilidad: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (realista para tu mezcla con acciones; tu serie mide menos pero es artificialmente suave)</li>'
+    +'<li>• Volatilidad: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (ponderada de tus cuentas: acciones 15-18%, opciones 25%, futuros 35%, bonos 6%, CDs/cash 0-1%; con diversificación)</li>'
     +'<li>• Inflación: <b>'+(infl*100).toFixed(1)+'%/año</b></li>'
     +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB, últimos 12 meses, dólares de hoy)</li>'
     +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 (reclamo = edad de retiro)</li>'
