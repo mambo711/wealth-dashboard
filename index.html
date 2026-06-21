@@ -532,12 +532,18 @@
       <!-- DECUM-CHART v11 (Empower-style): Monte Carlo confidence band + score + spending ability + cards. PRESERVE this block + data.json decumulation. -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 ¿A qué edad me puedo retirar?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Todo en <b>dólares de hoy</b> — la inflación ya está incluida (uso retorno REAL = nominal − inflación, y el gasto mantiene tu poder de compra). Datos reales: ahorro/retorno de tu historial, gasto YNAB, SS real, impuestos. Ajustá edad de retiro y gasto:</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin-bottom:14px">
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Edad de retiro: <span id="decum-retire-v" style="color:#22d3ee;font-weight:700">67</span></div>
-            <input type="range" id="decum-retire" min="55" max="72" step="1" value="67" oninput="document.getElementById('decum-retire-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Gasto anual (real ≈$63K): <span id="decum-spend-v" style="color:#22d3ee;font-weight:700">$63K</span></div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Todo en <b>dólares de hoy</b> — la inflación ya está incluida (uso retorno REAL = nominal − inflación, y el gasto mantiene tu poder de compra). Modela tu SEMI-RETIRO real: bajás el ritmo (downshift), DEC te sigue dando ingreso un tiempo, y elegís cuándo reclamar SS. Todo con tus datos reales:</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 14px;margin-bottom:14px">
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Bajás el ritmo a los: <span id="decum-retire-v" style="color:#22d3ee;font-weight:700">60</span></div>
+            <input type="range" id="decum-retire" min="55" max="72" step="1" value="60" oninput="document.getElementById('decum-retire-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Gasto anual: <span id="decum-spend-v" style="color:#22d3ee;font-weight:700">$63K</span></div>
             <input type="range" id="decum-spend" min="40000" max="90000" step="1000" value="63000" oninput="document.getElementById('decum-spend-v').textContent='$'+Math.round(this.value/1000)+'K'; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Ingreso DEC ($/año): <span id="decum-decinc-v" style="color:#22d3ee;font-weight:700">$40K</span></div>
+            <input type="range" id="decum-decinc" min="0" max="80000" step="5000" value="40000" oninput="document.getElementById('decum-decinc-v').textContent='$'+Math.round(this.value/1000)+'K'; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">DEC hasta los: <span id="decum-decuntil-v" style="color:#22d3ee;font-weight:700">70</span></div>
+            <input type="range" id="decum-decuntil" min="62" max="78" step="1" value="70" oninput="document.getElementById('decum-decuntil-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Reclamo SS a los: <span id="decum-ssclaim-v" style="color:#22d3ee;font-weight:700">67</span></div>
+            <input type="range" id="decum-ssclaim" min="62" max="70" step="1" value="67" oninput="document.getElementById('decum-ssclaim-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
         </div>
         <div id="decum-scorebox" style="display:flex;gap:16px;align-items:center;margin-bottom:14px"></div>
         <canvas id="decumChart" style="max-height:300px"></canvas>
@@ -2163,8 +2169,9 @@ function renderDecumulation() {
   var goalEnd=Math.max(floor,1);
   const mcRuns=1200, SEED=20260621; var taxRate=effTax;
   function gv(id,def){var el=document.getElementById(id);return el?+el.value:def;}
-  const retire=gv('decum-retire',67), spend=gv('decum-spend',63000);
-  const ssClaim=Math.max(62,Math.min(70,retire));
+  const retire=gv('decum-retire',60), spend=gv('decum-spend',63000);
+  const ssClaim=Math.max(62,Math.min(70,gv('decum-ssclaim',67)));
+  const decInc=gv('decum-decinc',0), decUntil=gv('decum-decuntil',70);
   function ssB(c){var p=dc.ssReal||{"62":15372,"67":24024,"70":31428};var a62=+p["62"],a67=+p["67"],a70=+p["70"];if(c<=62)return a62;if(c>=70)return a70;return (c<=67)?a62+(a67-a62)*(c-62)/5:a67+(a70-a67)*(c-67)/3;}
   var ssben=ssB(ssClaim), ssDisp=ssben;
   var savMo=dc.realContribMo||1433;
@@ -2200,17 +2207,17 @@ function renderDecumulation() {
   // seeded RNG (deterministic -> no jumping; paired scenarios across ages)
   var _seed; function _u(){_seed|=0;_seed=_seed+0x6D2B79F5|0;var t=Math.imul(_seed^_seed>>>15,1|_seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;}
   function rn(m,sd){var u1=_u()||1e-9,u2=_u();return m+sd*Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);}
-  function successAt(ra){_seed=SEED;var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),ok=0;
-    for(var k=0;k<mcRuns;k++){var bal=start;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=goalEnd)ok++;}
+  function successAt(ra){_seed=SEED;var cl=ssClaim,sb=ssben,ok=0;
+    for(var k=0;k<mcRuns;k++){var bal=start;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var inc=((age+1>=cl)?sb:0)+((age<decUntil)?decInc:0);var net=spend-inc;var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=goalEnd)ok++;}
     return ok/mcRuns;}
   var succMap={}; for(var ra2=58;ra2<=75;ra2++) succMap[ra2]=successAt(ra2);
   var score=Math.round((succMap[retire]!=null?succMap[retire]:successAt(retire))*100);
   var age90=null,age75=null; for(var ra3=58;ra3<=75;ra3++){if(succMap[ra3]==null)continue;if(age75===null&&succMap[ra3]>=0.75)age75=ra3;if(succMap[ra3]>=0.90){age90=ra3;break;}}
   // band median + p10 at chosen retire (same seed)
   _seed=SEED; var paths=[];
-  for(var k2=0;k2<mcRuns;k2++){var vals=[],bal=start;for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}paths.push(vals);}
+  for(var k2=0;k2<mcRuns;k2++){var vals=[],bal=start;for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var inc=((age+1>=ssClaim)?ssben:0)+((age<decUntil)?decInc:0);var net=spend-inc;var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}paths.push(vals);}
   var med=[],p10=[];for(var ai=0;ai<ages.length;ai++){var col=[];for(var p=0;p<paths.length;p++)col.push(paths[p][ai]);col.sort(function(x,y){return x-y;});med.push(Math.round(col[Math.floor(col.length*0.5)]));p10.push(Math.round(col[Math.floor(col.length*0.1)]));}
-  function endMean(ra,sp){var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var net=(sp||spend)-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
+  function endMean(ra,sp){var cl=ssClaim,sb=ssben,bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var inc=((age+1>=cl)?sb:0)+((age<decUntil)?decInc:0);var net=(sp||spend)-inc;var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
   var lo=0,hi=200000;for(var bi=0;bi<36;bi++){var m=(lo+hi)/2;if(endMean(retire,m)>=goalEnd)lo=m;else hi=m;}
   var projMo=Math.round(lo/12),planMo=Math.round(spend/12);
   if(ctx._chart)ctx._chart.destroy();
@@ -2221,7 +2228,7 @@ function renderDecumulation() {
     {label:'Meta $'+(floor/1000).toFixed(0)+'K',data:ages.map(function(){return floor;}),borderColor:'#f59e0b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false}
   ]},options:{plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},tooltip:{callbacks:{title:function(it){return 'Edad '+it[0].label;},label:function(cc){return cc.dataset.label.split(' (')[0]+': '+fmt(cc.parsed.y);}}}},scales:{y:{ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}},x:{title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===retire)?aa:'';}},grid:{display:false}}}},plugins:[bandPlugin]});
   var scColor=score>=85?'#10b981':(score>=70?'#f59e0b':'#ef4444');
-  var verdict=score>=85?('Sólido — a los '+retire+' aguanta con buen margen.'):(score>=70?('Razonable a los '+retire+', con algo de margen.'):(score>=55?('Ajustado a los '+retire+' — conviene esperar un poco.'):('Bajo a los '+retire+' — arriesgado a este ritmo.')));
+  var verdict=score>=85?('Sólido — bajar el ritmo a los '+retire+' aguanta con buen margen.'):(score>=70?('Razonable bajar a los '+retire+', con algo de margen.'):(score>=55?('Ajustado a los '+retire+' — esperá o sumá ingreso DEC.'):('Bajo a los '+retire+' — arriesgado sin más ingreso DEC.')));
   var sb=document.getElementById('decum-scorebox');
   if(sb){sb.innerHTML='<div style="flex-shrink:0;width:84px;height:84px;border-radius:50%;border:4px solid '+scColor+';display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+scColor+'"><div style="font-size:22px;font-weight:800">'+score+'%</div><div style="font-size:8px;color:#94a3b8">a los '+retire+'</div></div>'
     +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(prob. de que el dinero te dure hasta los 95'+(floor>1000?(' dejando '+fmt(floor)):' sin agotarse')+').</span>'
@@ -2237,7 +2244,8 @@ function renderDecumulation() {
       +'<div style="display:flex;flex-wrap:wrap;gap:8px">'
       +card('🐖','Ahorros',fmt(start)+' hoy · +$'+Math.round(savMo).toLocaleString()+'/mo')
       +card('🏛️','Social Security','Reclamo a los '+ssClaim+' · '+fmt(ssben)+'/año de por vida')
-      +card('🌴','Gasto en retiro','Edad '+retire+' · '+fmt(spend)+'/año (dólares de hoy)')
+      +(decInc>0?card('💼','Ingreso DEC (semi-retiro)','Bajás a los '+retire+' · '+fmt(decInc)+'/año hasta los '+decUntil):'')
+      +card('🌴','Gasto en retiro','Desde los '+retire+' · '+fmt(spend)+'/año (dólares de hoy)')
       +'</div>';}
   var asd=document.getElementById('decum-assumptions');
   if(asd){asd.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:6px">📋 Parámetros y promedios usados (de tus datos reales)</div>'
@@ -2250,7 +2258,8 @@ function renderDecumulation() {
     +'<li>• Volatilidad: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (ponderada de tus cuentas: acciones 15-18%, opciones 25%, futuros 35%, bonos 6%, CDs/cash 0-1%; con diversificación)</li>'
     +'<li>• Inflación: <b>'+(infl*100).toFixed(1)+'%/año</b></li>'
     +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB, últimos 12 meses, dólares de hoy)</li>'
-    +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 (reclamo = edad de retiro)</li>'
+    +'<li>• Ingreso DEC semi-retiro: <b>'+(decInc>0?(fmt(decInc)+'/año hasta los '+decUntil):'ninguno')+'</b> · Reclamo SS a los <b>'+ssClaim+'</b> ('+fmt(ssben)+'/año)</li>'
+    +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 — vos elegís cuándo reclamar (independiente del downshift)</li>'
     +'<li>• Impuesto efectivo: <b>'+(taxRate*100).toFixed(1)+'%</b> (calculado de tu mezcla: SEP/Trad gravable, Roth libre, FL sin impuesto estatal)</li>'
     +'<li>• Meta: <b>'+(floor>1000?(fmt(floor)+' de herencia'):'morir con lo justo (sin herencia)')+'</b> a los '+plan+'</li>'
     +'<li>• Simulación: Monte Carlo <b>'+mcRuns+'</b> escenarios (semilla fija → resultado estable)</li>'
