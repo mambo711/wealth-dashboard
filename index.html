@@ -529,11 +529,23 @@
         <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">—</div></div>
       </div>
       <canvas id="lineChart" style="max-height:300px"></canvas>
-      <!-- DECUM-CHART (2026-06-21): self-computes from nwNeto; PRESERVE this block + data.json decumulation -->
+      <!-- DECUM-CHART v2 (2026-06-21): interactive; self-computes from nwNeto; PRESERVE this block + data.json decumulation -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 Decumulación — ¿hasta qué edad dura el dinero?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy. Retiro a los 60 · gasto $55K/año · SS $24K desde 67 · piso herencia $150K · plan a los 95. Si una curva toca $0 antes de los 95 = brecha (cubrible con DEC).</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy. SS $24K desde 67 · ingreso pasivo ~$11K/año · piso herencia $150K · plan a los 95. Mové las palancas para ver cómo cambia hasta dónde llega.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Edad de retiro</div>
+            <select id="decum-retire" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="58">58</option><option value="60" selected>60</option><option value="62">62</option><option value="65">65</option></select></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Gasto anual (hoy $)</div>
+            <select id="decum-spend" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="45000">$45K</option><option value="50000">$50K</option><option value="55000" selected>$55K</option><option value="60000">$60K</option><option value="65000">$65K</option></select></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Ahorro extra/mes (hasta retiro)</div>
+            <select id="decum-extra" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="500">$500</option><option value="1000">$1,000</option><option value="2000">$2,000</option></select></div>
+        </div>
         <canvas id="decumChart" style="max-height:300px"></canvas>
+        <div id="decum-callout" style="margin-top:10px;padding:10px 12px;background:#0f172a;border-radius:8px;font-size:12px;line-height:1.7;color:#cbd5e1"></div>
+        <div style="font-size:12px;font-weight:700;color:#22d3ee;margin:18px 0 8px">💵 ¿De dónde sale cada año? — cartera vs Seguro Social vs pasivo</div>
+        <canvas id="decumIncomeChart" style="max-height:220px"></canvas>
+        <div style="margin-top:8px;font-size:10.5px;color:#64748b;line-height:1.5">⚠️ Asume ingreso pasivo (~$11K/año) y SS de por vida. Parte del pasivo (interés del préstamo Pepe) es finita — la realidad conservadora es algo menor. No incluye el valor de DEC (upside aparte).</div>
       </div>
       <div style="margin-top:20px;padding:16px;background:#0f172a;border-radius:10px">
         <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:12px">🧮 Estimador: ¿Cuándo llego a FI?</div>
@@ -2140,41 +2152,67 @@ function renderLine() {
 }
 
 function renderDecumulation() {
-  // DECUM-CHART (added 2026-06-21): self-computes from dashMeta.nwNeto each render.
-  // Weekly task must PRESERVE this canvas + the data.json `decumulation` assumptions block.
+  // DECUM-CHART v2 (2026-06-21): interactive; computes from dashMeta.nwNeto. PRESERVE canvas + data.json decumulation.
   const ctx = document.getElementById('decumChart');
   if (!ctx) return;
-  if (ctx._chart) ctx._chart.destroy();
   const dc = (dashData && dashData.decumulation) ? dashData.decumulation : {};
-  const start = (dashMeta && dashMeta.nwNeto) ? dashMeta.nwNeto : (dc.startNW || 0);
-  const curAge = 53, retire = dc.retireAge||60, ssAge = dc.ssAge||67, plan = dc.planAge||95;
-  const spend = dc.spend||55000, ss = dc.ss||24000, floor = dc.bequestFloor||150000, contrib = dc.annualContrib||19500;
-  function curve(r){ var ages=[],vals=[],bal=start;
-    for(var age=curAge; age<=plan; age++){ ages.push(age); vals.push(Math.round(Math.max(bal,0)));
-      if(age<retire){ bal=bal*(1+r)+contrib; } else { var wd=spend-((age+1>=ssAge)?ss:0); bal=(bal-wd)*(1+r); }
+  const start = (dashMeta && dashMeta.nwNeto) ? dashMeta.nwNeto : (dc.startNW||0);
+  const curAge = 53, ssAge = dc.ssAge||67, plan = dc.planAge||95;
+  const ss = dc.ss||24000, passive = dc.passiveAnnual||0, floor = dc.bequestFloor||150000, baseContrib = dc.annualContrib||19500;
+  function gv(id,def){ var el=document.getElementById(id); return el ? +el.value : def; }
+  const retire = gv('decum-retire', (dc.ctrlDefaults&&dc.ctrlDefaults.retireAge)||60);
+  const spend  = gv('decum-spend',  (dc.ctrlDefaults&&dc.ctrlDefaults.spend)||55000);
+  const contrib = baseContrib + gv('decum-extra',0)*12;
+  function curve(r){ var ages=[],vals=[],bal=start,dep=null;
+    for(var age=curAge; age<=plan; age++){ ages.push(age); var v=Math.max(bal,0); vals.push(Math.round(v));
+      if(v<=0 && dep===null && age>retire) dep=age;
+      if(age<retire){ bal=bal*(1+r)+contrib; }
+      else { var wd=spend-((age+1>=ssAge)?ss:0)-passive; bal=(bal-wd)*(1+r); }
       if(bal<0) bal=0; }
-    return {ages:ages, vals:vals}; }
+    return {ages:ages, vals:vals, dep:dep, end:vals[vals.length-1]}; }
   var c3=curve(0.03), c4=curve(0.04), c5=curve(0.05), ages=c4.ages;
+  var bandPlugin={ id:'longevity', afterDatasetsDraw:function(chart){
+    var a=chart.chartArea; if(!a) return; var g=chart.ctx;
+    var marks=[{age:84,txt:'~84 mediana'},{age:90,txt:'~90'},{age:95,txt:'~95 plan'}];
+    g.save(); g.font='10px sans-serif'; g.textAlign='center';
+    marks.forEach(function(mk){ var x=a.left+(a.right-a.left)*(mk.age-curAge)/(plan-curAge);
+      g.strokeStyle='#64748b80'; g.setLineDash([3,3]); g.beginPath(); g.moveTo(x,a.top); g.lineTo(x,a.bottom); g.stroke();
+      g.setLineDash([]); g.fillStyle='#94a3b8'; g.fillText(mk.txt,x,a.top+10); });
+    g.restore(); } };
+  if (ctx._chart) ctx._chart.destroy();
   ctx._chart = new Chart(ctx, {
-    type: 'line',
-    data: { labels: ages, datasets: [
-      { label: '🟢 Optimista 5% real',   data: c5.vals, borderColor:'#10b981', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
-      { label: '🔵 Base 4% real',        data: c4.vals, borderColor:'#3b82f6', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
-      { label: '🔴 Conservador 3% real', data: c3.vals, borderColor:'#ef4444', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
-      { label: 'Piso herencia $'+(floor/1000).toFixed(0)+'K', data: ages.map(function(){return floor;}), borderColor:'#f59e0b', borderDash:[6,4], borderWidth:1.5, pointRadius:0, fill:false }
+    type:'line',
+    data:{ labels:ages, datasets:[
+      { label:'🟢 Optimista 5% real', data:c5.vals, borderColor:'#10b981', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label:'🔵 Base 4% real', data:c4.vals, borderColor:'#3b82f6', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label:'🔴 Conservador 3% real', data:c3.vals, borderColor:'#ef4444', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label:'Piso herencia $'+(floor/1000).toFixed(0)+'K', data:ages.map(function(){return floor;}), borderColor:'#f59e0b', borderDash:[6,4], borderWidth:1.5, pointRadius:0, fill:false }
     ]},
-    options: {
-      plugins: {
-        legend: { display:true, position:'top', labels:{ boxWidth:12, padding:8, font:{size:11}, color:'#e2e8f0' } },
-        tooltip: { callbacks: { title: function(items){return 'Edad '+items[0].label;}, label: function(cc){return cc.dataset.label.replace(/[🟢🔵🔴]\s?/,'')+': '+fmt(cc.parsed.y);} } }
-      },
-      scales: {
-        y: { ticks:{ callback:function(v){return '$'+(v/1000).toFixed(0)+'K';} }, grid:{color:'#33415540'} },
-        x: { title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},
-             ticks:{ callback:function(val){ var a=this.getLabelForValue(val); return (a%5===0||a===60||a===67)?a:''; } }, grid:{display:false} }
-      }
-    }
+    options:{ plugins:{ legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},
+        tooltip:{callbacks:{title:function(items){return 'Edad '+items[0].label;},label:function(cc){return cc.dataset.label.replace(/[🟢🔵🔴]\s?/,'')+': '+fmt(cc.parsed.y);}}} },
+      scales:{ y:{ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}},
+        x:{ title:{display:true,text:'Edad',color:'#64748b',font:{size:11}}, ticks:{callback:function(val){var a=this.getLabelForValue(val);return (a%5===0||a===retire||a===67)?a:'';}}, grid:{display:false} } } },
+    plugins:[bandPlugin]
   });
+  function depTxt(c,name,color){ var t=c.dep?('se agota a los <b>'+c.dep+'</b>'):('dura hasta 95 (termina '+fmt(c.end)+')'); return '<span style="color:'+color+'">●</span> '+name+': '+t; }
+  var co=document.getElementById('decum-callout');
+  if(co){ co.innerHTML='Retiro a los '+retire+' · gasto '+fmt(spend)+'/año (hoy):<br>'+depTxt(c5,'Optimista 5%','#10b981')+' &nbsp; '+depTxt(c4,'Base 4%','#3b82f6')+' &nbsp; '+depTxt(c3,'Conservador 3%','#ef4444'); }
+  var ic=document.getElementById('decumIncomeChart');
+  if(ic){ if(ic._chart) ic._chart.destroy();
+    var iages=[],portArr=[],ssArr=[],passArr=[];
+    for(var age=retire; age<=plan; age++){ iages.push(age); var sy=(age>=ssAge)?ss:0; var draw=Math.max(0,spend-sy-passive); ssArr.push(sy); passArr.push(passive); portArr.push(draw); }
+    ic._chart=new Chart(ic,{ type:'bar',
+      data:{ labels:iages, datasets:[
+        { label:'Cartera (retiro)', data:portArr, backgroundColor:'#3b82f6' },
+        { label:'Seguro Social', data:ssArr, backgroundColor:'#10b981' },
+        { label:'Ingreso pasivo', data:passArr, backgroundColor:'#22d3ee' }
+      ]},
+      options:{ plugins:{ legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},
+          tooltip:{callbacks:{title:function(items){return 'Edad '+items[0].label;},label:function(cc){return cc.dataset.label+': '+fmt(cc.parsed.y);}}} },
+        scales:{ x:{stacked:true,ticks:{callback:function(val){var a=this.getLabelForValue(val);return (a%5===0||a===67)?a:'';}},grid:{display:false}},
+          y:{stacked:true,ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}} } }
+    });
+  }
 }
 
 function makeAcctChart(canvasId, label, data, color) {
