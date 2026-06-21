@@ -2270,12 +2270,15 @@ function renderDecumulation() {
   var needStart=null; if(succStart(3000000)>=0.90){var lo2=0,hi2=3000000;for(var z=0;z<22;z++){var mid=(lo2+hi2)/2;if(succStart(mid)>=0.90)hi2=mid;else lo2=mid;}needStart=hi2;}
   var mtot=(dashData&&dashData.monthly&&dashData.monthly.total)||[];
   var nwTrend=(mtot.length>=7)?(mtot[mtot.length-1]-mtot[mtot.length-7]):null;
+  var _pg6=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];
+  var twr6=(_pg6.length>=7)?(_pg6[_pg6.length-1]/_pg6[_pg6.length-7]-1):null;
   var tk=document.getElementById('decum-track');
   if(tk){var trackTxt;
     if(needStart!=null){var gap=start-needStart; trackTxt='Para <b>90%</b> con este plan necesitás <b>'+fmt(needStart)+'</b> invertible hoy · tenés <b>'+fmt(start)+'</b> → <b style="color:'+(gap>=0?'#10b981':'#ef4444')+'">'+(gap>=0?('vas adelantado '+fmt(gap)+' ✅'):('te faltan '+fmt(-gap)+' ⚠️'))+'</b>';}
     else {trackTxt='Para 90% con este plan harían falta >$3M hoy — bajá el downshift, subí el ingreso DEC o bajá el gasto.';}
     var trendTxt=(nwTrend!=null)?('<br><span style="color:#94a3b8">Tu patrimonio (nominal) en 6 meses: <b style="color:'+(nwTrend>=0?'#10b981':'#ef4444')+'">'+(nwTrend>=0?'+':'')+fmt(nwTrend)+' '+(nwTrend>=0?'↑':'↓')+'</b></span>'):'';
-    tk.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:4px">📍 ¿Voy en camino?</div><div style="font-size:11.5px;line-height:1.7;color:#cbd5e1">'+trackTxt+trendTxt+'</div>';}
+    var twrTxt=(twr6!=null)?('<br><span style="color:#94a3b8">Rendimiento de tu cartera (TWR 6m, sin flujos): <b style="color:'+(twr6>=0?'#10b981':'#ef4444')+'">'+(twr6>=0?'+':'')+(twr6*100).toFixed(1)+'% '+(twr6>=0?'↑':'↓')+'</b></span>'):'';
+    tk.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:4px">📍 ¿Voy en camino?</div><div style="font-size:11.5px;line-height:1.7;color:#cbd5e1">'+trackTxt+twrTxt+trendTxt+'</div>';}
 }
 
 function makeAcctChart(canvasId, label, data, color) {
