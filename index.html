@@ -529,6 +529,12 @@
         <div class="fi-card"><div class="fc-label">Ahorro anual necesario</div><div class="fc-value" style="color:#ef4444" id="fi-gap-annual">—</div></div>
       </div>
       <canvas id="lineChart" style="max-height:300px"></canvas>
+      <!-- DECUM-CHART (2026-06-21): self-computes from nwNeto; PRESERVE this block + data.json decumulation -->
+      <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
+        <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 Decumulación — ¿hasta qué edad dura el dinero?</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy. Retiro a los 60 · gasto $55K/año · SS $24K desde 67 · piso herencia $150K · plan a los 95. Si una curva toca $0 antes de los 95 = brecha (cubrible con DEC).</div>
+        <canvas id="decumChart" style="max-height:300px"></canvas>
+      </div>
       <div style="margin-top:20px;padding:16px;background:#0f172a;border-radius:10px">
         <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:12px">🧮 Estimador: ¿Cuándo llego a FI?</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px">
@@ -959,7 +965,7 @@ function showTab(id, fromRestore) {
   try { localStorage.setItem('mmw_tab', id); } catch(e) {}
   if (id === 'resumen') { renderPie(); renderNWHistorico(); }
   if (id === 'allocation') renderBar();
-  if (id === 'fi') renderLine();
+  if (id === 'fi') { renderLine(); renderDecumulation(); }
   if (id === 'performance') { renderPerformanceCharts(); renderHeatmap(); }
   if (id === 'flujo') renderWaterfall();
 }
@@ -2130,6 +2136,44 @@ function renderLine() {
     options: { plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 12, padding: 8, font: { size: 11 }, color: '#e2e8f0' } },
         tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(/[🟢🔵🔴]\s?/,'') + ': ' + fmt(ctx.parsed.y) } } },
       scales: { y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#33415540' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function renderDecumulation() {
+  // DECUM-CHART (added 2026-06-21): self-computes from dashMeta.nwNeto each render.
+  // Weekly task must PRESERVE this canvas + the data.json `decumulation` assumptions block.
+  const ctx = document.getElementById('decumChart');
+  if (!ctx) return;
+  if (ctx._chart) ctx._chart.destroy();
+  const dc = (dashData && dashData.decumulation) ? dashData.decumulation : {};
+  const start = (dashMeta && dashMeta.nwNeto) ? dashMeta.nwNeto : (dc.startNW || 0);
+  const curAge = 53, retire = dc.retireAge||60, ssAge = dc.ssAge||67, plan = dc.planAge||95;
+  const spend = dc.spend||55000, ss = dc.ss||24000, floor = dc.bequestFloor||150000, contrib = dc.annualContrib||19500;
+  function curve(r){ var ages=[],vals=[],bal=start;
+    for(var age=curAge; age<=plan; age++){ ages.push(age); vals.push(Math.round(Math.max(bal,0)));
+      if(age<retire){ bal=bal*(1+r)+contrib; } else { var wd=spend-((age+1>=ssAge)?ss:0); bal=(bal-wd)*(1+r); }
+      if(bal<0) bal=0; }
+    return {ages:ages, vals:vals}; }
+  var c3=curve(0.03), c4=curve(0.04), c5=curve(0.05), ages=c4.ages;
+  ctx._chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: ages, datasets: [
+      { label: '🟢 Optimista 5% real',   data: c5.vals, borderColor:'#10b981', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label: '🔵 Base 4% real',        data: c4.vals, borderColor:'#3b82f6', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label: '🔴 Conservador 3% real', data: c3.vals, borderColor:'#ef4444', fill:false, tension:0.25, pointRadius:0, borderWidth:2.5 },
+      { label: 'Piso herencia $'+(floor/1000).toFixed(0)+'K', data: ages.map(function(){return floor;}), borderColor:'#f59e0b', borderDash:[6,4], borderWidth:1.5, pointRadius:0, fill:false }
+    ]},
+    options: {
+      plugins: {
+        legend: { display:true, position:'top', labels:{ boxWidth:12, padding:8, font:{size:11}, color:'#e2e8f0' } },
+        tooltip: { callbacks: { title: function(items){return 'Edad '+items[0].label;}, label: function(cc){return cc.dataset.label.replace(/[🟢🔵🔴]\s?/,'')+': '+fmt(cc.parsed.y);} } }
+      },
+      scales: {
+        y: { ticks:{ callback:function(v){return '$'+(v/1000).toFixed(0)+'K';} }, grid:{color:'#33415540'} },
+        x: { title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},
+             ticks:{ callback:function(val){ var a=this.getLabelForValue(val); return (a%5===0||a===60||a===67)?a:''; } }, grid:{display:false} }
+      }
+    }
   });
 }
 
