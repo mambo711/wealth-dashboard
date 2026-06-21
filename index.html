@@ -532,16 +532,18 @@
       <!-- DECUM-CHART v2 (2026-06-21): interactive; self-computes from nwNeto; PRESERVE this block + data.json decumulation -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 Decumulación — ¿hasta qué edad dura el dinero?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy, neto de impuestos. UNA línea = tu trayectoria real (retorno y ahorro salen de tu historial; cambia la ventana abajo). SS real del statement. El panel te dice dónde estás y qué hacer.</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy, neto de impuestos. UNA línea = tu trayectoria real (retorno/ahorro de tu historial). Gasto real $63K/año. DEC = ingreso de semi-retiro (no venta). SS real del statement. El panel te dice dónde estás y qué hacer.</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:12px">
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Edad de retiro</div>
             <select id="decum-retire" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="58">58</option><option value="60" selected>60</option><option value="62">62</option><option value="65">65</option></select></div>
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Gasto anual (hoy $)</div>
-            <select id="decum-spend" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="45000">$45K</option><option value="50000">$50K</option><option value="55000" selected>$55K</option><option value="60000">$60K</option><option value="65000">$65K</option></select></div>
+            <select id="decum-spend" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="50000">$50K</option><option value="55000">$55K</option><option value="60000">$60K</option><option value="63000" selected>$63K (real)</option><option value="70000">$70K</option></select></div>
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Ahorro extra/mes (hasta retiro)</div>
             <select id="decum-extra" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="500">$500</option><option value="1000">$1,000</option><option value="2000">$2,000</option></select></div>
-          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Valor DEC al retiro</div>
-            <select id="decum-dec" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="100000">$100K</option><option value="250000">$250K</option><option value="500000">$500K</option></select></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Ingreso DEC semi-retiro ($/año)</div>
+            <select id="decum-decinc" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0" selected>$0</option><option value="20000">$20K</option><option value="30000">$30K</option><option value="40000">$40K</option><option value="50000">$50K</option></select></div>
+          <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">DEC hasta los...</div>
+            <select id="decum-decuntil" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="65">65</option><option value="68">68</option><option value="70" selected>70</option><option value="72">72</option><option value="75">75</option></select></div>
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Impuesto efectivo</div>
             <select id="decum-tax" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="0">0%</option><option value="0.10">10%</option><option value="0.15" selected>15%</option><option value="0.22">22%</option></select></div>
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Promedio retorno</div>
@@ -2159,22 +2161,21 @@ function renderLine() {
 }
 
 function renderDecumulation() {
-  // DECUM-CHART v7 (2026-06-21): ONE real-trajectory line; return+savings auto-computed from history (selectable window); clear DÓNDE ESTÁS / QUÉ HACER. PRESERVE block + data.json decumulation.
+  // DECUM-CHART v8 (2026-06-21): ONE real line; real spend ($63K); DEC = semi-retirement INCOME (not sale); dynamic return/savings; DÓNDE ESTÁS / QUÉ HACER. PRESERVE block + data.json decumulation.
   const ctx = document.getElementById('decumChart'); if (!ctx) return;
   const dc = (dashData && dashData.decumulation) ? dashData.decumulation : {};
   const start = (dashMeta && dashMeta.nwNeto) ? dashMeta.nwNeto : (dc.startNW||0);
   const curAge = 53, plan = dc.planAge||95, floor = dc.bequestFloor||150000, infl = dc.inflation||0.033;
   const mcSd = dc.mcSd||0.11, mcRuns = dc.mcRuns||1500;
   function gv(id,def){ var el=document.getElementById(id); return el?+el.value:def; }
-  const retire=gv('decum-retire',60), spend=gv('decum-spend',55000), extraMo=gv('decum-extra',0);
-  const decValue=gv('decum-dec',0), taxRate=gv('decum-tax',0.15), win=gv('decum-window',0);
+  const retire=gv('decum-retire',60), spend=gv('decum-spend',63000), extraMo=gv('decum-extra',0);
+  const decInc=gv('decum-decinc',0), decUntil=gv('decum-decuntil',70), taxRate=gv('decum-tax',0.15), win=gv('decum-window',0);
   function ssBenefit(claim){ var pts=dc.ssReal||{"62":15372,"67":24024,"70":31428}; var a62=+pts["62"],a67=+pts["67"],a70=+pts["70"];
     if(claim<=62) return a62; if(claim>=70) return a70; return (claim<=67)?a62+(a67-a62)*(claim-62)/5:a67+(a70-a67)*(claim-67)/3; }
-  // ── DYNAMIC real basis from history (auto-updates weekly) ──
   function realBasis(){
     var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];
-    var ret=dc.realReturn||0.04, nom=ret+infl, wlab='—', months=0;
-    if(pg.length>=2){ var k=(win&&win<pg.length)?win:(pg.length-1); var sub=pg.slice(pg.length-1-k); var n=sub.length-1; months=n;
+    var ret=dc.realReturn||0.04, nom=ret+infl, wlab='—';
+    if(pg.length>=2){ var k=(win&&win<pg.length)?win:(pg.length-1); var sub=pg.slice(pg.length-1-k); var n=sub.length-1;
       if(sub[0]>0&&n>0){ nom=Math.pow(sub[sub.length-1]/sub[0],12/n)-1; ret=nom-infl; wlab=(win?'últ. '+win+'m':n+'m (todo)'); } }
     var savMo=dc.realContribMo||1433;
     if(dashData&&dashData.metricsResumen){ for(var i=0;i<dashData.metricsResumen.length;i++){ var it=dashData.metricsResumen[i];
@@ -2182,12 +2183,15 @@ function renderDecumulation() {
     return {ret:ret, nom:nom, savMo:savMo, wlab:wlab};
   }
   var rb=realBasis(), rr=rb.ret, contribY=rb.savMo*12+extraMo*12;
+  // sim: DEC is INCOME during semi-retirement (downshift age .. decUntil), reduces portfolio draw like SS
   function sim(rOf, ov){ ov=ov||{};
-    var ra=(ov.retire!=null?ov.retire:retire), sp=(ov.spend!=null?ov.spend:spend), co=(ov.contrib!=null?ov.contrib:contribY), dv=(ov.decValue!=null?ov.decValue:decValue), tx=taxRate;
+    var ra=(ov.retire!=null?ov.retire:retire), sp=(ov.spend!=null?ov.spend:spend), co=(ov.contrib!=null?ov.contrib:contribY);
+    var di=(ov.decInc!=null?ov.decInc:decInc), du=(ov.decUntil!=null?ov.decUntil:decUntil), tx=taxRate;
     var claim=Math.max(62,Math.min(70,ra)), ssben=ssBenefit(claim), bal=start, vals=[], dep=null;
-    for(var age=curAge; age<=plan; age++){ if(age===ra) bal+=dv; var v=Math.max(bal,0); vals.push(Math.round(v));
+    for(var age=curAge; age<=plan; age++){ var v=Math.max(bal,0); vals.push(Math.round(v));
       if(v<=0&&dep===null&&age>ra) dep=age; var r=rOf(age);
-      if(age<ra){ bal=bal*(1+r)+co; } else { var net=sp-((age+1>=claim)?ssben:0); var gr=net>0?net/(1-tx):net; bal=(bal-gr)*(1+r); }
+      if(age<ra){ bal=bal*(1+r)+co; }
+      else { var inc=((age+1>=claim)?ssben:0)+((age<du)?di:0); var net=sp-inc; var gr=net>0?net/(1-tx):net; bal=(bal-gr)*(1+r); }
       if(bal<0) bal=0; }
     return {vals:vals,dep:dep,end:vals[vals.length-1],claim:claim,ssben:ssben}; }
   function det(r){return function(){return r;};}
@@ -2200,9 +2204,10 @@ function renderDecumulation() {
       g.strokeStyle='#64748b80'; g.setLineDash([3,3]); g.beginPath(); g.moveTo(x,ar.top); g.lineTo(x,ar.bottom); g.stroke();
       g.setLineDash([]); g.fillStyle='#94a3b8'; g.fillText(mk.txt,x,ar.top+10); }); g.restore(); } };
   if (ctx._chart) ctx._chart.destroy();
+  var decLbl = decInc>0 ? (' · DEC $'+(decInc/1000)+'K/año→'+decUntil) : '';
   ctx._chart=new Chart(ctx,{ type:'line',
     data:{ labels:ages, datasets:[
-      { label:'Tu trayectoria real ('+(rr*100).toFixed(1)+'% real · ahorro $'+Math.round(rb.savMo).toLocaleString()+'/mo · '+rb.wlab+')', data:cR.vals, borderColor:lc, backgroundColor:lc+'18', fill:true, tension:0.25, pointRadius:0, borderWidth:3 },
+      { label:'Tu trayectoria real ('+(rr*100).toFixed(1)+'% real · ahorro $'+Math.round(rb.savMo).toLocaleString()+'/mo'+decLbl+')', data:cR.vals, borderColor:lc, backgroundColor:lc+'18', fill:true, tension:0.25, pointRadius:0, borderWidth:3 },
       { label:'Meta herencia $'+(floor/1000).toFixed(0)+'K', data:ages.map(function(){return floor;}), borderColor:'#f59e0b', borderDash:[6,4], borderWidth:1.5, pointRadius:0, fill:false }
     ]},
     options:{ plugins:{ legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},
@@ -2211,44 +2216,47 @@ function renderDecumulation() {
         x:{ title:{display:true,text:'Edad',color:'#64748b',font:{size:11}}, ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===retire||aa===cR.claim)?aa:'';}}, grid:{display:false} } } },
     plugins:[bandPlugin] });
   var co=document.getElementById('decum-callout'); if(co) co.innerHTML='';
-  // income chart
+  // income chart: portfolio + SS + DEC income layer
   var ic=document.getElementById('decumIncomeChart');
-  if(ic){ if(ic._chart) ic._chart.destroy(); var iages=[],portArr=[],ssArr=[];
-    for(var ag=retire; ag<=plan; ag++){ iages.push(ag); var sy=(ag>=cR.claim)?cR.ssben:0; ssArr.push(Math.round(sy)); portArr.push(Math.max(0,Math.round(spend-sy))); }
-    ic._chart=new Chart(ic,{ type:'bar', data:{ labels:iages, datasets:[
-        { label:'Cartera (retiro, neto)', data:portArr, backgroundColor:'#3b82f6' },
-        { label:'Seguro Social', data:ssArr, backgroundColor:'#10b981' } ]},
+  if(ic){ if(ic._chart) ic._chart.destroy(); var iages=[],portArr=[],ssArr=[],decArr=[];
+    for(var ag=retire; ag<=plan; ag++){ iages.push(ag); var sy=(ag>=cR.claim)?cR.ssben:0; var dy=(ag<decUntil)?decInc:0;
+      ssArr.push(Math.round(sy)); decArr.push(Math.round(dy)); portArr.push(Math.max(0,Math.round(spend-sy-dy))); }
+    var ds=[{ label:'Cartera (retiro, neto)', data:portArr, backgroundColor:'#3b82f6' },
+            { label:'Seguro Social', data:ssArr, backgroundColor:'#10b981' }];
+    if(decInc>0) ds.push({ label:'Ingreso DEC', data:decArr, backgroundColor:'#a78bfa' });
+    ic._chart=new Chart(ic,{ type:'bar', data:{ labels:iages, datasets:ds },
       options:{ plugins:{ legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},
           tooltip:{callbacks:{title:function(items){return 'Edad '+items[0].label;},label:function(cc){return cc.dataset.label+': '+fmt(cc.parsed.y);}}} },
-        scales:{ x:{stacked:true,ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===cR.claim)?aa:'';}},grid:{display:false}},
+        scales:{ x:{stacked:true,ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===cR.claim||aa===decUntil)?aa:'';}},grid:{display:false}},
           y:{stacked:true,ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}} } } }); }
-  // Monte Carlo (mean = real return)
+  // Monte Carlo
   function randN(m,sd){ var u1=Math.random()||1e-9,u2=Math.random(); return m+sd*Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2); }
   var ok=0; for(var k2=0;k2<mcRuns;k2++){ if(sim(function(){return randN(rr,mcSd);}).end>=floor) ok++; } var mcPct=Math.round(ok/mcRuns*100);
-  // real (min feasible) retirement age, using dynamic rr
-  function simReal(ra,ov){ ov=ov||{}; return sim(det(ov.r!=null?ov.r:rr),{retire:ra,spend:(ov.spend!=null?ov.spend:spend),contrib:(ov.contrib!=null?ov.contrib:contribY),decValue:(ov.dec!=null?ov.dec:decValue)}); }
-  var realAge=null; for(var ra=58;ra<=73;ra++){ if(simReal(ra).end>=floor){ realAge=ra; break; } }
-  function nSav(){ var lo=0,hi=180000; for(var i=0;i<38;i++){var m=(lo+hi)/2; if(simReal(retire,{contrib:m}).end>=floor) hi=m; else lo=m;} return Math.round(hi/12); }
-  function mSpend(){ var lo=0,hi=180000; for(var i=0;i<38;i++){var m=(lo+hi)/2; if(simReal(retire,{spend:m}).end>=floor) lo=m; else hi=m;} return Math.round(lo/100)*100; }
-  function nDec(){ var lo=0,hi=1500000; for(var i=0;i<38;i++){var m=(lo+hi)/2; if(simReal(retire,{dec:m}).end>=floor) hi=m; else lo=m;} return Math.round(hi/1000)*1000; }
+  // full-retirement min age (NO DEC income)
+  function simReal(ra,ov){ ov=ov||{}; return sim(det(ov.r!=null?ov.r:rr),{retire:ra,spend:(ov.spend!=null?ov.spend:spend),contrib:(ov.contrib!=null?ov.contrib:contribY),decInc:(ov.decInc!=null?ov.decInc:0),decUntil:0}); }
+  var realAge=null; for(var ra=58;ra<=75;ra++){ if(simReal(ra).end>=floor){ realAge=ra; break; } }
+  // levers for SELECTED downshift age
+  function nSav(){ var lo=0,hi=200000; for(var i=0;i<40;i++){var m=(lo+hi)/2; if(sim(det(rr),{retire:retire,contrib:m,decInc:0,decUntil:0}).end>=floor) hi=m; else lo=m;} return Math.round(hi/12); }
+  function mSpend(){ var lo=0,hi=200000; for(var i=0;i<40;i++){var m=(lo+hi)/2; if(sim(det(rr),{retire:retire,spend:m,decInc:0,decUntil:0}).end>=floor) lo=m; else hi=m;} return Math.round(lo/100)*100; }
+  function nDecInc(){ var lo=0,hi=150000; for(var i=0;i<40;i++){var m=(lo+hi)/2; if(sim(det(rr),{retire:retire,decInc:m,decUntil:decUntil}).end>=floor) hi=m; else lo=m;} return Math.round(hi/100)*100; }
   var rp=document.getElementById('decum-results');
   if(rp){
     var standColor=surv?'#10b981':'#ef4444';
-    var standMsg = surv
-      ? ('tu dinero <b>dura hasta los 95</b> dejando <b>'+fmt(cR.end)+'</b> ✅')
-      : ('tu dinero <b>se agota a los '+(cR.dep||'—')+'</b> ❌');
+    var standMsg=surv?('tu dinero <b>dura a los 95</b> dejando <b>'+fmt(cR.end)+'</b> ✅'):('tu dinero <b>se agota a los '+(cR.dep||'—')+'</b> ❌');
+    var decTxt=decInc>0?(' + DEC <b>'+fmt(decInc)+'/año hasta '+decUntil+'</b>'):'';
     var html='<div style="padding:11px 13px;background:'+standColor+'15;border-left:4px solid '+standColor+';border-radius:8px;margin-bottom:10px">'
       +'<div style="font-weight:700;font-size:13px;color:'+standColor+';margin-bottom:4px">📍 DÓNDE ESTÁS</div>'
-      +'<div style="font-size:12.5px;line-height:1.7;color:#e2e8f0">Hoy tenés <b>'+fmt(start)+'</b>. A tu ritmo real (ahorrás <b>$'+Math.round(rb.savMo).toLocaleString()+'/mo</b>, crecés <b>'+(rr*100).toFixed(1)+'%/año real</b> · prom. '+rb.wlab+').<br>'
-      +'Retirándote a los <b>'+retire+'</b>: '+standMsg+'.<br><span style="color:#94a3b8">Meta: dejar '+fmt(floor)+' a los 95.</span></div></div>';
+      +'<div style="font-size:12.5px;line-height:1.7;color:#e2e8f0">Hoy tenés <b>'+fmt(start)+'</b>. Ahorrás <b>$'+Math.round(rb.savMo).toLocaleString()+'/mo</b>, crecés <b>'+(rr*100).toFixed(1)+'%/año real</b> (prom. '+rb.wlab+'). Gasto real <b>'+fmt(spend)+'/año</b>.<br>'
+      +'Bajando el ritmo a los <b>'+retire+'</b>'+decTxt+': '+standMsg+'.<br><span style="color:#94a3b8">Meta: dejar '+fmt(floor)+' a los 95.</span></div></div>';
     html+='<div style="padding:11px 13px;background:#0f172a;border-radius:8px">'
       +'<div style="font-weight:700;font-size:13px;color:#22d3ee;margin-bottom:6px">🧭 QUÉ HACER</div>'
       +'<div style="font-size:12.5px;line-height:1.8;color:#e2e8f0">';
-    if(surv){ html+='✅ <b>Vas bien.</b> Apuntando a los '+retire+' llegás a tu meta. Tu edad mínima de retiro a este ritmo es <b style="color:#22d3ee">'+(realAge||'>73')+'</b>.'; }
-    else { var A=nSav(),B=mSpend(),C=nDec();
-      html+='👉 A tu ritmo, tu edad de retiro alcanzable es <b style="color:#22d3ee">'+(realAge||'>73')+' años</b>.<br>'
-        +'Para retirarte a los <b>'+retire+'</b>, hacé <b>UNA</b> de:<br>'
-        +'&nbsp;&nbsp;💰 ahorrar <b>'+fmt(A)+'/mo</b> (hoy $'+Math.round(rb.savMo).toLocaleString()+') &nbsp; 📉 gastar <b>≤'+fmt(B)+'/año</b> &nbsp; 🏢 vender DEC por <b>~'+fmt(C)+'</b>'; }
+    if(surv){ html+='✅ <b>Funciona.</b> Con esta combinación llegás a tu meta. Si pararas <b>del todo</b> (sin DEC), tu edad mínima sería <b style="color:#22d3ee">'+(realAge||'>75')+'</b>.'; }
+    else { var DI=nDecInc(), A=nSav(), B=mSpend();
+      html+='Para bajar el ritmo a los <b>'+retire+'</b>, <b>UNA</b> de:<br>'
+        +'&nbsp;&nbsp;💼 mantener DEC dándote <b>~'+fmt(DI)+'/año hasta los '+decUntil+'</b> (hoy DEC te da ~$80K)<br>'
+        +'&nbsp;&nbsp;💰 ahorrar <b>'+fmt(A)+'/mo</b> antes (hoy $'+Math.round(rb.savMo).toLocaleString()+') &nbsp; 📉 gastar <b>≤'+fmt(B)+'/año</b><br>'
+        +'&nbsp;&nbsp;🗓️ o parar del todo a los <b style="color:#22d3ee">'+(realAge||'>75')+'</b>'; }
     html+='<br><span style="color:#94a3b8;font-size:11px">🎲 Confianza (Monte Carlo, '+mcRuns+' escenarios): '+mcPct+'%</span></div></div>';
     rp.innerHTML=html;
   }
