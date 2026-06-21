@@ -2893,6 +2893,11 @@
     "v6Note": "v6: SS usa datos reales del statement SSA (interpolados) en vez de factores genéricos.",
     "inflation": 0.033,
     "returnWindow": 0,
-    "v7Note": "v7: UNA línea = trayectoria real; retorno y ahorro se calculan dinámicamente del historial (portfolioGlobal TWR + surplus), con selector de ventana (default todo). Panel DÓNDE ESTÁS / QUÉ HACER."
+    "v7Note": "v7: UNA línea = trayectoria real; retorno y ahorro se calculan dinámicamente del historial (portfolioGlobal TWR + surplus), con selector de ventana (default todo). Panel DÓNDE ESTÁS / QUÉ HACER.",
+    "realSpend": 63011,
+    "spendDefault": 63000,
+    "decIncomeDefault": 0,
+    "decUntilDefault": 70,
+    "v8Note": "v8: gasto = real YNAB $63K/año; DEC reconvertido de venta a INGRESO de semi-retiro (monto/año + hasta-edad), igual que SS reduce el retiro de cartera. Veredicto usa DEC-income."
   }
 }
