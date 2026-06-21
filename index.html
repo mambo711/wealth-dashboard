@@ -532,7 +532,7 @@
       <!-- DECUM-CHART v11 (Empower-style): Monte Carlo confidence band + score + spending ability + cards. PRESERVE this block + data.json decumulation. -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 ¿A qué edad me puedo retirar?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Todo en <b>dólares de hoy</b> — la inflación ya está incluida (uso retorno REAL = nominal − inflación, y el gasto mantiene tu poder de compra). Datos reales: ahorro/retorno de tu historial, gasto YNAB, SS real, impuestos. Ajustá edad de retiro y gasto:</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Todo en <b>dólares de hoy</b> — la inflación ya está incluida (uso retorno REAL = nominal − inflación, y el gasto mantiene tu poder de compra). Datos reales: ahorro/retorno de tu historial, gasto YNAB, SS real, impuestos. El gráfico muestra tu probabilidad de éxito según la edad de retiro:</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin-bottom:14px">
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Edad de retiro: <span id="decum-retire-v" style="color:#22d3ee;font-weight:700">67</span></div>
             <input type="range" id="decum-retire" min="55" max="72" step="1" value="67" oninput="document.getElementById('decum-retire-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
@@ -2181,20 +2181,20 @@ function renderDecumulation() {
   var succMap={}; for(var ra2=58;ra2<=75;ra2++) succMap[ra2]=successAt(ra2);
   var score=Math.round((succMap[retire]!=null?succMap[retire]:successAt(retire))*100);
   var age90=null,age75=null; for(var ra3=58;ra3<=75;ra3++){if(succMap[ra3]==null)continue;if(age75===null&&succMap[ra3]>=0.75)age75=ra3;if(succMap[ra3]>=0.90){age90=ra3;break;}}
-  // band median + p10 at chosen retire (same seed)
-  _seed=SEED; var paths=[];
-  for(var k2=0;k2<mcRuns;k2++){var vals=[],bal=start;for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}paths.push(vals);}
-  var med=[],p10=[];for(var ai=0;ai<ages.length;ai++){var col=[];for(var p=0;p<paths.length;p++)col.push(paths[p][ai]);col.sort(function(x,y){return x-y;});med.push(Math.round(col[Math.floor(col.length*0.5)]));p10.push(Math.round(col[Math.floor(col.length*0.1)]));}
+  // spending ability (deterministic, mean return)
   function endMean(ra,sp){var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var net=(sp||spend)-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
   var lo=0,hi=200000;for(var bi=0;bi<36;bi++){var m=(lo+hi)/2;if(endMean(retire,m)>=floor)lo=m;else hi=m;}
   var projMo=Math.round(lo/12),planMo=Math.round(spend/12);
+  // success-by-retirement-age curve (THE decision chart)
+  var sAges=[], sVals=[];
+  for(var sa2=58; sa2<=72; sa2++){ if(succMap[sa2]!=null){ sAges.push(sa2); sVals.push(Math.round(succMap[sa2]*100)); } }
   if(ctx._chart)ctx._chart.destroy();
-  var bandPlugin={id:'lon',afterDatasetsDraw:function(ch){var ar=ch.chartArea;if(!ar)return;var g=ch.ctx;[{a:84,t:'~84'},{a:90,t:'~90'},{a:95,t:'95'}].forEach(function(mk){var x=ar.left+(ar.right-ar.left)*(mk.a-curAge)/(plan-curAge);g.save();g.strokeStyle='#64748b66';g.setLineDash([3,3]);g.beginPath();g.moveTo(x,ar.top);g.lineTo(x,ar.bottom);g.stroke();g.setLineDash([]);g.fillStyle='#94a3b8';g.font='10px sans-serif';g.textAlign='center';g.fillText(mk.t,x,ar.top+10);g.restore();});}};
-  ctx._chart=new Chart(ctx,{type:'line',data:{labels:ages,datasets:[
-    {label:'Pesimista (P10)',data:p10,borderColor:'#60a5fa',backgroundColor:'transparent',fill:false,tension:0.25,pointRadius:0,borderWidth:1.5,borderDash:[5,3]},
-    {label:'Mediana',data:med,borderColor:'#2563eb',backgroundColor:'#2563eb40',fill:'-1',tension:0.25,pointRadius:0,borderWidth:2.5},
-    {label:'Meta $'+(floor/1000).toFixed(0)+'K',data:ages.map(function(){return floor;}),borderColor:'#f59e0b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false}
-  ]},options:{plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},tooltip:{callbacks:{title:function(it){return 'Edad '+it[0].label;},label:function(cc){return cc.dataset.label.split(' (')[0]+': '+fmt(cc.parsed.y);}}}},scales:{y:{ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}},x:{title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===retire)?aa:'';}},grid:{display:false}}}},plugins:[bandPlugin]});
+  ctx._chart=new Chart(ctx,{type:'line',data:{labels:sAges,datasets:[
+    {label:'Probabilidad de éxito',data:sVals,borderColor:'#22d3ee',backgroundColor:'#22d3ee22',fill:true,tension:0.3,pointRadius:0,borderWidth:3},
+    {label:'Seguro (90%)',data:sAges.map(function(){return 90;}),borderColor:'#10b981',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false},
+    {label:'Aceptable (75%)',data:sAges.map(function(){return 75;}),borderColor:'#f59e0b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false},
+    {label:'Tu edad ('+retire+')',data:sAges.map(function(x){return x===retire?score:null;}),borderColor:'#e2e8f0',backgroundColor:'#e2e8f0',pointRadius:6,showLine:false}
+  ]},options:{plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},tooltip:{callbacks:{title:function(it){return 'Si te retirás a los '+it[0].label;},label:function(cc){return cc.dataset.label.split(' (')[0]+': '+cc.parsed.y+'%';}}}},scales:{y:{min:0,max:100,ticks:{callback:function(v){return v+'%';}},grid:{color:'#33415540'},title:{display:true,text:'Prob. que el dinero dure a 95',color:'#64748b',font:{size:10}}},x:{title:{display:true,text:'Edad de retiro',color:'#64748b',font:{size:11}},grid:{display:false}}}}});
   var scColor=score>=85?'#10b981':(score>=70?'#f59e0b':'#ef4444');
   var verdict=score>=85?('Sólido — a los '+retire+' aguanta con buen margen.'):(score>=70?('Razonable a los '+retire+', con algo de margen.'):(score>=55?('Ajustado a los '+retire+' — conviene esperar un poco.'):('Bajo a los '+retire+' — arriesgado a este ritmo.')));
   var sb=document.getElementById('decum-scorebox');
