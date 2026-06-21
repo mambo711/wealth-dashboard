@@ -532,7 +532,7 @@
       <!-- DECUM-CHART v2 (2026-06-21): interactive; self-computes from nwNeto; PRESERVE this block + data.json decumulation -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 Decumulación — ¿hasta qué edad dura el dinero?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy. SS $24K desde 67 · ingreso pasivo ~$11K/año · piso herencia $150K · plan a los 95. Mové las palancas para ver cómo cambia hasta dónde llega.</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Dólares de hoy. SS $24K desde 67 · piso herencia $150K · plan a los 95. Dividendos/intereses ya están dentro del retorno de la cartera (no se suman aparte). Mové las palancas.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:3px">Edad de retiro</div>
             <select id="decum-retire" onchange="renderDecumulation()" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:13px"><option value="58">58</option><option value="60" selected>60</option><option value="62">62</option><option value="65">65</option></select></div>
@@ -545,7 +545,7 @@
         <div id="decum-callout" style="margin-top:10px;padding:10px 12px;background:#0f172a;border-radius:8px;font-size:12px;line-height:1.7;color:#cbd5e1"></div>
         <div style="font-size:12px;font-weight:700;color:#22d3ee;margin:18px 0 8px">💵 ¿De dónde sale cada año? — cartera vs Seguro Social vs pasivo</div>
         <canvas id="decumIncomeChart" style="max-height:220px"></canvas>
-        <div style="margin-top:8px;font-size:10.5px;color:#64748b;line-height:1.5">⚠️ Asume ingreso pasivo (~$11K/año) y SS de por vida. Parte del pasivo (interés del préstamo Pepe) es finita — la realidad conservadora es algo menor. No incluye el valor de DEC (upside aparte).</div>
+        <div style="margin-top:8px;font-size:10.5px;color:#64748b;line-height:1.5">ℹ️ El gasto se cubre con retiros de la cartera + SS (desde 67). Dividendos, interés de CDs y de Betterment NO se suman aparte: ya están en el retorno total de la cartera. El interés del préstamo Pepe es finito y hoy está redirigido a Michalitas. No incluye el valor de DEC (upside aparte).</div>
       </div>
       <div style="margin-top:20px;padding:16px;background:#0f172a;border-radius:10px">
         <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:12px">🧮 Estimador: ¿Cuándo llego a FI?</div>
@@ -2167,7 +2167,7 @@ function renderDecumulation() {
     for(var age=curAge; age<=plan; age++){ ages.push(age); var v=Math.max(bal,0); vals.push(Math.round(v));
       if(v<=0 && dep===null && age>retire) dep=age;
       if(age<retire){ bal=bal*(1+r)+contrib; }
-      else { var wd=spend-((age+1>=ssAge)?ss:0)-passive; bal=(bal-wd)*(1+r); }
+      else { var wd=spend-((age+1>=ssAge)?ss:0); bal=(bal-wd)*(1+r); }
       if(bal<0) bal=0; }
     return {ages:ages, vals:vals, dep:dep, end:vals[vals.length-1]}; }
   var c3=curve(0.03), c4=curve(0.04), c5=curve(0.05), ages=c4.ages;
@@ -2199,13 +2199,12 @@ function renderDecumulation() {
   if(co){ co.innerHTML='Retiro a los '+retire+' · gasto '+fmt(spend)+'/año (hoy):<br>'+depTxt(c5,'Optimista 5%','#10b981')+' &nbsp; '+depTxt(c4,'Base 4%','#3b82f6')+' &nbsp; '+depTxt(c3,'Conservador 3%','#ef4444'); }
   var ic=document.getElementById('decumIncomeChart');
   if(ic){ if(ic._chart) ic._chart.destroy();
-    var iages=[],portArr=[],ssArr=[],passArr=[];
-    for(var age=retire; age<=plan; age++){ iages.push(age); var sy=(age>=ssAge)?ss:0; var draw=Math.max(0,spend-sy-passive); ssArr.push(sy); passArr.push(passive); portArr.push(draw); }
+    var iages=[],portArr=[],ssArr=[];
+    for(var age=retire; age<=plan; age++){ iages.push(age); var sy=(age>=ssAge)?ss:0; var draw=Math.max(0,spend-sy); ssArr.push(sy); portArr.push(draw); }
     ic._chart=new Chart(ic,{ type:'bar',
       data:{ labels:iages, datasets:[
         { label:'Cartera (retiro)', data:portArr, backgroundColor:'#3b82f6' },
-        { label:'Seguro Social', data:ssArr, backgroundColor:'#10b981' },
-        { label:'Ingreso pasivo', data:passArr, backgroundColor:'#22d3ee' }
+        { label:'Seguro Social', data:ssArr, backgroundColor:'#10b981' }
       ]},
       options:{ plugins:{ legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},
           tooltip:{callbacks:{title:function(items){return 'Edad '+items[0].label;},label:function(cc){return cc.dataset.label+': '+fmt(cc.parsed.y);}}} },
