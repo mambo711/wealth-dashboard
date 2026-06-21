@@ -532,7 +532,7 @@
       <!-- DECUM-CHART v11 (Empower-style): Monte Carlo confidence band + score + spending ability + cards. PRESERVE this block + data.json decumulation. -->
       <div style="margin-top:22px;border-top:1px solid #334155;padding-top:16px">
         <div style="font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">📉 ¿A qué edad me puedo retirar?</div>
-        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Proyección Monte Carlo con tus datos reales: ahorro y retorno de tu historial, gasto YNAB, SS real, inflación e impuestos. Ajustá tu edad de retiro y gasto:</div>
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">Todo en <b>dólares de hoy</b> — la inflación ya está incluida (uso retorno REAL = nominal − inflación, y el gasto mantiene tu poder de compra). Datos reales: ahorro/retorno de tu historial, gasto YNAB, SS real, impuestos. Ajustá edad de retiro y gasto:</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin-bottom:14px">
           <div><div style="color:#94a3b8;font-size:11px;margin-bottom:1px">Edad de retiro: <span id="decum-retire-v" style="color:#22d3ee;font-weight:700">67</span></div>
             <input type="range" id="decum-retire" min="55" max="72" step="1" value="67" oninput="document.getElementById('decum-retire-v').textContent=this.value; renderDecumulation();" style="width:100%;accent-color:#22d3ee;margin-top:2px"></div>
@@ -2202,7 +2202,7 @@ function renderDecumulation() {
       +'<div style="display:flex;flex-wrap:wrap;gap:8px">'
       +card('🐖','Ahorros',fmt(start)+' hoy · +$'+Math.round(savMo).toLocaleString()+'/mo')
       +card('🏛️','Social Security','Edad 67 · '+fmt(ssDisp)+'/año de por vida')
-      +card('🌴','Gasto en retiro','Edad '+retire+' · '+fmt(spend)+'/año')
+      +card('🌴','Gasto en retiro','Edad '+retire+' · '+fmt(spend)+'/año (dólares de hoy)')
       +'</div>';}
 }
 
