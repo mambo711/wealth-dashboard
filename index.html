@@ -2153,9 +2153,14 @@ function renderDecumulation() {
   // DECUM v13: seeded Monte Carlo (deterministic, no jumping) + consistent score/confidence ages. PRESERVE + data.json decumulation.
   const ctx=document.getElementById('decumChart'); if(!ctx) return;
   const dc=(dashData&&dashData.decumulation)?dashData.decumulation:{};
-  const start=(dashMeta&&dashMeta.nwNeto)?dashMeta.nwNeto:(dc.startNW||0);
+  var _nw=(dashMeta&&dashMeta.nwNeto)?dashMeta.nwNeto:(dc.startNW||0);
+  var _accs=(dashData&&dashData.accounts)||[], _excl=0,_taxDef=0,_roth=0,_taxOther=0;
+  _accs.forEach(function(a){var nm=(a.name||'').toLowerCase(),v=+(a.balance||a.value||a.amount||0);
+    if(/miguel|emerg/.test(nm)){_excl+=v;} else if(/roth/.test(nm)){_roth+=v;} else if(/sep ira|trad ira|traditional/.test(nm)){_taxDef+=v;} else {_taxOther+=v;}});
+  const start=_nw-_excl;
+  var _tb=_taxDef+_roth+_taxOther, effTax=_tb>0?(_taxDef*0.12+_taxOther*0.06)/_tb:0.12;
   const curAge=53, plan=dc.planAge||95, floor=dc.bequestFloor||150000, infl=dc.inflation||0.033;
-  const taxRate=0.15, mcRuns=1200, SEED=20260621;
+  const mcRuns=1200, SEED=20260621; var taxRate=effTax;
   function gv(id,def){var el=document.getElementById(id);return el?+el.value:def;}
   const retire=gv('decum-retire',67), spend=gv('decum-spend',63000);
   const ssClaim=Math.max(62,Math.min(70,retire));
@@ -2166,7 +2171,7 @@ function renderDecumulation() {
   var contribY=savMo*12;
   function annRet(k){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<2)return (dc.realReturn||0.04);var kk=(k&&k<pg.length)?k:(pg.length-1);var sub=pg.slice(pg.length-1-kk);var nn=sub.length-1;if(sub[0]<=0||nn<=0)return (dc.realReturn||0.04);return Math.pow(sub[sub.length-1]/sub[0],12/nn)-1-infl;}
   var rMean=annRet(0);
-  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.06,Math.sqrt(vv)*Math.sqrt(12));}
+  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.10,Math.sqrt(vv)*Math.sqrt(12));}
   var mcSd=annVol();
   var nDatos=((dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[]).length;
   var mm=(dashData&&dashData.monthly&&dashData.monthly.months)||[];
@@ -2219,14 +2224,14 @@ function renderDecumulation() {
     +'<ul style="list-style:none;padding:0;margin:0;font-size:11.5px;line-height:1.95;color:#cbd5e1">'
     +'<li>• 📅 Período de datos: <b>últimos '+nDatos+' meses</b> ('+dataRange+')</li>'
     +'<li>• Edad actual <b>'+curAge+'</b> · plan hasta los <b>'+plan+'</b></li>'
-    +'<li>• Patrimonio invertible hoy: <b>'+fmt(start)+'</b> (NW neto)</li>'
+    +'<li>• Patrimonio invertible hoy: <b>'+fmt(start)+'</b> (NW neto '+fmt(_nw)+' − ilíquido/intocable '+fmt(_excl)+': préstamo Miguel + fondo emergencia)</li>'
     +'<li>• Ahorro real: <b>$'+Math.round(savMo).toLocaleString()+'/mo</b> ('+fmt(savMo*12)+'/año) — surplus actual del dashboard</li>'
     +'<li>• Retorno real: <b>'+(rMean*100).toFixed(1)+'%/año</b> = TWR de tus '+nDatos+' meses ('+((rMean+infl)*100).toFixed(1)+'% nominal) − inflación</li>'
-    +'<li>• Volatilidad real: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (de los mismos '+nDatos+' meses)</li>'
+    +'<li>• Volatilidad: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (realista para tu mezcla con acciones; tu serie mide menos pero es artificialmente suave)</li>'
     +'<li>• Inflación: <b>'+(infl*100).toFixed(1)+'%/año</b></li>'
     +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB, últimos 12 meses, dólares de hoy)</li>'
     +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 (reclamo = edad de retiro)</li>'
-    +'<li>• Impuesto efectivo: <b>'+(taxRate*100).toFixed(0)+'%</b> (estimado combinado)</li>'
+    +'<li>• Impuesto efectivo: <b>'+(taxRate*100).toFixed(1)+'%</b> (calculado de tu mezcla: SEP/Trad gravable, Roth libre, FL sin impuesto estatal)</li>'
     +'<li>• Meta de herencia: <b>'+fmt(floor)+'</b> a los '+plan+'</li>'
     +'<li>• Simulación: Monte Carlo <b>'+mcRuns+'</b> escenarios (semilla fija → resultado estable)</li>'
     +'</ul>';}
