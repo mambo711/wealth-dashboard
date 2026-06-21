@@ -2150,36 +2150,44 @@ function renderLine() {
 }
 
 function renderDecumulation() {
-  // DECUM v11 (Empower-style): Monte Carlo confidence band + score + spending ability + cards. PRESERVE + data.json decumulation.
+  // DECUM v13: seeded Monte Carlo (deterministic, no jumping) + consistent score/confidence ages. PRESERVE + data.json decumulation.
   const ctx=document.getElementById('decumChart'); if(!ctx) return;
   const dc=(dashData&&dashData.decumulation)?dashData.decumulation:{};
   const start=(dashMeta&&dashMeta.nwNeto)?dashMeta.nwNeto:(dc.startNW||0);
   const curAge=53, plan=dc.planAge||95, floor=dc.bequestFloor||150000, infl=dc.inflation||0.033;
-  const taxRate=0.15, mcRuns=700;
-  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.06,Math.sqrt(vv)*Math.sqrt(12));}
-  const mcSd=annVol();
+  const taxRate=0.15, mcRuns=1200, SEED=20260621;
   function gv(id,def){var el=document.getElementById(id);return el?+el.value:def;}
   const retire=gv('decum-retire',67), spend=gv('decum-spend',63000);
   const ssClaim=Math.max(62,Math.min(70,retire));
   function ssB(c){var p=dc.ssReal||{"62":15372,"67":24024,"70":31428};var a62=+p["62"],a67=+p["67"],a70=+p["70"];if(c<=62)return a62;if(c>=70)return a70;return (c<=67)?a62+(a67-a62)*(c-62)/5:a67+(a70-a67)*(c-67)/3;}
-  var ssben=ssB(ssClaim), ssDisp=ssB(ssClaim);
+  var ssben=ssB(ssClaim), ssDisp=ssben;
   var savMo=dc.realContribMo||1433;
   if(dashData&&dashData.metricsResumen){for(var i=0;i<dashData.metricsResumen.length;i++){var it=dashData.metricsResumen[i];if(/surplus/i.test(it.label)&&it.value){var n=parseFloat((''+it.value).replace(/[^0-9.\-]/g,''));if(!isNaN(n)&&n>0){savMo=n;break;}}}}
   var contribY=savMo*12;
   function annRet(k){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<2)return (dc.realReturn||0.04);var kk=(k&&k<pg.length)?k:(pg.length-1);var sub=pg.slice(pg.length-1-kk);var nn=sub.length-1;if(sub[0]<=0||nn<=0)return (dc.realReturn||0.04);return Math.pow(sub[sub.length-1]/sub[0],12/nn)-1-infl;}
   var rMean=annRet(0);
+  function annVol(){var pg=(dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[];if(pg.length<3)return (dc.mcSd||0.11);var rs=[];for(var q=1;q<pg.length;q++)rs.push(pg[q]/pg[q-1]-1);var mn=rs.reduce(function(a,b){return a+b;},0)/rs.length;var vv=rs.reduce(function(a,b){return a+(b-mn)*(b-mn);},0)/rs.length;return Math.max(0.06,Math.sqrt(vv)*Math.sqrt(12));}
+  var mcSd=annVol();
+  var nDatos=((dashData&&dashData.twr&&dashData.twr.portfolioGlobal)||[]).length;
+  var mm=(dashData&&dashData.monthly&&dashData.monthly.months)||[];
+  var dataRange=mm.length?(mm[0]+'–'+mm[mm.length-1]):(nDatos+' meses');
   var ages=[];for(var a=curAge;a<=plan;a++)ages.push(a);
-  function randN(m,sd){var u1=Math.random()||1e-9,u2=Math.random();return m+sd*Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);}
-  function pathVals(ra,sp,rOf){var bal=start,vals=[];for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));if(age<ra){bal=bal*(1+rOf())+contribY;}else{var net=sp-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rOf());}if(bal<0)bal=0;}return vals;}
-  var paths=[],ok=0;
-  for(var k=0;k<mcRuns;k++){var v=pathVals(retire,spend,function(){return randN(rMean,mcSd);});paths.push(v);if(v[v.length-1]>=floor)ok++;}
-  var score=Math.round(ok/mcRuns*100);
-  var med=[],p10=[];
-  for(var ai=0;ai<ages.length;ai++){var col=[];for(var p=0;p<paths.length;p++)col.push(paths[p][ai]);col.sort(function(x,y){return x-y;});med.push(Math.round(col[Math.floor(col.length*0.5)]));p10.push(Math.round(col[Math.floor(col.length*0.1)]));}
-  function endMean(ra,sp){var cl=Math.max(62,Math.min(70,ra)),sb2=ssB(cl);var bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var net=(sp||spend)-((age+1>=cl)?sb2:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
-  var feas=null;for(var ra=curAge+1;ra<=80;ra++){if(endMean(ra)>=floor){feas=ra;break;}}
-  var lo=0,hi=200000;for(var i2=0;i2<36;i2++){var m=(lo+hi)/2;if(endMean(retire,m)>=floor)lo=m;else hi=m;}
-  var projMo=Math.round(lo/12), planMo=Math.round(spend/12);
+  // seeded RNG (deterministic -> no jumping; paired scenarios across ages)
+  var _seed; function _u(){_seed|=0;_seed=_seed+0x6D2B79F5|0;var t=Math.imul(_seed^_seed>>>15,1|_seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;}
+  function rn(m,sd){var u1=_u()||1e-9,u2=_u();return m+sd*Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);}
+  function successAt(ra){_seed=SEED;var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),ok=0;
+    for(var k=0;k<mcRuns;k++){var bal=start;for(var age=curAge;age<=plan;age++){var r=rn(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}if(bal>=floor)ok++;}
+    return ok/mcRuns;}
+  var succMap={}; for(var ra2=58;ra2<=75;ra2++) succMap[ra2]=successAt(ra2);
+  var score=Math.round((succMap[retire]!=null?succMap[retire]:successAt(retire))*100);
+  var age90=null,age75=null; for(var ra3=58;ra3<=75;ra3++){if(succMap[ra3]==null)continue;if(age75===null&&succMap[ra3]>=0.75)age75=ra3;if(succMap[ra3]>=0.90){age90=ra3;break;}}
+  // band median + p10 at chosen retire (same seed)
+  _seed=SEED; var paths=[];
+  for(var k2=0;k2<mcRuns;k2++){var vals=[],bal=start;for(var age=curAge;age<=plan;age++){vals.push(Math.max(bal,0));var r=rn(rMean,mcSd);if(age<retire){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=ssClaim)?ssben:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}paths.push(vals);}
+  var med=[],p10=[];for(var ai=0;ai<ages.length;ai++){var col=[];for(var p=0;p<paths.length;p++)col.push(paths[p][ai]);col.sort(function(x,y){return x-y;});med.push(Math.round(col[Math.floor(col.length*0.5)]));p10.push(Math.round(col[Math.floor(col.length*0.1)]));}
+  function endMean(ra,sp){var cl=Math.max(62,Math.min(70,ra)),sb=ssB(cl),bal=start;for(var age=curAge;age<=plan;age++){if(age<ra){bal=bal*(1+rMean)+contribY;}else{var net=(sp||spend)-((age+1>=cl)?sb:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+rMean);}if(bal<0)bal=0;}return bal;}
+  var lo=0,hi=200000;for(var bi=0;bi<36;bi++){var m=(lo+hi)/2;if(endMean(retire,m)>=floor)lo=m;else hi=m;}
+  var projMo=Math.round(lo/12),planMo=Math.round(spend/12);
   if(ctx._chart)ctx._chart.destroy();
   var bandPlugin={id:'lon',afterDatasetsDraw:function(ch){var ar=ch.chartArea;if(!ar)return;var g=ch.ctx;[{a:84,t:'~84'},{a:90,t:'~90'},{a:95,t:'95'}].forEach(function(mk){var x=ar.left+(ar.right-ar.left)*(mk.a-curAge)/(plan-curAge);g.save();g.strokeStyle='#64748b66';g.setLineDash([3,3]);g.beginPath();g.moveTo(x,ar.top);g.lineTo(x,ar.bottom);g.stroke();g.setLineDash([]);g.fillStyle='#94a3b8';g.font='10px sans-serif';g.textAlign='center';g.fillText(mk.t,x,ar.top+10);g.restore();});}};
   ctx._chart=new Chart(ctx,{type:'line',data:{labels:ages,datasets:[
@@ -2187,26 +2195,17 @@ function renderDecumulation() {
     {label:'Pesimista (P10)',data:p10,borderColor:'#60a5fa',backgroundColor:'transparent',fill:false,tension:0.25,pointRadius:0,borderWidth:1.5,borderDash:[5,3]},
     {label:'Meta $'+(floor/1000).toFixed(0)+'K',data:ages.map(function(){return floor;}),borderColor:'#f59e0b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false}
   ]},options:{plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,padding:8,font:{size:11},color:'#e2e8f0'}},tooltip:{callbacks:{title:function(it){return 'Edad '+it[0].label;},label:function(cc){return cc.dataset.label.split(' (')[0]+': '+fmt(cc.parsed.y);}}}},scales:{y:{ticks:{callback:function(v){return '$'+(v/1000).toFixed(0)+'K';}},grid:{color:'#33415540'}},x:{title:{display:true,text:'Edad',color:'#64748b',font:{size:11}},ticks:{callback:function(val){var aa=this.getLabelForValue(val);return (aa%5===0||aa===retire)?aa:'';}},grid:{display:false}}}},plugins:[bandPlugin]});
-  // confidence-age scan (when can you retire with 90% / 75%)
-  function endRand(ra){var cl=Math.max(62,Math.min(70,ra)),sb2=ssB(cl);var bal=start;for(var age=curAge;age<=plan;age++){var r=randN(rMean,mcSd);if(age<ra){bal=bal*(1+r)+contribY;}else{var net=spend-((age+1>=cl)?sb2:0);var gr=net>0?net/(1-taxRate):net;bal=(bal-gr)*(1+r);}if(bal<0)bal=0;}return bal;}
-  function succ(ra,runs){var okk=0;for(var z=0;z<runs;z++)if(endRand(ra)>=floor)okk++;return okk/runs;}
-  var age90=null, age75=null;
-  for(var ra2=curAge+4;ra2<=75;ra2++){var sc2=succ(ra2,360);if(age75===null&&sc2>=0.75)age75=ra2;if(sc2>=0.90){age90=ra2;break;}}
-  // score box (confidence-framed)
   var scColor=score>=85?'#10b981':(score>=70?'#f59e0b':'#ef4444');
-  var verdict=score>=85?('Sólido — a los '+retire+' tu plan aguanta con buen margen.'):(score>=70?('Aceptable a los '+retire+', pero no holgado.'):('A los '+retire+' es arriesgado — la probabilidad es baja.'));
+  var verdict=score>=85?('Sólido — a los '+retire+' aguanta con buen margen.'):(score>=70?('Razonable a los '+retire+', con algo de margen.'):(score>=55?('Ajustado a los '+retire+' — conviene esperar un poco.'):('Bajo a los '+retire+' — arriesgado a este ritmo.')));
   var sb=document.getElementById('decum-scorebox');
   if(sb){sb.innerHTML='<div style="flex-shrink:0;width:84px;height:84px;border-radius:50%;border:4px solid '+scColor+';display:flex;flex-direction:column;align-items:center;justify-content:center;color:'+scColor+'"><div style="font-size:22px;font-weight:800">'+score+'%</div><div style="font-size:8px;color:#94a3b8">a los '+retire+'</div></div>'
     +'<div style="font-size:13px;line-height:1.6;color:#e2e8f0">'+verdict+' <span style="color:#94a3b8">(prob. de que el dinero dure a 95 dejando '+fmt(floor)+').</span>'
     +'<br><b style="color:#10b981">🎯 Retiro seguro (90%): a los '+(age90||'>75')+'</b> &nbsp; <span style="color:#f59e0b">aceptable (75%): a los '+(age75||'>75')+'</span>'
     +'<br><span style="color:#94a3b8;font-size:11px">Con tu retorno real '+(rMean*100).toFixed(1)+'% y volatilidad real '+(mcSd*100).toFixed(0)+'% · ahorro $'+Math.round(savMo).toLocaleString()+'/mo</span></div>';}
-  // spending ability bar
   var sa=document.getElementById('decum-spendability');
-  if(sa){var pct=Math.min(100,Math.round(planMo/Math.max(projMo,1)*100));
-    sa.innerHTML='<div style="font-size:12px;font-weight:700;color:#e2e8f0;margin-bottom:6px">Capacidad de gasto (a los '+retire+')</div>'
-      +'<div style="font-size:11px;color:#94a3b8;display:flex;justify-content:space-between"><span>Sostenible (proyectado)</span><b style="color:#10b981">$'+projMo.toLocaleString()+'/mo</b></div>'
-      +'<div style="font-size:11px;color:#94a3b8;display:flex;justify-content:space-between"><span>Tu gasto real (planeado)</span><b style="color:'+(planMo<=projMo?'#10b981':'#ef4444')+'">$'+planMo.toLocaleString()+'/mo</b></div>';}
-  // cards
+  if(sa){sa.innerHTML='<div style="font-size:12px;font-weight:700;color:#e2e8f0;margin-bottom:6px">Capacidad de gasto (a los '+retire+')</div>'
+    +'<div style="font-size:11px;color:#94a3b8;display:flex;justify-content:space-between"><span>Sostenible (proyectado)</span><b style="color:#10b981">$'+projMo.toLocaleString()+'/mo</b></div>'
+    +'<div style="font-size:11px;color:#94a3b8;display:flex;justify-content:space-between"><span>Tu gasto real (planeado)</span><b style="color:'+(planMo<=projMo?'#10b981':'#ef4444')+'">$'+planMo.toLocaleString()+'/mo</b></div>';}
   var cd=document.getElementById('decum-cards');
   if(cd){function card(icon,title,sub){return '<div style="flex:1;min-width:150px;background:#0f172a;border-radius:10px;padding:10px 12px"><div style="font-size:12px;font-weight:700;color:#e2e8f0">'+icon+' '+title+'</div><div style="font-size:11px;color:#94a3b8;margin-top:2px">'+sub+'</div></div>';}
     cd.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:6px">Ingresos y gasto en retiro</div>'
@@ -2218,17 +2217,18 @@ function renderDecumulation() {
   var asd=document.getElementById('decum-assumptions');
   if(asd){asd.innerHTML='<div style="font-size:12px;font-weight:700;color:#22d3ee;margin-bottom:6px">📋 Parámetros y promedios usados (de tus datos reales)</div>'
     +'<ul style="list-style:none;padding:0;margin:0;font-size:11.5px;line-height:1.95;color:#cbd5e1">'
+    +'<li>• 📅 Período de datos: <b>últimos '+nDatos+' meses</b> ('+dataRange+')</li>'
     +'<li>• Edad actual <b>'+curAge+'</b> · plan hasta los <b>'+plan+'</b></li>'
     +'<li>• Patrimonio invertible hoy: <b>'+fmt(start)+'</b> (NW neto)</li>'
     +'<li>• Ahorro real: <b>$'+Math.round(savMo).toLocaleString()+'/mo</b> ('+fmt(savMo*12)+'/año) — surplus actual del dashboard</li>'
-    +'<li>• Retorno real: <b>'+(rMean*100).toFixed(1)+'%/año</b> = tu TWR histórico ('+((rMean+infl)*100).toFixed(1)+'% nominal) − inflación</li>'
-    +'<li>• Volatilidad real: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (calculada de tu historial)</li>'
+    +'<li>• Retorno real: <b>'+(rMean*100).toFixed(1)+'%/año</b> = TWR de tus '+nDatos+' meses ('+((rMean+infl)*100).toFixed(1)+'% nominal) − inflación</li>'
+    +'<li>• Volatilidad real: <b>'+(mcSd*100).toFixed(0)+'%/año</b> (de los mismos '+nDatos+' meses)</li>'
     +'<li>• Inflación: <b>'+(infl*100).toFixed(1)+'%/año</b></li>'
-    +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB últ. 12m, dólares de hoy)</li>'
-    +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70</li>'
+    +'<li>• Gasto: <b>'+fmt(spend)+'/año</b> (YNAB, últimos 12 meses, dólares de hoy)</li>'
+    +'<li>• Social Security (tu statement): <b>'+fmt(ssB(62))+'</b> / <b>'+fmt(ssB(67))+'</b> / <b>'+fmt(ssB(70))+'</b> a 62 / 67 / 70 (reclamo = edad de retiro)</li>'
     +'<li>• Impuesto efectivo: <b>'+(taxRate*100).toFixed(0)+'%</b> (estimado combinado)</li>'
     +'<li>• Meta de herencia: <b>'+fmt(floor)+'</b> a los '+plan+'</li>'
-    +'<li>• Simulación: Monte Carlo '+mcRuns+' escenarios</li>'
+    +'<li>• Simulación: Monte Carlo <b>'+mcRuns+'</b> escenarios (semilla fija → resultado estable)</li>'
     +'</ul>';}
 }
 
