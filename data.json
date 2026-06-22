@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "19 Junio 2026",
     "weeklyFocusDate": "Semana del 22 Jun",
-    "nwBruto": 465153,
+    "nwBruto": 463957,
     "nwBrutoDelta": "▲$7,162 vs Jun 15 — DEC checking +$8.3K (buffer alcanzado)",
     "nwDeltaUp": true,
-    "nwNeto": 390444,
-    "nwNetoDelta": "▲ vs Jun 15 ($382,198→$390,444) — DEC cash cruza el buffer + RH al alza (in-chat)",
+    "nwNeto": 389248,
+    "nwNetoDelta": "▲ vs Jun 15 ($382,198→$389,248) — DEC cash cruza el buffer; futuros −17% sem",
     "fiPct": 43,
-    "fiGap": 509556,
+    "fiGap": 510752,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -47,23 +47,23 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 62 BUENO. Hito de la semana: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 94/100 ($235,534) sigue siendo la fortaleza. Vigilar: BP de futuros ~$280 (colchón fino, equity −8.9% semanal) y sleeve oro en 0% (re-establecer). Deuda 25/100 sigue siendo el lastre principal ($74,709).",
+    "healthDiagnostic": "Score 62 BUENO. Hito: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 94/100 ($235,533) sigue siendo la fortaleza. Futuros: BP sano ($1,466/$1,488 ✅) pero equity −17% semanal ($4,409→$3,630) — monitorear, no urgente. Sleeve oro 0% (re-establecer). Deuda 25/100 sigue siendo el lastre ($74,709).",
     "retirementCore": 235534,
-    "totalBruto": 465153,
+    "totalBruto": 463957,
     "tacticalHeader": "$34,339 (margen $1,098 — leverage 103.2% ✅)",
-    "footerNote": "Datos: TradeStation REST (live Jun 19) · TT Relay (Jun 19) · IBKR/RH (Alberto in-chat Jun 19) · Xero balance sheet+P&L (live Jun 19) · S&P multpl (Jun 18) · Juneteenth",
+    "footerNote": "Datos: TradeStation REST API live (SEP/Tactical/Futures Jun 19) · TT Relay Jun 19 · IBKR/RH (Alberto in-chat) · Xero live · S&P multpl Jun 18 · Juneteenth",
     "debtTotal": 74709,
     "debtDelta": "▲+$923 vs Jun 12 ($73,786→$74,709; Amex Gold +$685, Chase Ink +$321)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 109556,
-    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $390,444 = 78%.",
-    "totalAssets": 465153,
+    "fiBlendedGap": 110752,
+    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $389,248 = 78%.",
+    "totalAssets": 463957,
     "totalDebt": 74709,
-    "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP ~$272 🚨",
-    "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP ~$290 🚨",
+    "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — Eq $1,804, BP $1,466 ✅",
+    "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — Eq $1,826, BP $1,488 ✅",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
@@ -82,11 +82,11 @@
     ],
     "decMonthlyAvg": 5870,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 4018,
+    "futuresEquity": 3630,
     "lastTacticalMargin": 1098.38,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 78,
-    "fiGapWithDEC": 109556,
+    "fiGapWithDEC": 110752,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -215,7 +215,7 @@
     "posiciones": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Sin moves CRÍTICO activos — vigilar BP de futuros (~$280, colchón fino) y mantener stops según régimen DEFENSIVO. Ver Resumen."
+      "text": "Sin moves CRÍTICO — futuros con BP sano ($1,466/$1,488 ✅) pero equity −17% semanal: monitorear. Mantener stops según régimen DEFENSIVO. Ver Resumen."
     },
     "cuentas": {
       "color": "#f59e0b",
@@ -642,7 +642,7 @@
     {
       "name": "SEP IRA (TS)",
       "cat": "Retiro",
-      "value": 140207,
+      "value": 139399,
       "color": "#2563eb"
     },
     {
@@ -702,13 +702,13 @@
     {
       "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 2003,
+      "value": 1804,
       "color": "#ef4444"
     },
     {
       "name": "TS Futures VLV23",
       "cat": "Trading",
-      "value": 2015,
+      "value": 1826,
       "color": "#f87171"
     },
     {
@@ -883,7 +883,7 @@
     ]
   },
   "sepIRA": {
-    "header": "$140,207 Equity LIVE (Jun 19)",
+    "header": "$140,206 Equity LIVE (Jun 19, incl. $807 cash)",
     "positions": [
       {
         "symbol": "VOO",
@@ -1745,7 +1745,7 @@
       1832,
       1900,
       2198,
-      2003
+      1804
     ],
     "sp": [
       100,
@@ -1845,7 +1845,7 @@
       1851,
       1918,
       2211,
-      2015
+      1826
     ],
     "futCombined": [
       12500,
@@ -1895,7 +1895,7 @@
       3683,
       3818,
       4409,
-      4018
+      3630
     ]
   },
   "sources": {
@@ -2274,7 +2274,7 @@
       35.8,
       37.13,
       43.0,
-      39.19
+      35.29
     ],
     "sp": [
       100,
@@ -2421,7 +2421,7 @@
       39.8,
       41.24,
       47.5,
-      43.29
+      39.23
     ]
   },
   "allocationAlerts": [
@@ -2529,22 +2529,22 @@
       {
         "urgency": "URGENTE",
         "urgencyColor": "#f59e0b",
-        "icon": "🚨",
-        "action": "Reducir exposición de futuros o añadir colchón de margen — BP ~$272/$290 (colchón <2%)",
-        "from": "TS Futures PKG27+VLV23",
-        "to": "Cierre parcial / efectivo",
-        "amount": "1 contrato",
-        "why": "El colchón de buying power es crítico; un movimiento adverso en cobre/gas fuerza liquidación forzada. Equity cayó −8.9% en la semana ($4,409→$4,018)."
-      },
-      {
-        "urgency": "URGENTE",
-        "urgencyColor": "#f59e0b",
         "icon": "🟡",
         "action": "Re-establecer hedge de oro (IAU/MGC) — sleeve oro actualmente 0% tras venta",
         "from": "TS Tactical 4090",
         "to": "IAU/MGC",
         "amount": "$3,000–$5,000",
-        "why": "Régimen STAGFLATION_RISK con PCE Jun 25 esperado caliente (4.1%) y dot-plot girado a sesgo de subida; el oro es el hedge natural."
+        "why": "Régimen STAGFLATION_RISK con PCE Jun 25 esperado caliente (4.1%) y dot-plot girado a sesgo de subida; el oro es el hedge natural de inflación."
+      },
+      {
+        "urgency": "PLANEAR",
+        "urgencyColor": "#3b82f6",
+        "icon": "📉",
+        "action": "Monitorear futuros — equity −17% semanal ($4,409→$3,630), aunque BP sano ($1,466/$1,488)",
+        "from": "TS Futures PKG27+VLV23",
+        "to": "—",
+        "amount": "vigilancia",
+        "why": "El par cobre-long/gas-short perdió valor pero el buying power sigue holgado; no hay riesgo de margen, sí de deriva. Revisar tesis si sigue cayendo."
       },
       {
         "urgency": "PLANEAR",
@@ -2554,7 +2554,7 @@
         "from": "SEP IRA",
         "to": "SEP IRA",
         "amount": "rebalanceo interno",
-        "why": "Mantener los pesos objetivo del núcleo de retiro ($140K) evita deriva no intencional hacia un solo factor."
+        "why": "Mantener los pesos objetivo del núcleo de retiro ($140K) evita deriva no intencional."
       },
       {
         "urgency": "CONDICIONAL",
@@ -2598,23 +2598,23 @@
       "priorityColor": "#ef4444",
       "icon": "💳",
       "action": "Aplicar surplus +$1,365 al LOC Wells Fargo $47,753 @ 8.5%",
-      "why": "Buffer DEC ✅ alcanzado. Cada $1K pagado ahorra $85/año. Payoff en ~35 meses al ritmo actual.",
+      "why": "Buffer DEC ✅ alcanzado. Cada $1K pagado ahorra $85/año. Payoff en ~35 meses.",
       "category": "DEUDA"
     },
     {
       "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "🚨",
-      "action": "Reducir exposición de futuros o añadir colchón de margen — BP ~$272/$290 (colchón <2%)",
-      "why": "El colchón de buying power es crítico; un movimiento adverso en cobre/gas fuerza liquidación forzada. Equity cayó −8.9% en la semana ($4,409→$4,018).",
+      "icon": "🟡",
+      "action": "Re-establecer hedge de oro (IAU/MGC) — sleeve 0%",
+      "why": "Stagflación + PCE Jun 25 caliente; el oro es el hedge real natural.",
       "category": "ACTIVOS"
     },
     {
-      "priority": "URGENTE",
-      "priorityColor": "#f59e0b",
-      "icon": "🟡",
-      "action": "Re-establecer hedge de oro (IAU/MGC) — sleeve oro actualmente 0% tras venta",
-      "why": "Régimen STAGFLATION_RISK con PCE Jun 25 esperado caliente (4.1%) y dot-plot girado a sesgo de subida; el oro es el hedge natural.",
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📉",
+      "action": "Monitorear futuros (equity −17% sem; BP sano)",
+      "why": "Sin riesgo de margen, sí de deriva de tesis cobre/gas. Revisar si sigue cayendo.",
       "category": "ACTIVOS"
     },
     {
@@ -2622,15 +2622,15 @@
       "priorityColor": "#60a5fa",
       "icon": "📋",
       "action": "Verificar que contrato Miguel Autos ($36,415) está vigente",
-      "why": "Mayor activo ilíquido (~8% del portafolio) — contrato escrito es control mínimo de riesgo.",
+      "why": "Mayor activo ilíquido — contrato escrito es control mínimo de riesgo.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "📊",
-      "action": "Revisar CRM Cloze — activar 2-3 leads DEC pendientes",
-      "why": "Crecer DEC sostiene el surplus que ahora ataca el LOC. Cada lead acelera el paydown.",
+      "action": "Revisar CRM Cloze — activar 2-3 leads DEC",
+      "why": "Crecer DEC sostiene el surplus que ataca el LOC.",
       "category": "INGRESOS"
     }
   ],
