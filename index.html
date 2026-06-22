@@ -1487,7 +1487,8 @@ function populateAccountsTable() {
     }
     catSum+=a.value;
     tbody.innerHTML+=rowFor(a,idx);
-    if(/miguel/i.test(a.name)) tbody.innerHTML+='<tr><td colspan="6" style="color:#f59e0b;font-size:10.5px;padding-left:20px;line-height:1.4">⚠️ +$37,585 adicionales prestados a Miguel (exposición total ~$74K) — en riesgo / no-performing, NO contados en el patrimonio.</td></tr>';
+    if(/miguel/i.test(a.name)){ var _m2=37585; catSum+=_m2;
+      tbody.innerHTML+='<tr><td><span class="dot" style="background:'+a.color+'"></span>Miguel Loan 2 <span style="color:#f59e0b;font-size:10px">⚠️ sin interés · en riesgo</span></td><td><span class="badge">Préstamo</span></td><td class="right bold">'+fmt(_m2)+'</td><td class="right" style="color:#94a3b8">'+((_m2/totalBruto)*100).toFixed(1)+'%</td><td class="right" style="color:#475569;font-size:10px">manual</td><td class="right" style="color:#475569;font-size:11px">—</td></tr>'; }
   });
   if(lastCat!==null) tbody.innerHTML+=subRow(lastCat,catSum);
   document.getElementById('accounts-footer-total').textContent=fmt(totalBruto);
