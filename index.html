@@ -821,7 +821,7 @@
     <div id="insight-acct-4" style="padding:12px 16px;background:#1e293b;border-radius:12px 12px 0 0;margin-bottom:0;margin-top:16px;font-size:13px;line-height:1.6;color:#cbd5e1;border-bottom:1px solid #334155"></div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <h3 style="margin:0" id="chart-h3-fut">🔴 #5a TS Futures ·PKG27 — MNGM26 x5 Long ($2,060)</h3>
+        <h3 style="margin:0" id="chart-h3-fut">🔴 #5a TS Futures ·PKG27</h3>
         <span class="source-badge" id="src-fut" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
       </div>
       <canvas id="chartFUT" style="max-height:200px"></canvas>
@@ -833,7 +833,7 @@
     </div>
     <div class="panel" style="border-radius:0 0 12px 12px;margin-top:0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <h3 style="margin:0" id="chart-h3-fut2">🔴 #5b TS Futures ·VLV23 — MYMM26 x1 Short ($3,183)</h3>
+        <h3 style="margin:0" id="chart-h3-fut2">🔴 #5b TS Futures ·VLV23</h3>
         <span class="source-badge" id="src-fut2" style="font-size:10px;color:#64748b;white-space:nowrap">📡 TradeStation MCP · May 16 2026</span>
       </div>
       <canvas id="chartFUT2" style="max-height:200px"></canvas>
@@ -1621,7 +1621,7 @@ function initFromData(d) {
   wkRH         = d.weekly.rh;
   wkRHPhotonics= d.weekly.rhPhotonics || [];
   wkFUTCombined = d.weekly.futCombined || d.weekly.fut; // combined historical — total portfolio sum
-  wkFUT         = d.weekly.futCombined || d.weekly.fut; // PKG27 chart: use full combined history (pre-split data + PKG27 current)
+  wkFUT         = d.weekly.fut || [];     // PKG27 chart: real PKG27 series from hoja (Stock Candidates), Jan 31 onward
   wkFUT2        = d.weekly.fut2 || [];    // VLV23 only — chart use (current data only)
   wkSP    = d.weekly.sp;
 
