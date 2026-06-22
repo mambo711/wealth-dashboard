@@ -2,20 +2,20 @@
   "meta": {
     "subtitle": "19 Junio 2026",
     "weeklyFocusDate": "Semana del 22 Jun",
-    "nwBruto": 466877,
+    "nwBruto": 464633,
     "nwBrutoDelta": "▲$7,162 vs Jun 15 — DEC checking +$8.3K (buffer alcanzado)",
     "nwDeltaUp": true,
-    "nwNeto": 392168,
-    "nwNetoDelta": "▲ vs Jun 15 ($382,198→$392,168) — buffer DEC cruzado + Betterment al alza (in-chat)",
-    "fiPct": 44,
-    "fiGap": 507832,
+    "nwNeto": 389924,
+    "nwNetoDelta": "▲ vs Jun 15 ($382,198→$389,924) — buffer DEC cruzado + Betterment in-chat",
+    "fiPct": 43,
+    "fiGap": 510076,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
-    "healthScore": 63,
+    "healthScore": 62,
     "healthLabel": "BUENO",
     "healthSubScores": {
       "retiro": {
-        "val": 95,
+        "val": 94,
         "color": "#3b82f6"
       },
       "diversif": {
@@ -47,9 +47,9 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 62 BUENO. Hito: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 95/100 ($238,453) sigue siendo la fortaleza. Futuros: BP sano ($1,466/$1,488 ✅) pero equity −17% semanal ($4,409→$3,630) — monitorear, no urgente. Sleeve oro 0% (re-establecer). Deuda 25/100 sigue siendo el lastre ($74,709).",
-    "retirementCore": 238453,
-    "totalBruto": 466877,
+    "healthDiagnostic": "Score 62 BUENO. Hito: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 94/100 ($236,209) sigue siendo la fortaleza. Futuros: BP sano ($1,466/$1,488 ✅) pero equity −17% semanal ($4,409→$3,630) — monitorear, no urgente. Sleeve oro 0% (re-establecer). Deuda 25/100 sigue siendo el lastre ($74,709).",
+    "retirementCore": 236209,
+    "totalBruto": 464633,
     "tacticalHeader": "$34,339 (margen $1,098 — leverage 103.2% ✅)",
     "footerNote": "Datos: TradeStation REST API live (SEP/Tactical/Futures Jun 19) · TT Relay Jun 19 · IBKR/RH (Alberto in-chat) · Xero live · S&P multpl Jun 18 · Juneteenth",
     "debtTotal": 74709,
@@ -58,9 +58,9 @@
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 107832,
-    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $392,168 = 78%.",
-    "totalAssets": 466877,
+    "fiBlendedGap": 110076,
+    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $389,924 = 78%.",
+    "totalAssets": 464633,
     "totalDebt": 74709,
     "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — Eq $1,804, BP $1,466 ✅",
     "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — Eq $1,826, BP $1,488 ✅",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 1098.38,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 78,
-    "fiGapWithDEC": 107832,
+    "fiGapWithDEC": 110076,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -654,7 +654,7 @@
     {
       "name": "Betterment Trad IRA",
       "cat": "Retiro",
-      "value": 31317,
+      "value": 29073,
       "color": "#60a5fa"
     },
     {
@@ -759,7 +759,7 @@
       28187,
       28187,
       28770,
-      31317
+      29073
     ],
     "Miguel Autos Loan": [
       36415,
