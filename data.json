@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "19 Junio 2026",
     "weeklyFocusDate": "Semana del 22 Jun",
-    "nwBruto": 465071,
+    "nwBruto": 465153,
     "nwBrutoDelta": "▲$7,162 vs Jun 15 — DEC checking +$8.3K (buffer alcanzado)",
     "nwDeltaUp": true,
-    "nwNeto": 390362,
-    "nwNetoDelta": "▲$8,164 vs Jun 15 ($382,198→$390,362) — DEC cash sube y cruza el buffer",
+    "nwNeto": 390444,
+    "nwNetoDelta": "▲ vs Jun 15 ($382,198→$390,444) — DEC cash cruza el buffer + RH al alza (in-chat)",
     "fiPct": 43,
-    "fiGap": 509638,
+    "fiGap": 509556,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -49,18 +49,18 @@
     },
     "healthDiagnostic": "Score 62 BUENO. Hito de la semana: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 94/100 ($235,534) sigue siendo la fortaleza. Vigilar: BP de futuros ~$280 (colchón fino, equity −8.9% semanal) y sleeve oro en 0% (re-establecer). Deuda 25/100 sigue siendo el lastre principal ($74,709).",
     "retirementCore": 235534,
-    "totalBruto": 465071,
+    "totalBruto": 465153,
     "tacticalHeader": "$34,339 (margen $1,098 — leverage 103.2% ✅)",
-    "footerNote": "Datos: TradeStation REST (live Jun 19) · TT Relay Gmail (Jun 19 09:33 PDT) · Xero P&L+balance sheet (live Jun 19) · S&P multpl (Jun 18) · feriado Juneteenth (mercados cerrados)",
+    "footerNote": "Datos: TradeStation REST (live Jun 19) · TT Relay (Jun 19) · IBKR/RH (Alberto in-chat Jun 19) · Xero balance sheet+P&L (live Jun 19) · S&P multpl (Jun 18) · Juneteenth",
     "debtTotal": 74709,
     "debtDelta": "▲+$923 vs Jun 12 ($73,786→$74,709; Amex Gold +$685, Chase Ink +$321)",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 109638,
-    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $390,362 = 78%.",
-    "totalAssets": 465071,
+    "fiBlendedGap": 109556,
+    "fiBlendedNote": "Meta con DEC ($55K/año; DEC+SS cubren el grueso, o venta de DEC) ≈ $500,000. NW $390,444 = 78%.",
+    "totalAssets": 465153,
     "totalDebt": 74709,
     "futPKGDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP ~$272 🚨",
     "futVLVDesc": "MHGN26 1x long (Micro Cobre) + MNGN26 1x short (Micro NatGas) — BP ~$290 🚨",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 1098.38,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 78,
-    "fiGapWithDEC": 109638,
+    "fiGapWithDEC": 109556,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -684,7 +684,7 @@
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 13063,
+      "value": 13062,
       "color": "#8b5cf6"
     },
     {
@@ -696,7 +696,7 @@
     {
       "name": "IBKR Bravo",
       "cat": "Trading",
-      "value": 8403,
+      "value": 8380,
       "color": "#06b6d4"
     },
     {
@@ -714,13 +714,13 @@
     {
       "name": "RH AP Act Managed",
       "cat": "Trading",
-      "value": 4880,
+      "value": 4981,
       "color": "#f59e0b"
     },
     {
       "name": "RH Ap-photonics",
       "cat": "Trading",
-      "value": 533,
+      "value": 538,
       "color": "#fbbf24"
     },
     {
@@ -1090,7 +1090,7 @@
     }
   ],
   "options": {
-    "nlv": 13063,
+    "nlv": 13062,
     "positions": [
       {
         "symbol": "NFLX",
@@ -1495,7 +1495,7 @@
       12949,
       13024,
       13038,
-      13063
+      13062
     ],
     "ibkr": [
       2200,
@@ -1545,7 +1545,7 @@
       8025,
       8025,
       8403,
-      8403
+      8380
     ],
     "tsetf": [
       32000,
@@ -1645,7 +1645,7 @@
       4430,
       4430,
       4880,
-      4880
+      4981
     ],
     "rhPhotonics": [
       null,
@@ -1695,7 +1695,7 @@
       479,
       479,
       533,
-      533
+      538
     ],
     "fut": [
       null,
@@ -1909,15 +1909,15 @@
     },
     "ibkr": {
       "label": "IBKR (Alberto in-chat)",
-      "date": "Jun 15 2026"
+      "date": "Jun 19 2026"
     },
     "rh": {
       "label": "RH AP (Alberto in-chat)",
-      "date": "Jun 15 2026"
+      "date": "Jun 19 2026"
     },
     "rhph": {
       "label": "RH Photonics (Alberto in-chat)",
-      "date": "Jun 15 2026"
+      "date": "Jun 19 2026"
     },
     "betterment": {
       "label": "Betterment (Alberto in-chat)",
@@ -2078,7 +2078,7 @@
       86.6,
       87.1,
       87.2,
-      87.37
+      87.36
     ],
     "ibkr": [
       100,
@@ -2127,7 +2127,7 @@
       108.85,
       108.85,
       114.0,
-      114.0
+      113.69
     ],
     "tsetf": [
       100,
@@ -2225,7 +2225,7 @@
       137.27,
       137.27,
       151.2,
-      151.2
+      154.33
     ],
     "fut": [
       100,
@@ -2372,7 +2372,7 @@
       118.23,
       118.23,
       131.6,
-      131.6
+      132.83
     ],
     "fut2": [
       null,
@@ -2639,8 +2639,8 @@
     "tt": "2026-06-19",
     "xero": "2026-06-19",
     "betterment": "2026-06-15",
-    "ibkr": "2026-06-15",
-    "rh": "2026-06-15",
+    "ibkr": "2026-06-19",
+    "rh": "2026-06-19",
     "ecuador": "2026-06-05",
     "pepe": "2026-06-05",
     "miguel": "2026-06-05",
