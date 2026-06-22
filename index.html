@@ -1459,74 +1459,39 @@ function populateAccountsTable() {
   const tbody = document.getElementById('accountsTable');
   if (!tbody) return;
   tbody.innerHTML = '';
-
-  // Map account names → source key in dashData.sources
-  const acctSourceMap = {
-    'SEP IRA (TS)':        'tsetf',
-    'TS ETF Tactical':     'tsetf',
-    'TS Cash (SEP)':       'tsetf',
-    'TS Futures PKG27':    'fut',
-    'TS Futures VLV23':    'fut2',
-    'TastyTrade':          'tt',
-    'IBKR Bravo':          'ibkr',
-    'RH AP Act Managed':   'rh',
-    'RH Ap-photonics':     'rhph',
-    'Betterment Roth IRA': 'betterment',
-    'Betterment Trad IRA': 'betterment',
-    'Betterment Emerg.':   'betterment',
-  };
-
-  // Parse "Mon DD YYYY" → Date
+  const acctSourceMap = {'SEP IRA (TS)':'tsetf','TS ETF Tactical':'tsetf','TS Cash (SEP)':'tsetf','TS Futures PKG27':'fut','TS Futures VLV23':'fut2','TastyTrade':'tt','IBKR Bravo':'ibkr','RH AP Act Managed':'rh','RH Ap-photonics':'rhph','Betterment Roth IRA':'betterment','Betterment Trad IRA':'betterment','Betterment Emerg.':'betterment'};
   const monthMap = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
-  function parseSrcDate(str) {
-    if (!str) return null;
-    const m = str.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/);
-    if (!m) return null;
-    const mo = monthMap[m[1].toLowerCase()];
-    return mo !== undefined ? new Date(+m[3], mo, +m[2]) : null;
+  function parseSrcDate(str){ if(!str) return null; const m=str.match(/([A-Za-z]{3})\s+(\d{1,2})\s+(20\d{2})/); if(!m) return null; const mo=monthMap[m[1].toLowerCase()]; return mo!==undefined?new Date(+m[3],mo,+m[2]):null; }
+  const today=new Date(); const sources=(dashData&&dashData.sources)||{};
+  const catOrder=['Retiro','Trading','Cash/Fijo','Préstamo'];
+  const catLabel={'Retiro':'🏦 Retiro','Trading':'📈 Trading','Cash/Fijo':'💵 Efectivo / Fijo','Préstamo':'🤝 Préstamos'};
+  var order=[];
+  catOrder.forEach(function(cat){ accounts.forEach(function(a,idx){ if((a.cat||'')===cat) order.push(idx); }); });
+  accounts.forEach(function(a,idx){ if(catOrder.indexOf(a.cat||'')<0 && order.indexOf(idx)<0) order.push(idx); });
+  function rowFor(a,idx){
+    var pct=((a.value/totalBruto)*100).toFixed(1); var cid='spark_'+idx; var sd=sparkData[a.name];
+    var trend=sd?(a.value>=sd[0]?'▲':'▼'):''; var tc=trend==='▲'?'#10b981':'#ef4444';
+    var srcKey=acctSourceMap[a.name]; var src=srcKey?sources[srcKey]:null; var srcDate=src?parseSrcDate(src.date):null;
+    var daysCell='<td class="right" style="color:#475569;font-size:11px">—</td>';
+    if(srcDate){ var days=Math.floor((today-srcDate)/86400000); var stale=days>7; daysCell='<td class="right" style="font-size:11px;color:'+(stale?'#ef4444':'#10b981')+'" title="'+src.label+' · '+src.date+'"><span'+(stale?' class="days-stale"':'')+'>'+days+'d</span></td>'; }
+    return '<tr><td><span class="dot" style="background:'+a.color+'"></span>'+a.name+'</td><td><span class="badge">'+a.cat+'</span></td><td class="right bold">'+fmt(a.value)+'</td><td class="right" style="color:#94a3b8">'+pct+'%</td><td class="right"><canvas id="'+cid+'" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:'+tc+'">'+trend+'</span></td>'+daysCell+'</tr>';
   }
-
-  const today = new Date();
-  const sources = (dashData && dashData.sources) || {};
-
-  accounts.forEach((a, idx) => {
-    const pct = ((a.value / totalBruto) * 100).toFixed(1);
-    const cid = 'spark_' + idx;
-    const sd = sparkData[a.name];
-    const trend = sd ? (a.value >= sd[0] ? '▲' : '▼') : '';
-    const tc = trend === '▲' ? '#10b981' : '#ef4444';
-
-    // Days-since calculation
-    const srcKey = acctSourceMap[a.name];
-    const src    = srcKey ? sources[srcKey] : null;
-    const srcDate = src ? parseSrcDate(src.date) : null;
-    let daysCell = '<td class="right" style="color:#475569;font-size:11px">—</td>';
-    if (srcDate) {
-      const days = Math.floor((today - srcDate) / 86400000);
-      const stale = days > 7;
-      daysCell = `<td class="right" style="font-size:11px;color:${stale ? '#ef4444' : '#10b981'}"
-        title="${src.label} · ${src.date}">
-        <span${stale ? ' class="days-stale"' : ''}>${days}d</span>
-      </td>`;
+  function subRow(cat,sum){ var lbl=(catLabel[cat]||cat).replace(/^\S+\s/,''); return '<tr style="background:#0f172a"><td colspan="2" style="color:#94a3b8;font-size:11px;font-weight:700">Subtotal '+lbl+'</td><td class="right bold" style="color:#cbd5e1">'+fmt(sum)+'</td><td></td><td></td><td></td></tr>'; }
+  var lastCat=null,catSum=0;
+  order.forEach(function(idx){
+    var a=accounts[idx];
+    if(a.cat!==lastCat){
+      if(lastCat!==null) tbody.innerHTML+=subRow(lastCat,catSum);
+      tbody.innerHTML+='<tr><td colspan="6" style="padding-top:12px;color:#22d3ee;font-size:12px;font-weight:700">'+(catLabel[a.cat]||a.cat)+'</td></tr>';
+      lastCat=a.cat; catSum=0;
     }
-
-    tbody.innerHTML += `<tr>
-      <td><span class="dot" style="background:${a.color}"></span>${a.name}</td>
-      <td><span class="badge">${a.cat}</span></td>
-      <td class="right bold">${fmt(a.value)}</td>
-      <td class="right" style="color:#94a3b8">${pct}%</td>
-      <td class="right"><canvas id="${cid}" class="sparkline" width="60" height="20"></canvas> <span style="font-size:10px;color:${tc}">${trend}</span></td>
-      ${daysCell}
-    </tr>`;
+    catSum+=a.value;
+    tbody.innerHTML+=rowFor(a,idx);
+    if(/miguel/i.test(a.name)) tbody.innerHTML+='<tr><td colspan="6" style="color:#f59e0b;font-size:10.5px;padding-left:20px;line-height:1.4">⚠️ +$37,585 adicionales prestados a Miguel (exposición total ~$74K) — en riesgo / no-performing, NO contados en el patrimonio.</td></tr>';
   });
-  document.getElementById('accounts-footer-total').textContent = fmt(totalBruto);
-  setTimeout(() => {
-    accounts.forEach((a, idx) => {
-      const c = document.getElementById('spark_' + idx);
-      const d = sparkData[a.name];
-      if (c && d) drawSparkline(c, d, a.color);
-    });
-  }, 50);
+  if(lastCat!==null) tbody.innerHTML+=subRow(lastCat,catSum);
+  document.getElementById('accounts-footer-total').textContent=fmt(totalBruto);
+  setTimeout(function(){ accounts.forEach(function(a,idx){ var c=document.getElementById('spark_'+idx); var d=sparkData[a.name]; if(c&&d) drawSparkline(c,d,a.color); }); },50);
 }
 
 function populateTacticalTable() {
