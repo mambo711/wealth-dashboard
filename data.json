@@ -630,13 +630,13 @@
   ],
   "performance": {
     "twrTotal": "+15.2%",
-    "best6mName": "IBKR Bravo",
-    "best6mPct": "+3.4%",
-    "second6mName": "TS ETF Tactical",
-    "second6mPct": "-6.1%",
-    "worst6mName": "TS Futures PKG27",
-    "worst6mPct": "-35.8%",
-    "twrNote": "TWR 6M (26 sem) vs S&P -5.3%. Series live Jun 19 (TT/Tactical/Futuros API; IBKR/RH/Betterment in-chat)."
+    "best6mName": "RH AP Act Managed",
+    "best6mPct": "+54.3%",
+    "second6mName": "RH Photonics",
+    "second6mPct": "+32.8%",
+    "worst6mName": "TS Futures VLV23",
+    "worst6mPct": "-60.8%",
+    "twrNote": "TWR vs S&P -5.3% (RH/Photonics/VLV ~6 meses de historia; resto 26 sem). Series live Jun 19 — TT/Tactical/Futuros API, IBKR/RH/Betterment in-chat."
   },
   "accounts": [
     {
