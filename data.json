@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "24 Junio 2026",
+    "subtitle": "25 Junio 2026",
     "weeklyFocusDate": "Semana del 22 Jun",
-    "nwBruto": 464935,
-    "nwBrutoDelta": "▲$387 vs ayer",
+    "nwBruto": 465676,
+    "nwBrutoDelta": "▲$741 vs ayer",
     "nwDeltaUp": true,
-    "nwNeto": 391149,
+    "nwNeto": 391890,
     "nwNetoDelta": "▲ vs Jun 15 ($382,198→$389,924) — buffer DEC cruzado + Betterment in-chat",
-    "fiPct": 43,
-    "fiGap": 508851,
+    "fiPct": 44,
+    "fiGap": 508110,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 62,
@@ -50,8 +50,8 @@
     "healthDiagnostic": "Score 62 BUENO. Hito: 🎉 buffer DEC ALCANZADO — checking $45,758 ≥ $41,663; LOC paydown REANUDADO con surplus +$1,365/mes (~35 meses). Retiro 94/100 ($236,209) sigue siendo la fortaleza. Futuros: BP sano ($1,466/$1,488 ✅) pero equity −17% semanal ($4,409→$3,630) — monitorear, no urgente. Sleeve oro 0% (re-establecer). Deuda 25/100 sigue siendo el lastre ($74,709).",
     "retirementCore": 265888,
     "totalBruto": 464633,
-    "tacticalHeader": "$32,925 (margen $13,550 🔴 re-expandido, leverage 141.2% sobre cap 120%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live 24-jun) · TT Relay Gmail (24-jun 04:40 PT) · Xero P&L+cash (live 24-jun) · Barchart Gmail+WebSearch · CME FedWatch+Warsh WebSearch · Betterment/IBKR/RH/Ecuador (Jun 19/05 cache)",
+    "tacticalHeader": "$33,508 eq (margen $14,283 🔴 142.6% sobre cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (LIVE Jun 25 ~8:55 ET) · TT Relay Gmail (Jun 25 05:55 PDT) · Xero (LIVE YTD) · Betterment/Ecuador/loans (último dashboard semanal)",
     "debtTotal": 73786,
     "debtDelta": "▲+$923 vs Jun 12 ($73,786→$74,709; Amex Gold +$685, Chase Ink +$321)",
     "debtDeltaUp": true,
@@ -80,23 +80,15 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 7858,
+    "decMonthlyAvg": 7791,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 3660,
-    "lastTacticalMargin": 13549.57,
+    "futuresEquity": 3746,
+    "lastTacticalMargin": 14282.79,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 78,
-    "fiGapWithDEC": 108851,
+    "fiGapWithDEC": 108110,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
-      {
-        "date": "2026-06-18",
-        "sep": 140302.33,
-        "tac": 34388.79,
-        "fut": 3664.83,
-        "tt": 13032.69,
-        "total": 178355.95
-      },
       {
         "date": "2026-06-19",
         "sep": 140206.71,
@@ -128,14 +120,22 @@
         "fut": 3842.23,
         "tt": 12701.48,
         "total": 175334.97
+      },
+      {
+        "date": "2026-06-25",
+        "sep": 138723.69,
+        "tac": 33507.95,
+        "fut": 3745.73,
+        "tt": 12800.57,
+        "total": 175977.37
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 Des-apalancar táctico 141%",
-      "body": "Apalancamiento táctico 141.2% sobre cap 120% (margen $13,550 @ ~13% APR). Recortar ~$7K en día de rebote — tomar ganancia en EWT/BAI o cerrar adds tech rojos (VGT/AIQ/ARTY/SMH).",
-      "why": "Margen @ 13% APR amplifica caídas; cluster tech/AI 40% sobre-concentrado. El des-apalancamiento baja ambos a la vez."
+      "title": "Prioridad #1: 🔴 Des-apalancar táctico 142.6%→≤120%",
+      "body": "ETF Táctico en 142.6% leverage, sobre el cap duro de 120%; margen $14,283 @ ~13% APR. Día verde fuerte (Tac +$1,086) = ventana ideal para recortar ganadores extendidos (EWT +$685, BAI +$307) en fuerza.",
+      "why": "El margen sobre cap cuesta 13% APR y amplifica el drawdown; recortar en un día verde reduce apalancamiento Y concentración tech (37.6%) sin vender en pánico."
     },
     "steps": [
       {
@@ -214,12 +214,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) Des-apalancar táctico 141%→≤120% recortando ~$7K. (2) Cluster tech/AI 40% — trailing stop en UPTREND, no venta forzada. (3) HOLD SEP IRA + short EUR; esperar PCE jueves."
+      "text": "(1) Des-apalancar táctico 142.6%→≤120% recortando ~$7-8K de ganadores tech en fuerza; (2) trailing stop 8-10% sobre cluster tech ~40%; (3) HOLD SEP IRA (+$736 hoy) — sin cambios."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $73,786 @ 8.5% — paydown sin capacidad hoy (cash neto bajo buffer). DEC $7,858/mes → Superávit $+2,722/mes."
+      "text": "💳 LOC $73,786 @ 8.5% — paydown EN PAUSA (sin capacidad: disponible −$9,475 bajo buffer). DEC promedio $7,791/mes → Superávit $+2,655/mes."
     },
     "fi": {
       "color": "#10b981",
@@ -229,22 +229,22 @@
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+2,722/mes. DEC YTD promedio $7,858/mes. Régimen LATE_CYCLE → sesgo NEUTRO — continuar plan normal."
+      "text": "💰 ✅ Superávit $+2,655/mes. DEC YTD promedio $7,791/mes. Régimen LATE_CYCLE → sesgo NEUTRO."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 54% (techo 80%). 1 move URGENTE. Regime: LATE_CYCLE."
+      "text": "Alignment 51% (techo 80%). 1 move URGENTE pendiente. Regime: LATE_CYCLE."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "✅ Opciones: book pivoteó a SQQQ + LEAPS; OCOs vivos — sin alertas críticas. ⚠️ Margen táctico $13,550 — leverage 141.2% sobre cap 120%."
+      "text": "✅ Opciones sin alertas críticas — 3 estructuras, OCO vivos, sin DTE≤5. 🔴 Margen táctico $14,283 (leverage 142.6%) — objetivo ≤120%."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Margen táctico $13,550 — leverage 141.2% sobre cap 120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,701."
+      "text": "🔴 Margen táctico $14,283 (leverage 142.6%) — objetivo ≤120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,801."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -296,10 +296,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Neto ~$391,149 (FI 43% vs $900K / 78% vs $500K con DEC) — ▲$387 vs ayer (día de rebote)",
-      "🏢 DEC promedio ~$7858/mes (Xero YTD net $45,578 ÷ 5.8m) — superávit ~$2722/mes",
-      "📦 Posiciones: SEP IRA 3 (NO TOCAR) · Táctico 24 (🔴 leverage 141% sobre cap) · TT 3 estructuras · Futuros short EUR",
-      "🛡️ Recomendación: des-apalancar táctico 141%→≤120%; cluster tech/AI 40% trailing stop; HOLD core; esperar PCE jueves"
+      "💰 NW Bruto ~$465,676 (▲+$741 vs ayer, impulsado por TS/TT live) | NW Neto ~$391,890 | FI 44% ($900K)",
+      "🏦 SEP IRA $138,724 (▲+$736 hoy) — VOO/SCHD/AVDV todos verdes, núcleo de retiro intacto",
+      "⚠️ Táctico $33,508 eq / $47,791 MV — leverage 142.6% 🔴 SOBRE CAP 120%, margen $14,283 @ 13% APR",
+      "📋 TT NLV $12,801 (3 estructuras: hedge SQQQ + TSM/SKM LEAPS) | Futuros FLAT post-FOMC $3,746"
     ]
   },
   "debt": {
@@ -2512,18 +2512,18 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $378,506 (42% / 76%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-06-24T12:00:00Z",
+    "lastUpdate": "2026-06-25T12:00:00Z",
     "regime": "LATE_CYCLE",
     "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Rebote tras selloff tech de 1 día (Nasdaq ▼2.2%). SPY $735.85 sigue sobre 50/200DMA = UPTREND → piso LATE_CYCLE. Fed Warsh restrictiva (0 recortes, posible suba oct). PCE jueves binario.",
-    "alignmentScore": 54,
+    "regimeContext": "PCE caliente (core 3.4%/headline 4.1% YoY) pero SPY en UPTREND sobre 50/200DMA y tech ripeando (QQQ +2.3%). Warsh restrictivo (alza insinuada, 2Y 4.21%) pero el precio manda → ciclo tardío, no estanflación.",
+    "alignmentScore": 51,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
         "name": "Inflación",
-        "value": 45,
+        "value": 40,
         "color": "#f59e0b"
       },
       {
@@ -2533,30 +2533,30 @@
       },
       {
         "name": "Crecimiento",
-        "value": 62,
-        "color": "#f59e0b"
+        "value": 68,
+        "color": "#10b981"
       },
       {
         "name": "Volatilidad",
-        "value": 58,
+        "value": 52,
         "color": "#f59e0b"
       },
       {
         "name": "Geopolítico",
-        "value": 58,
+        "value": 50,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 80,
-    "regimeCeilingWhy": "TREND UPTREND (SPY > 50/200DMA) pone piso LATE_CYCLE; inflación pegajosa + Fed Warsh restrictiva limitan el techo a 80.",
+    "regimeCeilingWhy": "UPTREND (SPY>50/200DMA) fija techo alto; el lastre es la inflación pegajosa + Fed restrictiva + apalancamiento táctico sobre cap.",
     "moves": [
       {
         "urgency": "URGENTE",
         "icon": "🔴",
-        "action": "Des-apalancar táctico 141.2% → ≤120% (recortar ~$7K)",
+        "action": "Des-apalancar táctico 142.6% → ≤120% (recortar ~$7-8K)",
         "from": "leverage 141.2% / margen $13,550",
         "to": "≤120%",
-        "amount": "$13,550 margen",
+        "amount": "~$7-8K",
         "why": "Re-expansión a 141% sobre cap; margen @ ~13% APR amplifica caída. Día de rebote = vender en fuerza.",
         "impact": 5,
         "since": "2026-06-23"
@@ -2626,40 +2626,40 @@
       "priority": "URGENTE",
       "priorityColor": "#ef4444",
       "icon": "🔴",
-      "action": "Des-apalancar táctico 141%→≤120% (recortar ~$7K: EWT/BAI o VGT/AIQ/ARTY/SMH)",
-      "why": "Margen $13,550 @ ~13% APR, leverage sobre cap; día de rebote = vender en fuerza",
+      "action": "Des-apalancar Táctico 142.6%→≤120% (recortar ~$7-8K)",
+      "why": "Margen $14,283 @ ~13% APR, sobre cap duro; recortar ganadores en día verde",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Trailing stop 8-10% sobre cluster tech ~40%",
+      "why": "Tech/Semis 37.6% + crypto/BUG; dejar correr pero proteger",
       "category": "ACTIVOS"
     },
     {
       "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "🟡",
-      "action": "Cluster Tech/AI 40% — trailing stop 8-10% (no recortar al alza en UPTREND)",
-      "why": "Sobre cap 25% pero TREND UPTREND; el des-apalancamiento ya lo desinfla",
+      "priorityColor": "#60a5fa",
+      "icon": "⭐",
+      "action": "HOLD SEP IRA — VOO/SCHD/AVDV",
+      "why": "+$736 hoy, todo verde — núcleo de retiro, no tocar",
       "category": "ACTIVOS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "Si PCE jue >4.1% acortar duración / añadir hedge real",
-      "why": "Confirmaría riesgo estanflación",
+      "action": "Short duración / hedge SOLO si 2Y > 4.30%",
+      "why": "PCE 4.1% caliente + Warsh restrictivo; vigilar 2Y",
       "category": "MACRO"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "Re-establecer hedge oro solo si GLD recupera 50DMA",
-      "why": "GLD −27% vs máx, cuchillo cayendo",
-      "category": "MACRO"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "⏸️",
-      "action": "LOC paydown — sin capacidad (cash neto bajo buffer)",
-      "why": "Disponible −$9,344 (cash $49,260 − payables $17,552 − buffer $41,052)",
+      "action": "LOC paydown cuando cash neto supere buffer",
+      "why": "Disponible −$9,475 hoy (cash $49,129 − payables $17,552 − buffer $41,052)",
       "category": "DEUDA"
     }
   ],
