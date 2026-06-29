@@ -129,6 +129,12 @@
         "tt": 12645.92,
         "total": 175111.74
       }
+    ],
+    "techClusterHistory": [
+      {
+        "date": "2026-06-29",
+        "pct": 41.7
+      }
     ]
   },
   "roadmap": {
