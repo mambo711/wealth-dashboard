@@ -11,8 +11,8 @@
     "fiGap": 496533,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
-    "healthScore": 58,
-    "healthLabel": "MODERADO",
+    "healthScore": 69,
+    "healthLabel": "BUENO",
     "healthSubScores": {
       "retiro": {
         "val": 93,
@@ -31,8 +31,8 @@
         "color": "#f59e0b"
       },
       "deuda": {
-        "val": 21,
-        "color": "#ef4444"
+        "val": 91,
+        "color": "#10b981"
       },
       "surplus": {
         "val": 23,
@@ -47,7 +47,7 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 58 MODERADO. 📌 Jun 29: DEC (negocio) 100% fuera del NW — cash operativo ($59K) Y deuda de negocio ($70,631 LOC+tarjetas) excluidos. NW Neto $403,467 (solo deuda personal: car loan $8,861); FI 45%/81%. ⚠️ El score de Deuda (21/100) SÍ refleja los $79K que servís en total (incl. LOC @ 8.5%) — carga de cash flow real aunque no esté en el NW. Buffer DEC ✅ (checking $55,499). 🔴 Táctico 135% apalancado + cluster Tech/AI ~47%. Retiro 93/100 fortaleza.",
+    "healthDiagnostic": "Score 69 BUENO. 📌 Jun 29: DEC (negocio) 100% fuera del NW — cash ($59K) Y deuda de negocio ($70,631) excluidos. NW Neto $403,467 (deuda personal: car loan $8,861 → Deuda 91/100 ✅); FI 45%/81%. El LOC se sigue pagando con surplus DEC pero no pesa en el NW ni en el Health (decisión Alberto). 🔴 Táctico 135% apalancado + cluster Tech/AI ~47% — des-apalancar prioritario. Retiro 93/100 y Deuda 91/100 fortalezas; surplus 23/100 el lastre.",
     "retirementCore": 232566,
     "totalBruto": 412328,
     "tacticalHeader": "$32,178 eq (margen $11,304 🔴 135.1% sobre cap 120%)",
@@ -258,7 +258,7 @@
       "diversif": 74,
       "progresoFI": 81,
       "performance": 57,
-      "deuda": 21,
+      "deuda": 91,
       "surplus": 23,
       "liquidez": 63,
       "riesgo": 50
