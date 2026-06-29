@@ -4,14 +4,14 @@
     "weeklyFocusDate": "Semana del 22 Jun",
     "nwBruto": 412328,
     "nwBrutoDelta": "Cash operativo DEC ($59,177) EXCLUIDO del NW (capital de trabajo, no patrimonio personal)",
-    "nwDeltaUp": false,
-    "nwNeto": 332836,
-    "nwNetoDelta": "NW Neto $332,836 — DEC cash operativo fuera del NW (decisión Jun 29)",
-    "fiPct": 37,
-    "fiGap": 567164,
+    "nwDeltaUp": true,
+    "nwNeto": 403467,
+    "nwNetoDelta": "NW Neto $403,467 — deuda de negocio DEC ($70,631) fuera del NW (simétrico con cash, Jun 29)",
+    "fiPct": 45,
+    "fiGap": 496533,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
-    "healthScore": 57,
+    "healthScore": 58,
     "healthLabel": "MODERADO",
     "healthSubScores": {
       "retiro": {
@@ -23,7 +23,7 @@
         "color": "#10b981"
       },
       "progresoFI": {
-        "val": 67,
+        "val": 81,
         "color": "#10b981"
       },
       "performance": {
@@ -47,21 +47,21 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 57 MODERADO. 📌 Cambio Jun 29: cash operativo DEC ($59,177 Xero) EXCLUIDO del NW — es capital de trabajo del negocio, no patrimonio personal. NW Neto baja a $332,836; FI 37%/67%. Buffer DEC ✅ (checking $55,499 ≥ $41,663) sigue trackeado aparte para la regla LOC. 🔴 Táctico 135.1% apalancado + cluster Tech/AI ~47% — des-apalancar prioritario. Retiro 93/100 fortaleza. Deuda 21/100 lastre.",
+    "healthDiagnostic": "Score 58 MODERADO. 📌 Jun 29: DEC (negocio) 100% fuera del NW — cash operativo ($59K) Y deuda de negocio ($70,631 LOC+tarjetas) excluidos. NW Neto $403,467 (solo deuda personal: car loan $8,861); FI 45%/81%. ⚠️ El score de Deuda (21/100) SÍ refleja los $79K que servís en total (incl. LOC @ 8.5%) — carga de cash flow real aunque no esté en el NW. Buffer DEC ✅ (checking $55,499). 🔴 Táctico 135% apalancado + cluster Tech/AI ~47%. Retiro 93/100 fortaleza.",
     "retirementCore": 232566,
     "totalBruto": 412328,
     "tacticalHeader": "$32,178 eq (margen $11,304 🔴 135.1% sobre cap 120%)",
     "footerNote": "Datos: TradeStation REST (LIVE Jun 26) · TT Relay (Jun 26) · Xero (LIVE) · Betterment/IBKR/RH (LIVE Jun 29) · Ecuador/Pepe/Miguel (Jun 5) · DEC cash operativo NO en NW",
-    "debtTotal": 79492,
-    "debtDelta": "▲+$4,783 vs Jun 19 — Chase Ink +$5.3K (compras inventario), LOC −$826",
-    "debtDeltaUp": true,
+    "debtTotal": 8861,
+    "debtDelta": "Deuda personal en NW: solo Car Loan $8,861 · Negocio DEC ($70,631 LOC+tarjetas) trackeado aparte",
+    "debtDeltaUp": false,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 167164,
-    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $332,836 = 67% (DEC cash operativo excluido).",
+    "fiBlendedGap": 96533,
+    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
     "totalAssets": 412328,
-    "totalDebt": 79492,
+    "totalDebt": 8861,
     "futPKGDesc": "FLAT — 0 posiciones. Eq $1,686, BP $1,686 ✅ (idle)",
     "futVLVDesc": "FLAT — 0 posiciones. Eq $1,805, BP $1,805 ✅ (idle)",
     "weeklyTrackingStart": "Ago 2, 2025",
@@ -85,8 +85,8 @@
     "futuresEquity": 3491,
     "lastTacticalMargin": 11304,
     "fiTargetWithDEC": 500000,
-    "fiPctWithDEC": 67,
-    "fiGapWithDEC": 167164,
+    "fiPctWithDEC": 81,
+    "fiGapWithDEC": 96533,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -224,7 +224,7 @@
     "fi": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer ✅ + LOC paydown activo. FI al 67% (meta $500K) — gap $167,164. DEC cash operativo fuera del NW. Ver Resumen."
+      "text": "Buffer ✅ + LOC paydown activo. FI al 81% (meta $500K) — gap $96,533. DEC (cash+deuda) fuera del NW. Ver Resumen."
     },
     "flujo": {
       "color": "#10b981",
@@ -256,7 +256,7 @@
     "subscores": {
       "retiro": 93,
       "diversif": 74,
-      "progresoFI": 67,
+      "progresoFI": 81,
       "performance": 57,
       "deuda": 21,
       "surplus": 23,
@@ -296,32 +296,32 @@
       }
     ],
     "resumen": [
-      "🏦 <b>NW Bruto $412,328</b> (DEC cash operativo excluido) · NW Neto $332,836 · FI 37% ($900K) / 67% ($500K con DEC)",
+      "🏦 <b>NW Bruto $412,328</b> (solo personal) · NW Neto $403,467 (deuda personal $8,861) · FI 45% ($900K) / 81% ($500K con DEC)",
       "🔴 <b>ETF Táctico 135.1% apalancado</b> (cap 120%, margen $11,304) · cluster Tech/AI ~47% (cap 25%) — recorte prioritario",
       "🛡️ <b>SEP IRA $137,827</b> núcleo de retiro · VOO/SCHD/AVDV, día rojo modesto, tendencia intacta",
-      "💲 <b>DEC checking $55,499</b> buffer ✅ · 💰 surplus +$698/mes → LOC $46,927 @ 8.5%"
+      "💲 <b>Negocio DEC aparte</b>: checking $55,499 buffer ✅ · LOC $46,927 @ 8.5% se paga con surplus DEC (no en NW personal)"
     ]
   },
   "debt": {
     "primary": {
-      "name": "Wells Fargo LOC",
+      "name": "Wells Fargo LOC (Negocio DEC)",
       "balance": 46927,
       "rate": "8.5%",
       "monthly": 332,
       "value": 46927,
       "interestMonthly": 332,
       "severity": "critical",
-      "status": "Paydown ACTIVO (buffer ✅)",
-      "statusDate": "surplus +$698/mes @ 8.5% (~67 meses)"
+      "status": "Negocio DEC — fuera del NW personal",
+      "statusDate": "se paga con surplus DEC @ 8.5% (buffer ✅)"
     },
     "secondary": {
-      "name": "Car Loan (DCFCU)",
+      "name": "Car Loan (DCFCU) — Personal",
       "balance": 8861,
       "rate": "6.49%",
       "value": 8861,
       "interestMonthly": 48,
       "severity": "warning",
-      "status": "Auto Loan (DCFCU)",
+      "status": "Única deuda personal en el NW",
       "valueColor": "#f59e0b"
     },
     "creditCards": [
@@ -343,7 +343,7 @@
       }
     ],
     "totalDebt": 79492,
-    "totalDebtDate": "Jun 26, 2026"
+    "totalDebtDate": "Personal en NW $8,861 · Negocio DEC $70,631"
   },
   "incomeStreams": [
     {
@@ -546,7 +546,7 @@
       "label": "Gap FI (con DEC)",
       "valueId": "metric-gap",
       "color": "#f59e0b",
-      "value": "67%"
+      "value": "81%"
     },
     {
       "label": "Bonos (% total)",
