@@ -2,16 +2,16 @@
   "meta": {
     "subtitle": "26 Junio 2026",
     "weeklyFocusDate": "Semana del 22 Jun",
-    "nwBruto": 471505,
-    "nwBrutoDelta": "▼ Betterment −$1,263 (refresh live Jun 29) vs Jun 26",
+    "nwBruto": 412328,
+    "nwBrutoDelta": "Cash operativo DEC ($59,177) EXCLUIDO del NW (capital de trabajo, no patrimonio personal)",
     "nwDeltaUp": false,
-    "nwNeto": 392013,
-    "nwNetoDelta": "NW Neto $392,013 — Betterment Roth/Trad refresh live Jun 29 (−$1.3K)",
-    "fiPct": 44,
-    "fiGap": 507987,
+    "nwNeto": 332836,
+    "nwNetoDelta": "NW Neto $332,836 — DEC cash operativo fuera del NW (decisión Jun 29)",
+    "fiPct": 37,
+    "fiGap": 567164,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
-    "healthScore": 58,
+    "healthScore": 57,
     "healthLabel": "MODERADO",
     "healthSubScores": {
       "retiro": {
@@ -23,7 +23,7 @@
         "color": "#10b981"
       },
       "progresoFI": {
-        "val": 78,
+        "val": 67,
         "color": "#10b981"
       },
       "performance": {
@@ -47,20 +47,20 @@
         "color": "#f59e0b"
       }
     },
-    "healthDiagnostic": "Score 58 MODERADO. ⚠️ Bajó de 62 BUENO: deuda 21/100 (Chase Ink +$5.3K → total $79,492) y surplus 23/100 (método YTD: DEC net YTD $30,403 ÷ 5.85m = $5,197/mes; run-rate 3M reciente mucho mayor). Buffer DEC ✅ (checking $55,499 ≥ $41,663) — LOC paydown activo. Retiro 94/100 ($233,830) sigue siendo la fortaleza. 🔴 Táctico 135.1% apalancado (cap 120%) + cluster Tech/AI ~47% (cap 25%) — des-apalancar prioritario. Futuros FLAT (sin riesgo). Oro 0% (re-establecer).",
+    "healthDiagnostic": "Score 57 MODERADO. 📌 Cambio Jun 29: cash operativo DEC ($59,177 Xero) EXCLUIDO del NW — es capital de trabajo del negocio, no patrimonio personal. NW Neto baja a $332,836; FI 37%/67%. Buffer DEC ✅ (checking $55,499 ≥ $41,663) sigue trackeado aparte para la regla LOC. 🔴 Táctico 135.1% apalancado + cluster Tech/AI ~47% — des-apalancar prioritario. Retiro 93/100 fortaleza. Deuda 21/100 lastre.",
     "retirementCore": 232566,
-    "totalBruto": 471505,
+    "totalBruto": 412328,
     "tacticalHeader": "$32,178 eq (margen $11,304 🔴 135.1% sobre cap 120%)",
-    "footerNote": "Datos: TradeStation REST (LIVE Jun 26) · TT Relay (Jun 26 17:10 ET) · Xero (LIVE) · Betterment Roth/Trad/Cash (LIVE Chrome-read Jun 29) · IBKR/RH (Jun 19) · Ecuador/Pepe/Miguel (Jun 5)",
+    "footerNote": "Datos: TradeStation REST (LIVE Jun 26) · TT Relay (Jun 26) · Xero (LIVE) · Betterment/IBKR/RH (LIVE Jun 29) · Ecuador/Pepe/Miguel (Jun 5) · DEC cash operativo NO en NW",
     "debtTotal": 79492,
     "debtDelta": "▲+$4,783 vs Jun 19 — Chase Ink +$5.3K (compras inventario), LOC −$826",
     "debtDeltaUp": true,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 107987,
-    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $392,013 = 78%.",
-    "totalAssets": 471505,
+    "fiBlendedGap": 167164,
+    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $332,836 = 67% (DEC cash operativo excluido).",
+    "totalAssets": 412328,
     "totalDebt": 79492,
     "futPKGDesc": "FLAT — 0 posiciones. Eq $1,686, BP $1,686 ✅ (idle)",
     "futVLVDesc": "FLAT — 0 posiciones. Eq $1,805, BP $1,805 ✅ (idle)",
@@ -85,8 +85,8 @@
     "futuresEquity": 3491,
     "lastTacticalMargin": 11304,
     "fiTargetWithDEC": 500000,
-    "fiPctWithDEC": 78,
-    "fiGapWithDEC": 107987,
+    "fiPctWithDEC": 67,
+    "fiGapWithDEC": 167164,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -224,7 +224,7 @@
     "fi": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer ✅ + LOC paydown activo. FI al 78% (meta $500K) — gap $107,987. Ver Resumen."
+      "text": "Buffer ✅ + LOC paydown activo. FI al 67% (meta $500K) — gap $167,164. DEC cash operativo fuera del NW. Ver Resumen."
     },
     "flujo": {
       "color": "#10b981",
@@ -256,7 +256,7 @@
     "subscores": {
       "retiro": 93,
       "diversif": 74,
-      "progresoFI": 78,
+      "progresoFI": 67,
       "performance": 57,
       "deuda": 21,
       "surplus": 23,
@@ -296,7 +296,7 @@
       }
     ],
     "resumen": [
-      "🏦 <b>NW Bruto $471,505</b> · NW Neto $392,013 · FI 44% ($900K) / 78% ($500K con DEC)",
+      "🏦 <b>NW Bruto $412,328</b> (DEC cash operativo excluido) · NW Neto $332,836 · FI 37% ($900K) / 67% ($500K con DEC)",
       "🔴 <b>ETF Táctico 135.1% apalancado</b> (cap 120%, margen $11,304) · cluster Tech/AI ~47% (cap 25%) — recorte prioritario",
       "🛡️ <b>SEP IRA $137,827</b> núcleo de retiro · VOO/SCHD/AVDV, día rojo modesto, tendencia intacta",
       "💲 <b>DEC checking $55,499</b> buffer ✅ · 💰 surplus +$698/mes → LOC $46,927 @ 8.5%"
@@ -438,22 +438,22 @@
   "rebalanceNote": "Capital trading activo: ~$62,263. TastyTrade $12,695 (4 estructuras: DRAM/SQQQ put spreads Jul 31 + TSM/SKM LEAPS Ene 27). Futures PKG27/VLV23 FLAT (idle $3,491).",
   "pieCategories": [
     {
-      "label": "Retiro 49%",
+      "label": "Retiro 56%",
       "value": 232566,
       "color": "#2563eb"
     },
     {
-      "label": "Cash/Fijo 27%",
-      "value": 126943,
+      "label": "Cash/Fijo 16%",
+      "value": 67766,
       "color": "#f59e0b"
     },
     {
-      "label": "Trading 12%",
+      "label": "Trading 14%",
       "value": 58535,
       "color": "#10b981"
     },
     {
-      "label": "Préstamos 11%",
+      "label": "Préstamos 12%",
       "value": 49970,
       "color": "#ec4899"
     },
@@ -546,7 +546,7 @@
       "label": "Gap FI (con DEC)",
       "valueId": "metric-gap",
       "color": "#f59e0b",
-      "value": "78%"
+      "value": "67%"
     },
     {
       "label": "Bonos (% total)",
@@ -555,7 +555,7 @@
     },
     {
       "label": "Cash (% total)",
-      "value": "27%",
+      "value": "16%",
       "color": "#10b981"
     }
   ],
