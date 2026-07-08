@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "7 Julio 2026",
-    "weeklyFocusDate": "Semana del 6 Jul",
-    "nwBruto": 408059,
-    "nwBrutoDelta": "▼$312 vs ayer",
+    "subtitle": "8 Julio 2026",
+    "weeklyFocusDate": "Semana del 8 Jul",
+    "nwBruto": 405699,
+    "nwBrutoDelta": "▼$2,360 vs ayer",
     "nwDeltaUp": false,
-    "nwNeto": 399198,
+    "nwNeto": 396838,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 500802,
+    "fiGap": 503162,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
-    "retirementCore": 262217,
+    "retirementCore": 260983,
     "totalBruto": 414567,
-    "tacticalHeader": "$32,649 (margen $12,619 · apalancamiento 138.7% 🔴 sobre cap 120%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live 7 jul ~7:56 ET) · TT Relay Gmail (7 jul 04:56 PDT) · Xero (live YTD)",
+    "tacticalHeader": "$31,518 (margen $11,988 · leverage 138% 🔴 sobre cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live 8-jul ~08:15 ET) · TT Relay Gmail (8-jul 04:01 PDT) · Xero P&L+Cash live YTD · WebSearch macro/Fed",
     "debtTotal": 8861.0,
     "debtDelta": "Deuda personal en NW: solo Car Loan $8,861 · Negocio DEC ($70,631 LOC+tarjetas) trackeado aparte",
     "debtDeltaUp": false,
@@ -80,23 +80,15 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 5268,
+    "decMonthlyAvg": 5216,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 2843.17,
-    "lastTacticalMargin": 12619.45,
+    "lastTacticalMargin": 11987.55,
     "fiTargetWithDEC": 500000,
-    "fiPctWithDEC": 80,
-    "fiGapWithDEC": 100802,
+    "fiPctWithDEC": 79,
+    "fiGapWithDEC": 103162,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
-      {
-        "date": "2026-07-01",
-        "sep": 139450.97,
-        "tac": 34093.14,
-        "fut": 3018.53,
-        "tt": 12611.89,
-        "total": 176562.64
-      },
       {
         "date": "2026-07-02",
         "sep": 139961.45,
@@ -128,13 +120,17 @@
         "fut": 2843.17,
         "tt": 12622.42,
         "total": 176708.6
+      },
+      {
+        "date": "2026-07-08",
+        "sep": 139982.57,
+        "tac": 31517.9,
+        "fut": 2851.89,
+        "tt": 12618.42,
+        "total": 174352.36
       }
     ],
     "techClusterHistory": [
-      {
-        "date": "2026-07-01",
-        "pct": 40.0
-      },
       {
         "date": "2026-07-02",
         "pct": 39.5
@@ -150,14 +146,18 @@
       {
         "date": "2026-07-07",
         "pct": 45.0
+      },
+      {
+        "date": "2026-07-08",
+        "pct": 45.2
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 Des-riesgar táctico (cluster 45% + apalancamiento 138.7%)",
-      "body": "Un recorte de ~$8-9K en los nombres tech en rojo del ETF Táctico resuelve las dos violaciones: baja apalancamiento 138.7%→120% (paydown margen 13% APR) y cluster Tech/AI 45%→25%. MYMU26 ya cerrado (VLV23 flat).",
-      "why": "Concentración + apalancamiento simultáneos = riesgo asimétrico si tech corrige; el margen al 13% APR come el retorno."
+      "title": "Prioridad #1: 🔴 Des-apalancar y recortar tech táctico",
+      "body": "El sleeve táctico está a 138% de leverage (cap 120%) con el cluster tech/AI en 45% del MV, subiendo 5 días seguidos mientras XLK gira bajo su 50DMA. Un solo recorte de ~$5.7K en tech/AI resuelve ambos.",
+      "why": "Margen a ~13% APR + concentración tech creciente en un pullback = riesgo doble; recortar corta costo y beta."
     },
     "steps": [
       {
@@ -236,12 +236,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) Recortar cluster Tech/AI 45%→25% (~$8-9K) baja apalancamiento 138.7%→120% de una vez · (2) HOLD SEP IRA (todo verde) · (3) Consolidar futuros ociosos $2,843 (ambas flat); NO comprar oro (downtrend)."
+      "text": "(1) Des-apalancar táctico 138%→120% vendiendo ~$5.7K tech/AI HOY (2) el mismo recorte baja el cluster tech 45%→25% (3) mantener SEP intacto y esperar hedge oro hasta que GLD recupere su 50DMA."
     },
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💳 LOC $47,260 @ 8.5% (negocio) — paydown EN PAUSA (cash neto bajo buffer). DEC $5,268/mes → Superávit $+132/mes."
+      "text": "💳 LOC $8,861 @ 8.5% — prioridad paydown. DEC promedio $5,216/mes → Superávit $+80/mes. Meta: flujo positivo antes de paydown agresivo."
     },
     "fi": {
       "color": "#f59e0b",
@@ -251,22 +251,22 @@
     "flujo": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💰 ✅ Superávit $+132/mes. DEC YTD promedio $5,268/mes. Meta $6,500+/mes. Régimen LATE_CYCLE → sesgo NEUTRO."
+      "text": "💰 ✅ Superávit $+80/mes. DEC YTD promedio $5,216/mes. Meta: $6,500+/mes. Régimen LATE_CYCLE → sesgo NEUTRO — continuar plan normal."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 51% (techo 80%). 2 moves URGENTE. Regime: LATE_CYCLE."
+      "text": "Alignment 50% (techo 82%). 2 moves URGENTE pendientes. Regime: LATE_CYCLE."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "✅ Opciones sin alertas críticas — 4 spreads, OCO activos, sin DTE≤5. ⚠️ Apalancamiento táctico 138.7% (margen $12,619) — objetivo ≤120%."
+      "text": "✅ Opciones sin alertas críticas — 4 spreads, OCO activos, monitorear SQQQ 23 DTE. ⚠️ Margen táctico $11,988 · leverage 138% sobre cap 120%."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Apalancamiento táctico 138.7% (margen $12,619) — objetivo ≤120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,622."
+      "text": "⚠️ Margen táctico $11,988 · leverage 138% sobre cap 120%. Régimen LATE_CYCLE: sesgo NEUTRO/OFENSIVO. TT NLV $12,618."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -318,10 +318,10 @@
       }
     ],
     "resumen": [
-      "💰 <b>NW Neto</b> ~$399K (bruto ~$408K − deuda personal $8.9K). FI 44% de $900K (retiro pleno) / 80% de $500K (con DEC).",
-      "🏢 <b>DEC</b> YTD net $32,664 → ~$5,268/mes. LOC sin capacidad de paydown hoy (cash neto bajo buffer $41K).",
-      "📊 <b>Táctico</b> 24 pos, MV $45,268, apalancamiento 🔴 138.7%, cluster tech 🚨 45.0%. SEP IRA $141,217 (▲$8,437 no realizado).",
-      "🎯 <b>Recomendación</b>: recortar tech ~$8-9K (resuelve concentración + apalancamiento), consolidar futuros flat, NO comprar oro."
+      "💰 NW Bruto ~$405,699 (▼$2,360 vs ayer por rotación tech) · NW Neto ~$332,970",
+      "🏢 DEC YTD net $32,499 → ~$5,216/mes · superávit ~$80/mes · LOC sin capacidad de paydown este mes (cash neto bajo buffer $41K)",
+      "📊 Táctico: 23 pos, leverage 138% 🔴, cluster tech 45% 🚨 · SEP $139,983 (+$7,214 no realizado) · TT 4 spreads NLV $12,618",
+      "🎯 Recomendación: des-apalancar ~$5.7K tech/AI HOY; NO tocar SEP; esperar hedge oro hasta recuperación de 50DMA"
     ]
   },
   "debt": {
@@ -2650,12 +2650,12 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $405,706 (45% / 81%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-07-07T12:00:00Z",
+    "lastUpdate": "2026-07-08T12:00:00Z",
     "regime": "LATE_CYCLE",
     "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tendencia alcista intacta (SPY ~1.4% bajo ATH, >50/200DMA) pero Fed restrictiva (Warsh hawkish, 0 recortes jul). Ciclo Tardío, sesgo NEUTRO.",
-    "alignmentScore": 51,
+    "regimeContext": "Tendencia alcista (SPY>50/200DMA) pero Fed de Warsh restrictiva y refugios rotos (oro/plata en baja). Selloff tech de 1 día, VIX 17.9. Sesgo neutro; des-riesgar táctico sobre-apalancado.",
+    "alignmentScore": 50,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
@@ -2666,18 +2666,18 @@
       },
       {
         "name": "Tasas",
-        "value": 30,
-        "color": "#ef4444"
+        "value": 40,
+        "color": "#f59e0b"
       },
       {
         "name": "Crecimiento",
-        "value": 58,
+        "value": 55,
         "color": "#f59e0b"
       },
       {
         "name": "Volatilidad",
-        "value": 68,
-        "color": "#10b981"
+        "value": 55,
+        "color": "#f59e0b"
       },
       {
         "name": "Geopolítico",
@@ -2685,8 +2685,8 @@
         "color": "#f59e0b"
       }
     ],
-    "regimeCeiling": 80,
-    "regimeCeilingWhy": "Tendencia alcista fija techo alto; el freno es el apalancamiento 138% y el cluster tech 45%, no el macro.",
+    "regimeCeiling": 82,
+    "regimeCeilingWhy": "Tendencia alcista (SPY>50/200DMA) permite techo alto, pero inflación pegajosa + Fed restrictiva (Warsh) lo limitan a Ciclo Tardío.",
     "moves": [
       {
         "urgency": "URGENTE",
@@ -2739,44 +2739,36 @@
   },
   "weeklyActions": [
     {
-      "priority": "HOY",
+      "priority": "URGENTE",
       "priorityColor": "#ef4444",
-      "icon": "🔴",
-      "action": "Recortar Tech/AI ~$8-9K (táctico 4090)",
-      "why": "Cluster 45% + apalancamiento 138.7% — un recorte resuelve ambos; vender nombres en rojo.",
+      "icon": "🚨",
+      "action": "Des-apalancar táctico 138%→120% (vender ~$5.7K tech/AI)",
+      "why": "Leverage 138% sobre cap 120%; margen $11,988 @ ~13% APR",
       "category": "ACTIVOS"
     },
     {
-      "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "⚖️",
-      "action": "Paydown margen táctico con el cash liberado",
-      "why": "Margen $12,619 @ 13% APR; objetivo equity ≤120%.",
+      "priority": "URGENTE",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Recortar cluster Tech/AI 45%→25% del sleeve",
+      "why": "Cluster tech 45.2% subiendo 5 días; XLK bajo 50DMA (girando)",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "⭐",
-      "action": "Consolidar futuros ociosos $2,843",
-      "why": "PKG27+VLV23 ambas flat tras cierres 5-6 jul; capital sin desplegar.",
-      "category": "FUTUROS"
+      "action": "Vigilar SQQQ put-spread (23 DTE) y minutas FOMC mié",
+      "why": "SQQQ vence 31-jul; minutas FOMC mié 8pm ET",
+      "category": "OPCIONES"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
       "icon": "⏳",
-      "action": "Re-establecer oro IAU SOLO si GLD recupera 50DMA",
-      "why": "GLD −25% bajo máx 52sem, downtrend; no atrapar navaja.",
+      "action": "Re-establecer hedge oro IAU solo si GLD recupera 50DMA",
+      "why": "GLD 27% bajo 52wH = tendencia bajista; no comprar cuchillo",
       "category": "MACRO"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "LOC paydown EN PAUSA (sin capacidad)",
-      "why": "Cash DEC $46,785 neto de payables $19,208 bajo buffer $41K → LOC_disp negativo.",
-      "category": "DEUDA"
     }
   ],
   "datestamps": {
