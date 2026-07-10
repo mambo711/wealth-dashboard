@@ -379,12 +379,12 @@
     },
     {
       "label": "CDs Ecuador",
-      "amount": 197,
+      "amount": 154,
       "color": "#3b82f6",
-      "source": "6.5%/año × $36,449",
-      "monthly": 197,
-      "annual": 2369,
-      "note": "6.5% APY — Cooperativa JEP. Capitaliza en el CD."
+      "source": "4.9%/año × $37,603",
+      "monthly": 154,
+      "annual": 1843,
+      "note": "4.9% APY — Cooperativa JEP. Capitaliza en el CD."
     },
     {
       "label": "Dividendos",
@@ -405,8 +405,8 @@
       "note": "Interés de Cash Reserve Betterment."
     }
   ],
-  "incomeTotal": 964,
-  "incomeAnnual": 11575,
+  "incomeTotal": 921,
+  "incomeAnnual": 11049,
   "incomePassiveCoverage": 23,
   "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
@@ -712,7 +712,7 @@
     {
       "name": "Ecuador CDs",
       "cat": "Cash/Fijo",
-      "value": 36449,
+      "value": 37603,
       "color": "#f59e0b"
     },
     {
@@ -825,7 +825,7 @@
       36449,
       36449,
       36449,
-      36449
+      37603
     ],
     "TS ETF Tactical": [
       33597,
@@ -2087,7 +2087,7 @@
     },
     "ecuador": {
       "label": "Ecuador JEP (manual)",
-      "date": "Jun 05 2026"
+      "date": "Jul 10 2026"
     },
     "pepe": {
       "label": "Pepe Loans (manual)",
@@ -2780,7 +2780,7 @@
     "betterment": "2026-06-29",
     "ibkr": "2026-06-29",
     "rh": "2026-06-29",
-    "ecuador": "2026-06-05",
+    "ecuador": "2026-07-10",
     "pepe": "2026-06-05",
     "miguel": "2026-06-05",
     "manual": "2026-06-05",
