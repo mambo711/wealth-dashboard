@@ -2695,7 +2695,7 @@
         "from": "Tactical #11484090",
         "why": "MV $44,793/Eq $32,806=136.5%, margen $11,988 @13% APR",
         "impact": 15,
-        "since": "2026-07-10"
+        "since": "2026-07-06"
       },
       {
         "urgency": "PLANEAR",
@@ -2704,7 +2704,7 @@
         "from": "Tactical #11484090",
         "why": "Cluster 46% >> cap 25% pero XLK $184 > 50DMA $176",
         "impact": 10,
-        "since": "2026-07-10"
+        "since": "2026-07-06"
       },
       {
         "urgency": "PLANEAR",
@@ -2713,7 +2713,7 @@
         "from": "Tactical #11484090",
         "why": "GLD $377 −26% bajo máximos, en downtrend — condicional",
         "impact": 8,
-        "since": "2026-07-10"
+        "since": "2026-07-06"
       }
     ],
     "triggers": [
