@@ -593,9 +593,9 @@
   "waterfallScenarios": [
     {
       "icon": "🟡",
-      "label": "Actual (Jul 3)",
+      "label": "Actual (Jul 12)",
       "surplus": 719,
-      "note": "Buffer DEC re-abierto ($43,107 < $44,145, faltan $1,038 tras pagar tarjetas). Surplus +$719/mes (método YTD; run-rate 3M ~$8.6K/mes)"
+      "note": "Buffer DEC abierto ($26,492 < $41,052, faltan $14,560). Surplus +$719/mes (método YTD; run-rate 3M ~$8.6K/mes)"
     },
     {
       "icon": "🟡",
@@ -2663,19 +2663,19 @@
       2535000
     ],
     "labels": [
-      "Hoy (54)",
-      "2029 (57)",
-      "2032 (60)",
-      "2035 (63)",
-      "2038 (66)",
-      "2041 (69)"
+      "Hoy (55)",
+      "2029 (58)",
+      "2032 (61)",
+      "2035 (64)",
+      "2038 (67)",
+      "2041 (70)"
     ],
     "target": 900000,
     "targetWithDEC": 500000,
     "labelBase": "🔵 Base (7%/año +$18K aporte)",
     "labelOptimistic": "🟢 Optimista (9% +$36K, DEC→SEP IRA)",
     "labelPessimistic": "🔴 Pesimista (5% +$6K)",
-    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $405,706 (45% / 81%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
+    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $393,581 NW neto (44% / 79%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
     "lastUpdate": "2026-07-11T12:00:00Z",
@@ -3017,7 +3017,7 @@
       278749,
       260137
     ],
-    "startNW": 405706,
+    "startNW": 393581,
     "retireAge": 60,
     "ssAge": 67,
     "planAge": 95,
@@ -3025,7 +3025,7 @@
     "ss": 24000,
     "bequestFloor": 0,
     "annualContrib": 17196,
-    "note": "Decumulación en dólares de hoy (real). Acumula 53→60 (+$19.5K/año aportes), luego retira $55K/año; SS $24K/año desde los 67; piso de herencia $150K; plan hasta los 95. Retornos REALES 3/4/5% (nominal − inflación). Curva conservadora se agota antes de los 95 = brecha sin DEC.",
+    "note": "Decumulación en dólares de hoy (real). Acumula 55→60 (+$19.5K/año aportes), luego retira $55K/año; SS $24K/año desde los 67; piso de herencia $150K; plan hasta los 95. Retornos REALES 3/4/5% (nominal − inflación). Curva conservadora se agota antes de los 95 = brecha sin DEC.",
     "computedFrom": "meta.nwNeto live",
     "passiveAnnual": 0,
     "ctrlDefaults": {
