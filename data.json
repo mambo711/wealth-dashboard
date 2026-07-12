@@ -384,7 +384,7 @@
       "source": "4.9%/año × $37,603",
       "monthly": 154,
       "annual": 1843,
-      "note": "4.9% APY — Cooperativa JEP. Capitaliza en el CD."
+      "note": "4.9% APY — Cooperativa JEP. Renovado 9-jul-2026 × 6 meses → vence ~9-ene-2027. Capitaliza en el CD."
     },
     {
       "label": "Dividendos",
@@ -2094,8 +2094,8 @@
       "date": "Jun 05 2026"
     },
     "ecuador": {
-      "label": "Ecuador JEP (manual)",
-      "date": "Jul 10 2026"
+      "label": "Ecuador JEP (Alberto in-chat)",
+      "date": "Jul 12 2026"
     },
     "pepe": {
       "label": "Pepe Loans (manual)",
@@ -2788,7 +2788,7 @@
     "betterment": "2026-07-12",
     "ibkr": "2026-07-12",
     "rh": "2026-07-12",
-    "ecuador": "2026-07-10",
+    "ecuador": "2026-07-12",
     "pepe": "2026-06-05",
     "miguel": "2026-06-05",
     "manual": "2026-06-05",
