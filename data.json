@@ -2747,14 +2747,23 @@
     "triggers": [
       {
         "icon": "📈",
+        "label": "RISK-ON → OFENSIVO",
+        "dirColor": "#10b981",
+        "condition": "S&P 500 > 7,800 sostenido (nuevo máximo) → sesgo a OFENSIVO, permitir leverage 140% táctico",
         "text": "S&P 500 > 7,800 sostenido (nuevo máximo) → sesgo a OFENSIVO, permitir leverage 140% táctico"
       },
       {
         "icon": "🔥",
+        "label": "INFLACIÓN → STAGFLATION",
+        "dirColor": "#ef4444",
+        "condition": "PCE > 4.1% o breakevens al alza → STAGFLATION_RISK: subir oro/real assets, bloquear Tech/Healthcare/SmallCap",
         "text": "PCE > 4.1% o breakevens al alza → STAGFLATION_RISK: subir oro/real assets, bloquear Tech/Healthcare/SmallCap"
       },
       {
         "icon": "🏦",
+        "label": "FED → DEFENSIVO",
+        "dirColor": "#f59e0b",
+        "condition": "Fed (Warsh) señala recorte o S&P cierra < 50DMA semanal → revisar duración y bajar leverage a 100%",
         "text": "Fed (Warsh) señala recorte o S&P cierra < 50DMA semanal → revisar duración y bajar leverage a 100%"
       }
     ]
