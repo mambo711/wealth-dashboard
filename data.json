@@ -370,12 +370,12 @@
   "incomeStreams": [
     {
       "label": "Pepe Loans",
-      "amount": 520,
+      "amount": 390,
       "color": "#10b981",
-      "source": "4%/mes × $13,000",
-      "monthly": 520,
-      "annual": 6240,
-      "note": "Proyectado. Actualmente redirigido a Michalitas."
+      "source": "3%/mes × $13,000",
+      "monthly": 390,
+      "annual": 4680,
+      "note": "Proyectado @ 3%/mes (bajado de 4% — Jul 2026). Actualmente redirigido a Michalitas."
     },
     {
       "label": "CDs Ecuador",
@@ -405,8 +405,8 @@
       "note": "Interés de Cash Reserve Betterment. APY 3.25% confirmado 12-jul-2026."
     }
   ],
-  "incomeTotal": 899,
-  "incomeAnnual": 10784,
+  "incomeTotal": 769,
+  "incomeAnnual": 9224,
   "incomePassiveCoverage": 23,
   "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
