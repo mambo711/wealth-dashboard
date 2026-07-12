@@ -965,7 +965,7 @@
       "value": 6367,
       "val": 6367,
       "pct": 12.5,
-      "name": "⚠️ No identificado — verificar antes de operar",
+      "name": "IPO reciente — trade corto de Alberto (gráfico 1H)",
       "pl": -104,
       "plUp": false
     },
@@ -2745,15 +2745,7 @@
       "priorityColor": "#ef4444",
       "icon": "🔴",
       "action": "Des-apalancar táctico 156.7% → ≤120% (vender SKHYV no ID + ganadores)",
-      "why": "MV $51,029/Eq $32,570, margen $18,459 @13% APR — re-expandido +$6.5K",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "📌",
-      "action": "Verificar qué es la posición SKHYV $6,367 (no ID en TS ni web)",
-      "why": "Compra a margen que disparó la expansión; no aparece con descripción",
+      "why": "MV $51,029/Eq $32,570, margen $18,459 @13% APR. SKHYV = trade corto IPO (1H) de Alberto — al cerrarlo baja el margen",
       "category": "ACTIVOS"
     },
     {
