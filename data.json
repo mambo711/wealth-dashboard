@@ -322,6 +322,9 @@
       "🏢 DEC YTD net $29,753 → ~$4,686/mes (déficit −$450/mes vs opex $5,136)",
       "📊 TS equity total $176,721 · SEP $141,518 · Táctico $32,570 (apalancado 156.7% 🔴) · TT NLV $12,369",
       "🧭 Régimen LATE_CYCLE, alineación 45% (techo 82%) · sesgo NEUTRO · #1: des-apalancar táctico"
+    ],
+    "performance": [
+      "🧠 <b>Lectura CIO (12-jul):</b> Semana al 10-jul mixta — IBKR <b>+2.6%</b> y TS ETF +0.5% sumaron; TT −2.1%, RH Photonics −7.5% y los futuros ~−10.7% restaron. En la foto de 6 meses solo los sleeves gestionados le ganan al S&P (−0.3%): <b>RH AP +51%</b>, RH Ph +23%, IBKR +5.5% — mientras el trading manual es el lastre: táctico −5.3%, TastyTrade −11%, futuros −41%/−53%. El TWR total del portafolio queda en <b>+11.4%</b> desde jun-24 (serie recomputada con los totales corregidos del sheet). La conclusión no cambia: el edge está en Autopilot, no en las cuentas manuales — las señales TT→IBKR y FUT→IBKR están a 1 evaluación mensual de activarse (🟡). Y antes de cualquier rebalanceo, la prioridad de la semana es des-apalancar el táctico (156.7% → ≤120%) antes del CPI del martes 14."
     ]
   },
   "debt": {
