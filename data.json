@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "12 Julio 2026",
     "weeklyFocusDate": "Semana del 11 Jul",
-    "nwBruto": 409412,
-    "nwBrutoDelta": "▲$1,594 neto — IBKR/RH/Betterment completos (12 Jul)",
-    "nwDeltaUp": true,
-    "nwNeto": 400551,
+    "nwBruto": 402442,
+    "nwBrutoDelta": "▼$5,459 neto vs viernes — Pepe/Miguel corregidos (sheet+in-chat 12 Jul)",
+    "nwDeltaUp": false,
+    "nwNeto": 393581,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
-    "fiPct": 45,
-    "fiGap": 499449,
+    "fiPct": 44,
+    "fiGap": 506419,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -49,7 +49,7 @@
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
     "retirementCore": 269033,
-    "totalBruto": 416161,
+    "totalBruto": 409191,
     "tacticalHeader": "$32,570 (margen $18,459 🔴 apalancado 156.7% — re-expandido +$6.5K vía SKHYV)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 12 Jul) · TT Relay Gmail (12 Jul 11:58 PT) · Xero cash (10 Jul)",
     "debtTotal": 8861.0,
@@ -58,9 +58,9 @@
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 94939,
+    "fiBlendedGap": 101909,
     "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
-    "totalAssets": 413922,
+    "totalAssets": 406952,
     "totalDebt": 8861,
     "futPKGDesc": "M6BU26 Long ×2 (Micro GBP/USD Sep-26) — Eq $1,042",
     "futVLVDesc": "M6BU26 Long ×4 (Micro GBP/USD Sep-26) — Eq $1,590",
@@ -85,8 +85,8 @@
     "futuresEquity": 2632,
     "lastTacticalMargin": 18458.97,
     "fiTargetWithDEC": 500000,
-    "fiPctWithDEC": 80,
-    "fiGapWithDEC": 99449,
+    "fiPctWithDEC": 79,
+    "fiGapWithDEC": 106419,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -271,7 +271,7 @@
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($36,415 — 8.8% del portafolio) sin garantía documental. Ver Resumen."
+      "text": "Verificar contrato Miguel Autos ($30,000 — 7.5% del portafolio) sin garantía documental. Ver Resumen."
     }
   },
   "insights": {
@@ -370,11 +370,11 @@
   "incomeStreams": [
     {
       "label": "Pepe Loans",
-      "amount": 542,
+      "amount": 520,
       "color": "#10b981",
-      "source": "4%/mes × $13,555",
-      "monthly": 542,
-      "annual": 6506,
+      "source": "4%/mes × $13,000",
+      "monthly": 520,
+      "annual": 6240,
       "note": "Proyectado. Actualmente redirigido a Michalitas."
     },
     {
@@ -405,8 +405,8 @@
       "note": "Interés de Cash Reserve Betterment. APY 3.25% confirmado 12-jul-2026."
     }
   ],
-  "incomeTotal": 921,
-  "incomeAnnual": 11049,
+  "incomeTotal": 899,
+  "incomeAnnual": 10784,
   "incomePassiveCoverage": 23,
   "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
@@ -706,7 +706,7 @@
     {
       "name": "Miguel Autos Loan",
       "cat": "Préstamo",
-      "value": 36415,
+      "value": 30000,
       "color": "#ec4899"
     },
     {
@@ -736,7 +736,7 @@
     {
       "name": "Pepe Loans",
       "cat": "Préstamo",
-      "value": 13555,
+      "value": 13000,
       "color": "#f472b6"
     },
     {
@@ -2091,19 +2091,19 @@
     },
     "manual": {
       "label": "Manual sources",
-      "date": "Jun 05 2026"
+      "date": "Jul 12 2026"
     },
     "ecuador": {
       "label": "Ecuador JEP (Alberto in-chat)",
       "date": "Jul 12 2026"
     },
     "pepe": {
-      "label": "Pepe Loans (manual)",
-      "date": "Jun 05 2026"
+      "label": "Pepe Loans (Alberto in-chat)",
+      "date": "Jul 12 2026"
     },
     "miguel": {
-      "label": "Miguel Autos (manual)",
-      "date": "Jun 05 2026"
+      "label": "Miguel Autos (sheet FREEDOM)",
+      "date": "Jul 12 2026"
     }
   },
   "twr": {
@@ -2781,9 +2781,9 @@
     "ibkr": "2026-07-12",
     "rh": "2026-07-12",
     "ecuador": "2026-07-12",
-    "pepe": "2026-06-05",
-    "miguel": "2026-06-05",
-    "manual": "2026-06-05",
+    "pepe": "2026-07-12",
+    "miguel": "2026-07-12",
+    "manual": "2026-07-12",
     "fut": "2026-07-12",
     "fut2": "2026-07-12"
   },
