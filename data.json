@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "12 Julio 2026",
     "weeklyFocusDate": "Semana del 11 Jul",
-    "nwBruto": 409329,
-    "nwBrutoDelta": "▲$1,511 neto — IBKR/RH/Betterment confirmados (12 Jul)",
+    "nwBruto": 409412,
+    "nwBrutoDelta": "▲$1,594 neto — IBKR/RH/Betterment completos (12 Jul)",
     "nwDeltaUp": true,
-    "nwNeto": 400468,
+    "nwNeto": 400551,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
-    "fiPct": 44,
-    "fiGap": 499532,
+    "fiPct": 45,
+    "fiGap": 499449,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -48,8 +48,8 @@
       }
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
-    "retirementCore": 268950,
-    "totalBruto": 416078,
+    "retirementCore": 269033,
+    "totalBruto": 416161,
     "tacticalHeader": "$32,570 (margen $18,459 🔴 apalancado 156.7% — re-expandido +$6.5K vía SKHYV)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 12 Jul) · TT Relay Gmail (12 Jul 11:58 PT) · Xero cash (10 Jul)",
     "debtTotal": 8861.0,
@@ -58,9 +58,9 @@
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 95022,
+    "fiBlendedGap": 94939,
     "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
-    "totalAssets": 413839,
+    "totalAssets": 413922,
     "totalDebt": 8861,
     "futPKGDesc": "M6BU26 Long ×2 (Micro GBP/USD Sep-26) — Eq $1,042",
     "futVLVDesc": "M6BU26 Long ×4 (Micro GBP/USD Sep-26) — Eq $1,590",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 18458.97,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 80,
-    "fiGapWithDEC": 99532,
+    "fiGapWithDEC": 99449,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -724,7 +724,7 @@
     {
       "name": "Betterment Emerg.",
       "cat": "Cash/Fijo",
-      "value": 31317,
+      "value": 31400,
       "color": "#fbbf24"
     },
     {
