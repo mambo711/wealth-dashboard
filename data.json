@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "12 Julio 2026",
     "weeklyFocusDate": "Semana del 11 Jul",
-    "nwBruto": 408034,
-    "nwBrutoDelta": "▲$216 — IBKR confirmado por Alberto (12 Jul)",
+    "nwBruto": 407953,
+    "nwBrutoDelta": "▲$216 IBKR · ▼$81 RH — confirmados por Alberto (12 Jul)",
     "nwDeltaUp": true,
-    "nwNeto": 399173,
+    "nwNeto": 399092,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 500827,
+    "fiGap": 500908,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -49,7 +49,7 @@
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
     "retirementCore": 262518,
-    "totalBruto": 414783,
+    "totalBruto": 414702,
     "tacticalHeader": "$32,570 (margen $18,459 🔴 apalancado 156.7% — re-expandido +$6.5K vía SKHYV)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 12 Jul) · TT Relay Gmail (12 Jul 11:58 PT) · Xero cash (10 Jul)",
     "debtTotal": 8861.0,
@@ -58,9 +58,9 @@
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 96317,
+    "fiBlendedGap": 96398,
     "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
-    "totalAssets": 412544,
+    "totalAssets": 412463,
     "totalDebt": 8861,
     "futPKGDesc": "M6BU26 Long ×2 (Micro GBP/USD Sep-26) — Eq $1,042",
     "futVLVDesc": "M6BU26 Long ×4 (Micro GBP/USD Sep-26) — Eq $1,590",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 18458.97,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 80,
-    "fiGapWithDEC": 100827,
+    "fiGapWithDEC": 100908,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -760,13 +760,13 @@
     {
       "name": "RH AP Act Managed",
       "cat": "Trading",
-      "value": 4791,
+      "value": 4746,
       "color": "#f59e0b"
     },
     {
       "name": "RH Ap-photonics",
       "cat": "Trading",
-      "value": 483,
+      "value": 447,
       "color": "#fbbf24"
     },
     {
@@ -2067,11 +2067,11 @@
     },
     "rh": {
       "label": "RH AP (Alberto in-chat)",
-      "date": "Jun 29 2026"
+      "date": "Jul 12 2026"
     },
     "rhph": {
       "label": "RH Photonics (Alberto in-chat)",
-      "date": "Jun 29 2026"
+      "date": "Jul 12 2026"
     },
     "betterment": {
       "label": "Betterment (Alberto in-chat)",
@@ -2787,7 +2787,7 @@
     "xero": "2026-07-10",
     "betterment": "2026-06-29",
     "ibkr": "2026-07-12",
-    "rh": "2026-06-29",
+    "rh": "2026-07-12",
     "ecuador": "2026-07-10",
     "pepe": "2026-06-05",
     "miguel": "2026-06-05",
