@@ -399,10 +399,10 @@
       "label": "Betterment Int.",
       "amount": 85,
       "color": "#8b5cf6",
-      "source": "3.25% APY × $31,317",
+      "source": "3.25% APY × $31,400",
       "monthly": 85,
-      "annual": 1020,
-      "note": "Interés de Cash Reserve Betterment."
+      "annual": 1021,
+      "note": "Interés de Cash Reserve Betterment. APY 3.25% confirmado 12-jul-2026."
     }
   ],
   "incomeTotal": 921,
