@@ -456,8 +456,8 @@
       "twrUp": false
     }
   ],
-  "rebalanceTotal": 61665,
-  "rebalanceNote": "Capital trading activo: ~$61,665. TastyTrade $12,639 (4 estructuras: FCEL P23/P20 ×2 + NVDA P195/P190 Ago + SQQQ P36/P33 Jul 31 + TSM C340/C350 LEAPS Ene 27). Futures: PKG27 $1,166 (MNGQ26 nat gas) · VLV23 $1,782 🚨 MARGIN CALL (MYMU26). 💸 Señal realocación: 🟡 PREPARAR — TT→IBKR y FUT→IBKR con 2/3 meses sostenidos (falta 1 evaluación); TT/FUT→RH bloqueado por anti-chasing (RH +54%/13sem). Sin transferencias este mes.",
+  "rebalanceTotal": 61368,
+  "rebalanceNote": "Capital trading activo: ~$61,368. TastyTrade $12,369 (5 estructuras: BB P9/P10 ×5 + FCEL P23/P20 ×2 Ago 21 + NVDA P195/P190 Ago 7 + SQQQ P36/P33 Jul 31 + TSM C340/C350 LEAPS Ene 27, OCOs activos). Futuros: PKG27 $1,042 + VLV23 $1,590 — ambos M6BU26 (Micro GBP/USD Sep-26, 2+4 contratos). 💸 Señal realocación: 🟡 PREPARAR — TT→IBKR y FUT→IBKR con 2/3 meses sostenidos (falta 1 evaluación); TT/FUT→RH bloqueado por anti-chasing. Sin transferencias este mes.",
   "pieCategories": [
     {
       "label": "Retiro 57%",
@@ -675,14 +675,14 @@
     }
   ],
   "performance": {
-    "twrTotal": "+15.2%",
+    "twrTotal": "+11.4%",
     "best6mName": "RH AP Act Managed",
-    "best6mPct": "+54.3%",
+    "best6mPct": "+51.0%",
     "second6mName": "RH Photonics",
-    "second6mPct": "+32.8%",
+    "second6mPct": "+22.9%",
     "worst6mName": "TS Futures PKG27",
-    "worst6mPct": "-48.2%",
-    "twrNote": "TWR 6M vs S&P: la mayoría bajo el índice. PKG27 serie desde Ago 2 2025; VLV23 desde Ene 31. Saltos de transferencia anulados — solo trading. FUT semana −30.8% zeroed por umbral (posible pérdida real, ver nota)."
+    "worst6mPct": "-53.4%",
+    "twrNote": "TWR 6M vs S&P (-0.3%): la mayoría bajo el índice. Serie mensual recomputada del sheet FREEDOM (flujos Ene25/Ene26/Feb26 neutralizados). PKG27 desde Ago 2 2025; VLV23 desde Ene 31 (serie corta). Semana Jul 10: futuros −10.6/−10.8% (real, dentro de umbral)."
   },
   "accounts": [
     {
@@ -1601,7 +1601,8 @@
       "Jun 15",
       "Jun 19",
       "Jun 26",
-      "Jul 3"
+      "Jul 3",
+      "Jul 10"
     ],
     "tt": [
       20000,
@@ -1653,7 +1654,8 @@
       13038,
       13062,
       12695,
-      12639
+      12639,
+      12369
     ],
     "ibkr": [
       2200,
@@ -1705,7 +1707,8 @@
       8403,
       8380,
       8388,
-      8388
+      8388,
+      8604
     ],
     "tsetf": [
       32000,
@@ -1757,7 +1760,8 @@
       33682,
       34339,
       32178,
-      32416
+      32416,
+      32570
     ],
     "rh": [
       null,
@@ -1809,7 +1813,8 @@
       4880,
       4981,
       4791,
-      4791
+      4791,
+      4746
     ],
     "rhPhotonics": [
       null,
@@ -1861,7 +1866,8 @@
       533,
       538,
       483,
-      483
+      483,
+      447
     ],
     "fut": [
       4995.0,
@@ -1913,7 +1919,8 @@
       2198.0,
       1804,
       1686,
-      1166
+      1166,
+      1042
     ],
     "sp": [
       100,
@@ -1965,7 +1972,8 @@
       107.0,
       108.0,
       107.8,
-      109.7
+      109.7,
+      110.7
     ],
     "fut2": [
       null,
@@ -2017,7 +2025,8 @@
       2211.0,
       1826,
       1805,
-      1782
+      1782,
+      1590
     ],
     "futCombined": [
       4995.0,
@@ -2069,7 +2078,8 @@
       4409.0,
       3630,
       3491,
-      2948
+      2948,
+      2632
     ]
   },
   "sources": {
@@ -2128,56 +2138,60 @@
   },
   "twr": {
     "portfolio": [
-      100,
-      100.8,
-      101.6,
-      103.0,
-      105.5,
-      112.0,
-      111.2,
-      110.5,
+      100.0,
+      100.0,
+      100.9,
+      102.6,
+      100.6,
+      106.9,
+      104.8,
+      104.8,
+      102.5,
+      100.1,
+      102.1,
+      105.0,
+      108.9,
+      106.4,
+      109.6,
+      110.9,
+      114.3,
       111.0,
-      111.5,
       112.0,
-      112.5,
-      113.0,
-      113.5,
-      114.0,
-      114.25,
-      113.5,
-      112.8,
       112.0,
-      111.2,
-      110.5,
-      110.8,
-      111.2,
-      115.2
+      112.0,
+      109.1,
+      109.1,
+      112.3,
+      110.9,
+      111.4
     ],
     "portfolioGlobal": [
-      100,
-      100.8,
-      101.6,
-      103.0,
-      105.5,
-      112.0,
-      111.2,
-      110.5,
+      100.0,
+      100.0,
+      100.9,
+      102.6,
+      100.6,
+      106.9,
+      104.8,
+      104.8,
+      102.5,
+      100.1,
+      102.1,
+      105.0,
+      108.9,
+      106.4,
+      109.6,
+      110.9,
+      114.3,
       111.0,
-      111.5,
       112.0,
-      112.5,
-      113.0,
-      113.5,
-      114.0,
-      114.25,
-      113.5,
-      112.8,
       112.0,
-      111.2,
-      110.5,
-      110.8,
-      111.2,
-      115.2
+      112.0,
+      109.1,
+      109.1,
+      112.3,
+      110.9,
+      111.4
     ],
     "sp500Monthly": [
       100.0,
@@ -2203,7 +2217,9 @@
       127.3,
       122.9,
       128.5,
-      136.9
+      136.9,
+      136.5,
+      138.3
     ],
     "tt": [
       100,
@@ -2254,7 +2270,8 @@
       87.2,
       87.36,
       84.91,
-      84.54
+      84.54,
+      82.73
     ],
     "ibkr": [
       100,
@@ -2305,7 +2322,8 @@
       114.0,
       113.69,
       113.69,
-      113.69
+      113.69,
+      116.62
     ],
     "tsetf": [
       100,
@@ -2356,7 +2374,8 @@
       123.4,
       125.81,
       117.89,
-      118.76
+      118.76,
+      119.32
     ],
     "rh": [
       null,
@@ -2407,7 +2426,8 @@
       151.2,
       154.33,
       154.33,
-      154.33
+      154.33,
+      152.88
     ],
     "fut": [
       100.0,
@@ -2458,7 +2478,8 @@
       49.27,
       40.44,
       37.79,
-      37.79
+      37.79,
+      33.77
     ],
     "sp": [
       100,
@@ -2509,7 +2530,8 @@
       107.0,
       108.0,
       107.8,
-      109.7
+      109.7,
+      110.66
     ],
     "rhPhotonics": [
       null,
@@ -2560,7 +2582,8 @@
       131.6,
       132.83,
       132.83,
-      132.83
+      132.83,
+      122.93
     ],
     "fut2": [
       null,
@@ -2611,7 +2634,8 @@
       82.26,
       67.94,
       67.16,
-      66.3
+      66.3,
+      59.16
     ]
   },
   "allocationAlerts": [
