@@ -2,13 +2,13 @@
   "meta": {
     "subtitle": "12 Julio 2026",
     "weeklyFocusDate": "Semana del 11 Jul",
-    "nwBruto": 407953,
-    "nwBrutoDelta": "▲$216 IBKR · ▼$81 RH — confirmados por Alberto (12 Jul)",
+    "nwBruto": 409329,
+    "nwBrutoDelta": "▲$1,511 neto — IBKR/RH/Betterment confirmados (12 Jul)",
     "nwDeltaUp": true,
-    "nwNeto": 399092,
+    "nwNeto": 400468,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 500908,
+    "fiGap": 499532,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -48,8 +48,8 @@
       }
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
-    "retirementCore": 262518,
-    "totalBruto": 414702,
+    "retirementCore": 268950,
+    "totalBruto": 416078,
     "tacticalHeader": "$32,570 (margen $18,459 🔴 apalancado 156.7% — re-expandido +$6.5K vía SKHYV)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 12 Jul) · TT Relay Gmail (12 Jul 11:58 PT) · Xero cash (10 Jul)",
     "debtTotal": 8861.0,
@@ -58,9 +58,9 @@
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
-    "fiBlendedGap": 96398,
+    "fiBlendedGap": 95022,
     "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
-    "totalAssets": 412463,
+    "totalAssets": 413839,
     "totalDebt": 8861,
     "futPKGDesc": "M6BU26 Long ×2 (Micro GBP/USD Sep-26) — Eq $1,042",
     "futVLVDesc": "M6BU26 Long ×4 (Micro GBP/USD Sep-26) — Eq $1,590",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 18458.97,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 80,
-    "fiGapWithDEC": 100908,
+    "fiGapWithDEC": 99532,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -542,7 +542,7 @@
       "label": "Retiro (compounding core)",
       "valueId": "metric-retirement",
       "color": "#60a5fa",
-      "value": "$235,166"
+      "value": "$237,633"
     },
     {
       "label": "Surplus mensual",
@@ -694,13 +694,13 @@
     {
       "name": "Betterment Roth IRA",
       "cat": "Retiro",
-      "value": 65740,
+      "value": 67063,
       "color": "#3b82f6"
     },
     {
       "name": "Betterment Trad IRA",
       "cat": "Retiro",
-      "value": 28999,
+      "value": 29052,
       "color": "#60a5fa"
     },
     {
@@ -2074,8 +2074,8 @@
       "date": "Jul 12 2026"
     },
     "betterment": {
-      "label": "Betterment (Alberto in-chat)",
-      "date": "Jun 29 2026"
+      "label": "Betterment (screenshot Alberto)",
+      "date": "Jul 12 2026"
     },
     "fut": {
       "label": "TS Futures PKG27 (live)",
@@ -2785,7 +2785,7 @@
     "ts": "2026-07-12",
     "tt": "2026-07-12",
     "xero": "2026-07-10",
-    "betterment": "2026-06-29",
+    "betterment": "2026-07-12",
     "ibkr": "2026-07-12",
     "rh": "2026-07-12",
     "ecuador": "2026-07-10",
