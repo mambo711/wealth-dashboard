@@ -1268,12 +1268,12 @@ function renderMacroTab(mr, meta) {
     <!-- ── TRIGGERS ── -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
       ${(mr.triggers||[]).map(t => `
-        <div style="background:#1e293b;border-radius:10px;padding:14px;border-top:3px solid ${t.dirColor}">
+        <div style="background:#1e293b;border-radius:10px;padding:14px;border-top:3px solid ${t.dirColor||'#64748b'}">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-            <span style="font-size:16px">${t.icon}</span>
-            <span style="font-size:11px;font-weight:700;color:${t.dirColor}">${t.label}</span>
+            <span style="font-size:16px">${t.icon||''}</span>
+            <span style="font-size:11px;font-weight:700;color:${t.dirColor||'#94a3b8'}">${t.label||'TRIGGER'}</span>
           </div>
-          <div style="font-size:12px;color:#94a3b8;line-height:1.5">${t.condition}</div>
+          <div style="font-size:12px;color:#94a3b8;line-height:1.5">${t.condition||t.text||''}</div>
         </div>`).join('')}
     </div>
   `;
