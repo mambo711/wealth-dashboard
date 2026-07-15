@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "14 Julio 2026",
+    "subtitle": "15 Julio 2026",
     "weeklyFocusDate": "Semana del 14 Jul",
-    "nwBruto": 404897,
-    "nwBrutoDelta": "▼$1,516 vs ayer",
-    "nwDeltaUp": false,
-    "nwNeto": 396036,
+    "nwBruto": 406142,
+    "nwBrutoDelta": "▲$1,245 vs ayer",
+    "nwDeltaUp": true,
+    "nwNeto": 397281,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 503964,
+    "fiGap": 502719,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
-    "retirementCore": 261794,
+    "retirementCore": 262199,
     "totalBruto": 409191,
-    "tacticalHeader": "$30,689 (margen $12,839 ▼ pagado $5,620; apalanc. 141.8% aún sobre cap 120%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live 14-jul ~6:08 ET) · TT Relay Gmail (14-jul 03:07 PDT) · Xero P&L+cash (live YTD) · WebSearch Barchart/FedWatch/MAs · snapshot 29-may",
+    "tacticalHeader": "$31,395 (margen $12,839 sin cambio; apalanc. 140.9% aún sobre cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live 15-jul ~6:07 ET) · TT Relay Gmail (15-jul 06:04 ET) · Xero P&L+cash (live YTD) · WebSearch Barchart/FedWatch/MAs · snapshot 29-may",
     "debtTotal": 8861.0,
     "debtDelta": "Deuda personal en NW: solo Car Loan $8,861 · Negocio DEC ($70,631 LOC+tarjetas) trackeado aparte",
     "debtDeltaUp": false,
@@ -80,23 +80,15 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 4313,
+    "decMonthlyAvg": 5765.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 2632,
     "lastTacticalMargin": 12838.74,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 79,
-    "fiGapWithDEC": 103964,
+    "fiGapWithDEC": 102719,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
-      {
-        "date": "2026-07-09",
-        "sep": 140317.87,
-        "tac": 32378.32,
-        "fut": 2787.39,
-        "tt": 12529.42,
-        "total": 175483.58
-      },
       {
         "date": "2026-07-10",
         "sep": 140824.75,
@@ -128,13 +120,17 @@
         "fut": 2425.63,
         "tt": 12259.92,
         "total": 173909.08
+      },
+      {
+        "date": "2026-07-15",
+        "sep": 141199.16,
+        "tac": 31394.71,
+        "fut": 2424.85,
+        "tt": 12395.13,
+        "total": 175018.72
       }
     ],
     "techClusterHistory": [
-      {
-        "date": "2026-07-09",
-        "pct": 46.0
-      },
       {
         "date": "2026-07-10",
         "pct": 46.1
@@ -150,14 +146,18 @@
       {
         "date": "2026-07-14",
         "pct": 40.1
+      },
+      {
+        "date": "2026-07-15",
+        "pct": 40.2
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 Des-apalancar táctico 141.8%→≤120%",
-      "body": "El ETF Táctico bajó margen $5,620 hoy (156.7%→141.8% apalanc.) pero sigue sobre el cap de 120%. Con CPI 8:30 + testimonio de Warsh 10am añadiendo volatilidad, recortar ganadores (EWT +$495, BUG +$330) hacia la fortaleza.",
-      "why": "Margen cuesta ~13% APR y el apalancamiento sobre cap viola la prioridad #1 del sleeve (drawdown máx 30%)."
+      "title": "Prioridad #1: 🚨 Des-apalancar táctico 140.9%",
+      "body": "El ETF táctico sigue 140.9% apalancado (margen $12,839 @ ~13% APR) — 9 días sobre el cap 120%. Vender ganadores EWT (+$564) y BUG (+$571) baja margen y recorta el cluster Tech/AI (~46%). Régimen LATE_CYCLE, tendencia alcista intacta, VIX calmo.",
+      "why": "El margen a 13% APR sangra ~$4.6/día y el apalancamiento amplifica cualquier giro hawkish post-PPI/Warsh."
     },
     "steps": [
       {
@@ -236,12 +236,12 @@
     "resumen": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "(1) Continuar des-apalancando táctico 141.8%→≤120% vendiendo ganadores. (2) Cluster Tech/AI 40% sobre cap → trailing stop, no vender al alza. (3) Confirmar $2,426 cash inactivo en futuros."
+      "text": "(1) Des-apalancar táctico 140.9%→120% vendiendo EWT/BUG · (2) Trailing stop 8-10% al cluster Tech/AI 46% (no vender al alza) · (3) Confirmar futuros PKG27/VLV23 con cero posiciones ($2,425 inactivo)."
     },
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💳 LOC $8,861 — DEC promedio $4,313/mes → Déficit $-823/mes. Cash DEC $24,512 BAJO buffer $41,052 → SIN capacidad de paydown hoy."
+      "text": "💳 Deuda personal $8,861 (car loan). DEC promedio $5,765/mes → Superávit $+629/mes. LOC DEC trackeado aparte."
     },
     "fi": {
       "color": "#f59e0b",
@@ -249,24 +249,24 @@
       "text": "LOC en espera: buffer DEC en $43,107 / $44,145. Move CRÍTICO también pendiente. FI al 45% ($900K) / 81% ($500K). Ver Resumen."
     },
     "flujo": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "💰 ⚠️ Déficit $-823/mes. DEC YTD promedio $4,313/mes. Cash DEC $24,512 < buffer $41,052. Régimen LATE_CYCLE → NEUTRO, preservar liquidez."
+      "color": "#10b981",
+      "borderColor": "#10b981",
+      "text": "💰 ✅ Superávit $+629/mes. DEC YTD promedio $5,765/mes. Régimen LATE_CYCLE → sesgo NEUTRO."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 52% (techo 82%). 1 moves URGENTE pendientes. Regime: LATE_CYCLE."
+      "text": "Alignment 54% (techo 82%). 1 move URGENTE pendiente. Regime: LATE_CYCLE."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "✅ Opciones sin alertas críticas — 4 spreads, OCO OK. ⚠️ Margen táctico $12,839 (apalanc. 141.8% sobre cap 120%)."
+      "text": "✅ Opciones sin alertas críticas — 4 spreads OCO activos, vigilar SQQQ 16 DTE. ⚠️ Táctico 140.9% apalancado — margen $12,839 @ ~13% APR, sobre cap 120%."
     },
     "cuentas": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Margen táctico $12,839 (apalanc. 141.8% sobre cap 120%). Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,260."
+      "text": "⚠️ Táctico 140.9% apalancado — margen $12,839 @ ~13% APR, sobre cap 120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,395."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -318,10 +318,10 @@
       }
     ],
     "resumen": [
-      "🏦 NW: TS equity $173,909 (SEP $140,794 + Táctico $30,689 + Futuros $2,426) + TT NLV $12,260.",
-      "💼 SEP IRA sólido: VOO/SCHD/AVDV +$8,014 no realizado. Núcleo de retiro — no tocar.",
-      "⚠️ Táctico: 23 posiciones, apalanc. 141.8% (cap 120%), cluster Tech/AI 40% sobre cap 25%.",
-      "💡 Régimen LATE_CYCLE, alineación 52%: recortar apalancamiento y concentración tech; preservar liquidez ante CPI+Warsh."
+      "💰 NW Bruto ~$406,142 (▲+$1,245 vs ayer) · NW Neto ~$397,281 (deuda personal $8,861).",
+      "🏦 SEP IRA $141,199 (VOO/SCHD/AVDV, todo verde ▲+$8,421 no realizado) — core de retiro, no tocar.",
+      "⚠️ Táctico $31,395 eq / MV $44,233 = 140.9% apalancado 🔴 · cluster Tech/AI ~46% 🚨 · 23 posiciones.",
+      "📋 Tastytrade NLV $12,395 (4 spreads, OCO activos) · Futuros $2,425 sin posiciones · régimen LATE_CYCLE 54%."
     ],
     "performance": [
       "🧠 <b>Lectura CIO (12-jul):</b> Semana al 10-jul mixta — IBKR <b>+2.6%</b> y TS ETF +0.5% sumaron; TT −2.1%, RH Photonics −7.5% y los futuros ~−10.7% restaron. En la foto de 6 meses solo los sleeves gestionados le ganan al S&P (−0.3%): <b>RH AP +51%</b>, RH Ph +23%, IBKR +5.5% — mientras el trading manual es el lastre: táctico −5.3%, TastyTrade −11%, futuros −41%/−53%. El TWR total del portafolio queda en <b>+11.4%</b> desde jun-24 (serie recomputada con los totales corregidos del sheet). La conclusión no cambia: el edge está en Autopilot, no en las cuentas manuales — las señales TT→IBKR y FUT→IBKR están a 1 evaluación mensual de activarse (🟡). Y antes de cualquier rebalanceo, la prioridad de la semana es des-apalancar el táctico (156.7% → ≤120%) antes del CPI del martes 14."
@@ -2705,12 +2705,12 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $393,581 NW neto (44% / 79%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-07-14T12:00:00Z",
+    "lastUpdate": "2026-07-15T12:00:00Z",
     "regime": "LATE_CYCLE",
     "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tendencia alcista intacta (SPY sobre 50/200DMA, ~1.5% bajo ATH) pero Fed de Warsh hawkish con inflación 'demasiado alta' y mercado descontando ALZAS de tasas, no recortes. VIX calmo 17.3.",
-    "alignmentScore": 52,
+    "regimeContext": "Tendencia alcista intacta (SPY $753.57 sobre 50/200DMA, ~0.9% bajo ATH $760) con VIX calmo 16.3. Fed de Warsh hawkish: inflación 'demasiado alta', mercado descuenta ALZA no recorte. PPI hoy 8:30am.",
+    "alignmentScore": 54,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
@@ -2726,17 +2726,17 @@
       },
       {
         "name": "Crecimiento",
-        "value": 65,
+        "value": 66,
         "color": "#f59e0b"
       },
       {
         "name": "Volatilidad",
-        "value": 70,
+        "value": 72,
         "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 50,
+        "value": 52,
         "color": "#f59e0b"
       }
     ],
@@ -2746,21 +2746,21 @@
       {
         "urgency": "URGENTE",
         "icon": "🚨",
-        "action": "Des-apalancar táctico 141.8% → ≤120% (progreso desde 156.7%; margen ▼$5,620 hoy; vender ganadores EWT/BUG)",
+        "action": "Des-apalancar táctico 140.9% → ≤120% (margen $12,839 sin cambio; vender ganadores EWT +$564/BUG +$571)",
         "since": "2026-07-06",
         "impact": 15
       },
       {
         "urgency": "PLANEAR",
         "icon": "🟡",
-        "action": "Cluster Tech/AI 40.1% → trailing stop 8-10% (XLK en tendencia, no vender al alza)",
+        "action": "Cluster Tech/AI ~46% (Tech/Semis 38%) → trailing stop 8-10% (XLK en tendencia, no vender al alza)",
         "since": "2026-07-06",
         "impact": 10
       },
       {
         "urgency": "PLANEAR",
         "icon": "⏸️",
-        "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385); hoy $368.66 ⏸️",
+        "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385); hoy $369.69 ⏸️",
         "since": "2026-07-06",
         "impact": 8
       }
@@ -2794,32 +2794,32 @@
       "priority": "URGENTE",
       "priorityColor": "#ef4444",
       "icon": "🚨",
-      "action": "Des-apalancar ETF Táctico 141.8%→≤120% (vender EWT/BUG)",
-      "why": "Margen $12,839 @ ~13% APR; apalanc. sobre cap 120%; 8 días pendiente.",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Cluster Tech/AI 40.1% → trailing stop 8-10%",
-      "why": "Sobre cap 25% pero XLK en tendencia alcista — no vender al alza.",
-      "category": "ACTIVOS"
+      "action": "Des-apalancar táctico 140.9%→≤120% (vender EWT +$564 / BUG +$571)",
+      "why": "Margen $12,839 @ ~13% APR, 9 días sobre cap 120%.",
+      "category": "CUENTAS"
     },
     {
       "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "⭐",
-      "action": "Confirmar $2,426 cash inactivo en futuros PKG27/VLV23",
-      "why": "Cero posiciones abiertas — stopeadas/expiradas o cierre no capturado.",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Trailing stop 8-10% al cluster Tech/AI ~46% (Tech/Semis solo 38%)",
+      "why": "XLK en uptrend — no vender al alza forzado; proteger con stop dinámico.",
+      "category": "POSICIONES"
+    },
+    {
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#f59e0b",
+      "icon": "⚠️",
+      "action": "Confirmar futuros PKG27 $973 + VLV23 $1,451 — cero posiciones",
+      "why": "M6BU26 cerrado/vencido; $2,425 de cash sentado sin trabajar.",
       "category": "FUTUROS"
     },
     {
       "priority": "CONDICIONAL",
       "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "Re-establecer hedge oro IAU SOLO si GLD > $385 (50DMA)",
-      "why": "GLD $368.66 en tendencia bajista (−28% bajo 52wH) — no re-establecer aún.",
+      "icon": "⏸️",
+      "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385)",
+      "why": "GLD hoy $369.69, bajo 50DMA y en tendencia bajista — refugio no funciona.",
       "category": "MACRO"
     }
   ],
