@@ -5,10 +5,10 @@
     "nwBruto": 405572,
     "nwBrutoDelta": "▼$570 vs ayer",
     "nwDeltaUp": false,
-    "nwNeto": 396711,
+    "nwNeto": 397374,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 503289,
+    "fiGap": 502626,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -52,8 +52,8 @@
     "totalBruto": 409191,
     "tacticalHeader": "$30,593 equity (margen $12,033 @ ~13% APR · apalancamiento 139% 🔴 sobre cap 120%)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 16-jul ~7:40 ET) · TT Relay Gmail (16-jul 03:03 PDT) · Xero (live YTD+cash) · WebSearch (Barchart/Fed/CME/MAs) · Betterment/Ecuador/loans (cached)",
-    "debtTotal": 8861.0,
-    "debtDelta": "Deuda personal en NW: solo Car Loan $8,861 · Negocio DEC ($70,631 LOC+tarjetas) trackeado aparte",
+    "debtTotal": 8197.73,
+    "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (▼$663 principal, pago jun aplicado) · Negocio DEC trackeado aparte",
     "debtDeltaUp": false,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
@@ -61,7 +61,7 @@
     "fiBlendedGap": 101909,
     "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
     "totalAssets": 406952,
-    "totalDebt": 8861,
+    "totalDebt": 8198,
     "futPKGDesc": "M6BU26 Long ×2 (Micro GBP/USD Sep-26) — Eq $1,042",
     "futVLVDesc": "M6BU26 Long ×4 (Micro GBP/USD Sep-26) — Eq $1,590",
     "weeklyTrackingStart": "Ago 2, 2025",
@@ -86,7 +86,7 @@
     "lastTacticalMargin": 12033.45,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 79,
-    "fiGapWithDEC": 103289,
+    "fiGapWithDEC": 102626,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
       {
@@ -241,7 +241,7 @@
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💳 LOC $8,861 @ 8.5% — prioridad paydown. DEC promedio $4,509/mes → Déficit $-627/mes."
+      "text": "🚗 Car Loan $8,198 @ 6.49% (▼$663 pago jun, próx. $712 el 05-jul) — única deuda personal. Negocio DEC (LOC+tarjetas) aparte. DEC promedio $4,509/mes → Déficit $-627/mes."
     },
     "fi": {
       "color": "#f59e0b",
@@ -367,8 +367,8 @@
         "balance": 79
       }
     ],
-    "totalDebt": 62028,
-    "totalDebtDate": "Personal en NW $8,861 · Negocio DEC $53,167 (▼$17.5K: tarjetas pagadas ✅)"
+    "totalDebt": 61365,
+    "totalDebtDate": "Personal en NW $8,198 · Negocio DEC $53,167"
   },
   "incomeStreams": [
     {
@@ -591,7 +591,7 @@
     "surplus": 719,
     "passiveIncome": 964,
     "michalitas": 499,
-    "carInterest": 48
+    "carInterest": 49
   },
   "waterfallScenarios": [
     {
@@ -1550,7 +1550,7 @@
       70700,
       73239,
       71000,
-      62028
+      61365
     ]
   },
   "weekly": {
