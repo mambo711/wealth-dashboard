@@ -50,7 +50,7 @@
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
     "retirementCore": 261752,
     "totalBruto": 409191,
-    "tacticalHeader": "$29,645 (margen $10,808 🔴 leverage 137% — cap 120%)",
+    "tacticalHeader": "$29,864 (margen $9,843 🔴 leverage 133% — cap 120%, recorte en progreso)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 20-jul ~07:55 ET) · TT Relay Gmail (20-jul 06:03 ET) · Xero (live YTD) · CME FedWatch (18-jul)",
     "debtTotal": 8197.73,
     "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (▼$663 principal, pago jun aplicado) · Negocio DEC trackeado aparte",
@@ -83,7 +83,7 @@
     "decMonthlyAvg": 4615.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 2377.6,
-    "lastTacticalMargin": 10808.09,
+    "lastTacticalMargin": 9843.32,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 79,
     "fiGapWithDEC": 104278,
@@ -2746,8 +2746,8 @@
       {
         "urgency": "URGENTE",
         "icon": "🔴",
-        "action": "Des-apalancar táctico 136.5% → ≤120% (margen $10,808; vender ganadores BUG+EWT ~$4,900 MV)",
-        "why": "Sobre cap +17pts; margen ~13% APR ≈ $117/mes",
+        "action": "Des-apalancar táctico 133% → ≤120% (margen $9,843; vendidos 10 EWT hoy — falta ~$3,870 MV: BUG+resto EWT)",
+        "why": "🔄 PARCIAL en progreso: 136.5%→133% hoy 20-jul; margen ~13% APR",
         "impact": 10,
         "since": "2026-07-06"
       },
