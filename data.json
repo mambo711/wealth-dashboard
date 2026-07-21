@@ -50,7 +50,7 @@
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
     "retirementCore": 261752,
     "totalBruto": 409191,
-    "tacticalHeader": "$29,857 (margen $9,843 🔴 leverage 133% — cap 120%, 15 días pendiente)",
+    "tacticalHeader": "$29,857 (margen $9,843 🟢 leverage 133% — DENTRO de cap 140% trend-conditional)",
     "footerNote": "Datos: TradeStation REST ts_api.py (live 21-jul ~06:08 ET) · TT Relay Gmail (21-jul 03:03 PDT) · Xero (live YTD) · CME FedWatch (20-jul)",
     "debtTotal": 8197.73,
     "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (▼$663 principal, pago jun aplicado) · Negocio DEC trackeado aparte",
@@ -68,15 +68,15 @@
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
       {
-        "text": "🔴 Margen táctico $11,304 — leverage 135.1% SOBRE cap 120% (des-apalancar)",
+        "text": "🟢 Leverage 133% dentro de cap 140% (trend-conditional, regla 21-jul) — margen $9,843 @ ~13% APR",
+        "color": "green"
+      },
+      {
+        "text": "🔴 Cluster Tech/AI real 44% del MV — SOBRE cap 25% (trailing stops, no venta forzada en uptrend)",
         "color": "red"
       },
       {
-        "text": "🔴 Cluster Tech/AI ~47% del MV — SOBRE cap 25% (recortar)",
-        "color": "red"
-      },
-      {
-        "text": "⚠️ Sleeve oro 0% (IAU vendido) — re-establecer hedge inflación",
+        "text": "⚠️ Sleeve oro 0% (IAU vendido) — re-establecer solo si GLD > 50DMA (~$385)",
         "color": "yellow"
       }
     ],
@@ -155,9 +155,9 @@
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🔴 Des-apalancar el táctico (15 días pendiente)",
-      "body": "Leverage táctico 133% vs cap 120% — vender BUG (+$394 no realizado) primero, HOY. Buffer DEC se liberó: cash $46,668 permite $1,759 de paydown al LOC por primera vez en semanas. TT NLV cayó 4 días seguidos tras cierre de BB/FCEL/NVDA/SQQQ — confirmar en options-daily-session.",
-      "why": "El margen de $9,843 cuesta ~$107/mes al 13% APR con la Fed en hold restrictivo; 15 días de retraso ya erosionan el retorno del sleeve, y el cluster Tech/AI real (44%) sigue muy sobre el cap 25%."
+      "title": "Prioridad #1: 💰 Aplicar $1,759 al LOC + proteger cluster tech con trailing stops",
+      "body": "El cap de leverage pasó a trend-conditional (140% en uptrend — regla confirmada 21-jul): el 133% actual queda DENTRO de cap. Nuevas prioridades: aplicar el $1,759 liberado del buffer DEC al LOC, colocar trailing stops 8-10% en el cluster tech (44% del MV) y confirmar los cierres de Tastytrade.",
+      "why": "Con la tendencia alcista confirmada el leverage deja de ser la urgencia; el riesgo real ahora es el cluster tech concentrado sin protección y el catalizador arancelario del 24-jul."
     },
     "steps": [
       {
@@ -234,9 +234,9 @@
   },
   "actions": {
     "resumen": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "(1) Des-apalancar táctico 133%→≤120% — 15 días pendiente, vender BUG (+$394) primero (2) Aplicar $1,759 disponible al LOC — buffer DEC recién liberado (3) Confirmar en options-daily-session los cierres de BB/FCEL/NVDA/SQQQ en Tastytrade."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "(1) Aplicar $1,759 disponible al LOC — buffer DEC recién liberado (2) Confirmar cierres BB/FCEL/NVDA/SQQQ en options-daily-session (3) Colocar trailing stops 8-10% en cluster tech (44% del MV). Leverage 133% ahora DENTRO de cap 140% trend-conditional (regla 21-jul)."
     },
     "deuda": {
       "color": "#10b981",
@@ -256,17 +256,17 @@
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 50% (techo 82%). 1 move URGENTE pendiente (15 días, escalar). Regime: LATE_CYCLE."
+      "text": "Alignment 60% (techo 82%). Move de leverage resuelto por cambio de regla (cap 140% en uptrend). Pendientes: trailing stops cluster tech + hedge oro condicional. Regime: LATE_CYCLE."
     },
     "posiciones": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "⚠️ Cluster Tech/AI real 44.0% sobre cap 25% (BUG incluido). ⚠️ Margen táctico $9,843 — leverage 133% sobre cap 120%. TT: 3 posiciones (cambio importante vs relay anterior, confirmar en options-daily-session)."
+      "text": "⚠️ Cluster Tech/AI real 44.0% sobre cap 25% — trailing stops 8-10%, no venta forzada en uptrend. 🟢 Leverage 133% dentro de cap 140% trend-conditional. TT: 3 posiciones (confirmar cierres en options-daily-session)."
     },
     "cuentas": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "⚠️ Margen táctico $9,843 — leverage 133% sobre cap 120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,036 (▼4d). Futuros $2,378 idle sin posiciones."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "🟢 Margen táctico $9,843 — leverage 133% DENTRO de cap 140% (trend-conditional 21-jul; baja a 120% si SPY/XLK rompen 50DMA). Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,036 (▼4d). Futuros $2,378 idle."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -2710,7 +2710,7 @@
     "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
     "regimeContext": "Fed de Warsh en hold restrictivo (3.50-3.75%, 86.7% hold 28-29 jul) con inflación 'aún muy alta', pero SPY y XLK en uptrend confirmado (XLK máximo 52-sem) por capex IA. Vencimiento arancel Section 122 el 24-jul es el catalizador binario de la semana; tensión Irán se enfría con señales de tregua.",
-    "alignmentScore": 50,
+    "alignmentScore": 60,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
@@ -2741,15 +2741,15 @@
       }
     ],
     "regimeCeiling": 82,
-    "regimeCeilingWhy": "TREND UPTREND fija techo ≥80; inflación pegajosa, leverage sobre cap y vencimiento arancelario del 24-jul limitan la alineación alcanzable",
+    "regimeCeilingWhy": "TREND UPTREND fija techo ≥80; inflación pegajosa, cluster tech 44% sobre cap y vencimiento arancelario 24-jul limitan la alineación",
     "moves": [
       {
-        "urgency": "URGENTE",
-        "icon": "🔴",
-        "action": "Des-apalancar táctico 133% → ≤120% (margen $9,843; vendidos 10 EWT hoy — falta ~$3,870 MV: BUG+resto EWT)",
-        "why": "🔄 PARCIAL en progreso: 136.5%→133% hoy 20-jul; margen ~13% APR",
-        "impact": 10,
-        "since": "2026-07-06"
+        "urgency": "CONDICIONAL",
+        "icon": "🟡",
+        "action": "Si SPY o XLK cierran bajo su 50DMA → reducir leverage 133%→≤120% ese mismo día (cap trend-conditional, regla 21-jul)",
+        "why": "Nuevo cap: 140% en uptrend, 120% al romperse la tendencia — hoy uptrend confirmado, 133% DENTRO de cap",
+        "impact": 6,
+        "since": "2026-07-21"
       },
       {
         "urgency": "PLANEAR",
@@ -2794,11 +2794,11 @@
   },
   "weeklyActions": [
     {
-      "priority": "URGENTE",
-      "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Des-apalancar táctico 133%→≤120%: vender BUG (+$394 no realizado)",
-      "why": "15 días pendiente; margen $9,843 @ ~13% APR, sobre cap +13pts",
+      "priority": "CONDICIONAL",
+      "priorityColor": "#94a3b8",
+      "icon": "⏳",
+      "action": "Vigilar cierre de SPY/XLK vs 50DMA — si rompe, reducir leverage a ≤120% ese día",
+      "why": "Cap trend-conditional (regla 21-jul): 140% en uptrend, 120% al romperse la tendencia",
       "category": "ACTIVOS"
     },
     {
