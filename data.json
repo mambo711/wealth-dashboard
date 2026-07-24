@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "23 Julio 2026",
+    "subtitle": "24 Julio 2026",
     "weeklyFocusDate": "Semana del 20 Jul",
-    "nwBruto": 404624,
-    "nwBrutoDelta": "▲$143 vs ayer",
-    "nwDeltaUp": true,
-    "nwNeto": 396426,
+    "nwBruto": 403563,
+    "nwBrutoDelta": "▼$1,061 vs ayer",
+    "nwDeltaUp": false,
+    "nwNeto": 395365,
     "nwNetoDelta": "NW Neto $405,706 — solo deuda personal (car loan $8,861); DEC fuera del NW (Jun 29)",
     "fiPct": 44,
-    "fiGap": 503574,
+    "fiGap": 504635,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -48,10 +48,10 @@
       }
     },
     "healthDiagnostic": "Score 68 BUENO. 🚨 NUEVO: VLV23 en MARGIN CALL (riesgo 38/100) + táctico 138.9% apalancado con Tech/AI 45.0% — des-riesgar es la prioridad #1. 💳 Tarjetas pagadas (−$14.5K, deuda total $62,029) pero el cash DEC bajó a $43,107 y re-abrió el buffer (faltan $1,038) → LOC paydown EN PAUSA. Retiro 94/100 y Deuda 91/100 fortalezas; surplus 24/100 (+$719/mes método YTD) sigue siendo el lastre.",
-    "retirementCore": 262028,
+    "retirementCore": 261259,
     "totalBruto": 409191,
-    "tacticalHeader": "$30,252 equity (margen $9,843 @ ~13% APR · leverage 132.5% cap 140%)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live 23 jul) · TT Relay Gmail (23 jul 12:05 CET) · Xero P&L+cash (live) · WebSearch Barchart/Fed/MA",
+    "tacticalHeader": "$30,085 equity (margen $9,843 @ ~13% APR · leverage 132.7% 🔴 cap 120% — SPY bajo 50DMA)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live 24 jul) · TT Relay Gmail (24 jul 03:04 PT) · Xero P&L+cash (live) · WebSearch Barchart/FedWatch/Warsh/MA",
     "debtTotal": 8197.73,
     "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (▼$663 principal, pago jun aplicado) · Negocio DEC trackeado aparte",
     "debtDeltaUp": false,
@@ -80,23 +80,15 @@
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 4722.0,
+    "decMonthlyAvg": 4701.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
-    "futuresEquity": 2320.1,
+    "futuresEquity": 2308.8,
     "lastTacticalMargin": 9843.35,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 79,
-    "fiGapWithDEC": 103574,
+    "fiGapWithDEC": 104635,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
-      {
-        "date": "2026-07-17",
-        "sep": 140779.14,
-        "tac": 29290.28,
-        "fut": 2377.6,
-        "tt": 12190.02,
-        "total": 172447.02
-      },
       {
         "date": "2026-07-20",
         "sep": 140752.21,
@@ -128,13 +120,17 @@
         "fut": 2311.02,
         "tt": 12304.39,
         "total": 173591.41
+      },
+      {
+        "date": "2026-07-24",
+        "sep": 140258.69,
+        "tac": 30085.03,
+        "fut": 2308.82,
+        "tt": 12182.76,
+        "total": 172652.54
       }
     ],
     "techClusterHistory": [
-      {
-        "date": "2026-07-17",
-        "pct": 37.3
-      },
       {
         "date": "2026-07-20",
         "pct": 36.0
@@ -150,14 +146,18 @@
       {
         "date": "2026-07-23",
         "pct": 43.9
+      },
+      {
+        "date": "2026-07-24",
+        "pct": 43.5
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🟡 Trailing stop cluster tech 44% ante earnings mega-cap",
-      "body": "El cluster beta tech del ETF Táctico está en 43.9% del MV entrando a la semana de earnings de MSFT/META. En uptrend no se vende el ganador; se protege con trailing stop 8-10%.",
-      "why": "Es la mayor concentración de riesgo de la cartera táctica y el catalizador (earnings) es inminente."
+      "title": "Prioridad #1: 🔴 Reducir apalancamiento táctico (cap bajó a 120%)",
+      "body": "SPY cerró bajo su 50DMA el jueves → el cap trend-conditional del ETF Táctico baja de 140% a 120%, dejando el leverage 132.7% ~13 pts sobre cap. Trimear ~$4K de rezagados tech des-apalanca Y reduce el cluster 43.5%.",
+      "why": "El margen cuesta ~13% APR y el quiebre de tendencia acorta la ventana de des-riesgo."
     },
     "steps": [
       {
@@ -234,14 +234,14 @@
   },
   "actions": {
     "resumen": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "(1) Trailing stop 8-10% cluster tech 44% ante earnings MSFT/META. (2) Monitor leverage táctico 132.5% (cap 140%). (3) Barrer $2,311 ocioso de futuros a renta fija corta."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "(1) Reducir leverage táctico 132.7%→≤120% HOY (SPY bajo 50DMA bajó cap a 120%). (2) Trailing stop cluster tech 43.5% ante earnings MSFT/META. (3) Barrer $2,309 ocioso de futuros a renta fija corta."
     },
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "💳 LOC $8,198 @ 8.5% — prioridad paydown. DEC promedio $4,722/mes → Déficit $-414/mes. Meta: flujo positivo antes de paydown agresivo."
+      "text": "💳 LOC $8,198 personal · DEC promedio $4,701/mes → Déficit $-435/mes. LOC disponible hoy ~$4,011 (cash $50,528 − payables $3,857 − créditos $1,609 − buffer $41,052)."
     },
     "fi": {
       "color": "#f59e0b",
@@ -251,22 +251,22 @@
     "flujo": {
       "color": "#ef4444",
       "borderColor": "#ef4444",
-      "text": "💰 ⚠️ Déficit $-414/mes. DEC YTD promedio $4,722/mes. Meta: $6,500+/mes. Régimen LATE_CYCLE → sesgo NEUTRO — continuar plan normal."
+      "text": "💰 ⚠️ Déficit $-435/mes. DEC YTD promedio $4,701/mes. Meta: $6,500+/mes. Régimen LATE_CYCLE → sesgo NEUTRO."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 58% (techo 82%). 0 moves URGENTE pendientes. Regime: LATE_CYCLE."
+      "text": "Alignment 56% (techo 75%). 1 move URGENTE pendiente. Regime: LATE_CYCLE."
     },
     "posiciones": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "✅ Opciones sin alertas críticas — monitorear DTE. ✅ Margen táctico $9,843 dentro del objetivo."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "🔴 Reducir leverage 132.7%→≤120% HOY (SPY bajo 50DMA). 🔴 Leverage táctico 132.7% SOBRE cap 120% (margen $9,843 @ ~13% APR)."
     },
     "cuentas": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $9,843 dentro del objetivo. Régimen LATE_CYCLE: sesgo NEUTRO/OFENSIVO. TT NLV $12,304."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "🔴 Leverage táctico 132.7% SOBRE cap 120% (margen $9,843 @ ~13% APR). Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,183."
     },
     "allocation": {
       "color": "#f59e0b",
@@ -318,10 +318,10 @@
       }
     ],
     "resumen": [
-      "💰 NW Bruto ~$405K · meta FI $900K (retiro pleno sin ingreso DEC).",
-      "🏦 SEP IRA $141K (NO tocar · VOO/SCHD/AVDV +$8.2K) · ⚠️ Táctico $40K MV / $30K eq · 📋 TT NLV $12.3K.",
-      "📊 Régimen Ciclo Tardío, alineación 58% · leverage táctico 132.5% (cap 140%) · 🧬 cluster tech 43.9% 🚨.",
-      "🎯 Foco: trailing stop cluster tech ante earnings mega-cap; mantener duración corta (Fed restrictiva)."
+      "💰 NW Bruto ~$404K · meta FI $900K (retiro pleno sin ingreso DEC).",
+      "🏦 SEP IRA $140K (NO tocar · VOO/SCHD/AVDV +$7.5K) · ⚠️ Táctico $40K MV / $30K eq · 📋 TT NLV $12.2K.",
+      "📊 Régimen Ciclo Tardío, alineación 56% · leverage táctico 132.7% 🔴 (cap bajó a 120%, SPY bajo 50DMA) · 🧬 cluster tech 43.5% 🚨.",
+      "🎯 Foco: des-apalancar táctico HOY + trailing stop cluster tech ante earnings mega-cap; duración corta (Fed restrictiva)."
     ],
     "performance": [
       "🧠 <b>Lectura CIO (12-jul):</b> Semana al 10-jul mixta — IBKR <b>+2.6%</b> y TS ETF +0.5% sumaron; TT −2.1%, RH Photonics −7.5% y los futuros ~−10.7% restaron. En la foto de 6 meses solo los sleeves gestionados le ganan al S&P (−0.3%): <b>RH AP +51%</b>, RH Ph +23%, IBKR +5.5% — mientras el trading manual es el lastre: táctico −5.3%, TastyTrade −11%, futuros −41%/−53%. El TWR total del portafolio queda en <b>+11.4%</b> desde jun-24 (serie recomputada con los totales corregidos del sheet). La conclusión no cambia: el edge está en Autopilot, no en las cuentas manuales — las señales TT→IBKR y FUT→IBKR están a 1 evaluación mensual de activarse (🟡). Y antes de cualquier rebalanceo, la prioridad de la semana es des-apalancar el táctico (156.7% → ≤120%) antes del CPI del martes 14."
@@ -2705,12 +2705,12 @@
     "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $393,581 NW neto (44% / 79%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-07-23T12:00:00Z",
+    "lastUpdate": "2026-07-24T12:00:00Z",
     "regime": "LATE_CYCLE",
     "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
-    "regimeContext": "Tendencia alcista (SPY y XLK sobre 50/200DMA) con Fed restrictiva (Warsh: inflación 'demasiado alta', mercado descuenta posible subida en sept). Riesgo controlado (VIX 17.7) pero concentración tech 44%.",
-    "alignmentScore": 58,
+    "regimeContext": "SPY testeando/bajo su 50-200DMA tras el peor día en un mes (NEUTRAL/CHOP); XLK aún en nuevo máximo. Fed restrictiva (Warsh: inflación 'demasiado alta', 0 recortes). El cierre de SPY bajo 50DMA baja el cap táctico 140→120%.",
+    "alignmentScore": 56,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
@@ -2731,38 +2731,38 @@
       },
       {
         "name": "Volatilidad",
-        "value": 75,
+        "value": 70,
         "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 55,
+        "value": 50,
         "color": "#f59e0b"
       }
     ],
-    "regimeCeiling": 82,
-    "regimeCeilingWhy": "UPTREND (SPY/XLK sobre 50/200DMA) sostiene techo alto; lo limitan la Fed restrictiva y la concentración tech 44%.",
+    "regimeCeiling": 75,
+    "regimeCeilingWhy": "NEUTRAL/CHOP: SPY cerró bajo 50/200DMA testeando la tendencia; XLK en máximo sostiene el piso; Fed restrictiva y concentración tech 43% limitan.",
     "moves": [
       {
-        "urgency": "CONDICIONAL",
-        "icon": "🟡",
-        "action": "Si SPY o XLK cierran bajo su 50DMA → reducir leverage 133%→≤120% ese día (cap trend-conditional)",
-        "why": "Uptrend hoy confirmado, 133% DENTRO de cap 140%; XLK ▼1.3% testeando 50DMA",
+        "urgency": "URGENTE",
+        "icon": "🔴",
+        "action": "Reducir leverage táctico 132.7%→≤120% HOY — SPY cerró bajo 50DMA, cap baja 140→120%",
+        "why": "Trigger trend-conditional cumplido; margen $9,843 @ ~13% APR",
         "impact": 6,
         "since": "2026-07-21"
       },
       {
         "urgency": "PLANEAR",
         "icon": "🟡",
-        "action": "Cluster Tech/AI 43.8% → trailing stop 8-10% antes de earnings Alphabet/Tesla (no recortar el líder en uptrend)",
-        "why": "Proteger el cluster sin vender el líder; earnings hoy PM elevan urgencia",
+        "action": "Cluster Tech/AI 43.5% → trailing stop 8-10% antes de earnings MSFT/META (no vender el líder en uptrend)",
+        "why": "Proteger cluster sin vender XLK líder; SPY rompió 50DMA eleva urgencia",
         "impact": 6,
         "since": "2026-07-06"
       },
       {
-        "urgency": "PLANEAR",
+        "urgency": "CONDICIONAL",
         "icon": "⏸️",
-        "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385); hoy $379 ⏸",
+        "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385); hoy $372 ⏸",
         "why": "Hedge-trend check: no comprar protección en downtrend",
         "impact": 3,
         "since": "2026-07-06"
@@ -2795,33 +2795,33 @@
   "weeklyActions": [
     {
       "priority": "HOY",
-      "priorityColor": "#f59e0b",
-      "icon": "⭐",
-      "action": "Trailing stop 8-10% cluster tech 44% (ETF Táctico)",
-      "why": "Cluster beta tech 43.9% del MV entrando a earnings MSFT/META — proteger sin vender la tendencia.",
+      "priorityColor": "#ef4444",
+      "icon": "🔴",
+      "action": "Reducir leverage Táctico 132.7%→≤120% (trimear ~$4K rezagados tech QTUM/SOXQ/DAPP/SMH)",
+      "why": "SPY cerró bajo 50DMA → cap 140→120%; leverage ~13pts sobre cap; margen ~13% APR.",
       "category": "ACTIVOS"
     },
     {
-      "priority": "CONDICIONAL",
-      "priorityColor": "#60a5fa",
-      "icon": "⏳",
-      "action": "Recortar leverage Táctico a ≤120% si SPY o XLK cierran bajo 50DMA",
-      "why": "Leverage 132.5% dentro del cap 140% uptrend; margen ~13% APR.",
+      "priority": "HOY",
+      "priorityColor": "#f59e0b",
+      "icon": "⭐",
+      "action": "Trailing stop 8-10% cluster tech 43.5% (ETF Táctico)",
+      "why": "Cluster beta tech entra a earnings MSFT/META — proteger sin vender el líder XLK.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#94a3b8",
       "icon": "⚠️",
-      "action": "Barrer $2,311 ocioso de futuros (PKG27+VLV23) a T-bills/CD corto",
-      "why": "Cash en cero posiciones rinde $0; front-end paga ~4.2%.",
+      "action": "Barrer $2,309 ocioso de futuros (PKG27+VLV23) a T-bills/CD corto",
+      "why": "Cash en cero posiciones rinde $0; front-end ~4.2%.",
       "category": "FUTUROS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
       "icon": "🟡",
-      "action": "Vigilar OCO NFLX (29 DTE) y SQQQ (36 DTE) en vol de earnings",
+      "action": "Vigilar OCO NFLX (28 DTE) y SQQQ (35 DTE) en vol de earnings",
       "why": "OCO activos; earnings tech elevan gamma/vol.",
       "category": "OPCIONES"
     },
@@ -2830,7 +2830,7 @@
       "priorityColor": "#94a3b8",
       "icon": "⏸️",
       "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385)",
-      "why": "GLD $375 en downtrend −26% vs 52wH; no comprar cuchillo cayendo.",
+      "why": "GLD $372 downtrend −27% vs 52wH; no comprar cuchillo cayendo.",
       "category": "MACRO"
     }
   ],
