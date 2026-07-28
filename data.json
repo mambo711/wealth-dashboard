@@ -1,14 +1,14 @@
 {
   "meta": {
-    "subtitle": "27 Julio 2026",
-    "weeklyFocusDate": "Semana del 27 Jul",
-    "nwBruto": 408005,
-    "nwBrutoDelta": "\u25b2$1,156 vs Jul 24",
-    "nwDeltaUp": true,
-    "nwNeto": 399144,
-    "nwNetoDelta": "NW Neto $397,988 \u2014 solo deuda personal (car loan $8,861); DEC fuera del NW",
+    "subtitle": "28 Julio 2026",
+    "weeklyFocusDate": "Semana del 28 Jul",
+    "nwBruto": 405940,
+    "nwBrutoDelta": "▼$2,065 vs ayer",
+    "nwDeltaUp": false,
+    "nwNeto": 397742,
+    "nwNetoDelta": "NW Neto $397,988 — solo deuda personal (car loan $8,861); DEC fuera del NW",
     "fiPct": 44,
-    "fiGap": 500856,
+    "fiGap": 502258,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -47,56 +47,48 @@
         "color": "#ef4444"
       }
     },
-    "healthDiagnostic": "Score 68 BUENO. \u2705 CAMBIO CLAVE: buffer DEC RECUPERADO \u2014 cash $52,648 \u2265 objetivo $44,345 \u2192 LOC paydown REACTIVADO con surplus +$724/mes. \ud83d\udd34 Riesgo #1: t\u00e1ctico 143.9% apalancado (>cap 120%, subi\u00f3 de 132.7%) \u2014 des-riesgar HOY. VLV23 ya NO est\u00e1 en margin call. \ud83d\udcb3 Deuda de negocio DEC subi\u00f3 a $71,853 (nuevo saldo Amex Biz Platinum $16,813). Retiro 95/100 y Deuda 91/100 fortalezas; surplus 24/100 y riesgo 38/100 los lastres.",
-    "retirementCore": 268987,
+    "healthDiagnostic": "Score 68 BUENO. ✅ CAMBIO CLAVE: buffer DEC RECUPERADO — cash $52,648 ≥ objetivo $44,345 → LOC paydown REACTIVADO con surplus +$724/mes. 🔴 Riesgo #1: táctico 143.9% apalancado (>cap 120%, subió de 132.7%) — des-riesgar HOY. VLV23 ya NO está en margin call. 💳 Deuda de negocio DEC subió a $71,853 (nuevo saldo Amex Biz Platinum $16,813). Retiro 95/100 y Deuda 91/100 fortalezas; surplus 24/100 y riesgo 38/100 los lastres.",
+    "retirementCore": 268315,
     "totalBruto": 406849,
-    "tacticalHeader": "$30,078 equity (margen $13,001 @ ~13% APR \u00b7 leverage 143% \ud83d\udd34 cap 120% \u2014 SPY bajo 50DMA vie, reclamo intrad\u00eda)",
-    "footerNote": "Datos: TradeStation REST ts_api.py (live 27 jul) \u00b7 TT Relay Gmail (27 jul 03:04 PT) \u00b7 Xero P&L+cash (live) \u00b7 WebSearch Barchart/FedWatch/Warsh/MA",
+    "tacticalHeader": "$29,184 (margen $13,458 ⚠️ leverage 146% sobre cap 120%)",
+    "footerNote": "Datos: TradeStation REST ts_api.py (live 28-jul) · TT Relay Gmail (28-jul 05:04 CT) · Xero (live YTD) · WebSearch macro/Fed/trend",
     "debtTotal": 8197.73,
-    "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (\u25bc$663 principal, pago jun aplicado) \u00b7 Negocio DEC trackeado aparte",
+    "debtDelta": "Deuda personal en NW: solo Car Loan $8,198 @ 6.49% (▼$663 principal, pago jun aplicado) · Negocio DEC trackeado aparte",
     "debtDeltaUp": false,
     "ssMonthly": 2000,
     "fiTargetAge": "60",
     "fiBlendedTarget": 500000,
     "fiBlendedGap": 101909,
-    "fiBlendedNote": "Meta con DEC ($55K/a\u00f1o) \u2248 $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
+    "fiBlendedNote": "Meta con DEC ($55K/año) ≈ $500,000. NW $403,467 = 81% (DEC cash+deuda excluidos).",
     "totalAssets": 406952,
     "totalDebt": 8198,
-    "futPKGDesc": "METN26 Long \u00d78 (Micro Ether Jul-26) \u2014 Eq $933",
-    "futVLVDesc": "METN26 Long \u00d712 (Micro Ether Jul-26) \u2014 Eq $1,387",
+    "futPKGDesc": "METN26 Long ×8 (Micro Ether Jul-26) — Eq $933",
+    "futVLVDesc": "METN26 Long ×12 (Micro Ether Jul-26) — Eq $1,387",
     "weeklyTrackingStart": "Ago 2, 2025",
     "fiAxisLabel": "FI @ {age} = ${target} (blended lifestyle)",
     "tacticalTags": [
       {
-        "text": "\ud83d\udfe2 Leverage 133% dentro de cap 140% (trend-conditional) \u2014 margen $9,843 @ ~13% APR",
+        "text": "🟢 Leverage 133% dentro de cap 140% (trend-conditional) — margen $9,843 @ ~13% APR",
         "color": "green"
       },
       {
-        "text": "\ud83d\udd34 Cluster Tech/AI real 43.8% del MV \u2014 SOBRE cap 25% (trailing stops antes de earnings Alphabet/Tesla)",
+        "text": "🔴 Cluster Tech/AI real 43.8% del MV — SOBRE cap 25% (trailing stops antes de earnings Alphabet/Tesla)",
         "color": "red"
       },
       {
-        "text": "\ud83c\udd95 Futuros re-desplegados: METN26 Micro Ether \u00d720 \u2014 vence ~31-jul (9 DTE)",
+        "text": "🆕 Futuros re-desplegados: METN26 Micro Ether ×20 — vence ~31-jul (9 DTE)",
         "color": "yellow"
       }
     ],
-    "decMonthlyAvg": 4952.0,
+    "decMonthlyAvg": 5120.0,
     "_buildTrigger": "2026-05-26T11:54:21.805193+00:00",
     "futuresEquity": 2308.82,
-    "lastTacticalMargin": 13001.47,
+    "lastTacticalMargin": 13457.55,
     "fiTargetWithDEC": 500000,
     "fiPctWithDEC": 80,
-    "fiGapWithDEC": 100856,
+    "fiGapWithDEC": 102258,
     "nwNetoDeltaUp": true,
     "heatmapHistory": [
-      {
-        "date": "2026-07-21",
-        "sep": 140505.04,
-        "tac": 29856.85,
-        "fut": 2377.6,
-        "tt": 12036.4,
-        "total": 172739.49
-      },
       {
         "date": "2026-07-22",
         "sep": 141076.96,
@@ -128,13 +120,17 @@
         "fut": 2308.82,
         "tt": 12231.26,
         "total": 173858.68
+      },
+      {
+        "date": "2026-07-28",
+        "sep": 140800.35,
+        "tac": 29184.0,
+        "fut": 2163.21,
+        "tt": 12324.19,
+        "total": 172147.56
       }
     ],
     "techClusterHistory": [
-      {
-        "date": "2026-07-21",
-        "pct": 44.0
-      },
       {
         "date": "2026-07-22",
         "pct": 43.8
@@ -150,83 +146,87 @@
       {
         "date": "2026-07-27",
         "pct": 40.1
+      },
+      {
+        "date": "2026-07-28",
+        "pct": 33.6
       }
     ]
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Atacar LOC: +$724/mes \u2192 $46,628 @ 8.5%",
-      "body": "Buffer DEC \u2705 recuperado ($52,648 \u2265 $44,345). El surplus disponible va al LOC. En paralelo, des-riesgar el t\u00e1ctico (143.9% apalancado) es la acci\u00f3n de riesgo #1 de la semana.",
-      "why": "\u26a1 El LOC @ 8.5% es retorno garantizado; el leverage 143.9% sobre cap amplifica cualquier ca\u00edda del mercado."
+      "title": "Prioridad #1: 🔴 Reducir leverage táctico 146%→≤120%",
+      "body": "El leverage táctico subió a 146% (cap 120% con SPY bajo su 50DMA). Vender ~$7.6K de tech/AI (perdedores SOXQ/QTUM/ARTY) baja el leverage y el cluster beta-tech (33.6%) a la vez. Margen $13,458 @ ~13% APR.",
+      "why": "Move URGENTE 8 días pendiente; la ventana de de-risk es corta antes del FOMC de Warsh."
     },
     "steps": [
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($46,628 @ 8.5%)",
-        "detail": "ACTIVO \u2705: buffer DEC cubierto (checking $52,648 \u2265 objetivo $44,345). Aplicar surplus +$724/mes al LOC \u2192 liquidado en ~64 meses. Cada $10K pagado ahorra $850/a\u00f1o. \u26a0\ufe0f Vigilar: la deuda de negocio DEC subi\u00f3 a $71,853 por el nuevo saldo Amex Biz Platinum $16,813.",
-        "impact": "Impacto: libera $330/mes al completar \u00b7 buffer recuperado \u2705",
+        "detail": "ACTIVO ✅: buffer DEC cubierto (checking $52,648 ≥ objetivo $44,345). Aplicar surplus +$724/mes al LOC → liquidado en ~64 meses. Cada $10K pagado ahorra $850/año. ⚠️ Vigilar: la deuda de negocio DEC subió a $71,853 por el nuevo saldo Amex Biz Platinum $16,813.",
+        "impact": "Impacto: libera $330/mes al completar · buffer recuperado ✅",
         "impactColor": "#ef4444",
-        "timeline": "Jun 2026 \u2014 2029",
-        "macroWeight": "CR\u00cdTICO",
+        "timeline": "Jun 2026 — 2029",
+        "macroWeight": "CRÍTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Fed en hold + inflaci\u00f3n pegajosa = LOC al 8.5% no baja. R\u00e9gimen STAGFLATION lo hace m\u00e1s urgente, no menos."
+        "macroNote": "Fed en hold + inflación pegajosa = LOC al 8.5% no baja. Régimen STAGFLATION lo hace más urgente, no menos."
       },
       {
         "urgency": "urgent",
         "title": "2. Sostener Michalitas sobre PE ($4,216/mes)",
         "detail": "Mayo proyecta +$121 sobre PE por primera vez (fuente: dashboard live). Objetivo: 3 meses consecutivos sobre PE para confirmar sostenibilidad. Si cae bajo PE consistentemente, evaluar cierre.",
-        "impact": "Impacto: Mantiene surplus \u2212$261/mes (d\u00e9ficit actual) \u00b7 Cierre reducir\u00eda riesgo pero perder\u00eda momentum",
+        "impact": "Impacto: Mantiene surplus −$261/mes (déficit actual) · Cierre reduciría riesgo pero perdería momentum",
         "impactColor": "#ef4444",
-        "timeline": "May \u2014 Jul 2026 (decisi\u00f3n en Aug)"
+        "timeline": "May — Jul 2026 (decisión en Aug)"
       },
       {
         "urgency": "high",
         "title": "3. Rebalancear cuentas de trading",
-        "detail": "Posiciones: TS ETF Tactical (22 pos, \ud83d\udd34 margen $13,001, leverage 143.9% SOBRE cap 120%), TastyTrade (4), IBKR Bravo, RH AP. Prioridad: des-apalancar ~$7K + recortar cluster Tech/AI 36.5% a \u226425%. Futuros $2,308 ociosos (TWR 6M \u221258.6%) \u2014 decidir redeploy.",
-        "impact": "Impacto: Performance 55\u219263, Riesgo 38\u219255",
+        "detail": "Posiciones: TS ETF Tactical (22 pos, 🔴 margen $13,001, leverage 143.9% SOBRE cap 120%), TastyTrade (4), IBKR Bravo, RH AP. Prioridad: des-apalancar ~$7K + recortar cluster Tech/AI 36.5% a ≤25%. Futuros $2,308 ociosos (TWR 6M −58.6%) — decidir redeploy.",
+        "impact": "Impacto: Performance 55→63, Riesgo 38→55",
         "impactColor": "#f59e0b",
-        "timeline": "May \u2014 Jun 2026",
-        "macroWeight": "CR\u00cdTICO",
+        "timeline": "May — Jun 2026",
+        "macroWeight": "CRÍTICO",
         "macroWeightColor": "#ef4444",
-        "macroNote": "Margen 135% sobre cap \u2014 des-apalancar es la acci\u00f3n #1. En LATE_CYCLE recortar Tech/AI (selloff en curso) y re-a\u00f1adir oro."
+        "macroNote": "Margen 135% sobre cap — des-apalancar es la acción #1. En LATE_CYCLE recortar Tech/AI (selloff en curso) y re-añadir oro."
       },
       {
         "urgency": "high",
         "title": "4. Crecer DEC a $6,500+/mes",
-        "detail": "DEC promedia $5,796/mes YTD (net). Con $7,500/mes el surplus sube a ~$3,000/mes \u2192 LOC liquidada en ~16 meses. Palancas: SEO, campa\u00f1as email, leads Cloze.",
-        "impact": "Impacto: Acelera todo el plan FI en ~2 a\u00f1os",
+        "detail": "DEC promedia $5,796/mes YTD (net). Con $7,500/mes el surplus sube a ~$3,000/mes → LOC liquidada en ~16 meses. Palancas: SEO, campañas email, leads Cloze.",
+        "impact": "Impacto: Acelera todo el plan FI en ~2 años",
         "impactColor": "#f59e0b",
-        "timeline": "May \u2014 Dic 2026"
+        "timeline": "May — Dic 2026"
       },
       {
         "urgency": "medium",
-        "title": "5. Maximizar SEP IRA en a\u00f1o rentable",
-        "detail": "Si DEC genera >$50K profit anual: aportar m\u00e1ximo SEP ($69K o 25% de compensaci\u00f3n). Reduce impuestos y acelera compounding.",
-        "impact": "Impacto: Retiro 91\u219295, FI Progress 71\u219278",
+        "title": "5. Maximizar SEP IRA en año rentable",
+        "detail": "Si DEC genera >$50K profit anual: aportar máximo SEP ($69K o 25% de compensación). Reduce impuestos y acelera compounding.",
+        "impact": "Impacto: Retiro 91→95, FI Progress 71→78",
         "impactColor": "#3b82f6",
         "timeline": "Dic 2026 (tax planning)"
       },
       {
         "urgency": "medium",
         "title": "6. Subir bonos de 6% a 15%",
-        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 a\u00f1os.",
-        "impact": "Impacto: Diversific. 70\u219282, Riesgo 53\u219268",
+        "detail": "Post-LOC: redirigir $20K de cash reserve a BND. Reduce volatilidad para cuando empieces a retirar en 5 años.",
+        "impact": "Impacto: Diversific. 70→82, Riesgo 53→68",
         "impactColor": "#3b82f6",
         "timeline": "Q1 2027"
       },
       {
         "urgency": "low",
-        "title": "7. Evaluar Roth conversion en a\u00f1o de bajo ingreso",
-        "detail": "Si DEC tiene a\u00f1o bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en Espa\u00f1a.",
-        "impact": "Impacto: Optimizaci\u00f3n fiscal de largo plazo",
+        "title": "7. Evaluar Roth conversion en año de bajo ingreso",
+        "detail": "Si DEC tiene año bajo: convertir $20-30K de Traditional IRA a Roth pagando tasa baja. Beneficio fiscal enorme en retiro en España.",
+        "impact": "Impacto: Optimización fiscal de largo plazo",
         "impactColor": "#10b981",
         "timeline": "2027+ (con CPA)"
       },
       {
         "urgency": "low",
         "title": "8. Testamento + seguro de discapacidad",
-        "detail": "Activos en 3 pa\u00edses, estructura S-Corp, pr\u00e9stamos privados \u2014 sin testamento todo se complica. Seguro protege el camino FI.",
-        "impact": "Impacto: Protecci\u00f3n patrimonial",
+        "detail": "Activos en 3 países, estructura S-Corp, préstamos privados — sin testamento todo se complica. Seguro protege el camino FI.",
+        "impact": "Impacto: Protección patrimonial",
         "impactColor": "#10b981",
         "timeline": "2026 (urgente pero no financiero)"
       }
@@ -234,44 +234,44 @@
   },
   "actions": {
     "resumen": {
-      "color": "#10b981",
-      "borderColor": "#10b981",
-      "text": "Buffer DEC \u2705 ($52,648 \u2265 $44,345). Surplus +$724/mes \u2192 aplicar \u00edntegro al LOC $46,628 @ 8.5%. Paydown en marcha. \ud83d\udd34 Paralelo: reducir leverage t\u00e1ctico 143.9%\u2192\u2264120%."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "(1) Reducir leverage táctico 146%→≤120% HOY · (2) Recortar cluster tech 33.6% vía perdedores SOXQ/QTUM/ARTY · (3) Decidir futuros idle $2,163."
     },
     "deuda": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer \u2705 \u2014 aplicar surplus +$724/mes al LOC $46,628 @ 8.5%. Ver Resumen."
+      "text": "💳 Deuda personal $8,198 (auto). DEC promedio $5,120/mes → Déficit $-16/mes. LOC se paga del superávit DEC."
     },
     "fi": {
       "color": "#10b981",
       "borderColor": "#10b981",
-      "text": "Buffer \u2705 + LOC paydown activo (~64 meses). FI al 44% \u2014 gap $502,012. Ver Resumen."
+      "text": "Buffer ✅ + LOC paydown activo (~64 meses). FI al 44% — gap $502,012. Ver Resumen."
     },
     "flujo": {
-      "color": "#10b981",
-      "borderColor": "#10b981",
-      "text": "Surplus +$724/mes + buffer \u2705 \u2014 redirigir al LOC @ 8.5%. Ver Resumen."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "💰 ⚠️ Déficit $-16/mes. DEC YTD promedio $5,120/mes. Meta: $6,500+/mes. Régimen LATE_CYCLE → sesgo NEUTRO."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Reducir leverage t\u00e1ctico 143%\u2192\u2264120% antes de rebalancear. R\u00e9gimen Late Cycle (NEUTRO): evitar Tech/Semis. Ver Resumen."
+      "text": "Alignment 58% (techo 78%). 1 moves URGENTE pendientes. Regime: LATE_CYCLE."
     },
     "posiciones": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "Sin CR\u00cdTICO \u2014 pero t\u00e1ctico 143% apalancado (cap 120%): reducir ~$7K HOY. Cluster Tech/AI 40% \ud83d\udea8. Ver Resumen."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "✅ Opciones sin alertas críticas — monitorear DTE. ⚠️ Margen táctico $13,458 — leverage 146% sobre cap 120%."
     },
     "cuentas": {
-      "color": "#f59e0b",
-      "borderColor": "#f59e0b",
-      "text": "R\u00e9gimen Late Cycle (NEUTRO) \u2014 no mover capital hacia sectores bloqueados (Tech/Semis). Ver Resumen para prioridades."
+      "color": "#ef4444",
+      "borderColor": "#ef4444",
+      "text": "⚠️ Margen táctico $13,458 — leverage 146% sobre cap 120%. Régimen LATE_CYCLE: sesgo NEUTRO. TT NLV $12,324."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($30,000 \u2014 7.4% del portafolio) sin garant\u00eda documental. Ver Resumen."
+      "text": "Verificar contrato Miguel Autos ($30,000 — 7.4% del portafolio) sin garantía documental. Ver Resumen."
     }
   },
   "insights": {
@@ -287,45 +287,44 @@
     },
     "accounts": [
       {
-        "rank": "Grado C \u2014 ETF Core \u00b7 TWR 6M \u221212.4%",
+        "rank": "Grado C — ETF Core · TWR 6M −12.4%",
         "rankColor": "#ef4444",
-        "text": "Cuenta principal de trading. 22 posiciones ETF, MV $42,642 / equity $29,641. Margen $13,001 \ud83d\udd34 (leverage 143.9% SOBRE cap 120%). Cluster Tech/AI 36.5% sobre cap 25%.",
-        "rec": "Recortar ~$7K (AIQ/VGT/SMH/QTUM/ARTY) para bajar leverage a \u2264120% y cluster a \u226425%. Hedge oro solo si GLD>50DMA."
+        "text": "Cuenta principal de trading. 22 posiciones ETF, MV $42,642 / equity $29,641. Margen $13,001 🔴 (leverage 143.9% SOBRE cap 120%). Cluster Tech/AI 36.5% sobre cap 25%.",
+        "rec": "Recortar ~$7K (AIQ/VGT/SMH/QTUM/ARTY) para bajar leverage a ≤120% y cluster a ≤25%. Hedge oro solo si GLD>50DMA."
       },
       {
-        "rank": "Grado A+ \u2014 Mejor TWR \u00b7 6M +50.1%",
+        "rank": "Grado A+ — Mejor TWR · 6M +50.1%",
         "rankColor": "#10b981",
-        "text": "RH Autopilot Act Managed \u2014 mejor rendimiento ($4,746, dato Jul 12). Gesti\u00f3n activa automatizada.",
-        "rec": "Mantener. Realocaci\u00f3n \u26aa streak 1/3 \u2014 anti-chasing ya relajado (plano ~13 sem), pero falta racha sostenida."
+        "text": "RH Autopilot Act Managed — mejor rendimiento ($4,746, dato Jul 12). Gestión activa automatizada.",
+        "rec": "Mantener. Realocación ⚪ streak 1/3 — anti-chasing ya relajado (plano ~13 sem), pero falta racha sostenida."
       },
       {
-        "rank": "Grado B \u2014 Stocks Activo \u00b7 TWR 6M +6.0%",
+        "rank": "Grado B — Stocks Activo · TWR 6M +6.0%",
         "rankColor": "#10b981",
-        "text": "IBKR Bravo \u2014 acciones individuales. $8,604 (dato Jul 12). \u00danico sleeve manual que le gana al S&P (\u22122.1%).",
-        "rec": "Mantener. Receptor preferente de realocaci\u00f3n (2/3 meses desde TT y desde Futuros)."
+        "text": "IBKR Bravo — acciones individuales. $8,604 (dato Jul 12). Único sleeve manual que le gana al S&P (−2.1%).",
+        "rec": "Mantener. Receptor preferente de realocación (2/3 meses desde TT y desde Futuros)."
       },
       {
-        "rank": "Grado D \u2014 Opciones \u00b7 TWR 6M \u221210.2%",
+        "rank": "Grado D — Opciones · TWR 6M −10.2%",
         "rankColor": "#ef4444",
-        "text": "TastyTrade NLV $12,348 \u2014 4 estructuras vivas (NFLX Ago 21, SQQQ Ago 28, TSM LEAPS Ene 27, BAC LEAPS Ene 28).",
-        "rec": "Donante candidato hacia IBKR (2/3 meses). Sin earnings-exposed <30 DTE \u2014 no hay gatillo CR\u00cdTICO."
+        "text": "TastyTrade NLV $12,348 — 4 estructuras vivas (NFLX Ago 21, SQQQ Ago 28, TSM LEAPS Ene 27, BAC LEAPS Ene 28).",
+        "rec": "Donante candidato hacia IBKR (2/3 meses). Sin earnings-exposed <30 DTE — no hay gatillo CRÍTICO."
       },
       {
-        "rank": "Grado F \u2014 Futuros \u00b7 TWR 6M \u221258.6%",
+        "rank": "Grado F — Futuros · TWR 6M −58.6%",
         "rankColor": "#ef4444",
         "text": "PKG27 $926 + VLV23 $1,382 = $2,308. Sin posiciones abiertas; VLV23 ya fuera del margin call.",
-        "rec": "Capital ocioso con peor TWR del portafolio \u2014 decidir cierre o redeploy a IBKR (PLANEAR)."
+        "rec": "Capital ocioso con peor TWR del portafolio — decidir cierre o redeploy a IBKR (PLANEAR)."
       }
     ],
     "resumen": [
-      "\ud83d\udcb0 NW Bruto $406,849 (\u25b2$3,286) \u00b7 NW Neto $397,988 \u00b7 meta FI $900K (retiro pleno sin ingreso DEC).",
-      "\ud83c\udfe6 SEP IRA $141K (NO tocar \u00b7 VOO/SCHD/AVDV +$7.9K) \u00b7 \u26a0\ufe0f T\u00e1ctico $43K MV / $30K eq \u00b7 \ud83d\udccb TT NLV $12.3K.",
-      "\ud83d\udcca R\u00e9gimen Ciclo Tard\u00edo \u00b7 leverage t\u00e1ctico 143.9% \ud83d\udd34 (cap 120%, SPY bajo 50DMA) \u00b7 \ud83e\uddec cluster Tech/AI 36.5% \ud83d\udea8 \u00b7 VLV23 fuera de margin call \u2705.",
-      "\u2705 Buffer DEC RECUPERADO ($52,648 \u2265 $44,345) \u2192 LOC $46,628 @ 8.5% con surplus +$724/mes (~64 meses).",
-      "\ud83c\udfaf Foco: des-apalancar t\u00e1ctico HOY (~$7K) + aplicar surplus al LOC. \ud83d\udcb3 Ojo: deuda de negocio DEC subi\u00f3 a $71,853 (Amex Biz Platinum $16,813)."
+      "💰 NW bruto $405,940 · neto $397,742 (FI 44% de $900K)",
+      "🏦 SEP IRA $140,800 (VOO/SCHD/AVDV) ▲+$8,021 no realizado — NO TOCAR",
+      "⚠️ Táctico $29,184 · MV $42,642 · leverage 146% 🔴 sobre cap 120% · cluster tech 33.6%",
+      "🏛️ Régimen Ciclo Tardío 58% · Fed hawkish (Warsh, 0 recortes) · sesgo neutro-defensivo"
     ],
     "performance": [
-      "\ud83e\udde0 <b>Lectura CIO (24-jul):</b> Semana claramente a la baja \u2014 el t\u00e1ctico 4090 cay\u00f3 <b>\u22129.0%</b> (a $29,641 de equity) y los futuros se hundieron (PKG27 \u221211.2%, VLV23 \u221213.1%), aunque VLV23 <b>sali\u00f3 del margin call</b>; TastyTrade qued\u00f3 plano (\u22120.2%, NLV $12,348) e IBKR/RH sin cambios (datos Jul 12). El S&P cedi\u00f3 \u22122.7%. En la foto de <b>6 meses</b> solo dos sleeves le ganan al S&P (\u22122.1%): <b>RH AP +50.1%</b> e <b>IBKR +6.0%</b> \u2014 el trading manual sigue siendo el lastre estructural con <b>TS ETF \u221212.4%</b>, <b>TT \u221210.2%</b> y futuros <b>\u221258.6%</b>. El TWR total del portafolio qued\u00f3 en <b>111.6</b> (serie mensual, ~+0.2% en el mes). Se\u00f1ales de realocaci\u00f3n: dos pares en <b>2/3 meses</b> (TT\u2192IBKR, Futuros\u2192IBKR), falta una evaluaci\u00f3n mensual para disparar \ud83d\udfe2. <b>Prioridad #1:</b> reducir el leverage t\u00e1ctico <b>143.9%\u2192\u2264120%</b> (vender ~$7K de Tech/AI, cluster en 36.5% sobre cap 25%) y aplicar el surplus +$724/mes al LOC @ 8.5% ahora que el buffer DEC est\u00e1 cubierto."
+      "🧠 <b>Lectura CIO (24-jul):</b> Semana claramente a la baja — el táctico 4090 cayó <b>−9.0%</b> (a $29,641 de equity) y los futuros se hundieron (PKG27 −11.2%, VLV23 −13.1%), aunque VLV23 <b>salió del margin call</b>; TastyTrade quedó plano (−0.2%, NLV $12,348) e IBKR/RH sin cambios (datos Jul 12). El S&P cedió −2.7%. En la foto de <b>6 meses</b> solo dos sleeves le ganan al S&P (−2.1%): <b>RH AP +50.1%</b> e <b>IBKR +6.0%</b> — el trading manual sigue siendo el lastre estructural con <b>TS ETF −12.4%</b>, <b>TT −10.2%</b> y futuros <b>−58.6%</b>. El TWR total del portafolio quedó en <b>111.6</b> (serie mensual, ~+0.2% en el mes). Señales de realocación: dos pares en <b>2/3 meses</b> (TT→IBKR, Futuros→IBKR), falta una evaluación mensual para disparar 🟢. <b>Prioridad #1:</b> reducir el leverage táctico <b>143.9%→≤120%</b> (vender ~$7K de Tech/AI, cluster en 36.5% sobre cap 25%) y aplicar el surplus +$724/mes al LOC @ 8.5% ahora que el buffer DEC está cubierto."
     ]
   },
   "debt": {
@@ -337,17 +336,17 @@
       "value": 46628,
       "interestMonthly": 330,
       "severity": "critical",
-      "status": "Negocio DEC \u2014 fuera del NW personal",
-      "statusDate": "paydown REACTIVADO \u2705 \u2014 cash DEC $52,648 \u2265 buffer $44,345"
+      "status": "Negocio DEC — fuera del NW personal",
+      "statusDate": "paydown REACTIVADO ✅ — cash DEC $52,648 ≥ buffer $44,345"
     },
     "secondary": {
-      "name": "Car Loan (DCFCU) \u2014 Personal",
+      "name": "Car Loan (DCFCU) — Personal",
       "balance": 8861,
       "rate": "6.49%",
       "value": 8861,
       "interestMonthly": 48,
       "severity": "warning",
-      "status": "\u00danica deuda personal en el NW",
+      "status": "Única deuda personal en el NW",
       "valueColor": "#f59e0b"
     },
     "creditCards": [
@@ -373,26 +372,26 @@
       }
     ],
     "totalDebt": 80714,
-    "totalDebtDate": "Personal en NW $8,861 \u00b7 Negocio DEC $71,853"
+    "totalDebtDate": "Personal en NW $8,861 · Negocio DEC $71,853"
   },
   "incomeStreams": [
     {
       "label": "Pepe Loans",
       "amount": 390,
       "color": "#10b981",
-      "source": "3%/mes \u00d7 $13,000",
+      "source": "3%/mes × $13,000",
       "monthly": 390,
       "annual": 4680,
-      "note": "Proyectado @ 3%/mes (bajado de 4% \u2014 Jul 2026). Actualmente redirigido a Michalitas."
+      "note": "Proyectado @ 3%/mes (bajado de 4% — Jul 2026). Actualmente redirigido a Michalitas."
     },
     {
       "label": "CDs Ecuador",
       "amount": 154,
       "color": "#3b82f6",
-      "source": "4.9%/a\u00f1o \u00d7 $37,603",
+      "source": "4.9%/año × $37,603",
       "monthly": 154,
       "annual": 1843,
-      "note": "4.9% APY \u2014 Cooperativa JEP. Renovado 9-jul-2026 \u00d7 6 meses \u2192 vence ~9-ene-2027. Capitaliza en el CD."
+      "note": "4.9% APY — Cooperativa JEP. Renovado 9-jul-2026 × 6 meses → vence ~9-ene-2027. Capitaliza en el CD."
     },
     {
       "label": "Dividendos",
@@ -407,16 +406,16 @@
       "label": "Betterment Int.",
       "amount": 85,
       "color": "#8b5cf6",
-      "source": "3.25% APY \u00d7 $31,400",
+      "source": "3.25% APY × $31,400",
       "monthly": 85,
       "annual": 1021,
-      "note": "Inter\u00e9s de Cash Reserve Betterment. APY 3.25% confirmado 12-jul-2026."
+      "note": "Interés de Cash Reserve Betterment. APY 3.25% confirmado 12-jul-2026."
     }
   ],
   "incomeTotal": 769,
   "incomeAnnual": 9224,
   "incomePassiveCoverage": 23,
-  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrir\u00edas el 100% sin tocar el portafolio principal.",
+  "incomeSSNote": "Con SS ($2K/mo) a los 67, cubrirías el 100% sin tocar el portafolio principal.",
   "rebalance": [
     {
       "name": "TS ETF Tactical",
@@ -465,7 +464,7 @@
     }
   ],
   "rebalanceTotal": 58094,
-  "rebalanceNote": "Capital trading activo: ~$58,094. TastyTrade $12,348 (4 estructuras: NFLX P66/P71 Ago 21 \u00b7 SQQQ P35/P37 \u00d73 Ago 28 \u00b7 TSM C340/C350 LEAPS Ene 27 \u00b7 BAC C52.5 LEAPS Ene 28). Sin transferencias ejecutadas: 2 pares en 2/3 meses (TT\u2192IBKR, Futuros\u2192IBKR) \u2014 falta 1 evaluaci\u00f3n mensual.",
+  "rebalanceNote": "Capital trading activo: ~$58,094. TastyTrade $12,348 (4 estructuras: NFLX P66/P71 Ago 21 · SQQQ P35/P37 ×3 Ago 28 · TSM C340/C350 LEAPS Ene 27 · BAC C52.5 LEAPS Ene 28). Sin transferencias ejecutadas: 2 pares en 2/3 meses (TT→IBKR, Futuros→IBKR) — falta 1 evaluación mensual.",
   "pieCategories": [
     {
       "label": "Retiro 58%",
@@ -483,7 +482,7 @@
       "color": "#10b981"
     },
     {
-      "label": "Pr\u00e9stamos 11%",
+      "label": "Préstamos 11%",
       "value": 43000,
       "color": "#ec4899"
     },
@@ -505,7 +504,7 @@
       "color": "#f59e0b"
     },
     {
-      "name": "Pr\u00e9stamos",
+      "name": "Préstamos",
       "value": 43000,
       "color": "#ec4899"
     },
@@ -538,7 +537,7 @@
       "color": "#10b981"
     },
     {
-      "label": "Inter\u00e9s LOC / mes",
+      "label": "Interés LOC / mes",
       "value": "-$330",
       "color": "#ef4444"
     },
@@ -580,28 +579,28 @@
   },
   "waterfallScenarios": [
     {
-      "icon": "\ud83d\udfe2",
+      "icon": "🟢",
       "label": "Actual (Jul 24)",
       "surplus": 724,
-      "note": "Buffer DEC CUBIERTO \u2705 ($52,648 \u2265 $44,345) \u2014 LOC paydown reactivado. Surplus +$724/mes (m\u00e9todo YTD)."
+      "note": "Buffer DEC CUBIERTO ✅ ($52,648 ≥ $44,345) — LOC paydown reactivado. Surplus +$724/mes (método YTD)."
     },
     {
-      "icon": "\ud83d\udfe2",
+      "icon": "🟢",
       "label": "Si Michalitas cierra",
       "surplus": 1223,
       "note": "Cierre libera $499/mes de carga pero pierde momentum del negocio."
     },
     {
-      "icon": "\ud83d\udd35",
+      "icon": "🔵",
       "label": "Si DEC llega a $6,500/mes",
       "surplus": 2003,
       "note": "LOC $46,628 liquidada en ~23 meses en vez de ~64."
     },
     {
-      "icon": "\ud83d\udd35",
+      "icon": "🔵",
       "label": "Post-LOC (deuda negocio a $0)",
       "surplus": 1054,
-      "note": "Al liquidar el LOC se liberan $330/mes de inter\u00e9s \u2014 todo va a inversi\u00f3n."
+      "note": "Al liquidar el LOC se liberan $330/mes de interés — todo va a inversión."
     }
   ],
   "waterfallTable": [
@@ -612,7 +611,7 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Net Income promedio YTD Jul 3 (Xero accrual $31,689 \u00f7 6.07m). Run-rate Abr-Jun $8,601/mes."
+      "note": "Net Income promedio YTD Jul 3 (Xero accrual $31,689 ÷ 6.07m). Run-rate Abr-Jun $8,601/mes."
     },
     {
       "label": "Ingreso pasivo",
@@ -621,9 +620,9 @@
       "type": "Entrada",
       "typeColor": "#10b981",
       "labelColor": "#10b981",
-      "note": "Pepe+CDs+dividendos acumulan en Ecuador \u2014 no disponible para gastos US",
+      "note": "Pepe+CDs+dividendos acumulan en Ecuador — no disponible para gastos US",
       "projected": 964,
-      "projectedNote": "Proyectado $964/mo (Pepe+CDs+div) \u2014 acumula Ecuador, no disponible US"
+      "projectedNote": "Proyectado $964/mo (Pepe+CDs+div) — acumula Ecuador, no disponible US"
     },
     {
       "label": "Gastos de vida (US)",
@@ -632,7 +631,7 @@
       "type": "Fijo",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "$50K/a\u00f1o baseline"
+      "note": "$50K/año baseline"
     },
     {
       "label": "Michalitas Xpress",
@@ -641,7 +640,7 @@
       "type": "Mejorando",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "Abr: -$499 vs PE \u00b7 May: +$121 proyectado (casi break-even)"
+      "note": "Abr: -$499 vs PE · May: +$121 proyectado (casi break-even)"
     },
     {
       "label": "Intereses LOC",
@@ -650,7 +649,7 @@
       "type": "Deuda",
       "typeColor": "#ef4444",
       "labelColor": null,
-      "note": "8.5% \u00d7 $46,927 \u00f7 12"
+      "note": "8.5% × $46,927 ÷ 12"
     },
     {
       "label": "Intereses Car Loan",
@@ -659,7 +658,7 @@
       "type": "Deuda",
       "typeColor": "#f59e0b",
       "labelColor": null,
-      "note": "6.49% \u00d7 $8,861 \u00f7 12"
+      "note": "6.49% × $8,861 ÷ 12"
     }
   ],
   "performance": {
@@ -670,7 +669,7 @@
     "second6mPct": "+22.9%",
     "worst6mName": "TS Futures PKG27",
     "worst6mPct": "-53.4%",
-    "twrNote": "TWR 6M vs S&P (-0.3%): la mayor\u00eda bajo el \u00edndice. Serie mensual recomputada del sheet FREEDOM (flujos Ene25/Ene26/Feb26 neutralizados). PKG27 desde Ago 2 2025; VLV23 desde Ene 31 (serie corta). Semana Jul 10: futuros \u221210.6/\u221210.8% (real, dentro de umbral)."
+    "twrNote": "TWR 6M vs S&P (-0.3%): la mayoría bajo el índice. Serie mensual recomputada del sheet FREEDOM (flujos Ene25/Ene26/Feb26 neutralizados). PKG27 desde Ago 2 2025; VLV23 desde Ene 31 (serie corta). Semana Jul 10: futuros −10.6/−10.8% (real, dentro de umbral)."
   },
   "accounts": [
     {
@@ -693,7 +692,7 @@
     },
     {
       "name": "Miguel Autos Loan",
-      "cat": "Pr\u00e9stamo",
+      "cat": "Préstamo",
       "value": 30000,
       "color": "#ec4899"
     },
@@ -723,7 +722,7 @@
     },
     {
       "name": "Pepe Loans",
-      "cat": "Pr\u00e9stamo",
+      "cat": "Préstamo",
       "value": 13000,
       "color": "#f472b6"
     },
@@ -1062,7 +1061,7 @@
       },
       {
         "symbol": "SQQQ",
-        "spread": "P35/P37 \u00d73",
+        "spread": "P35/P37 ×3",
         "type": "Put Credit Spread",
         "dte": 35,
         "exp": "Ago 28",
@@ -2476,27 +2475,27 @@
   },
   "allocationAlerts": [
     {
-      "icon": "\ud83d\udea8",
-      "text": "Leverage t\u00e1ctico 143.9% (margen $13,001 @ ~13% APR) \u2014 3\u00aa semana SOBRE cap 120% y subiendo (132.7%\u2192143.9%). Vender ~$7K para volver a \u2264120%."
+      "icon": "🚨",
+      "text": "Leverage táctico 143.9% (margen $13,001 @ ~13% APR) — 3ª semana SOBRE cap 120% y subiendo (132.7%→143.9%). Vender ~$7K para volver a ≤120%."
     },
     {
-      "icon": "\u26a0\ufe0f",
-      "text": "Cluster Tech/AI 36.5% del MV t\u00e1ctico \u2014 SOBRE cap 25%. Tech/Semis puro 19.4% (bajo el gatillo CR\u00cdTICO de 20%). Late Cycle bloquea a\u00f1adir Tech/Semis."
+      "icon": "⚠️",
+      "text": "Cluster Tech/AI 36.5% del MV táctico — SOBRE cap 25%. Tech/Semis puro 19.4% (bajo el gatillo CRÍTICO de 20%). Late Cycle bloquea añadir Tech/Semis."
     },
     {
-      "icon": "\u26a0\ufe0f",
-      "text": "Hedge oro 0% del sleeve (sin IAU en cartera) \u2014 re-establecer 5-8% solo si GLD supera su 50DMA (~$385; hoy $372.85). CONDICIONAL."
+      "icon": "⚠️",
+      "text": "Hedge oro 0% del sleeve (sin IAU en cartera) — re-establecer 5-8% solo si GLD supera su 50DMA (~$385; hoy $372.85). CONDICIONAL."
     },
     {
-      "icon": "\u2705",
-      "text": "VLV23 SALI\u00d3 del margin call \u2014 sin posiciones abiertas, equity $1,382. PKG27 $926 tambi\u00e9n sin posiciones (capital ocioso $2,308)."
+      "icon": "✅",
+      "text": "VLV23 SALIÓ del margin call — sin posiciones abiertas, equity $1,382. PKG27 $926 también sin posiciones (capital ocioso $2,308)."
     },
     {
-      "icon": "\u2705",
-      "text": "Intl Asia (EWT+EWY) = 7.0% y Aeroespacial/Industrial (ITA+XLI) = 16.6% \u2014 ambos bajo cap 25%."
+      "icon": "✅",
+      "text": "Intl Asia (EWT+EWY) = 7.0% y Aeroespacial/Industrial (ITA+XLI) = 16.6% — ambos bajo cap 25%."
     }
   ],
-  "incomeSectionNote": "Ingreso pasivo proyectado ($909/mo). Pepe actualmente redirigido a Michalitas \u2014 no refleja cashflow activo del waterfall ($0 pasivo).",
+  "incomeSectionNote": "Ingreso pasivo proyectado ($909/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
   "fiProjection": {
     "base": [
       null,
@@ -2532,23 +2531,23 @@
     ],
     "target": 900000,
     "targetWithDEC": 500000,
-    "labelBase": "\ud83d\udd35 Base (7%/a\u00f1o +$18K aporte)",
-    "labelOptimistic": "\ud83d\udfe2 Optimista (9% +$36K, DEC\u2192SEP IRA)",
-    "labelPessimistic": "\ud83d\udd34 Pesimista (5% +$6K)",
-    "note": "Estilo de vida $55K/a\u00f1o. Metas: $900K retiro pleno SIN DEC (l\u00ednea \u00e1mbar) \u00b7 $500K si DEC sigue/se vende (l\u00ednea cian). Hoy $393,581 NW neto (44% / 79%). Base 7%+$18K \u00b7 Pes 5%+$6K \u00b7 Opt 9%+$36K. Supuestos en d\u00f3lares de hoy; retornos no garantizados."
+    "labelBase": "🔵 Base (7%/año +$18K aporte)",
+    "labelOptimistic": "🟢 Optimista (9% +$36K, DEC→SEP IRA)",
+    "labelPessimistic": "🔴 Pesimista (5% +$6K)",
+    "note": "Estilo de vida $55K/año. Metas: $900K retiro pleno SIN DEC (línea ámbar) · $500K si DEC sigue/se vende (línea cian). Hoy $393,581 NW neto (44% / 79%). Base 7%+$18K · Pes 5%+$6K · Opt 9%+$36K. Supuestos en dólares de hoy; retornos no garantizados."
   },
   "macroReadiness": {
-    "lastUpdate": "2026-07-27T12:00:00Z",
+    "lastUpdate": "2026-07-28T12:00:00Z",
     "regime": "LATE_CYCLE",
-    "regimeLabel": "Ciclo Tard\u00edo",
+    "regimeLabel": "Ciclo Tardío",
     "regimeColor": "#f59e0b",
-    "regimeContext": "SPY cerr\u00f3 bajo su 50DMA el vie (NEUTRAL/CHOP) pero lo recupera intrad\u00eda ($746>$745), >200DMA; XLK en tendencia intacta. Fed restrictiva (Warsh, 0 recortes, 37.9% prob. de alza). Cap t\u00e1ctico 120% mientras SPY no confirme cierre sobre 50DMA.",
+    "regimeContext": "FOMC de Warsh (28-29 jul), Fed hawkish sin recortes descontados. Semis lideran la baja, SPY debajo de sus 50/200DMA. Tech-rollover en ciclo tardío; sesgo neutro-defensivo.",
     "alignmentScore": 58,
     "alignmentColor": "#f59e0b",
     "alignmentLabel": "Parcialmente Alineado",
     "macroFactors": [
       {
-        "name": "Inflaci\u00f3n",
+        "name": "Inflación",
         "value": 45,
         "color": "#f59e0b"
       },
@@ -2564,71 +2563,56 @@
       },
       {
         "name": "Volatilidad",
-        "value": 72,
+        "value": 70,
         "color": "#10b981"
       },
       {
-        "name": "Geopol\u00edtico",
+        "name": "Geopolítico",
         "value": 60,
         "color": "#f59e0b"
       }
     ],
     "regimeCeiling": 78,
-    "regimeCeilingWhy": "NEUTRAL/CHOP con SPY reclamando 50DMA y XLK en tendencia sostienen el piso; Fed restrictiva y cluster tech 40% limitan el techo.",
+    "regimeCeilingWhy": "LATE_CYCLE con Fed hawkish penaliza Tech/Semis de larga duración — techo estructural moderado.",
     "moves": [
       {
         "urgency": "URGENTE",
-        "urgencyColor": "#f59e0b",
-        "icon": "\ud83d\udd34",
-        "action": "Reducir leverage t\u00e1ctico 143%\u2192\u2264120% HOY \u2014 vender ~$7K Tech/AI",
-        "from": "TS 4090 Tactical",
-        "to": "Pagar deuda margin (reducir apalancamiento)",
-        "amount": "$7,000",
-        "why": "Leverage 143% sobre cap 120% con margen $13,001 @ ~13% APR; empeor\u00f3 desde 133% (Jul 20). FOMC mi\u00e9 + earnings mega-cap amplifican el riesgo.",
+        "icon": "🚨",
+        "action": "Reducir leverage táctico 146%→≤120% HOY — vender ~$7.6K Tech/AI",
+        "why": "Leverage 146% sobre cap 120% (SPY bajo 50DMA); margen $13,458 @ ~13% APR",
+        "impact": 15,
         "since": "2026-07-20"
       },
       {
         "urgency": "PLANEAR",
-        "urgencyColor": "#3b82f6",
-        "icon": "\ud83d\udfe1",
-        "action": "Cluster Tech/AI ~40% del MV \u2192 trailing stop 8-10% antes de earnings MSFT/META",
-        "from": "TS 4090 (XLK,VGT,SMH,AIQ,BUG)",
-        "to": "Stops de protecci\u00f3n",
-        "amount": "\u2014",
-        "why": "No vender el l\u00edder en tendencia, pero proteger ganancias antes de earnings de mega-caps el mi\u00e9 29.",
+        "icon": "⚠️",
+        "action": "Cluster Tech/AI 33.6% del MV → trailing stop 8-10% antes de earnings MSFT/META",
+        "why": "Sobre cap 25% aunque bajando desde 44%",
+        "impact": 8,
         "since": "2026-07-24"
       },
       {
         "urgency": "PLANEAR",
-        "urgencyColor": "#3b82f6",
-        "icon": "\ud83d\udfe1",
-        "action": "Futuros PKG27+VLV23 ($2.3K, sin posiciones) \u2014 decidir cierre o redeploy",
-        "from": "TS Futures",
-        "to": "IBKR Bravo / LOC",
-        "amount": "$2,300",
-        "why": "Dos cuentas ociosas con TWR 6M -58.6%; el capital rinde m\u00e1s pagando el LOC @ 8.5% o en IBKR.",
+        "icon": "⚠️",
+        "action": "Futuros PKG27+VLV23 ($2,163, sin posiciones) — decidir cierre o redeploy",
+        "why": "Cash idle bajo mínimo $3K",
+        "impact": 5,
         "since": "2026-07-24"
       },
       {
         "urgency": "CONDICIONAL",
-        "urgencyColor": "#6b7280",
-        "icon": "\u23f8\ufe0f",
+        "icon": "⏸️",
         "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385)",
-        "from": "Efectivo 4090",
-        "to": "IAU/GLD",
-        "amount": "$3,000",
-        "why": "GLD hoy $375.60, a\u00fan bajo 50DMA \u2014 esperar confirmaci\u00f3n antes de re-abrir el hedge.",
+        "why": "GLD $369, −27% del ATH — trigger no cumplido",
+        "impact": 5,
         "since": "2026-07-24"
       },
       {
         "urgency": "CONDICIONAL",
-        "urgencyColor": "#6b7280",
-        "icon": "\u23f8\ufe0f",
+        "icon": "🔄",
         "action": "Rotar a defensivos (XLU/XLV/AMLP) si SPY confirma quiebre del 50DMA",
-        "from": "Tech/Semis 4090",
-        "to": "Defensivos",
-        "amount": "$5,000",
-        "why": "Si SPY confirma risk-off bajo 50DMA, reducir betas altas hacia defensivos.",
+        "why": "SPY tocó bajo 50DMA hoy; confirmar multi-día",
+        "impact": 6,
         "since": "2026-07-24"
       }
     ],
@@ -2636,7 +2620,7 @@
       {
         "label": "SPY confirma cierre > 50DMA (~$745)",
         "status": "watch",
-        "note": "Reactiva cap de leverage 120\u2192140% y sesgo ofensivo."
+        "note": "Reactiva cap de leverage 120→140% y sesgo ofensivo."
       },
       {
         "label": "GLD > 50DMA (~$385)",
@@ -2646,50 +2630,50 @@
       {
         "label": "VIX > 22",
         "status": "watch",
-        "note": "Confirma risk-off \u2014 rotar a defensivos y recortar Tech/Semis."
+        "note": "Confirma risk-off — rotar a defensivos y recortar Tech/Semis."
       }
     ]
   },
   "weeklyActions": [
     {
-      "priority": "CR\u00cdTICO",
-      "priorityColor": "#ef4444",
-      "icon": "\ud83d\udcb3",
-      "action": "Aplicar surplus al LOC Wells Fargo $46,628 @ 8.5%",
-      "why": "Buffer DEC \u2705 (cash $52,648). Cada $1K pagado ahorra $85/a\u00f1o.",
-      "category": "DEUDA"
-    },
-    {
       "priority": "URGENTE",
+      "priorityColor": "#ef4444",
+      "icon": "🚨",
+      "action": "Reducir leverage táctico 146%→≤120% — vender ~$7.6K tech/AI",
+      "why": "SPY bajo 50DMA aprieta el cap a 120%; margen $13,458 @ ~13% APR; 8 días pendiente.",
+      "category": "ACTIVOS"
+    },
+    {
+      "priority": "HOY",
       "priorityColor": "#f59e0b",
-      "icon": "\ud83d\udd34",
-      "action": "Reducir leverage t\u00e1ctico 143%\u2192\u2264120% (vender ~$7K Tech/AI del 4090)",
-      "why": "143% sobre cap 120% con SPY<50DMA \u2014 margen $13,001 @ ~13% APR sangra y amplifica ca\u00eddas.",
+      "icon": "⚠️",
+      "action": "Recortar cluster beta-tech 33.6% (SOXQ/QTUM/ARTY)",
+      "why": "Sobre cap 25% aunque bajando desde 44%; corta leverage y concentración de una.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "\ud83d\udfe1",
-      "action": "Trailing stop 8-10% al cluster Tech/AI (40% MV) antes de earnings MSFT/META",
-      "why": "Proteger ganancias antes de earnings mega-cap el mi\u00e9 29 sin vender el l\u00edder en tendencia.",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "\ud83d\udccb",
-      "action": "Verificar que el contrato Miguel Autos ($30,000) sigue vigente y documentado",
-      "why": "Mayor activo il\u00edquido (7.4%) sin garant\u00eda documental \u2014 control m\u00ednimo de riesgo.",
-      "category": "ACTIVOS"
-    },
-    {
-      "priority": "ESTA SEMANA",
-      "priorityColor": "#60a5fa",
-      "icon": "\ud83d\udcc8",
-      "action": "Decidir futuros ociosos PKG27+VLV23 ($2,308) \u2014 barrer a LOC/IBKR",
-      "why": "Capital ocioso con el peor TWR del portafolio (-58.6%).",
+      "icon": "⭐",
+      "action": "Decidir futuros PKG27+VLV23 $2,163 idle",
+      "why": "Cero posiciones; bajo el mínimo $3K — cerrar o redeploy a renta fija.",
       "category": "FUTUROS"
+    },
+    {
+      "priority": "CONDICIONAL",
+      "priorityColor": "#94a3b8",
+      "icon": "⏳",
+      "action": "Rotación defensiva XLU/XLV/AMLP si SPY confirma quiebre del 50DMA",
+      "why": "SPY tocó bajo el 50DMA hoy; confirmar multi-día tras el FOMC.",
+      "category": "MACRO"
+    },
+    {
+      "priority": "CONDICIONAL",
+      "priorityColor": "#94a3b8",
+      "icon": "⏳",
+      "action": "Re-establecer hedge oro IAU solo si GLD > $385 (50DMA)",
+      "why": "GLD $369, −27% del ATH — no comprar un hedge en tendencia bajista.",
+      "category": "MACRO"
     }
   ],
   "datestamps": {
@@ -2711,25 +2695,25 @@
       "TastyTrade->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-07-24",
-        "lastSignal": "\ud83d\udfe1",
+        "lastSignal": "🟡",
         "lastSignalDate": null
       },
       "TastyTrade->IBKR Bravo": {
         "monthsSustained": 2,
         "lastEval": "2026-07-24",
-        "lastSignal": "\ud83d\udfe1",
+        "lastSignal": "🟡",
         "lastSignalDate": null
       },
       "TS Futures->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-07-24",
-        "lastSignal": "\ud83d\udfe1",
+        "lastSignal": "🟡",
         "lastSignalDate": null
       },
       "TS Futures->IBKR Bravo": {
         "monthsSustained": 2,
         "lastEval": "2026-07-24",
-        "lastSignal": "\ud83d\udfe1",
+        "lastSignal": "🟡",
         "lastSignalDate": null
       }
     },
@@ -2924,7 +2908,7 @@
     "ss": 24000,
     "bequestFloor": 0,
     "annualContrib": 17196,
-    "note": "Decumulaci\u00f3n en d\u00f3lares de hoy (real). Acumula 54\u219260 (cumple 55 el 25-jul-2026) (+$19.5K/a\u00f1o aportes), luego retira $55K/a\u00f1o; SS $24K/a\u00f1o desde los 67; piso de herencia $150K; plan hasta los 95. Retornos REALES 3/4/5% (nominal \u2212 inflaci\u00f3n). Curva conservadora se agota antes de los 95 = brecha sin DEC.",
+    "note": "Decumulación en dólares de hoy (real). Acumula 54→60 (cumple 55 el 25-jul-2026) (+$19.5K/año aportes), luego retira $55K/año; SS $24K/año desde los 67; piso de herencia $150K; plan hasta los 95. Retornos REALES 3/4/5% (nominal − inflación). Curva conservadora se agota antes de los 95 = brecha sin DEC.",
     "computedFrom": "meta.nwNeto live",
     "passiveAnnual": 0,
     "ctrlDefaults": {
@@ -2932,13 +2916,13 @@
       "spend": 55000,
       "extraMonthly": 0
     },
-    "passiveNote": "Pasivo NO se suma a las curvas: dividendos/inter\u00e9s ya est\u00e1n en el retorno total; Pepe es finito y hoy redirigido a Michalitas; CDs capitalizan. SS es la \u00fanica fuente externa modelada.",
+    "passiveNote": "Pasivo NO se suma a las curvas: dividendos/interés ya están en el retorno total; Pepe es finito y hoy redirigido a Michalitas; CDs capitalizan. SS es la única fuente externa modelada.",
     "taxRate": 0.15,
     "decValue": 0,
     "mcMean": 0.04,
     "mcSd": 0.11,
     "mcRuns": 1500,
-    "v4Note": "v4: curvas incluyen impuesto efectivo (def 15%) + lump DEC opcional. Panel: prob. \u00e9xito Monte Carlo + gasto m\u00e1x sostenible + retorno necesario + ahorro extra. Pasivo sigue en 0 (ya en retorno).",
+    "v4Note": "v4: curvas incluyen impuesto efectivo (def 15%) + lump DEC opcional. Panel: prob. éxito Monte Carlo + gasto máx sostenible + retorno necesario + ahorro extra. Pasivo sigue en 0 (ya en retorno).",
     "realContribMo": 1433,
     "realReturn": 0.04,
     "v5Note": "v5: SS escala con edad de reclamo (clamp 62-70, factores actuariales); base de ahorro = surplus real $1,433/mo; readout 'edad de retiro real' + veredicto de palancas. Goal-seek y curvas usan estos valores reales.",
@@ -2948,34 +2932,34 @@
       "70": 31428
     },
     "ssRealNote": "SSA my Social Security statement 2026-04-10: $1,281/$2,002/$2,619 mo a 62/67/70. Edades intermedias interpoladas.",
-    "v6Note": "v6: SS usa datos reales del statement SSA (interpolados) en vez de factores gen\u00e9ricos.",
+    "v6Note": "v6: SS usa datos reales del statement SSA (interpolados) en vez de factores genéricos.",
     "inflation": 0.033,
     "returnWindow": 0,
-    "v7Note": "v7: UNA l\u00ednea = trayectoria real; retorno y ahorro se calculan din\u00e1micamente del historial (portfolioGlobal TWR + surplus), con selector de ventana (default todo). Panel D\u00d3NDE EST\u00c1S / QU\u00c9 HACER.",
+    "v7Note": "v7: UNA línea = trayectoria real; retorno y ahorro se calculan dinámicamente del historial (portfolioGlobal TWR + surplus), con selector de ventana (default todo). Panel DÓNDE ESTÁS / QUÉ HACER.",
     "realSpend": 63011,
     "spendDefault": 63000,
     "decIncomeDefault": 0,
     "decUntilDefault": 70,
-    "v8Note": "v8: gasto = real YNAB $63K/a\u00f1o; DEC reconvertido de venta a INGRESO de semi-retiro (monto/a\u00f1o + hasta-edad), igual que SS reduce el retiro de cartera. Veredicto usa DEC-income.",
-    "v9Note": "v9: sliders para todos los par\u00e1metros + slider Reclamo SS independiente (62-70, muestra $ real) + cabezal '\ud83c\udfaf Te pod\u00e9s retirar a los X'.",
-    "v11Note": "v11 estilo Empower: banda de confianza Monte Carlo (mediana+P10), score grande + veredicto, edad m\u00ednima factible, capacidad de gasto (sostenible vs real), tarjetas (Ahorros/SS/Gasto). Solo 2 sliders: edad de retiro y gasto.",
-    "v12Note": "v12: usa volatilidad REAL de tu historial (floor 6%) en vez de 11% gen\u00e9rica; reemplaza 'edad factible 50%' por edades por nivel de confianza (90% seguro / 75% aceptable).",
-    "v12bNote": "v12b: SS reclamado = edad de retiro (tarjeta din\u00e1mica 62/67/70); panel de Par\u00e1metros y promedios usados.",
-    "v13Note": "v13: Monte Carlo con SEMILLA FIJA (determinista, no salta) \u2014 score y edades de confianza del MISMO c\u00e1lculo (consistentes). Panel muestra per\u00edodo de datos (24 meses Jun24-May26). Verdict suavizado.",
-    "v14Note": "v14: el gr\u00e1fico AHORA es la curva decisi\u00f3n = probabilidad de \u00e9xito vs edad de retiro (una l\u00ednea clara), con l\u00edneas 75%/90% y marcador de tu edad. Reemplaza la banda de saldo que confund\u00eda.",
-    "v15Note": "v15 realismo: (1) volatilidad realista 10% en vez de 6% medida (serie suave); (2) impuesto efectivo CALCULADO de la mezcla de cuentas (~8%) en vez de 15% plano; (3) patrimonio invertible = NW neto \u2212 Miguel(il\u00edquido) \u2212 fondo emergencia(intocable). M\u00e1s conservador y honesto.",
-    "v16Note": "v16: volatilidad ahora CALCULADA de la asignaci\u00f3n real de cuentas (acciones 15-18% / opciones 25% / futuros 35% / bonos 6% / CDs-cash 0-1%, ponderada con factor de diversificaci\u00f3n 0.82) = ~11%. Reemplaza el 10% gen\u00e9rico y el 6% medido (suave).",
-    "v17Note": "v17: 'morir con lo justo' \u2014 bequestFloor=0 (\u00e9xito = el dinero no se agota antes de 95, sin dejar herencia). goalEnd=max(floor,1) evita el bug del 0 falsy.",
-    "v18Note": "v18: re-agregado ingreso DEC en semi-retiro (downshift + monto/a\u00f1o + hasta-edad) + reclamo SS INDEPENDIENTE de la edad de downshift. Ahora modela el semi-retiro real: DEC como puente antes de SS. 5 sliders.",
-    "v19Note": "v19: panel '\u00bfVoy en camino?' \u2014 capital invertible necesario hoy para 90% con el plan elegido vs lo que ten\u00e9s (adelantado/atrasado) + tendencia NW \u00faltimos 6 meses.",
+    "v8Note": "v8: gasto = real YNAB $63K/año; DEC reconvertido de venta a INGRESO de semi-retiro (monto/año + hasta-edad), igual que SS reduce el retiro de cartera. Veredicto usa DEC-income.",
+    "v9Note": "v9: sliders para todos los parámetros + slider Reclamo SS independiente (62-70, muestra $ real) + cabezal '🎯 Te podés retirar a los X'.",
+    "v11Note": "v11 estilo Empower: banda de confianza Monte Carlo (mediana+P10), score grande + veredicto, edad mínima factible, capacidad de gasto (sostenible vs real), tarjetas (Ahorros/SS/Gasto). Solo 2 sliders: edad de retiro y gasto.",
+    "v12Note": "v12: usa volatilidad REAL de tu historial (floor 6%) en vez de 11% genérica; reemplaza 'edad factible 50%' por edades por nivel de confianza (90% seguro / 75% aceptable).",
+    "v12bNote": "v12b: SS reclamado = edad de retiro (tarjeta dinámica 62/67/70); panel de Parámetros y promedios usados.",
+    "v13Note": "v13: Monte Carlo con SEMILLA FIJA (determinista, no salta) — score y edades de confianza del MISMO cálculo (consistentes). Panel muestra período de datos (24 meses Jun24-May26). Verdict suavizado.",
+    "v14Note": "v14: el gráfico AHORA es la curva decisión = probabilidad de éxito vs edad de retiro (una línea clara), con líneas 75%/90% y marcador de tu edad. Reemplaza la banda de saldo que confundía.",
+    "v15Note": "v15 realismo: (1) volatilidad realista 10% en vez de 6% medida (serie suave); (2) impuesto efectivo CALCULADO de la mezcla de cuentas (~8%) en vez de 15% plano; (3) patrimonio invertible = NW neto − Miguel(ilíquido) − fondo emergencia(intocable). Más conservador y honesto.",
+    "v16Note": "v16: volatilidad ahora CALCULADA de la asignación real de cuentas (acciones 15-18% / opciones 25% / futuros 35% / bonos 6% / CDs-cash 0-1%, ponderada con factor de diversificación 0.82) = ~11%. Reemplaza el 10% genérico y el 6% medido (suave).",
+    "v17Note": "v17: 'morir con lo justo' — bequestFloor=0 (éxito = el dinero no se agota antes de 95, sin dejar herencia). goalEnd=max(floor,1) evita el bug del 0 falsy.",
+    "v18Note": "v18: re-agregado ingreso DEC en semi-retiro (downshift + monto/año + hasta-edad) + reclamo SS INDEPENDIENTE de la edad de downshift. Ahora modela el semi-retiro real: DEC como puente antes de SS. 5 sliders.",
+    "v19Note": "v19: panel '¿Voy en camino?' — capital invertible necesario hoy para 90% con el plan elegido vs lo que tenés (adelantado/atrasado) + tendencia NW últimos 6 meses.",
     "inheritAmt": 274000,
     "inheritAge": 62,
-    "inheritNote": "Herencia futura ~$274K a los ~62: \u00bc del estate de la madre (~$800K = Miguel $100K + Jorge $100K + banco $200K + casa $400K) = $200K + $74K que Miguel le paga de su parte. Edad estimada (no predicci\u00f3n)."
+    "inheritNote": "Herencia futura ~$274K a los ~62: ¼ del estate de la madre (~$800K = Miguel $100K + Jorge $100K + banco $200K + casa $400K) = $200K + $74K que Miguel le paga de su parte. Edad estimada (no predicción)."
   },
   "reallocDisplay": [
-    "\ud83d\udfe1 TastyTrade\u2192IBKR Bravo: 2/3 meses sostenidos (TT \u221217.4% vs IBKR +16.6%, SPY ~\u22123% 6M) \u2014 falta 1 evaluaci\u00f3n mensual",
-    "\ud83d\udfe1 TS Futures\u2192IBKR Bravo: 2/3 meses sostenidos (FUT ~\u221259% vs IBKR +16.6%) \u2014 falta 1 evaluaci\u00f3n mensual",
-    "\u26aa TT/FUT\u2192RH AP: gates OK; anti-chasing relajado (RH plano ~13sem) pero a\u00fan 1/3 meses \u2014 esperar confirmaci\u00f3n"
+    "🟡 TastyTrade→IBKR Bravo: 2/3 meses sostenidos (TT −17.4% vs IBKR +16.6%, SPY ~−3% 6M) — falta 1 evaluación mensual",
+    "🟡 TS Futures→IBKR Bravo: 2/3 meses sostenidos (FUT ~−59% vs IBKR +16.6%) — falta 1 evaluación mensual",
+    "⚪ TT/FUT→RH AP: gates OK; anti-chasing relajado (RH plano ~13sem) pero aún 1/3 meses — esperar confirmación"
   ],
   "patrimonio": {
     "totalBruto": 406849,
@@ -2983,5 +2967,5 @@
     "nwNeto": 397988,
     "fiPct": 44
   },
-  "lastUpdated": "2026-07-28"
+  "lastUpdated": "2026-07-25"
 }
