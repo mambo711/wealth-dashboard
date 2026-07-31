@@ -1,14 +1,14 @@
 {
   "meta": {
     "subtitle": "31 Julio 2026",
-    "weeklyFocusDate": "Semana del 27 Jul",
-    "nwBruto": 406614,
-    "nwBrutoDelta": "▲$2,373 vs ayer",
+    "weeklyFocusDate": "Semana del 31 Jul",
+    "nwBruto": 406994,
+    "nwBrutoDelta": "▲$6,250 vs mes previo",
     "nwDeltaUp": true,
-    "nwNeto": 398416,
-    "nwNetoDelta": "NW Neto $397,988 — solo deuda personal (car loan $8,861); DEC fuera del NW",
+    "nwNeto": 398133,
+    "nwNetoDelta": "NW Neto $398,133 — solo deuda personal (car loan $8,861); DEC fuera del NW",
     "fiPct": 44,
-    "fiGap": 501584,
+    "fiGap": 501867,
     "fiGapAnnual": 20712,
     "fiTarget": 900000,
     "healthScore": 68,
@@ -27,7 +27,7 @@
         "color": "#3b82f6"
       },
       "performance": {
-        "val": 55,
+        "val": 54,
         "color": "#f59e0b"
       },
       "deuda": {
@@ -35,7 +35,7 @@
         "color": "#3b82f6"
       },
       "surplus": {
-        "val": 24,
+        "val": 27,
         "color": "#ef4444"
       },
       "liquidez": {
@@ -47,7 +47,7 @@
         "color": "#ef4444"
       }
     },
-    "healthDiagnostic": "Score 68 BUENO. ✅ CAMBIO CLAVE: buffer DEC RECUPERADO — cash $52,648 ≥ objetivo $44,345 → LOC paydown REACTIVADO con surplus +$724/mes. 🔴 Riesgo #1: táctico 143.9% apalancado (>cap 120%, subió de 132.7%) — des-riesgar HOY. VLV23 ya NO está en margin call. 💳 Deuda de negocio DEC subió a $71,853 (nuevo saldo Amex Biz Platinum $16,813). Retiro 95/100 y Deuda 91/100 fortalezas; surplus 24/100 y riesgo 38/100 los lastres.",
+    "healthDiagnostic": "Score 68 BUENO. ⚠️ CAMBIO CLAVE: el cash DEC cayó a $26,046 < buffer $44,345 — LOC paydown SUSPENDIDO, reconstruir buffer (faltan $18,299). Retiro sólido (95), deuda personal baja (91). Surplus modesto (27) y riesgo elevado (38) por leverage táctico 140%. Trimestre DEC rentable en devengado (net $25,554) pero caja consumida en inventario.",
     "retirementCore": 269199,
     "totalBruto": 406849,
     "tacticalHeader": "$29,153 equity (margen $11,599 · leverage 139.8% 🟡 dentro de cap 140%)",
@@ -156,15 +156,15 @@
   },
   "roadmap": {
     "weeklyFocus": {
-      "title": "Prioridad #1: 🟢 Des-apalancamiento ejecutado — vigilar ECI",
-      "body": "El move URGENTE de recortar leverage se ejecutó: se cerraron SMH/SOXX/SOXQ/QTUM y el leverage bajó a 139.8%, ahora dentro del cap 140% que aplica porque SPY recuperó su 50DMA y XLK marca máximos. Sin acción urgente hoy; vigilar el ECI 8:30 ET.",
-      "why": "Con la tendencia recuperada y el margen dentro de cap, la prioridad pasa de des-riesgar a proteger: trailing stops en el cluster Tech/AI (24%) y decidir el cash idle de futuros."
+      "title": "Acumular buffer DEC: $26,046 → $44,345 (faltan $18,299)",
+      "body": "El cash DEC volvió a caer esta semana ($26,046, vs $28,010 la semana pasada) y sigue bajo el buffer de 3× opex mensual ($44,345). El LOC paydown queda SUSPENDIDO: pagar solo mínimos y dejar que DEC reconstruya caja. Táctico 140% de leverage en el cap 140% — no ampliar.",
+      "why": "⚡ Sin buffer, un mes flojo de DEC fuerza re-draw del LOC @ 8.5% — retroceso garantizado. El trimestre fue rentable en devengado (net $25,554) pero la caja se consumió en inventario."
     },
     "steps": [
       {
         "urgency": "urgent",
         "title": "1. Eliminar Wells Fargo LOC ($46,628 @ 8.5%)",
-        "detail": "ACTIVO ✅: buffer DEC cubierto (checking $52,648 ≥ objetivo $44,345). Aplicar surplus +$724/mes al LOC → liquidado en ~64 meses. Cada $10K pagado ahorra $850/año. ⚠️ Vigilar: la deuda de negocio DEC subió a $71,853 por el nuevo saldo Amex Biz Platinum $16,813.",
+        "detail": "EN PAUSA ⛔: buffer DEC incompleto (checking $26,046 < objetivo $44,345, faltan $18,299). NO aplicar surplus extra al LOC hasta reconstruir el buffer; solo mínimos. Cada $10K pagado ahorra $850/año. ⚠️ El LOC es deuda de negocio DEC — fuera del NW personal.",
         "impact": "Impacto: libera $330/mes al completar · buffer recuperado ✅",
         "impactColor": "#ef4444",
         "timeline": "Jun 2026 — 2029",
@@ -183,7 +183,7 @@
       {
         "urgency": "high",
         "title": "3. Rebalancear cuentas de trading",
-        "detail": "Posiciones: TS ETF Tactical (22 pos, 🔴 margen $13,001, leverage 143.9% SOBRE cap 120%), TastyTrade (4), IBKR Bravo, RH AP. Prioridad: des-apalancar ~$7K + recortar cluster Tech/AI 36.5% a ≤25%. Futuros $2,308 ociosos (TWR 6M −58.6%) — decidir redeploy.",
+        "detail": "Posiciones: TS ETF Tactical (leverage 140% pegado al cap 140%, margen $11,599), TastyTrade (3 estructuras), IBKR Bravo, RH AP. Prioridad: NO ampliar leverage; trailing stops 8-10% en cluster Tech/AI ~24%. Futuros $2,161 sin posiciones — cerrar o redeploy.",
         "impact": "Impacto: Performance 55→63, Riesgo 38→55",
         "impactColor": "#f59e0b",
         "timeline": "May — Jun 2026",
@@ -194,7 +194,7 @@
       {
         "urgency": "high",
         "title": "4. Crecer DEC a $6,500+/mes",
-        "detail": "DEC promedia $5,796/mes YTD (net). Con $7,500/mes el surplus sube a ~$3,000/mes → LOC liquidada en ~16 meses. Palancas: SEO, campañas email, leads Cloze.",
+        "detail": "DEC promedia ~$5,300/mes (net, cash-aware). Trimestre rentable en devengado (net $25,554) pero la caja cayó por compra de inventario. Con $7,500/mes el surplus sube a ~$3,000/mes → LOC liquidada mucho antes. Palancas: SEO, campañas email, leads Cloze.",
         "impact": "Impacto: Acelera todo el plan FI en ~2 años",
         "impactColor": "#f59e0b",
         "timeline": "May — Dic 2026"
@@ -237,42 +237,42 @@
     "resumen": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "(1) ✅ Leverage táctico ya dentro de cap 140% (139.8%) — move ejecutado. (2) Decidir cash idle futuros $2,161 (METN26 venció). (3) ⚠️ LOC paydown SUSPENDIDO — cash DEC cayó a $28,010 < buffer $44,345."
+      "text": "(1) ⚠️ LOC paydown SUSPENDIDO — cash DEC cayó a $26,046 < buffer $44,345 (faltan $18,299). Reconstruir buffer antes de tocar el LOC. (2) Leverage táctico 140% (margen $11,599) en el cap 140% — no ampliar. (3) Cash idle futuros $2,161 (0 posiciones) — cerrar o redeploy."
     },
     "deuda": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "💳 LOC $46,628 @ 8.5%. DEC promedio $5,030/mes → Déficit $-106/mes. ⏸️ Paydown SUSPENDIDO: cash DEC $28,010 < buffer $44,345."
+      "text": "⛔ NO pagar LOC extra — buffer DEC incompleto ($26,046 / $44,345, faltan $18,299). Solo mínimos. Ver Resumen."
     },
     "fi": {
-      "color": "#10b981",
-      "borderColor": "#10b981",
-      "text": "Buffer ✅ + LOC paydown activo (~64 meses). FI al 44% — gap $502,012. Ver Resumen."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "LOC en espera: buffer DEC en $26,046 / $44,345. FI al 44% — gap $501,867. Ver Resumen."
     },
     "flujo": {
-      "color": "#ef4444",
-      "borderColor": "#ef4444",
-      "text": "💰 ⚠️ Déficit $-106/mes. DEC YTD promedio $5,030/mes. Régimen LATE_CYCLE → sesgo NEUTRO — continuar plan normal."
+      "color": "#f59e0b",
+      "borderColor": "#f59e0b",
+      "text": "Surplus $+803/mes pero buffer DEC incompleto — dejar acumular en DEC, no redirigir al LOC aún. Ver Resumen."
     },
     "performance": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Alignment 62% (techo 82%). 0 moves URGENTE pendientes. Regime: LATE_CYCLE."
+      "text": "Régimen Late Cycle (NEUTRO) — rebalanceos solo entre cuentas existentes; evitar añadir Tech/Semis, SmallCap. Ver Resumen."
     },
     "posiciones": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Opciones sin alertas — DRAM credit spread + 2 LEAPS (TSM/BAC), OCO OK. ✅ Leverage táctico 139.8% dentro de cap."
+      "text": "Sin moves CRÍTICO. Leverage táctico 140% en cap 140% — mantener, no ampliar; trailing stops en cluster Tech/AI. Ver Resumen."
     },
     "cuentas": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "✅ Margen táctico $11,599 · leverage 139.8% dentro de cap 140% (UPTREND). Régimen LATE_CYCLE: sesgo NEUTRO/ofensivo. TT NLV $12,148."
+      "text": "Régimen Late Cycle (NEUTRO) — no mover capital hacia Tech/Semis, SmallCap. Reconstruir buffer DEC es prioridad. Ver Resumen."
     },
     "allocation": {
       "color": "#f59e0b",
       "borderColor": "#f59e0b",
-      "text": "Verificar contrato Miguel Autos ($30,000 — 7.4% del portafolio) sin garantía documental. Ver Resumen."
+      "text": "Leverage táctico 140% en el cap 140%. Verificar contrato Miguel Autos ($30,000 — 7.4% del portafolio) sin garantía documental. Ver Resumen."
     }
   },
   "insights": {
@@ -288,10 +288,10 @@
     },
     "accounts": [
       {
-        "rank": "Grado C — ETF Core · TWR 6M −12.4%",
+        "rank": "Grado C — ETF Core · TWR 6M ~−12%",
         "rankColor": "#ef4444",
-        "text": "Cuenta principal de trading. 22 posiciones ETF, MV $42,642 / equity $29,641. Margen $13,001 🔴 (leverage 143.9% SOBRE cap 120%). Cluster Tech/AI 36.5% sobre cap 25%.",
-        "rec": "Recortar ~$7K (AIQ/VGT/SMH/QTUM/ARTY) para bajar leverage a ≤120% y cluster a ≤25%. Hedge oro solo si GLD>50DMA."
+        "text": "Cuenta principal de trading (4090). ~20 posiciones ETF, MV $40,549 / equity $28,950. Margen $11,599 — leverage 140% pegado al cap 140% (aplica con SPY sobre su 50DMA). Cluster Tech/AI ~24%.",
+        "rec": "No ampliar; trailing stops 8-10% en el cluster Tech/AI. Recortar si SPY pierde el 50DMA."
       },
       {
         "rank": "Grado A+ — Mejor TWR · 6M +50.1%",
@@ -308,13 +308,13 @@
       {
         "rank": "Grado D — Opciones · TWR 6M −10.2%",
         "rankColor": "#ef4444",
-        "text": "TastyTrade NLV $12,348 — 4 estructuras vivas (NFLX Ago 21, SQQQ Ago 28, TSM LEAPS Ene 27, BAC LEAPS Ene 28).",
-        "rec": "Donante candidato hacia IBKR (2/3 meses). Sin earnings-exposed <30 DTE — no hay gatillo CRÍTICO."
+        "text": "TastyTrade NLV $12,250 — 3 estructuras vivas (DRAM P43/P46 Sep 18, TSM C340/C350 Ene 27, BAC C52.5 LEAP Ene 28).",
+        "rec": "Donante candidato hacia IBKR (⏸️ congelado — receptor stale). Sin earnings-exposed <30 DTE — sin gatillo forzado."
       },
       {
         "rank": "Grado F — Futuros · TWR 6M −58.6%",
         "rankColor": "#ef4444",
-        "text": "PKG27 $926 + VLV23 $1,382 = $2,308. Sin posiciones abiertas; VLV23 ya fuera del margin call.",
+        "text": "PKG27 $870 + VLV23 $1,291 = $2,161. Sin posiciones abiertas; sin margin call.",
         "rec": "Capital ocioso con peor TWR del portafolio — decidir cierre o redeploy a IBKR (PLANEAR)."
       }
     ],
@@ -325,7 +325,7 @@
       "🏛️ Régimen LATE_CYCLE (align 62%) · Fed Warsh hold hawkish · SPY recuperó 50DMA · sesgo NEUTRO→ofensivo"
     ],
     "performance": [
-      "🧠 <b>Lectura CIO (24-jul):</b> Semana claramente a la baja — el táctico 4090 cayó <b>−9.0%</b> (a $29,641 de equity) y los futuros se hundieron (PKG27 −11.2%, VLV23 −13.1%), aunque VLV23 <b>salió del margin call</b>; TastyTrade quedó plano (−0.2%, NLV $12,348) e IBKR/RH sin cambios (datos Jul 12). El S&P cedió −2.7%. En la foto de <b>6 meses</b> solo dos sleeves le ganan al S&P (−2.1%): <b>RH AP +50.1%</b> e <b>IBKR +6.0%</b> — el trading manual sigue siendo el lastre estructural con <b>TS ETF −12.4%</b>, <b>TT −10.2%</b> y futuros <b>−58.6%</b>. El TWR total del portafolio quedó en <b>111.6</b> (serie mensual, ~+0.2% en el mes). Señales de realocación: dos pares en <b>2/3 meses</b> (TT→IBKR, Futuros→IBKR), falta una evaluación mensual para disparar 🟢. <b>Prioridad #1:</b> reducir el leverage táctico <b>143.9%→≤120%</b> (vender ~$7K de Tech/AI, cluster en 36.5% sobre cap 25%) y aplicar el surplus +$724/mes al LOC @ 8.5% ahora que el buffer DEC está cubierto."
+      "🧠 <b>Lectura CIO (31-jul):</b> Semana mixta. El <b>SEP IRA subió</b> con el mercado (VOO +$6.1K PL, S&P +1.0% en la semana a 7,490), mientras el <b>táctico 4090 siguió débil</b> (equity $28,950, ~−2% wk) con leverage al 140% pegado al cap 140% (margen $11,599). <b>TastyTrade</b> casi plano (NLV $12,250, −0.8%) y los <b>futuros PKG27/VLV23</b> siguen drenando (combinado $2,161, 0 posiciones). En TWR 6M el ranking sigue liderado por los sleeves gestionados <b>RH AP</b> (~147) e <b>IBKR</b> (~156) frente al trading manual táctico; el S&P 6M (~135 base) bate al portafolio total (~113 mensual) — la brecha estructural es el arrastre del táctico apalancado y los futuros. Realocación: <b>⏸️ congelada</b> — los receptores RH/IBKR tienen datos del 12-jul (19 días) y no se evalúan por el guard de frescura de 14 días. <b>Prioridad #1 de la semana:</b> reconstruir el buffer DEC ($26,046→$44,345, faltan $18,299) — el LOC paydown queda suspendido; no ampliar el leverage táctico."
     ]
   },
   "debt": {
@@ -338,7 +338,7 @@
       "interestMonthly": 330,
       "severity": "critical",
       "status": "Negocio DEC — fuera del NW personal",
-      "statusDate": "paydown REACTIVADO ✅ — cash DEC $52,648 ≥ buffer $44,345"
+      "statusDate": "paydown SUSPENDIDO ⛔ — cash DEC $26,046 < buffer $44,345 (faltan $18,299)"
     },
     "secondary": {
       "name": "Car Loan (DCFCU) — Personal",
@@ -372,8 +372,8 @@
         "balance": 1112
       }
     ],
-    "totalDebt": 80714,
-    "totalDebtDate": "Personal en NW $8,861 · Negocio DEC $71,853"
+    "totalDebt": 80686,
+    "totalDebtDate": "2026-07-31"
   },
   "incomeStreams": [
     {
@@ -580,10 +580,10 @@
   },
   "waterfallScenarios": [
     {
-      "icon": "🟢",
-      "label": "Actual (Jul 24)",
-      "surplus": 724,
-      "note": "Buffer DEC CUBIERTO ✅ ($52,648 ≥ $44,345) — LOC paydown reactivado. Surplus +$724/mes (método YTD)."
+      "icon": "🟡",
+      "label": "Actual (Jul 31)",
+      "surplus": 803,
+      "note": "Buffer DEC INCOMPLETO ⛔ ($26,046 < $44,345, faltan $18,299) — LOC paydown SUSPENDIDO. Surplus modesto +$803/mes se acumula en DEC."
     },
     {
       "icon": "🟢",
@@ -676,7 +676,7 @@
     {
       "name": "SEP IRA (TS)",
       "cat": "Retiro",
-      "value": 139315,
+      "value": 141718,
       "color": "#2563eb"
     },
     {
@@ -706,7 +706,7 @@
     {
       "name": "TS ETF Tactical",
       "cat": "Trading",
-      "value": 29641,
+      "value": 28950,
       "color": "#10b981"
     },
     {
@@ -718,7 +718,7 @@
     {
       "name": "TastyTrade",
       "cat": "Trading",
-      "value": 12348,
+      "value": 12250,
       "color": "#8b5cf6"
     },
     {
@@ -736,13 +736,13 @@
     {
       "name": "TS Futures PKG27",
       "cat": "Trading",
-      "value": 926,
+      "value": 870,
       "color": "#ef4444"
     },
     {
       "name": "TS Futures VLV23",
       "cat": "Trading",
-      "value": 1382,
+      "value": 1291,
       "color": "#f87171"
     },
     {
@@ -887,30 +887,30 @@
     ]
   },
   "sepIRA": {
-    "header": "$140,637 Equity LIVE (Jul 24, incl. $1,322 cash)",
+    "header": "$141,718 Equity LIVE (Jul 31, incl. $1,322 cash)",
     "positions": [
       {
         "symbol": "VOO",
         "name": "Vanguard S&P 500 ETF",
-        "mv": 84868,
-        "pct": 60.9,
-        "pl": 5356,
+        "mv": 85624,
+        "pct": 61.0,
+        "pl": 6112,
         "plUp": true
       },
       {
         "symbol": "SCHD",
         "name": "Schwab US Dividend ETF",
-        "mv": 35532,
+        "mv": 35767,
         "pct": 25.5,
-        "pl": 2231,
+        "pl": 2466,
         "plUp": true
       },
       {
         "symbol": "AVDV",
         "name": "Avantis Intl Small Cap Value ETF",
-        "mv": 18915,
-        "pct": 13.6,
-        "pl": 270,
+        "mv": 19005,
+        "pct": 13.5,
+        "pl": 360,
         "plUp": true
       }
     ]
@@ -1050,38 +1050,30 @@
     }
   ],
   "options": {
-    "nlv": 12348,
+    "nlv": 12250,
     "positions": [
       {
-        "symbol": "NFLX",
-        "spread": "P66/P71",
+        "symbol": "DRAM",
+        "spread": "P43/P46 ×2",
         "type": "Put Debit Spread",
-        "dte": 28,
-        "exp": "Ago 21",
-        "expSoon": false
-      },
-      {
-        "symbol": "SQQQ",
-        "spread": "P35/P37 ×3",
-        "type": "Put Credit Spread",
-        "dte": 35,
-        "exp": "Ago 28",
+        "dte": 49,
+        "exp": "Sep 18",
         "expSoon": false
       },
       {
         "symbol": "TSM",
         "spread": "C340/C350",
-        "type": "Bull Call LEAPS",
-        "dte": 175,
-        "exp": "Ene 15 27",
+        "type": "Call Debit Spread",
+        "dte": 168,
+        "exp": "Ene 15 '27",
         "expSoon": false
       },
       {
         "symbol": "BAC",
-        "spread": "C52.5",
-        "type": "Call LEAPS",
-        "dte": 546,
-        "exp": "Ene 21 28",
+        "spread": "C52.5 LEAP",
+        "type": "Long Call (LEAP)",
+        "dte": 539,
+        "exp": "Ene 21 '28",
         "expSoon": false
       }
     ]
@@ -1141,7 +1133,7 @@
       394189,
       405703,
       400744,
-      406849
+      406994
     ],
     "rate": [
       0.0,
@@ -1169,7 +1161,7 @@
       0.0,
       2.9,
       -1.2,
-      1.5
+      1.6
     ],
     "retirement": [
       210000,
@@ -1197,7 +1189,7 @@
       225000,
       232591,
       228405,
-      236752
+      237833
     ],
     "stocks": [
       28000,
@@ -1225,7 +1217,7 @@
       49000,
       60978,
       60255,
-      58094
+      57158
     ],
     "cds": [
       35000,
@@ -1365,7 +1357,7 @@
       70700,
       73239,
       71000,
-      80714
+      80686
     ]
   },
   "weekly": {
@@ -1421,7 +1413,8 @@
       "Jun 26",
       "Jul 3",
       "Jul 10",
-      "Jul 24"
+      "Jul 24",
+      "Jul 31"
     ],
     "tt": [
       20000,
@@ -1475,7 +1468,8 @@
       12695,
       12639,
       12369,
-      12348
+      12348,
+      12250
     ],
     "ibkr": [
       2200,
@@ -1528,6 +1522,7 @@
       8380,
       8388,
       8388,
+      8604,
       8604,
       8604
     ],
@@ -1583,7 +1578,8 @@
       32178,
       32416,
       32570,
-      29641
+      29641,
+      28950
     ],
     "rh": [
       null,
@@ -1636,6 +1632,7 @@
       4981,
       4791,
       4791,
+      4746,
       4746,
       4746
     ],
@@ -1691,6 +1688,7 @@
       483,
       483,
       447,
+      447,
       447
     ],
     "fut": [
@@ -1745,7 +1743,8 @@
       1686,
       1166,
       1042,
-      926
+      926,
+      870
     ],
     "sp": [
       100,
@@ -1799,7 +1798,8 @@
       107.8,
       109.7,
       110.7,
-      107.7
+      107.7,
+      108.8
     ],
     "fut2": [
       null,
@@ -1853,7 +1853,8 @@
       1805,
       1782,
       1590,
-      1382
+      1382,
+      1291
     ],
     "futCombined": [
       4995.0,
@@ -1907,17 +1908,18 @@
       3491,
       2948,
       2632,
-      2308
+      2308,
+      2161
     ]
   },
   "sources": {
     "tsetf": {
       "label": "TradeStation REST",
-      "date": "Jul 24 2026"
+      "date": "Jul 31 2026"
     },
     "tt": {
       "label": "TastyTrade Relay",
-      "date": "Jul 24 2026"
+      "date": "Jul 31 2026"
     },
     "ibkr": {
       "label": "IBKR (Alberto in-chat)",
@@ -1937,15 +1939,15 @@
     },
     "fut": {
       "label": "TS Futures PKG27 (live)",
-      "date": "Jul 24 2026"
+      "date": "Jul 31 2026"
     },
     "fut2": {
       "label": "TS Futures VLV23 (live)",
-      "date": "Jul 24 2026"
+      "date": "Jul 31 2026"
     },
     "xero": {
       "label": "Xero DEC",
-      "date": "Jul 24 2026"
+      "date": "Jul 31 2026"
     },
     "manual": {
       "label": "Manual sources",
@@ -2046,191 +2048,197 @@
       122.9,
       128.5,
       136.9,
-      136.5,
-      134.5
+      137.6,
+      138.4
     ],
     "tt": [
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
-      108,
-      107,
-      106,
-      105,
-      104,
-      103,
-      102,
-      101,
-      100,
-      99,
-      98,
-      97,
-      96,
-      95,
-      94,
-      93,
-      92,
-      91,
-      90,
-      89,
-      88,
-      89,
-      90,
-      91,
-      92,
-      93,
-      93.5,
-      93.2,
+      100.0,
+      101.0,
+      102.0,
+      104.0,
+      105.0,
+      106.0,
+      107.5,
+      109.0,
+      110.0,
+      109.0,
+      108.0,
+      106.0,
+      104.0,
+      102.5,
+      101.0,
+      99.0,
+      97.5,
+      96.0,
+      94.5,
       93.0,
-      92.8,
-      92.9,
-      93.0,
-      93.1,
-      84.3,
+      91.0,
+      90.0,
+      88.0,
       86.0,
-      86.6,
-      87.1,
-      87.2,
-      87.36,
-      84.91,
-      84.54,
-      82.73,
-      82.6
+      84.0,
+      82.5,
+      81.0,
+      79.5,
+      78.5,
+      80.0,
+      81.5,
+      83.0,
+      84.0,
+      85.0,
+      85.5,
+      85.25,
+      85.0,
+      84.5,
+      84.75,
+      85.0,
+      85.05,
+      85.13,
+      85.13,
+      86.84,
+      87.49,
+      88.0,
+      88.09,
+      88.25,
+      85.77,
+      85.39,
+      83.57,
+      83.43,
+      82.77
     ],
     "ibkr": [
-      100,
-      100.5,
-      101,
-      101.5,
-      102,
-      102.5,
-      103,
-      104,
-      105,
-      106,
-      107,
-      107.5,
-      108,
-      108.5,
-      109,
-      109.5,
-      110,
-      110.5,
-      110,
-      109.5,
-      110,
-      110.5,
-      111,
-      110.5,
-      110,
-      110.5,
-      111,
-      111.5,
-      112,
-      111.5,
-      111,
-      111.5,
-      112,
-      112.5,
-      113,
-      113,
-      113.5,
-      113,
-      112,
-      112.5,
-      113,
-      113.2,
-      113.2,
-      108.85,
-      108.85,
-      114.0,
-      113.69,
-      113.69,
-      113.69,
-      116.62,
-      116.6
+      100.0,
+      109.09,
+      118.18,
+      127.27,
+      136.36,
+      136.36,
+      135.18,
+      136.36,
+      137.54,
+      138.72,
+      139.9,
+      141.08,
+      142.26,
+      138.73,
+      137.55,
+      138.73,
+      139.91,
+      141.09,
+      142.27,
+      143.45,
+      142.27,
+      141.09,
+      139.91,
+      138.73,
+      139.91,
+      141.09,
+      142.27,
+      143.45,
+      144.63,
+      143.45,
+      142.27,
+      141.09,
+      142.27,
+      143.45,
+      144.63,
+      145.81,
+      146.99,
+      148.17,
+      149.35,
+      150.06,
+      150.53,
+      151.35,
+      151.35,
+      151.35,
+      145.53,
+      145.53,
+      152.38,
+      151.96,
+      152.11,
+      152.11,
+      156.03,
+      156.03,
+      156.03
     ],
     "tsetf": [
-      100,
-      101,
-      103,
-      105,
-      107,
-      109,
-      111,
-      113,
-      115,
-      117,
-      119,
-      121,
-      123,
-      125,
-      127,
-      129,
-      131,
-      133,
-      135,
-      136,
-      134,
-      130,
-      128,
-      126,
-      124,
-      122,
-      120,
-      108,
-      110,
-      112,
-      114,
-      116,
-      118,
-      120,
-      121,
-      121.5,
-      122,
-      122.5,
-      123,
-      123.5,
-      124,
-      126.4,
-      128.9,
-      121.2,
-      123.26,
-      123.4,
-      125.81,
-      117.89,
-      118.76,
-      119.32,
-      108.6
+      100.0,
+      103.12,
+      106.24,
+      109.36,
+      112.48,
+      115.6,
+      118.72,
+      121.84,
+      124.96,
+      128.08,
+      131.2,
+      134.32,
+      137.44,
+      140.56,
+      143.68,
+      146.8,
+      149.92,
+      153.04,
+      156.16,
+      159.28,
+      162.4,
+      149.91,
+      143.66,
+      137.41,
+      131.16,
+      124.91,
+      118.66,
+      118.66,
+      129.45,
+      134.84,
+      140.23,
+      145.62,
+      151.01,
+      156.4,
+      161.79,
+      167.18,
+      172.57,
+      177.96,
+      179.04,
+      180.12,
+      180.66,
+      181.18,
+      186.1,
+      189.77,
+      178.4,
+      181.43,
+      181.63,
+      185.17,
+      173.52,
+      174.8,
+      175.63,
+      159.84,
+      156.11
     ],
     "rh": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
       100.0,
       101.23,
       101.85,
@@ -2252,16 +2260,19 @@
       135.78,
       136.71,
       136.71,
+      136.71,
       137.27,
       137.27,
-      151.2,
-      154.33,
-      154.33,
-      154.33,
-      152.88,
-      152.9
+      151.21,
+      154.34,
+      148.45,
+      148.45,
+      147.06,
+      147.06,
+      147.06
     ],
     "fut": [
+      100.0,
       100.0,
       82.87,
       66.94,
@@ -2312,50 +2323,52 @@
       37.79,
       37.79,
       33.77,
-      30.0
+      30.01,
+      28.2
     ],
     "sp": [
-      100,
+      100.0,
       99.5,
       100.5,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
+      101.0,
+      102.0,
+      103.0,
+      104.0,
+      105.0,
+      106.0,
+      107.0,
       107.5,
-      108,
+      108.0,
       108.5,
-      109,
-      110,
-      111,
-      112,
-      113,
-      114,
-      115,
-      114,
-      113,
-      112,
-      111,
-      110,
-      109,
-      108,
-      107,
-      106,
-      105,
-      104,
-      103,
-      102,
-      101,
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
+      109.0,
+      110.0,
+      111.0,
+      112.0,
+      113.0,
+      114.0,
+      115.0,
+      114.0,
+      113.0,
+      112.0,
+      111.0,
+      110.0,
+      109.0,
+      108.0,
+      107.0,
+      106.0,
+      105.0,
+      104.0,
+      103.0,
+      102.0,
+      101.0,
+      100.0,
+      101.0,
+      102.0,
+      103.0,
+      104.0,
+      105.0,
+      106.0,
+      107.5,
       107.5,
       109.0,
       106.3,
@@ -2364,88 +2377,92 @@
       108.0,
       107.8,
       109.7,
-      110.66,
-      107.7
+      110.7,
+      107.7,
+      108.8
     ],
     "rhPhotonics": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
       100.0,
       107.5,
       115.0,
       120.0,
       127.5,
-      131.8,
-      131.8,
-      118.23,
-      118.23,
-      131.6,
-      132.83,
-      132.83,
-      132.83,
-      122.93,
-      122.9
+      131.75,
+      133.5,
+      133.5,
+      119.75,
+      119.75,
+      133.25,
+      134.5,
+      120.75,
+      120.75,
+      111.75,
+      111.75,
+      111.75
     ],
     "fut2": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
       100.0,
       104.28,
       100.51,
@@ -2471,29 +2488,26 @@
       67.16,
       66.3,
       59.16,
-      51.4
+      51.42,
+      48.03
     ]
   },
   "allocationAlerts": [
     {
-      "icon": "🚨",
-      "text": "Leverage táctico 143.9% (margen $13,001 @ ~13% APR) — 3ª semana SOBRE cap 120% y subiendo (132.7%→143.9%). Vender ~$7K para volver a ≤120%."
+      "icon": "⚠️",
+      "text": "Leverage táctico 140% (margen $11,599 @ ~13% APR) — pegado al cap 140% que aplica con SPY sobre su 50DMA. No ampliar; recortar si SPY pierde el 50DMA."
     },
     {
       "icon": "⚠️",
-      "text": "Cluster Tech/AI 36.5% del MV táctico — SOBRE cap 25%. Tech/Semis puro 19.4% (bajo el gatillo CRÍTICO de 20%). Late Cycle bloquea añadir Tech/Semis."
+      "text": "Cluster Tech/AI ~24% del MV táctico — cerca del cap 25%. Late Cycle bloquea añadir Tech/Semis; usar trailing stops 8-10%."
     },
     {
       "icon": "⚠️",
-      "text": "Hedge oro 0% del sleeve (sin IAU en cartera) — re-establecer 5-8% solo si GLD supera su 50DMA (~$385; hoy $372.85). CONDICIONAL."
+      "text": "Hedge oro 0% del sleeve (sin IAU) — re-establecer 5-8% solo si GLD supera su 50DMA (~$385; hoy ~$373). CONDICIONAL."
     },
     {
       "icon": "✅",
-      "text": "VLV23 SALIÓ del margin call — sin posiciones abiertas, equity $1,382. PKG27 $926 también sin posiciones (capital ocioso $2,308)."
-    },
-    {
-      "icon": "✅",
-      "text": "Intl Asia (EWT+EWY) = 7.0% y Aeroespacial/Industrial (ITA+XLI) = 16.6% — ambos bajo cap 25%."
+      "text": "Futuros PKG27 $870 + VLV23 $1,291 = $2,161, sin posiciones abiertas — sin margin call. Cash idle a decidir."
     }
   ],
   "incomeSectionNote": "Ingreso pasivo proyectado ($909/mo). Pepe actualmente redirigido a Michalitas — no refleja cashflow activo del waterfall ($0 pasivo).",
@@ -2577,40 +2591,54 @@
     "regimeCeilingWhy": "UPTREND (SPY>50/200DMA, XLK en máximo) levanta el techo pese a Fed hawkish; inflación pegajosa impide llegar a 100.",
     "moves": [
       {
-        "urgency": "PLANEAR",
-        "icon": "🟡",
-        "action": "Cluster Tech/AI 24% del MV → trailing stop 8-10% (vigilancia)",
-        "from": "Táctico 11484090",
-        "why": "Bajo cap 25% pero earnings Big Tech y ECI en curso",
-        "impact": 8,
-        "since": "2026-07-24"
+        "urgency": "URGENTE",
+        "urgencyColor": "#f59e0b",
+        "icon": "💰",
+        "action": "Reconstruir buffer DEC $26,046→$44,345 (faltan $18,299) — LOC paydown en pausa",
+        "from": "Caja operativa DEC",
+        "to": "Buffer 3× opex",
+        "amount": "$18,299",
+        "why": "El cash DEC volvió a caer bajo el buffer; sin colchón, un mes flojo fuerza re-draw del LOC @ 8.5%."
       },
       {
         "urgency": "PLANEAR",
+        "urgencyColor": "#3b82f6",
+        "icon": "🟡",
+        "action": "Cluster Tech/AI 24% del MV táctico → trailing stop 8-10% (vigilancia)",
+        "from": "TS 4090 Táctico",
+        "to": "Trailing stops",
+        "amount": "—",
+        "why": "Late Cycle bloquea añadir Tech/Semis; proteger ganancias del cluster con stops en vez de vender en seco."
+      },
+      {
+        "urgency": "PLANEAR",
+        "urgencyColor": "#3b82f6",
         "icon": "🟡",
         "action": "Futuros PKG27+VLV23 ($2,161, 0 posiciones) — cerrar o redeploy",
-        "from": "Futuros",
-        "why": "METN26 venció; cash inactivo, peor TWR",
-        "impact": 5,
-        "since": "2026-07-24"
+        "from": "TS Futures",
+        "to": "Cash liberado / cuenta trading",
+        "amount": "$2,161",
+        "why": "Capital ocioso sin posiciones abiertas; decidir cierre o redeploy productivo."
       },
       {
         "urgency": "CONDICIONAL",
+        "urgencyColor": "#6b7280",
         "icon": "⏸️",
         "action": "Re-establecer hedge oro IAU solo si GLD > 50DMA (~$385)",
-        "from": "Táctico 11484090",
-        "why": "GLD $372 bajo 50DMA — trigger no cumplido",
-        "impact": 5,
-        "since": "2026-07-24"
+        "from": "Cash táctico",
+        "to": "IAU/GLD 5-8%",
+        "amount": "$1,500–$2,500",
+        "why": "Hedge de régimen; esperar confirmación técnica (GLD hoy ~$373) antes de re-entrar."
       },
       {
         "urgency": "CONDICIONAL",
+        "urgencyColor": "#6b7280",
         "icon": "⏸️",
         "action": "Rotar a defensivos (XLU/XLV/AMLP) si SPY pierde el 50DMA",
-        "from": "Táctico 11484090",
-        "why": "SPY recuperó el 50DMA — trigger no cumplido",
-        "impact": 6,
-        "since": "2026-07-24"
+        "from": "Sleeves cíclicos",
+        "to": "Defensivos",
+        "amount": "condicional",
+        "why": "Trigger de cambio de régimen; solo actuar si la tendencia se rompe."
       }
     ],
     "triggers": [
@@ -2633,50 +2661,50 @@
   },
   "weeklyActions": [
     {
-      "priority": "HOY",
+      "priority": "URGENTE",
       "priorityColor": "#f59e0b",
-      "icon": "⚠️",
-      "action": "Trailing stops 8-10% al cluster Tech/AI 24%",
-      "why": "Bajo cap 25% pero ECI 8:30 puede disparar volatilidad",
+      "icon": "💰",
+      "action": "Reconstruir buffer DEC: $26,046 → $44,345 (faltan $18,299) — NO pagar LOC extra",
+      "why": "Con buffer incompleto, un mes flojo de DEC fuerza re-draw del LOC @ 8.5% — retroceso garantizado.",
+      "category": "DEUDA"
+    },
+    {
+      "priority": "URGENTE",
+      "priorityColor": "#f59e0b",
+      "icon": "⚖️",
+      "action": "Táctico 4090 leverage 140% en cap 140% (margen $11,599) — no ampliar; poner trailing stops",
+      "why": "El margen cuesta ~13% APR y el cluster Tech/AI está al 24%; proteger con stops sin añadir riesgo.",
       "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
       "priorityColor": "#60a5fa",
-      "icon": "⭐",
-      "action": "Decidir cash idle futuros $2,161",
-      "why": "METN26 venció ~31-jul; peor TWR (−58.6%) — cerrar/redeploy a IBKR o T-bills",
-      "category": "FUTUROS"
-    },
-    {
-      "priority": "CONDICIONAL",
-      "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "Re-abrir hedge oro IAU si GLD > 50DMA (~$385)",
-      "why": "GLD $372 en downtrend — trigger no cumplido",
+      "icon": "💸",
+      "action": "Decidir cash idle futuros $2,161 (PKG27+VLV23, 0 posiciones) — cerrar o redeploy",
+      "why": "Capital ocioso sin trabajar; liberar a la cuenta de trading o cerrar.",
       "category": "ACTIVOS"
     },
     {
-      "priority": "CONDICIONAL",
-      "priorityColor": "#94a3b8",
-      "icon": "⏳",
-      "action": "Rotar a defensivos si SPY pierde el 50DMA",
-      "why": "SPY $745 recuperó el 50DMA — trigger opuesto",
-      "category": "MACRO"
+      "priority": "ESTA SEMANA",
+      "priorityColor": "#60a5fa",
+      "icon": "📋",
+      "action": "Verificar contrato Miguel Autos ($30,000) está vigente",
+      "why": "Mayor activo ilíquido (7.4% del portafolio) — contrato escrito es el control mínimo de riesgo.",
+      "category": "ACTIVOS"
     },
     {
       "priority": "ESTA SEMANA",
-      "priorityColor": "#ef4444",
-      "icon": "🚨",
-      "action": "Verificar drenaje de cash DEC (−$24.6K vs ayer)",
-      "why": "Cash cayó a $28,010 < buffer $44,345 → LOC paydown suspendido",
-      "category": "DEUDA"
+      "priorityColor": "#60a5fa",
+      "icon": "📸",
+      "action": "Confirmar valores manuales (Betterment/IBKR/RH/Ecuador) — datos de Jul 12 (19 días)",
+      "why": "Fuentes sin API se acercan al umbral de 30 días; un refresh mantiene el NW y las señales de realocación válidas.",
+      "category": "ACTIVOS"
     }
   ],
   "datestamps": {
-    "ts": "2026-07-24",
-    "tt": "2026-07-24",
-    "xero": "2026-07-24",
+    "ts": "2026-07-31",
+    "tt": "2026-07-31",
+    "xero": "2026-07-31",
     "betterment": "2026-07-12",
     "ibkr": "2026-07-12",
     "rh": "2026-07-12",
@@ -2684,37 +2712,37 @@
     "pepe": "2026-07-12",
     "miguel": "2026-07-12",
     "manual": "2026-07-12",
-    "fut": "2026-07-24",
-    "fut2": "2026-07-24"
+    "fut": "2026-07-31",
+    "fut2": "2026-07-31"
   },
   "reallocState": {
     "pairs": {
       "TastyTrade->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-07-24",
-        "lastSignal": "🟡",
+        "lastSignal": "⏸️",
         "lastSignalDate": null
       },
       "TastyTrade->IBKR Bravo": {
         "monthsSustained": 2,
         "lastEval": "2026-07-24",
-        "lastSignal": "🟡",
+        "lastSignal": "⏸️",
         "lastSignalDate": null
       },
       "TS Futures->RH AP (InTheMoney)": {
         "monthsSustained": 1,
         "lastEval": "2026-07-24",
-        "lastSignal": "🟡",
+        "lastSignal": "⏸️",
         "lastSignalDate": null
       },
       "TS Futures->IBKR Bravo": {
         "monthsSustained": 2,
         "lastEval": "2026-07-24",
-        "lastSignal": "🟡",
+        "lastSignal": "⏸️",
         "lastSignalDate": null
       }
     },
-    "updated": "2026-07-24"
+    "updated": "2026-07-31"
   },
   "decumulation": {
     "ages": [
@@ -2953,16 +2981,12 @@
     "inheritAge": 62,
     "inheritNote": "Herencia futura ~$274K a los ~62: ¼ del estate de la madre (~$800K = Miguel $100K + Jorge $100K + banco $200K + casa $400K) = $200K + $74K que Miguel le paga de su parte. Edad estimada (no predicción)."
   },
-  "reallocDisplay": [
-    "🟡 TastyTrade→IBKR Bravo: 2/3 meses sostenidos (TT −17.4% vs IBKR +16.6%, SPY ~−3% 6M) — falta 1 evaluación mensual",
-    "🟡 TS Futures→IBKR Bravo: 2/3 meses sostenidos (FUT ~−59% vs IBKR +16.6%) — falta 1 evaluación mensual",
-    "⚪ TT/FUT→RH AP: gates OK; anti-chasing relajado (RH plano ~13sem) pero aún 1/3 meses — esperar confirmación"
-  ],
+  "reallocDisplay": "⏸️ Señales de realocación CONGELADAS — receptores RH AP / IBKR con datos del 12-jul (19 días, > umbral 14d). Streaks preservados; re-evaluar cuando Alberto confirme valores frescos.",
   "patrimonio": {
-    "totalBruto": 406849,
+    "totalBruto": 406994,
     "deuda": 8861,
-    "nwNeto": 397988,
+    "nwNeto": 398133,
     "fiPct": 44
   },
-  "lastUpdated": "2026-07-25"
+  "lastUpdated": "2026-07-31"
 }
