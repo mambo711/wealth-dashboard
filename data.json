@@ -152,7 +152,8 @@
         "pct": 24.0
       }
     ],
-    "decBuffer": 44345.0
+    "decBuffer": 44345.0,
+    "lastLeverageCap": 120
   },
   "roadmap": {
     "weeklyFocus": {
