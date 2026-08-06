@@ -2564,12 +2564,12 @@
     "macroFactors": [
       {
         "name": "Inflación",
-        "value": 55,
+        "value": 46,
         "color": "#f59e0b"
       },
       {
         "name": "Tasas",
-        "value": 62,
+        "value": 48,
         "color": "#f59e0b"
       },
       {
@@ -2579,12 +2579,12 @@
       },
       {
         "name": "Volatilidad",
-        "value": 58,
-        "color": "#f59e0b"
+        "value": 82,
+        "color": "#10b981"
       },
       {
         "name": "Geopolítico",
-        "value": 62,
+        "value": 58,
         "color": "#f59e0b"
       }
     ],
